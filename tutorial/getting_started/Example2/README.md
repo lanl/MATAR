@@ -1,101 +1,157 @@
-# MATAR Data Layout Example (C vs F)
-
-This example demonstrates the differences between C-style (row-major) and F-style (column-major) data layouts in MATAR, and how they affect performance and memory access patterns.
+# Heat Equation Solver Using Jacobi Method
 
 ## Overview
 
-The example compares:
-- CArray (C-style, row-major) vs FArray (F-style, column-major) layouts
-- Performance implications of each layout
-- Memory access patterns and cache utilization
-- Best practices for choosing between layouts
+This example demonstrates how to solve the 2D heat equation using the Jacobi iterative method with MATAR (Multiphysics Adaptive Timing And Resiliency) library. The heat equation is a partial differential equation that describes how heat distributes through a material over time.
 
-## Data Layout Concepts
+## The Heat Equation and Laplace Equation
 
-### C-Style (Row-Major) Layout
-- Used by: C, C++, Python (NumPy default), Java, JavaScript
-- Memory layout: Elements in the same row are stored contiguously
-- Example for a 2D array:
-  ```
-  [a11, a12, a13, a21, a22, a23, a31, a32, a33]
-  ```
-- Best for: Row-wise operations, languages that use row-major by default
+The heat equation in 2D is:
 
-### F-Style (Column-Major) Layout
-- Used by: Fortran, MATLAB, R, Julia
-- Memory layout: Elements in the same column are stored contiguously
-- Example for a 2D array:
-  ```
-  [a11, a21, a31, a12, a22, a32, a13, a23, a33]
-  ```
-- Best for: Column-wise operations, scientific computing applications
+∂T/∂t = α(∂²T/∂x² + ∂²T/∂y²)
 
-## Performance Considerations
+When we're looking for the steady-state solution (where temperature no longer changes with time), this simplifies to the Laplace equation:
 
-### Cache Utilization
-- C-Style: Better for row-wise access patterns
-- F-Style: Better for column-wise access patterns
+∂²T/∂x² + ∂²T/∂y² = 0
 
-### Memory Access Patterns
-- C-Style: Optimal when accessing elements row by row
-- F-Style: Optimal when accessing elements column by column
+## Mathematical Derivation
 
-### Language Integration
-- When working with C/C++ code: Prefer CArray
-- When working with Fortran/Matlab code: Prefer FArray
-- When using mixed language environments: Choose based on dominant access pattern
+Here we derive the numerical method used to solve the Laplace equation:
 
-## Example Features
+$$\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} = 0$$
 
-This example demonstrates:
-1. Creating and initializing both CArray and FArray
-2. Comparing performance of row-wise vs column-wise operations
-3. Measuring memory access patterns
-4. Analyzing cache utilization
-5. Best practices for layout selection
+### Finite Difference Approximation
+
+We first discretize the domain into a grid of points with spacing $\Delta x$ and $\Delta y$. Using the central difference approximation for the second derivatives:
+
+$$\frac{\partial^2 T}{\partial x^2} \approx \frac{T_{i+1,j} - 2T_{i,j} + T_{i-1,j}}{(\Delta x)^2}$$
+
+$$\frac{\partial^2 T}{\partial y^2} \approx \frac{T_{i,j+1} - 2T_{i,j} + T_{i,j-1}}{(\Delta y)^2}$$
+
+Substituting these approximations into the Laplace equation:
+
+$$\frac{T_{i+1,j} - 2T_{i,j} + T_{i-1,j}}{(\Delta x)^2} + \frac{T_{i,j+1} - 2T_{i,j} + T_{i,j-1}}{(\Delta y)^2} = 0$$
+
+For simplicity, we assume $\Delta x = \Delta y$ (uniform grid spacing), giving us:
+
+$$T_{i+1,j} - 4T_{i,j} + T_{i-1,j} + T_{i,j+1} + T_{i,j-1} = 0$$
+
+Solving for $T_{i,j}$:
+
+$$T_{i,j} = \frac{1}{4}(T_{i+1,j} + T_{i-1,j} + T_{i,j+1} + T_{i,j-1})$$
+
+### Jacobi Iteration
+
+This leads to the Jacobi iteration method, where we calculate new temperature values based on the previous iteration:
+
+$$T_{i,j}^{(k+1)} = \frac{1}{4}(T_{i+1,j}^{(k)} + T_{i-1,j}^{(k)} + T_{i,j+1}^{(k)} + T_{i,j-1}^{(k)})$$
+
+Where $k$ is the iteration number. We continue this process until convergence, determined by:
+
+$$\max_{i,j} |T_{i,j}^{(k+1)} - T_{i,j}^{(k)}| < \text{tolerance}$$
+
+The algorithm converges to the solution of the Laplace equation as $k \rightarrow \infty$, subject to the specified boundary conditions.
+
+## The Jacobi Method
+
+The Jacobi method is an iterative technique for solving systems of linear equations. For the Laplace equation on a 2D grid, it works by:
+
+1. Starting with an initial guess for temperature at all grid points
+2. For each interior grid point, updating its value based on the average of its four neighbors:
+   ```
+   T_new(i,j) = 0.25 * (T_old(i+1,j) + T_old(i-1,j) + T_old(i,j+1) + T_old(i,j-1))
+   ```
+3. Repeating until convergence (when the maximum change between iterations is below a threshold)
+
+This is easy to understand and parallelize, though it converges slowly for large grids.
+
+## Data Structures
+
+This example uses MATAR's data structures:
+
+- `CArrayDual<double>`: A dual-memory array that exists on both CPU (host) and GPU (device). 
+  - The "Dual" part means the data can be accessed and modified on either CPU or GPU.
+  - The `update_host()` method synchronizes data from the device to the host (important for visualization).
+
+## Key Components of the Code
+
+### Initialization
+
+The `initialize()` function sets up:
+- Interior points to 0.0 (initial guess)
+- Boundary conditions:
+  - Left boundary: 0.0
+  - Right boundary: Linear gradient from 0 to 1000
+  - Top boundary: 0.0
+  - Bottom boundary: Linear gradient from 0 to 1000
+
+### Main Computation Loop
+
+The computation occurs in these key steps:
+
+1. Update all interior points using the Jacobi method:
+   ```cpp
+   FOR_ALL(i, 1, height + 1,
+           j, 1, width + 1, {
+       temperature(i, j) = 0.25 * (temperature_previous(i + 1, j)
+                                  + temperature_previous(i - 1, j)
+                                  + temperature_previous(i, j + 1)
+                                  + temperature_previous(i, j - 1));
+   });
+   ```
+
+2. Check for convergence using a reduction operation:
+   ```cpp
+   FOR_REDUCE_MAX(i, 1, height + 1,
+                  j, 1, width + 1,
+                  local_max_value, {
+       double value = fabs(temperature(i, j) - temperature_previous(i, j));
+       
+       if (value > local_max_value) {
+           local_max_value = value;
+       }
+       
+       // update temperature_previous
+       temperature_previous(i, j) = temperature(i, j);
+   }, max_value);
+   ```
+
+3. Visualize the temperature distribution periodically
+
+### Parallel Computing Constructs
+
+MATAR provides several parallel constructs:
+
+- `FOR_ALL`: Executes a block of code for all elements in a specified range in parallel
+- `FOR_REDUCE_MAX`: Performs a parallel reduction to find the maximum value across all elements
 
 ## Building and Running
 
-1. Compile with appropriate MATAR and Kokkos support:
-   ```bash
-   make
+1. Compile with Kokkos support for all back ends
+   ```
+   ./build.sh -t all
    ```
 
 2. Run the example:
-   ```bash
-   ./data_layout
+   ```
+   cd <build_backend>
+   ./heat
    ```
 
-The program will:
-1. Initialize MATAR
-2. Create test arrays in both layouts
-3. Perform operations with different access patterns
-4. Measure and compare performance
-5. Report findings and recommendations
+The visualization shows the temperature distribution using ASCII characters with colors, where cold regions are blue (represented as '.') and hot regions are red (represented as '#').
 
-## Performance Metrics
+## Modifying the Example
 
-The example measures and reports:
-- Memory access times for different patterns
-- Cache hit/miss rates
-- Overall operation performance
-- Recommendations for layout selection
+You can experiment with:
+- Different grid sizes (width and height)
+- Different boundary conditions in the initialize() function
+- Different convergence thresholds (temp_tolerance)
+- Different visualization parameters
 
-## Best Practices
+## Data-Oriented Design
 
-1. Choose layout based on:
-   - Primary access pattern (row-wise vs column-wise)
-   - Language environment
-   - Performance requirements
-   - Integration needs
-
-2. Consider data transformation costs when:
-   - Converting between layouts
-   - Working with mixed-language environments
-   - Optimizing for specific hardware
-
-3. Profile and measure:
-   - Actual access patterns in your application
-   - Cache utilization
-   - Memory bandwidth usage
-   - Overall performance impact
+This example follows data-oriented programming principles by:
+- Separating data (temperature arrays) from operations
+- Using efficient memory layouts for computation
+- Enabling parallel operations through data-parallel constructs
+- Minimizing data movement between host and device
