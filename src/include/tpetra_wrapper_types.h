@@ -54,13 +54,14 @@
 #include <Tpetra_Core.hpp>
 #include <Tpetra_Map.hpp>
 #include <Tpetra_MultiVector.hpp>
+#include <Tpetra_CrsMatrix.hpp>
+#include <Tpetra_Import_Util2.hpp>
 #include <Tpetra_LRMultiVector_decl.hpp>
 #include <Tpetra_LRMultiVector_def.hpp>
 #include <Kokkos_Core.hpp>
 #include "Tpetra_Details_DefaultTypes.hpp"
 #include "Tpetra_Import.hpp"
 #include "Tpetra_Details_makeColMap.hpp"
-#include "Tpetra_Import_Util2.hpp"
 
 // Repartition Package
 #include <Zoltan2_XpetraMultiVectorAdapter.hpp>
@@ -620,6 +621,9 @@ public:
 
     // Method that update device view
     void update_device();
+    
+    // set values
+    void set_values(T val) const;
 
     //print vector data
     void print() const;
@@ -1466,11 +1470,16 @@ void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) const {
+    tpetra_vector->putScalar(val);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::print() const {
-        std::ostream &out = std::cout;
-        Teuchos::RCP<Teuchos::FancyOStream> fos;
-        fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
-        tpetra_vector->describe(*fos,Teuchos::VERB_EXTREME);
+    std::ostream &out = std::cout;
+    Teuchos::RCP<Teuchos::FancyOStream> fos;
+    fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
+    tpetra_vector->describe(*fos,Teuchos::VERB_EXTREME);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -1898,6 +1907,9 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values
+    void set_values(T val) const;
 
     //print vector data
     void print() const;
@@ -2754,6 +2766,11 @@ void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::perform_comms() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) const {
+    tpetra_vector->putScalar(val);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::print() const {
         std::ostream &out = std::cout;
         Teuchos::RCP<Teuchos::FancyOStream> fos;
@@ -3044,6 +3061,9 @@ public:
 
     // Method that update device view
     void update_device();
+
+    // set values
+    void set_values(T val) const;
 
     //print vector data
     void print() const;
@@ -3370,6 +3390,12 @@ Kokkos::View <T**, Layout, ExecSpace, MemoryTraits> TpetraCRSMatrix<T,Layout,Exe
 //     this_array_.template modify<typename TArray1D::host_mirror_space>();
 //     this_array_.template sync<typename TArray1D::execution_space>();
 // }
+
+//Matrix vector multiplication
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraCRSMatrix<T,Layout,ExecSpace,MemoryTraits>::set_values(T value) const {
+        tpetra_crs_matrix->setAllToScalar(value);
+}
 
 //Matrix vector multiplication
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

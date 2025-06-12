@@ -53,10 +53,10 @@ int main(int argc, char* argv[])
     {
        
         // -----------------------
-        // DDynamicRaggedRightArray Scalar
+        // DRaggedRightArray Scalar with CArrayKokkos
         // -----------------------
 
-        printf("\nDual Dynamic Ragged Right Array test 1D \n");
+        printf("\nDRaggedRightArray test 1D \n");
         DRaggedRightArrayKokkos<int> drrak1D;
 
         // testing ragged initialized with CArrayKokkos for strides
@@ -93,10 +93,60 @@ int main(int argc, char* argv[])
 
 
         // -----------------------
-        // DDynamicRaggedRightArray Vector
+        // DRaggedRightArray Scalar with DCArrayKokkos
         // -----------------------
 
-        printf("\nDual Dynamic Ragged Right Array test 2D \n");
+        printf("\nDRaggedRightArray test 1D \n");
+        DRaggedRightArrayKokkos<int> drrak1D_d;
+
+        // testing ragged initialized with CArrayKokkos for strides
+        num_strides = 3;
+        DCArrayKokkos<size_t> some_strides_d(num_strides);
+
+        for(int i = 0; i < num_strides; i++){
+            some_strides_d.host(i) = i+1;
+        }
+
+        some_strides_d.update_device();
+
+        Kokkos::fence();
+
+        drrak1D_d = DRaggedRightArrayKokkos<int>(some_strides_d, "test_1D_dual");
+        drrak1D_d.update_host();
+
+        std::cout << "Array length: " << drrak1D_d.size() << std::endl;
+
+        for(int i = 0; i < num_strides; i++){
+            if(drrak1D_d.stride_host(i) != i+1){
+                printf("Error: drrak1D_d.stride_host(i) = %d, expected %d\n", i+1);
+            }
+        }
+
+
+        FOR_ALL(i, 0, num_strides,{
+            for(int j = 0; j < drrak1D_d.stride(i); j++) {
+                drrak1D_d(i, j) = j;
+            }
+        });
+
+        drrak1D_d.update_host();
+
+        for(int i = 0; i < num_strides; i++) {
+            for(int j = 0; j < drrak1D_d.stride_host(i); j++) {
+                if(drrak1D_d.host(i, j) != j) {
+                    printf("Error: drrak1D_d(i, j) = %d, expected %d\n", drrak1D_d.host(i, j), j);
+                }
+            }
+        }
+        std::cout << "test_1D dual input passed" << std::endl;
+        Kokkos::fence();
+
+
+        // -----------------------
+        // DRaggedRightArray Vector
+        // -----------------------
+
+        printf("\nDRaggedRightArray test 2D \n");
         DRaggedRightArrayKokkos<int> drrak2D;
         size_t dim2D = 3;
 
@@ -129,10 +179,10 @@ int main(int argc, char* argv[])
 
 
         // -----------------------
-        // DDynamicRaggedRightArray Tensor
+        // DRaggedRightArray Tensor
         // -----------------------
 
-        printf("\nDual Dynamic Ragged Right Array test 3D \n");
+        printf("\nDRaggedRightArray test 3D \n");
         DRaggedRightArrayKokkos<int> drrak3D;
 
 

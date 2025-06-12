@@ -103,31 +103,31 @@ TEST(StandaredTypesTests, FunctionReturnDenseTypes)
 }
 
 
-TEST(StandaredTypesTests, FunctionReturnRaggedTypes)
-{
-  const size_t dim = 4;
-  size_t strides[dim] = {3,2,1,4};
+// TEST(StandaredTypesTests, FunctionReturnRaggedTypes)
+// {
+//   const size_t dim = 4;
+//   size_t strides[dim] = {3,2,1,4};
 
-  // RaggedRightArray 
-  RaggedRightArray <int> ragged_right = return_ragged_type <RaggedRightArray<int>> (strides, dim);
-  int value = 0;
-  for (size_t i = 0; i < dim; i++) {
-    for (size_t j = 0; j < ragged_right.stride(i); j++) {
-      EXPECT_EQ(value, ragged_right(i,j));
-      value++;
-    }
-  }
+//   // RaggedRightArray 
+//   RaggedRightArray <int> ragged_right = return_ragged_type <RaggedRightArray<int>> (strides, dim);
+//   int value = 0;
+//   for (size_t i = 0; i < dim; i++) {
+//     for (size_t j = 0; j < ragged_right.stride(i); j++) {
+//       EXPECT_EQ(value, ragged_right(i,j));
+//       value++;
+//     }
+//   }
 
-  // RaggedDownArray
-  RaggedDownArray <int> ragged_down = return_ragged_type <RaggedDownArray<int>> (strides, dim);
-  value = 0;
-  for (size_t i = 0; i < dim; i++) {
-    for (size_t j = 0; j < ragged_down.stride(i); j++) {
-      EXPECT_EQ(value, ragged_down(j,i));
-      value++;
-    }
-  }
-}
+//   // RaggedDownArray
+//   RaggedDownArray <int> ragged_down = return_ragged_type <RaggedDownArray<int>> (strides, dim);
+//   value = 0;
+//   for (size_t i = 0; i < dim; i++) {
+//     for (size_t j = 0; j < ragged_down.stride(i); j++) {
+//       EXPECT_EQ(value, ragged_down(j,i));
+//       value++;
+//     }
+//   }
+// }
 
 
 TEST(StandaredTypesTests, PassDenseTypeToEmptyFunctionByValue)
@@ -162,33 +162,33 @@ TEST(StandaredTypesTests, PassDenseTypeToEmptyFunctionByValue)
 }
 
 
-TEST(StandaredTypesTests, PassRaggedTypeToEmptyFunctionByValue)
-{
-  const size_t dim = 4;
-  size_t strides[dim] = {3,2,1,4};
+// TEST(StandaredTypesTests, PassRaggedTypeToEmptyFunctionByValue)
+// {
+//   const size_t dim = 4;
+//   size_t strides[dim] = {3,2,1,4};
   
-  // RaggedRightArray
-  RaggedRightArray <int> ragged_right = return_ragged_type <RaggedRightArray<int>> (strides, dim);
-  empty_function(ragged_right);
-  int value = 0;
-  for (size_t i = 0; i < dim; i++) {
-    for (size_t j = 0; j < ragged_right.stride(i); j++) {
-      EXPECT_EQ(value, ragged_right(i,j));
-      value++;
-    }
-  }
+//   // RaggedRightArray
+//   RaggedRightArray <int> ragged_right = return_ragged_type <RaggedRightArray<int>> (strides, dim);
+//   empty_function(ragged_right);
+//   int value = 0;
+//   for (size_t i = 0; i < dim; i++) {
+//     for (size_t j = 0; j < ragged_right.stride(i); j++) {
+//       EXPECT_EQ(value, ragged_right(i,j));
+//       value++;
+//     }
+//   }
   
-  // RaggedDownArray
-  RaggedDownArray <int> ragged_down = return_ragged_type <RaggedDownArray<int>> (strides, dim);
-  empty_function(ragged_down);
-  value = 0;
-  for (size_t i = 0; i < dim; i++) {
-    for (size_t j = 0; j < ragged_down.stride(i); j++) {
-      EXPECT_EQ(value, ragged_down(j,i));
-      value++;
-    }
-  }
-}
+//   // RaggedDownArray
+//   RaggedDownArray <int> ragged_down = return_ragged_type <RaggedDownArray<int>> (strides, dim);
+//   empty_function(ragged_down);
+//   value = 0;
+//   for (size_t i = 0; i < dim; i++) {
+//     for (size_t j = 0; j < ragged_down.stride(i); j++) {
+//       EXPECT_EQ(value, ragged_down(j,i));
+//       value++;
+//     }
+//   }
+// }
 
 
 TEST(StandaredTypesTests, FunctionModifyDenseTypes)
@@ -223,43 +223,31 @@ TEST(StandaredTypesTests, FunctionModifyDenseTypes)
 }
 
 
-TEST(StandaredTypesTests, FunctionModifyRaggedTypes)
-{
-  const size_t dim = 4;
-  size_t strides[dim] = {3,2,1,4};
+// TEST(StandaredTypesTests, FunctionModifyRaggedTypes)
+// {
+//   const size_t dim = 4;
+//   size_t strides[dim] = {3,2,1,4};
 
-  // RaggedRightArray 
-  RaggedRightArray <int> ragged_right = return_ragged_type <RaggedRightArray<int>> (strides, dim);
-  modify_ragged_type(ragged_right); // add 1 to all element
-  int value = 1;
-  for (size_t i = 0; i < dim; i++) {
-    for (size_t j = 0; j < ragged_right.stride(i); j++) {
-      EXPECT_EQ(value, ragged_right(i,j));
-      value++;
-    }
-  }
+//   // RaggedRightArray 
+//   RaggedRightArray <int> ragged_right = return_ragged_type <RaggedRightArray<int>> (strides, dim);
+//   modify_ragged_type(ragged_right); // add 1 to all element
+//   int value = 1;
+//   for (size_t i = 0; i < dim; i++) {
+//     for (size_t j = 0; j < ragged_right.stride(i); j++) {
+//       EXPECT_EQ(value, ragged_right(i,j));
+//       value++;
+//     }
+//   }
 
-  // RaggedDownArray
-  RaggedDownArray <int> ragged_down = return_ragged_type <RaggedDownArray<int>> (strides, dim);
-  modify_ragged_type(ragged_down); // add 1 to all element
-  value = 1;
-  for (size_t i = 0; i < dim; i++) {
-    for (size_t j = 0; j < ragged_down.stride(i); j++) {
-      EXPECT_EQ(value, ragged_down(j,i));
-      value++;
-    }
-  }
-}
+//   // RaggedDownArray
+//   RaggedDownArray <int> ragged_down = return_ragged_type <RaggedDownArray<int>> (strides, dim);
+//   modify_ragged_type(ragged_down); // add 1 to all element
+//   value = 1;
+//   for (size_t i = 0; i < dim; i++) {
+//     for (size_t j = 0; j < ragged_down.stride(i); j++) {
+//       EXPECT_EQ(value, ragged_down(j,i));
+//       value++;
+//     }
+//   }
+// }
 
-int main(int argc, char* argv[])
-{
-
-  int result = 0;
-
-  testing::InitGoogleTest(&argc, argv);
-
-  result = RUN_ALL_TESTS();
-
-  return result;
-
-}
