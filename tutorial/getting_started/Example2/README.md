@@ -2,7 +2,7 @@
 
 ## Overview
 
-This example demonstrates how to solve the 2D heat equation using the Jacobi iterative method with MATAR (Multiphysics Adaptive Timing And Resiliency) library. The heat equation is a partial differential equation that describes how heat distributes through a material over time.
+This example demonstrates how to solve the 2D heat equation using the Jacobi iterative method with the MATAR library. The heat equation is a partial differential equation that describes how heat distributes through a material over time.
 
 ## The Heat Equation and Laplace Equation
 

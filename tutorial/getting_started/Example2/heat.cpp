@@ -32,17 +32,17 @@ int main(int argc, char* argv[])
     MATAR_INITIALIZE(argc, argv);
     { // MATAR scope
     
+    // Create the data structures to hold the temperature values, user CArrayDual types
     CArrayDual<double> temperature(domain_height, domain_width);
     CArrayDual<double> temperature_previous(domain_height, domain_width);
 
     // initialize the temperature_previous array with the initial conditions and boundary conditions
     initialize(temperature_previous);
 
-
+    // Initialize the iteration counts and initialize the works_dt value to 
     int iteration = 0;
-    double worst_dt = 100;
+    double worst_dt = 100000;
     double max_value = 0.0;
-
 
     // print the temperature_distribution to the terminal
     print_heatmap(temperature);
@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
                                         + temperature_previous(i, j + 1)
                                         + temperature_previous(i, j - 1));
         });
-        // MATAR_FENCE();
+        MATAR_FENCE();
         
         // calculate max difference between temperature and temperature_previous
         double local_max_value = 0.0;
@@ -67,16 +67,16 @@ int main(int argc, char* argv[])
 
         FOR_REDUCE_MAX(i, 1, height + 1,
                        j, 1, width + 1,
-                       local_max_value, {
+                       local_max_value, { // local_max_value is the value local to each thread
+            
             double value = fabs(temperature(i, j) - temperature_previous(i, j));
             
             if (value > local_max_value) {
                 local_max_value = value;
             }
-
             // update temperature_previous, not including boundaries
             temperature_previous(i, j) = temperature(i, j);
-        }, max_value);
+        }, max_value); // max_value is the maximum value of local_max_value across all threads
 
         worst_dt = max_value;
 
