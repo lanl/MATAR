@@ -13,23 +13,28 @@ These are fundamental operations in statistics and data science, and are computa
 ## Mathematical Background
 
 ### 1. Mean
-For each feature \( j \), the mean is:
-\[
+For each feature $j$, the mean is:
+
+$$
 \mu_j = \frac{1}{N} \sum_{i=1}^N x_{j,i}
-\]
-where \( x_{j,i} \) is the value of feature \( j \) for patient \( i \), and \( N \) is the number of patients.
+$$
+
+where $x_{j,i}$ is the value of feature $j$ for patient $i$, and $N$ is the number of patients.
 
 ### 2. Variance
-For each feature \( j \), the (sample) variance is:
-\[
+For each feature $j$, the (sample) variance is:
+
+$$
 \sigma_j^2 = \frac{1}{N-1} \sum_{i=1}^N (x_{j,i} - \mu_j)^2
-\]
+$$
 
 ### 3. Correlation
-The correlation between features \( j_1 \) and \( j_2 \) is:
-\[
+The correlation between features $j_1$ and $j_2$ is:
+
+$$
 \rho_{j_1, j_2} = \frac{\sum_{i=1}^N (x_{j_1,i} - \mu_{j_1})(x_{j_2,i} - \mu_{j_2})}{(N-1)\sigma_{j_1}\sigma_{j_2}}
-\]
+$$
+
 This measures the linear relationship between two features.
 
 ## Parallel Programming Concepts
