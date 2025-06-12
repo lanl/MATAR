@@ -22,13 +22,15 @@ Key Features
 Building and Running
 ------------------
 1. Compile with Kokkos support for all back ends
-   ```./build.sh -t all
+   ```
+   ./build.sh -t all
    ./matmul
    ```
 
 
 2. Run the example:
-   ```cd <build_backend>
+   ```
+   cd <build_backend>
    ./matmul
    ```
 
