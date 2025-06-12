@@ -8,11 +8,11 @@ This example demonstrates how to solve the 2D heat equation using the Jacobi ite
 
 The heat equation in 2D is:
 
-∂T/∂t = α(∂²T/∂x² + ∂²T/∂y²)
+$$\frac{\partial T}{\partial t} = \alpha\left(\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right)$$
 
 When we're looking for the steady-state solution (where temperature no longer changes with time), this simplifies to the Laplace equation:
 
-∂²T/∂x² + ∂²T/∂y² = 0
+$$\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} = 0$$
 
 ## Mathematical Derivation
 
