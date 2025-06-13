@@ -118,4 +118,4 @@ fi
 
 echo "To run an example:"
 echo "cd build_<backend>"
-echo "./cube_fe" 
+echo "./matar-fortran" 

@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
-project(MATARExample2 CXX)
+project(MATARExample4 CXX Fortran)
+
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -99,5 +100,5 @@ endif()
 message(STATUS "Final CXX compiler flags: ${CMAKE_CXX_FLAGS}")
 
 # Create the executable
-add_executable(cube_fe cube_fe.cpp)
-target_link_libraries(cube_fe Kokkos::kokkos)
+add_executable(matar-fortran main.f90 matar_function.cpp)
+target_link_libraries(matar-fortran Kokkos::kokkos)
