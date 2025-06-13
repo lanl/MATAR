@@ -7,17 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Add FetchContent functionality to download Kokkos
 include(FetchContent)
 
-# Try to find the FindVector module, but don't fail if not found
+# Set the module path and include FindVector
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/../../../cmake/Modules)
-include(FindVector OPTIONAL)
-message(STATUS "CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
-
-if(NOT VECTOR_CXX_FLAGS)
-  # Define empty flags if not found
-  set(VECTOR_CXX_FLAGS "")
-  set(VECTOR_CXX_VERBOSE "")
-  message(STATUS "FindVector.cmake not found, continuing without vectorization flags")
-endif()
+include(FindVector)
 
 # Set backend options (same as in kokkos-install.sh)
 set(Kokkos_BACKEND "cuda" CACHE STRING "Kokkos backend (serial, openmp, pthreads, cuda, hip)")
@@ -76,23 +68,31 @@ FetchContent_MakeAvailable(kokkos)
 # Define that we're using Kokkos
 add_definitions(-DHAVE_KOKKOS=1)
 
-
 set(MATAR_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/../../../src/include)
 include_directories(${MATAR_INCLUDE_DIR})
-
 
 message(STATUS "CMAKE_SOURCE_DIR absolute path: ${CMAKE_SOURCE_DIR}")
 message(STATUS "SCRIPT_DIR absolute path: ${SCRIPT_DIR}")
 message(STATUS "Primary MATAR include path: ${SCRIPT_DIR}/../MATAR")
 
-# Set compiler flags for vectorization
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${VECTOR_CXX_FLAGS} -O3 -fstrict-aliasing -march=native -mtune=native -ftree-vectorize -mprefer-vector-width=512 -fno-trapping-math -fno-math-errno -fopenmp-simd")
+# Set compiler flags using FindVector
+if(VECTOR_CXX_FLAGS)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${VECTOR_CXX_FLAGS} -O3")
+    message(STATUS "Using vectorization flags from FindVector: ${VECTOR_CXX_FLAGS}")
+else()
+    message(WARNING "Vectorization flags not found, using default optimization flags")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+endif()
 
 # Option for verbose vectorization output
 option(VECTOR_VERBOSE "Enable verbose vectorization output" OFF)
 if(VECTOR_VERBOSE)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${VECTOR_CXX_VERBOSE}")
-    message(STATUS "Enabling vectorization verbose output")
+    if(VECTOR_CXX_VERBOSE)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${VECTOR_CXX_VERBOSE}")
+        message(STATUS "Enabling vectorization verbose output: ${VECTOR_CXX_VERBOSE}")
+    else()
+        message(WARNING "Vectorization verbose flags not found")
+    endif()
 endif()
 
 # Display final compiler flags
