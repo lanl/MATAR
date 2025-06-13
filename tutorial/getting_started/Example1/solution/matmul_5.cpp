@@ -12,7 +12,7 @@ using namespace mtr;
 // Adjust this value based on hardware cache sizes
 // Smaller values (16-32) typically work well for GPUs
 // Larger values (32-64) may be better for CPUs with larger caches
-#define TILE_SIZE 32
+#define TILE_SIZE 16
 
 // Timer class for timing the execution of the matrix multiplication
 class Timer {

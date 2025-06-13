@@ -86,7 +86,7 @@ message(STATUS "SCRIPT_DIR absolute path: ${SCRIPT_DIR}")
 message(STATUS "Primary MATAR include path: ${SCRIPT_DIR}/../MATAR")
 
 # Set compiler flags for vectorization
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${VECTOR_CXX_FLAGS} ") #-O3 -fstrict-aliasing -march=native -mtune=native -ftree-vectorize -mprefer-vector-width=512 -fno-trapping-math -fno-math-errno -fopenmp-simd
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${VECTOR_CXX_FLAGS} -O3 ") #-O3 -fstrict-aliasing -march=native -mtune=native -ftree-vectorize -mprefer-vector-width=512 -fno-trapping-math -fno-math-errno -fopenmp-simd
 
 # Option for verbose vectorization output
 option(VECTOR_VERBOSE "Enable verbose vectorization output" OFF)

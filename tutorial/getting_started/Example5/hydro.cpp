@@ -5,6 +5,8 @@
 //
 //    Written by: Nathaniel Morgan
 //      Mar 8, 2022
+//    Updated by: Jacob Moore
+//      Jun 13, 2025
 //
 //    To run the code with e.g., 4 threads, type
 //      ./hydro --kokkos-threads=4
@@ -29,6 +31,9 @@ const double huge = 1.0E15;
 
 using namespace mtr;
 
+
+const int output_interval = 10000000;
+
 // -----------------------------------------------------------------------------
 //    A region
 // -----------------------------------------------------------------------------
@@ -51,6 +56,11 @@ int get_corners_in_cell(int,int);
 KOKKOS_INLINE_FUNCTION
 int get_corners_in_node(int,int);
 
+// Function to plot density vs position using ASCII art
+void plot_density_vs_position(const CArrayDual<double>& cell_coords, 
+                            const CArrayDual<double>& cell_den,
+                            const int num_cells,
+                            const char* title);
 
 // -----------------------------------------------------------------------------
 //    The Main function
@@ -64,7 +74,7 @@ int main(int argc, char* argv[]){
     // time step settings
     const double time_max = 20.0;
     double       dt       = 0.01;
-    const double dt_max   = 100;
+    const double dt_max   = 1.0;
     const double dt_cfl   = 0.3;
     const int    num_rk_stages = 2;
     const int    max_cycles = 2000000;
@@ -72,7 +82,7 @@ int main(int argc, char* argv[]){
     // mesh information
     const double  x_min = 0.0;
     const double  x_max = 100.0;
-    const int num_cells = 1000;
+    const int num_cells = 100000;
 
     // global model parameters
     const double sspd_min = 1.0E-3;
@@ -97,14 +107,31 @@ int main(int argc, char* argv[]){
     ics[1].vel   = 0.0;
     ics[1].gamma = 1.4;
 
+
+    // Sedov
+    // const int num_regions = 2;
+    // region_t ics[num_regions];
+    
+    // ics[0].x_min = 0.0;
+    // ics[0].x_max = 1.0;
+    // ics[0].den   = 1.0;
+    // ics[0].sie   = 100.0;
+    // ics[0].vel   = 0.0;
+    // ics[0].gamma = 1.4;
+    
+    // ics[1].x_min = 1.0;
+    // ics[1].x_max = 100.0;
+    // ics[1].den   = 1.0;
+    // ics[1].sie   = 0.1;
+    // ics[1].vel   = 0.0;
+    // ics[1].gamma = 1.4;
+
     // -------------------------------
     
     printf("\nstarting FE code\n");
     
-    FILE * myfile;
-    
     // This is the meat in the code, it must be inside Kokkos scope
-    Kokkos::initialize(argc, argv);
+    MATAR_INITIALIZE();
     {
         
         // 1D linear element int( -Grad(phi) dot jJ^{-1} )
@@ -122,31 +149,31 @@ int main(int argc, char* argv[]){
         // --- setup variables based on user inputs ---
         
         // cell variables
-        DCArrayKokkos <double> cell_den(num_cells);   // density
-        DCArrayKokkos <double> cell_pres(num_cells);  // pressure
-        DCArrayKokkos <double> cell_sspd(num_cells);  // sound speed
-        DCArrayKokkos <double> cell_sie(num_cells);   // specific internal energy
-        DCArrayKokkos <double> cell_sie_n(num_cells); // specific internal energy at t_n
-        DCArrayKokkos <double> cell_mass(num_cells);  // mass in the cell
+        CArrayDual<double> cell_den(num_cells);   // density
+        CArrayDual<double> cell_pres(num_cells);  // pressure
+        CArrayDual<double> cell_sspd(num_cells);  // sound speed
+        CArrayDual<double> cell_sie(num_cells);   // specific internal energy
+        CArrayDual<double> cell_sie_n(num_cells); // specific internal energy at t_n
+        CArrayDual<double> cell_mass(num_cells);  // mass in the cell
         
-        DCArrayKokkos <double> cell_gamma(num_cells);  // gamma law gas
+        CArrayDual<double> cell_gamma(num_cells);  // gamma law gas
         
         // nodal variables
-        DCArrayKokkos <double> node_vel(num_nodes);    // velocity
-        DCArrayKokkos <double> node_vel_n(num_nodes);  // the velocity at t_n
-        DCArrayKokkos <double> node_mass(num_nodes);   // mass of node
+        CArrayDual<double> node_vel(num_nodes);    // velocity
+        CArrayDual<double> node_vel_n(num_nodes);  // the velocity at t_n
+        CArrayDual<double> node_mass(num_nodes);   // mass of node
         
         // corner variables
-        DCArrayKokkos <double> corner_force(num_corners); // force from cell to node
-        DCArrayKokkos <double> corner_mass(num_corners);  // mass in cell corner
-        DCArrayKokkos <double> corner_vel(num_corners);   // velocity in cell corner
+        CArrayDual<double> corner_force(num_corners); // force from cell to node
+        CArrayDual<double> corner_mass(num_corners);  // mass in cell corner
+        CArrayDual<double> corner_vel(num_corners);   // velocity in cell corner
         
         // mesh variables
-        DCArrayKokkos <double> cell_coords(num_cells);   // coordinates of cell
-        DCArrayKokkos <double> cell_vol(num_cells);      // volume of the cell
+        CArrayDual<double> cell_coords(num_cells);   // coordinates of cell
+        CArrayDual<double> cell_vol(num_cells);      // volume of the cell
         
-        DCArrayKokkos <double> node_coords(num_nodes);   // coordinates of nodes
-        DCArrayKokkos <double> node_coords_n(num_nodes); // coordinates at t_n
+        CArrayDual<double> node_coords(num_nodes);   // coordinates of nodes
+        CArrayDual<double> node_coords_n(num_nodes); // coordinates at t_n
         
         
         
@@ -234,8 +261,6 @@ int main(int argc, char* argv[]){
             node_vel(num_nodes-1) = 0.0;
         }); // end run once on the device
         
-        
-        
         // -------------------------------
         //    Print intiial state to file
         // -------------------------------
@@ -247,25 +272,14 @@ int main(int argc, char* argv[]){
         cell_sie.update_host();
         node_vel.update_host();
         
-        // write out the intial conditions to a file on the host
-        myfile=fopen("time0.txt","w");
-        fprintf(myfile,"# x  den  pres  sie vel \n");
+        // Plot initial state
+        plot_density_vs_position(cell_coords, cell_den, num_cells, "Initial State:");
         
-        // write data on the host side
-        for (int cell_id=0; cell_id<num_cells; cell_id++){
-        fprintf( myfile,"%f\t%f\t%f\t%f\t%f\n",
-                 cell_coords.host(cell_id),
-                 cell_den.host(cell_id),
-                 cell_pres.host(cell_id),
-                 cell_sie.host(cell_id),
-                 0.5*(node_vel.host(cell_id)+node_vel.host(cell_id+1)) );
-        }
-        fclose(myfile);
-        
+       
         // total energy check
         double total_e = 0.0;
         double e_lcl = 0.0;
-        REDUCE_SUM(cell_id, 0, num_cells, e_lcl, {
+        FOR_REDUCE_SUM(cell_id, 0, num_cells, e_lcl, {
                e_lcl += cell_mass(cell_id)*cell_sie(cell_id) +
                         0.5*cell_mass(cell_id)*0.5*pow(node_vel(cell_id), 2) +
                         0.5*cell_mass(cell_id)*0.5*pow(node_vel(cell_id+1), 2);
@@ -286,7 +300,7 @@ int main(int argc, char* argv[]){
             // parallel reduction with min
             double dt_lcl;
             double min_dt_calc;
-            REDUCE_MIN(cell_id, 0, num_cells, dt_lcl, {
+            FOR_REDUCE_MIN(cell_id, 0, num_cells, dt_lcl, {
                 // mesh size
                 double dx_lcl = node_coords(cell_id+1) - node_coords(cell_id);
                 
@@ -301,7 +315,7 @@ int main(int argc, char* argv[]){
                 if (dt_lcl_ < dt_lcl) dt_lcl = dt_lcl_;
                         
             }, min_dt_calc); // end parallel reduction on min
-            Kokkos::fence();
+            MATAR_FENCE();
             
             // save the min dt
             if(min_dt_calc < dt) dt = min_dt_calc;
@@ -315,7 +329,7 @@ int main(int argc, char* argv[]){
             // --- integrate forward in time ---
             
             // Runge-Kutta loop
-            for (int rk_stage=0; rk_stage<num_rk_stages; rk_stage++ ){
+            for (int rk_stage = 0; rk_stage < num_rk_stages; rk_stage++ ){
                
                 // rk coefficient on dt
                 double rk_alpha = 1.0/
@@ -323,18 +337,18 @@ int main(int argc, char* argv[]){
             
                 
                 // save the state at t_n
-                if (rk_stage==0){
+                if (rk_stage == 0){
                     
                     // nodal state
                     FOR_ALL (node_id, 0, num_nodes, {
-                          node_vel_n(node_id)    = node_vel(node_id);
-                          node_coords_n(node_id) = node_coords(node_id);
+                        node_vel_n(node_id)    = node_vel(node_id);
+                        node_coords_n(node_id) = node_coords(node_id);
                     }); // end parallel for on device
                     
                     
                     // cell state
                     FOR_ALL (cell_id, 0, num_cells, {
-                          cell_sie_n(cell_id) = cell_sie(cell_id);
+                        cell_sie_n(cell_id) = cell_sie(cell_id);
                     }); // end parallel for on device
 
                 } // end if
@@ -496,10 +510,18 @@ int main(int argc, char* argv[]){
                     cell_sspd(cell_id) = fmax(cell_sspd(cell_id), sspd_min);
                     
                 }); // end parallel for on device
-                Kokkos::fence();
+                // MATAR_FENCE();
                 
                 
             } // end rk loop
+
+            // Plot the density vs position if the cycle is a multiple of 100
+            if (cycle % output_interval == 0) {
+                std::string title = "State at cycle " + std::to_string(cycle);
+                cell_coords.update_host();
+                cell_den.update_host();
+                plot_density_vs_position(cell_coords, cell_den, num_cells, title.c_str());
+            }
 
             
             
@@ -509,12 +531,13 @@ int main(int argc, char* argv[]){
             
         } // end for cycles in calculation
         //------------- Done with calculation ------------------
+        MATAR_FENCE();
         
         auto time_2 = std::chrono::high_resolution_clock::now();
         
         auto calc_time = std::chrono::duration_cast
                            <std::chrono::nanoseconds>(time_2 - time_1).count();
-        printf("\nCalculation time in seconds: %f \n", calc_time * 1e-9);
+        
         
         // -------------------------------
         //    Print final state to a file
@@ -527,31 +550,23 @@ int main(int argc, char* argv[]){
         cell_sie.update_host();
         node_vel.update_host();
         
-        // write out the intial conditions to a file on the host
-        myfile=fopen("timeEnd.txt","w");
-        fprintf(myfile,"# x  den  pres  sie vel \n");
+
         
-        // write data on the host side
-        for (int cell_id=0; cell_id<num_cells; cell_id++){
-           fprintf( myfile,"%f\t%f\t%f\t%f\t%f\n",
-                    cell_coords.host(cell_id),
-                    cell_den.host(cell_id),
-                    cell_pres.host(cell_id),
-                    cell_sie.host(cell_id),
-                    0.5*(node_vel.host(cell_id)+node_vel.host(cell_id+1)) );
-        }
-        fclose(myfile);
-        
-        
+        // Plot final state
+        plot_density_vs_position(cell_coords, cell_den, num_cells, "Final State:");
+
+        printf("\nCalculation time in seconds: %f \n", calc_time * 1e-9);
+
+    
         // total energy check
         double total_e_final = 0.0;
         double ef_lcl = 0.0;
-        REDUCE_SUM(cell_id, 0, num_cells, ef_lcl, {
+        FOR_REDUCE_SUM(cell_id, 0, num_cells, ef_lcl, {
                ef_lcl += cell_mass(cell_id)*cell_sie(cell_id) +
                          0.5*cell_mass(cell_id)*0.5*pow(node_vel(cell_id), 2) +
                          0.5*cell_mass(cell_id)*0.5*pow(node_vel(cell_id+1), 2);
         }, total_e_final);
-        Kokkos::fence();
+        MATAR_FENCE();
         
         printf("total energy, TE(t=0) = %f", total_e);
         printf(" , TE(t=end) = %f" ,  total_e_final);
@@ -561,7 +576,7 @@ int main(int argc, char* argv[]){
         // ======== Done using Kokkos ============
         
     } // end of kokkos scope
-    Kokkos::finalize();
+    MATAR_FINALIZE();
     
     
     printf("\nfinished\n\n");
@@ -583,7 +598,76 @@ int get_corners_in_node(int node_gid, int corner_lid){
     return (2*node_gid - 1 + corner_lid);
 }
 
-
+// Function to plot density vs position using ASCII art
+void plot_density_vs_position(const CArrayDual<double>& cell_coords, 
+                            const CArrayDual<double>& cell_den,
+                            const int num_cells,
+                            const char* title) {
+    // Clear screen and move cursor to top
+    printf("\033[2J\033[H");
+    
+    const int PLOT_WIDTH = 120;  // Width of the plot in characters
+    const int PLOT_HEIGHT = 20; // Height of the plot in characters
+    const char PLOT_CHAR = '*'; // Character used for plotting
+    
+    // Find min and max values for scaling
+    double min_x = cell_coords.host(0);
+    double max_x = cell_coords.host(num_cells-1);
+    double min_den = cell_den.host(0);
+    double max_den = cell_den.host(0);
+    
+    for(int i = 0; i < num_cells; i++) {
+        min_den = std::min(min_den, cell_den.host(i));
+        max_den = std::max(max_den, cell_den.host(i));
+    }
+    
+    // Add some padding to the density range
+    double den_range = max_den - min_den;
+    min_den -= 0.1 * den_range;
+    max_den += 0.1 * den_range;
+    
+    // Create the plot
+    printf("\n%s\n", title);
+    printf("Density vs Position\n");
+    printf("Density range: %.3f to %.3f\n", min_den, max_den);
+    printf("Position range: %.1f to %.1f\n\n", min_x, max_x);
+    
+    // Plot the data
+    for(int row = PLOT_HEIGHT-1; row >= 0; row--) {
+        double den_value = min_den + (max_den - min_den) * row / (PLOT_HEIGHT-1);
+        printf("%8.3f |", den_value);
+        
+        for(int col = 0; col < PLOT_WIDTH; col++) {
+            double x_value = min_x + (max_x - min_x) * col / (PLOT_WIDTH-1);
+            bool point_plotted = false;
+            
+            // Find the closest cell to this x position
+            for(int i = 0; i < num_cells; i++) {
+                if(std::abs(cell_coords.host(i) - x_value) < (max_x - min_x)/(2*PLOT_WIDTH)) {
+                    if(cell_den.host(i) >= den_value) {
+                        printf("%c", PLOT_CHAR);
+                        point_plotted = true;
+                        break;
+                    }
+                }
+            }
+            if(!point_plotted) printf(" ");
+        }
+        printf("\n");
+    }
+    
+    // Print x-axis
+    printf("         +");
+    for(int i = 0; i < PLOT_WIDTH; i++) printf("-");
+    printf("\n");
+    printf("          ");
+    printf("%.1f", min_x);
+    for(int i = 0; i < PLOT_WIDTH-8; i++) printf(" ");
+    printf("%.1f\n\n", max_x);
+    
+    // Flush stdout to ensure immediate display
+    fflush(stdout);
+}
 
 
 
