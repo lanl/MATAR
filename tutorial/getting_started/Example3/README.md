@@ -66,6 +66,16 @@ With 100 million patients and 10 features, a naive serial implementation would b
    ```
 3. **Observe the output**: The program prints the mean, variance, and a section of the correlation matrix, along with timing information for each stage.
 
+## Tasks
+1. Review the code
+2. Fill in the compute_mean function for GPU portability
+3. Build and run for serial, openMP, and CUDA
+4. Fill in the compute_variance function for GPU portability
+5. Build and run for serial, openMP, and CUDA
+6. Fill in the compute_correlation function for GPU portability
+7. Build and run for serial, openMP, and CUDA
+8. Discuss possible performance gains and test
+
 ## Educational Takeaways
 - **Parallel computing** is essential for large-scale data analysis.
 - **Data-oriented design** and **parallel abstractions** (like those in MATAR/Kokkos) make it easier to write high-performance, portable code.

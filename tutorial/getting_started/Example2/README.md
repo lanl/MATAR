@@ -155,3 +155,57 @@ This example follows data-oriented programming principles by:
 - Using efficient memory layouts for computation
 - Enabling parallel operations through data-parallel constructs
 - Minimizing data movement between host and device
+
+## Tasks
+
+### Part 1: The Basics
+
+1. Review the code
+2. Build serial non-MATAR version:
+   ```
+   ./build.sh -t serial
+   ```
+3. Run the code and document performance
+4. Rebuild with optimization flags by modifying the CMakeLists.txt
+   - Uncomment lines <>
+5. Rebuild from build script
+6. Run the code and note performance
+
+### Part 2: MATARize
+
+1. MATARize the code!
+2. Change the data structures from default C++ arrays to be CArrayDual types
+3. Update function signatures to take in CArrayDual<double>& 
+4. Update all accesses to temperature and temperature previous to use () instead of []
+5. Build for serial and run, document performance
+   ```
+   ./build.sh -t serial
+   ```
+6. Discuss issues for GPU portability
+
+### Part 3: Parallelize
+
+1. Parallelize the code!
+2. Change the for loops and reduction operations to use FOR_ALL and FOR_REDUCE_MAX operations. 
+3. Rebuild in serial, note performance
+4. Rebuild with OpenMP
+   ```
+   ./build.sh -t openmp
+   export OMP_NUM_THREADS=N
+   ```
+5. Run with multiple different N values, document performance
+6. Discuss
+
+### Part 4: GPU Portability
+
+1. Make the code GPU ready
+2. Add .update_host() and .update_device() to the data structures as needed
+3. Add MATAR_FENCE() where needed
+4. Add .host() when accessing data on the host side for outputs
+5. Build with CUDA
+   ```
+   ./build.sh -t cuda
+   ```
+6. Run, and document performance
+7. Discuss and perform micro-optimizations
+8. Rebuild for other backends and document performance

@@ -70,6 +70,16 @@ To build this example:
 4. Properly initialize and finalize Kokkos
 5. Handle array indexing carefully (Fortran is 1-based, C++ is 0-based)
 
+## Tasks
+
+1. Review the code
+2. Create the required data type to hold the incoming array from Fortran
+3. Fill in the `sum_array_elements_` and the `square_array_elements_` functions using a `FOR_ALL` and a `FOR_REDUCE_SUM`
+4. Build for serial, openMP, and CUDA backends
+5. Run each and document performance
+6. Replace the `FOR_` with a `DO_`
+7. Rebuild for serial, openMP, and CUDA, rerun and note performance
+
 ## Notes
 
 - This example uses a 4x4 array for demonstration
