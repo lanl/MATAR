@@ -44,20 +44,20 @@ using namespace mtr; // matar namespace
   Also the functions or subroutines should be decleared with extern "C"
 */
 
-extern "C" void kokkos_initialize_();
-extern "C" void kokkos_finalize_();
+extern "C" void matar_initialize_();
+extern "C" void matar_finalize_();
 
 extern "C" void square_array_elements_(double* array, int* nx, int* ny);
 extern "C" void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_elements);
 
-void kokkos_initialize_()
+void matar_initialize_()
 {
-    Kokkos::initialize();
+    MATAR_INITIALIZE();
 }
 
-void kokkos_finalize_()
+void matar_finalize_()
 {
-    Kokkos::finalize();
+    MATAR_FINALIZE();
 }
 
 void square_array_elements_(double* array, int* nx, int* ny)
@@ -68,9 +68,11 @@ void square_array_elements_(double* array, int* nx, int* ny)
     int nx_ = *nx;
     int ny_ = *ny;
 
-    // create DViewFMatrixKokkos since array is fortran allocated
-    auto array_2D_dual_view = DViewFMatrixKokkos<double>(array, nx_, ny_);
+    // create ViewFMatrixDual since array is fortran allocated
+    auto array_2D_dual_view = ViewFMatrixDual<double>(array, nx_, ny_);
 
+    // Note: DO_ALL is a macro that expands to a loop over the elements of the array following the 
+    // optimal layout for column major order which is the default for fortran arrays
     DO_ALL(j, 1, ny_,
            i, 1, nx_, {
         array_2D_dual_view(i, j) = pow(array_2D_dual_view(i, j), 2);
@@ -85,8 +87,8 @@ void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_element
     int nx_ = *nx;
     int ny_ = *ny;
 
-    // create DViewFMatrixKokkos since array is fortran allocated
-    auto array_2D_dual_view = DViewFMatrixKokkos<double>(array, nx_, ny_);
+    // create ViewFMatrixDual since array is fortran allocated
+    auto array_2D_dual_view = ViewFMatrixDual<double>(array, nx_, ny_);
 
     double global_sum;
     double local_sum;
