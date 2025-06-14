@@ -83,5 +83,4 @@ To build this example:
 ## Notes
 
 - This example uses a $$4 \times 4$$ array for demonstration
-- The sum verification uses the formula for sum of squares: $$\frac{n(n+1)(2n+1)}{6}$$
 - MATAR's parallel execution capabilities are demonstrated through the `DO_ALL` and `DO_REDUCE_SUM` macros
