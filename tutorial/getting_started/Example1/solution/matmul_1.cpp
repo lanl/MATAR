@@ -6,7 +6,7 @@
 // Required for MATAR data structures
 using namespace mtr; 
 
-#define MATRIX_SIZE 1024
+#define MATRIX_SIZE 1000
 
 // Timer class for timing the execution of the matrix multiplication
 class Timer {
@@ -46,27 +46,23 @@ double calculate_flops(int size, double time_ms) {
     return total_ops / time_seconds;
 }
 
-
 // main
 int main(int argc, char* argv[])
 {
-
-    // Perform a simple matrix multiplication using MATAR, C = A * B, this time using both C(row-major) and F(column-major) data types
-    // Row-major data types are stored in memory in a row-wise manner (last index varies the fastest), while column-major data types are stored in memory in a column-wise manner (first index varies the fastest).
-    // This is important to know because the way data is stored in memory can have a big impact on performance.
-    
     MATAR_INITIALIZE(argc, argv);
     { // MATAR scope
     printf("Starting MATAR Matrix Multiplication test \n");
     printf("Matrix size: %d x %d\n", MATRIX_SIZE, MATRIX_SIZE);
 
     // Create arrays on the device, where the device is either the CPU or GPU depending on how it is compiled
-    // Option 1: CArrayDevice<int> A(MATRIX_SIZE, MATRIX_SIZE);
-    // Option 2: FArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE);
+    CArrayDevice<int> A(MATRIX_SIZE, MATRIX_SIZE);
+    CArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE);
+    CArrayDevice<int> C(MATRIX_SIZE, MATRIX_SIZE);
 
     // Initialize arrays (NOTE: This is on the device)
-    // Example: A.set_values(2);
-
+    A.set_values(2);
+    B.set_values(2);
+    C.set_values(0);
 
     // Create and start timer
     Timer timer;
@@ -76,7 +72,7 @@ int main(int argc, char* argv[])
     FOR_ALL(i, 0, MATRIX_SIZE,
             j, 0, MATRIX_SIZE,
             k, 0, MATRIX_SIZE, {
-        // TODO: Implement the matrix multiplication
+        C(i,j) += A(i,k) * B(k,j); // NOTE: This is fast, but wrong!  Why?
     });
 
     // Add a fence to ensure all the operations are completed to get correct timing

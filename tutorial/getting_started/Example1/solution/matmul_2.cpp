@@ -6,7 +6,7 @@
 // Required for MATAR data structures
 using namespace mtr; 
 
-#define MATRIX_SIZE 1024
+#define MATRIX_SIZE 1000
 
 // Timer class for timing the execution of the matrix multiplication
 class Timer {
@@ -46,15 +46,9 @@ double calculate_flops(int size, double time_ms) {
     return total_ops / time_seconds;
 }
 
-
 // main
 int main(int argc, char* argv[])
 {
-
-    // Perform a simple matrix multiplication using MATAR, C = A * B, this time using both C(row-major) and F(column-major) data types
-    // Row-major data types are stored in memory in a row-wise manner (last index varies the fastest), while column-major data types are stored in memory in a column-wise manner (first index varies the fastest).
-    // This is important to know because the way data is stored in memory can have a big impact on performance.
-    
     MATAR_INITIALIZE(argc, argv);
     { // MATAR scope
     printf("Starting MATAR Matrix Multiplication test \n");
@@ -62,7 +56,7 @@ int main(int argc, char* argv[])
 
     // Create arrays on the device, where the device is either the CPU or GPU depending on how it is compiled
     CArrayDevice<int> A(MATRIX_SIZE, MATRIX_SIZE);
-    FArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE);
+    CArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE);
     CArrayDevice<int> C(MATRIX_SIZE, MATRIX_SIZE);
 
     // Initialize arrays (NOTE: This is on the device)
@@ -74,11 +68,15 @@ int main(int argc, char* argv[])
     Timer timer;
     timer.start();
 
-    // Perform C = A * B
+    // Perform C = A * B using fully parallel approach
+    // Note: This implementation matches memory layouts for optimal performance
+    // A is row-major (CArray), B is column-major (FArray), and C is row-major (CArray)
     FOR_ALL(i, 0, MATRIX_SIZE,
-            j, 0, MATRIX_SIZE,
+            j, 0, MATRIX_SIZE, 
             k, 0, MATRIX_SIZE, {
-        C(i,j) += A(i,k) * B(k,j);
+        // Each thread atomically adds its contribution to the final result
+        // This avoids race conditions in the fully parallel implementation
+        Kokkos::atomic_add(&C(i,j), A(i,k) * B(k,j));
     });
 
     // Add a fence to ensure all the operations are completed to get correct timing

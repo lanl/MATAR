@@ -13,6 +13,35 @@ The MATAR_data.cpp example demonstrates:
 6. Parallel execution patterns using MATAR macros
 7. Memory synchronization and device coordination
 
+## Tasks
+
+To work through this example:
+
+1. Review build.sh
+2. Review CMakeLists.txt
+3. Review MATAR_data.cpp
+4. Load the CUDA module:
+   ```bash
+   module load cuda
+   ```
+5. Build for serial backend:
+   ```bash
+   ./build.sh -t serial
+   ```
+   Note: You may need to make the build script executable first:
+   ```bash
+   chmod +x build.sh
+   ```
+6. Run serially:
+   ```bash
+   ./build_serial/MATAR_data
+   ```
+7. Build for all backends:
+   ```bash
+   ./build.sh -t all
+   ```
+8. Run other backends as desired
+
 ## Data Types and Concepts Demonstrated
 
 ### 1. Dense Arrays
