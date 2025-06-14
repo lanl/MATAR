@@ -22,8 +22,8 @@ extern "C" void square_array_elements_(double* array, int* nx, int* ny);
 ### 2. Fortran-C++ Type Mapping
 - Use `iso_c_binding` module in Fortran to ensure correct type mapping
 - Common mappings:
-  - `real(kind=c_double)` in Fortran → `double` in C++
-  - `integer(kind=c_int)` in Fortran → `int` in C++
+  - `real(kind=c_double)` in Fortran $$\rightarrow$$ `double` in C++
+  - `integer(kind=c_int)` in Fortran $$\rightarrow$$ `int` in C++
 
 ### 3. Array Handling
 - Fortran arrays are passed as pointers in C++
@@ -82,6 +82,6 @@ To build this example:
 
 ## Notes
 
-- This example uses a 4x4 array for demonstration
-- The sum verification uses the formula for sum of squares: n(n+1)(2n+1)/6
+- This example uses a $$4 \times 4$$ array for demonstration
+- The sum verification uses the formula for sum of squares: $$\frac{n(n+1)(2n+1)}{6}$$
 - MATAR's parallel execution capabilities are demonstrated through the `DO_ALL` and `DO_REDUCE_SUM` macros
