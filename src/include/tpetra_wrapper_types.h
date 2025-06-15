@@ -162,6 +162,8 @@ public:
     
     bool isProcessLocalIndex(int local_index) const;
 
+    void getRemoteIndexList(DCArrayKokkos<long long int> &indices, DCArrayKokkos<int> &index_ranks) const;
+
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
     long long int* device_pointer() const;
@@ -279,6 +281,16 @@ void TpetraPartitionMap<ExecSpace,MemoryTraits>::print() const {
         Teuchos::RCP<Teuchos::FancyOStream> fos;
         fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
         tpetra_map->describe(*fos,Teuchos::VERB_EXTREME);
+}
+
+template <typename ExecSpace, typename MemoryTraits>
+void TpetraPartitionMap<ExecSpace,MemoryTraits>::getRemoteIndexList(DCArrayKokkos<long long int> &indices, DCArrayKokkos<int> &index_ranks) const {
+    //Currently only teuchos array view is an input argument of the tpetra function to get process indices for a list of indices in the map
+    Teuchos::ArrayView<const long long int> indices_pass(indices.host_pointer(), indices.size());
+
+    Teuchos::ArrayView<int> index_ranks_pass(index_ranks.host_pointer(), index_ranks.size());
+
+    tpetra_map->getRemoteIndexList(indices_pass, index_ranks_pass);
 }
 
 // Return local index (on this process/rank) corresponding to the input global index
