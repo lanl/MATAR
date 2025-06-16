@@ -51,6 +51,15 @@ void compute_mean(const CArrayDual<double>& data, CArrayDual<double>& mean) {
     
     for (int i = 0; i < NumFeatures; i++) {
         
+        double local_sum = 0.0;
+        double global_sum = 0.0;
+
+        FOR_REDUCE_SUM(j, 0, NumPatients,
+                       local_sum, {
+            local_sum += data(i, j);
+        }, global_sum);
+
+        mean.host(i) = global_sum / NumPatients;
     }
     mean.update_device();
 }
@@ -59,9 +68,16 @@ void compute_mean(const CArrayDual<double>& data, CArrayDual<double>& mean) {
 void compute_variance(const CArrayDual<double>& data, const CArrayDual<double>& mean, CArrayDual<double>& variance) {
 
     for (int i = 0; i < NumFeatures; i++) {
-        
-    }
+        double sum_sq = 0.0;
 
+        FOR_REDUCE_SUM(j, 0, NumPatients,
+                       sum_sq, {
+            sum_sq += (data(i, j) - mean(i)) * (data(i, j) - mean(i));
+        }, sum_sq);
+
+        variance.host(i) = sum_sq / (NumPatients - 1);  // Sample variance
+    }
+    variance.update_device();
 }
 
 // Compute correlation matrix
@@ -74,7 +90,17 @@ void compute_correlation(const CArrayDual<double>& data, const CArrayDual<double
                 correlation.host(j1, j2) = 1.0;  // Correlation with itself is always 1
                 continue;
             }
-            
+            double local_sum = 0.0;
+            double global_sum = 0.0;
+            FOR_REDUCE_SUM(i, 0, NumPatients,
+                           local_sum, {
+                local_sum += (data(j1, i) - mean(j1)) * (data(j2, i) - mean(j2));
+            }, global_sum);
+
+            // for (int i = 0; i < NumPatients; i++) {
+            //     sum += (data(i, j1) - mean(j1)) * (data(i, j2) - mean(j2));
+            // }
+            correlation.host(j1, j2) = global_sum / ((NumPatients - 1) * std::sqrt(variance.host(j1)) * std::sqrt(variance.host(j2)));
         }
     }
     correlation.update_device();
@@ -107,26 +133,26 @@ int main(int argc, char* argv[]) {
         data.update_host();
         MATAR_FENCE();
         
-        // {
-        //     Timer timer("Compute Mean");
-        //     compute_mean(data, mean);
-        // }
-        // mean.update_host();
-        // MATAR_FENCE();
+        {
+            Timer timer("Compute Mean");
+            compute_mean(data, mean);
+        }
+        mean.update_host();
+        MATAR_FENCE();
         
-        // {
-        //     Timer timer("Compute Variance");
-        //     compute_variance(data, mean, variance);
-        // }
-        // variance.update_host();
-        // MATAR_FENCE();
+        {
+            Timer timer("Compute Variance");
+            compute_variance(data, mean, variance);
+        }
+        variance.update_host();
+        MATAR_FENCE();
 
-        // {
-        //     Timer timer("Compute Correlation");
-        //     compute_correlation(data, mean, variance, correlation);
-        // }
-        // correlation.update_host();
-        // MATAR_FENCE();  
+        {
+            Timer timer("Compute Correlation");
+            compute_correlation(data, mean, variance, correlation);
+        }
+        correlation.update_host();
+        MATAR_FENCE();  
 
         std::cout << "\nHealth Feature Summary:\n";
         for (int j = 0; j < NumFeatures; j++) {
