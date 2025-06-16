@@ -27,64 +27,70 @@ const char* temp_to_color(double temp, double max_temp);
 char temp_to_char(double temp, double max_temp);
 
 // main
-int main()
-{
-
-    MATAR_INITIALIZE();
+int main(int argc, char* argv[])
+{    
+    MATAR_INITIALIZE(argc, argv);
     { // MATAR scope
+    
+    // Create the data structures to hold the temperature values, use CArrayDual types
+    CArrayDual<double> temperature(domain_height, domain_width);
+    CArrayDual<double> temperature_previous(domain_height, domain_width);
 
-    int    i, j;
-    int    iteration = 1;
-    double worst_dt  = 100;
+    // initialize the temperature_previous array with the initial conditions and boundary conditions
+    initialize(temperature_previous);
+
+    // Initialize the iteration counts and initialize the works_dt value to 
+    int iteration = 0;
+    double worst_dt = 100000;
+    double max_value = 0.0;
+
+    // print the temperature_distribution to the terminal
+    print_heatmap(temperature);
 
     // Start measuring time
     auto begin = std::chrono::high_resolution_clock::now();
 
-    // Create the data structures to hold the temperature values
-    CArrayDual<double> temperature(domain_height, domain_width);
-    CArrayDual<double> temperature_previous(domain_height, domain_width);
-
-    // initialize temperature profile
-    initialize(temperature_previous);
-
-    while (worst_dt > temp_tolerance) {
-        // finite difference
-        for (i = 1; i < height + 1; i++) {
-            for (j = 1; j < width + 1; j++) {
-                temperature(i, j) = 0.25 * (  temperature_previous(i + 1, j)
+    while (worst_dt > temp_tolerance && iteration < max_iterations) {
+        
+        FOR_ALL(i, 1, height + 1,
+                j, 1, width + 1, {
+            temperature(i, j) = 0.25 * (  temperature_previous(i + 1, j)
                                         + temperature_previous(i - 1, j)
                                         + temperature_previous(i, j + 1)
                                         + temperature_previous(i, j - 1));
-            }
-        }
-
+        });
+        MATAR_FENCE();
+        
         // calculate max difference between temperature and temperature_previous
-        worst_dt = 0.0;
-        for (i = 1; i < height + 1; i++) {
-            for (j = 1; j < width + 1; j++) {
-                worst_dt = fmax(fabs(temperature(i, j) -
-                                temperature_previous(i, j)),
-                                worst_dt);
-            }
-        }
+        double local_max_value = 0.0;
+        double max_value = 0.0;
 
-        // update temperature_previous
-        for (i = 1; i < height + 1; i++) {
-            for (j = 1; j < width + 1; j++) {
-                temperature_previous(i, j) = temperature(i, j);
+        FOR_REDUCE_MAX(i, 1, height + 1,
+                       j, 1, width + 1,
+                       local_max_value, { // local_max_value is the value local to each thread
+            
+            double value = fabs(temperature(i, j) - temperature_previous(i, j));
+            
+            if (value > local_max_value) {
+                local_max_value = value;
             }
-        }
+            // update temperature_previous, not including boundaries
+            temperature_previous(i, j) = temperature(i, j);
+        }, max_value); // max_value is the maximum value of local_max_value across all threads
+
+        worst_dt = max_value;
 
         // track progress
         if (iteration % 1000 == 0) {
             printf("---------- Iteration number: %d ----------\n", iteration);
             printf("\n");
+            temperature.update_host();
 
             // Print the heatmap visualization for better understanding
             print_heatmap(temperature);
         }
 
-        iteration++;
+        iteration++;    
     }
 
     // Stop measuring time and calculate the elapsed time
@@ -93,6 +99,10 @@ int main()
 
     printf("Total time was %f seconds.\n", elapsed.count() * 1e-9);
     printf("\nMax error at iteration %d was %f\n", iteration - 1, worst_dt);
+    
+    // Print final temperature distribution
+    printf("\nFinal temperature distribution:\n");
+    print_heatmap(temperature);
 
     }
     MATAR_FINALIZE();
@@ -100,33 +110,32 @@ int main()
     return 0;
 }
 
+
 void initialize(CArrayDual<double>& temperature_previous)
 {
-    int i, j;
 
-    // initialize temperature_previous to 0.0
-    for (i = 0; i <= height + 1; i++) {
-        for (j = 0; j <= width + 1; j++) {
-            temperature_previous(i, j) = 0.0;
-        }
-    }
+    temperature_previous.set_values(0.0);
 
-    // setting the left and right boundary conditions
-    for (i = 0; i <= height + 1; i++) {
-        temperature_previous(i,0) = 0.0;
-        temperature_previous(i,width + 1) = (1000.0 / height) * i;
-    }
 
-    // setting the top and bottom boundary condition
-    for (j = 0; j <= width + 1; j++) {
-        temperature_previous(0,j) = 0.0;
-        temperature_previous(height + 1,j) = (1000.0 / width) * j;
-    }
+    FOR_ALL(i, 0, height + 1,{
+        temperature_previous(i, 0) = 0.0; // left boundary
+        temperature_previous(i, width + 1) = (1000.0 / height) * i; // right boundary
+    });
+
+    FOR_ALL(j, 0, width + 1,{
+        temperature_previous(0, j) = 0.0; // top boundary
+        temperature_previous(height + 1, j) = (1000.0 / width) * j; // bottom boundary
+    });
+
+    temperature_previous.update_host();
 }
 
 
 void print_heatmap(CArrayDual<double>& temperature)
 {
+    // Ensure we have the latest data on the host
+    temperature.update_host();
+    
     // Find the maximum temperature for scaling
     double max_temp = 1000;
     
@@ -143,7 +152,7 @@ void print_heatmap(CArrayDual<double>& temperature)
             int grid_i = 1 + (i * height / vis_height);
             int grid_j = 1 + (j * width / vis_width);
             
-            double temp = temperature(grid_i,grid_j);
+            double temp = temperature.host(grid_i, grid_j);
             
             if (use_colors) {
                 printf("%s%c\033[0m", temp_to_color(temp, max_temp), temp_to_char(temp, max_temp));

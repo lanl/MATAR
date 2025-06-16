@@ -49,31 +49,30 @@ int main()
 
     while (worst_dt > temp_tolerance) {
         // finite difference
-        for (i = 1; i < height + 1; i++) {
-            for (j = 1; j < width + 1; j++) {
-                temperature(i, j) = 0.25 * (  temperature_previous(i + 1, j)
+        FOR_ALL(i, 1, height + 1,
+                j, 1, width + 1, {
+            temperature(i, j) = 0.25 * (  temperature_previous(i + 1, j)
                                         + temperature_previous(i - 1, j)
                                         + temperature_previous(i, j + 1)
                                         + temperature_previous(i, j - 1));
-            }
-        }
+        });
 
         // calculate max difference between temperature and temperature_previous
-        worst_dt = 0.0;
-        for (i = 1; i < height + 1; i++) {
-            for (j = 1; j < width + 1; j++) {
-                worst_dt = fmax(fabs(temperature(i, j) -
-                                temperature_previous(i, j)),
-                                worst_dt);
-            }
-        }
+        double local_max_value = 0.0;
+        double max_value = 0.0;
 
-        // update temperature_previous
-        for (i = 1; i < height + 1; i++) {
-            for (j = 1; j < width + 1; j++) {
-                temperature_previous(i, j) = temperature(i, j);
+        FOR_REDUCE_MAX(i, 1, height + 1,
+                       j, 1, width + 1,
+                       local_max_value, { // local_max_value is the value local to each thread
+            
+            double value = fabs(temperature(i, j) - temperature_previous(i, j));
+            
+            if (value > local_max_value) {
+                local_max_value = value;
             }
-        }
+            // update temperature_previous, not including boundaries
+            temperature_previous(i, j) = temperature(i, j);
+        }, max_value); // max_value is the maximum value of local_max_value across all threads
 
         // track progress
         if (iteration % 1000 == 0) {
@@ -102,26 +101,21 @@ int main()
 
 void initialize(CArrayDual<double>& temperature_previous)
 {
-    int i, j;
 
-    // initialize temperature_previous to 0.0
-    for (i = 0; i <= height + 1; i++) {
-        for (j = 0; j <= width + 1; j++) {
-            temperature_previous(i, j) = 0.0;
-        }
-    }
+    temperature_previous.set_values(0.0);
 
-    // setting the left and right boundary conditions
-    for (i = 0; i <= height + 1; i++) {
-        temperature_previous(i,0) = 0.0;
-        temperature_previous(i,width + 1) = (1000.0 / height) * i;
-    }
 
-    // setting the top and bottom boundary condition
-    for (j = 0; j <= width + 1; j++) {
-        temperature_previous(0,j) = 0.0;
-        temperature_previous(height + 1,j) = (1000.0 / width) * j;
-    }
+    FOR_ALL(i, 0, height + 1,{
+        temperature_previous(i, 0) = 0.0; // left boundary
+        temperature_previous(i, width + 1) = (1000.0 / height) * i; // right boundary
+    });
+
+    FOR_ALL(j, 0, width + 1,{
+        temperature_previous(0, j) = 0.0; // top boundary
+        temperature_previous(height + 1, j) = (1000.0 / width) * j; // bottom boundary
+    });
+
+    temperature_previous.update_host();
 }
 
 
