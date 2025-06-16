@@ -1,21 +1,40 @@
 // -----------------------------------------------------------------------------
+// 1D Hydrodynamics Simulation using MATAR and Kokkos
+// -----------------------------------------------------------------------------
 //
-//    This is a 1D c++ finite element code for material dynamics written using
-//    MATAR+Kokkos for performance portabilityover CPUs and GPUs
+// This example demonstrates how to use MATAR to solve 1D hydrodynamics problems. It implements a
+// finite element method for simulating compressible fluid flow.
 //
-//    Written by: Nathaniel Morgan
-//      Mar 8, 2022
-//    Updated by: Jacob Moore
-//      Jun 13, 2025
+// Key Features:
+// - Uses MATAR's CArrayDual for performance-portable arrays
+// - Implements a Runge-Kutta time integration scheme
+// - Includes shock capturing with artificial viscosity
+// - Supports multiple initial conditions (Sod shock tube, Sedov blast wave)
+// - Visualizes results using ASCII plotting
 //
-//    To run the code with e.g., 4 threads, type
-//      ./hydro --kokkos-threads=4
+// The simulation solves the following conservation equations:
+// 1. Mass conservation
+// 2. Momentum conservation
+// 3. Energy conservation
 //
-//    openMP settings:
-//      setenv OMP_PROC_BIND true
-//      setenv OMP_PROC_BIND spread
-//      setenv OMP_PLACES threads
-//      setenv OMP_NUM_THREADS 2
+// The code uses a cell-centered finite element approach where:
+// - Cells store density, pressure, internal energy, and sound speed
+// - Nodes store velocity and position
+// - Corners (cell-node connections) store forces and mass
+//
+// Written by: Nathaniel Morgan
+//   Mar 8, 2022
+// Updated by: Jacob Moore
+//   Jun 13, 2025
+//
+// Usage:
+//   ./hydro --kokkos-threads=4  # Run with 4 threads
+//
+// OpenMP Settings (if using OpenMP backend):
+//   setenv OMP_PROC_BIND true
+//   setenv OMP_PROC_BIND spread
+//   setenv OMP_PLACES threads
+//   setenv OMP_NUM_THREADS 2
 // -----------------------------------------------------------------------------
 
 #include "matar.h"
@@ -26,37 +45,40 @@
 // -----------------------------------------------------------------------------
 //    Global variables
 // -----------------------------------------------------------------------------
-const double fuzz = 1.0E-15;
-const double huge = 1.0E15;
+const double fuzz = 1.0E-15;  // Small number to prevent division by zero
+const double huge = 1.0E15;   // Large number for initialization
 
 using namespace mtr;
 
-
+// Output frequency for visualization
 const int output_interval = 10000000;
 
 // -----------------------------------------------------------------------------
-//    A region
+// Data Structures
 // -----------------------------------------------------------------------------
-struct region_t{
-   double x_min;
-   double x_max;
-   double den;
-   double sie;
-   double vel;
-   double gamma;
+
+// Structure to define initial conditions for different regions
+struct region_t {
+   double x_min;    // Left boundary of region
+   double x_max;    // Right boundary of region
+   double den;      // Initial density
+   double sie;      // Initial specific internal energy
+   double vel;      // Initial velocity
+   double gamma;    // Adiabatic index (ratio of specific heats)
 };
 
-
 // -----------------------------------------------------------------------------
-//    Functions
+// Function Declarations
 // -----------------------------------------------------------------------------
+
+// Helper functions for mesh connectivity
 KOKKOS_INLINE_FUNCTION
-int get_corners_in_cell(int,int);
+int get_corners_in_cell(int,int);  // Get corner indices for a cell
 
 KOKKOS_INLINE_FUNCTION
-int get_corners_in_node(int,int);
+int get_corners_in_node(int,int);  // Get corner indices for a node
 
-// Function to plot density vs position using ASCII art
+// Visualization function
 void plot_density_vs_position(const CArrayDual<double>& cell_coords, 
                             const CArrayDual<double>& cell_den,
                             const int num_cells,
@@ -68,66 +90,77 @@ void plot_density_vs_position(const CArrayDual<double>& cell_coords,
 int main(int argc, char* argv[]){
     
     // -------------------------------
-    //    User settable variables
+    // Simulation Parameters
     // -------------------------------
 
-    // time step settings
-    const double time_max = 20.0;
-    double       dt       = 0.01;
-    const double dt_max   = 1.0;
-    const double dt_cfl   = 0.3;
-    const int    num_rk_stages = 2;
-    const int    max_cycles = 2000000;
+    // Time integration settings
+    const double time_max = 20.0;     // End time of simulation
+    double       dt       = 0.01;     // Initial time step
+    const double dt_max   = 1.0;      // Maximum allowed time step
+    const double dt_cfl   = 0.3;      // CFL number for stability
+    const int    num_rk_stages = 2;   // Number of Runge-Kutta stages
+    const int    max_cycles = 2000000;// Maximum number of time steps
 
-    // mesh information
-    const double  x_min = 0.0;
-    const double  x_max = 100.0;
-    const int num_cells = 100000;
+    // Mesh settings
+    const double  x_min = 0.0;        // Left boundary of domain
+    const double  x_max = 100.0;      // Right boundary of domain
+    const int num_cells = 100000;     // Number of cells in mesh
 
-    // global model parameters
-    const double sspd_min = 1.0E-3;
+    // Physics parameters
+    const double sspd_min = 1.0E-3;   // Minimum sound speed for stability
 
-    // intial conditions for each region
+    // -------------------------------
+    // Initial Conditions
+    // -------------------------------
     
-    // Sod
+    // Sod Shock Tube Problem
+    // This is a standard test case for compressible flow solvers
+    // It consists of two regions with different densities and pressures
+    // separated by a diaphragm that is removed at t=0
+    const int num_regions = 2;
+    region_t ics[num_regions];
+    
+    // High pressure region (left)
+    ics[0].x_min = 0.0;
+    ics[0].x_max = 50.0;
+    ics[0].den   = 1.0;    // Higher density
+    ics[0].sie   = 2.5;    // Higher internal energy
+    ics[0].vel   = 0.0;    // Initially at rest
+    ics[0].gamma = 1.4;    // Ideal gas constant
+    
+    // Low pressure region (right)
+    ics[1].x_min = 50.0;
+    ics[1].x_max = 100.0;
+    ics[1].den   = 0.125;  // Lower density
+    ics[1].sie   = 2.0;    // Lower internal energy
+    ics[1].vel   = 0.0;    // Initially at rest
+    ics[1].gamma = 1.4;    // Ideal gas constant
+
+    // Alternative: Sedov Blast Wave Problem
+    // Uncomment to use instead of Sod problem
+    // This test case simulates a point explosion in a uniform medium
+    /*
     const int num_regions = 2;
     region_t ics[num_regions];
     
     ics[0].x_min = 0.0;
-    ics[0].x_max = 50.0;
+    ics[0].x_max = 1.0;
     ics[0].den   = 1.0;
-    ics[0].sie   = 2.5;
+    ics[0].sie   = 100.0;  // High energy in small region
     ics[0].vel   = 0.0;
     ics[0].gamma = 1.4;
     
-    ics[1].x_min = 50.0;
+    ics[1].x_min = 1.0;
     ics[1].x_max = 100.0;
-    ics[1].den   = 0.125;
-    ics[1].sie   = 2.0;
+    ics[1].den   = 1.0;
+    ics[1].sie   = 0.1;    // Low energy in surrounding region
     ics[1].vel   = 0.0;
     ics[1].gamma = 1.4;
-
-
-    // Sedov
-    // const int num_regions = 2;
-    // region_t ics[num_regions];
-    
-    // ics[0].x_min = 0.0;
-    // ics[0].x_max = 1.0;
-    // ics[0].den   = 1.0;
-    // ics[0].sie   = 100.0;
-    // ics[0].vel   = 0.0;
-    // ics[0].gamma = 1.4;
-    
-    // ics[1].x_min = 1.0;
-    // ics[1].x_max = 100.0;
-    // ics[1].den   = 1.0;
-    // ics[1].sie   = 0.1;
-    // ics[1].vel   = 0.0;
-    // ics[1].gamma = 1.4;
+    */
 
     // -------------------------------
-    
+    // Initialize MATAR and Kokkos
+    // -------------------------------
     printf("\nstarting FE code\n");
     
     // This is the meat in the code, it must be inside Kokkos scope
@@ -289,15 +322,15 @@ int main(int argc, char* argv[]){
         auto time_1 = std::chrono::high_resolution_clock::now();
         
         // -------------------------------------
-        // Solve equations until time=time_max
+        // Main Time Integration Loop
         // -------------------------------------
         for (int cycle = 0; cycle<max_cycles; cycle++){
            
-            
-            // get the new time step
+            // Calculate time step based on CFL condition
+            // dt = CFL * dx / (sound_speed + |velocity|)
             double dt_ceiling = dt*1.1;
             
-            // parallel reduction with min
+            // Parallel reduction to find minimum dt across all cells
             double dt_lcl;
             double min_dt_calc;
             FOR_REDUCE_MIN(cell_id, 0, num_cells, dt_lcl, {
@@ -317,26 +350,20 @@ int main(int argc, char* argv[]){
             }, min_dt_calc); // end parallel reduction on min
             MATAR_FENCE();
             
-            // save the min dt
+            // Update time step
             if(min_dt_calc < dt) dt = min_dt_calc;
             
-            
-            //printf("time = %f, dt = %f \n", time, dt);
             if (dt<=fuzz) break;
             
-            
-            
-            // --- integrate forward in time ---
-            
-            // Runge-Kutta loop
+            // -------------------------------
+            // Runge-Kutta Time Integration
+            // -------------------------------
             for (int rk_stage = 0; rk_stage < num_rk_stages; rk_stage++ ){
                
-                // rk coefficient on dt
-                double rk_alpha = 1.0/
-                                     (double(num_rk_stages) - double(rk_stage));
+                // Calculate RK coefficient
+                double rk_alpha = 1.0/(double(num_rk_stages) - double(rk_stage));
             
-                
-                // save the state at t_n
+                // Save state at beginning of time step
                 if (rk_stage == 0){
                     
                     // nodal state
@@ -355,9 +382,12 @@ int main(int argc, char* argv[]){
                 
                 
                 
-                // --- Calculate corner forces ---
+                // -------------------------------
+                // Calculate Forces and Update State
+                // -------------------------------
                 
-                // force is calculated with a single point quadrature approach
+                // 1. Calculate corner forces including artificial viscosity
+                //    for shock capturing
                 FOR_ALL (cell_id, 0, num_cells, {
                 
                     double visc;
@@ -418,9 +448,7 @@ int main(int argc, char* argv[]){
                 
                 
                 
-                // --- Calculate new velocity ---
-                
-                // v_new = v_n + alpha*dt/mass*Sum(forces)
+                // 2. Update velocities using forces
                 FOR_ALL (node_id, 1, num_nodes-1, {
                     
                     // get the global indices for the corners of this node
@@ -449,9 +477,7 @@ int main(int argc, char* argv[]){
                 //       rk_alpha*dt/node_mass(node_id)*corner_force(0 or last);
                 
                 
-                // --- Calculate new mesh positions ---
-                
-                // x_new = x_n + alpha*dt*vel_half
+                // 3. Update mesh positions
                 FOR_ALL (node_id, 0, num_nodes, {
                     
                     // velocity at t+1/2
@@ -515,21 +541,21 @@ int main(int argc, char* argv[]){
                 
             } // end rk loop
 
-            // Plot the density vs position if the cycle is a multiple of 100
+            // -------------------------------
+            // Output and Visualization
+            // -------------------------------
             if (cycle % output_interval == 0) {
                 std::string title = "State at cycle " + std::to_string(cycle);
                 cell_coords.update_host();
                 cell_den.update_host();
                 plot_density_vs_position(cell_coords, cell_den, num_cells, title.c_str());
             }
-
             
-            
-            // update the time
+            // Update simulation time
             time += dt;
             if (abs(time-time_max)<=fuzz) time=time_max;
             
-        } // end for cycles in calculation
+        } // end time integration loop
         //------------- Done with calculation ------------------
         MATAR_FENCE();
         
@@ -540,7 +566,7 @@ int main(int argc, char* argv[]){
         
         
         // -------------------------------
-        //    Print final state to a file
+        //    Print final state 
         // -------------------------------
         
         // update the host side to print (i.e., copy from device to host)
@@ -586,19 +612,39 @@ int main(int argc, char* argv[]){
 
 
 
+// -----------------------------------------------------------------------------
+// Helper Functions
+// -----------------------------------------------------------------------------
+
+// Get the global index of a corner within a cell
+// cell_gid: Global cell index
+// corner_lid: Local corner index (0=left, 1=right)
 KOKKOS_INLINE_FUNCTION
 int get_corners_in_cell(int cell_gid, int corner_lid){
-    // corner_lid is 0 to 1
     return (2*cell_gid + corner_lid);
 }
 
+// Get the global index of a corner within a node
+// node_gid: Global node index
+// corner_lid: Local corner index (0=left, 1=right)
 KOKKOS_INLINE_FUNCTION
 int get_corners_in_node(int node_gid, int corner_lid){
-    // corner_lid is 0 to 1
     return (2*node_gid - 1 + corner_lid);
 }
 
-// Function to plot density vs position using ASCII art
+// -----------------------------------------------------------------------------
+// Visualization Functions
+// -----------------------------------------------------------------------------
+
+// Plot density vs position using ASCII art
+// This function creates a simple visualization of the density field
+// by plotting it as a function of position using ASCII characters.
+//
+// Parameters:
+//   cell_coords: Array of cell center coordinates
+//   cell_den: Array of cell densities
+//   num_cells: Number of cells in the mesh
+//   title: Title to display above the plot
 void plot_density_vs_position(const CArrayDual<double>& cell_coords, 
                             const CArrayDual<double>& cell_den,
                             const int num_cells,
@@ -606,42 +652,46 @@ void plot_density_vs_position(const CArrayDual<double>& cell_coords,
     // Clear screen and move cursor to top
     printf("\033[2J\033[H");
     
-    const int PLOT_WIDTH = 120;  // Width of the plot in characters
-    const int PLOT_HEIGHT = 20; // Height of the plot in characters
-    const char PLOT_CHAR = '*'; // Character used for plotting
+    // Plot dimensions and style
+    const int PLOT_WIDTH = 120;   // Width of plot in characters
+    const int PLOT_HEIGHT = 20;   // Height of plot in characters
+    const char PLOT_CHAR = '*';   // Character used for plotting
     
-    // Find min and max values for scaling
+    // Find data range for scaling
     double min_x = cell_coords.host(0);
     double max_x = cell_coords.host(num_cells-1);
     double min_den = cell_den.host(0);
     double max_den = cell_den.host(0);
     
+    // Calculate min/max density for scaling
     for(int i = 0; i < num_cells; i++) {
         min_den = std::min(min_den, cell_den.host(i));
         max_den = std::max(max_den, cell_den.host(i));
     }
     
-    // Add some padding to the density range
+    // Add padding to density range for better visualization
     double den_range = max_den - min_den;
     min_den -= 0.1 * den_range;
     max_den += 0.1 * den_range;
     
-    // Create the plot
+    // Print plot header
     printf("\n%s\n", title);
     printf("Density vs Position\n");
     printf("Density range: %.3f to %.3f\n", min_den, max_den);
     printf("Position range: %.1f to %.1f\n\n", min_x, max_x);
     
-    // Plot the data
+    // Create the plot row by row
     for(int row = PLOT_HEIGHT-1; row >= 0; row--) {
+        // Calculate density value for this row
         double den_value = min_den + (max_den - min_den) * row / (PLOT_HEIGHT-1);
         printf("%8.3f |", den_value);
         
+        // Plot each column
         for(int col = 0; col < PLOT_WIDTH; col++) {
             double x_value = min_x + (max_x - min_x) * col / (PLOT_WIDTH-1);
             bool point_plotted = false;
             
-            // Find the closest cell to this x position
+            // Find and plot the closest cell to this x position
             for(int i = 0; i < num_cells; i++) {
                 if(std::abs(cell_coords.host(i) - x_value) < (max_x - min_x)/(2*PLOT_WIDTH)) {
                     if(cell_den.host(i) >= den_value) {
@@ -665,7 +715,7 @@ void plot_density_vs_position(const CArrayDual<double>& cell_coords,
     for(int i = 0; i < PLOT_WIDTH-8; i++) printf(" ");
     printf("%.1f\n\n", max_x);
     
-    // Flush stdout to ensure immediate display
+    // Ensure plot is displayed immediately
     fflush(stdout);
 }
 
