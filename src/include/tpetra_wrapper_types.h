@@ -162,6 +162,8 @@ public:
     
     bool isProcessLocalIndex(int local_index) const;
 
+    void getRemoteIndexList(DCArrayKokkos<long long int> &indices, DCArrayKokkos<int> &index_ranks) const;
+
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
     long long int* device_pointer() const;
@@ -279,6 +281,16 @@ void TpetraPartitionMap<ExecSpace,MemoryTraits>::print() const {
         Teuchos::RCP<Teuchos::FancyOStream> fos;
         fos = Teuchos::fancyOStream(Teuchos::rcpFromRef(out));
         tpetra_map->describe(*fos,Teuchos::VERB_EXTREME);
+}
+
+template <typename ExecSpace, typename MemoryTraits>
+void TpetraPartitionMap<ExecSpace,MemoryTraits>::getRemoteIndexList(DCArrayKokkos<long long int> &indices, DCArrayKokkos<int> &index_ranks) const {
+    //Currently only teuchos array view is an input argument of the tpetra function to get process indices for a list of indices in the map
+    Teuchos::ArrayView<const long long int> indices_pass(indices.host_pointer(), indices.size());
+
+    Teuchos::ArrayView<int> index_ranks_pass(index_ranks.host_pointer(), index_ranks.size());
+
+    tpetra_map->getRemoteIndexList(indices_pass, index_ranks_pass);
 }
 
 // Return local index (on this process/rank) corresponding to the input global index
@@ -615,6 +627,9 @@ public:
     // Method returns kokkos dual view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_dual_view() const;
+
+    // Method to replace internal dual view (has to be identical sizing)
+    void replace_kokkos_dual_view(TArray1D replacement_view);
 
     // Method that update host view
     void update_host();
@@ -1424,6 +1439,11 @@ Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits> TpetraDCArray<T,Layout,E
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::replace_kokkos_dual_view(TArray1D replacement_view) {
+  this_array_ = replacement_view;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
     this_array_.template modify<typename TArray1D::execution_space>();
@@ -1901,6 +1921,9 @@ public:
     // Method returns kokkos dual view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_dual_view() const;
+
+    // Method to replace internal dual view (has to be identical sizing)
+    void replace_kokkos_dual_view(TArray1D replacement_view);
 
     // Method that update host view
     void update_host();
@@ -2717,6 +2740,11 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits> TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
   return this_array_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::replace_kokkos_dual_view(TArray1D replacement_view) {
+  this_array_ = replacement_view;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

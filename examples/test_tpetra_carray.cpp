@@ -296,5 +296,20 @@ void TpetraCArrayOperatorExample()
     myarray.update_host();
     myarray.print();
 
+    //test replacement of dual view member with same sizing
+    myarray.replace_kokkos_dual_view(myarray2.get_kokkos_dual_view());
+
+    //query which MPI ranks row IDs belong to;
+    DCArrayKokkos<long long int> global_indices(5);
+    global_indices(0) = 12;
+    global_indices(1) = 15;
+    global_indices(2) = 17;
+    global_indices(3) = 18;
+    global_indices(4) = 19;
+    DCArrayKokkos<int> global_indices_ranks(5);
+    myarray.pmap.getRemoteIndexList(global_indices, global_indices_ranks);
+    for(int i = 0; i < 5; i++)
+      std::cout << "Rank that owns Index " << global_indices(i) << " is " << global_indices_ranks(i) << std::endl;
+
     Kokkos::fence();
 }
