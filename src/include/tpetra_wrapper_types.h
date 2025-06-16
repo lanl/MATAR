@@ -628,6 +628,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_dual_view() const;
 
+    // Method to replace internal dual view (has to be identical sizing)
+    void replace_kokkos_dual_view(TArray1D replacement_view);
+
     // Method that update host view
     void update_host();
 
@@ -1436,6 +1439,11 @@ Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits> TpetraDCArray<T,Layout,E
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::replace_kokkos_dual_view(TArray1D replacement_view) {
+  this_array_ = replacement_view;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
     this_array_.template modify<typename TArray1D::execution_space>();
@@ -1913,6 +1921,9 @@ public:
     // Method returns kokkos dual view
     KOKKOS_INLINE_FUNCTION
     TArray1D get_kokkos_dual_view() const;
+
+    // Method to replace internal dual view (has to be identical sizing)
+    void replace_kokkos_dual_view(TArray1D replacement_view);
 
     // Method that update host view
     void update_host();
@@ -2729,6 +2740,11 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 Kokkos::DualView <T**, Layout, ExecSpace, MemoryTraits> TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
   return this_array_;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::replace_kokkos_dual_view(TArray1D replacement_view) {
+  this_array_ = replacement_view;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

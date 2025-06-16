@@ -183,7 +183,7 @@ void TpetraFArraySevenDimensionExample()
 
     //init
     myarray.set_values(0);
-    
+
     //local size
     int nxlocal = myarray.dims(0);
 
@@ -294,6 +294,9 @@ void TpetraFArrayAddExample()
         printf("---Scalar multiplication example---\n");
     myarray.update_host();
     myarray.print();
+
+    //test replacement of dual view member with same sizing
+    myarray.replace_kokkos_dual_view(myarray2.get_kokkos_dual_view());
 
     Kokkos::fence();
 }

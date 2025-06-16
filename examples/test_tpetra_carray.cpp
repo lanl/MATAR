@@ -296,6 +296,9 @@ void TpetraCArrayOperatorExample()
     myarray.update_host();
     myarray.print();
 
+    //test replacement of dual view member with same sizing
+    myarray.replace_kokkos_dual_view(myarray2.get_kokkos_dual_view());
+
     //query which MPI ranks row IDs belong to;
     DCArrayKokkos<long long int> global_indices(5);
     global_indices(0) = 12;
