@@ -265,9 +265,7 @@ int main(int argc, char* argv[]){
                    corner_vel(corner_id_1) = ics[reg].vel;
                    
                } // end if
-                  
             } // end for
-            
         }); // end parallel for on device
         
         
@@ -293,10 +291,7 @@ int main(int argc, char* argv[]){
             node_vel(0) = 0.0;
             node_vel(num_nodes-1) = 0.0;
         }); // end run once on the device
-        
-        // -------------------------------
-        //    Print intiial state to file
-        // -------------------------------
+
         
         // update the host side to print (i.e., copy from device to host)
         cell_coords.update_host();
@@ -379,8 +374,6 @@ int main(int argc, char* argv[]){
                     }); // end parallel for on device
 
                 } // end if
-                
-                
                 
                 // -------------------------------
                 // Calculate Forces and Update State
