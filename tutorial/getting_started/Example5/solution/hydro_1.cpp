@@ -452,8 +452,9 @@ int main(int argc, char* argv[]){
                     double force_tally = corner_force(corner_id_0) +
                                          corner_force(corner_id_1);
                     
-                    // TODO: update velocity: node_vel_{n+1} = node_vel_n + alpha*dt/node_mass*force_tally
-                    
+                    // update velocity
+                    node_vel(node_id) = node_vel_n(node_id) +
+                                rk_alpha*dt/node_mass(node_id)*force_tally;
                     
                 }); // end parallel for on device
 
@@ -477,8 +478,9 @@ int main(int argc, char* argv[]){
                     double half_vel = 0.5*(node_vel_n(node_id) +
                                            node_vel(node_id));
                     
-                    // TODO: update coordinates: node_coords_{n+1} = node_coords_n + alpha*dt*half_vel
-                    
+                    // update velocity
+                    node_coords(node_id) = node_coords_n(node_id) +
+                                           rk_alpha*dt*half_vel;
                     
                 }); // end parallel for on device
                 
@@ -511,7 +513,7 @@ int main(int argc, char* argv[]){
                     cell_vol(cell_id)  = node_coords(cell_id+1) -
                                          node_coords(cell_id);
                     
-                    // TODO: update coordinates
+                    // update coordinates
                     cell_coords(cell_id) = 0.5*(node_coords(cell_id) +
                                                 node_coords(cell_id+1));
                     
@@ -707,6 +709,5 @@ void plot_density_vs_position(const CArrayDual<double>& cell_coords,
     // Ensure plot is displayed immediately
     fflush(stdout);
 }
-
 
 
