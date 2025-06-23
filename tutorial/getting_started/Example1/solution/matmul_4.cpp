@@ -6,7 +6,7 @@
 // Required for MATAR data structures
 using namespace mtr; 
 
-#define MATRIX_SIZE 1024
+#define MATRIX_SIZE 1000
 
 // Timer class for timing the execution of the matrix multiplication
 class Timer {
@@ -56,7 +56,7 @@ int main(int argc, char* argv[])
 
     // Create arrays on the device, where the device is either the CPU or GPU depending on how it is compiled
     CArrayDevice<int> A(MATRIX_SIZE, MATRIX_SIZE);
-    CArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE);
+    FArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE);
     CArrayDevice<int> C(MATRIX_SIZE, MATRIX_SIZE);
 
     // Initialize arrays (NOTE: This is on the device)
@@ -68,11 +68,23 @@ int main(int argc, char* argv[])
     Timer timer;
     timer.start();
 
-    // Perform C = A * B
+    // This implementation uses a 2D decomposition (i,j) with each thread computing 
+    // its own C(i,j) element by iterating through the k dimension
     FOR_ALL(i, 0, MATRIX_SIZE,
-            j, 0, MATRIX_SIZE,
-            k, 0, MATRIX_SIZE, {
-        C(i,j) += A(i,k) * B(k,j);
+            j, 0, MATRIX_SIZE, {
+        
+        // Local accumulator - keeps result in register/private memory
+        // This avoids race conditions and atomic operations
+        int local_sum = 0;
+        
+        // Sequential k-loop within each thread - no race conditions
+        // Each thread fully computes one element of C
+        for (int k = 0; k < MATRIX_SIZE; k++) {
+            local_sum += A(i,k) * B(k,j);
+        }
+        
+        // Write the final result once to global memory
+        C(i,j) = local_sum;
     });
 
     // Add a fence to ensure all the operations are completed to get correct timing

@@ -34,7 +34,7 @@
 
 /**
  * @file MATAR_data.cpp
- * @brief Comprehensive example demonstrating MATAR's data structures and performance portability
+ * @brief Examples demonstrating MATAR's data structures and performance portability
  * 
  * This example showcases MATAR's core data structures and design philosophy:
  * 1. Data-oriented design: Structures are organized around data access patterns rather than objects

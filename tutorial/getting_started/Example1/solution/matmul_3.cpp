@@ -6,7 +6,7 @@
 // Required for MATAR data structures
 using namespace mtr; 
 
-#define MATRIX_SIZE 1024
+#define MATRIX_SIZE 1000
 
 // Timer class for timing the execution of the matrix multiplication
 class Timer {
@@ -49,31 +49,32 @@ double calculate_flops(int size, double time_ms) {
 // main
 int main(int argc, char* argv[])
 {
-    // Perform a simple matrix multiplication using MATAR, C = A * B
-
-    // Initialize MATAR (this initializes Kokkos, if Kokkos is enabled)
     MATAR_INITIALIZE(argc, argv);
     { // MATAR scope
     printf("Starting MATAR Matrix Multiplication test \n");
     printf("Matrix size: %d x %d\n", MATRIX_SIZE, MATRIX_SIZE);
 
     // Create arrays on the device, where the device is either the CPU or GPU depending on how it is compiled
-    // Example of how to create an array: CArrayDevice<int> A(MATRIX_SIZE, MATRIX_SIZE);
-
+    CArrayDevice<int> A(MATRIX_SIZE, MATRIX_SIZE);
+    FArrayDevice<int> B(MATRIX_SIZE, MATRIX_SIZE); // NOTE: F layout for optimial access during K index access
+    CArrayDevice<int> C(MATRIX_SIZE, MATRIX_SIZE);
 
     // Initialize arrays (NOTE: This is on the device)
-    // Example of how to initialize an CArrayDevice:  A.set_values(2);
+    A.set_values(2);
+    B.set_values(2);
+    C.set_values(0);
 
     // Create and start timer
     Timer timer;
     timer.start();
 
-    // Perform C = A * B, HINT:  C(i,j) += A(i,k) * B(k,j); (indical notation is nice)
+    // Perform C = A * B
     FOR_ALL(i, 0, MATRIX_SIZE,
-            j, 0, MATRIX_SIZE,
-            k, 0, MATRIX_SIZE, {
-        // TODO: Implement the matrix multiplication
+            j, 0, MATRIX_SIZE,{
 
+        for(int k = 0; k < MATRIX_SIZE; k++){
+            C(i,j) += A(i,k) * B(k,j); // NOTE: This is inherently thread safe, and faster than the atomic add approach
+        }
     });
 
     // Add a fence to ensure all the operations are completed to get correct timing
@@ -89,7 +90,6 @@ int main(int argc, char* argv[])
     printf("Performance: %.2f GFLOPS\n", flops / 1e9);
 
     }
-    // Finalize MATAR (this finalizes Kokkos, if Kokkos is enabled)
     MATAR_FINALIZE();
 
     return 0;
