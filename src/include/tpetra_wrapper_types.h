@@ -497,7 +497,7 @@ public:
     
     //construct an array that views a contiguous subset of another array; start index denotes the local index in super vector to start the sub view
     TpetraDCArray(const TpetraDCArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
-                  const TpetraPartitionMap<ExecSpace,MemoryTraits> &sub_pmap, size_t start_index);
+                  const TpetraPartitionMap<ExecSpace,MemoryTraits> &sub_pmap, size_t start_index=0);
 
     // 1D array setup
     void data_setup(const std::string& tag_string);
@@ -592,6 +592,10 @@ public:
     // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
+
+    // Method that returns flattened component length (product of all dims except first dim)
+    KOKKOS_INLINE_FUNCTION
+    size_t component_length() const;
 
     size_t submap_size() const;
 
@@ -1395,6 +1399,13 @@ size_t TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::size() const {
     return length_;
 }
 
+// Return component length
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::component_length() const {
+    return component_length_;
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t TpetraDCArray<T,Layout,ExecSpace,MemoryTraits>::extent() const {
@@ -1791,7 +1802,7 @@ public:
     
     //construct an array that views a contiguous subset of another array; start index denotes the local index in super vector to start the sub view
     TpetraDFArray(const TpetraDFArray<T, Layout, ExecSpace,MemoryTraits> &super_vector,
-                  const TpetraPartitionMap<ExecSpace,MemoryTraits> &sub_pmap, size_t start_index);
+                  const TpetraPartitionMap<ExecSpace,MemoryTraits> &sub_pmap, size_t start_index=0);
 
     // 1D array setup
     void data_setup(const std::string& tag_string);
@@ -1886,6 +1897,10 @@ public:
     // Method that returns size
     KOKKOS_INLINE_FUNCTION
     size_t size() const;
+
+    // Method that returns flattened component length (product of all dims except first dim)
+    KOKKOS_INLINE_FUNCTION
+    size_t component_length() const;
 
     size_t submap_size() const;
 
@@ -2697,6 +2712,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::size() const {
     return length_;
+}
+
+// Return component length
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t TpetraDFArray<T,Layout,ExecSpace,MemoryTraits>::component_length() const {
+    return component_length_;
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
