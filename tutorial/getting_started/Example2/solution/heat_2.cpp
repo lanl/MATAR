@@ -74,6 +74,8 @@ int main()
             temperature_previous(i, j) = temperature(i, j);
         }, max_value); // max_value is the maximum value of local_max_value across all threads
 
+        worst_dt = max_value;
+
         // track progress
         if (iteration % 1000 == 0) {
             printf("---------- Iteration number: %d ----------\n", iteration);
