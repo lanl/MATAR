@@ -1664,8 +1664,6 @@ private:
     size_t order_;  // tensor order (rank)
     bool   lock_ = false;
     TArray1D this_array_;
-    typename TArray1D::t_dev this_array_dev_;
-    typename TArray1D::t_host this_array_host_;
 
 public:
     // Data member to access host view
