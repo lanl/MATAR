@@ -228,8 +228,7 @@ TpetraPartitionMap<ExecSpace,MemoryTraits>::TpetraPartitionMap(Teuchos::RCP<cons
 template <typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const long long int& TpetraPartitionMap<ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in TpetraPartitionMap 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in TpetraPartitionMap 1D!");
+    assert(i >= 0 && i < length_ && "i is out of bounds in TpetraPartitionMap 1D!");
     return device(i);
 }
 

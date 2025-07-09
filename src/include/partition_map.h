@@ -170,8 +170,7 @@ void PartitionMap<T,Layout,ExecSpace,MemoryTraits>::set_mpi_type() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& PartitionMap<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in PartitionMap 1D!");
-    assert(i >= 0 && i < dims_[0] && "i is out of bounds in PartitionMap 1D!");
+    assert(i >= 0 && i < length_ && "i is out of bounds in PartitionMap 1D!");
     return this_array_.d_view(i);
 }
 
