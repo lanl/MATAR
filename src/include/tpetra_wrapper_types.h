@@ -130,7 +130,7 @@ public:
      
     TpetraPartitionMap(size_t global_length, MPI_Comm mpi_comm = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    TpetraPartitionMap(DCArrayKokkos<long long int> &indices, MPI_Comm mpi_comm = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    TpetraPartitionMap(DCArrayKokkos<long long int, Kokkos::LayoutLeft, ExecSpace> &indices, MPI_Comm mpi_comm = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     TpetraPartitionMap(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_tpetra_map, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
@@ -162,7 +162,8 @@ public:
     
     bool isProcessLocalIndex(int local_index) const;
 
-    void getRemoteIndexList(DCArrayKokkos<long long int> &indices, DCArrayKokkos<int> &index_ranks) const;
+    void getRemoteIndexList(DCArrayKokkos<long long int, Kokkos::LayoutLeft, ExecSpace> &indices,
+                            DCArrayKokkos<int, Kokkos::LayoutLeft, ExecSpace> &index_ranks) const;
 
     // Method returns the raw device pointer of the Kokkos DualView
     KOKKOS_INLINE_FUNCTION
@@ -201,7 +202,7 @@ TpetraPartitionMap<ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t global_len
 
 // Constructor to pass matar dual view of indices
 template <typename ExecSpace, typename MemoryTraits>
-TpetraPartitionMap<ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<long long int> &indices, MPI_Comm mpi_comm, const std::string& tag_string) {
+TpetraPartitionMap<ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<long long int, Kokkos::LayoutLeft, ExecSpace> &indices, MPI_Comm mpi_comm, const std::string& tag_string) {
     mpi_comm_ = mpi_comm;
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm));
     tpetra_map = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(Teuchos::OrdinalTraits<tpetra_GO>::invalid(), indices.get_kokkos_dual_view().d_view, 0, teuchos_comm));
@@ -283,7 +284,8 @@ void TpetraPartitionMap<ExecSpace,MemoryTraits>::print() const {
 }
 
 template <typename ExecSpace, typename MemoryTraits>
-void TpetraPartitionMap<ExecSpace,MemoryTraits>::getRemoteIndexList(DCArrayKokkos<long long int> &indices, DCArrayKokkos<int> &index_ranks) const {
+void TpetraPartitionMap<ExecSpace,MemoryTraits>::getRemoteIndexList(DCArrayKokkos<long long int, Kokkos::LayoutLeft, ExecSpace> &indices,
+                                                                    DCArrayKokkos<int, Kokkos::LayoutLeft, ExecSpace> &index_ranks) const {
     //Currently only teuchos array view is an input argument of the tpetra function to get process indices for a list of indices in the map
     Teuchos::ArrayView<const long long int> indices_pass(indices.host_pointer(), indices.size());
 
