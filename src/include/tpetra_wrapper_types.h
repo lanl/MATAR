@@ -132,6 +132,8 @@ public:
 
     TpetraPartitionMap(DCArrayKokkos<long long int, Kokkos::LayoutLeft, ExecSpace> &indices, MPI_Comm mpi_comm = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
+    TpetraPartitionMap(size_t num_global_indices, size_t num_local_indices, MPI_Comm mpi_comm = MPI_COMM_WORLD, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
     TpetraPartitionMap(Teuchos::RCP<const Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>> input_tpetra_map, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     KOKKOS_INLINE_FUNCTION
@@ -206,6 +208,19 @@ TpetraPartitionMap<ExecSpace,MemoryTraits>::TpetraPartitionMap(DCArrayKokkos<lon
     mpi_comm_ = mpi_comm;
     Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm));
     tpetra_map = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(Teuchos::OrdinalTraits<tpetra_GO>::invalid(), indices.get_kokkos_dual_view().d_view, 0, teuchos_comm));
+    TArray1D_host host = tpetra_map->getMyGlobalIndices();
+    TArray1D_dev device = tpetra_map->getMyGlobalIndicesDevice();
+    length_ = host.size();
+    num_global_ = tpetra_map->getGlobalNumElements();
+    mpi_datatype_ = MPI_LONG_LONG_INT;
+}
+
+// Constructor to pass how many map elements exist on each process
+template <typename ExecSpace, typename MemoryTraits>
+TpetraPartitionMap<ExecSpace,MemoryTraits>::TpetraPartitionMap(size_t num_global_indices, size_t num_local_indices, MPI_Comm mpi_comm, const std::string& tag_string) {
+    mpi_comm_ = mpi_comm;
+    Teuchos::RCP<const Teuchos::Comm<int>> teuchos_comm = Teuchos::rcp(new Teuchos::MpiComm<int>(mpi_comm));
+    tpetra_map = Teuchos::rcp(new Tpetra::Map<tpetra_LO, tpetra_GO, tpetra_node_type>(Teuchos::OrdinalTraits<tpetra_GO>::invalid(), num_local_indices, 0, teuchos_comm));
     TArray1D_host host = tpetra_map->getMyGlobalIndices();
     TArray1D_dev device = tpetra_map->getMyGlobalIndicesDevice();
     length_ = host.size();
