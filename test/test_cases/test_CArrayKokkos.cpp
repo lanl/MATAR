@@ -192,6 +192,17 @@ TEST(Test_CArrayKokkos, eq_overload)
     }
 }
 
+#ifndef NDEBUG
+// Add asserts if building in debug
+TEST(Test_CArrayKokkos, debug_asserts)
+{
+    const int size = 10;
+    CArrayKokkos<double> A(size, size);
+
+    EXPECT_DEATH(A(size, size), ".*");
+}
+#endif
+
 // Test set_values function
 TEST(Test_CArrayKokkos, set_values)
 {

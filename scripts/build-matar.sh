@@ -9,13 +9,14 @@ show_help() {
     echo "  --intel_mkl=<enabled|disabled>. Default is 'disabled'"
     echo "  --build_cores=<Integers greater than 0>. Default is set 1"
     echo "  --trilinos=<enabled|disabled>. Default is 'disabled'"
+    echo "  --debug=<enabled|disabled>. Default is 'disabled'"
     echo "  --help: Display this help message"
     echo " "
     echo " "
     echo " "
     echo "      --build_action                  The desired build step to be execute. The default action is 'full-app'"
     echo " "
-    echo "          full-app                    builds Fierro from scratch, installing dependencies where necessary."
+    echo "          full-app                    builds MATAR from scratch, installing dependencies where necessary."
     echo "          set-env                     set appropriate environment variables and loads software modules (if necessary)"
     echo "          install-kokkos              builds and installs Kokkos if not already installed. Clones from github if necessary"
     echo "          install-matar               builds and installs Matar if not already installed."
@@ -58,6 +59,11 @@ show_help() {
     echo "          disabled                    Trilinos is not being used"
     echo "          enabled                     Trilinos will be linked with MATAR to enable relevant functionality"
     echo " "
+    echo "      --debug                         Decides if debug build is enabled"
+    echo " "
+    echo "          disabled                    Release build (default)"
+    echo "          enabled                     Debug build with debug symbols and no optimization"
+    echo " "
     return 1
 }
 
@@ -65,10 +71,11 @@ show_help() {
 build_action="full-app"
 execution="examples"
 machine="linux"
-kokkos_build_type="serial"
-build_cores="1"
+kokkos_build_type="cuda"
+build_cores="4"
 trilinos="disabled"
 intel_mkl="disabled"
+debug="enabled"
 
 # Define arrays of valid options
 valid_build_action=("full-app" "set-env" "install-matar" "install-kokkos" "matar")
@@ -77,6 +84,7 @@ valid_kokkos_build_types=("none" "serial" "openmp" "pthreads" "cuda" "hip" "seri
 valid_machines=("darwin" "chicoma" "linux" "mac")
 valid_trilinos=("disabled" "enabled")
 valid_intel_mkl=("disabled" "enabled")
+valid_debug=("disabled" "enabled")
 
 # Parse command line arguments
 for arg in "$@"; do
@@ -151,6 +159,16 @@ for arg in "$@"; do
                 return 1
             fi
             ;;
+        --debug=*)
+            option="${arg#*=}"
+            if [[ " ${valid_debug[*]} " == *" $option "* ]]; then
+                debug="$option"
+            else
+                echo "Error: Invalid --debug specified."
+                show_help
+                return 1
+            fi
+            ;;
         --help)
             show_help
             return 1
@@ -214,16 +232,16 @@ if [ "$build_action" = "full-app" ]; then
     elif [ "$trilinos" = "enabled" ]; then    
         source trilinos-install.sh ${kokkos_build_type}  ${intel_mkl}
     fi
-    source matar-install.sh ${kokkos_build_type} ${trilinos}
-    source cmake_build_${execution}.sh ${kokkos_build_type} ${trilinos}
+    source matar-install.sh ${kokkos_build_type} ${trilinos} ${debug}
+    source cmake_build_${execution}.sh ${kokkos_build_type} ${trilinos} ${debug}
 elif [ "$build_action" = "install-kokkos" ]; then
     source kokkos-install.sh ${kokkos_build_type}
 elif [ "$build_action" = "install-matar" ]; then
-    source matar-install.sh ${kokkos_build_type}
+    source matar-install.sh ${kokkos_build_type} ${debug}
 elif [ "$build_action" = "matar" ]; then
     # Clean build directory (assumes there is a stale build)
     make -C "${EXAMPLE_BUILD_DIR}" distclean
-    source cmake_build_${execution}.sh ${kokkos_build_type}
+    source cmake_build_${execution}.sh ${kokkos_build_type} ${trilinos} ${debug}
 else
     echo "No build action, only setup the environment."
 fi
