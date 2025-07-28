@@ -1,0 +1,54 @@
+name: CMake
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+#env:
+#  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    #
+    name: ${{ matrix.config.name }}
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL_DEBUG", os: ubuntu-latest, debug: "enabled", cc: "gcc", cxx: "g++", kokkos_backend: "serial"}
+        - {name: "Ubuntu_Latest_GCC_KOKKOS_OPENMP_DEBUG", os: ubuntu-latest, debug: "enabled", cc: "gcc", cxx: "g++", kokkos_backend: "openmp"}
+        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL_RELEASE", os: ubuntu-latest, debug: "disabled", cc: "gcc", cxx: "g++", kokkos_backend: "serial"}
+        - {name: "Ubuntu_Latest_GCC_KOKKOS_OPENMP_RELEASE", os: ubuntu-latest, debug: "disabled", cc: "gcc", cxx: "g++", kokkos_backend: "openmp"}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+
+    # Build MATAR tests using the build-matar.sh script
+    - name: Build MATAR Tests
+      shell: bash
+      run: |
+        cd ${{ github.workspace }}/scripts
+        source build-matar.sh \
+          --execution=test \
+          --kokkos_build_type=${{ matrix.config.kokkos_backend }} \
+          --build_action=full-app \
+          --machine=linux \
+          --debug=${{ matrix.config.debug }} \
+          --build_cores=1
+
+    # Run the tests
+    - name: Run Tests
+      shell: bash
+      run: |
+        cd ${{ github.workspace }}/build-matar-${{ matrix.config.kokkos_backend }}/test_cases
+        ctest --output-on-failure
+ 
