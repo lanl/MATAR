@@ -20,10 +20,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL_DEBUG", os: ubuntu-latest, debug: "enabled", cc: "gcc", cxx: "g++", kokkos_backend: "serial"}
-        - {name: "Ubuntu_Latest_GCC_KOKKOS_OPENMP_DEBUG", os: ubuntu-latest, debug: "enabled", cc: "gcc", cxx: "g++", kokkos_backend: "openmp"}
-        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL_RELEASE", os: ubuntu-latest, debug: "disabled", cc: "gcc", cxx: "g++", kokkos_backend: "serial"}
-        - {name: "Ubuntu_Latest_GCC_KOKKOS_OPENMP_RELEASE", os: ubuntu-latest, debug: "disabled", cc: "gcc", cxx: "g++", kokkos_backend: "openmp"}
+        - {name: "TEST_UBUNTU_SERIAL_DEBUG", os: ubuntu-latest, debug: "enabled", cc: "gcc", cxx: "g++", kokkos_backend: "serial"}
+        - {name: "TEST_UBUNTU_OPENMP_DEBUG", os: ubuntu-latest, debug: "enabled", cc: "gcc", cxx: "g++", kokkos_backend: "openmp"}
+        - {name: "TEST_UBUNTU_SERIAL_RELEASE", os: ubuntu-latest, debug: "disabled", cc: "gcc", cxx: "g++", kokkos_backend: "serial"}
+        - {name: "TEST_UBUNTU_OPENMP_RELEASE", os: ubuntu-latest, debug: "disabled", cc: "gcc", cxx: "g++", kokkos_backend: "openmp"}
+        - {name: "TEST_MAC_SERIAL_DEBUG", os: macos-14, debug: "enabled", cc: "clang", cxx: "clang++", kokkos_backend: "serial"}
+        - {name: "TEST_MAC_SERIAL_RELEASE", os: macos-14, debug: "disabled", cc: "clang", cxx: "clang++", kokkos_backend: "serial"}
 
     steps:
     - name: Checkout repository
