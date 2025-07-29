@@ -160,6 +160,7 @@ TEST(Test_DFArrayKokkos, operator_access)
     }
 }
 
+#ifndef NDEBUG
 // Test bounds checking
 TEST(Test_DFArrayKokkos, bounds_checking)
 {
@@ -173,6 +174,7 @@ TEST(Test_DFArrayKokkos, bounds_checking)
     // Test invalid access - should throw
     EXPECT_DEATH(A(size,size), ".*");
 }
+#endif
 
 // Test different types
 TEST(Test_DFArrayKokkos, different_types)

@@ -142,6 +142,7 @@ TEST(RaggedRightArrayKokkosTest, DifferentDataTypes) {
     EXPECT_EQ(array_int(0, 0), 42);
 }
 
+#ifndef NDEBUG
 // Test out-of-bounds access
 TEST(RaggedRightArrayKokkosTest, OutOfBoundsAccess) {
     // Create strides array
@@ -161,3 +162,4 @@ TEST(RaggedRightArrayKokkosTest, OutOfBoundsAccess) {
     EXPECT_DEATH(array(1, 3), ".*");  // Row 1 only has 3 columns
     EXPECT_DEATH(array(2, 1), ".*");  // Row 2 only has 1 column
 }
+#endif

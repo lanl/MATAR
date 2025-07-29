@@ -82,9 +82,9 @@ TEST(DynamicMatrixKokkosTest, SetValues) {
     
     // Set all values to 42.0
     matrix.set_values(42.0, 10);
-
+#ifndef NDEBUG
     EXPECT_DEATH(matrix.set_values(42.0, 11),"");
-    
+#endif
     // Check values
     for (size_t i = 1; i <= matrix.dims(1); i++) {
         EXPECT_DOUBLE_EQ(matrix(i), 42.0);
