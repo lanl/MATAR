@@ -273,6 +273,18 @@
                         Kokkos::Max< decltype(result) > ( (result) ) )
 
 #define \
+    FOR_REDUCE_MAX_SECOND(j, y0, y1, lmax, fcn, result) \
+    Kokkos::parallel_reduce( \
+                            Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j), decltype(lmax) &(lmax) ) \
+                            {fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
+    DO_REDUCE_MAX_THIRD(k, z0, z1, lmax, fcn, result) \
+    Kokkos::parallel_reduce( \
+                            Kokkos::ThreadVectorRange( teamMember, z0, z1+1 ), [&] ( const int (k), decltype(lmax) &(lmax) ) \
+                            {fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
     DO_REDUCE_MAX(...) \
     GET_MACRO(__VA_ARGS__, _13, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__)
 
@@ -299,6 +311,18 @@
                         Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
                         KOKKOS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
                         Kokkos::Min< decltype(result) >(result) )
+
+#define \
+    FOR_REDUCE_MIN_SECOND(j, y0, y1, lmin, fcn, result) \
+    Kokkos::parallel_reduce( \
+                            Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j), decltype(lmin) &(lmin) ) \
+                            {fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+
+#define \
+    DO_REDUCE_MIN_THIRD(k, z0, z1, lmin, fcn, result) \
+    Kokkos::parallel_reduce( \
+                            Kokkos::ThreadVectorRange( teamMember, z0, z1+1 ), [&] ( const int (k), decltype(lmin) &(lmin) ) \
+                            {fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
 
 #define \
     FOR_REDUCE_MIN(...) \
@@ -966,6 +990,8 @@ void reduce_max (int i_start, int i_end,
 #define \
     FOR_REDUCE_MAX(...) \
     GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
+
+
 
 
 // DO_REDUCE_MAX

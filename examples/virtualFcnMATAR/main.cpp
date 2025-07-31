@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -91,15 +91,15 @@ int main(int argc, char* argv[])
         for (size_t i = 0; i < num_shapes; i++) {
             double area;
             if (i % 2 == 0) {
-                area = atan(1) * 4 * i * i;
+                area = atan(1) * 4 * (double)i * (double)i;
                 if (area != area_array.host(i)) {
-                    printf("Circle radius=%.3f, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
+                    printf("Circle radius=%.3zu, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
                 }
             }
             else {
-                area = i * i;
+                area = (double)i * (double)i;
                 if (area != area_array.host(i)) {
-                    printf("Square length=%.3f, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
+                    printf("Square length=%.3zu, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
                 }
             }
 

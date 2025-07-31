@@ -13,6 +13,8 @@ endif (NOT TARGET distclean)
 find_package(Matar REQUIRED)
 set(LINKING_LIBRARIES matar)
 
+include_directories(../solvers)
+
 if (MPI)
     find_package(MPI REQUIRED)
     add_definitions(-DHAVE_MPI=1)
@@ -119,6 +121,9 @@ if (KOKKOS)
 
   #add_executable(ompperftest ompperftest.cpp)
   #target_link_libraries(ompperftest ${LINKING_LIBRARIES})
+
+  add_executable(lu_test test_lu_solve.cpp)
+  target_link_libraries(lu_test ${LINKING_LIBRARIES})
 
   if (Matar_ENABLE_TRILINOS)
     add_executable(anndistributed ann_distributed.cpp)
