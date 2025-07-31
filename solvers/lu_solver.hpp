@@ -135,6 +135,7 @@ int LU_decompos(
         }); // end parallel
 
         // initialize the search for the largest pivot element
+
         double max_val = 0.0;
         double max_val_lcl = 0.0;
         // loop is from i=j to i<n
@@ -205,5 +206,62 @@ int LU_decompos(
     
     return(1);
 }
+
+
+
+/* ----------------------------- */
+/* LU back substitution function */
+/* ----------------------------- */
+
+void LU_backsub(
+    const DCArrayKokkos <double> &A,     // input matrix A in LU decomp format
+    const DCArrayKokkos <size_t> &perm,  // permutations
+    DCArrayKokkos <double> &b){          // RHS and is answer x to Ax=B
+
+    const int n = A.dims(0);    // size of matrix
+    CArrayKokkos <double> b_permuted(n);
+
+    FOR_ALL(i, 0, n, {
+        b_permuted(i) = b(perm(i)); // Applying P^T
+    });
+    
+    // First step of backsubstitution; the only wrinkle is to unscramble 
+    // the permutation order. Note, the algorithm is optimized for a 
+    // possibility of large amount of zeroes in b 
+    
+    FOR_FIRST(i, 0, n, {
+
+        double sum = 0.0;
+        double sum_lcl = 0.0;
+        
+        // j=0 to j<i
+        FOR_REDUCE_SUM_SECOND(j, 0, i, 
+                              sum_lcl, {
+            sum_lcl -= A(i,j)*b(j);
+        }, sum);
+
+        sum += b_permuted(i);
+        
+        b(i) = sum;
+    }); // end for i
+    
+    // the second step
+    for(int i=n-1; i>=0; i--){
+
+        double sum = 0.0;
+        double sum_lcl = 0.0;
+
+        // for j=i+1 to j<N
+        FOR_REDUCE_SUM(j, i+1, n, 
+                       sum_lcl, {
+            sum_lcl -= A(i,j)*b(j);
+        }, sum);
+
+        sum += b(i);
+
+        b(i) = sum/A(i,i);
+    }        
+
+} // end LU backsubstitution
 
 #endif // LUSOLVER

@@ -37,8 +37,102 @@
  
  #include "lu_solver.hpp"
 
- int main(){
+ int main(int argc, char *argv[]){
 
-    return 0;
+    Kokkos::initialize(argc, argv);
+    {  
+
+        std::cout << "testing MATAR LU solver \n\n";
+
+        size_t num_points = 3;
+        DCArrayKokkos <double> A(num_points, num_points);
+        DCArrayKokkos <double> b(num_points);
+
+        // used for LU problem
+        int singular; 
+        int parity;
+        DCArrayKokkos <size_t> index (num_points);
+
+
+        // --------------
+        // --- test 1 ---
+        // --------------
+        A.set_values(0.0);
+        b.set_values(0.0);
+
+        RUN({
+            A(0,0) = 1;
+            A(1,1) = 2;
+            A(2,2) = 3;
+
+            b(0) = 1;
+            b(1) = 2;
+            b(2) = 3;
+        });
+
+        singular = 0; 
+        parity = 0;
+        singular = LU_decompos(A, index, parity);  // A is returned as the LU matrix  
+        if(singular==0){
+            printf("ERROR: matrix is singluar \n");
+            return 0;
+        }
+        LU_backsub(A, index, b);  // note: answer is sent back in b
+
+        FOR_ALL(i, 0, num_points, {
+            printf("x = %f \n", b(i));
+        }); // end for
+        printf("exact = [1,1,1]^T \n\n");
+
+
+        // --------------
+        // --- test 2 ---
+        // --------------
+        A.set_values(0.0);
+        b.set_values(0.0);
+
+        RUN({
+            A(0,0) = 1;
+            A(0,1) = 2;
+            A(0,2) = 3;
+            A(1,1) = 4;
+            A(1,2) = 5;
+            A(2,2) = 6;
+
+            b(0) = 14;
+            b(1) = 23;
+            b(2) = 18;
+        });
+
+        singular = 0; 
+        parity = 0;
+        singular = LU_decompos(A, index, parity);  // A is returned as the LU matrix  
+        if(singular==0){
+            printf("ERROR: matrix is singluar \n");
+            return 0;
+        }
+        for(size_t i=0; i<num_points; i++){
+            printf("%zu ", index(i));
+        }
+        printf("\n");
+        
+        for(size_t i=0; i<num_points; i++){
+            for(size_t j=0; j<num_points; j++){
+                printf("%f ", A(i,j));
+            }
+            printf("\n");
+        }
+        LU_backsub(A, index, b);  // note: answer is sent back in b
+
+        FOR_ALL(i, 0, num_points, {
+            printf("x = %f \n", b(i));
+        }); // end for
+        printf("exact = [1,2,3]^T \n\n");
+
+    } // end of kokkos scope
+
+    Kokkos::finalize();
+
+    return 1;
  }
 
