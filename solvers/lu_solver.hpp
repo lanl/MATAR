@@ -47,10 +47,120 @@ using namespace mtr;
 
 const double TINY = 1e-15;
 
-/* ------------------------- */
-/* LU decomposition function */
-/* ------------------------- */
-int LU_decompos(
+// ---------------------------
+// LU decomposition functions
+// ---------------------------
+
+
+// the function is run on the GPU
+KOKKOS_FUNCTION
+int LU_decompose(
+    const DCArrayKokkos <double> &A, // matrix A passed in and is sent out in LU decomp format
+    const DCArrayKokkos <size_t> &perm,  // permutations
+    int &parity) {                 // parity (+1 or -1)
+                          
+    const int n = A.dims(0);  // size of matrix 
+
+    CArrayKokkos <double> vv(n);   // temp arrary for solver
+
+    parity = 1;
+
+    // helper variables
+    double temp;
+    
+    // search for the largest element in each row; save the scaling in the 
+    // temporary array vv and return zero if the matrix is singular 
+    for(size_t i = 0; i < n; i++) {
+        
+        double big = 0.;
+        for(size_t j = 0; j < n; j++){
+            if((temp=fabs(A(i,j))) > big){
+                big=temp;
+            }
+        }
+        
+        if(big == 0.0) return(0);
+        
+        vv(i) = big;
+    }
+
+    // the main loop for the Crout's algorithm
+    for(size_t j = 0; j < n; j++) {
+        
+        // this is the part a) of the algorithm except for i==j 
+        for(size_t i=0;i<j;i++) {
+            
+            double sum=A(i,j);
+            
+            for(size_t k=0;k<i;k++){
+                sum -= A(i,k)*A(k,j);
+            }
+
+            A(i,j) = sum;
+        }
+    
+        // initialize for the search for the largest pivot element
+        double big = 0.;
+        size_t imax = j;
+        
+        
+        // this is the part a) for i==j and part b) for i>j + pivot search 
+        for(size_t i = j; i < n; i++) {
+            
+            double sum = A(i,j);
+            
+            for(size_t k=0; k<j; k++){
+                sum -= A(i,k)*A(k,j);
+            }
+            
+            A(i,j) = sum;
+            
+            // is the figure of merit for the pivot better than the best so far?
+            if((temp = vv(i)*fabs(sum)) >= big){
+                big = temp; 
+                imax = i;
+            }
+        } // end for i
+
+        // interchange rows, if needed, change parity and the scale factor
+        if(imax != j) {
+            
+            for(size_t k = 0; k < n; k++){
+                temp = A(imax,k);
+                A(imax,k) = A(j,k);
+                A(j,k) = temp;
+            }
+            
+            parity = -(parity);
+            vv(imax) = vv(j);
+        }
+        
+        // store the index
+        perm(j) = imax;
+        // if the pivot element is zero, the matrix is singular but for some 
+        // applications a tiny number is desirable instead 
+        
+        if(A(j,j) == 0.0){
+            A(j,j) = TINY;
+        }
+        // finally, divide by the pivot element
+        
+        if(j<n-1) {
+            
+            temp=1./A(j,j);
+            for(size_t i = j+1; i < n; i++){
+                A(i,j)*=temp;
+            } // end for i
+        } // end if j
+
+    } // end for j
+    
+    return(1);
+} // end function
+
+// the function is run from the host, and kernals
+// inside this function are run on the GPU
+int LU_decompose_host(
     DCArrayKokkos <double> &A, // matrix A passed in and is sent out in LU decomp format
     DCArrayKokkos <size_t> &perm,  // permutations
     int &parity) {                 // parity (+1 or -1)
@@ -75,6 +185,7 @@ int LU_decompos(
             max_val_lcl = fmax(max_val_lcl, fabs(A(i,j)) );
 
         }, max_val); // end parallel j
+        Kokkos::fence();
         
         vv(i) = max_val;       
 
@@ -108,6 +219,7 @@ int LU_decompos(
                 sum_lcl -= A(i,k)*A(k,j);
 
             }, sum); // end parallel k
+            Kokkos::fence();
 
             sum += A(i,j);
 
@@ -128,11 +240,13 @@ int LU_decompos(
                 sum_lcl -= A(i,k)*A(k,j);
 
             }, sum); // parallel k
+            Kokkos::fence();
 
             sum += A(i,j);
 
             A(i,j) = sum;
         }); // end parallel
+        Kokkos::fence();
 
         // initialize the search for the largest pivot element
 
@@ -148,6 +262,7 @@ int LU_decompos(
             } // end if
 
         }, max_val); // end for i
+        Kokkos::fence();
 
         size_t imax = j;
         size_t imax_lcl = j;
@@ -161,7 +276,7 @@ int LU_decompos(
             } // end if
 
         }, imax); // end for i
-
+        Kokkos::fence();
 
         // interchange rows, if needed, change parity and the scale factor
         if(imax != j) {
@@ -183,6 +298,7 @@ int LU_decompos(
         RUN({
             perm(j) = imax;
         });
+
 
         // if the pivot element is zero, the matrix is singular but for some 
         // applications a tiny number is desirable instead 
@@ -208,44 +324,107 @@ int LU_decompos(
 }
 
 
+// -------------------------------
+// LU back substitution functions 
+// -------------------------------
 
-/* ----------------------------- */
-/* LU back substitution function */
-/* ----------------------------- */
-
+// this function is run on the GPU
+KOKKOS_FUNCTION
 void LU_backsub(
+    const DCArrayKokkos <double> &A,     // input matrix A in LU decomp format
+    const DCArrayKokkos <size_t> &perm,  // permutations
+    const DCArrayKokkos <double> &b){          // RHS and is answer x to Ax=B
+
+        const int n = A.dims(0);    // size of matrix
+
+        int ii = -1;
+
+
+        // First step of backsubstitution; the only wrinkle is to unscramble 
+        // the permutation order. Note: the algorithm is optimized for a 
+        // possibility of large amount of zeroes in b
+        
+        for(size_t i = 0; i < n; i++) {
+           
+            size_t ip = perm(i);
+
+            double sum = b(ip);
+            b(ip) = b(i);
+         
+            if(ii >= 0){
+                for(size_t j = ii; j<i; j++){
+                    sum -= A(i,j)*b(j);
+                }
+            }
+            else if(sum>0){
+                ii=i;  // a nonzero element encounted
+            }
+          
+            b(i) = sum;
+        } // end loop i
+        
+        // the second step
+        for(int i=n-1; i>=0; i--) {
+            
+            double sum = b(i);
+            for(size_t j=i+1; j<n; j++){
+                sum-=A(i,j)*b(j);
+            } // end j
+       
+            b(i)=sum/A(i,i);
+        } // end loop i
+
+} // end if
+
+
+
+// the function is run from the host, and kernals
+// inside this function are run on the GPU
+void LU_backsub_host(
     const DCArrayKokkos <double> &A,     // input matrix A in LU decomp format
     const DCArrayKokkos <size_t> &perm,  // permutations
     DCArrayKokkos <double> &b){          // RHS and is answer x to Ax=B
 
     const int n = A.dims(0);    // size of matrix
-    CArrayKokkos <double> b_permuted(n);
 
-    FOR_ALL(i, 0, n, {
-        b_permuted(i) = b(perm(i)); // Applying P^T
-    });
     
     // First step of backsubstitution; the only wrinkle is to unscramble 
     // the permutation order. Note, the algorithm is optimized for a 
     // possibility of large amount of zeroes in b 
-    
-    FOR_FIRST(i, 0, n, {
 
-        double sum = 0.0;
-        double sum_lcl = 0.0;
-        
-        // j=0 to j<i
-        FOR_REDUCE_SUM_SECOND(j, 0, i, 
-                              sum_lcl, {
-            sum_lcl -= A(i,j)*b(j);
-        }, sum);
+    // Forward substitution: solve L x = P b
+    int ii = -1;
+    for(size_t i = 0; i < n; i++) {
+           
+            size_t ip = perm(i);
 
-        sum += b_permuted(i);
-        
-        b(i) = sum;
-    }); // end for i
-    
-    // the second step
+            double sum = b(ip);
+            double sum_tally = 0.0;
+            b(ip) = b(i);
+         
+            if(ii >= 0){
+
+                double sum_lcl = 0.0;
+
+                // j=ii to j<i
+                FOR_REDUCE_SUM(j, ii, i, 
+                               sum_lcl, {
+                    sum_lcl -= A(i,j)*b(j);
+                }, sum_tally);
+                Kokkos::fence();
+                
+                sum += sum_tally;
+            }
+            else if(sum>0){
+                ii=i;  // a nonzero element encounted
+            }
+          
+            b(i) = sum;
+    } // end loop i
+
+
+     // the second step
+     // Backward substitution: solve U b = x
     for(int i=n-1; i>=0; i--){
 
         double sum = 0.0;
@@ -260,8 +439,8 @@ void LU_backsub(
         sum += b(i);
 
         b(i) = sum/A(i,i);
-    }        
+    } // end for i       
 
-} // end LU backsubstitution
+} // end LU backsubstitution on lauched from host
 
 #endif // LUSOLVER

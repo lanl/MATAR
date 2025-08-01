@@ -60,6 +60,7 @@
         A.set_values(0.0);
         b.set_values(0.0);
 
+        // run the host functions
         RUN({
             A(0,0) = 1;
             A(1,1) = 2;
@@ -70,18 +71,65 @@
             b(2) = 3;
         });
 
+        printf("A = \n");
+        for(size_t i=0; i<num_points; i++){
+            for(size_t j=0; j<num_points; j++){
+                printf("%f ", A(i,j));
+            }
+            printf("\n");
+        }
+        printf("\n");
+
+
         singular = 0; 
         parity = 0;
-        singular = LU_decompos(A, index, parity);  // A is returned as the LU matrix  
+        singular = LU_decompose_host(A, index, parity);  // A is returned as the LU matrix  
         if(singular==0){
             printf("ERROR: matrix is singluar \n");
             return 0;
         }
-        LU_backsub(A, index, b);  // note: answer is sent back in b
 
-        FOR_ALL(i, 0, num_points, {
+        LU_backsub(A, index, b);  // note: answer is sent back in b
+        b.update_host();
+
+        printf("host executed routines \n");
+        for(size_t i=0; i<num_points; i++){
             printf("x = %f \n", b(i));
-        }); // end for
+        } // end for
+        printf("exact = [1,1,1]^T \n\n");
+
+
+        // run the device functions
+        A.set_values(0.0);
+        RUN({
+            A(0,0) = 1;
+            A(1,1) = 2;
+            A(2,2) = 3;
+
+            b(0) = 1;
+            b(1) = 2;
+            b(2) = 3;
+        });
+        A.update_host();
+        b.update_host();
+
+
+        RUN({
+            int singular_d = 0; 
+            int parity_d = 0;
+            singular_d = LU_decompose(A, index, parity_d);  // A is returned as the LU matrix  
+            if(singular_d==0){
+                printf("ERROR: matrix is singluar \n");
+            }
+
+            LU_backsub(A, index, b);  // note: answer is sent back in b
+        });
+        b.update_host();
+
+        printf("device executed routines \n");
+        for(size_t i=0; i<num_points; i++){
+            printf("x = %f \n", b(i));
+        } // end for
         printf("exact = [1,1,1]^T \n\n");
 
 
@@ -103,30 +151,156 @@
             b(1) = 23;
             b(2) = 18;
         });
-
-        singular = 0; 
-        parity = 0;
-        singular = LU_decompos(A, index, parity);  // A is returned as the LU matrix  
-        if(singular==0){
-            printf("ERROR: matrix is singluar \n");
-            return 0;
-        }
-        for(size_t i=0; i<num_points; i++){
-            printf("%zu ", index(i));
-        }
-        printf("\n");
+        A.update_host();
+        b.update_host();
         
+        printf("A = \n");
         for(size_t i=0; i<num_points; i++){
             for(size_t j=0; j<num_points; j++){
                 printf("%f ", A(i,j));
             }
             printf("\n");
         }
-        LU_backsub(A, index, b);  // note: answer is sent back in b
+        printf("\n");
 
-        FOR_ALL(i, 0, num_points, {
+        singular = 0; 
+        parity = 0;
+        singular = LU_decompose_host(A, index, parity);  // A is returned as the LU matrix  
+        if(singular==0){
+            printf("ERROR: matrix is singluar \n");
+            return 0;
+        }
+
+        LU_backsub(A, index, b);  // note: answer is sent back in b
+        b.update_host();
+
+        printf("host executed routines \n");
+        for(size_t i=0; i<num_points; i++){
             printf("x = %f \n", b(i));
-        }); // end for
+        } // end for
+        printf("exact = [1,2,3]^T \n\n");
+
+
+        // run the device functions
+        A.set_values(0.0);
+        RUN({
+            A(0,0) = 1;
+            A(0,1) = 2;
+            A(0,2) = 3;
+            A(1,1) = 4;
+            A(1,2) = 5;
+            A(2,2) = 6;
+
+            b(0) = 14;
+            b(1) = 23;
+            b(2) = 18;
+        });
+        A.update_host();
+        b.update_host();
+        
+
+        RUN({
+            int singular_d = 0; 
+            int parity_d = 0;
+            singular_d = LU_decompose(A, index, parity_d);  // A is returned as the LU matrix  
+            if(singular_d==0){
+                printf("ERROR: matrix is singluar \n");
+            }
+
+            LU_backsub(A, index, b);  // note: answer is sent back in b
+        });
+        b.update_host();
+
+        printf("device executed routines \n");
+        for(size_t i=0; i<num_points; i++){
+            printf("x = %f \n", b(i));
+        } // end for
+        printf("exact = [1,2,3]^T \n\n");
+
+
+        // --------------
+        // --- test 3 ---
+        // --------------
+        A.set_values(0.0);
+        b.set_values(0.0);
+
+        RUN({
+            A(0,0) = 1;
+            A(0,1) = 2;
+            A(0,2) = 3;
+            A(1,2) = 6;
+            A(2,1) = 4;
+            A(2,2) = 5;
+
+            b(0) = 14;
+            b(1) = 18;
+            b(2) = 23;
+        });
+        A.update_host();
+        b.update_host();
+
+        printf("A = \n");
+        for(size_t i=0; i<num_points; i++){
+            for(size_t j=0; j<num_points; j++){
+                printf("%f ", A(i,j));
+            }
+            printf("\n");
+        }
+        printf("\n");
+
+
+        singular = 0; 
+        parity = 0;
+        singular = LU_decompose_host(A, index, parity);  // A is returned as the LU matrix  
+        if(singular==0){
+            printf("ERROR: matrix is singluar \n");
+            return 0;
+        }
+
+        LU_backsub(A, index, b);  // note: answer is sent back in b
+        b.update_host();
+
+        printf("host executed routines \n");
+        for(size_t i=0; i<num_points; i++){
+            printf("x = %f \n", b(i));
+        } // end for
+        printf("exact = [1,2,3]^T \n\n");
+
+
+        // run the device functions
+        A.set_values(0.0);
+        RUN({
+            A(0,0) = 1;
+            A(0,1) = 2;
+            A(0,2) = 3;
+            A(1,2) = 6;
+            A(2,1) = 4;
+            A(2,2) = 5;
+
+            b(0) = 14;
+            b(1) = 18;
+            b(2) = 23;
+        });
+        A.update_host();
+        b.update_host();
+        
+
+        RUN({
+            int singular_d = 0; 
+            int parity_d = 0;
+            singular_d = LU_decompose(A, index, parity_d);  // A is returned as the LU matrix  
+            if(singular_d==0){
+                printf("ERROR: matrix is singluar \n");
+            }
+
+            LU_backsub(A, index, b);  // note: answer is sent back in b
+        });
+        b.update_host();
+
+        printf("device executed routines \n");
+        for(size_t i=0; i<num_points; i++){
+            printf("x = %f \n", b(i));
+        } // end for
         printf("exact = [1,2,3]^T \n\n");
 
     } // end of kokkos scope
@@ -134,5 +308,6 @@
     Kokkos::finalize();
 
     return 1;
- }
+    
+ } // end function
 
