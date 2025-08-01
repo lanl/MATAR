@@ -96,6 +96,7 @@ TEST(Test_DCMatrixKokkos, set_values)
     }
 }
 
+#ifndef NDEBUG
 // Test operator() access
 TEST(Test_DCMatrixKokkos, operator_access)
 {
@@ -129,6 +130,29 @@ TEST(Test_DCMatrixKokkos, bounds_checking)
     EXPECT_DEATH(A(0, 0), "");
     EXPECT_DEATH(A(10000, 10000), "");
 }
+
+// Test lock_update and unlock_update methods
+TEST(Test_DCMatrixKokkos, lock_unlock_update)
+{
+    const int size = 10;
+    DCMatrixKokkos<double> A(size, size, "test_matrix");
+    
+    A.set_values(42.0);
+
+    A.lock_update();
+    // After locking, updates should be prevented
+    EXPECT_DEATH(A.update_host(), "");
+    EXPECT_DEATH(A.update_device(), "");
+    
+    A.unlock_update();
+    // After unlocking, updates should work again
+    A.set_values(2.0);
+    EXPECT_NO_FATAL_FAILURE(A.update_host());
+    EXPECT_NO_FATAL_FAILURE(A.update_device());
+}
+
+
+#endif
 
 // Test different types
 TEST(Test_DCMatrixKokkos, different_types)
@@ -213,22 +237,3 @@ TEST(Test_DCMatrixKokkos, update_device)
     EXPECT_EQ(A(1, 1), 42.0);
 }
 
-// Test lock_update and unlock_update methods
-TEST(Test_DCMatrixKokkos, lock_unlock_update)
-{
-    const int size = 10;
-    DCMatrixKokkos<double> A(size, size, "test_matrix");
-    
-    A.set_values(42.0);
-
-    A.lock_update();
-    // After locking, updates should be prevented
-    EXPECT_DEATH(A.update_host(), "");
-    EXPECT_DEATH(A.update_device(), "");
-    
-    A.unlock_update();
-    // After unlocking, updates should work again
-    A.set_values(2.0);
-    EXPECT_NO_FATAL_FAILURE(A.update_host());
-    EXPECT_NO_FATAL_FAILURE(A.update_device());
-}

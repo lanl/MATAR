@@ -130,6 +130,8 @@ TEST(Test_ViewFMatrixKokkos, operator_access)
     delete[] data;
 }
 
+#ifndef NDEBUG
+
 // Test bounds checking
 TEST(Test_ViewFMatrixKokkos, bounds_checking)
 {
@@ -145,6 +147,7 @@ TEST(Test_ViewFMatrixKokkos, bounds_checking)
     EXPECT_DEATH(A(0,0), ".*");
     delete[] data;
 }
+#endif
 
 // Test different types
 TEST(Test_ViewFMatrixKokkos, different_types)

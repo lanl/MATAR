@@ -7382,7 +7382,7 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::host(size_t
     
     // asserts
     assert(i < dims_[0] && "i is out of dims_[0] bounds in DRaggedRightArrayKokkos");  // die if >= dim0
-    assert(j < stride(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= dim1
+    assert(j < stride_host(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= dim1
     assert(k < dims_[1] && "k is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dim2
 
     size_t index_1D = start + k + dims_[1]*j;
@@ -7400,7 +7400,7 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::host(size_t
     
     // asserts
     assert(i < dims_[0] && "i is out of dims_[0] bounds in DRaggedRightArrayKokkos");  // die if >= dim1
-    assert(j < stride(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
+    assert(j < stride_host(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
     assert(k < dims_[1] && "k is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dims_[1]
     assert(l < dims_[2] && "l is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dims_[2]
     
