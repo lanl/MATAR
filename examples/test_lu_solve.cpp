@@ -308,13 +308,13 @@
         // --------------
         // --- test 4 ---
         // --------------
-        size_t num_vals = 100;
+        size_t num_vals = 10;
         DCArrayKokkos <double> M(num_vals,num_vals);
         DCArrayKokkos <double> T_field(num_vals);
         M.set_values(0.0);
         T_field.set_values(0.0);
 
-        DCArrayKokkos <size_t> perm_T (num_points);
+        DCArrayKokkos <size_t> perm_T (num_vals);
 
         RUN({
             M(0,0) = 2.0;
@@ -328,7 +328,7 @@
             T_field(num_vals-1) = 1.0;
         });
         
-        FOR_ALL(i, 1, num_vals-1, {
+        DO_ALL(i, 1, num_vals-2, {
             M(i, i-1) = -1.0;
             M(i,i) = 2.0;
             M(i, i+1) = -1.0;
@@ -344,7 +344,6 @@
             printf("\n");
         }
         printf("\n");
-
 
         singular = 0; 
         parity = 0;
@@ -378,7 +377,7 @@
             T_field(num_vals-1) = 1.0;
         });
         
-        FOR_ALL(i, 1, num_vals-1, {
+        DO_ALL(i, 1, num_vals-2, {
             M(i, i-1) = -1.0;
             M(i,i) = 2.0;
             M(i, i+1) = -1.0;
