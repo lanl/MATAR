@@ -2,6 +2,7 @@
 
 kokkos_build_type="${1}"
 trilinos="${2}"
+debug="${3}"
 
 if [ ! -d "${EXAMPLE_SOURCE_DIR}/phaseFieldMPI/heffte" ]
 then
@@ -9,10 +10,15 @@ then
   git clone https://bitbucket.org/icl/heffte.git ${EXAMPLE_SOURCE_DIR}/phaseFieldMPI/heffte
 fi
 
-cmake_options=(
-    -D CMAKE_BUILD_TYPE=Release
-    #-D CMAKE_BUILD_TYPE=Debug
-)
+if [ "$debug" = "enabled" ]; then
+    cmake_options=(
+        -D CMAKE_BUILD_TYPE=Debug
+    )
+else
+    cmake_options=(
+        -D CMAKE_BUILD_TYPE=Release
+    )
+fi
 
 if [ "$kokkos_build_type" = "none" ]; then
     cmake_options+=(

@@ -192,6 +192,17 @@ TEST(Test_CArrayKokkos, eq_overload)
     }
 }
 
+#ifndef NDEBUG
+// Add asserts if building in debug
+TEST(Test_CArrayKokkos, debug_asserts)
+{
+    const int size = 10;
+    CArrayKokkos<double> A(size, size);
+
+    EXPECT_DEATH(A(size, size), ".*");
+}
+#endif
+
 // Test set_values function
 TEST(Test_CArrayKokkos, set_values)
 {
@@ -243,6 +254,7 @@ TEST(Test_CArrayKokkos, operator_access)
     EXPECT_EQ(A7(1, 1, 1, 1, 1, 1, 1), 42.0);
 }
 
+#ifndef NDEBUG
 // Test bounds checking
 TEST(Test_CArrayKokkos, bounds_checking)
 {
@@ -261,6 +273,7 @@ TEST(Test_CArrayKokkos, bounds_checking)
     EXPECT_DEATH(A3(20, 5, 2), ".*");
     EXPECT_DEATH(A3(26, 2, 5), ".*");
 }
+#endif
 
 // Test different data types
 TEST(Test_CArrayKokkos, different_types)

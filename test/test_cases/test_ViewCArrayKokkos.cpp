@@ -103,6 +103,7 @@ TEST(Test_ViewCArrayKokkos, set_values)
     delete[] data;
 }
 
+#ifndef NDEBUG
 // Test operator() access
 TEST(Test_ViewCArrayKokkos, operator_access)
 {
@@ -140,6 +141,7 @@ TEST(Test_ViewCArrayKokkos, bounds_checking)
     
     delete[] data;
 }
+#endif
 
 // Test different types
 TEST(Test_ViewCArrayKokkos, different_types)
