@@ -193,10 +193,10 @@ int main(int argc, char** argv)
         auto lap = std::chrono::high_resolution_clock::now();
         if (!EXPORT) {
             printf("Max eig is %f %f\n", eig1, eig2);
-            printf("Sparse took %.2e\n", std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9);
+            printf("Sparse took %.2e\n", std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start).count() * 1e-9);
         }
         else {
-            printf("%ld, %.2e, %d, %f\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9, t2, eig2);
+            printf("%ld, %.2e, %d, %f\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start).count() * 1e-9, t2, eig2);
         }
     } Kokkos::finalize();
     return 0;
