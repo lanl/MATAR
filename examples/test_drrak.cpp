@@ -118,7 +118,7 @@ int main(int argc, char* argv[])
 
         for(int i = 0; i < num_strides; i++){
             if(drrak1D_d.stride_host(i) != i+1){
-                printf("Error: drrak1D_d.stride_host(i) = %d, expected %d\n", i+1);
+                printf("Error: drrak1D_d.stride_host(i) = %zu, expected %d\n", drrak1D_d.stride_host(i), i+1);
             }
         }
 
