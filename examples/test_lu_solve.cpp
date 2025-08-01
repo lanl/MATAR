@@ -51,7 +51,7 @@
         // used for LU problem
         int singular; 
         int parity;
-        DCArrayKokkos <size_t> index (num_points);
+        DCArrayKokkos <size_t> perm (num_points);
 
 
         // --------------
@@ -74,7 +74,7 @@
         printf("A = \n");
         for(size_t i=0; i<num_points; i++){
             for(size_t j=0; j<num_points; j++){
-                printf("%f ", A(i,j));
+                printf("%f ", A.host(i,j));
             }
             printf("\n");
         }
@@ -83,18 +83,18 @@
 
         singular = 0; 
         parity = 0;
-        singular = LU_decompose_host(A, index, parity);  // A is returned as the LU matrix  
+        singular = LU_decompose_host(A, perm, parity);  // A is returned as the LU matrix  
         if(singular==0){
             printf("ERROR: matrix is singluar \n");
             return 0;
         }
 
-        LU_backsub(A, index, b);  // note: answer is sent back in b
+        LU_backsub(A, perm, b);  // note: answer is sent back in b
         b.update_host();
 
         printf("host executed routines \n");
         for(size_t i=0; i<num_points; i++){
-            printf("x = %f \n", b(i));
+            printf("x = %f \n", b.host(i));
         } // end for
         printf("exact = [1,1,1]^T \n\n");
 
@@ -117,18 +117,18 @@
         RUN({
             int singular_d = 0; 
             int parity_d = 0;
-            singular_d = LU_decompose(A, index, parity_d);  // A is returned as the LU matrix  
+            singular_d = LU_decompose(A, perm, parity_d);  // A is returned as the LU matrix  
             if(singular_d==0){
                 printf("ERROR: matrix is singluar \n");
             }
 
-            LU_backsub(A, index, b);  // note: answer is sent back in b
+            LU_backsub(A, perm, b);  // note: answer is sent back in b
         });
         b.update_host();
 
         printf("device executed routines \n");
         for(size_t i=0; i<num_points; i++){
-            printf("x = %f \n", b(i));
+            printf("x = %f \n", b.host(i));
         } // end for
         printf("exact = [1,1,1]^T \n\n");
 
@@ -157,7 +157,7 @@
         printf("A = \n");
         for(size_t i=0; i<num_points; i++){
             for(size_t j=0; j<num_points; j++){
-                printf("%f ", A(i,j));
+                printf("%f ", A.host(i,j));
             }
             printf("\n");
         }
@@ -165,18 +165,18 @@
 
         singular = 0; 
         parity = 0;
-        singular = LU_decompose_host(A, index, parity);  // A is returned as the LU matrix  
+        singular = LU_decompose_host(A, perm, parity);  // A is returned as the LU matrix  
         if(singular==0){
             printf("ERROR: matrix is singluar \n");
             return 0;
         }
 
-        LU_backsub(A, index, b);  // note: answer is sent back in b
+        LU_backsub(A, perm, b);  // note: answer is sent back in b
         b.update_host();
 
         printf("host executed routines \n");
         for(size_t i=0; i<num_points; i++){
-            printf("x = %f \n", b(i));
+            printf("x = %f \n", b.host(i));
         } // end for
         printf("exact = [1,2,3]^T \n\n");
 
@@ -202,18 +202,18 @@
         RUN({
             int singular_d = 0; 
             int parity_d = 0;
-            singular_d = LU_decompose(A, index, parity_d);  // A is returned as the LU matrix  
+            singular_d = LU_decompose(A, perm, parity_d);  // A is returned as the LU matrix  
             if(singular_d==0){
                 printf("ERROR: matrix is singluar \n");
             }
 
-            LU_backsub(A, index, b);  // note: answer is sent back in b
+            LU_backsub(A, perm, b);  // note: answer is sent back in b
         });
         b.update_host();
 
         printf("device executed routines \n");
         for(size_t i=0; i<num_points; i++){
-            printf("x = %f \n", b(i));
+            printf("x = %f \n", b.host(i));
         } // end for
         printf("exact = [1,2,3]^T \n\n");
 
@@ -242,7 +242,7 @@
         printf("A = \n");
         for(size_t i=0; i<num_points; i++){
             for(size_t j=0; j<num_points; j++){
-                printf("%f ", A(i,j));
+                printf("%f ", A.host(i,j));
             }
             printf("\n");
         }
@@ -251,18 +251,18 @@
 
         singular = 0; 
         parity = 0;
-        singular = LU_decompose_host(A, index, parity);  // A is returned as the LU matrix  
+        singular = LU_decompose_host(A, perm, parity);  // A is returned as the LU matrix  
         if(singular==0){
             printf("ERROR: matrix is singluar \n");
             return 0;
         }
 
-        LU_backsub(A, index, b);  // note: answer is sent back in b
+        LU_backsub(A, perm, b);  // note: answer is sent back in b
         b.update_host();
 
         printf("host executed routines \n");
         for(size_t i=0; i<num_points; i++){
-            printf("x = %f \n", b(i));
+            printf("x = %f \n", b.host(i));
         } // end for
         printf("exact = [1,2,3]^T \n\n");
 
@@ -288,26 +288,130 @@
         RUN({
             int singular_d = 0; 
             int parity_d = 0;
-            singular_d = LU_decompose(A, index, parity_d);  // A is returned as the LU matrix  
+            singular_d = LU_decompose(A, perm, parity_d);  // A is returned as the LU matrix  
             if(singular_d==0){
                 printf("ERROR: matrix is singluar \n");
             }
 
-            LU_backsub(A, index, b);  // note: answer is sent back in b
+            LU_backsub(A, perm, b);  // note: answer is sent back in b
         });
         b.update_host();
 
         printf("device executed routines \n");
         for(size_t i=0; i<num_points; i++){
-            printf("x = %f \n", b(i));
+            printf("x = %f \n", b.host(i));
         } // end for
         printf("exact = [1,2,3]^T \n\n");
 
+
+
+        // --------------
+        // --- test 4 ---
+        // --------------
+        size_t num_vals = 100;
+        DCArrayKokkos <double> M(num_vals,num_vals);
+        DCArrayKokkos <double> T_field(num_vals);
+        M.set_values(0.0);
+        T_field.set_values(0.0);
+
+        DCArrayKokkos <size_t> perm_T (num_points);
+
+        RUN({
+            M(0,0) = 2.0;
+            M(0,1) = -1.0;
+
+            M(num_vals-1, num_vals-2) = -1.0;
+            M(num_vals-1, num_vals-1) = 2.0;
+
+            // boundary conditions
+            T_field(0) = 10.0;
+            T_field(num_vals-1) = 1.0;
+        });
+        
+        FOR_ALL(i, 1, num_vals-1, {
+            M(i, i-1) = -1.0;
+            M(i,i) = 2.0;
+            M(i, i+1) = -1.0;
+        });
+        M.update_host();
+        T_field.update_host();
+
+        printf("M = \n");
+        for(size_t i=0; i<num_vals; i++){
+            for(size_t j=0; j<num_vals; j++){
+                printf("%f ", M.host(i,j));
+            }
+            printf("\n");
+        }
+        printf("\n");
+
+
+        singular = 0; 
+        parity = 0;
+        singular = LU_decompose_host(M, perm_T, parity);  // A is returned as the LU matrix  
+        if(singular==0){
+            printf("ERROR: matrix is singluar \n");
+            return 0;
+        }
+
+        LU_backsub(M, perm_T, T_field);  // note: answer is sent back in b
+        T_field.update_host();
+
+        printf("host executed routines \n");
+        for(size_t i=0; i<num_vals; i++){
+            printf("Temp_field = %f \n", T_field.host(i));
+        } // end for
+
+
+        // run the device functions
+        M.set_values(0.0);
+        T_field.set_values(0.0);
+        RUN({
+            M(0,0) = 2.0;
+            M(0,1) = -1.0;
+
+            M(num_vals-1, num_vals-2) = -1.0;
+            M(num_vals-1, num_vals-1) = 2.0;
+
+            // boundary conditions
+            T_field(0) = 10.0;
+            T_field(num_vals-1) = 1.0;
+        });
+        
+        FOR_ALL(i, 1, num_vals-1, {
+            M(i, i-1) = -1.0;
+            M(i,i) = 2.0;
+            M(i, i+1) = -1.0;
+        });
+        M.update_host();
+        T_field.update_host();
+
+
+        RUN({
+            int singular_d = 0; 
+            int parity_d = 0;
+            singular_d = LU_decompose(M, perm_T, parity_d);  // A is returned as the LU matrix  
+            if(singular_d==0){
+                printf("ERROR: matrix is singluar \n");
+            }
+
+            LU_backsub(M, perm_T, T_field);  // note: answer is sent back in b
+        });
+        T_field.update_host();
+
+        printf("device executed routines \n");
+        for(size_t i=0; i<num_vals; i++){
+            printf("Temp_field = %f \n", T_field.host(i));
+        } // end for
+
+
     } // end of kokkos scope
+
+
 
     Kokkos::finalize();
 
     return 1;
-    
+
  } // end function
 
