@@ -157,6 +157,66 @@ int LU_decompose(
     return(1);
 } // end function
 
+
+
+// -------------------------------
+// LU back substitution functions 
+// -------------------------------
+
+// this function is run on the GPU
+KOKKOS_FUNCTION
+void LU_backsub(
+    const DCArrayKokkos <double> &A,     // input matrix A in LU decomp format
+    const DCArrayKokkos <size_t> &perm,  // permutations
+    const DCArrayKokkos <double> &b){          // RHS and is answer x to Ax=B
+
+        const int n = A.dims(0);    // size of matrix
+
+        int ii = -1;
+
+
+        // First step of backsubstitution; the only wrinkle is to unscramble 
+        // the permutation order. Note: the algorithm is optimized for a 
+        // possibility of large amount of zeroes in b
+        
+        for(size_t i = 0; i < n; i++) {
+           
+            size_t ip = perm(i);
+
+            double sum = b(ip);
+            b(ip) = b(i);
+         
+            if(ii >= 0){
+                for(size_t j = ii; j<i; j++){
+                    sum -= A(i,j)*b(j);
+                }
+            }
+            else if(sum>0){
+                ii=i;  // a nonzero element encounted
+            }
+          
+            b(i) = sum;
+        } // end loop i
+        
+        // the second step
+        for(int i=n-1; i>=0; i--) {
+            
+            double sum = b(i);
+            for(size_t j=i+1; j<n; j++){
+                sum-=A(i,j)*b(j);
+            } // end j
+       
+            b(i)=sum/A(i,i);
+        } // end loop i
+
+} // end if
+
+
+// ============================================
+//  GPU kernals
+// ============================================
+
+
 // the function is run from the host, and kernals
 // inside this function are run on the GPU
 int LU_decompose_host(
@@ -315,63 +375,11 @@ int LU_decompose_host(
         } // end if
 
     } // end for j
+
+    A.update_host();
     
     return(1);
 }
-
-
-// -------------------------------
-// LU back substitution functions 
-// -------------------------------
-
-// this function is run on the GPU
-KOKKOS_FUNCTION
-void LU_backsub(
-    const DCArrayKokkos <double> &A,     // input matrix A in LU decomp format
-    const DCArrayKokkos <size_t> &perm,  // permutations
-    const DCArrayKokkos <double> &b){          // RHS and is answer x to Ax=B
-
-        const int n = A.dims(0);    // size of matrix
-
-        int ii = -1;
-
-
-        // First step of backsubstitution; the only wrinkle is to unscramble 
-        // the permutation order. Note: the algorithm is optimized for a 
-        // possibility of large amount of zeroes in b
-        
-        for(size_t i = 0; i < n; i++) {
-           
-            size_t ip = perm(i);
-
-            double sum = b(ip);
-            b(ip) = b(i);
-         
-            if(ii >= 0){
-                for(size_t j = ii; j<i; j++){
-                    sum -= A(i,j)*b(j);
-                }
-            }
-            else if(sum>0){
-                ii=i;  // a nonzero element encounted
-            }
-          
-            b(i) = sum;
-        } // end loop i
-        
-        // the second step
-        for(int i=n-1; i>=0; i--) {
-            
-            double sum = b(i);
-            for(size_t j=i+1; j<n; j++){
-                sum-=A(i,j)*b(j);
-            } // end j
-       
-            b(i)=sum/A(i,i);
-        } // end loop i
-
-} // end if
-
 
 
 // the function is run from the host, and kernals
@@ -383,7 +391,7 @@ void LU_backsub_host(
 
     const int n = A.dims(0);    // size of matrix
 
-    
+
     // First step of backsubstitution; the only wrinkle is to unscramble 
     // the permutation order. Note, the algorithm is optimized for a 
     // possibility of large amount of zeroes in b 
@@ -417,9 +425,9 @@ void LU_backsub_host(
             }
           
             b.host(i) = sum;
-            b.update_device();
+            
     } // end loop i
-
+    b.update_device();
 
      // the second step
      // Backward substitution: solve U b = x
