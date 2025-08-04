@@ -71,6 +71,8 @@
             b(1) = 2;
             b(2) = 3;
         });
+        A.update_host();
+        b.update_host();
 
         printf("A = \n");
         for(size_t i=0; i<num_points; i++){
