@@ -117,6 +117,9 @@ if (KOKKOS)
   add_executable(annkokkos_compare ann_kokkos_compare.cpp)
   target_link_libraries(annkokkos_compare ${LINKING_LIBRARIES})
 
+  add_executable(stl_tester stl_tester.cpp)
+  target_link_libraries(stl_tester ${LINKING_LIBRARIES})
+
   #add_executable(ompperftest ompperftest.cpp)
   #target_link_libraries(ompperftest ${LINKING_LIBRARIES})
 
