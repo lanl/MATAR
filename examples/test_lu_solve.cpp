@@ -45,14 +45,14 @@
         std::cout << "testing MATAR LU solver \n\n";
 
         size_t num_points = 3;
-        DCArrayKokkos <double> A(num_points, num_points);
-        DCArrayKokkos <double> b(num_points);
+        DCArrayKokkos <double> A(num_points, num_points, "A");
+        DCArrayKokkos <double> b(num_points, "b");
 
         // used for LU problem
         int singular; 
         int parity;
-        DCArrayKokkos <size_t> perm (num_points);
-        CArrayKokkos <double> vv(num_points);   // temp arrary for solver
+        DCArrayKokkos <size_t> perm (num_points, "perm");
+        CArrayKokkos <double> vv(num_points, "vv");   // temp arrary for solver
 
 
         // --------------
@@ -310,13 +310,13 @@
         // --- test 4 ---
         // --------------
         size_t num_vals = 10;
-        DCArrayKokkos <double> M(num_vals,num_vals);
-        DCArrayKokkos <double> T_field(num_vals);
+        DCArrayKokkos <double> M(num_vals,num_vals, "M");
+        DCArrayKokkos <double> T_field(num_vals, "T_field");
         M.set_values(0.0);
         T_field.set_values(0.0);
 
-        DCArrayKokkos <size_t> perm_T (num_vals);
-        CArrayKokkos <double> vv_T (num_vals);
+        DCArrayKokkos <size_t> perm_T (num_vals, "perm_T");
+        CArrayKokkos <double> vv_T (num_vals, "vv_T");
 
         RUN({
             M(0,0) = 2.0;
@@ -355,7 +355,7 @@
             return 0;
         }
 
-        LU_backsub(M, perm_T, T_field);  // note: answer is sent back in b
+        LU_backsub_host(M, perm_T, T_field);  // note: answer is sent back in b
         T_field.update_host();
 
         printf("host executed routines \n");
