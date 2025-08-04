@@ -57,11 +57,10 @@ KOKKOS_FUNCTION
 int LU_decompose(
     const DCArrayKokkos <double> &A, // matrix A passed in and is sent out in LU decomp format
     const DCArrayKokkos <size_t> &perm,  // permutations
+    const CArrayKokkos <double> &vv,
     int &parity) {                 // parity (+1 or -1)
                           
     const int n = A.dims(0);  // size of matrix 
-
-    CArrayKokkos <double> vv(n);   // temp arrary for solver
 
     parity = 1;
 
@@ -163,11 +162,10 @@ int LU_decompose(
 int LU_decompose_host(
     DCArrayKokkos <double> &A, // matrix A passed in and is sent out in LU decomp format
     DCArrayKokkos <size_t> &perm,  // permutations
+    CArrayKokkos <double> &vv,
     int &parity) {                 // parity (+1 or -1)
                           
     const int n = A.dims(0);  // size of matrix 
-
-    CArrayKokkos <double> vv(n);   // temp arrary for solver
 
     parity = 1;
     
@@ -394,11 +392,12 @@ void LU_backsub_host(
     int ii = -1;
     for(size_t i = 0; i < n; i++) {
            
-            size_t ip = perm(i);
+            size_t ip = perm.host(i);
 
-            double sum = b(ip);
+            double sum = b.host(ip);
             double sum_tally = 0.0;
-            b(ip) = b(i);
+            b.host(ip) = b.host(i);
+            b.update_device();
          
             if(ii >= 0){
 
@@ -417,7 +416,8 @@ void LU_backsub_host(
                 ii=i;  // a nonzero element encounted
             }
           
-            b(i) = sum;
+            b.host(i) = sum;
+            b.update_device();
     } // end loop i
 
 
@@ -435,9 +435,10 @@ void LU_backsub_host(
         }, sum);
         Kokkos::fence();
 
-        sum += b(i);
+        sum += b.host(i);
 
-        b(i) = sum/A(i,i);
+        b.host(i) = sum/A.host(i,i);
+        b.update_device();
     } // end for i       
 
 } // end LU backsubstitution on lauched from host

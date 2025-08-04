@@ -52,6 +52,7 @@
         int singular; 
         int parity;
         DCArrayKokkos <size_t> perm (num_points);
+        CArrayKokkos <double> vv(num_points);   // temp arrary for solver
 
 
         // --------------
@@ -83,13 +84,13 @@
 
         singular = 0; 
         parity = 0;
-        singular = LU_decompose_host(A, perm, parity);  // A is returned as the LU matrix  
+        singular = LU_decompose_host(A, perm, vv, parity);  // A is returned as the LU matrix  
         if(singular==0){
             printf("ERROR: matrix is singluar \n");
             return 0;
         }
 
-        LU_backsub(A, perm, b);  // note: answer is sent back in b
+        LU_backsub_host(A, perm, b);  // note: answer is sent back in b
         b.update_host();
 
         printf("host executed routines \n");
@@ -117,7 +118,7 @@
         RUN({
             int singular_d = 0; 
             int parity_d = 0;
-            singular_d = LU_decompose(A, perm, parity_d);  // A is returned as the LU matrix  
+            singular_d = LU_decompose(A, perm, vv, parity_d);  // A is returned as the LU matrix  
             if(singular_d==0){
                 printf("ERROR: matrix is singluar \n");
             }
@@ -165,13 +166,13 @@
 
         singular = 0; 
         parity = 0;
-        singular = LU_decompose_host(A, perm, parity);  // A is returned as the LU matrix  
+        singular = LU_decompose_host(A, perm, vv, parity);  // A is returned as the LU matrix  
         if(singular==0){
             printf("ERROR: matrix is singluar \n");
             return 0;
         }
 
-        LU_backsub(A, perm, b);  // note: answer is sent back in b
+        LU_backsub_host(A, perm, b);  // note: answer is sent back in b
         b.update_host();
 
         printf("host executed routines \n");
@@ -202,7 +203,7 @@
         RUN({
             int singular_d = 0; 
             int parity_d = 0;
-            singular_d = LU_decompose(A, perm, parity_d);  // A is returned as the LU matrix  
+            singular_d = LU_decompose(A, perm, vv, parity_d);  // A is returned as the LU matrix  
             if(singular_d==0){
                 printf("ERROR: matrix is singluar \n");
             }
@@ -251,13 +252,13 @@
 
         singular = 0; 
         parity = 0;
-        singular = LU_decompose_host(A, perm, parity);  // A is returned as the LU matrix  
+        singular = LU_decompose_host(A, perm, vv, parity);  // A is returned as the LU matrix  
         if(singular==0){
             printf("ERROR: matrix is singluar \n");
             return 0;
         }
 
-        LU_backsub(A, perm, b);  // note: answer is sent back in b
+        LU_backsub_host(A, perm, b);  // note: answer is sent back in b
         b.update_host();
 
         printf("host executed routines \n");
@@ -288,7 +289,7 @@
         RUN({
             int singular_d = 0; 
             int parity_d = 0;
-            singular_d = LU_decompose(A, perm, parity_d);  // A is returned as the LU matrix  
+            singular_d = LU_decompose(A, perm, vv, parity_d);  // A is returned as the LU matrix  
             if(singular_d==0){
                 printf("ERROR: matrix is singluar \n");
             }
@@ -315,6 +316,7 @@
         T_field.set_values(0.0);
 
         DCArrayKokkos <size_t> perm_T (num_vals);
+        CArrayKokkos <double> vv_T (num_vals);
 
         RUN({
             M(0,0) = 2.0;
@@ -347,7 +349,7 @@
 
         singular = 0; 
         parity = 0;
-        singular = LU_decompose_host(M, perm_T, parity);  // A is returned as the LU matrix  
+        singular = LU_decompose_host(M, perm_T, vv_T, parity);  // A is returned as the LU matrix  
         if(singular==0){
             printf("ERROR: matrix is singluar \n");
             return 0;
@@ -389,7 +391,7 @@
         RUN({
             int singular_d = 0; 
             int parity_d = 0;
-            singular_d = LU_decompose(M, perm_T, parity_d);  // A is returned as the LU matrix  
+            singular_d = LU_decompose(M, perm_T, vv_T, parity_d);  // A is returned as the LU matrix  
             if(singular_d==0){
                 printf("ERROR: matrix is singluar \n");
             }
