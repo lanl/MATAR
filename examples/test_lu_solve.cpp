@@ -262,7 +262,7 @@
 
         LU_backsub_host(A, perm, b);  // note: answer is sent back in b
         b.update_host();
-
+        
         printf("host executed routines \n");
         for(size_t i=0; i<num_points; i++){
             printf("x = %f \n", b.host(i));
@@ -358,7 +358,7 @@
         }
 
         LU_backsub_host(M, perm_T, T_field);  // note: answer is sent back in b
-        T_field.update_host();
+        b.update_host();
 
         printf("host executed routines \n");
         for(size_t i=0; i<num_vals; i++){

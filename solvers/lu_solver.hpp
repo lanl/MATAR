@@ -376,7 +376,6 @@ int LU_decompose_host(
 
     } // end for j
 
-    A.update_host();
     perm.update_host();
     
     return(1);
@@ -392,43 +391,37 @@ void LU_backsub_host(
 
     const int n = A.dims(0);    // size of matrix
 
+    CArrayKokkos <double> val(1); // a helper variable that carries a scalar
 
     // First step of backsubstitution; the only wrinkle is to unscramble 
     // the permutation order. Note, the algorithm is optimized for a 
     // possibility of large amount of zeroes in b 
 
     // Forward substitution: solve L x = P b
-    int ii = -1;
     for(size_t i = 0; i < n; i++) {
            
-            size_t ip = perm.host(i);
+        size_t ip = perm.host(i);
+            
+	    RUN({
+	        val(0) = b(ip);
+          	b(ip) = b(i);
+        });
 
-            double sum = b.host(ip);
-            double sum_tally = 0.0;
-            b.host(ip) = b.host(i);
-            b.update_device();
-         
-            //if(ii >= 0){
+        double sum = 0.0;
+        double sum_lcl  = 0.0;
 
-                double sum_lcl = 0.0;
-
-                // j=ii to j<i
-                FOR_REDUCE_SUM(j, 0, i, 
-                               sum_lcl, {
-                    sum_lcl -= A(i,j)*b(j);
-                }, sum_tally);
-                Kokkos::fence();
-                
-                sum += sum_tally;
-            //}
-            //else if(sum>0){
-            //    ii=i;  // a nonzero element encounted
-            //}
+        // j=0 to j<i
+        FOR_REDUCE_SUM(j, 0, i, 
+                            sum_lcl, {
+                sum_lcl -= A(i,j)*b(j);
+        }, sum);
+        Kokkos::fence();
           
-            b.host(i) = sum;
+	    RUN({
+            b(i) = sum + val(0);
+	    });
             
     } // end loop i
-    b.update_device();
 
     // the second step
     // Backward substitution: solve U b = x
@@ -443,13 +436,12 @@ void LU_backsub_host(
             sum_lcl -= A(i,j)*b(j);
         }, sum);
         Kokkos::fence();
-
-        sum += b.host(i);
-
-        b.host(i) = sum/A.host(i,i);
-        b.update_device();
-        Kokkos::fence();
-    } // end for i       
+	
+	    RUN({
+            b(i) = (sum+b(i))/A(i,i);
+	    });
+	
+    } // end for i 
 
 } // end LU backsubstitution on lauched from host
 
