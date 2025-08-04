@@ -185,7 +185,6 @@ int LU_decompose_host(
             max_val_lcl = fmax(max_val_lcl, fabs(A(i,j)) );
 
         }, max_val); // end parallel j
-        Kokkos::fence();
         
         vv(i) = max_val;       
 
@@ -219,12 +218,12 @@ int LU_decompose_host(
                 sum_lcl -= A(i,k)*A(k,j);
 
             }, sum); // end parallel k
-            Kokkos::fence();
 
             sum += A(i,j);
 
             A(i,j) = sum;
         }); // end parallel
+        Kokkos::fence();
     
         
         // this is the part a) for i==j and part b) for i>j
@@ -240,7 +239,6 @@ int LU_decompose_host(
                 sum_lcl -= A(i,k)*A(k,j);
 
             }, sum); // parallel k
-            Kokkos::fence();
 
             sum += A(i,j);
 
@@ -435,6 +433,7 @@ void LU_backsub_host(
                        sum_lcl, {
             sum_lcl -= A(i,j)*b(j);
         }, sum);
+        Kokkos::fence();
 
         sum += b(i);
 
