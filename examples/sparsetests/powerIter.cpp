@@ -287,12 +287,12 @@ int main(int argc, char** argv)
         auto lap2 = std::chrono::high_resolution_clock::now();
         if (!EXPORT) {
             printf("Max eig is %f %f\n", eig1, eig2);
-            printf("Dense took %.2e \n Sparse took %.2e\n", std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9,
-                std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap) * 1e-9);
+            printf("Dense took %.2e \n Sparse took %.2e\n", std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start).count() * 1e-9,
+                std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap).count() * 1e-9);
         }
         else {
-            printf("%ld, %.2e, %.2e, %d, %d, %f, %f\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start) * 1e-9,
-            std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap) * 1e-9, t1, t2, eig1, eig2);
+            printf("%ld, %.2e, %.2e, %d, %d, %f, %f\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start).count() * 1e-9,
+            std::chrono::duration_cast<std::chrono::nanoseconds>(lap2 - lap).count() * 1e-9, t1, t2, eig1, eig2);
         }
     } Kokkos::finalize();
     return 0;
