@@ -35,7 +35,10 @@
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **********************************************************************************************/
  
+ #include <chrono>   // for timing
  #include "lu_solver.hpp"
+
+ bool verbose = false;
 
  int main(int argc, char *argv[]){
 
@@ -311,7 +314,7 @@
         // --------------
         // --- test 4 ---
         // --------------
-        size_t num_vals = 10;
+        size_t num_vals = 1000;
         DCArrayKokkos <double> M(num_vals,num_vals, "M");
         DCArrayKokkos <double> T_field(num_vals, "T_field");
         M.set_values(0.0);
@@ -340,14 +343,19 @@
         M.update_host();
         T_field.update_host();
 
-        printf("M = \n");
-        for(size_t i=0; i<num_vals; i++){
+        if(verbose){
+            printf("M = \n");
+            for(size_t i=0; i<num_vals; i++){
             for(size_t j=0; j<num_vals; j++){
                 printf("%f ", M.host(i,j));
             }
             printf("\n");
+            }
+            printf("\n");
         }
-        printf("\n");
+
+        // start timer
+        auto time_1 = std::chrono::high_resolution_clock::now();
 
         singular = 0; 
         parity = 0;
@@ -360,11 +368,18 @@
         LU_backsub_host(M, perm_T, T_field);  // note: answer is sent back in b
         T_field.update_host();
 
-        printf("host executed routines \n");
-        for(size_t i=0; i<num_vals; i++){
-            printf("Temp_field = %f \n", T_field.host(i));
-        } // end for
+        // end timer
+        auto time_2 = std::chrono::high_resolution_clock::now();
 
+        std::chrono::duration <double, std::milli> ms = time_2 - time_1;
+        std::cout << "runtime of parallel heat transfer solve = " << ms.count() << "ms\n\n";
+
+        if(verbose){
+            printf("host executed routines \n");
+            for(size_t i=0; i<num_vals; i++){
+                printf("Temp_field = %f \n", T_field.host(i));
+            } // end for
+        }
 
         // run the device functions
         M.set_values(0.0);
@@ -389,6 +404,8 @@
         M.update_host();
         T_field.update_host();
 
+        // start timer
+        auto time_3 = std::chrono::high_resolution_clock::now();
 
         RUN({
             int singular_d = 0; 
@@ -402,10 +419,20 @@
         });
         T_field.update_host();
 
-        printf("device executed routines \n");
-        for(size_t i=0; i<num_vals; i++){
-            printf("Temp_field = %f \n", T_field.host(i));
-        } // end for
+        // end timer
+        auto time_4 = std::chrono::high_resolution_clock::now();
+
+        std::chrono::duration <double, std::milli> ms2 = time_4 - time_3;
+        std::cout << "runtime of serial heat transfer solve = " << ms2.count() << "ms\n\n";
+
+
+
+        if(verbose){
+            printf("device executed routines \n");
+            for(size_t i=0; i<num_vals; i++){
+                printf("Temp_field = %f \n", T_field.host(i));
+            } // end for
+        }
 
 
     } // end of kokkos scope
