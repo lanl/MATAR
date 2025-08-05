@@ -71,11 +71,11 @@ show_help() {
 build_action="full-app"
 execution="examples"
 machine="linux"
-kokkos_build_type="cuda"
+kokkos_build_type="serial"
 build_cores="1"
 trilinos="disabled"
 intel_mkl="disabled"
-debug="enabled"
+debug="disabled"
 
 # Define arrays of valid options
 valid_build_action=("full-app" "set-env" "install-matar" "install-kokkos" "matar")
