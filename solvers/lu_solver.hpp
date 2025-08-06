@@ -367,10 +367,13 @@ int LU_decompose_host(
         
         // finally, divide by the pivot element 
         if(j<n-1) {
+	    double temp = 1.0/A(j,j);
+		
             // loop is from i=j+1 to i<n
             FOR_ALL(i, j+1, n, {
-                A(i,j) *= 1.0/A(j,j);
+                A(i,j) *= temp;
             });
+	    Kokkos::fence();
 
         } // end if
 
