@@ -67,6 +67,7 @@ double invert_3x3(
 
 
 // Helper to compute 3x3 determinant for submatrices
+KOKKOS_INLINE_FUNCTION
 double det3x3(
     double a00, double a01, double a02,
     double a10, double a11, double a12,
