@@ -78,6 +78,7 @@ double det3x3(
 } // end function
 
 // Compute inverse of 4x4 matrix using Cramer's rule
+KOKKOS_FUNCTION
 double invert_4x4(const DCArrayKokkos <double> &A,  
                   const DCArrayKokkos <double> &inv) {
     
