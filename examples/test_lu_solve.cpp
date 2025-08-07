@@ -45,7 +45,8 @@ int test_diagonal();
 int test_upper();
 int test_ragged();
 int test_heat_transfer();
-int test_hilbert();
+int test_hilbert(size_t num);
+int test_hilbert(size_t num);
 
 
 int main(int argc, char *argv[]){
@@ -61,7 +62,8 @@ int main(int argc, char *argv[]){
         singular = test_upper();
         singular = test_ragged();
         singular = test_heat_transfer();
-        singular = test_hilbert();
+        singular = test_hilbert(3);
+        singular = test_hilbert(4);
 
     } // end of kokkos scope
 
@@ -518,10 +520,8 @@ int test_heat_transfer(){
 // --------------
 // --- test 5 ---
 // --------------
-int test_hilbert(){
+int test_hilbert(size_t num){
 
-
-    size_t num = 3;
     DCArrayKokkos <double> A(num, num, "A");
     DCArrayKokkos <double> b(num, "b");
 
@@ -566,9 +566,20 @@ int test_hilbert(){
 
 
     // solve for inverse using Cramer's rule
-    RUN({
-        double det = invert_3x3(A_inverse, A);
-    });
+    if(num==3){
+        RUN({
+            double det = invert_3x3(A, A_inverse);
+        });
+    }
+    else if(num==4){
+        RUN({
+            double det = invert_4x4(A, A_inverse);
+        });
+    } else {
+        printf("matrix size not supported in this test case \n");
+        return 0;
+    } 
+    // end if
 
     FOR_FIRST(i, 0, num, {
         FOR_SECOND(j, 0, num, {   

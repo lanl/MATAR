@@ -39,8 +39,8 @@
  // Compute inverse of 3x3 matrix using Cramer's rule
 KOKKOS_FUNCTION
 double invert_3x3(
-    const DCArrayKokkos <double> &inv,
-    const DCArrayKokkos <double> &A){
+    const DCArrayKokkos <double> &A,
+    const DCArrayKokkos <double> &inv){
 
     double  det = 
         A(0,0)*(A(1,1)*A(2,2) - A(1,2)*A(2,1)) -
@@ -65,7 +65,7 @@ double invert_3x3(
 } // end of inverse matrix 
 
 
-/*
+
 // Helper to compute 3x3 determinant for submatrices
 double det3x3(
     double a00, double a01, double a02,
@@ -75,41 +75,46 @@ double det3x3(
     return a00 * (a11 * a22 - a12 * a21)
          - a01 * (a10 * a22 - a12 * a20)
          + a02 * (a10 * a21 - a11 * a20);
-}
+} // end function
 
 // Compute inverse of 4x4 matrix using Cramer's rule
-double invert4x4(const double A[4][4], double inv[4][4]) {
+double invert_4x4(const DCArrayKokkos <double> &A,  
+                  const DCArrayKokkos <double> &inv) {
+    
+    // helper array
     double cof[4][4];
 
     // Compute cofactor matrix
-    for (int i = 0; i < 4; ++i) {
-        for (int j = 0; j < 4; ++j) {
+    for (size_t i = 0; i < 4; ++i) {
+        for (size_t j = 0; j < 4; ++j) {
             // Build 3x3 minor matrix excluding row i and column j
             double minor[3][3];
-            int mi = 0;
-            for (int ii = 0; ii < 4; ++ii) {
+            size_t mi = 0;
+            for (size_t ii = 0; ii < 4; ++ii) {
                 if (ii == i) continue;
-                int mj = 0;
-                for (int jj = 0; jj < 4; ++jj) {
+                size_t mj = 0;
+                for (size_t jj = 0; jj < 4; ++jj) {
                     if (jj == j) continue;
-                    minor[mi][mj] = A[ii][jj];
+                    minor[mi][mj] = A(ii,jj);
                     ++mj;
-                }
+                } // end jj
                 ++mi;
-            }
+            } // end ii
 
             cof[i][j] = ((i + j) % 2 == 0 ? 1 : -1) * det3x3(
                 minor[0][0], minor[0][1], minor[0][2],
                 minor[1][0], minor[1][1], minor[1][2],
                 minor[2][0], minor[2][1], minor[2][2]
-            );
-        }
-    }
+            ); // function
+
+        } // end j
+    }// end i
 
     // Compute determinant from first row and cofactors
     double det = 0.0;
-    for (int j = 0; j < 4; ++j)
-        det += A[0][j] * cof[0][j];
+    for (size_t j = 0; j < 4; ++j){
+        det += A(0,j) * cof[0][j];
+    } // end for j
 
     // if (std::fabs(det) < 1e-12) {
     //     std::cerr << "Matrix is singular or nearly singular.\n";
@@ -117,10 +122,11 @@ double invert4x4(const double A[4][4], double inv[4][4]) {
     // }
 
     // Transpose cofactors to get adjugate, then divide by determinant
-    for (int i = 0; i < 4; ++i)
-        for (int j = 0; j < 4; ++j)
-            inv[i][j] = cof[j][i] / (det+1.e-16);
+    for (size_t i = 0; i < 4; ++i){
+        for (size_t j = 0; j < 4; ++j){
+            inv(i,j) = cof[j][i] / (det+1.e-16);
+        } // end j
+    } // end i
 
     return det;
-}
-*/
+} // end function
