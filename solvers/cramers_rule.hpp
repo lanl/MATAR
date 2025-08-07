@@ -1,3 +1,5 @@
+#ifndef CRAMERSRULE_H
+#define CRAMERSRULE_H
 /**********************************************************************************************
  © 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
@@ -67,6 +69,7 @@ double invert_3x3(
 
 
 // Helper to compute 3x3 determinant for submatrices
+KOKKOS_INLINE_FUNCTION
 double det3x3(
     double a00, double a01, double a02,
     double a10, double a11, double a12,
@@ -78,6 +81,7 @@ double det3x3(
 } // end function
 
 // Compute inverse of 4x4 matrix using Cramer's rule
+KOKKOS_FUNCTION
 double invert_4x4(const DCArrayKokkos <double> &A,  
                   const DCArrayKokkos <double> &inv) {
     
@@ -130,3 +134,5 @@ double invert_4x4(const DCArrayKokkos <double> &A,
 
     return det;
 } // end function
+
+#endif // CRAMERS
