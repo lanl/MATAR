@@ -265,44 +265,45 @@ int LU_decompose_host(
     for(size_t j = 0; j < n; j++) {
         
         // this is the part a) of the algorithm except for i==j 
-        FOR_FIRST(i, 0, j, {
+        for(size_t i=0; i<j; i++) {
             
             double sum = 0.0;
             double sum_lcl = 0.0;
             
-            FOR_REDUCE_SUM_SECOND(k, 0, i, 
-                                  sum_lcl, {
+            FOR_REDUCE_SUM(k, 0, i, 
+                           sum_lcl, {
 
                 sum_lcl -= A(i,k)*A(k,j);
 
             }, sum); // end parallel k
 
-            sum += A(i,j);
+            RUN({
+                A(i,j) = sum+A(i,j);
+            });
 
-            A(i,j) = sum;
-        }); // end parallel
-        Kokkos::fence();
+        } // end i
+
     
         
         // this is the part a) for i==j and part b) for i>j
         // loop is from i=j to i<n 
-        FOR_FIRST(i, j, n, {
+        for(size_t i=j; i<n; i++) {
             
             double sum = 0.0;
             double sum_lcl = 0.0;
 
-            FOR_REDUCE_SUM_SECOND(k, 0, j, 
-                                  sum_lcl, {
+            FOR_REDUCE_SUM(k, 0, j, 
+                           sum_lcl, {
 
                 sum_lcl -= A(i,k)*A(k,j);
 
             }, sum); // parallel k
 
-            sum += A(i,j);
+            RUN({
+                A(i,j) = sum+A(i,j);
+            });
+        } // end i
 
-            A(i,j) = sum;
-        }); // end parallel
-        Kokkos::fence();
 
         // initialize the search for the largest pivot element
 
@@ -363,14 +364,18 @@ int LU_decompose_host(
                 A(j,j) = TINY;
             }
         });
+        A.update_host();
         
         
         // finally, divide by the pivot element 
         if(j<n-1) {
+	    double temp = 1.0/A.host(j,j);
+		
             // loop is from i=j+1 to i<n
             FOR_ALL(i, j+1, n, {
-                A(i,j) *= 1.0/A(j,j);
+                A(i,j) *= temp;
             });
+	    Kokkos::fence();
 
         } // end if
 
