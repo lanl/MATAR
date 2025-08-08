@@ -364,11 +364,12 @@ int LU_decompose_host(
                 A(j,j) = TINY;
             }
         });
+        A.update_host();
         
         
         // finally, divide by the pivot element 
         if(j<n-1) {
-	    double temp = 1.0/A(j,j);
+	    double temp = 1.0/A.host(j,j);
 		
             // loop is from i=j+1 to i<n
             FOR_ALL(i, j+1, n, {

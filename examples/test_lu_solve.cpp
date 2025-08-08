@@ -58,11 +58,22 @@ int main(int argc, char *argv[]){
 
         int singular;
 
+        std::cout << "Running test_diagonal\n\n";
         singular = test_diagonal();
+
+        std::cout << "Running test_upper\n\n";
         singular = test_upper();
+
+        std::cout << "Running test_ragged\n\n";
         singular = test_ragged();
+
+        std::cout << "Running test_heat_transfer\n\n";
         singular = test_heat_transfer();
+
+        std::cout << "Running test_hilbert(3)\n\n";
         singular = test_hilbert(3);
+
+        std::cout << "Running test_hilbert(4)\n\n";
         singular = test_hilbert(4);
 
     } // end of kokkos scope
