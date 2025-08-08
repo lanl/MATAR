@@ -227,6 +227,8 @@ int LU_decompose_host(
                           
     const int n = A.dims(0);  // size of matrix 
 
+    CArrayKokkos <double> temp_scalar(1); // persistant scalar on device
+
     parity = 1;
     
     // STEP 1:
@@ -364,16 +366,17 @@ int LU_decompose_host(
                 A(j,j) = TINY;
             }
         });
-        A.update_host();
         
         
         // finally, divide by the pivot element 
         if(j<n-1) {
-	    double temp = 1.0/A.host(j,j);
+            RUN({
+	            temp_scalar(0) = 1.0/A(j,j);
+            });
 		
             // loop is from i=j+1 to i<n
             FOR_ALL(i, j+1, n, {
-                A(i,j) *= temp;
+                A(i,j) *= temp_scalar(0);
             });
 	    Kokkos::fence();
 

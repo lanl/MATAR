@@ -37,6 +37,8 @@
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **********************************************************************************************/
 
+ //////////////////////////
+ /*
 #include <iostream>
 #include <stdio.h>
 #include <cmath>
@@ -213,6 +215,9 @@ int test_qr() {
 
     return 0;
 }
+*/
+//////////////////////////
+
 
 #endif // QR
 
