@@ -48,6 +48,7 @@ int test_ragged();
 int test_heat_transfer();
 int test_hilbert(size_t num);
 int test_hilbert(size_t num);
+int test_qr();
 
 
 int main(int argc, char *argv[]){
@@ -55,27 +56,30 @@ int main(int argc, char *argv[]){
     Kokkos::initialize(argc, argv);
     {  
 
-        std::cout << "testing MATAR LU solver \n\n";
+        std::cout << "\ntesting MATAR LU solver \n\n";
 
         int singular;
 
-        std::cout << "Running test_diagonal\n\n";
+        std::cout << "\nRunning test_diagonal\n\n";
         singular = test_diagonal();
 
-        std::cout << "Running test_upper\n\n";
+        std::cout << "\nRunning test_upper\n\n";
         singular = test_upper();
 
-        std::cout << "Running test_ragged\n\n";
+        std::cout << "\nRunning test_ragged\n\n";
         singular = test_ragged();
 
-        std::cout << "Running test_heat_transfer\n\n";
+        std::cout << "\nRunning test_heat_transfer\n\n";
         singular = test_heat_transfer();
 
-        std::cout << "Running test_hilbert(3)\n\n";
+        std::cout << "\nRunning test_hilbert(3)\n\n";
         singular = test_hilbert(3);
 
-        std::cout << "Running test_hilbert(4)\n\n";
+        std::cout << "\nRunning test_hilbert(4)\n\n";
         singular = test_hilbert(4);
+
+        std::cout << "\nRunning qr test\n\n";
+        singular = test_qr();
 
     } // end of kokkos scope
 
@@ -86,6 +90,38 @@ int main(int argc, char *argv[]){
 
  } // end function
 
+
+ // Test the QR solver
+int test_qr() {
+
+    size_t num = 3;
+    DCArrayKokkos <double> A(num,num,"A");
+    DCArrayKokkos <double> b(num,"b");
+    DCArrayKokkos <double> x(num,"x");
+
+    // run 
+    A.set_values(0.0);
+    RUN({
+        A(2,0) = 1;
+        A(1,1) = 2;
+        A(0,2) = 3;
+
+        b(0) = 3;
+        b(1) = 2;
+        b(2) = 1;
+    });
+    A.update_host();
+    b.update_host();
+
+    QR_solver_host(A, b, x);
+
+    std::cout << "Solution x:\n";
+    for (size_t i=0; i<num; i++){
+        std::cout << x(i) << "\n";
+    }
+
+    return 0;
+}
 
 
 // --------------
