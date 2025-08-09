@@ -38,6 +38,7 @@
 #include <chrono>   // for timing
 #include "lu_solver.hpp"
 #include "cramers_rule.hpp"
+#include "qr_solver.hpp"
 
 bool verbose = false;
 

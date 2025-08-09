@@ -38,7 +38,7 @@
  **********************************************************************************************/
 
  //////////////////////////
- /*
+
 #include <iostream>
 #include <stdio.h>
 #include <cmath>
@@ -149,11 +149,9 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
             sum=0;
             sum_lcl = 0;
 
-            FOR_REDUCE_SUM_SECOND(k, 0, m, 
-                                  sum_lcl, {
-                sum_lcl -= R(i,j) * Q(k,i);
-            }, sum);
-            v(j,k) = sum;
+            FOR_ALL(k, 0, m,{
+                v(j,k) -= R(i,j) * Q(k,i);
+            });
 
             teamMember.team_barrier();
 
@@ -199,23 +197,9 @@ void QR_solver_host(const DCArrayKokkos <double> & A,
 }
 
 
-// Test the QR solver
-int test_qr() {
-    DCArrayKokkos <double> A(2,3);
 
-    DCArrayKokkos <double> b(3);
 
-    DCArrayKokkos <double> x(3);
 
-    Vector x = QR_solver_host(A, b);
-
-    std::cout << "Solution x:\n";
-    for (double xi : x)
-        std::cout << xi << "\n";
-
-    return 0;
-}
-*/
 //////////////////////////
 
 
