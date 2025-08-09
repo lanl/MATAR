@@ -46,6 +46,7 @@ int test_qr_upper();
 int test_qr_ragged();
 int test_qr_heat_transfer(size_t num_vals);
 int test_qr_hilbert(size_t num);
+int test_qr_nonsquare();
 
 
 int main(int argc, char *argv[]){
@@ -74,6 +75,9 @@ int main(int argc, char *argv[]){
 
         std::cout << "\nRunning test_qr_hilbert(4)\n\n";
         singular = test_qr_hilbert(4);
+
+        std::cout << "\nRunning test_qr_nonsquare()\n\n";
+        singular = test_qr_nonsquare();
 
     } // end of kokkos scope
 
@@ -442,3 +446,60 @@ int test_qr_hilbert(size_t num){
     return 1;
 
 } // end function
+
+
+// --------------
+// --- test 6 ---
+// --------------
+int test_qr_nonsquare(){
+
+    size_t m = 3;
+    size_t n = 2;
+    DCArrayKokkos <double> A(m, n, "A");
+    DCArrayKokkos <double> b(m, "b");
+    DCArrayKokkos <double> x(n, "x");
+
+
+    A.set_values(0.0);
+    b.set_values(0.0);
+
+    // run the host functions
+    // This corresponds to linear regression for data points:
+    //  (1,1), (2,2), (3,2)
+    RUN({
+        A(0,0) = 1;
+        A(0,1) = 1;
+        A(1,0) = 1;
+        A(1,1) = 2;
+        A(2,0) = 1;
+        A(2,1) = 3;
+
+        b(0) = 1;
+        b(1) = 2;
+        b(2) = 2;
+    });
+    A.update_host();
+    b.update_host();
+
+    printf("A = \n");
+    for(size_t i=0; i<m; i++){
+        for(size_t j=0; j<n; j++){
+            printf("%f ", A.host(i,j));
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    QR_solver_host(A, b, x); 
+    x.update_host();
+
+    printf("host executed routines \n");
+    for(size_t i=0; i<n; i++){
+        printf("x = %f \n", x.host(i));
+    } // end for
+    printf("exact = [0.6667,0.5]^T \n\n");
+
+
+    return 1;
+
+} // end test 6
