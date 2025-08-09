@@ -125,6 +125,9 @@ if (KOKKOS)
   add_executable(lu_test test_lu_solve.cpp)
   target_link_libraries(lu_test ${LINKING_LIBRARIES})
 
+  add_executable(qr_test test_qr_solve.cpp)
+  target_link_libraries(qr_test ${LINKING_LIBRARIES})
+
   if (Matar_ENABLE_TRILINOS)
     add_executable(anndistributed ann_distributed.cpp)
     target_link_libraries(anndistributed ${LINKING_LIBRARIES})

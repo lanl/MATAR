@@ -55,7 +55,6 @@ void transpose_host(const DCArrayKokkos <double> &A,
     size_t m = A.dims(0);
     size_t n = A.dims(1);
 
-printf("here taking transpose\n");
     FOR_ALL(i, 0, m,
             j, 0, n, {
         At(j, i) = A(i,j);
@@ -117,7 +116,7 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
 
 
     for (size_t i = 0; i < n; ++i) {
-printf("loop i = %zu \n", i);
+
         // find the norm of a column in matrix v for row i
         double tally = 0.0;
         double tally_lcl = 0.0;
@@ -139,7 +138,7 @@ printf("loop i = %zu \n", i);
 
 
         FOR_FIRST(jj, i+1, n, {
-printf("loop j = %d and n=%zu and i+1=%zu \n", jj, n, i+1);
+
             R(i,jj) = 0.0;
 
             double sum=0;
@@ -153,19 +152,18 @@ printf("loop j = %d and n=%zu and i+1=%zu \n", jj, n, i+1);
 
            teamMember.team_barrier();
 
-printf("v(i,k) reduce k to m \n");
+
             FOR_SECOND(k, 0, m,{
                 v(jj,k) -= sum * Q(k,i);
             });
-
-printf("bottom of j loop \n");
 
             teamMember.team_barrier();
 
         }); // end parallel j
 
     } // end for i
-}
+
+} // end funcction
 
 // Solve for x in Ax = b using QR
 // A[m,n]
@@ -182,10 +180,8 @@ void QR_solver_host(const DCArrayKokkos <double> & A,
     DCArrayKokkos <double> R(n,n,"R");
     DCArrayKokkos <double> y(n,"y");
 
-printf("qr decomp call\n");
     QR_decompose_host(A, Q, R);
 
-printf("calc y\n");
     // Compute Q^t * b
     FOR_FIRST(i, 0, n, {
 
@@ -200,8 +196,6 @@ printf("calc y\n");
         y(i) = sum;
 
     }); // end parallel i
-
-printf("backsub call\n");
 
     // Solve R x = y
     backsub_host(R, y, x);
