@@ -99,7 +99,7 @@ void backsub_host(const DCArrayKokkos <double> &R,
 
 // QR Decomposition using Modified Gram-Schmidt
 void QR_decompose_host(const DCArrayKokkos <double> &A, 
-                       DCArrayKokkos <double> &Q, 
+                       DFArrayKokkos <double> &Q, 
                        DCArrayKokkos <double> &R) {
 
 
@@ -112,7 +112,10 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
     DCArrayKokkos <double> v(n,m,"v");
 
     // Copy columns of A to v, and taking transpose
-    transpose_host(A,v);
+    FOR_ALL(i, 0, m,
+            j, 0, n, {
+        v(j, i) = A(i,j);  
+    });
 
 
     for (size_t i = 0; i < n; ++i) {
@@ -136,6 +139,26 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
             Q(j,i) = v(i,j)/R(i,i);
         });
 
+// single parallelism
+/*
+        FOR_ALL(jj, i+1, n, {
+
+            R(i,jj) = 0.0;
+
+            double sum=0;
+
+            for(size_t k=0; k<m; k++){
+                sum += Q(k,i) * A(k,jj);
+            }
+            R(i,jj) = sum;
+
+            for(size_t k=0; k<m; k++){
+                v(jj,k) -= sum * Q(k,i);
+            }
+
+        }); // end parallel jj
+*/
+// nested parallelism
 
         FOR_FIRST(jj, i+1, n, {
 
@@ -161,6 +184,7 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
 
         }); // end parallel j
 
+
     } // end for i
 
 } // end funcction
@@ -176,7 +200,7 @@ void QR_solver_host(const DCArrayKokkos <double> & A,
     const size_t m = A.dims(0);
     const size_t n = A.dims(1);
 
-    DCArrayKokkos <double> Q(m,n,"Q");
+    DFArrayKokkos <double> Q(m,n,"Q");
     DCArrayKokkos <double> R(n,n,"R");
     DCArrayKokkos <double> y(n,"y");
 

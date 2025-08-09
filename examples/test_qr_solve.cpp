@@ -44,7 +44,7 @@ bool verbose = false;
 int test_qr_diagonal();
 int test_qr_upper();
 int test_qr_ragged();
-int test_qr_heat_transfer();
+int test_qr_heat_transfer(size_t num_vals);
 int test_qr_hilbert(size_t num);
 
 
@@ -67,7 +67,7 @@ int main(int argc, char *argv[]){
         singular = test_qr_ragged();
 
         std::cout << "\nRunning test_qr_heat_transfer\n\n";
-        singular = test_qr_heat_transfer();
+        singular = test_qr_heat_transfer(10);
 
         std::cout << "\nRunning test_qr_hilbert(3)\n\n";
         singular = test_qr_hilbert(3);
@@ -247,9 +247,8 @@ int test_qr_ragged(){
 // --------------
 // --- test 4 ---
 // --------------
-int test_qr_heat_transfer(){
+int test_qr_heat_transfer(size_t num_vals){
 
-    size_t num_vals = 5;
     int singular; 
     int parity;
 
@@ -303,12 +302,12 @@ int test_qr_heat_transfer(){
     std::chrono::duration <double, std::milli> ms = time_2 - time_1;
     std::cout << "runtime of parallel heat transfer solve = " << ms.count() << "ms\n\n";
 
-    //if(verbose){
+    if(verbose){
         printf("host executed routines \n");
         for(size_t i=0; i<num_vals; i++){
             printf("Temp_field = %f \n", T_field.host(i));
         } // end for
-    //}
+    }
 
     return 1;
 
