@@ -644,13 +644,14 @@ int test_hilbert(size_t num){
 
     singular = 0; 
     parity = 0;
-    singular = LU_decompose_host(A, perm, vv, parity);  // A is returned as the LU matrix  
-    if(singular==0){
-        printf("ERROR: matrix is singluar \n");
-        return 0;
-    }
+    // singular = LU_decompose_host(A, perm, vv, parity);  // A is returned as the LU matrix  
+    // if(singular==0){
+    //     printf("ERROR: matrix is singluar \n");
+    //     return 0;
+    // }
 
-    LU_backsub_host(A, perm, b);  // note: answer is sent back in b
+    // LU_backsub_host(A, perm, b);  // note: answer is sent back in b
+    singular = LU_solver_host(A, b, perm, vv, parity); // note: answer is sent back in b
     b.update_host();
 
     printf("host executed routines \n");
@@ -658,6 +659,21 @@ int test_hilbert(size_t num){
         printf("x = %f \n", b.host(i));
     } // end for
 
+    // calculate the inverse of A using LU
+    DCArrayKokkos <double> LU_A_inverse(num, num); // inverse of A
+    DCArrayKokkos <double> column(num);  // temp array
+    LU_invert_host(A, perm, LU_A_inverse, column);
+    LU_A_inverse.update_host();
+
+    printf("\n");
+    printf("LU_A_inverse = \n");
+    for(size_t i=0; i<num; i++){
+        for(size_t j=0; j<num; j++){
+            printf("%f ", LU_A_inverse.host(i,j));
+        }
+        printf("\n");
+    }
+    printf("\n");
 
 
     // run the device functions

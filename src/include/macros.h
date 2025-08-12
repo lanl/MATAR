@@ -207,6 +207,7 @@
                         Kokkos::RangePolicy<> ( (x0), (x1) ),  \
                         KOKKOS_LAMBDA(const int (i), decltype(var) &(var)){fcn}, \
                         Kokkos::Prod< decltype(result) > ( (result) ) )
+
 #define \
     RPROD2D(i, x0, x1, j, y0, y1, var, fcn, result) \
     Kokkos::parallel_reduce( \
@@ -224,6 +225,7 @@
 #define \
     FOR_REDUCE_PRODUCT(...) \
     GET_MACRO(__VA_ARGS__, _13, RPROD3D, _11, _10, RPROD2D, _8, _7, RPROD1D)(__VA_ARGS__)
+
 
 // the DO_REDUCE_SUM loop
 #define \

@@ -212,6 +212,63 @@ void LU_backsub(
 } // end if
 
 
+// ------------------ 
+// LU invert function 
+// ------------------ 
+KOKKOS_INLINE_FUNCTION
+void LU_invert(
+    DCArrayKokkos <double> &A,       // input matrix
+    DCArrayKokkos <size_t> &perm,    // permutations
+    DCArrayKokkos <double> &inv_mat, // inverse matrix
+    DCArrayKokkos <double> &col) {   // tmp array
+
+    const size_t n = A.dims(0);    // size of matrix
+
+
+    for(size_t j = 0; j < n; j++){
+
+        for(size_t i = 0; i < n; i++){
+            col(i) = 0.0;
+        } // end for i
+        
+        col(j) = 1.0;
+        LU_backsub(A, perm, col);
+        
+        for(size_t i = 0; i < n; i++){
+            inv_mat(i,j) = col(i);
+        } // end for i
+
+    } // end for j
+
+    return;
+
+} // end function
+
+// -----------------------
+// LU determinant function 
+//  Input:  A filled in LUPDecompose; N - dimension.
+//  Output: determinate of original A matrix
+// ----------------------- 
+KOKKOS_INLINE_FUNCTION
+double LU_determinant(
+    DCArrayKokkos <double> &A,  // input matrix
+    const int parity){          // parity (+1 0r -1)
+
+    const int n = A.dims(0);    // size of matrix
+
+    double res = (double)(parity);
+    
+    for(size_t j=0; j<n; j++){
+        res *= A(j,j);
+    } // end j
+
+    return(res);
+
+} // end function
+
+
+
+
 // ============================================
 //  GPU kernals
 // ============================================
@@ -454,59 +511,7 @@ void LU_backsub_host(
 } // end LU backsubstitution on lauched from host
 
 
-// ------------------ 
-// LU invert function 
-// ------------------ 
-KOKKOS_INLINE_FUNCTION
-void LU_invert(
-    DCArrayKokkos <double> &A,       // input matrix
-    DCArrayKokkos <size_t> &perm,    // permutations
-    DCArrayKokkos <double> &inv_mat, // inverse matrix
-    DCArrayKokkos <double> &col) {   // tmp array
 
-    const size_t n = A.dims(0);    // size of matrix
-
-
-    for(size_t j = 0; j < n; j++){
-
-        for(size_t i = 0; i < n; i++){
-            col(i) = 0.0;
-        } // end for i
-        
-        col(j) = 1.0;
-        LU_backsub(A, perm, col);
-        
-        for(size_t i = 0; i < n; i++){
-            inv_mat(i,j) = col(i);
-        } // end for i
-
-    } // end for j
-
-    return;
-
-} // end function
-
-// -----------------------
-// LU determinant function 
-//  Input:  A filled in LUPDecompose; N - dimension.
-//  Output: determinate of original A matrix
-// ----------------------- 
-KOKKOS_INLINE_FUNCTION
-double LU_determinant(
-    DCArrayKokkos <double> &A,  // input matrix
-    const int parity){          // parity (+1 0r -1)
-
-    const int n = A.dims(0);    // size of matrix
-
-    double res = (double)(parity);
-    
-    for(size_t j=0; j<n; j++){
-        res *= A(j,j);
-    } // end j
-
-    return(res);
-
-} // end function
 
 
 // -----------------------
@@ -534,5 +539,65 @@ double LU_determinant_host(
     return(res);
 
 } // end function
+
+
+
+
+
+// ------------------ 
+// LU invert function 
+// ------------------ 
+void LU_invert_host(
+    DCArrayKokkos <double> &A,       // input matrix
+    DCArrayKokkos <size_t> &perm,    // permutations
+    DCArrayKokkos <double> &inv_mat, // inverse matrix
+    DCArrayKokkos <double> &col) {   // tmp array
+
+    const size_t n = A.dims(0);    // size of matrix
+
+
+    for(size_t j = 0; j < n; j++){
+
+        col.set_values(0.0);
+        
+        col(j) = 1.0;
+        LU_backsub_host(A, perm, col);
+        
+        FOR_ALL(i, 0, n, {
+            inv_mat(i,j) = col(i);
+        }); // end for i
+
+    } // end for j
+
+    return;
+
+} // end function
+
+
+
+// Solve for x in Ax = b using LU
+// A[n,n]
+// b[n], note answer, x, is returned in b
+int LU_solver_host(DCArrayKokkos <double> &A, 
+                   DCArrayKokkos <double> &b,
+                   DCArrayKokkos <size_t> &perm,  // permutations
+                   CArrayKokkos <double> &vv,
+                   int &parity) {
+
+
+    int singular = 0; 
+    parity = 0;
+    singular = LU_decompose_host(A, perm, vv, parity);  // A is returned as the LU matrix  
+    
+    if(singular==0){
+        printf("ERROR: matrix is singluar \n");
+        return 0;
+    }
+
+    LU_backsub_host(A, perm, b);  // note: answer is sent back in b
+
+    return singular;
+}
+
 
 #endif // LUSOLVER
