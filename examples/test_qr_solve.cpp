@@ -389,7 +389,8 @@ int test_qr_hilbert(size_t num){
             eye(i,j) = sum;
         }); // end parallel j
     }); // end parallel i
-
+    
+    A_inverse.update_host();
     eye.update_host();
 
     printf("A_inverse = \n");

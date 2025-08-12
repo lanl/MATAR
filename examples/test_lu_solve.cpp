@@ -601,7 +601,7 @@ int test_hilbert(size_t num){
             eye(i,j) = sum;
         }); // end parallel j
     }); // end parallel i
-
+    A_inverse.update_host();
     eye.update_host();
 
     printf("A_inverse = \n");
@@ -633,7 +633,6 @@ int test_hilbert(size_t num){
         x_exact(i) = sum;
     });
     x_exact.update_host();
-    A_inverse.update_host();
 
     printf("exact solution: \n");
     for(size_t i=0; i<num; i++){
