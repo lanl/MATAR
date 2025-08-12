@@ -453,4 +453,86 @@ void LU_backsub_host(
 
 } // end LU backsubstitution on lauched from host
 
+
+// ------------------ 
+// LU invert function 
+// ------------------ 
+KOKKOS_INLINE_FUNCTION
+void LU_invert(
+    DCArrayKokkos <double> &A,       // input matrix
+    DCArrayKokkos <size_t> &perm,    // permutations
+    DCArrayKokkos <double> &inv_mat, // inverse matrix
+    DCArrayKokkos <double> &col) {   // tmp array
+
+    const size_t n = A.dims(0);    // size of matrix
+
+
+    for(size_t j = 0; j < n; j++){
+
+        for(size_t i = 0; i < n; i++){
+            col(i) = 0.0;
+        } // end for i
+        
+        col(j) = 1.0;
+        LU_backsub(A, perm, col);
+        
+        for(size_t i = 0; i < n; i++){
+            inv_mat(i,j) = col(i);
+        } // end for i
+
+    } // end for j
+
+    return;
+
+} // end function
+
+// -----------------------
+// LU determinant function 
+//  Input:  A filled in LUPDecompose; N - dimension.
+//  Output: determinate of original A matrix
+// ----------------------- 
+KOKKOS_INLINE_FUNCTION
+double LU_determinant(
+    DCArrayKokkos <double> &A,  // input matrix
+    const int parity){          // parity (+1 0r -1)
+
+    const int n = A.dims(0);    // size of matrix
+
+    double res = (double)(parity);
+    
+    for(size_t j=0; j<n; j++){
+        res *= A(j,j);
+    } // end j
+
+    return(res);
+
+} // end function
+
+
+// -----------------------
+// LU determinant function 
+//  Input:  A filled in LUPDecompose; N - dimension.
+//  Output: determinate of original A matrix
+// ----------------------- 
+double LU_determinant_host(
+    DCArrayKokkos <double> &A,  // input matrix
+    const int parity){          // parity (+1 0r -1)
+
+    const int n = A.dims(0);    // size of matrix
+
+    double res = (double)(parity);
+    double prod_tally;
+    double prod_lcl = 1.0;
+    
+    FOR_REDUCE_PRODUCT(j, 0, n, 
+                    prod_lcl, {
+        prod_lcl *= A(j,j);
+    }, prod_tally); // end j
+
+    res *= prod_tally;
+
+    return(res);
+
+} // end function
+
 #endif // LUSOLVER
