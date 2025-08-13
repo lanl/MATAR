@@ -280,16 +280,17 @@ void QR_solver_host(const DCArrayKokkos <double> &A,
     QR_backsub_host(R, y, x);
 }
 
-// must call:
-//   QR_decompose_host(A, Q, R);
-void QR_solver_host(const DCArrayKokkos <double> & A, 
-                    const DFArrayKokkos <double> &Q,
+// before using this function, you must call:
+//   QR_decompose_host(Q, R);
+// dimensions: Q(m,n,"Q");
+// dimenions: R(n,n,"R");
+void QR_solver_host(const DFArrayKokkos <double> &Q,
                     const DCArrayKokkos <double> &R,
                     const DCArrayKokkos <double> &b,
                     DCArrayKokkos <double> &x) {
     
-    const size_t m = A.dims(0);
-    const size_t n = A.dims(1);
+    const size_t m = Q.dims(0);
+    const size_t n = Q.dims(1);
 
     DCArrayKokkos <double> y(n,"y");
 

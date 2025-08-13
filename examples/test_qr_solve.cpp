@@ -440,7 +440,7 @@ int test_qr_hilbert(size_t num){
     DFArrayKokkos <double> Q(m,n,"Q");
     DCArrayKokkos <double> R(n,n,"R");
     QR_decompose_host(A, Q, R);
-    QR_solver_host(A, Q, R, b, x); // return Q and R when solving for x
+    QR_solver_host(Q, R, b, x); // use Q and R, solve for x
     double det_A = QR_determinant_host(Q,R);
     printf ("QR det = %e \n", det_A);
     x.update_host();
