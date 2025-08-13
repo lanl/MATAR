@@ -578,11 +578,15 @@ int test_hilbert(size_t num){
     if(num==3){
         RUN({
             double det = invert_3x3(A, A_inverse);
+
+            printf("exact det = %e \n", det);
         });
     }
     else if(num==4){
         RUN({
             double det = invert_4x4(A, A_inverse);
+
+            printf("exact det = %e \n", det);
         });
     } else {
         printf("matrix size not supported in this test case \n");
@@ -675,6 +679,9 @@ int test_hilbert(size_t num){
     }
     printf("\n");
 
+
+    double det_A = LU_determinant_host(A,parity);
+    printf ("LU det = %e \n", det_A);
 
     // run the device functions
     A.set_values(0.0);

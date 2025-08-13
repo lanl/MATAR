@@ -896,6 +896,23 @@ void reduce_max (int i_start, int i_end,
     result = var;
 };  // end for_reduce
 
+
+
+
+// MIN
+template <typename T, typename F>
+void reduce_prod (int i_start, int i_end,
+                  T var,
+                 const F &lambda_fcn, T &result){
+    var = 1.0;
+    for (int i=i_start; i<i_end; i++){
+        lambda_fcn(i, var);
+    }
+    result = var;
+};  // end for_reduce
+
+
+
 #endif  // if not kokkos
 
 
