@@ -366,11 +366,13 @@ int test_qr_hilbert(size_t num){
     if(num==3){
         RUN({
             double det = invert_3x3(A, A_inverse);
+            printf("exact det = %e \n", det);
         });
     }
     else if(num==4){
         RUN({
             double det = invert_4x4(A, A_inverse);
+            printf("exact det = %e \n", det);
         });
     } else {
         printf("matrix size not supported in this test case \n");
@@ -433,9 +435,14 @@ int test_qr_hilbert(size_t num){
 
     // --------
     // QR solve
-
-
-    QR_solver_host(A, b, x); 
+    const size_t m = A.dims(0);
+    const size_t n = A.dims(1);
+    DFArrayKokkos <double> Q(m,n,"Q");
+    DCArrayKokkos <double> R(n,n,"R");
+    QR_decompose_host(A, Q, R);
+    QR_solver_host(A, Q, R, b, x); // return Q and R when solving for x
+    double det_A = QR_determinant_host(Q,R);
+    printf ("QR det = %e \n", det_A);
     x.update_host();
 
     printf("host executed routines \n");
