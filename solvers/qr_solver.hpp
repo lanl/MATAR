@@ -116,6 +116,7 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
             j, 0, n, {
         v(j, i) = A(i,j);  
     });
+    Kokkos::fence();
 
 
     for (size_t i = 0; i < n; ++i) {
@@ -130,6 +131,8 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
             tally_lcl += v(i,j) * v(i,j);
         }, tally);
 
+        Kokkos::fence();
+
         RUN({
             R(i,i) = sqrt(tally); // row i norm
         });
@@ -138,6 +141,8 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
         FOR_ALL(j, 0, m, {
             Q(j,i) = v(i,j)/R(i,i);
         });
+
+        Kokkos::fence();
 
 // single parallelism
 /*
@@ -184,6 +189,7 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
 
         }); // end parallel j
 
+        Kokkos::fence();
 
     } // end for i
 
@@ -222,8 +228,11 @@ double QR_determinant_host(const DFArrayKokkos <double> &Q,
             prod_lcl *= R(i,i);
         }
     }, prod_tally); // end j
+    Kokkos::fence();
+
 
     detR = prod_tally;
+
 
 
     prod_lcl = 1.0;
@@ -235,7 +244,9 @@ double QR_determinant_host(const DFArrayKokkos <double> &Q,
         }
     }, prod_tally); // end j
 
-    signQ = prod_tally;            
+    signQ = prod_tally;     
+    
+    Kokkos::fence();
 
     // Compute sign of det(Q) directly from Q if needed
     // Here we infer sign from R adjustments only.
@@ -261,6 +272,7 @@ void QR_solver_host(const DCArrayKokkos <double> &A,
 
     QR_decompose_host(A, Q, R);
 
+
     // Compute Q^t * b
     FOR_FIRST(i, 0, n, {
 
@@ -275,6 +287,8 @@ void QR_solver_host(const DCArrayKokkos <double> &A,
         y(i) = sum;
 
     }); // end parallel i
+
+    Kokkos::fence();
 
     // Solve R x = y
     QR_backsub_host(R, y, x);

@@ -68,7 +68,7 @@ int main(int argc, char *argv[]){
         singular = test_qr_ragged();
 
         std::cout << "\nRunning test_qr_heat_transfer\n\n";
-        singular = test_qr_heat_transfer(10);
+        singular = test_qr_heat_transfer(15);
 
         std::cout << "\nRunning test_qr_hilbert(3)\n\n";
         singular = test_qr_hilbert(3);
@@ -299,12 +299,27 @@ int test_qr_heat_transfer(size_t num_vals){
 
     QR_solver_host(M, T_bc, T_field); 
     T_field.update_host();
+    Kokkos::fence();
 
     // end timer
     auto time_2 = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration <double, std::milli> ms = time_2 - time_1;
     std::cout << "runtime of parallel heat transfer solve = " << ms.count() << "ms\n\n";
+
+    double error = 0;
+
+    
+    double m = ( T_bc.host(num_vals-1) - T_bc.host(0) )/((double)num_vals+1);
+    if(verbose){printf("                           exact = %f \n", T_bc.host(0));} 
+    for(size_t i=0; i<num_vals; i++){
+        double exact_T = m*(double)(i+1) + T_bc.host(0);
+        if(verbose){printf("Temp_field = %f, and exact = %f \n", T_field.host(i), exact_T);}
+        error += fabs(T_field.host(i) -  exact_T);
+    }
+    if(verbose){printf("                           exact = %f \n", T_bc.host(num_vals-1));} 
+
+    printf("\nTemperature Field error = %f \n\n", error);
 
     if(verbose){
         printf("host executed routines \n");
