@@ -308,18 +308,24 @@ int test_qr_heat_transfer(size_t num_vals){
     std::cout << "runtime of parallel heat transfer solve = " << ms.count() << "ms\n\n";
 
     double error = 0;
-
+    double error_lcl = 0;
     
-    double m = ( T_bc.host(num_vals-1) - T_bc.host(0) )/((double)num_vals+1);
-    if(verbose){printf("                           exact = %f \n", T_bc.host(0));} 
-    for(size_t i=0; i<num_vals; i++){
-        double exact_T = m*(double)(i+1) + T_bc.host(0);
-        if(verbose){printf("Temp_field = %f, and exact = %f \n", T_field.host(i), exact_T);}
-        error += fabs(T_field.host(i) -  exact_T);
-    }
-    if(verbose){printf("                           exact = %f \n", T_bc.host(num_vals-1));} 
+    //printf("                           exact = %e \n", T_bc.host(0)); 
+    const double m = ( T_bc.host(num_vals-1) - T_bc.host(0) )/((double)num_vals+1.0);
+    
+    FOR_REDUCE_MAX(i, 0, num_vals, 
+                   error_lcl, {
 
-    printf("\nTemperature Field error = %f \n\n", error);
+        const double exact_T = m*((double)(i+1)) + T_bc(0);
+        error_lcl = fmax(error_lcl, fabs(T_field(i) -  exact_T));
+
+        //printf("Temp_field = %e, and exact = %e \n", T_field(i), exact_T);
+
+    }, error);
+
+    //printf("                           exact = %e \n", T_bc.host(num_vals-1));
+
+    printf("\nTemperature Field max error = %e \n\n", error);
 
     if(verbose){
         printf("host executed routines \n");
