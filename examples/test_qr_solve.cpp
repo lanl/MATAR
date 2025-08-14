@@ -68,7 +68,7 @@ int main(int argc, char *argv[]){
         singular = test_qr_ragged();
 
         std::cout << "\nRunning test_qr_heat_transfer\n\n";
-        singular = test_qr_heat_transfer(10);
+        singular = test_qr_heat_transfer(15);
 
         std::cout << "\nRunning test_qr_hilbert(3)\n\n";
         singular = test_qr_hilbert(3);
@@ -299,12 +299,33 @@ int test_qr_heat_transfer(size_t num_vals){
 
     QR_solver_host(M, T_bc, T_field); 
     T_field.update_host();
+    Kokkos::fence();
 
     // end timer
     auto time_2 = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration <double, std::milli> ms = time_2 - time_1;
     std::cout << "runtime of parallel heat transfer solve = " << ms.count() << "ms\n\n";
+
+    double error = 0;
+    double error_lcl = 0;
+    
+    //printf("                           exact = %e \n", T_bc.host(0)); 
+    const double m = ( T_bc.host(num_vals-1) - T_bc.host(0) )/((double)num_vals+1.0);
+    
+    FOR_REDUCE_MAX(i, 0, num_vals, 
+                   error_lcl, {
+
+        const double exact_T = m*((double)(i+1)) + T_bc(0);
+        error_lcl = fmax(error_lcl, fabs(T_field(i) -  exact_T));
+
+        //printf("Temp_field = %e, and exact = %e \n", T_field(i), exact_T);
+
+    }, error);
+
+    //printf("                           exact = %e \n", T_bc.host(num_vals-1));
+
+    printf("\nTemperature Field max error = %e \n\n", error);
 
     if(verbose){
         printf("host executed routines \n");
@@ -366,11 +387,13 @@ int test_qr_hilbert(size_t num){
     if(num==3){
         RUN({
             double det = invert_3x3(A, A_inverse);
+            printf("exact det = %e \n", det);
         });
     }
     else if(num==4){
         RUN({
             double det = invert_4x4(A, A_inverse);
+            printf("exact det = %e \n", det);
         });
     } else {
         printf("matrix size not supported in this test case \n");
@@ -433,9 +456,14 @@ int test_qr_hilbert(size_t num){
 
     // --------
     // QR solve
-
-
-    QR_solver_host(A, b, x); 
+    const size_t m = A.dims(0);
+    const size_t n = A.dims(1);
+    DFArrayKokkos <double> Q(m,n,"Q");
+    DCArrayKokkos <double> R(n,n,"R");
+    QR_decompose_host(A, Q, R);
+    QR_solver_host(Q, R, b, x); // use Q and R, solve for x
+    double det_A = QR_determinant_host(Q,R);
+    printf ("QR det = %e \n", det_A);
     x.update_host();
 
     printf("host executed routines \n");

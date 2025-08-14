@@ -66,9 +66,9 @@ void transpose_host(const DCArrayKokkos <double> &A,
 
 
 // Back substitution to solve Rx = y
-void backsub_host(const DCArrayKokkos <double> &R, 
-                  const DCArrayKokkos <double> &y,
-                  DCArrayKokkos <double> &x) {
+void QR_backsub_host(const DCArrayKokkos <double> &R, 
+                     const DCArrayKokkos <double> &y,
+                     DCArrayKokkos <double> &x) {
     
     size_t n = R.dims(0);
     
@@ -116,6 +116,7 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
             j, 0, n, {
         v(j, i) = A(i,j);  
     });
+    Kokkos::fence();
 
 
     for (size_t i = 0; i < n; ++i) {
@@ -130,6 +131,8 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
             tally_lcl += v(i,j) * v(i,j);
         }, tally);
 
+        Kokkos::fence();
+
         RUN({
             R(i,i) = sqrt(tally); // row i norm
         });
@@ -138,6 +141,8 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
         FOR_ALL(j, 0, m, {
             Q(j,i) = v(i,j)/R(i,i);
         });
+
+        Kokkos::fence();
 
 // single parallelism
 /*
@@ -184,17 +189,78 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
 
         }); // end parallel j
 
+        Kokkos::fence();
 
     } // end for i
 
-} // end funcction
+} // end function
+
+
+double QR_determinant_host(const DFArrayKokkos <double> &Q,
+                           const DCArrayKokkos <double> &R)
+{
+    //const size_t m = Q.dims(0);
+    const size_t n = Q.dims(1);
+    // Q(m,n,"Q");
+    // R(n,n,"R");
+
+    double detR = 1.0;
+    int signQ = 1;
+
+    // Accumulate det(R) and track sign adjustments
+    // for (size_t i = 0; i < n; ++i) {
+    //     if (R(i,i) < 0.0) {
+    //         signQ *= -1;             // negative diagonal flips Q's sign
+    //         detR *= -R(i,i);         // store magnitude in detR
+    //     } else {
+    //         detR *= R(i,i);
+    //     }
+    // }
+
+    double prod_tally;
+    double prod_lcl = 1.0;
+    FOR_REDUCE_PRODUCT(i, 0, n, 
+                    prod_lcl, {
+        
+        if (R(i,i) < 0.0) {
+            prod_lcl *= -R(i,i);         // store magnitude in detR
+        } else {
+            prod_lcl *= R(i,i);
+        }
+    }, prod_tally); // end j
+    Kokkos::fence();
+
+
+    detR = prod_tally;
+
+
+
+    prod_lcl = 1.0;
+    FOR_REDUCE_PRODUCT(i, 0, n, 
+                    prod_lcl, {
+        
+        if (R(i,i) < 0.0) {
+            prod_lcl *= -1;              // negative diagonal flips Q's sign
+        }
+    }, prod_tally); // end j
+
+    signQ = prod_tally;     
+    
+    Kokkos::fence();
+
+    // Compute sign of det(Q) directly from Q if needed
+    // Here we infer sign from R adjustments only.
+    double detA = signQ * detR;
+    return detA;
+}
+
 
 // Solve for x in Ax = b using QR
 // A[m,n]
 // x[n]
 // b[m]
-void QR_solver_host(const DCArrayKokkos <double> & A, 
-                    DCArrayKokkos <double> &b,
+void QR_solver_host(const DCArrayKokkos <double> &A, 
+                    const DCArrayKokkos <double> &b,
                     DCArrayKokkos <double> &x) {
     
     const size_t m = A.dims(0);
@@ -205,6 +271,42 @@ void QR_solver_host(const DCArrayKokkos <double> & A,
     DCArrayKokkos <double> y(n,"y");
 
     QR_decompose_host(A, Q, R);
+
+
+    // Compute Q^t * b
+    FOR_FIRST(i, 0, n, {
+
+        double sum = 0.0;
+        double sum_lcl = 0.0;
+
+        // Q[m,n] so Q^t[n,m] b[m]
+        FOR_REDUCE_SUM_SECOND(j, 0, m, 
+                              sum_lcl, {
+            sum_lcl += Q(j,i) * b(j);
+        }, sum);
+        y(i) = sum;
+
+    }); // end parallel i
+
+    Kokkos::fence();
+
+    // Solve R x = y
+    QR_backsub_host(R, y, x);
+}
+
+// before using this function, you must call:
+//   QR_decompose_host(Q, R);
+// dimensions: Q(m,n,"Q");
+// dimenions: R(n,n,"R");
+void QR_solver_host(const DFArrayKokkos <double> &Q,
+                    const DCArrayKokkos <double> &R,
+                    const DCArrayKokkos <double> &b,
+                    DCArrayKokkos <double> &x) {
+    
+    const size_t m = Q.dims(0);
+    const size_t n = Q.dims(1);
+
+    DCArrayKokkos <double> y(n,"y");
 
     // Compute Q^t * b
     FOR_FIRST(i, 0, n, {
@@ -222,9 +324,8 @@ void QR_solver_host(const DCArrayKokkos <double> & A,
     }); // end parallel i
 
     // Solve R x = y
-    backsub_host(R, y, x);
+    QR_backsub_host(R, y, x);
 }
-
 
 
 
