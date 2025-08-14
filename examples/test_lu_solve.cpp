@@ -664,8 +664,8 @@ int test_hilbert(size_t num){
     } // end for
 
     // calculate the inverse of A using LU
-    DCArrayKokkos <double> LU_A_inverse(num, num); // inverse of A
-    DCArrayKokkos <double> column(num);  // temp array
+    DCArrayKokkos <double> LU_A_inverse(num, num, "LU_A_inv"); // inverse of A
+    DCArrayKokkos <double> column(num, "column");  // temp array
     LU_invert_host(A, perm, LU_A_inverse, column);
     LU_A_inverse.update_host();
 

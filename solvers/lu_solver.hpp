@@ -560,7 +560,10 @@ void LU_invert_host(
 
         col.set_values(0.0);
         
-        col(j) = 1.0;
+        RUN({
+            col(j) = 1.0;
+        });
+        
         LU_backsub_host(A, perm, col);
         
         FOR_ALL(i, 0, n, {
