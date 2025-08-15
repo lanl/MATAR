@@ -1,3 +1,40 @@
+/**********************************************************************************************
+ © 2020. Triad National Security, LLC. All rights reserved.
+ This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
+ National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
+ Department of Energy/National Nuclear Security Administration. All rights in the program are
+ reserved by Triad National Security, LLC, and the U.S. Department of Energy/National Nuclear
+ Security Administration. The Government is granted for itself and others acting on its behalf a
+ nonexclusive, paid-up, irrevocable worldwide license in this material to reproduce, prepare
+ derivative works, distribute copies to the public, perform publicly and display publicly, and
+ to permit others to do so.
+ This program is open source under the BSD-3 License.
+ Redistribution and use in source and binary forms, with or without modification, are permitted
+ provided that the following conditions are met:
+ 
+ 1.  Redistributions of source code must retain the above copyright notice, this list of
+ conditions and the following disclaimer.
+ 
+ 2.  Redistributions in binary form must reproduce the above copyright notice, this list of
+ conditions and the following disclaimer in the documentation and/or other materials
+ provided with the distribution.
+ 
+ 3.  Neither the name of the copyright holder nor the names of its contributors may be used
+ to endorse or promote products derived from this software without specific prior
+ written permission.
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+ OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ **********************************************************************************************/
+
 // -----------------------------------------------
 // pointcloud reconstrution in C++
 //  credit to Andrew Morgan and Nathaniel Morgan
@@ -39,9 +76,9 @@ using namespace mtr;
 
 
 // the number of nodes in the mesh
-const double dx = 0.015; // resolution
-const double dy = 0.015; // resolution
-const double dz = 0.015; // resolution
+const double dx = 0.01; // resolution
+const double dy = 0.01; // resolution
+const double dz = 0.01; // resolution
 
 
 // the mesh dimensions
@@ -209,6 +246,28 @@ void calc_normal(triangle_t *triangle){
     
 } // end normal
 
+
+// cross prodcut
+vec_t cross(const vec_t &a, const vec_t &b) {
+    return {a.y*b.z - a.z*b.y,
+            a.z*b.x - a.x*b.z,
+            a.x*b.y - a.y*b.x};
+}
+
+double dot(const vec_t &a, const vec_t &b) {
+    return a.x*b.x + a.y*b.y + a.z*b.z;
+}
+
+
+// calculate the volume of a tet with this triangular face
+double compute_volume(const triangle_t &triangle) {
+    // triangle.p[0] is the first vec_t, being node 0
+    // ...
+    // triangle.p[1] is the third vec_t, being node 2
+    double volume = dot(triangle.p[0], cross(triangle.p[1], triangle.p[2])) / 6.0;
+
+    return volume;
+}
 
 struct gridcell_t {
     
@@ -1040,7 +1099,30 @@ int main(int argc, char *argv[])
         
         printf("Marching cubes finished \n\n");
         
-        
+
+
+        // --------------------------------------------------
+        // volume calculation
+        // --------------------------------------------------
+        double volume = 0.0;
+        double vol_lcl = 0.0;
+        FOR_REDUCE_SUM(elem_gid, 0, num_elems, 
+                       vol_lcl, {
+
+            for (size_t tri = 0; tri < num_triangles_in_elem(elem_gid); tri++){
+                vol_lcl += compute_volume(all_mesh_surf_triangles(elem_gid,tri)); 
+            }
+
+        }, volume);
+        volume = fabs(volume);
+
+        double radius =  0.794651/2.0; // radius of constructured part, based on a small mesh size
+        double PI = 3.14159265358979323846264338327950288419716939937510;
+        double vol_exact = 4.0/3.0*PI*radius*radius*radius;
+        printf("volume = %f, and `exact' sphere volume = %f \n", volume, vol_exact);
+
+        // 0.262744 at 0.001 mesh size  
+
 
         // --------------------------------------------------
         // Export STL file using results from marching cubes
