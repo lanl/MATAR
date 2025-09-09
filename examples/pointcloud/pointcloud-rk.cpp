@@ -77,9 +77,15 @@ const double PI = 3.14159265358979323846;
 
 
 // the number of nodes in the mesh
-const double dx = 0.1; // resolution
-const double dy = 0.1; // resolution
-const double dz = 0.1; // resolution
+const double dx = 0.1; // resolution to build STL file
+const double dy = 0.1; // resolution to build STL file
+const double dz = 0.1; // resolution to build STL file
+
+
+// the bin sizes for finding neighboring points
+const double bin_dx = 0.5; // 2 bins in x
+const double bin_dy = 0.5; // 2 bins in y
+const double bin_dz = 0.5; // 2 bins in z
 
 
 // the mesh dimensions
@@ -91,6 +97,10 @@ const double ZMax = 1.0;
 const double X0 = 0.0; 
 const double Y0 = 0.0; 
 const double Z0 = 0.0; 
+
+const double LX = (XMax - X0);   // length in x-dir
+const double LY = (YMax - Y0);
+const double LZ = (ZMax - Z0);
 
 
 const double isoLevel=0.0; // contour to extract
@@ -695,6 +705,27 @@ int Polygonise(gridcell_t grid, double isolevel, triangle_t *triangles)
 }
 
 
+struct bin_ijk_t{
+    size_t i, j, k;
+};
+
+
+bin_ijk_t get_bin_ijk(const double x_pt, const double y_pt, const double z_pt){
+            
+    bin_ijk_t bin_ijk;
+
+    double i_dbl = fmax(1.0e-15, round((x_pt - X0 - bin_dx*0.5)/bin_dx - 1.0e-10)); // x = ih + X0 + dx_bin*0.5
+    double j_dbl = fmax(1.0e-15, round((y_pt - Y0 - bin_dy*0.5)/bin_dy - 1.0e-10));
+    double k_dbl = fmax(1.0e-15, round((z_pt - Z0 - bin_dz*0.5)/bin_dz - 1.0e-10));
+
+    // get the integers for the bins
+    bin_ijk.i = (size_t)i_dbl;
+    bin_ijk.j = (size_t)j_dbl;
+    bin_ijk.k = (size_t)k_dbl;
+    
+    return bin_ijk;
+} // end function
+
 // Gaussian function part of the RBF
 // rbf = exp(-(x - xj)*(x - xj)/h)
 KOKKOS_FUNCTION
@@ -734,6 +765,9 @@ void poly_basis(const double r[3], double *p) {
 
 void compute_shape_functions(
     size_t i,
+    const double xpt,
+    const double ypt,
+    const double zpt,
     const DCArrayKokkos <double>& x,
     const CArrayKokkos <double>& vol,
     const CArrayKokkos <double>& rk_coeffs,
@@ -749,9 +783,9 @@ void compute_shape_functions(
 
         double p[num_poly_basis];    // array holding polynomial basis [x, y, z, x^2, y^2, ... , yz]
         double r[3];    // vecx_j - vecx_i
-        r[0] = x(j,0) - x(i,0); // x_j-x_i
-        r[1] = x(j,1) - x(i,1); // y_j-y_i
-        r[2] = x(j,2) - x(i,2); // z_j-z_i
+        r[0] = x(j,0) - xpt; // x_j-x_i
+        r[1] = x(j,1) - ypt; // y_j-y_i
+        r[2] = x(j,2) - zpt; // z_j-z_i
 
         double W = kernel(r, h);
         poly_basis(r,p);
@@ -790,9 +824,11 @@ void build_rk_coefficients(
 
         double M_1D[num_poly_basis*num_poly_basis]; 
         ViewCArrayKokkos <double> M(&M_1D[0], num_poly_basis, num_poly_basis);
+        M.set_values(0.0);
 
         // values in rhs after this function will be accessed as rk_coeffs(i,0:N)
         ViewCArrayKokkos <double> rhs (&rk_coeffs(i,0), num_poly_basis);
+        rhs.set_values(0.0);
         rhs(0) = 1.0;   // enforce reproduction of constant 1, everything else is = 0
 
         double p[num_poly_basis];    // array holding polynomial basis [x, y, z, x^2, y^2, ... , yz]
@@ -809,10 +845,10 @@ void build_rk_coefficients(
             poly_basis(r,p);
 
             // assemble matrix
+
             for (size_t a = 0; a < num_poly_basis; ++a) {
                 for (size_t b = 0; b < num_poly_basis; ++b) {
                     M(a,b) += vol(j) * W * p[a] * p[b]; 
-                    printf("M(a,b) = %f \n", M(a,b));
                 } // end for b
             } // for a
 
@@ -846,6 +882,7 @@ void build_rk_coefficients(
 
     return; 
 } // end function
+
 
 
 
@@ -900,36 +937,9 @@ int main(int argc, char *argv[])
         v3Z.update_device();
         
         
-        // define mesh spacing, it is used to create a mesh
-            
-        double LX = (XMax - X0);   // length in x-dir
-        double LY = (YMax - Y0);
-        double LZ = (ZMax - Z0);
         
-        // the number of nodes in the mesh
-        int num_pt_x = (int)( LX/dx ) + 1;  // there must be at least 2 nodes
-        int num_pt_y = (int)( LY/dy ) + 1;  // there must be at least 2 nodes
-        int num_pt_z = (int)( LZ/dz ) + 1;  // there must be at least 2 nodes
-        
-        
-        // mesh coordinates
-        DCArrayKokkos <double> x(num_pt_x, "pt_x");
-        DCArrayKokkos <double> y(num_pt_y, "pt_y");
-        DCArrayKokkos <double> z(num_pt_z, "pt_z");
-
         // small distance for moving in the +/- normal directions 
         double epsilon = 0.1*fmin(fmin(dx, dy), dz);
-
-        
-        // function with isosurface that we want extracted
-        DCArrayKokkos <double> gridValues (num_pt_x,num_pt_y,num_pt_z, "grid_values");
-        
-
-        // define the triangles of extracted surface
-        const size_t num_elems = (num_pt_x-1)*(num_pt_y-1)*(num_pt_z-1);
-        DCArrayKokkos <triangle_t> all_mesh_surf_triangles(num_elems, 5, "mesh_surf_tris"); // max of 5 per elem
-        DCArrayKokkos <size_t> num_triangles_in_elem(num_elems, "num_tris_in_elem");
-        num_triangles_in_elem.set_values(0);
 
 
         printf("Creating point cloud data from STL file \n\n");
@@ -965,6 +975,55 @@ int main(int argc, char *argv[])
         }); // end parallel for tri's in the file
 
 
+
+        // ----------------------------
+        // Make bins here
+        // ----------------------------
+        
+        // the number of nodes in the mesh
+        size_t num_bins_x = (size_t)( round(LX/bin_dx) );  
+        size_t num_bins_y = (size_t)( round(LY/bin_dy) );  
+        size_t num_bins_z = (size_t)( round(LZ/bin_dz) );  
+
+        
+
+        size_t num_bins = num_bins_x*num_bins_y*num_bins_z;
+
+printf("num bins = %zu \n", num_bins);
+
+
+        DCArrayKokkos <size_t> num_points_in_bin(num_bins);
+        num_points_in_bin.set_values(0);
+        DCArrayKokkos <size_t> points_bin_id(num_points);
+        DCArrayKokkos <size_t> points_bin_id_storage(num_points);
+        
+        FOR_ALL(pt_id, 0, num_points, {
+
+            // get i,j,k indices of the bins
+            bin_ijk_t bin_ijk = get_bin_ijk(point_positions(pt_id,0), 
+                                            point_positions(pt_id,1), 
+                                            point_positions(pt_id,2));
+
+            // get the 1D index
+            size_t bin_id = bin_ijk.i + (bin_ijk.j + bin_ijk.k*num_bins_y)*num_bins_x;
+          
+            size_t storage_place = Kokkos::atomic_fetch_add(&num_points_in_bin(bin_id), 1);
+            points_bin_id(pt_id) = bin_id; // the id of the bin
+            points_bin_id_storage(pt_id) = storage_place; // the storage place in the bin
+
+        }); // end for all
+
+        DRaggedRightArrayKokkos <size_t> points_in_bin(num_points_in_bin);
+
+        FOR_ALL(pt_id, 0, num_points, {
+
+            size_t bin_id = points_bin_id(pt_id);
+            size_t storage_place = points_bin_id_storage(pt_id);
+            points_in_bin(bin_id, storage_place) = pt_id;
+
+        }); // end for all
+        
+
         // ----------------------------
         // Reconstruct surface here
         // ----------------------------
@@ -989,15 +1048,53 @@ int main(int argc, char *argv[])
 
         // build basis functions
         for(size_t i=0; i<num_points; i++){
-            compute_shape_functions(i, point_positions, vol, rk_coeffs, rk_basis, h);
+            compute_shape_functions(i, point_positions(i,0), point_positions(i,1), point_positions(i,2), point_positions, vol, rk_coeffs, rk_basis, h);
         } // end for i
 
+        
+        // performing checks on rk_coeffs
+        double partion_unity;
+        double partion_unity_lcl;
+
+        for(size_t i=0; i<num_points; i++){
+
+            FOR_REDUCE_SUM(j, 0, num_points, partion_unity_lcl, {
+                partion_unity_lcl += rk_basis(j, i)*vol(j);
+            }, partion_unity);
+
+            printf("partition unity = %f, at i=%zu \n", partion_unity, i);
+        }
 
 
         // ----------------------------------
         // Evaluate surface function on mesh
         // ----------------------------------
-/*
+
+        // define mesh spacing, it is used to create a mesh
+            
+        
+        // the number of nodes in the mesh
+        int num_pt_x = (int)( LX/dx ) + 1;  // there must be at least 2 nodes
+        int num_pt_y = (int)( LY/dy ) + 1;  // there must be at least 2 nodes
+        int num_pt_z = (int)( LZ/dz ) + 1;  // there must be at least 2 nodes
+        
+        
+        // mesh coordinates
+        DCArrayKokkos <double> x(num_pt_x, "pt_x");
+        DCArrayKokkos <double> y(num_pt_y, "pt_y");
+        DCArrayKokkos <double> z(num_pt_z, "pt_z");
+
+        
+        // function with isosurface that we want extracted
+        DCArrayKokkos <double> gridValues (num_pt_x,num_pt_y,num_pt_z, "grid_values");
+        
+
+        // define the triangles of extracted surface
+        const size_t num_elems = (num_pt_x-1)*(num_pt_y-1)*(num_pt_z-1);
+        DCArrayKokkos <triangle_t> all_mesh_surf_triangles(num_elems, 5, "mesh_surf_tris"); // max of 5 per elem
+        DCArrayKokkos <size_t> num_triangles_in_elem(num_elems, "num_tris_in_elem");
+        num_triangles_in_elem.set_values(0);
+
         printf("Evaluating surf function on mesh \n");
         FOR_ALL(i, 0, num_pt_x, {
             x(i) = dx*(double)i + X0;;
@@ -1019,15 +1116,24 @@ int main(int argc, char *argv[])
                     x_point[0] = x(i);
                     x_point[1] = y(j);
                     x_point[2] = z(k);
+
+                    gridValues(i,j,k) = 0.0;
                     
-                    // lambda coefficients for radial basis function, slice out only lambda values and polynomial values
-                    // lambda = ViewCArrayKokkos <double> (&b_vector(0), num_points);
-                    // coefs  = ViewCArrayKokkos <double> (&b_vector(num_points), Pn);
+                    // get i,j,k indices of the bins
+                    bin_ijk_t bin_ijk = get_bin_ijk(x_point[0], 
+                                                    x_point[1], 
+                                                    x_point[2]);
 
+                    // get the 1D index
+                    size_t bin_id = bin_ijk.i + (bin_ijk.j + bin_ijk.k*num_bins_y)*num_bins_x;
 
-                    for (size_t point=0; point<num_points_neighborhood; point++){
-                        gridValues(i,j,k) += ;
-                    } // end for points      
+                    size_t point_i = points_in_bin(bin_id, 0); // get the first point in this bin
+
+                    for (size_t point_j=0; point_j<num_points_neighborhood; point_j++){
+                        // BUG HERE: need to evaluate basis at gridpoints. WARNING WARNING WARNING
+                        gridValues(i,j,k) += rk_basis(point_j, point_i)*point_signed_distance(point_j)*vol(point_j);
+                    } // end for points     
+
         
         }); // end parallel over k,j,i
 
@@ -1037,7 +1143,7 @@ int main(int argc, char *argv[])
         gridValues.update_host();
         
         
-        
+     
         
         // ------------------------------------
         // Use marching cubes to build surface
@@ -1180,7 +1286,7 @@ int main(int argc, char *argv[])
             
     
         printf("Finished \n\n");
-*/
+
 
 
 
