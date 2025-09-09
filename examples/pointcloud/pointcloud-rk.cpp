@@ -795,7 +795,7 @@ void compute_shape_functions(
             correction += rk_coeffs(i,a) * p[a];
         } // end a
 
-        rk_basis(i,j) = W * correction;
+        rk_basis(j) = W * correction;
     });
 
 
@@ -1034,7 +1034,7 @@ printf("num bins = %zu \n", num_bins);
         const size_t num_points_neighborhood = num_points;
 
         CArrayKokkos <double> rk_coeffs(num_points, num_poly_basis);  // reproducing kernel coefficients at each point
-        CArrayKokkos <double> rk_basis(num_points, num_points);       // reproducing kernel basis
+        CArrayKokkos <double> rk_basis(num_points);       // reproducing kernel basis, should have size num_points_neighborhood
         CArrayKokkos <double> vol(num_points);
         vol.set_values(1.0);
 
@@ -1046,24 +1046,30 @@ printf("num bins = %zu \n", num_bins);
         // build coefficients on basis functions
         build_rk_coefficients(point_positions, vol, rk_coeffs, h);
 
-        // build basis functions
-        for(size_t i=0; i<num_points; i++){
-            compute_shape_functions(i, point_positions(i,0), point_positions(i,1), point_positions(i,2), point_positions, vol, rk_coeffs, rk_basis, h);
-        } // end for i
-
+        
         
         // performing checks on rk_coeffs
         double partion_unity;
         double partion_unity_lcl;
 
         for(size_t i=0; i<num_points; i++){
+            
+            // build basis functions at point i
+            compute_shape_functions(i, 
+                                    point_positions(i,0), point_positions(i,1), point_positions(i,2), 
+                                    point_positions, 
+                                    vol, 
+                                    rk_coeffs, 
+                                    rk_basis, 
+                                    h);
 
-            FOR_REDUCE_SUM(j, 0, num_points, partion_unity_lcl, {
-                partion_unity_lcl += rk_basis(j, i)*vol(j);
+            FOR_REDUCE_SUM(j, 0, num_points_neighborhood, partion_unity_lcl, {
+                partion_unity_lcl += rk_basis(j)*vol(j);
             }, partion_unity);
 
             printf("partition unity = %f, at i=%zu \n", partion_unity, i);
-        }
+
+        } // end for i
 
 
         // ----------------------------------
@@ -1127,11 +1133,36 @@ printf("num bins = %zu \n", num_bins);
                     // get the 1D index
                     size_t bin_id = bin_ijk.i + (bin_ijk.j + bin_ijk.k*num_bins_y)*num_bins_x;
 
-                    size_t point_i = points_in_bin(bin_id, 0); // get the first point in this bin
+                    size_t point_i; // the closest point 
+                    double dist_i = 1.e16;
+
+
+                    // find the closest point to the evaluation location
+                    for (size_t point_lid=0; point_lid<num_points_in_bin(bin_id); point_lid++){
+                        // get the point id
+                        size_t pt_id = points_in_bin(bin_id, point_lid);
+
+                        // calculate the distance between this point and evaluation location
+                        double dist = (point_positions(pt_id,0) - x(i))*(point_positions(pt_id,0) - x(i))+
+                                      (point_positions(pt_id,1) - y(j))*(point_positions(pt_id,1) - y(j))+ 
+                                      (point_positions(pt_id,2) - z(k))*(point_positions(pt_id,2) - z(k));
+                        dist = sqrt(dist);
+                        if(fabs(dist)<fabs(dist_i)){
+                            point_i = pt_id;
+                            dist_i = dist;
+                        }
+                    }
 
                     for (size_t point_j=0; point_j<num_points_neighborhood; point_j++){
-                        // BUG HERE: need to evaluate basis at gridpoints. WARNING WARNING WARNING
-                        gridValues(i,j,k) += rk_basis(point_j, point_i)*point_signed_distance(point_j)*vol(point_j);
+                        // evaluate basis at gridpoint using closest point_i
+                        compute_shape_functions(point_i, 
+                                                x(i), y(i), z(i), 
+                                                point_positions, 
+                                                vol, 
+                                                rk_coeffs, 
+                                                rk_basis, 
+                                                h);
+                        gridValues(i,j,k) += rk_basis(point_j)*point_signed_distance(point_j)*vol(point_j);
                     } // end for points     
 
         
