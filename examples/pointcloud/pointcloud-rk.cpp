@@ -293,6 +293,8 @@ int main(int argc, char *argv[])
                                    point_positions(i, 2)*point_positions(i, 2));
 
         }); // end parallel for tri's in the file
+        point_values.update_host();
+        Kokkos::fence();
         printf("\n");
 
 
@@ -393,21 +395,45 @@ int main(int argc, char *argv[])
                 linear_preserving_lcl += rk_basis(j)*vol(j)*point_positions(j,0);
             }, linear_preserving);
 
-            printf("partition unity = %f,  ", partion_unity);
+            printf("partition unity = %f, ", partion_unity);
             printf("linear preserving error = %f at i=%zu \n", fabs(linear_preserving-point_positions(i,0)), i);
 
         } // end for i
 
 
+        printf("Writing VTK Graphics File \n\n");
+
+        std::ofstream out("cloud.vtk");
+
+        out << "# vtk DataFile Version 3.0\n";
+        out << "3D point cloud\n";
+        out << "ASCII\n";
+        out << "DATASET POLYDATA\n";
+        out << "POINTS " << num_points << " float\n";
+        for (size_t pt_id = 0; pt_id < num_points; ++pt_id) {
+            out << point_positions.host(pt_id,0) << " " 
+                << point_positions.host(pt_id,1) << " " 
+                << point_positions.host(pt_id,2) << "\n";
+        }
+
+        out << "\nPOINT_DATA " << num_points << "\n";
+        out << "SCALARS field float 1\n";
+        out << "LOOKUP_TABLE default\n";
+        for (size_t pt_id = 0; pt_id < num_points; ++pt_id) {
+            out << point_values.host(pt_id) << "\n";
+        }
+
     
         printf("Finished \n\n");
+
 
 
     } // end of kokkos scope
 
 
-
     Kokkos::finalize();
+
+
 
     return 0;
     
