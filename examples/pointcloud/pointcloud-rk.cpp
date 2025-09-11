@@ -485,19 +485,11 @@ int main(int argc, char *argv[])
 
                     points_bin_stencil(point_gid) = stencil;
                     points_num_neighbors(point_gid) = num_points_found; // key for allocations
-                    printf("neighbors found = %zu \n", num_points_found);
                     break;
                 }
                 
             } // end for stencil
 
-            printf("num_pts_in_bin = %zu, neighbors found = %zu, Stencil size = %zu, bin keys = %zu, %zu, %zu \n", 
-                   num_points_in_bin(bin_gid),
-                   points_num_neighbors(point_gid),
-                   points_bin_stencil(point_gid),
-                   bin_keys.i,
-                   bin_keys.j,
-                   bin_keys.k);
 
         }); // end for all
         Kokkos::fence();
@@ -551,9 +543,7 @@ int main(int argc, char *argv[])
                         for(size_t neighbor_pt_lid=0; neighbor_pt_lid<num_points_in_bin(neighbor_bin_gid); neighbor_pt_lid++){
 
                             size_t neighbor_point_gid = points_in_bin(neighbor_bin_gid, neighbor_pt_lid);
-                            
-                            printf("num saved = %zu,  points_num_neighbors = %zu, num_points_found = %zu \n", 
-                                num_saved, points_num_neighbors(point_gid), num_points_found);
+
                             points_in_point(point_gid, num_saved) = neighbor_point_gid;
                             
                             num_saved++;
@@ -603,6 +593,9 @@ int main(int argc, char *argv[])
         double linear_preserving;
         double linear_preserving_lcl;
 
+        double quadratic_preserving;
+        double quadratic_preserving_lcl;
+
         // loop over the particles in the domain
         for(size_t point_gid=0; point_gid<num_points; point_gid++){
             
@@ -616,19 +609,30 @@ int main(int argc, char *argv[])
                                     rk_basis, 
                                     h);
 
+            // partition of unity
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), partion_unity_lcl, {
                 partion_unity_lcl += rk_basis(point_gid,neighbor_point_lid)*vol(neighbor_point_lid);
             }, partion_unity);
             
 
+            // linear reproducing
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), linear_preserving_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
                 linear_preserving_lcl += rk_basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0);
             }, linear_preserving);
 
+
+            // quadratic reproducing
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), quadratic_preserving_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                quadratic_preserving_lcl += rk_basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0)*point_positions(neighbor_point_gid,0);
+            }, quadratic_preserving);
+
             printf("partition unity = %f, ", partion_unity);
-            printf("linear preserving error = %f at i=%zu \n", fabs(linear_preserving-point_positions(point_gid,0)), point_gid);
+            printf("linear preserving error = %f, ", fabs(linear_preserving-point_positions(point_gid,0)));
+            printf("quadratic preserving error = %f at i=%zu \n", fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0)), point_gid);
 
         } // end for point gid
 
