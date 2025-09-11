@@ -158,6 +158,8 @@ TEST(Test_ViewFArrayKokkos, operator_access)
     delete[] data;
 }
 
+#ifndef NDEBUG
+
 // Test bounds checking
 TEST(Test_ViewFArrayKokkos, bounds_checking)
 {
@@ -173,6 +175,7 @@ TEST(Test_ViewFArrayKokkos, bounds_checking)
     EXPECT_DEATH(A(size), ".*");
     delete[] data;
 }
+#endif
 
 // Test different types
 TEST(Test_ViewFArrayKokkos, different_types)

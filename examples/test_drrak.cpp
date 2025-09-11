@@ -61,7 +61,7 @@ int main(int argc, char* argv[])
 
         // testing ragged initialized with CArrayKokkos for strides
         int num_strides = 3;
-        CArrayKokkos<size_t> some_strides(num_strides);
+        CArrayKokkos<size_t> some_strides(num_strides, "test_1D_strides");
 
         FOR_ALL(i, 0, num_strides, {
             some_strides(i) = i+1;
@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
 
         // testing ragged initialized with CArrayKokkos for strides
         num_strides = 3;
-        DCArrayKokkos<size_t> some_strides_d(num_strides);
+        DCArrayKokkos<size_t> some_strides_d(num_strides, "test_1D_strides_d");
 
         for(int i = 0; i < num_strides; i++){
             some_strides_d.host(i) = i+1;
@@ -118,7 +118,7 @@ int main(int argc, char* argv[])
 
         for(int i = 0; i < num_strides; i++){
             if(drrak1D_d.stride_host(i) != i+1){
-                printf("Error: drrak1D_d.stride_host(i) = %d, expected %d\n", i+1);
+                printf("Error: drrak1D_d.stride_host(i) = %zu, expected %d\n", drrak1D_d.stride_host(i), i+1);
             }
         }
 
@@ -150,9 +150,7 @@ int main(int argc, char* argv[])
         DRaggedRightArrayKokkos<int> drrak2D;
         size_t dim2D = 3;
 
-
         drrak2D = DRaggedRightArrayKokkos<int>(some_strides, dim2D, "test_2D");
-
 
         FOR_ALL(i, 0, num_strides,{
             for(int j = 0; j < drrak2D.stride(i); j++) {
@@ -162,8 +160,9 @@ int main(int argc, char* argv[])
                 }
             }
         });
-
+        Kokkos::fence();
         drrak2D.update_host();
+        Kokkos::fence();
 
         for(int i = 0; i < num_strides; i++) {
             for(int j = 0; j < drrak2D.stride_host(i); j++) {

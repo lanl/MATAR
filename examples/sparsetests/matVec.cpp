@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -175,7 +175,7 @@ int main(int argc, char** argv)
         else {
             RUN({
                 for (int i = 0; i < n; i++) {
-                    if (abs(b1(i) - b2(i) > 1e-7)) {
+                    if (abs(b1(i) - b2(i)) > 1e-7) {
                         printf("b1(%d) - b2(%d) = %.2e\n", i, i, b1(i) - b2(i));
                     }
                 } 

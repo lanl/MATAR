@@ -106,6 +106,7 @@ TEST(Test_DViewCMatrixKokkos, set_values)
     delete[] data;
 }
 
+#ifndef NDEBUG
 // Test operator() access
 TEST(Test_DViewCMatrixKokkos, operator_access)
 {
@@ -145,6 +146,7 @@ TEST(Test_DViewCMatrixKokkos, bounds_checking)
     
     delete[] data;
 }
+#endif
 
 // Test different types
 TEST(Test_DViewCMatrixKokkos, different_types)

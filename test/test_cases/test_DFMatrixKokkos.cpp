@@ -159,6 +159,7 @@ TEST(Test_DFMatrixKokkos, operator_access)
     }
 }
 
+#ifndef NDEBUG
 // Test bounds checking
 TEST(Test_DFMatrixKokkos, bounds_checking)
 {
@@ -172,6 +173,7 @@ TEST(Test_DFMatrixKokkos, bounds_checking)
     // Test invalid access - should throw
     EXPECT_DEATH(A(size+1,size+1), ".*"); // Matrix indices go from 1 to size
 }
+#endif
 
 // Test different types
 TEST(Test_DFMatrixKokkos, different_types)

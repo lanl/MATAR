@@ -13,5 +13,7 @@ if(KOKKOS)
 endif()
 
 # Add test discovery
+include(GoogleTest)
 enable_testing()
-add_test(NAME matar_tests COMMAND matar_tests)
+
+gtest_discover_tests(matar_tests)

@@ -98,6 +98,7 @@ TEST(Test_CMatrixKokkos, set_values)
     }
 }
 
+#ifndef NDEBUG
 // Test operator() access
 TEST(Test_CMatrixKokkos, operator_access)
 {
@@ -121,6 +122,7 @@ TEST(Test_CMatrixKokkos, operator_access)
     EXPECT_DEATH(A(1, 1, 1, 1, 1, 1, 1) = 5.0, ".*");
 }
 
+
 // Test bounds checking
 TEST(Test_CMatrixKokkos, bounds_checking)
 {
@@ -131,6 +133,7 @@ TEST(Test_CMatrixKokkos, bounds_checking)
     EXPECT_DEATH(A(size+1, size+1), ".*");
     EXPECT_DEATH(A(10000, 10000), ".*");
 }
+#endif
 
 // Test different types
 TEST(Test_CMatrixKokkos, different_types)
