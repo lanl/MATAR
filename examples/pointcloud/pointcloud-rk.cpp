@@ -53,6 +53,8 @@
 
 #include "lu_solver.hpp"
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 using namespace mtr;
 
@@ -64,9 +66,9 @@ const double PI = 3.14159265358979323846;
 const size_t num_points = 101;
 
 // the bin sizes for finding neighboring points
-const double bin_dx = 0.5; // 2 bins in x
-const double bin_dy = 0.5; // 2 bins in y
-const double bin_dz = 0.5; // 2 bins in z
+const double bin_dx = 0.05; // bins in x
+const double bin_dy = 0.05; // bins in y
+const double bin_dz = 0.05; // bins in z
 
 const double X0 = 0.0;   // origin
 const double Y0 = 0.0;
@@ -82,26 +84,56 @@ const double LZ = 1.0;
 
 
 
-
-struct bin_ijk_t{
-    size_t i, j, k;
+struct bin_keys_t{
+    size_t i,j,k;
 };
 
+KOKKOS_INLINE_FUNCTION
+size_t get_gid(size_t i, size_t j, size_t k, size_t num_x, size_t num_y){
+    return i + (j + k*num_y)*num_x;
+}
 
-bin_ijk_t get_bin_ijk(const double x_pt, const double y_pt, const double z_pt){
+KOKKOS_INLINE_FUNCTION
+bin_keys_t get_bin_keys(const double x_pt, 
+                        const double y_pt, 
+                        const double z_pt){
             
-    bin_ijk_t bin_ijk;
+
+    double i_dbl = fmax(1.0e-15, round((x_pt - X0 - bin_dx*0.5)/bin_dx - 1.0e-10)); // x = ih + X0 + dx_bin*0.5
+    double j_dbl = fmax(1.0e-15, round((y_pt - Y0 - bin_dy*0.5)/bin_dy - 1.0e-10));
+    double k_dbl = fmax(1.0e-15, round((z_pt - Z0 - bin_dz*0.5)/bin_dz - 1.0e-10));
+
+    bin_keys_t bin_keys; // save i,j,k to the bin keys
+
+    // get the integer for the bins
+    bin_keys.i = (size_t)i_dbl;
+    bin_keys.j = (size_t)j_dbl;
+    bin_keys.k = (size_t)k_dbl;
+
+    return bin_keys;
+
+} // end function
+
+KOKKOS_INLINE_FUNCTION
+size_t get_bin_gid(const double x_pt, 
+                   const double y_pt, 
+                   const double z_pt, 
+                   const size_t num_bins_x,
+                   const size_t num_bins_y){
+            
 
     double i_dbl = fmax(1.0e-15, round((x_pt - X0 - bin_dx*0.5)/bin_dx - 1.0e-10)); // x = ih + X0 + dx_bin*0.5
     double j_dbl = fmax(1.0e-15, round((y_pt - Y0 - bin_dy*0.5)/bin_dy - 1.0e-10));
     double k_dbl = fmax(1.0e-15, round((z_pt - Z0 - bin_dz*0.5)/bin_dz - 1.0e-10));
 
     // get the integers for the bins
-    bin_ijk.i = (size_t)i_dbl;
-    bin_ijk.j = (size_t)j_dbl;
-    bin_ijk.k = (size_t)k_dbl;
+    size_t i = (size_t)i_dbl;
+    size_t j = (size_t)j_dbl;
+    size_t k = (size_t)k_dbl;
     
-    return bin_ijk;
+    // get the 1D index for this bin                               
+    return get_gid(i, j, k, num_bins_x, num_bins_y);
+
 } // end function
 
 // Gaussian function part of the RBF
@@ -142,39 +174,46 @@ void poly_basis(const double r[3], double *p) {
 
 
 void compute_shape_functions(
-    size_t i,
+    size_t point_gid,
     const DCArrayKokkos <double>& x,
+    const DCArrayKokkos <size_t> points_num_neighbors, 
+    const DRaggedRightArrayKokkos <size_t> points_in_point,
     const CArrayKokkos <double>& vol,
     const CArrayKokkos <double>& rk_coeffs,
-    const CArrayKokkos <double>& rk_basis,
+    const DRaggedRightArrayKokkos <double>& rk_basis,
     const double h)
 {
 
-    // global num_points at this time, make it num_points in neighborhood
-    size_t num_points_neighborhood = x.dims(0); // will come from hash bins
+    //---------------------------------------------
+    // walk over the neighboring points 
+    //---------------------------------------------
 
-    // loop over all neighbors around point i
-    FOR_ALL(j, 0, num_points_neighborhood, {
+    FOR_ALL(neighbor_point_lid, 0, points_num_neighbors(point_gid), {
+
+        size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
 
         double p[num_poly_basis];    // array holding polynomial basis [x, y, z, x^2, y^2, ... , yz]
         double r[3];    // vecx_j - vecx_i
-        r[0] = x(j,0) - x(i,0); // x_j-x_i
-        r[1] = x(j,1) - x(i,1); // y_j-y_i
-        r[2] = x(j,2) - x(i,2); // z_j-z_i
+        r[0] = x(neighbor_point_gid,0) - x(point_gid,0); // x_j-x_i
+        r[1] = x(neighbor_point_gid,1) - x(point_gid,1); // y_j-y_i
+        r[2] = x(neighbor_point_gid,2) - x(point_gid,2); // z_j-z_i
 
         double W = kernel(r, h);
         poly_basis(r,p);
 
         double correction = 0.0;
         for (size_t a = 0; a < num_poly_basis; ++a){
-            correction += rk_coeffs(i,a) * p[a];
+            correction += rk_coeffs(point_gid,a) * p[a];
         } // end for a
 
-        rk_basis(j) = W * correction;
-    });
+        rk_basis(point_gid, neighbor_point_lid) = W * correction;
+
+    }); // neighbor_point_lid
+
 
 
     return;
+    
 } // end function
 
 
@@ -182,39 +221,44 @@ void compute_shape_functions(
 // Build reproducing kernel coefficients for all particles in the domain
 void build_rk_coefficients(
     const DCArrayKokkos <double>& x,
+    const DCArrayKokkos <size_t> points_num_neighbors, 
+    const DRaggedRightArrayKokkos <size_t> points_in_point,
     const CArrayKokkos <double>& vol,
     const CArrayKokkos <double>& rk_coeffs,
     double h)
 {
-
-    // global num_points at this time, make it num_points in neighborhood
-    size_t num_points_neighborhood = x.dims(0); // will come from hash bins
 
     // actual number of points
     size_t num_points = x.dims(0);
 
     
     // loop over all nodes in the problem
-    FOR_ALL(i, 0, num_points, {
+    FOR_ALL(point_gid, 0, num_points, {
 
         double M_1D[num_poly_basis*num_poly_basis]; 
         ViewCArrayKokkos <double> M(&M_1D[0], num_poly_basis, num_poly_basis);
         M.set_values(0.0);
 
         // values in rhs after this function will be accessed as rk_coeffs(i,0:N)
-        ViewCArrayKokkos <double> rhs (&rk_coeffs(i,0), num_poly_basis);
+        ViewCArrayKokkos <double> rhs (&rk_coeffs(point_gid,0), num_poly_basis);
         rhs.set_values(0.0);
         rhs(0) = 1.0;   // enforce reproduction of constant 1, everything else is = 0
 
         double p[num_poly_basis];    // array holding polynomial basis [x, y, z, x^2, y^2, ... , yz]
         double r[3];    // vecx_j - vecx_i
 
-        // loop over all nodes around point i
-        for (size_t j = 0; j < num_points_neighborhood; ++j) {
-           
-            r[0] = x(j,0) - x(i,0); // x_j-x_i
-            r[1] = x(j,1) - x(i,1); // y_j-y_i
-            r[2] = x(j,2) - x(i,2); // z_j-z_i
+
+        //---------------------------------------------
+        // walk over the neighboring points
+        //---------------------------------------------
+
+        for (size_t neighbor_point_lid=0; neighbor_point_lid<points_num_neighbors(point_gid); neighbor_point_lid++){
+
+            size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+
+            r[0] = x(neighbor_point_gid,0) - x(point_gid,0); // x_j-x_i
+            r[1] = x(neighbor_point_gid,1) - x(point_gid,1); // y_j-y_i
+            r[2] = x(neighbor_point_gid,2) - x(point_gid,2); // z_j-z_i
 
             double W = kernel(r, h);
             poly_basis(r,p);
@@ -223,11 +267,12 @@ void build_rk_coefficients(
 
             for (size_t a = 0; a < num_poly_basis; ++a) {
                 for (size_t b = 0; b < num_poly_basis; ++b) {
-                    M(a,b) += vol(j) * W * p[a] * p[b]; 
+                    M(a,b) += vol(neighbor_point_gid) * W * p[a] * p[b]; 
                 } // end for b
             } // for a
 
-        } // end for point neighbors j
+        } // neighbor_point_lid
+
     
         // -------------
         // solve Ax=B
@@ -306,68 +351,250 @@ int main(int argc, char *argv[])
         size_t num_bins_x = (size_t)( round(LX/bin_dx) );  
         size_t num_bins_y = (size_t)( round(LY/bin_dy) );  
         size_t num_bins_z = (size_t)( round(LZ/bin_dz) );  
-
-        
-
         size_t num_bins = num_bins_x*num_bins_y*num_bins_z;
 
-        //printf("num bins = %zu \n", num_bins);
-
-        DCArrayKokkos <size_t> num_points_in_bin(num_bins);
+        // bins and their connectivity to each other and points
+        DCArrayKokkos <bin_keys_t> keys_in_bin(num_bins, "keys_in_bin"); // mapping from gid to (i,j,k)
+        DCArrayKokkos <size_t> num_points_in_bin(num_bins, "num_bins");
         num_points_in_bin.set_values(0);
-        DCArrayKokkos <size_t> points_bin_id(num_points);
-        DCArrayKokkos <size_t> points_bin_id_storage(num_points);
+        DRaggedRightArrayKokkos <size_t> points_in_bin; // allocated later
         
-        FOR_ALL(pt_id, 0, num_points, {
 
-            // get i,j,k indices of the bins
-            bin_ijk_t bin_ijk = get_bin_ijk(point_positions(pt_id,0), 
-                                            point_positions(pt_id,1), 
-                                            point_positions(pt_id,2));
+        // connectivity from points to bins
+        DCArrayKokkos <size_t> points_bin_gid(num_points, "points_in_gid");
+        CArrayKokkos <size_t>  points_bin_lid_storage(num_points, "bin_lid_storage");  // only used to create storage
+        DCArrayKokkos <size_t> points_bin_stencil(num_points, "bin_stencil"); // how many bins needed for a particle
+        DCArrayKokkos <size_t> points_num_neighbors(num_points, "num_neighbors");
+        
+        // build reverse mapping between gid and i,j,k
+        FOR_ALL(i, 0, num_bins_x,
+                j, 0, num_bins_y,
+                k, 0, num_bins_z, {
+            
 
-            // get the 1D index
-            size_t bin_id = bin_ijk.i + (bin_ijk.j + bin_ijk.k*num_bins_y)*num_bins_x;
-          
-            size_t storage_place = Kokkos::atomic_fetch_add(&num_points_in_bin(bin_id), 1);
-            points_bin_id(pt_id) = bin_id; // the id of the bin
-            points_bin_id_storage(pt_id) = storage_place; // the storage place in the bin
+            // get bin gid for this i,j,k
+            size_t bin_gid = get_gid(i, j, k, num_bins_x, num_bins_y);
+
+            // the i,j,k for this bin
+            bin_keys_t bin_keys;
+            bin_keys.i = i;
+            bin_keys.j = j;
+            bin_keys.k = k;
+
+            // save mapping from bin_gid to bin_keys i,j,k
+            keys_in_bin(bin_gid) = bin_keys;
+
+        });
+        Kokkos::fence();
+        keys_in_bin.update_host();
+
+
+        // -------------------------------------------------------------------
+        // below here, these routine must be called every time particles move
+        // -------------------------------------------------------------------
+
+        // save bin id to points
+        FOR_ALL(point_gid, 0, num_points, {
+
+            // get the 1D index for this bin
+            size_t bin_gid = get_bin_gid(point_positions(point_gid,0), 
+                                         point_positions(point_gid,1), 
+                                         point_positions(point_gid,2),
+                                         num_bins_x, 
+                                         num_bins_y);
+
+            size_t storage_lid = Kokkos::atomic_fetch_add(&num_points_in_bin(bin_gid), 1);
+            points_bin_gid(point_gid) = bin_gid; // the id of the bin
+            points_bin_lid_storage(point_gid) = storage_lid; // the storage place in the bin
+
+        }); // end for all
+        Kokkos::fence();
+        points_bin_gid.update_host();
+        num_points_in_bin.update_host();
+
+
+        // allocate points in bin connectivity
+        points_in_bin = DRaggedRightArrayKokkos <size_t> (num_points_in_bin, "num_points_in_bin");
+
+        // save points in bin
+        FOR_ALL(point_gid, 0, num_points, {
+
+            // get bin gid
+            size_t bin_gid = points_bin_gid(point_gid);
+
+            // get it's storage location in the ragged right compressed storage
+            size_t storage_lid = points_bin_lid_storage(point_gid);
+
+            // save the point to this bin
+            points_in_bin(bin_gid, storage_lid) = point_gid;
 
         }); // end for all
 
-        DRaggedRightArrayKokkos <size_t> points_in_bin(num_points_in_bin);
 
-        FOR_ALL(pt_id, 0, num_points, {
 
-            size_t bin_id = points_bin_id(pt_id);
-            size_t storage_place = points_bin_id_storage(pt_id);
-            points_in_bin(bin_id, storage_place) = pt_id;
+        // ------------------------------------------------
+        // Find the neighbors around each point using bins
+        // ------------------------------------------------
+        
+        FOR_ALL(point_gid, 0, num_points, {
+
+            // get bin gid
+            size_t bin_gid = points_bin_gid(point_gid);
+            
+            // get i,j,k for this bin
+            bin_keys_t bin_keys = keys_in_bin(bin_gid);
+            // printf(" keys = %zu, %zu, %zu, bin size = %zu, %zu, %zu \n", 
+            //     bin_keys.i, bin_keys.j, bin_keys.k,
+            //     num_bins_x, num_bins_y, num_bins_z);
+
+            // loop over neighboring bins
+            size_t num_points_found;
+
+            // establish the stencil size to get enough particles
+            for(int stencil=1; stencil<1000; stencil++){
+
+                num_points_found = 0;
+
+                const int i = bin_keys.i;
+                const int j = bin_keys.j;
+                const int k = bin_keys.k;
+
+                const int imin = MAX(0, i-stencil);
+                const int imax = MIN(num_bins_x-1, i+stencil);
+
+                const int jmin = MAX(0, j-stencil);
+                const int jmax = MIN(num_bins_y-1, j+stencil);
+
+                const int kmin = MAX(0, k-stencil);
+                const int kmax = MIN(num_bins_z-1, k+stencil);
+
+                for (int icount=imin; icount<=imax; icount++){
+                    for (int jcount=jmin; jcount<=jmax; jcount++) {
+                        for (int kcount=kmin; kcount<=kmax; kcount++){
+
+                            // get bin neighbor gid 
+                            size_t neighbor_bin_gid = get_gid(icount, jcount, kcount, num_bins_x, num_bins_y);
+                            num_points_found += num_points_in_bin(neighbor_bin_gid);
+
+                        } // end for kcount
+                    } // end for jcount
+                } // end for icount
+
+                // the min number of points required to solve the system is num_poly_basis+1
+                if (num_points_found > num_poly_basis+5){
+
+                    points_bin_stencil(point_gid) = stencil;
+                    points_num_neighbors(point_gid) = num_points_found; // key for allocations
+                    printf("neighbors found = %zu \n", num_points_found);
+                    break;
+                }
+                
+            } // end for stencil
+
+            printf("num_pts_in_bin = %zu, neighbors found = %zu, Stencil size = %zu, bin keys = %zu, %zu, %zu \n", 
+                   num_points_in_bin(bin_gid),
+                   points_num_neighbors(point_gid),
+                   points_bin_stencil(point_gid),
+                   bin_keys.i,
+                   bin_keys.j,
+                   bin_keys.k);
 
         }); // end for all
+        Kokkos::fence();
+        points_bin_stencil.update_host();
+        points_num_neighbors.update_host();
         
+        // allocate memory for points in point
+        DRaggedRightArrayKokkos <size_t> points_in_point(points_num_neighbors, "points_in_point");
 
-        // ----------------------------
-        // Reconstruct surface here
-        // ----------------------------
+        // ---------------------
+        // Save the neighbors
+        // ---------------------
 
-        printf("Reconstructing surface using point cloud data \n\n");
+        // find my neighbors using bins
+        FOR_ALL(point_gid, 0, num_points, {
 
-        // assuming all point neighbors contribute, will change to a hash bins
-        const size_t num_points_neighborhood = num_points;
+            // get bin gid for this point
+            size_t bin_gid = points_bin_gid(point_gid);
+                    
+            // get i,j,k for this bin
+            bin_keys_t bin_keys = keys_in_bin(bin_gid);
 
-        CArrayKokkos <double> rk_coeffs(num_points, num_poly_basis);  // reproducing kernel coefficients at each point
-        CArrayKokkos <double> rk_basis(num_points);       // reproducing kernel basis, should have size num_points_neighborhood
+            const int i = bin_keys.i;
+            const int j = bin_keys.j;
+            const int k = bin_keys.k;
+
+            // walk over the stencil to get neighbors
+            const int stencil = points_bin_stencil(point_gid);
+
+            const int imin = MAX(0, i-stencil);
+            const int imax = MIN(num_bins_x-1, i+stencil);
+
+            const int jmin = MAX(0, j-stencil);
+            const int jmax = MIN(num_bins_y-1, j+stencil);
+
+            const int kmin = MAX(0, k-stencil);
+            const int kmax = MIN(num_bins_z-1, k+stencil);
+
+            size_t num_saved = 0;
+            size_t num_points_found = 0;
+
+            for (int icount=imin; icount<=imax; icount++){
+                for (int jcount=jmin; jcount<=jmax; jcount++) {
+                    for (int kcount=kmin; kcount<=kmax; kcount++){
+
+                        // get bin neighbor gid 
+                        size_t neighbor_bin_gid = get_gid(icount, jcount, kcount, num_bins_x, num_bins_y);
+                        num_points_found += num_points_in_bin(neighbor_bin_gid);
+
+                        // save the points in this bin
+                        for(size_t neighbor_pt_lid=0; neighbor_pt_lid<num_points_in_bin(neighbor_bin_gid); neighbor_pt_lid++){
+
+                            size_t neighbor_point_gid = points_in_bin(neighbor_bin_gid, neighbor_pt_lid);
+                            
+                            printf("num saved = %zu,  points_num_neighbors = %zu, num_points_found = %zu \n", 
+                                num_saved, points_num_neighbors(point_gid), num_points_found);
+                            points_in_point(point_gid, num_saved) = neighbor_point_gid;
+                            
+                            num_saved++;
+
+                        } // neighbor_point_lid
+
+                    } // end for kcount
+                } // end for jcount
+            } // end for icount        
+
+        }); // end for all
+        Kokkos::fence();
+        points_in_point.update_host();
+
+
+
+        // ----------------------------------------
+        // Find basis that reconstructs polynomial 
+        // ----------------------------------------
+
+        printf("Reconstructing basis using point cloud data \n\n");
+
+
+        CArrayKokkos <double> rk_coeffs(num_points, num_poly_basis); // reproducing kernel coefficients at each point
+        DRaggedRightArrayKokkos <double> rk_basis(points_num_neighbors);   // reproducing kernel basis (num_points, num_neighbors)
         CArrayKokkos <double> vol(num_points);
         vol.set_values(1.0);
 
         double h = 1.0;
 
 
-        printf("building rk coefficients \n");
+        printf("building reproducing kernel coefficients \n");
 
         // build coefficients on basis functions
-        build_rk_coefficients(point_positions, vol, rk_coeffs, h);
+        build_rk_coefficients(point_positions, 
+                              points_num_neighbors, 
+                              points_in_point, 
+                              vol, 
+                              rk_coeffs, 
+                              h);
 
-        
         
         // performing checks on rk_coeffs
         double partion_unity;
@@ -376,29 +603,34 @@ int main(int argc, char *argv[])
         double linear_preserving;
         double linear_preserving_lcl;
 
-        for(size_t i=0; i<num_points; i++){
+        // loop over the particles in the domain
+        for(size_t point_gid=0; point_gid<num_points; point_gid++){
             
             // build basis functions at point i
-            compute_shape_functions(i, 
+            compute_shape_functions(point_gid, 
                                     point_positions, 
+                                    points_num_neighbors, 
+                                    points_in_point, 
                                     vol, 
                                     rk_coeffs, 
                                     rk_basis, 
                                     h);
 
-            FOR_REDUCE_SUM(j, 0, num_points_neighborhood, partion_unity_lcl, {
-                partion_unity_lcl += rk_basis(j)*vol(j);
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), partion_unity_lcl, {
+                partion_unity_lcl += rk_basis(point_gid,neighbor_point_lid)*vol(neighbor_point_lid);
             }, partion_unity);
             
 
-            FOR_REDUCE_SUM(j, 0, num_points_neighborhood, linear_preserving_lcl, {
-                linear_preserving_lcl += rk_basis(j)*vol(j)*point_positions(j,0);
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), linear_preserving_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                linear_preserving_lcl += rk_basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0);
             }, linear_preserving);
 
             printf("partition unity = %f, ", partion_unity);
-            printf("linear preserving error = %f at i=%zu \n", fabs(linear_preserving-point_positions(i,0)), i);
+            printf("linear preserving error = %f at i=%zu \n", fabs(linear_preserving-point_positions(point_gid,0)), point_gid);
 
-        } // end for i
+        } // end for point gid
 
 
         printf("Writing VTK Graphics File \n\n");
@@ -410,17 +642,17 @@ int main(int argc, char *argv[])
         out << "ASCII\n";
         out << "DATASET POLYDATA\n";
         out << "POINTS " << num_points << " float\n";
-        for (size_t pt_id = 0; pt_id < num_points; ++pt_id) {
-            out << point_positions.host(pt_id,0) << " " 
-                << point_positions.host(pt_id,1) << " " 
-                << point_positions.host(pt_id,2) << "\n";
+        for (size_t point_gid = 0; point_gid < num_points; ++point_gid) {
+            out << point_positions.host(point_gid,0) << " " 
+                << point_positions.host(point_gid,1) << " " 
+                << point_positions.host(point_gid,2) << "\n";
         }
 
         out << "\nPOINT_DATA " << num_points << "\n";
         out << "SCALARS field float 1\n";
         out << "LOOKUP_TABLE default\n";
-        for (size_t pt_id = 0; pt_id < num_points; ++pt_id) {
-            out << point_values.host(pt_id) << "\n";
+        for (size_t point_gid = 0; point_gid < num_points; ++point_gid) {
+            out << point_values.host(point_gid) << "\n";
         }
 
     
