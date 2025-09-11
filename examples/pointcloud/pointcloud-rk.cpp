@@ -136,8 +136,9 @@ size_t get_bin_gid(const double x_pt,
 
 } // end function
 
+
 // Gaussian function part of the RBF
-// rbf = exp(-(x - xj)*(x - xj)/h)
+// rbf = exp(-(xj - x)*(xj - x)/h)
 KOKKOS_FUNCTION
 double kernel(const double r[3], const double h){
 
@@ -148,6 +149,28 @@ double kernel(const double r[3], const double h){
     } // dim
 
     return exp(-diff_sqrd/(h*h));
+} // end of function
+
+
+// Gradient Gaussian function
+// rbf = exp(-(xj - x)*(xj - x)/h)
+KOKKOS_FUNCTION
+void grad_kernel(const double r[3], const double h, double *grad_W){
+
+    double diff_sqrd = 0.0;
+
+    for(size_t dim=0; dim<3; dim++){
+        diff_sqrd += r[dim]*r[dim];
+    } // dim
+
+    const double rbf = exp(-diff_sqrd/(h*h));
+
+    // gradient
+    grad_W[0] = 2.0/h*r[0]*rbf; 
+    grad_W[1] = 2.0/h*r[1]*rbf; 
+    grad_W[2] = 2.0/h*r[2]*rbf;
+
+    return;
 } // end of function
 
 
@@ -173,14 +196,66 @@ void poly_basis(const double r[3], double *p) {
 } // end function
 
 
-void compute_shape_functions(
+KOKKOS_INLINE_FUNCTION
+void grad_poly_basis(const double r[3], double (*grad_p)[num_poly_basis]) {
+    
+    const double drdx = -1.0;
+
+    grad_p[0][0] = 0.0;
+    grad_p[0][1] = drdx;
+    grad_p[0][2] = 0.0;
+    grad_p[0][3] = 0.0;
+    grad_p[0][4] = 2.0*r[0]*drdx;
+    grad_p[0][5] = r[1]*drdx;
+    grad_p[0][6] = r[2]*drdx;
+    grad_p[0][7] = 0.0;
+    grad_p[0][8] = 0.0;
+    grad_p[0][9] = 0.0;
+
+    // for high-order will use (x^a y^b z^c)
+
+    const double drdy = -1.0;
+
+    grad_p[1][0] = 0.0;
+    grad_p[1][1] = 0.0;
+    grad_p[1][2] = drdy;
+    grad_p[1][3] = 0.0;
+    grad_p[1][4] = 0.0;
+    grad_p[1][5] = r[0]*drdy;
+    grad_p[1][6] = 0.0;
+    grad_p[1][7] = 2.0*r[1]*drdy;
+    grad_p[1][8] = r[2]*drdy;
+    grad_p[1][9] = 0.0;
+
+    // for high-order will use (x^a y^b z^c)
+
+    const double drdz = -1.0;
+
+    grad_p[2][0] = 0.0;
+    grad_p[2][1] = 0.0;
+    grad_p[2][2] = 0.0;
+    grad_p[2][3] = drdz;
+    grad_p[2][4] = 0.0;
+    grad_p[2][5] = 0.0;
+    grad_p[2][6] = r[0]*drdz;
+    grad_p[2][7] = 0.0;
+    grad_p[2][8] = r[1]*drdz;
+    grad_p[2][9] = 2.0*r[2]*drdz;
+
+    // for high-order will use (x^a y^b z^c)
+
+    return;
+} // end function
+
+
+void calc_shape_functions(
     size_t point_gid,
     const DCArrayKokkos <double>& x,
     const DCArrayKokkos <size_t> points_num_neighbors, 
     const DRaggedRightArrayKokkos <size_t> points_in_point,
     const CArrayKokkos <double>& vol,
-    const CArrayKokkos <double>& rk_coeffs,
-    const DRaggedRightArrayKokkos <double>& rk_basis,
+    const CArrayKokkos <double>& p_coeffs,
+    const DRaggedRightArrayKokkos <double>& basis,
     const double h)
 {
 
@@ -203,14 +278,12 @@ void compute_shape_functions(
 
         double correction = 0.0;
         for (size_t a = 0; a < num_poly_basis; ++a){
-            correction += rk_coeffs(point_gid,a) * p[a];
+            correction += p_coeffs(point_gid,a) * p[a];
         } // end for a
 
-        rk_basis(point_gid, neighbor_point_lid) = W * correction;
+        basis(point_gid, neighbor_point_lid) = W * correction;
 
     }); // neighbor_point_lid
-
-
 
     return;
     
@@ -218,13 +291,86 @@ void compute_shape_functions(
 
 
 
-// Build reproducing kernel coefficients for all particles in the domain
-void build_rk_coefficients(
+void calc_grad_shape_functions(
+    size_t point_gid,
     const DCArrayKokkos <double>& x,
     const DCArrayKokkos <size_t> points_num_neighbors, 
     const DRaggedRightArrayKokkos <size_t> points_in_point,
     const CArrayKokkos <double>& vol,
-    const CArrayKokkos <double>& rk_coeffs,
+    const CArrayKokkos <double>& p_coeffs,
+    const DRaggedRightArrayKokkos <double>& basis,
+    const DRaggedRightArrayKokkos <double>& grad_basis,
+    const double h)
+{
+
+    //---------------------------------------------
+    // walk over the neighboring points 
+    //---------------------------------------------
+
+    FOR_ALL(neighbor_point_lid, 0, points_num_neighbors(point_gid), {
+
+        size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+
+        double p[num_poly_basis];    // array holding polynomial basis [x, y, z, x^2, y^2, ... , yz]
+        double grad_p[3][num_poly_basis]; // matrix holding grad polynomial basis
+
+        double r[3];    // vecx_j - vecx_i
+        r[0] = x(neighbor_point_gid,0) - x(point_gid,0); // x_j-x_i
+        r[1] = x(neighbor_point_gid,1) - x(point_gid,1); // y_j-y_i
+        r[2] = x(neighbor_point_gid,2) - x(point_gid,2); // z_j-z_i
+
+        double W = kernel(r, h);
+        poly_basis(r,p);
+
+        double correction = 0.0;
+        for (size_t a = 0; a < num_poly_basis; ++a){
+            correction += p_coeffs(point_gid,a) * p[a];
+        } // end for a
+
+        basis(point_gid, neighbor_point_lid) = W * correction;
+
+        // --- gradient ---
+        double grad_W[3];
+        grad_kernel(r, h, grad_W);
+        grad_poly_basis(r, grad_p);
+
+        double term1_x = 0.0;
+        double term1_y = 0.0;
+        double term1_z = 0.0;
+
+        double term2_x = 0.0;
+        double term2_y = 0.0;
+        double term2_z = 0.0;
+
+        for (size_t a = 0; a < num_poly_basis; ++a){
+            term1_x += grad_p[0][a] * p_coeffs(point_gid,a);
+            term1_y += grad_p[1][a] * p_coeffs(point_gid,a);
+            term1_z += grad_p[2][a] * p_coeffs(point_gid,a);
+        } // end for a
+        term1_x *= W;
+        term1_y *= W;
+        term1_z *= W;
+
+        term2_x = correction*grad_W[0];
+        term2_y = correction*grad_W[1];
+        term2_z = correction*grad_W[2];
+
+    }); // neighbor_point_lid
+
+    return;
+    
+} // end function
+
+
+
+// Build reproducing kernel poly coefficients for all particles in the domain
+void calc_p_coefficients(
+    const DCArrayKokkos <double>& x,
+    const DCArrayKokkos <size_t> points_num_neighbors, 
+    const DRaggedRightArrayKokkos <size_t> points_in_point,
+    const CArrayKokkos <double>& vol,
+    const CArrayKokkos <double>& p_coeffs,
+    const CArrayKokkos <double>& M_inv,
     double h)
 {
 
@@ -239,14 +385,13 @@ void build_rk_coefficients(
         ViewCArrayKokkos <double> M(&M_1D[0], num_poly_basis, num_poly_basis);
         M.set_values(0.0);
 
-        // values in rhs after this function will be accessed as rk_coeffs(i,0:N)
-        ViewCArrayKokkos <double> rhs (&rk_coeffs(point_gid,0), num_poly_basis);
+        // values in rhs after this function will be accessed as p_coeffs(i,0:N)
+        ViewCArrayKokkos <double> rhs (&p_coeffs(point_gid,0), num_poly_basis);
         rhs.set_values(0.0);
         rhs(0) = 1.0;   // enforce reproduction of constant 1, everything else is = 0
 
         double p[num_poly_basis];    // array holding polynomial basis [x, y, z, x^2, y^2, ... , yz]
         double r[3];    // vecx_j - vecx_i
-
 
         //---------------------------------------------
         // walk over the neighboring points
@@ -295,6 +440,22 @@ void build_rk_coefficients(
             printf("ERROR: matrix is singluar \n");
         }
 
+
+        // --------------------------------------------------
+        // things needed for gradient of the basis function
+        double col_1D[num_poly_basis];
+        ViewCArrayKokkos <double> col(&col_1D[0], num_poly_basis);
+
+        // making a view, inverting only the matrix at point i
+        ViewCArrayKokkos <double> M_inv_pt(&M_inv(point_gid,0,0), num_poly_basis,num_poly_basis);
+
+        LU_invert(M,        // input matrix
+                  perm,     // permutations
+                  M_inv_pt, // inverse matrix at point gid
+                  col);     // tmp array
+        // -------------------------------------------------
+        
+        // solve for p_coefs
         LU_backsub(M, perm, rhs);  // note: answer is sent back in rhs
 
     }); // end parallel loop
@@ -567,26 +728,31 @@ int main(int argc, char *argv[])
         printf("Reconstructing basis using point cloud data \n\n");
 
 
-        CArrayKokkos <double> rk_coeffs(num_points, num_poly_basis); // reproducing kernel coefficients at each point
-        DRaggedRightArrayKokkos <double> rk_basis(points_num_neighbors);   // reproducing kernel basis (num_points, num_neighbors)
+        CArrayKokkos <double> p_coeffs(num_points, num_poly_basis); // reproducing kernel coefficients at each point
         CArrayKokkos <double> vol(num_points);
         vol.set_values(1.0);
 
-        double h = 1.0;
+        CArrayKokkos <double> M_inv(num_points, num_poly_basis, num_poly_basis);
+        CArrayKokkos <double> grad_M(num_points, num_poly_basis, num_poly_basis);
+        
+        DRaggedRightArrayKokkos <double> basis(points_num_neighbors);        // reproducing kernel basis (num_points, num_neighbors)
+        DRaggedRightArrayKokkos <double> grad_basis(points_num_neighbors,3); // reproducing kernel basis (num_points, num_neighbors)
 
+
+        double h = 1.0;
 
         printf("building reproducing kernel coefficients \n");
 
         // build coefficients on basis functions
-        build_rk_coefficients(point_positions, 
+        calc_p_coefficients(point_positions, 
                               points_num_neighbors, 
                               points_in_point, 
                               vol, 
-                              rk_coeffs, 
+                              p_coeffs, 
+                              M_inv,
                               h);
-
         
-        // performing checks on rk_coeffs
+        // performing checks on p_coeffs
         double partion_unity;
         double partion_unity_lcl;
 
@@ -600,18 +766,18 @@ int main(int argc, char *argv[])
         for(size_t point_gid=0; point_gid<num_points; point_gid++){
             
             // build basis functions at point i
-            compute_shape_functions(point_gid, 
+            calc_shape_functions(point_gid, 
                                     point_positions, 
                                     points_num_neighbors, 
                                     points_in_point, 
                                     vol, 
-                                    rk_coeffs, 
-                                    rk_basis, 
+                                    p_coeffs, 
+                                    basis, 
                                     h);
 
             // partition of unity
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), partion_unity_lcl, {
-                partion_unity_lcl += rk_basis(point_gid,neighbor_point_lid)*vol(neighbor_point_lid);
+                partion_unity_lcl += basis(point_gid,neighbor_point_lid)*vol(neighbor_point_lid);
             }, partion_unity);
             
 
@@ -619,7 +785,7 @@ int main(int argc, char *argv[])
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), linear_preserving_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                linear_preserving_lcl += rk_basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0);
+                linear_preserving_lcl += basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0);
             }, linear_preserving);
 
 
@@ -627,12 +793,12 @@ int main(int argc, char *argv[])
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), quadratic_preserving_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                quadratic_preserving_lcl += rk_basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0)*point_positions(neighbor_point_gid,0);
+                quadratic_preserving_lcl += basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0)*point_positions(neighbor_point_gid,0);
             }, quadratic_preserving);
 
             printf("partition unity = %f, ", partion_unity);
-            printf("linear preserving error = %f, ", fabs(linear_preserving-point_positions(point_gid,0)));
-            printf("quadratic preserving error = %f at i=%zu \n", fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0)), point_gid);
+            printf("linear fcn error = %f, ", fabs(linear_preserving-point_positions(point_gid,0)));
+            printf("quadratic fcn error = %f at i=%zu \n", fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0)), point_gid);
 
         } // end for point gid
 
