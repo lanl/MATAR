@@ -40,6 +40,8 @@
 //  Nathaniel Morgan
 // -----------------------------------------------
 
+#include <chrono>   // for timing
+
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -63,7 +65,7 @@ const double PI = 3.14159265358979323846;
 // -----------------------------------------------
 // inputs:
 
-const size_t num_points = 101;
+const size_t num_points = 10001;
 
 // the bin sizes for finding neighboring points
 const double bin_dx = 0.05; // bins in x
@@ -621,6 +623,9 @@ int main(int argc, char *argv[])
         DCArrayKokkos <size_t> points_bin_stencil(num_points, "bin_stencil"); // how many bins needed for a particle
         DCArrayKokkos <size_t> points_num_neighbors(num_points, "num_neighbors");
         
+        // start timer
+        auto time_1 = std::chrono::high_resolution_clock::now();
+
         // build reverse mapping between gid and i,j,k
         FOR_ALL(i, 0, num_bins_x,
                 j, 0, num_bins_y,
@@ -643,10 +648,16 @@ int main(int argc, char *argv[])
         Kokkos::fence();
         keys_in_bin.update_host();
 
+        // end timer
+        auto time_2 = std::chrono::high_resolution_clock::now();
+
 
         // -------------------------------------------------------------------
         // below here, these routine must be called every time particles move
         // -------------------------------------------------------------------
+
+        // start timer
+        auto time_3 = std::chrono::high_resolution_clock::now();
 
         // save bin id to points
         FOR_ALL(point_gid, 0, num_points, {
@@ -814,6 +825,9 @@ int main(int argc, char *argv[])
         points_in_point.update_host();
 
 
+        // end timer
+        auto time_4 = std::chrono::high_resolution_clock::now();
+
 
         // ----------------------------------------
         // Find basis that reconstructs polynomial 
@@ -821,6 +835,7 @@ int main(int argc, char *argv[])
 
         printf("Reconstructing basis using point cloud data \n\n");
 
+        auto time_5 = std::chrono::high_resolution_clock::now();
 
         CArrayKokkos <double> p_coeffs(num_points, num_poly_basis); // reproducing kernel coefficients at each point
         CArrayKokkos <double> vol(num_points);
@@ -857,6 +872,9 @@ int main(int argc, char *argv[])
                                     basis,
                                     grad_basis,
                                     h);
+
+        // end timer
+        auto time_6 = std::chrono::high_resolution_clock::now();
 
 
         // performing checks on p_coeffs, basis, and grad_basis
@@ -988,7 +1006,18 @@ int main(int argc, char *argv[])
         } // end for point gid
 
 
-        //////
+        ////// timers ///
+
+        std::chrono::duration <double, std::milli> ms = time_2 - time_1;
+        std::cout << "runtime to create bins = " << ms.count() << "ms\n\n";
+
+        ms = time_4 - time_3;
+        std::cout << "runtime to find and save neighbors = " << ms.count() << "ms\n\n";
+
+        ms = time_6 - time_5;
+        std::cout << "runtime to calculate basis and grad basis = " << ms.count() << "ms\n\n";
+
+
 
         printf("Writing VTK Graphics File \n\n");
 
@@ -1012,7 +1041,7 @@ int main(int argc, char *argv[])
             out << point_values.host(point_gid) << "\n";
         }
 
-    
+
         printf("Finished \n\n");
 
 
