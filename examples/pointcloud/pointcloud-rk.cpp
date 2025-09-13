@@ -933,6 +933,49 @@ int main(int argc, char *argv[])
              printf("grad(P0) = %f, %f, %f, \n", grad_x_p0, grad_y_p0, grad_z_p0);
 
 
+            // Sum(grad(P1)) = [1]; 
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_x_p1_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_x_p1_lcl += grad_basis(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0);
+            }, grad_x_p1);
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_y_p1_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_y_p1_lcl += grad_basis(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,1);
+            }, grad_y_p1);
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_z_p1_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_z_p1_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,2);
+            }, grad_z_p1);
+             printf("error in grad(P1) = %f, %f, %f, \n", 
+                fabs(grad_x_p1 - 1.0), 
+                fabs(grad_y_p1 - 1.0), 
+                fabs(grad_z_p1 - 1.0));
+
+
+            // Sum(grad(P2)) = [2]; 
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_x_p2_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_x_p2_lcl += grad_basis(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0)*point_positions(neighbor_point_gid,0);
+            }, grad_x_p2);
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_y_p2_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_y_p2_lcl += grad_basis(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,1)*point_positions(neighbor_point_gid,1);
+            }, grad_y_p2);
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_z_p2_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_z_p2_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,2)*point_positions(neighbor_point_gid,2);
+            }, grad_z_p2);
+            printf("error in grad(P2) = %f, %f, %f, \n", 
+                    fabs(grad_x_p2-2.0*point_positions(point_gid,0)), 
+                    fabs(grad_y_p2-2.0*point_positions(point_gid,1)), 
+                    fabs(grad_z_p2-2.0*point_positions(point_gid,2)));
+
         } // end for point gid
 
 
