@@ -166,9 +166,9 @@ void grad_kernel(const double r[3], const double h, double *grad_W){
     const double rbf = exp(-diff_sqrd/(h*h));
 
     // gradient
-    grad_W[0] = 2.0/h*r[0]*rbf; 
-    grad_W[1] = 2.0/h*r[1]*rbf; 
-    grad_W[2] = 2.0/h*r[2]*rbf;
+    grad_W[0] = 2.0/(h*h)*r[0]*rbf; 
+    grad_W[1] = 2.0/(h*h)*r[1]*rbf; 
+    grad_W[2] = 2.0/(h*h)*r[2]*rbf;
 
     return;
 } // end of function
@@ -248,7 +248,7 @@ void grad_poly_basis(const double r[3], double (*grad_p)[num_poly_basis]) {
 } // end function
 
 
-void calc_shape_functions(
+void calc_basis_functions(
     size_t point_gid,
     const DCArrayKokkos <double>& x,
     const DCArrayKokkos <size_t> points_num_neighbors, 
@@ -290,29 +290,66 @@ void calc_shape_functions(
 } // end function
 
 
-
-void calc_grad_shape_functions(
+// grad_C = -M^-1 * grad_M * C
+// grad_M[a][b][i] = V (P[a] * grad_p[i][b] W + grad_p[i][a] P[b] W + P[a] P[b] grad_W[i])
+// -M^-1[d][k]*grad_M[k][b][i]*C[b] = [d][i]
+// p[d] grad_C[d][i]
+void calc_basis_and_grad_basis_functions(
     size_t point_gid,
     const DCArrayKokkos <double>& x,
     const DCArrayKokkos <size_t> points_num_neighbors, 
     const DRaggedRightArrayKokkos <size_t> points_in_point,
     const CArrayKokkos <double>& vol,
     const CArrayKokkos <double>& p_coeffs,
+    const CArrayKokkos <double>& M_inv,
     const DRaggedRightArrayKokkos <double>& basis,
     const DRaggedRightArrayKokkos <double>& grad_basis,
     const double h)
 {
 
-    //---------------------------------------------
-    // walk over the neighboring points 
-    //---------------------------------------------
+    // --------------
+    // Step 1: assemble grad M, the gradient of the moment matrix
 
+    FArrayKokkos <double> grad_m(3,num_poly_basis,num_poly_basis);
+    grad_m.set_values(0.0);
+
+    // walk over the neighboring points 
     FOR_ALL(neighbor_point_lid, 0, points_num_neighbors(point_gid), {
 
         size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
 
-        double p[num_poly_basis];    // array holding polynomial basis [x, y, z, x^2, y^2, ... , yz]
-        double grad_p[3][num_poly_basis]; // matrix holding grad polynomial basis
+        double r[3];    // vecx_j - vecx_i
+        r[0] = x(neighbor_point_gid,0) - x(point_gid,0); // x_j-x_i
+        r[1] = x(neighbor_point_gid,1) - x(point_gid,1); // y_j-y_i
+        r[2] = x(neighbor_point_gid,2) - x(point_gid,2); // z_j-z_i
+
+        double W = kernel(r,h);
+        double grad_W[3]; grad_kernel(r,h,grad_W);
+
+        double p[num_poly_basis]; poly_basis(r,p);
+        double grad_p[3][num_poly_basis]; grad_poly_basis(r,grad_p);
+
+        double Vj = vol(neighbor_point_gid);
+
+        // grad_M = V (P grad_p W + grad_p P W + P P grad_W)
+        for(size_t a=0;a<num_poly_basis;++a){
+            for(size_t b=0;b<num_poly_basis;++b){
+                Kokkos::atomic_add(&grad_m(0,a,b), Vj * ( p[a]*grad_p[0][b]*W + grad_p[0][a]*p[b]*W + p[a]*p[b]*grad_W[0] ));
+                Kokkos::atomic_add(&grad_m(1,a,b), Vj * ( p[a]*grad_p[1][b]*W + grad_p[1][a]*p[b]*W + p[a]*p[b]*grad_W[1] ));
+                Kokkos::atomic_add(&grad_m(2,a,b), Vj * ( p[a]*grad_p[2][b]*W + grad_p[2][a]*p[b]*W + p[a]*p[b]*grad_W[2] ));
+            } // end for b
+        } // end for a
+
+    }); // end parallel loop over neighboring points
+
+
+    // -----------
+    // Step 2: calculate basis and grad basis
+
+    // walk over the neighboring points 
+    FOR_ALL(neighbor_point_lid, 0, points_num_neighbors(point_gid), {
+
+        size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
 
         double r[3];    // vecx_j - vecx_i
         r[0] = x(neighbor_point_gid,0) - x(point_gid,0); // x_j-x_i
@@ -320,8 +357,17 @@ void calc_grad_shape_functions(
         r[2] = x(neighbor_point_gid,2) - x(point_gid,2); // z_j-z_i
 
         double W = kernel(r, h);
-        poly_basis(r,p);
 
+        double p[num_poly_basis];    // array holding polynomial basis [x, y, z, x^2, y^2, ... , yz]
+        poly_basis(r,p);
+        
+        double grad_W[3];
+        grad_kernel(r, h, grad_W);
+
+        double grad_p[3][num_poly_basis]; // matrix holding grad polynomial basis
+        grad_poly_basis(r, grad_p);
+
+        // 
         double correction = 0.0;
         for (size_t a = 0; a < num_poly_basis; ++a){
             correction += p_coeffs(point_gid,a) * p[a];
@@ -329,31 +375,61 @@ void calc_grad_shape_functions(
 
         basis(point_gid, neighbor_point_lid) = W * correction;
 
-        // --- gradient ---
-        double grad_W[3];
-        grad_kernel(r, h, grad_W);
-        grad_poly_basis(r, grad_p);
 
-        double term1_x = 0.0;
-        double term1_y = 0.0;
-        double term1_z = 0.0;
+        // --- gradient contributions ---
 
-        double term2_x = 0.0;
-        double term2_y = 0.0;
-        double term2_z = 0.0;
+        // term from grad poly
+        double term_x = 0.0;
+        double term_y = 0.0;
+        double term_z = 0.0;
+
+        // calc the grad of poly term
+        for (size_t a = 0; a < num_poly_basis; ++a){
+            term_x += grad_p[0][a] * p_coeffs(point_gid,a);
+            term_y += grad_p[1][a] * p_coeffs(point_gid,a);
+            term_z += grad_p[2][a] * p_coeffs(point_gid,a);
+        } // end for a
+
+        // saving the grad poly term plus the grad kernel term to the grad basis
+        grad_basis(point_gid,neighbor_point_lid,0) = term_x*W + correction*grad_W[0];
+        grad_basis(point_gid,neighbor_point_lid,1) = term_y*W + correction*grad_W[1];
+        grad_basis(point_gid,neighbor_point_lid,2) = term_z*W + correction*grad_W[2];
+
+
+        // --- gradient of correction coefficients (grad_C) ---
+
+        // the last contirubtion to grad_basis is from grad_C
+        // sum_a p[a]*W*grad_C[i][a]
+        double grad_C[3][num_poly_basis];
+
 
         for (size_t a = 0; a < num_poly_basis; ++a){
-            term1_x += grad_p[0][a] * p_coeffs(point_gid,a);
-            term1_y += grad_p[1][a] * p_coeffs(point_gid,a);
-            term1_z += grad_p[2][a] * p_coeffs(point_gid,a);
-        } // end for a
-        term1_x *= W;
-        term1_y *= W;
-        term1_z *= W;
+            grad_C[0][a] = 0.0;
+            grad_C[1][a] = 0.0;
+            grad_C[2][a] = 0.0;
+        } // end for 1
 
-        term2_x = correction*grad_W[0];
-        term2_y = correction*grad_W[1];
-        term2_z = correction*grad_W[2];
+
+        // grad_C = -M^-1 * grad_M * C
+        for (size_t d = 0; d < num_poly_basis; ++d) {
+            for (size_t b = 0; b < num_poly_basis; ++b) {
+                double Cb = p_coeffs(point_gid,b);
+                for (size_t k = 0; k < num_poly_basis; ++k) {
+                    grad_C[0][d] -= M_inv(point_gid,d,k) * grad_m(0,k,b) * Cb;
+                    grad_C[1][d] -= M_inv(point_gid,d,k) * grad_m(1,k,b) * Cb;
+                    grad_C[2][d] -= M_inv(point_gid,d,k) * grad_m(2,k,b) * Cb;
+                } // end for k
+            } // end for b
+        } // end for d
+
+
+        // adding grad_C[i][d]* p[d]*W to the grad basis function
+        for (size_t d = 0; d < num_poly_basis; ++d){
+            grad_basis(point_gid,neighbor_point_lid,0) += grad_C[0][d]*p[d]*W;
+            grad_basis(point_gid,neighbor_point_lid,1) += grad_C[1][d]*p[d]*W;
+            grad_basis(point_gid,neighbor_point_lid,2) += grad_C[2][d]*p[d]*W;
+        } // end for d
+
 
     }); // neighbor_point_lid
 
@@ -447,11 +523,11 @@ void calc_p_coefficients(
         ViewCArrayKokkos <double> col(&col_1D[0], num_poly_basis);
 
         // making a view, inverting only the matrix at point i
-        ViewCArrayKokkos <double> M_inv_pt(&M_inv(point_gid,0,0), num_poly_basis,num_poly_basis);
+        ViewCArrayKokkos <double> M_inv_point(&M_inv(point_gid,0,0), num_poly_basis,num_poly_basis);
 
         LU_invert(M,        // input matrix
                   perm,     // permutations
-                  M_inv_pt, // inverse matrix at point gid
+                  M_inv_point, // inverse matrix at point gid
                   col);     // tmp array
         // -------------------------------------------------
         
@@ -745,12 +821,12 @@ int main(int argc, char *argv[])
 
         // build coefficients on basis functions
         calc_p_coefficients(point_positions, 
-                              points_num_neighbors, 
-                              points_in_point, 
-                              vol, 
-                              p_coeffs, 
-                              M_inv,
-                              h);
+                            points_num_neighbors, 
+                            points_in_point, 
+                            vol, 
+                            p_coeffs, 
+                            M_inv,
+                            h);
         
         // performing checks on p_coeffs
         double partion_unity;
@@ -762,17 +838,50 @@ int main(int argc, char *argv[])
         double quadratic_preserving;
         double quadratic_preserving_lcl;
 
+        double grad_x_p0; 
+        double grad_x_p0_lcl; 
+        double grad_y_p0; 
+        double grad_y_p0_lcl; 
+        double grad_z_p0; 
+        double grad_z_p0_lcl; 
+
+        double grad_x_p1; 
+        double grad_x_p1_lcl; 
+        double grad_y_p1; 
+        double grad_y_p1_lcl; 
+        double grad_z_p1; 
+        double grad_z_p1_lcl; 
+
+        double grad_x_p2; 
+        double grad_x_p2_lcl; 
+        double grad_y_p2; 
+        double grad_y_p2_lcl; 
+        double grad_z_p2; 
+        double grad_z_p2_lcl; 
+
         // loop over the particles in the domain
         for(size_t point_gid=0; point_gid<num_points; point_gid++){
             
             // build basis functions at point i
-            calc_shape_functions(point_gid, 
-                                    point_positions, 
+            // calc_basis_functions(point_gid, 
+            //                      point_positions, 
+            //                      points_num_neighbors, 
+            //                      points_in_point, 
+            //                      vol, 
+            //                      p_coeffs, 
+            //                      basis, 
+            //                      h);
+
+            calc_basis_and_grad_basis_functions(
+                                    point_gid,
+                                    point_positions,
                                     points_num_neighbors, 
-                                    points_in_point, 
-                                    vol, 
-                                    p_coeffs, 
-                                    basis, 
+                                    points_in_point,
+                                    vol,
+                                    p_coeffs,
+                                    M_inv,
+                                    basis,
+                                    grad_basis,
                                     h);
 
             // partition of unity
@@ -799,6 +908,30 @@ int main(int argc, char *argv[])
             printf("partition unity = %f, ", partion_unity);
             printf("linear fcn error = %f, ", fabs(linear_preserving-point_positions(point_gid,0)));
             printf("quadratic fcn error = %f at i=%zu \n", fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0)), point_gid);
+
+
+            // -----------------
+            // gradient checks
+            // -----------------
+
+            // Sum(grad) = [0]; 
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_x_p0_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_x_p0_lcl += grad_basis(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid);
+            }, grad_x_p0);
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_y_p0_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_y_p0_lcl += grad_basis(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid);
+            }, grad_y_p0);
+            FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_z_p0_lcl, {
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                grad_z_p0_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid);
+            }, grad_z_p0);
+             printf("grad(P0) = %f, %f, %f, \n", grad_x_p0, grad_y_p0, grad_z_p0);
+
 
         } // end for point gid
 
