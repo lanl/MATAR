@@ -55,6 +55,11 @@
 
 #include "lu_solver.hpp"
 
+
+#include <set> // for unorded map testing 
+
+
+
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
@@ -65,7 +70,7 @@ const double PI = 3.14159265358979323846;
 // -----------------------------------------------
 // inputs:
 
-const size_t num_points = 10001;
+const size_t num_points = 31;
 
 // the bin sizes for finding neighboring points
 const double bin_dx = 0.05; // bins in x
@@ -80,6 +85,8 @@ const double Z0 = 0.0;
 const double LX = 1.0;   // length in x-dir
 const double LY = 1.0;
 const double LZ = 1.0;
+
+bool check_maps = false; // CPU only!!!!
 
 //
 // -----------------------------------------------
@@ -589,7 +596,7 @@ int main(int argc, char *argv[])
         // point values
         FOR_ALL(i, 0, num_points, {
 
-            printf("point location at i=%d is (%f, %f, %f) \n", i, point_positions(i, 0), point_positions(i, 1), point_positions(i, 2));
+            //printf("point location at i=%d is (%f, %f, %f) \n", i, point_positions(i, 0), point_positions(i, 1), point_positions(i, 2));
             point_values(i) = sqrt(point_positions(i, 0)*point_positions(i, 0) + 
                                    point_positions(i, 1)*point_positions(i, 1) +
                                    point_positions(i, 2)*point_positions(i, 2));
@@ -597,7 +604,7 @@ int main(int argc, char *argv[])
         }); // end parallel for tri's in the file
         point_values.update_host();
         Kokkos::fence();
-        printf("\n");
+        //printf("\n");
 
 
         // ----------------------------
@@ -620,9 +627,11 @@ int main(int argc, char *argv[])
         // connectivity from points to bins
         DCArrayKokkos <size_t> points_bin_gid(num_points, "points_in_gid");
         CArrayKokkos <size_t>  points_bin_lid_storage(num_points, "bin_lid_storage");  // only used to create storage
-        DCArrayKokkos <size_t> points_bin_stencil(num_points, "bin_stencil"); // how many bins needed for a particle
+        DCArrayKokkos <int> points_bin_stencil(num_points, 6, "bin_stencil");   // how imin,imax,jmin,jmax,kmin,kmax range for bins in stencil
         DCArrayKokkos <size_t> points_num_neighbors(num_points, "num_neighbors");
         
+        printf("Starting timers \n\n");
+
         // start timer
         auto time_1 = std::chrono::high_resolution_clock::now();
 
@@ -717,7 +726,7 @@ int main(int argc, char *argv[])
             size_t num_points_found;
 
             // establish the stencil size to get enough particles
-            for(int stencil=1; stencil<1000; stencil++){
+            for(int stencil=1; stencil<100000; stencil++){
 
                 num_points_found = 0;
 
@@ -747,10 +756,18 @@ int main(int argc, char *argv[])
                 } // end for icount
 
                 // the min number of points required to solve the system is num_poly_basis+1
-                if (num_points_found > num_poly_basis+5){
+                if (num_points_found > num_poly_basis+5 || num_points_found==num_points){
 
-                    points_bin_stencil(point_gid) = stencil;
-                    points_num_neighbors(point_gid) = num_points_found; // key for allocations
+                    points_bin_stencil(point_gid,0) = imin;
+                    points_bin_stencil(point_gid,1) = imax;
+                    points_bin_stencil(point_gid,2) = jmin;
+                    points_bin_stencil(point_gid,3) = jmax;
+                    points_bin_stencil(point_gid,4) = kmin;
+                    points_bin_stencil(point_gid,5) = kmax;
+
+                    points_num_neighbors(point_gid) = num_points_found; // including node_i in the list of neighbors
+                    //points_num_neighbors(point_gid) = num_points_found - 1; // the -1 is because counted point i as a neighbor
+
                     break;
                 }
                 
@@ -760,16 +777,81 @@ int main(int argc, char *argv[])
         }); // end for all
         Kokkos::fence();
         points_bin_stencil.update_host();
+
+
+
+        // account for stencels not overlapping, fixing assymetry in points connectivity
+        FOR_ALL(point_gid, 0, num_points, {
+
+            // get bin gid for this point
+            size_t bin_gid = points_bin_gid(point_gid);
+                    
+            // get i,j,k for this bin
+            bin_keys_t bin_keys = keys_in_bin(bin_gid);
+
+            const int i = bin_keys.i;
+            const int j = bin_keys.j;
+            const int k = bin_keys.k;
+
+            // walk over the stencil to get neighbors of this bin
+            const int imin = points_bin_stencil(point_gid,0);
+            const int imax = points_bin_stencil(point_gid,1);
+            const int jmin = points_bin_stencil(point_gid,2);
+            const int jmax = points_bin_stencil(point_gid,3);
+            const int kmin = points_bin_stencil(point_gid,4);
+            const int kmax = points_bin_stencil(point_gid,5);
+
+            // loop over my bin stencil
+            for (int icount=imin; icount<=imax; icount++){
+                for (int jcount=jmin; jcount<=jmax; jcount++) {
+                    for (int kcount=kmin; kcount<=kmax; kcount++){
+
+                        // get bin neighbor gid 
+                        size_t neighbor_bin_gid = get_gid(icount, jcount, kcount, num_bins_x, num_bins_y);
+
+                        // save the points in this bin
+                        for(size_t neighbor_pt_lid=0; neighbor_pt_lid<num_points_in_bin(neighbor_bin_gid); neighbor_pt_lid++){
+
+                            size_t neighbor_point_gid = points_in_bin(neighbor_bin_gid, neighbor_pt_lid);
+
+                            // check if the point-point pairs have identical, overlapping stencils, if not, increment the number of neighbors
+                            const int neighbor_imin = points_bin_stencil(neighbor_point_gid,0);
+                            const int neighbor_imax = points_bin_stencil(neighbor_point_gid,1);
+                            const int neighbor_jmin = points_bin_stencil(neighbor_point_gid,2);
+                            const int neighbor_jmax = points_bin_stencil(neighbor_point_gid,3);
+                            const int neighbor_kmin = points_bin_stencil(neighbor_point_gid,4);
+                            const int neighbor_kmax = points_bin_stencil(neighbor_point_gid,5);
+                            
+                            // i,j,k is the bin where point_gid lives
+                            bool inside =
+                                (i >= neighbor_imin && i <= neighbor_imax) &&
+                                (j >= neighbor_jmin && j <= neighbor_jmax) &&
+                                (k >= neighbor_kmin && k <= neighbor_kmax);
+
+                            if(!inside){
+                                Kokkos::atomic_increment(&points_num_neighbors(neighbor_point_gid)); 
+                                // the other stencil didn't see my point because it was smaller, now it does see it
+                            }
+
+                        } // neighbor_point_lid
+
+                    } // end for kcount
+                } // end for jcount
+            } // end for icount        
+
+        }); // end for all
+        Kokkos::fence();
         points_num_neighbors.update_host();
         
         // allocate memory for points in point
         DRaggedRightArrayKokkos <size_t> points_in_point(points_num_neighbors, "points_in_point");
+        points_num_neighbors.set_values(0);  // this is a num saved counter now
 
         // ---------------------
         // Save the neighbors
         // ---------------------
 
-        // find my neighbors using bins
+        // find neighbors using bins
         FOR_ALL(point_gid, 0, num_points, {
 
             // get bin gid for this point
@@ -783,19 +865,13 @@ int main(int argc, char *argv[])
             const int k = bin_keys.k;
 
             // walk over the stencil to get neighbors
-            const int stencil = points_bin_stencil(point_gid);
+            int imin = points_bin_stencil(point_gid,0);
+            int imax = points_bin_stencil(point_gid,1);
+            int jmin = points_bin_stencil(point_gid,2);
+            int jmax = points_bin_stencil(point_gid,3);
+            int kmin = points_bin_stencil(point_gid,4);
+            int kmax = points_bin_stencil(point_gid,5);
 
-            const int imin = MAX(0, i-stencil);
-            const int imax = MIN(num_bins_x-1, i+stencil);
-
-            const int jmin = MAX(0, j-stencil);
-            const int jmax = MIN(num_bins_y-1, j+stencil);
-
-            const int kmin = MAX(0, k-stencil);
-            const int kmax = MIN(num_bins_z-1, k+stencil);
-
-            size_t num_saved = 0;
-            size_t num_points_found = 0;
 
             for (int icount=imin; icount<=imax; icount++){
                 for (int jcount=jmin; jcount<=jmax; jcount++) {
@@ -803,16 +879,45 @@ int main(int argc, char *argv[])
 
                         // get bin neighbor gid 
                         size_t neighbor_bin_gid = get_gid(icount, jcount, kcount, num_bins_x, num_bins_y);
-                        num_points_found += num_points_in_bin(neighbor_bin_gid);
 
                         // save the points in this bin
                         for(size_t neighbor_pt_lid=0; neighbor_pt_lid<num_points_in_bin(neighbor_bin_gid); neighbor_pt_lid++){
 
                             size_t neighbor_point_gid = points_in_bin(neighbor_bin_gid, neighbor_pt_lid);
-
-                            points_in_point(point_gid, num_saved) = neighbor_point_gid;
                             
-                            num_saved++;
+                            // make sure its a neighbor
+                            //if(neighbor_point_gid != point_gid){
+
+                            // I am including point_i in the neighbor list
+
+                                // save the neighbor
+                                size_t num_saved = Kokkos::atomic_fetch_add(&points_num_neighbors(point_gid), 1);
+                                points_in_point(point_gid, num_saved) = neighbor_point_gid;
+                                
+                                
+                                // if point j's stencil did not see point i, then save i to j's list
+                                const int neighbor_imin = points_bin_stencil(neighbor_point_gid,0);
+                                const int neighbor_imax = points_bin_stencil(neighbor_point_gid,1);
+                                const int neighbor_jmin = points_bin_stencil(neighbor_point_gid,2);
+                                const int neighbor_jmax = points_bin_stencil(neighbor_point_gid,3);
+                                const int neighbor_kmin = points_bin_stencil(neighbor_point_gid,4);
+                                const int neighbor_kmax = points_bin_stencil(neighbor_point_gid,5);
+
+                                // i,j,k is the bin where point_gid lives
+                                bool inside =
+                                    (i >= neighbor_imin && i <= neighbor_imax) &&
+                                    (j >= neighbor_jmin && j <= neighbor_jmax) &&
+                                    (k >= neighbor_kmin && k <= neighbor_kmax);
+
+                                if(!inside){
+
+                                    size_t num_saved_neighbor = Kokkos::atomic_fetch_add(&points_num_neighbors(neighbor_point_gid), 1);
+                                    points_in_point(neighbor_point_gid, num_saved_neighbor) = point_gid;
+                                    // the other stencil didn't see my point because it was smaller, now it does see it
+
+                                } // end if
+
+                            //} // end if neighbor != point_gid
 
                         } // neighbor_point_lid
 
@@ -823,6 +928,36 @@ int main(int argc, char *argv[])
         }); // end for all
         Kokkos::fence();
         points_in_point.update_host();
+
+
+        // build the reverse map
+        DRaggedRightArrayKokkos <int> reverse_neighbor_lid(points_num_neighbors); 
+        reverse_neighbor_lid.set_values(-1);
+
+        FOR_ALL(point_gid, 0, num_points, {
+                
+            for(int neighbor_point_lid = 0; neighbor_point_lid<points_num_neighbors(point_gid); neighbor_point_lid++){
+                
+                // get the point gid for this neighbor
+                int neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                
+                // loop over the neighbors of my neighbor
+                size_t found = 0;
+                for(int j_lid = 0; j_lid<points_num_neighbors(neighbor_point_gid); j_lid++){
+
+                    // get the neighboring point gid of my neighbor
+                    int j_point_gid = points_in_point(neighbor_point_gid, j_lid);
+                    if (point_gid == j_point_gid){
+                        reverse_neighbor_lid(point_gid, neighbor_point_lid) = j_lid;
+                        found = 1;
+                        //printf("found \n");
+                        break;
+                    }
+                } // end loop over j's neighboring points
+                if(found==0)printf("reverse map for i=%d and j=%d pair not found \n", point_gid, neighbor_point_gid);
+            } // end loop over i's neighboring points
+                
+        });
 
 
         // end timer
@@ -846,6 +981,7 @@ int main(int argc, char *argv[])
         
         DRaggedRightArrayKokkos <double> basis(points_num_neighbors);        // reproducing kernel basis (num_points, num_neighbors)
         DRaggedRightArrayKokkos <double> grad_basis(points_num_neighbors,3); // reproducing kernel basis (num_points, num_neighbors)
+        
 
 
         double h = 1.0;
@@ -876,6 +1012,23 @@ int main(int argc, char *argv[])
         // end timer
         auto time_6 = std::chrono::high_resolution_clock::now();
 
+
+        // -----------------
+        //  Timers
+        // -----------------
+        printf("\n");
+        std::chrono::duration <double, std::milli> ms = time_2 - time_1;
+        std::cout << "runtime to create bins = " << ms.count() << "ms\n\n";
+
+        ms = time_4 - time_3;
+        std::cout << "runtime to find and save neighbors = " << ms.count() << "ms\n\n";
+
+        ms = time_6 - time_5;
+        std::cout << "runtime to calculate basis and grad basis = " << ms.count() << "ms\n\n";
+
+
+
+        printf("Checking gradients at points \n\n");
 
         // performing checks on p_coeffs, basis, and grad_basis
         double partion_unity;
@@ -913,7 +1066,9 @@ int main(int argc, char *argv[])
 
             // partition of unity
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), partion_unity_lcl, {
-                partion_unity_lcl += basis(point_gid,neighbor_point_lid)*vol(neighbor_point_lid);
+                // get the point gid for this neighboring
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+                partion_unity_lcl += basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid);
             }, partion_unity);
             
 
@@ -932,9 +1087,14 @@ int main(int argc, char *argv[])
                 quadratic_preserving_lcl += basis(point_gid,neighbor_point_lid)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0)*point_positions(neighbor_point_gid,0);
             }, quadratic_preserving);
 
-            printf("partition unity = %f, ", partion_unity);
-            printf("linear fcn error = %f, ", fabs(linear_preserving-point_positions(point_gid,0)));
-            printf("quadratic fcn error = %f at i=%zu \n", fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0)), point_gid);
+            if(fabs(partion_unity-1.0)>1e-13)
+                printf("partition unity = %f, ", partion_unity);
+
+            if(fabs(linear_preserving-point_positions(point_gid,0))>1e-13)
+                printf("linear fcn error = %f, ", fabs(linear_preserving-point_positions(point_gid,0)));
+
+            if(fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0))>1e-13)
+                printf("quadratic fcn error = %f at i=%zu \n", fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0)), point_gid);
 
 
             // -----------------
@@ -957,7 +1117,10 @@ int main(int argc, char *argv[])
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
                 grad_z_p0_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid);
             }, grad_z_p0);
-             printf("error in grad(P0) = %f, %f, %f, \n", grad_x_p0, grad_y_p0, grad_z_p0);
+
+            const double grad_check_P0 = fabs(grad_x_p0)+fabs(grad_y_p0)+fabs(grad_z_p0);
+            if(0.333*fabs(grad_check_P0)>1e-8)
+                printf("error in grad(P0) = %f, %f, %f, \n", grad_x_p0, grad_y_p0, grad_z_p0);
 
 
             // Sum(grad(P1)) = [1]; 
@@ -976,10 +1139,14 @@ int main(int argc, char *argv[])
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
                 grad_z_p1_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,2);
             }, grad_z_p1);
-             printf("error in grad(P1) = %f, %f, %f, \n", 
-                fabs(grad_x_p1 - 1.0), 
-                fabs(grad_y_p1 - 1.0), 
-                fabs(grad_z_p1 - 1.0));
+
+            const double grad_check_P1 = fabs(grad_x_p1 - 1.0)+fabs(grad_y_p1 - 1.0)+fabs(grad_z_p1 - 1.0);
+            if(0.333*fabs(grad_check_P1)>1e-8){
+                printf("error in grad(P1) = %f, %f, %f, \n", 
+                    fabs(grad_x_p1 - 1.0), 
+                    fabs(grad_y_p1 - 1.0), 
+                    fabs(grad_z_p1 - 1.0));
+            }
 
 
             // Sum(grad(P2)) = [2]; 
@@ -998,24 +1165,137 @@ int main(int argc, char *argv[])
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
                 grad_z_p2_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,2)*point_positions(neighbor_point_gid,2);
             }, grad_z_p2);
-            printf("error in grad(P2) = %f, %f, %f, \n", 
-                    fabs(grad_x_p2-2.0*point_positions(point_gid,0)), 
-                    fabs(grad_y_p2-2.0*point_positions(point_gid,1)), 
-                    fabs(grad_z_p2-2.0*point_positions(point_gid,2)));
+
+            const double grad_check_P2 = fabs(grad_x_p2-2.0*point_positions(point_gid,0)) + fabs(grad_y_p2-2.0*point_positions(point_gid,1)) + fabs(grad_z_p2-2.0*point_positions(point_gid,2));
+            if(0.333*fabs(grad_check_P2)>1e-8){
+                printf("error in grad(P2) = %f, %f, %f, \n", 
+                        fabs(grad_x_p2-2.0*point_positions(point_gid,0)), 
+                        fabs(grad_y_p2-2.0*point_positions(point_gid,1)), 
+                        fabs(grad_z_p2-2.0*point_positions(point_gid,2)));
+            }
 
         } // end for point gid
 
 
-        ////// timers ///
+        if(check_maps){
+            size_t bad = 0;
+            for (size_t i=0; i<num_points; ++i) {
+                for (size_t lid=0; lid<points_num_neighbors(i); ++lid) {
+                    size_t j = points_in_point(i, lid);
+                    size_t rev = reverse_neighbor_lid(i, lid);
+                    if (rev == SIZE_MAX) {
+                    printf("MISSING reverse for pair (%zu,%zu)\n", i, j); ++bad;
+                    if (bad>50) break;
+                    } else {
+                    size_t check = points_in_point(j, rev);
+                    if (check != i) {
+                        printf("WRONG reverse: i=%zu j=%zu rev=%zu check=%zu\n", i, j, rev, check);
+                        ++bad;
+                        if (bad>50) break;
+                    }
+                    }
+                }
+                if (bad>50) break;
+            }
+            if (bad==0) printf("reverse map OK\n");
 
-        std::chrono::duration <double, std::milli> ms = time_2 - time_1;
-        std::cout << "runtime to create bins = " << ms.count() << "ms\n\n";
 
-        ms = time_4 - time_3;
-        std::cout << "runtime to find and save neighbors = " << ms.count() << "ms\n\n";
+            for (size_t i=0; i<num_points; ++i) {
+                std::set<size_t> seen;
+                for (size_t lid=0; lid<points_num_neighbors(i); ++lid) {
+                    size_t j = points_in_point(i, lid);
+                    //if (j == i) printf("SELF neighbor found at i=%zu lid=%zu\n", i, lid);
+                    if (!seen.insert(j).second) printf("DUPLICATE neighbor %zu in list of %zu\n", j, i);
+                }
+            }
+        }
 
-        ms = time_6 - time_5;
-        std::cout << "runtime to calculate basis and grad basis = " << ms.count() << "ms\n\n";
+
+        printf("Building anti-symmetric gradient \n\n");
+
+        // -------------------
+        // Anti-sym gradient
+        // -------------------
+        
+        // DCArrayKokkos <double> div(num_points);
+        // div.set_values(0.0);
+
+        // FOR_ALL(point_gid, 0, num_points, {
+                
+        //     for(size_t neighbor_point_lid = 0; neighbor_point_lid<points_num_neighbors(point_gid); neighbor_point_lid++){
+                
+        //         // get the point gid for this neighbor
+        //         size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+
+        //         // get the local id of my neighbor that matches my point_gid
+        //         size_t neighbor_lid = reverse_neighbor_lid(point_gid, neighbor_point_lid);
+
+        //         if(point_gid != points_in_point(neighbor_point_gid, neighbor_lid)){
+        //             printf("CHECK: point i = %d, reverse map point i = %zu for j = %zu \n", point_gid, points_in_point(neighbor_point_gid, neighbor_lid), neighbor_point_gid);
+        //         }
+
+        //         double dot_prod = 0.0;
+        //         for (size_t dim=0; dim<3; dim++){                  
+        //             dot_prod += (grad_basis(point_gid,neighbor_point_lid,dim) - grad_basis(neighbor_point_gid,neighbor_lid,dim))*
+        //                         (point_positions(neighbor_point_gid,dim) - point_positions(point_gid,dim)); 
+        //         }
+        //         div(point_gid) += vol(point_gid)*vol(neighbor_point_gid)*0.5*dot_prod;
+                
+        //     } // end neighbors
+
+        // }); // end parallel over points
+        // Kokkos::fence();
+
+        // FOR_ALL(point_gid, 0, num_points, {
+        //     div(point_gid) /= vol(point_gid);
+        // });
+        // div.update_host();
+
+        // for(size_t point_gid=0; point_gid<num_points; point_gid++){
+        //     printf("div = %f at point %zu \n", div.host(point_gid), point_gid);
+        // }
+
+
+        // other coding 
+        // dot_prod = 0.0;
+        // for (size_t dim=0; dim<3; dim++) {
+        //     dot_prod += grad_basis(point_gid,neighbor_point_lid,dim) *
+        //                 (point_positions(neighbor_point_gid,dim)- point_positions(point_gid,dim));
+        // }
+
+        // // contribution to i
+        // Kokkos::atomic_add(&div(point_gid),
+        //     0.5 * vol(point_gid) * vol(neighbor_point_gid) * dot_prod);
+
+        // // // contribution to j
+        // Kokkos::atomic_add(&div(neighbor_point_gid),
+        //     -0.5 * vol(point_gid) * vol(neighbor_point_gid) * dot_prod);
+
+
+        double conserve_check;
+        double conserve_check_lcl;
+        FOR_REDUCE_SUM(point_gid, 0, num_points, 
+                       conserve_check_lcl, {
+
+            for(size_t neighbor_point_lid = 0; neighbor_point_lid<points_num_neighbors(point_gid); neighbor_point_lid++){
+                
+                // get the point gid for this neighbor
+                size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+
+                // get the local id of my neighbor that matches my point_gid
+                size_t neighbor_lid = reverse_neighbor_lid(point_gid, neighbor_point_lid);
+
+                for (size_t dim=0; dim<3; dim++){
+                    conserve_check_lcl += grad_basis(point_gid,neighbor_point_lid,dim) - grad_basis(neighbor_point_gid,neighbor_lid,dim);
+                }
+            }
+
+        }, conserve_check);
+        printf("conservation = %f \n", conserve_check);
+
+
+
+
 
 
 
