@@ -70,7 +70,15 @@ const double PI = 3.14159265358979323846;
 // -----------------------------------------------
 // inputs:
 
-const size_t num_points = 31;
+
+const size_t num_1d_x = 4;
+const size_t num_1d_y = 4;
+const size_t num_1d_z = 4;
+
+const double h_kernel = 1.5/4.;
+const double num_points_fit = 30;
+
+const size_t num_points = num_1d_x*num_1d_y*num_1d_z;
 
 // the bin sizes for finding neighboring points
 const double bin_dx = 0.05; // bins in x
@@ -146,6 +154,64 @@ size_t get_bin_gid(const double x_pt,
 } // end function
 
 
+
+KOKKOS_FUNCTION
+double kernel_bs(const double r[3], double h) {
+    
+    double xij = 0.0;
+    for(size_t dim=0; dim<3; dim++){
+        xij += r[dim]*r[dim];
+    } // dim
+
+    double q = sqrt(xij)/h;
+    double alpha = 2.0/(3.0*h);
+    if (q < 0.0) return 0.0; // defensive
+    if (q < 1.0) return (alpha * (1.0 - 1.5*q*q + 0.75*q*q*q));
+    if (q < 2.0) return (alpha * 0.25 * pow(2.0 - q, 3));
+
+    return 0.0;
+}
+
+
+KOKKOS_FUNCTION
+// derivative dW/dx_i = - dW/dr where r = xj-xi
+void grad_kernel_bs(double *grad_W, const double r[3], const double h) {
+
+    double xij = 0.0;
+    for(size_t dim=0; dim<3; dim++){
+        xij += r[dim]*r[dim];
+    } // dim
+    // sqrt(xij) = radius
+
+    const double radius = sqrt(xij);
+    const double q = radius/h;
+
+    double df_dq = 0.0; // derivative of the dimensionless kernel shape function f(q)
+    if (q < 1.0) {
+        // f(q) = 1 - 1.5 q^2 + 0.75 q^3
+        // f'(q) = -3 q + 2.25 q^2
+        df_dq = -3.0 * q + 2.25 * q * q;
+    } else if (q < 2.0) {
+        // f(q) = 0.25 (2 - q)^3
+        // f'(q) = 0.25 * 3 (2 - q)^2 * (-1) = -0.75 (2 - q)^2
+        const double two_minus_q = 2.0 - q;
+        df_dq = -0.75 * two_minus_q * two_minus_q;
+    } else {
+        df_dq = 0.0;
+    }
+
+    const double dW_dr = (df_dq / h);
+    // grad W = dW/dr * (rij / radius)
+    const double invr = 1.0 / radius;
+
+    for (size_t dim=0; dim<3; ++dim) {
+        grad_W[dim] = dW_dr * r[dim] * invr;
+    }
+
+    return;
+}
+
+
 // Gaussian function part of the RBF
 // rbf = exp(-(xj - x)*(xj - x)/h)
 KOKKOS_FUNCTION
@@ -157,14 +223,15 @@ double kernel(const double r[3], const double h){
         diff_sqrd += r[dim]*r[dim];
     } // dim
 
-    return exp(-diff_sqrd/(h*h));
+    double norm = 1.0 / (h * h * h * pow(PI, 1.5));
+    return norm * exp(-diff_sqrd / (h * h));
 } // end of function
 
 
-// Gradient Gaussian function
-// rbf = exp(-(xj - x)*(xj - x)/h)
+// Gaussian function part of the RBF, symmeterized
+// rbf = 0.5*(exp(-(xj - xi)*(xj - xi)/hi^2) + exp(-(xi - xj)*(xi - xj)/hj^2))
 KOKKOS_FUNCTION
-void grad_kernel(const double r[3], const double h, double *grad_W){
+double kernel_syn(const double r[3], const double hi, const double hj){
 
     double diff_sqrd = 0.0;
 
@@ -172,15 +239,55 @@ void grad_kernel(const double r[3], const double h, double *grad_W){
         diff_sqrd += r[dim]*r[dim];
     } // dim
 
-    const double rbf = exp(-diff_sqrd/(h*h));
+    const double Wi = exp(-diff_sqrd/(hi*hi)); // use kernel func call
+    const double Wj = exp(-diff_sqrd/(hj*hj));
+
+    return 0.5*(Wi + Wj);
+} // end of function
+
+
+// Gradient Gaussian function
+// d/dx rbf = d/dx (exp(-(xj - xi)*(xj - x)/hi^2) 
+KOKKOS_FUNCTION
+void grad_kernel(double *grad_W, const double r[3], const double h){
+
+    double diff_sqrd = 0.0;
+
+    for(size_t dim=0; dim<3; dim++){
+        diff_sqrd += r[dim]*r[dim];
+    } // dim
+
+    const double drdxi = -1;
+    const double rbf = kernel(r, h);
 
     // gradient
-    grad_W[0] = 2.0/(h*h)*r[0]*rbf; 
-    grad_W[1] = 2.0/(h*h)*r[1]*rbf; 
-    grad_W[2] = 2.0/(h*h)*r[2]*rbf;
+    for (size_t dim=0; dim<3; ++dim) {
+        grad_W[dim] = -2.0/(h*h)*r[dim]*rbf*drdxi; 
+    }
 
     return;
 } // end of function
+
+// d/dx rbf = d/dx ( 0.5(exp(-(xj - xi)*(xj - x)/hi^2) + exp(-(xi - xj)*(xi - xj)/hj^2)) ) 
+KOKKOS_FUNCTION
+void grad_kernel_sym(double *gradW, const double r[3], const double hi, const double hj) {
+    double diff_sqrd = 0.0;
+    for (size_t dim=0; dim<3; ++dim){
+        diff_sqrd += r[dim]*r[dim];
+    }
+
+    const double drdxi = -1;
+
+    double Wi = exp(-diff_sqrd/(hi*hi));
+    double Wj = exp(-diff_sqrd/(hj*hj));
+
+    double dWi = -2.0/ (hi*hi) * Wi*drdxi; // it uses xj - xi so a minus one
+    double dWj = -2.0/ (hj*hj) * Wj; // it uses xi - xj so it has a +1 for drdxi
+
+    for (size_t dim=0; dim<3; ++dim) {
+        gradW[dim] = 0.5 * (dWi * r[dim] - dWj * r[dim]); // second term using -r
+    }
+}
 
 
 // Polynomial basis up to quadratic in 3D (10 terms)
@@ -262,7 +369,7 @@ void calc_basis_functions(
     const DCArrayKokkos <double>& x,
     const DCArrayKokkos <size_t> points_num_neighbors, 
     const DRaggedRightArrayKokkos <size_t> points_in_point,
-    const CArrayKokkos <double>& vol,
+    const DCArrayKokkos <double>& vol,
     const CArrayKokkos <double>& p_coeffs,
     const DRaggedRightArrayKokkos <double>& basis,
     const double h)
@@ -307,7 +414,7 @@ void calc_basis_and_grad_basis_functions(
     const DCArrayKokkos <double>& x,
     const DCArrayKokkos <size_t> points_num_neighbors, 
     const DRaggedRightArrayKokkos <size_t> points_in_point,
-    const CArrayKokkos <double>& vol,
+    const DCArrayKokkos <double>& vol,
     const CArrayKokkos <double>& p_coeffs,
     const CArrayKokkos <double>& M_inv,
     const DRaggedRightArrayKokkos <double>& basis,
@@ -346,7 +453,7 @@ void calc_basis_and_grad_basis_functions(
 
             double W = kernel(r,h);
             double grad_W[3]; 
-            grad_kernel(r,h,grad_W);
+            grad_kernel(grad_W,r,h);
 
             double p[num_poly_basis]; 
             poly_basis(r,p);
@@ -387,7 +494,7 @@ void calc_basis_and_grad_basis_functions(
             poly_basis(r,p);
             
             double grad_W[3];
-            grad_kernel(r, h, grad_W);
+            grad_kernel(grad_W, r, h);
 
             double grad_p[num_poly_basis][3]; // matrix holding grad polynomial basis
             grad_poly_basis(r, grad_p);
@@ -471,7 +578,7 @@ void calc_p_coefficients(
     const DCArrayKokkos <double>& x,
     const DCArrayKokkos <size_t> points_num_neighbors, 
     const DRaggedRightArrayKokkos <size_t> points_in_point,
-    const CArrayKokkos <double>& vol,
+    const DCArrayKokkos <double>& vol,
     const CArrayKokkos <double>& p_coeffs,
     const CArrayKokkos <double>& M_inv,
     double h)
@@ -584,12 +691,34 @@ int main(int argc, char *argv[])
         DCArrayKokkos <double> point_values(num_points, "point_values"); 
 
         // point locations
+        if(false){
         srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
-        for(size_t i=0; i<num_points; i++){
-            point_positions.host(i, 0) = X0 + LX*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
-            point_positions.host(i, 1) = Y0 + LY*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
-            point_positions.host(i, 2) = Z0 + LZ*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
+            for(size_t i=0; i<num_points; i++){
+                point_positions.host(i, 0) = X0 + LX*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
+                point_positions.host(i, 1) = Y0 + LY*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
+                point_positions.host(i, 2) = Z0 + LZ*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
+            }
         }
+        else {
+
+            double dx = LX/((double)num_1d_x);
+            double dy = LY/((double)num_1d_y);
+            double dz = LZ/((double)num_1d_z);
+
+            size_t point_gid = 0;  
+            for(size_t k=0; k<num_1d_z; k++){
+                for(size_t j=0; j<num_1d_y; j++){
+                    for(size_t i=0; i<num_1d_x; i++){
+                        point_positions.host(point_gid, 0) = X0 + static_cast<double>(i)*dx;
+                        point_positions.host(point_gid, 1) = Y0 + static_cast<double>(j)*dy;
+                        point_positions.host(point_gid, 2) = Z0 + static_cast<double>(k)*dz;
+                        point_gid++;
+                    } // end i
+                } // end j
+            } // end k
+
+        } // end if
+
         point_positions.update_device();
         Kokkos::fence();
 
@@ -742,10 +871,10 @@ int main(int argc, char *argv[])
 
                 const int kmin = MAX(0, k-stencil);
                 const int kmax = MIN(num_bins_z-1, k+stencil);
-
-                for (int icount=imin; icount<=imax; icount++){
+                    
+                for (int kcount=kmin; kcount<=kmax; kcount++){
                     for (int jcount=jmin; jcount<=jmax; jcount++) {
-                        for (int kcount=kmin; kcount<=kmax; kcount++){
+                        for (int icount=imin; icount<=imax; icount++){
 
                             // get bin neighbor gid 
                             size_t neighbor_bin_gid = get_gid(icount, jcount, kcount, num_bins_x, num_bins_y);
@@ -755,8 +884,8 @@ int main(int argc, char *argv[])
                     } // end for jcount
                 } // end for icount
 
-                // the min number of points required to solve the system is num_poly_basis+1
-                if (num_points_found > num_poly_basis+5 || num_points_found==num_points){
+                // the min number of points required to solve the system is num_poly_basis+1, was 2*num_poly_basis
+                if (num_points_found > num_points_fit  || num_points_found==num_points){
 
                     points_bin_stencil(point_gid,0) = imin;
                     points_bin_stencil(point_gid,1) = imax;
@@ -802,9 +931,9 @@ int main(int argc, char *argv[])
             const int kmax = points_bin_stencil(point_gid,5);
 
             // loop over my bin stencil
-            for (int icount=imin; icount<=imax; icount++){
+            for (int kcount=kmin; kcount<=kmax; kcount++){
                 for (int jcount=jmin; jcount<=jmax; jcount++) {
-                    for (int kcount=kmin; kcount<=kmax; kcount++){
+                    for (int icount=imin; icount<=imax; icount++){
 
                         // get bin neighbor gid 
                         size_t neighbor_bin_gid = get_gid(icount, jcount, kcount, num_bins_x, num_bins_y);
@@ -873,9 +1002,9 @@ int main(int argc, char *argv[])
             int kmax = points_bin_stencil(point_gid,5);
 
 
-            for (int icount=imin; icount<=imax; icount++){
+            for (int kcount=kmin; kcount<=kmax; kcount++){
                 for (int jcount=jmin; jcount<=jmax; jcount++) {
-                    for (int kcount=kmin; kcount<=kmax; kcount++){
+                    for (int icount=imin; icount<=imax; icount++){
 
                         // get bin neighbor gid 
                         size_t neighbor_bin_gid = get_gid(icount, jcount, kcount, num_bins_x, num_bins_y);
@@ -973,8 +1102,36 @@ int main(int argc, char *argv[])
         auto time_5 = std::chrono::high_resolution_clock::now();
 
         CArrayKokkos <double> p_coeffs(num_points, num_poly_basis); // reproducing kernel coefficients at each point
-        CArrayKokkos <double> vol(num_points);
-        vol.set_values(1.0);
+        
+        
+        DCArrayKokkos <double> vol(num_points);
+        vol.set_values(0.0);
+
+        const double dx = LX/((double)num_1d_x);
+        const double dy = LY/((double)num_1d_y);
+        const double dz = LZ/((double)num_1d_z); 
+        const double elem_vol = dx*dy*dz;
+
+        const size_t num_cells_1d_x = num_1d_x-1;
+        const size_t num_cells_1d_y = num_1d_y-1;
+        const size_t num_cells_1d_z = num_1d_z-1;
+
+        FOR_ALL(k,0,num_cells_1d_z,
+                j,0,num_cells_1d_y,
+                i,0,num_cells_1d_x,{
+
+            for (int kcount=k; kcount<=k+1; kcount++){
+                for (int jcount=j; jcount<=j+1; jcount++){
+                    for (int icount=i; icount<=i+1; icount++){
+                        size_t point_gid = get_gid(icount, jcount, kcount, num_1d_x, num_1d_y);
+                        Kokkos::atomic_add(&vol(point_gid), elem_vol*0.25);
+                    } // end i
+                } // end j
+            } // end k
+                    
+        }); // end parallel over k,j,i 
+        vol.update_host();
+
 
         CArrayKokkos <double> M_inv(num_points, num_poly_basis, num_poly_basis);
         CArrayKokkos <double> grad_M(num_points, num_poly_basis, num_poly_basis);
@@ -984,7 +1141,8 @@ int main(int argc, char *argv[])
         
 
 
-        double h = 1.0;
+        double h = h_kernel; // kernel width
+
 
         printf("building reproducing kernel coefficients \n");
 
@@ -1107,11 +1265,13 @@ int main(int argc, char *argv[])
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
                 grad_x_p0_lcl += grad_basis(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid);
             }, grad_x_p0);
+
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_y_p0_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
                 grad_y_p0_lcl += grad_basis(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid);
             }, grad_y_p0);
+
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_z_p0_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
@@ -1216,45 +1376,150 @@ int main(int argc, char *argv[])
         // -------------------
         // Anti-sym gradient
         // -------------------
-        
-        // DCArrayKokkos <double> div(num_points);
-        // div.set_values(0.0);
+        printf("Testing divergence of vector field u = (x, y, z) \n\n");
 
-        // FOR_ALL(point_gid, 0, num_points, {
+        DCArrayKokkos <double> u(num_points, 3);
+        FOR_ALL(i, 0, num_points, {
+            u(i, 0) = point_positions(i, 0);        
+            u(i, 1) = point_positions(i, 1);
+            u(i, 2) = point_positions(i, 2);
+        });
+        u.update_device();
+
+        DCArrayKokkos <double> div(num_points);
+        div.set_values(0.0);
+
+        DCArrayKokkos <double> div_fd(num_points);
+        div_fd.set_values(0.0);
+
+        FOR_ALL(i_gid, 0, num_points, {
+            for(size_t j_lid = 0; j_lid<points_num_neighbors(i_gid); j_lid++){                
+                size_t j_gid = points_in_point(i_gid, j_lid);
+                size_t i_lid = reverse_neighbor_lid(i_gid, j_lid);
+
+                if(i_gid != points_in_point(j_gid, i_lid)){
+                    printf("CHECK: point i = %d, reverse map point i = %zu for j = %zu \n", i_gid, points_in_point(j_gid, i_lid), j_gid);
+                }
+
+                double g_ij[3];
+                double g_ji[3];
+                for (int dim=0; dim<3; ++dim) {
+                    g_ij[dim] = grad_basis(i_gid,j_lid,dim);
+                    g_ji[dim] = grad_basis(j_gid,i_lid,dim);
+                }
+
+                // conservative mesh-free FE
+                double contrib = 0.0;
+                for (int dim=0; dim<3; ++dim) {
+                    contrib += 0.5*(g_ij[dim] - g_ji[dim]) * (u(j_gid, dim) - u(i_gid, dim));
+                }
+                div(i_gid) += vol(i_gid) * vol(j_gid) * contrib;
+
+                // finite difference
+                contrib = 0.0;
+                for (int dim=0; dim<3; ++dim) {
+                    contrib += g_ij[dim]*u(j_gid, dim)*vol(j_gid);
+                }
+                div_fd(i_gid) += contrib;
+
+            }
+            div(i_gid) /= vol(i_gid);
+            //div_fd(i_gid) /= vol(i_gid);  // finite difference doesn't have the V_i on the right side, so no division
+        });
+        div.update_host();
+        div_fd.update_host();
+
+
+        for(size_t point_gid=0; point_gid<num_points; point_gid++){
+            double error = fabs(div.host(point_gid) - 3.0);
+            //if(error > 1e-8){
+                printf("div(u) = %f at point %zu, error = %g, vol = %f\n", div.host(point_gid), point_gid, error, vol.host(point_gid));
+            //}
+        } // end for point_gid
+
+        for(size_t point_gid=0; point_gid<num_points; point_gid++){
+            double error = fabs(div_fd.host(point_gid) - 3.0);
+            if(error > 1e-8){
+                printf("div_fd(u) = %f at point %zu, error = %g\n", div_fd.host(point_gid), point_gid, error);
+            }
+        } // end for point_gid
+
+ /*       
+        DCArrayKokkos <double> div(num_points);
+        div.set_values(0.0);
+
+        FOR_ALL(i_gid, 0, num_points, {
                 
-        //     for(size_t neighbor_point_lid = 0; neighbor_point_lid<points_num_neighbors(point_gid); neighbor_point_lid++){
+            for(size_t j_lid = 0; j_lid<points_num_neighbors(i_gid); j_lid++){                
+
+                // get the point gid for this neighbor
+                size_t j_gid = points_in_point(i_gid, j_lid);
+
+                // get the local id of my neighbor that matches my point_gid
+                size_t i_lid = reverse_neighbor_lid(i_gid, j_lid);
+
+                if(i_gid != points_in_point(j_gid, i_lid)){
+                    printf("CHECK: point i = %d, reverse map point i = %zu for j = %zu \n", i_gid, points_in_point(j_gid, i_lid), j_gid);
+                }
+
+
+                double g_ij[3];
+                double g_ji[3];
+                for (int dim=0; dim<3; ++dim) {
+                    g_ij[dim] = grad_basis(i_gid,j_lid,dim);
+                    g_ji[dim] = grad_basis(j_gid,i_lid,dim);
+                }
+
+                double Delta[3];
+                for (int dim=0; dim<3; ++dim) {
+                    Delta[dim] = g_ij[dim] - g_ji[dim];
+                }
+
+                double pair_dot = 0.0;
+                for (int dim=0; dim<3; ++dim){
+                    pair_dot += 0.5*(point_positions(i_gid,dim) + point_positions(j_gid,dim)) * Delta[dim];
+                }
+
+                div(i_gid) += vol(i_gid) * vol(j_gid) * pair_dot;
+
+                // // contribution to i
+                // Kokkos::atomic_add(&div(i_gid), contrib); 
+
+                // // // contribution to j
+                // Kokkos::atomic_add(&div(j_gid), -contrib);
+
+
+                // checks 
+                double Delta_norm = 0.0;
+                for (int d=0; d<3; ++d){ 
+                    Delta_norm += (g_ij[d]-g_ji[d])*(g_ij[d]-g_ji[d]);
+                } // end for
+
+                printf("pair %d,%zu: |Delta|=%g  g_ij=(%g,%g,%g)  g_ji=(%g,%g,%g)\n", i_gid, j_gid, sqrt(Delta_norm),
+                    g_ij[0],g_ij[1],g_ij[2], g_ji[0],g_ji[1],g_ji[2]);
+
                 
-        //         // get the point gid for this neighbor
-        //         size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
+            } // end neighbors
 
-        //         // get the local id of my neighbor that matches my point_gid
-        //         size_t neighbor_lid = reverse_neighbor_lid(point_gid, neighbor_point_lid);
+        }); // end parallel over points
+        Kokkos::fence();
 
-        //         if(point_gid != points_in_point(neighbor_point_gid, neighbor_lid)){
-        //             printf("CHECK: point i = %d, reverse map point i = %zu for j = %zu \n", point_gid, points_in_point(neighbor_point_gid, neighbor_lid), neighbor_point_gid);
-        //         }
+        FOR_ALL(point_gid, 0, num_points, {
+            div(point_gid) /= vol(point_gid);
+        });
+        div.update_host();
 
-        //         double dot_prod = 0.0;
-        //         for (size_t dim=0; dim<3; dim++){                  
-        //             dot_prod += (grad_basis(point_gid,neighbor_point_lid,dim) - grad_basis(neighbor_point_gid,neighbor_lid,dim))*
-        //                         (point_positions(neighbor_point_gid,dim) - point_positions(point_gid,dim)); 
-        //         }
-        //         div(point_gid) += vol(point_gid)*vol(neighbor_point_gid)*0.5*dot_prod;
-                
-        //     } // end neighbors
+        for(size_t point_gid=0; point_gid<num_points; point_gid++){
+            printf("div = %f at point %zu \n", div.host(point_gid), point_gid);
+        }
 
-        // }); // end parallel over points
-        // Kokkos::fence();
-
-        // FOR_ALL(point_gid, 0, num_points, {
-        //     div(point_gid) /= vol(point_gid);
-        // });
-        // div.update_host();
-
-        // for(size_t point_gid=0; point_gid<num_points; point_gid++){
-        //     printf("div = %f at point %zu \n", div.host(point_gid), point_gid);
-        // }
-
+*/
+                // double dot_prod = 0.0;
+                // for (size_t dim=0; dim<3; dim++){                  
+                //     dot_prod += (grad_basis(point_gid,neighbor_point_lid,dim) - grad_basis(neighbor_point_gid,neighbor_lid,dim))*
+                //                 (point_positions(neighbor_point_gid,dim) - point_positions(point_gid,dim)); 
+                // }
+                // div(point_gid) += vol(point_gid)*vol(neighbor_point_gid)*0.5*dot_prod;
 
         // other coding 
         // dot_prod = 0.0;
@@ -1286,7 +1551,7 @@ int main(int argc, char *argv[])
                 size_t neighbor_lid = reverse_neighbor_lid(point_gid, neighbor_point_lid);
 
                 for (size_t dim=0; dim<3; dim++){
-                    conserve_check_lcl += grad_basis(point_gid,neighbor_point_lid,dim) - grad_basis(neighbor_point_gid,neighbor_lid,dim);
+                    conserve_check_lcl += 0.5*(grad_basis(point_gid,neighbor_point_lid,dim) - grad_basis(neighbor_point_gid,neighbor_lid,dim));
                 }
             }
 
@@ -1318,7 +1583,7 @@ int main(int argc, char *argv[])
         out << "SCALARS field float 1\n";
         out << "LOOKUP_TABLE default\n";
         for (size_t point_gid = 0; point_gid < num_points; ++point_gid) {
-            out << point_values.host(point_gid) << "\n";
+            out << div.host(point_gid) << "\n";
         }
 
 
