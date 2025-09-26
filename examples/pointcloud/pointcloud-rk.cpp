@@ -71,7 +71,8 @@ const double PI = 3.14159265358979323846;
 // inputs:
 
 
-#define P1 // P1 or P2
+#define P2 // P1 or P2
+#define CUBIC_SPLINE // CUBIC_SPLINE or GUASS
 
 
 const size_t num_1d_x = 3;
@@ -159,6 +160,9 @@ size_t get_bin_gid(const double x_pt,
 
 
 
+
+#if defined(CUBIC_SPLINE)
+
 KOKKOS_FUNCTION
 double kernel(const double r[3], double h) {
     
@@ -180,7 +184,7 @@ double kernel(const double r[3], double h) {
 
 KOKKOS_FUNCTION
 // derivative dW/dx_i = - dW/dr where r = xj-xi
-void grad_kernel(double *grad_W, const double r[3], const double h) {
+void grad_kernel(double *grad_W, const double r[3], const double h, const bool derviative_wrt_i) {
 
     double diff_sqrd = 0.0;
     for(size_t dim=0; dim<3; dim++){
@@ -204,22 +208,29 @@ void grad_kernel(double *grad_W, const double r[3], const double h) {
         df_dq = 0.0;
     }
 
-    const double dW_dr = (df_dq / h);
+    const double alpha = 2.0/(3.0*h);
+    const double dW_dr = alpha*(df_dq / h);
     // grad W = dW/dr * (rij / radius)
     const double invr = 1.0 /(radius + 1e-16);
 
+    double drdx = -1.0;  // default is derivative with respect to i
+    if(derviative_wrt_i == false){
+        drdx = 1.0;  // derivative with respect to j
+    } // end if
+
     for (size_t dim=0; dim<3; ++dim) {
-        grad_W[dim] = dW_dr * r[dim] * invr;
+        grad_W[dim] = dW_dr * r[dim] * drdx * invr;
     }
 
     return;
 }
 
+#else 
 
 // Gaussian function part of the RBF
 // rbf = exp(-(xj - x)*(xj - x)/h)
 KOKKOS_FUNCTION
-double kernel_g(const double r[3], const double h){
+double kernel(const double r[3], const double h){
 
     double diff_sqrd = 0.0;
 
@@ -231,6 +242,35 @@ double kernel_g(const double r[3], const double h){
     return norm * exp(-diff_sqrd / (h * h));
 } // end of function
 
+
+
+// Gradient Gaussian function
+// d/dx rbf = d/dx (exp(-(xj - xi)*(xj - x)/hi^2) 
+KOKKOS_FUNCTION
+void grad_kernel(double *grad_W, const double r[3], const double h, const bool derviative_wrt_i){
+
+    double diff_sqrd = 0.0;
+
+    for(size_t dim=0; dim<3; dim++){
+        diff_sqrd += r[dim]*r[dim];
+    } // dim
+
+    double drdx = -1;
+    if(derviative_wrt_i == false){
+        drdx = 1.0;  // derivative with respect to j
+    } // end if
+
+    const double rbf = kernel(r, h);
+
+    // gradient
+    for (size_t dim=0; dim<3; ++dim) {
+        grad_W[dim] = -2.0/(h*h)*r[dim]*rbf*drdx; 
+    }
+
+    return;
+} // end of function
+
+#endif
 
 // Gaussian function part of the RBF, symmeterized
 // rbf = 0.5*(exp(-(xj - xi)*(xj - xi)/hi^2) + exp(-(xi - xj)*(xi - xj)/hj^2))
@@ -249,28 +289,6 @@ double kernel_syn(const double r[3], const double hi, const double hj){
     return 0.5*(Wi + Wj);
 } // end of function
 
-
-// Gradient Gaussian function
-// d/dx rbf = d/dx (exp(-(xj - xi)*(xj - x)/hi^2) 
-KOKKOS_FUNCTION
-void grad_kernel_g(double *grad_W, const double r[3], const double h){
-
-    double diff_sqrd = 0.0;
-
-    for(size_t dim=0; dim<3; dim++){
-        diff_sqrd += r[dim]*r[dim];
-    } // dim
-
-    const double drdxi = -1;
-    const double rbf = kernel(r, h);
-
-    // gradient
-    for (size_t dim=0; dim<3; ++dim) {
-        grad_W[dim] = -2.0/(h*h)*r[dim]*rbf*drdxi; 
-    }
-
-    return;
-} // end of function
 
 // d/dx rbf = d/dx ( 0.5(exp(-(xj - xi)*(xj - x)/hi^2) + exp(-(xi - xj)*(xi - xj)/hj^2)) ) 
 KOKKOS_FUNCTION
@@ -317,9 +335,18 @@ void grad_kernel_sym(double *gradW, const double r[3], const double hi, const do
 
 
     KOKKOS_INLINE_FUNCTION
-    void grad_poly_basis(const double r[3], double (*grad_p)[3]) {
+    void grad_poly_basis(const double r[3], double (*grad_p)[3], bool derviative_wrt_i) {
         
-        const double drdx = -1.0;
+        // default r = r_j - r_i
+
+        double drdx = -1.0;  // default is derivative with respect to i
+        double drdy = -1.0;  // default is derivative with respect to i
+        double drdz = -1.0;  // default is derivative with respect to i
+        if(derviative_wrt_i == false){
+            drdx = 1.0;  // derivative with respect to j
+            drdy = 1.0;  // derivative with respect to j
+            drdz = 1.0;  // derivative with respect to j
+        } // end if
 
         grad_p[0][0] = 0.0;
         grad_p[1][0] = drdx;
@@ -334,8 +361,6 @@ void grad_kernel_sym(double *gradW, const double r[3], const double hi, const do
 
         // for high-order will use (x^a y^b z^c)
 
-        const double drdy = -1.0;
-
         grad_p[0][1] = 0.0;
         grad_p[1][1] = 0.0;
         grad_p[2][1] = drdy;
@@ -348,8 +373,6 @@ void grad_kernel_sym(double *gradW, const double r[3], const double hi, const do
         grad_p[9][1] = 0.0;
 
         // for high-order will use (x^a y^b z^c)
-
-        const double drdz = -1.0;
 
         grad_p[0][2] = 0.0;
         grad_p[1][2] = 0.0;
@@ -382,23 +405,27 @@ void grad_kernel_sym(double *gradW, const double r[3], const double hi, const do
 
 
     KOKKOS_INLINE_FUNCTION
-    void grad_poly_basis(const double r[3], double (*grad_p)[3]) {
+    void grad_poly_basis(const double r[3], double (*grad_p)[3], size_t eval_point) {
         
-        const double drdx = -1.0;
+        double drdx = -1.0;  // default is derivative with respect to i
+        double drdy = -1.0;  // default is derivative with respect to i
+        double drdz = -1.0;  // default is derivative with respect to i
+        if(derviative_wrt_i == false){
+            drdx = 1.0;  // derivative with respect to j
+            drdy = 1.0;  // derivative with respect to j
+            drdz = 1.0;  // derivative with respect to j
+        } // end if
 
         grad_p[0][0] = 0.0;
         grad_p[1][0] = drdx;
         grad_p[2][0] = 0.0;
         grad_p[3][0] = 0.0;
 
-        const double drdy = -1.0;
-
         grad_p[0][1] = 0.0;
         grad_p[1][1] = 0.0;
         grad_p[2][1] = drdy;
         grad_p[3][1] = 0.0;
 
-        const double drdz = -1.0;
 
         grad_p[0][2] = 0.0;
         grad_p[1][2] = 0.0;
@@ -465,8 +492,11 @@ void calc_basis_and_grad_basis_functions(
     const CArrayKokkos <double>& M_inv,
     const DRaggedRightArrayKokkos <double>& basis,
     const DRaggedRightArrayKokkos <double>& grad_basis,
-    const double h)
+    const double h,
+    const bool derviative_wrt_i)
 {
+
+    // dir 
 
     // actual number of points
     size_t num_points = x.dims(0);
@@ -497,17 +527,19 @@ void calc_basis_and_grad_basis_functions(
             r[1] = x(neighbor_point_gid,1) - x(point_gid,1); // y_j-y_i
             r[2] = x(neighbor_point_gid,2) - x(point_gid,2); // z_j-z_i
 
+
+
             double W = kernel(r,h);
             //printf("kernel = %f \n", W);
             double grad_W[3]; 
-            grad_kernel(grad_W,r,h);
+            grad_kernel(grad_W,r,h,derviative_wrt_i);
             //printf("grad kernel = %f, %f, %f \n", grad_W[0], grad_W[1], grad_W[2]);
 
             double p[num_poly_basis]; 
             poly_basis(r,p);
 
             double grad_p[num_poly_basis][3]; 
-            grad_poly_basis(r,grad_p);
+            grad_poly_basis(r, grad_p, derviative_wrt_i);
 
             double Vj = vol(neighbor_point_gid);
 
@@ -542,10 +574,10 @@ void calc_basis_and_grad_basis_functions(
             poly_basis(r,p);
             
             double grad_W[3];
-            grad_kernel(grad_W, r, h);
+            grad_kernel(grad_W, r, h, derviative_wrt_i);
 
             double grad_p[num_poly_basis][3]; // matrix holding grad polynomial basis
-            grad_poly_basis(r, grad_p);
+            grad_poly_basis(r, grad_p, derviative_wrt_i);
 
             // 
             double correction = 0.0;
@@ -1237,7 +1269,8 @@ int main(int argc, char *argv[])
         CArrayKokkos <double> grad_M(num_points, num_poly_basis, num_poly_basis);
         
         DRaggedRightArrayKokkos <double> basis(points_num_neighbors);        // reproducing kernel basis (num_points, num_neighbors)
-        DRaggedRightArrayKokkos <double> grad_basis(points_num_neighbors,3); // reproducing kernel basis (num_points, num_neighbors)
+        DRaggedRightArrayKokkos <double> grad_basis_i(points_num_neighbors,3); // grad kernel basis j with respect to i (num_points, num_neighbors)
+        DRaggedRightArrayKokkos <double> grad_basis_j(points_num_neighbors,3); // grad kernel basis i with respect to j (num_points, num_neighbors)
         
 
 
@@ -1264,8 +1297,21 @@ int main(int argc, char *argv[])
                                     p_coeffs,
                                     M_inv,
                                     basis,
-                                    grad_basis,
-                                    h);
+                                    grad_basis_i,
+                                    h,
+                                    true);
+        
+        calc_basis_and_grad_basis_functions(
+                                    point_positions,
+                                    points_num_neighbors, 
+                                    points_in_point,
+                                    vol,
+                                    p_coeffs,
+                                    M_inv,
+                                    basis,
+                                    grad_basis_j,
+                                    h,
+                                    false);
 
         // end timer
         auto time_6 = std::chrono::high_resolution_clock::now();
@@ -1363,19 +1409,19 @@ int main(int argc, char *argv[])
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_x_p0_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_x_p0_lcl += grad_basis(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid);
+                grad_x_p0_lcl += grad_basis_i(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid);
             }, grad_x_p0);
 
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_y_p0_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_y_p0_lcl += grad_basis(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid);
+                grad_y_p0_lcl += grad_basis_i(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid);
             }, grad_y_p0);
 
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_z_p0_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_z_p0_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid);
+                grad_z_p0_lcl += grad_basis_i(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid);
             }, grad_z_p0);
 
             const double grad_check_P0 = fabs(grad_x_p0)+fabs(grad_y_p0)+fabs(grad_z_p0);
@@ -1387,17 +1433,17 @@ int main(int argc, char *argv[])
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_x_p1_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_x_p1_lcl += grad_basis(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0);
+                grad_x_p1_lcl += grad_basis_i(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0);
             }, grad_x_p1);
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_y_p1_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_y_p1_lcl += grad_basis(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,1);
+                grad_y_p1_lcl += grad_basis_i(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,1);
             }, grad_y_p1);
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_z_p1_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_z_p1_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,2);
+                grad_z_p1_lcl += grad_basis_i(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,2);
             }, grad_z_p1);
 
             const double grad_check_P1 = fabs(grad_x_p1 - 1.0)+fabs(grad_y_p1 - 1.0)+fabs(grad_z_p1 - 1.0);
@@ -1413,17 +1459,17 @@ int main(int argc, char *argv[])
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_x_p2_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_x_p2_lcl += grad_basis(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0)*point_positions(neighbor_point_gid,0);
+                grad_x_p2_lcl += grad_basis_i(point_gid,neighbor_point_lid,0)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,0)*point_positions(neighbor_point_gid,0);
             }, grad_x_p2);
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_y_p2_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_y_p2_lcl += grad_basis(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,1)*point_positions(neighbor_point_gid,1);
+                grad_y_p2_lcl += grad_basis_i(point_gid,neighbor_point_lid,1)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,1)*point_positions(neighbor_point_gid,1);
             }, grad_y_p2);
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_z_p2_lcl, {
                 // get the point gid for this neighboring
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
-                grad_z_p2_lcl += grad_basis(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,2)*point_positions(neighbor_point_gid,2);
+                grad_z_p2_lcl += grad_basis_i(point_gid,neighbor_point_lid,2)*vol(neighbor_point_gid)*point_positions(neighbor_point_gid,2)*point_positions(neighbor_point_gid,2);
             }, grad_z_p2);
 
             const double grad_check_P2 = fabs(grad_x_p2-2.0*point_positions(point_gid,0)) + fabs(grad_y_p2-2.0*point_positions(point_gid,1)) + fabs(grad_z_p2-2.0*point_positions(point_gid,2));
@@ -1493,6 +1539,7 @@ int main(int argc, char *argv[])
         div_fd.set_values(0.0);
 
         FOR_ALL(i_gid, 0, num_points, {
+
             for(size_t j_lid = 0; j_lid<points_num_neighbors(i_gid); j_lid++){                
                 size_t j_gid = points_in_point(i_gid, j_lid);
                 size_t i_lid = reverse_neighbor_lid(i_gid, j_lid);
@@ -1504,8 +1551,8 @@ int main(int argc, char *argv[])
                 double g_ij[3];
                 double g_ji[3];
                 for (int dim=0; dim<3; ++dim) {
-                    g_ij[dim] = grad_basis(i_gid,j_lid,dim);
-                    g_ji[dim] = grad_basis(j_gid,i_lid,dim);
+                    g_ij[dim] = grad_basis_i(i_gid,j_lid,dim);
+                    g_ji[dim] = grad_basis_j(j_gid,i_lid,dim);
                 }
 
                 // conservative mesh-free FE
@@ -1522,7 +1569,8 @@ int main(int argc, char *argv[])
                 }
                 div_fd(i_gid) += contrib;
 
-            }
+            } // end loop over neighbors
+
             div(i_gid) /= vol(i_gid);
             // remember: finite difference doesn't have the V_i on the right side, so no division
         });
@@ -1560,7 +1608,7 @@ int main(int argc, char *argv[])
                 size_t neighbor_lid = reverse_neighbor_lid(point_gid, neighbor_point_lid);
 
                 for (size_t dim=0; dim<3; dim++){
-                    conserve_check_lcl += 0.5*(grad_basis(point_gid,neighbor_point_lid,dim) - grad_basis(neighbor_point_gid,neighbor_lid,dim));
+                    conserve_check_lcl += 0.5*(grad_basis_i(point_gid,neighbor_point_lid,dim) - grad_basis_j(neighbor_point_gid,neighbor_lid,dim));
                 }
             }
 
