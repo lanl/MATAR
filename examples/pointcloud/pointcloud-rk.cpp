@@ -71,12 +71,15 @@ const double PI = 3.14159265358979323846;
 // inputs:
 
 
-const size_t num_1d_x = 4;
-const size_t num_1d_y = 4;
-const size_t num_1d_z = 4;
+#define P1 // P1 or P2
 
-const double h_kernel = 1.5/4.;
-const double num_points_fit = 30;
+
+const size_t num_1d_x = 3;
+const size_t num_1d_y = 3;
+const size_t num_1d_z = 3;
+
+const double h_kernel = 2/3.;
+const double num_points_fit = 27; // minimum to fit is 3x3x3
 
 const size_t num_points = num_1d_x*num_1d_y*num_1d_z;
 
@@ -116,9 +119,9 @@ bin_keys_t get_bin_keys(const double x_pt,
                         const double z_pt){
             
 
-    double i_dbl = fmax(1.0e-15, round((x_pt - X0 - bin_dx*0.5)/bin_dx - 1.0e-10)); // x = ih + X0 + dx_bin*0.5
-    double j_dbl = fmax(1.0e-15, round((y_pt - Y0 - bin_dy*0.5)/bin_dy - 1.0e-10));
-    double k_dbl = fmax(1.0e-15, round((z_pt - Z0 - bin_dz*0.5)/bin_dz - 1.0e-10));
+    double i_dbl = fmax(0, round((x_pt - X0 - bin_dx*0.5)/bin_dx - 1.0e-10)); // x = ih + X0 + dx_bin*0.5
+    double j_dbl = fmax(0, round((y_pt - Y0 - bin_dy*0.5)/bin_dy - 1.0e-10));
+    double k_dbl = fmax(0, round((z_pt - Z0 - bin_dz*0.5)/bin_dz - 1.0e-10));
 
     bin_keys_t bin_keys; // save i,j,k to the bin keys
 
@@ -136,12 +139,13 @@ size_t get_bin_gid(const double x_pt,
                    const double y_pt, 
                    const double z_pt, 
                    const size_t num_bins_x,
-                   const size_t num_bins_y){
+                   const size_t num_bins_y,
+                   const size_t num_bins_z){
             
 
-    double i_dbl = fmax(1.0e-15, round((x_pt - X0 - bin_dx*0.5)/bin_dx - 1.0e-10)); // x = ih + X0 + dx_bin*0.5
-    double j_dbl = fmax(1.0e-15, round((y_pt - Y0 - bin_dy*0.5)/bin_dy - 1.0e-10));
-    double k_dbl = fmax(1.0e-15, round((z_pt - Z0 - bin_dz*0.5)/bin_dz - 1.0e-10));
+    double i_dbl = fmin(num_bins_x-1, fmax(0.0, round((x_pt - X0)/bin_dx - 1.0e-8))); // x = ih + X0
+    double j_dbl = fmin(num_bins_y-1, fmax(0.0, round((y_pt - Y0)/bin_dy - 1.0e-8)));
+    double k_dbl = fmin(num_bins_z-1, fmax(0.0, round((z_pt - Z0)/bin_dz - 1.0e-8)));
 
     // get the integers for the bins
     size_t i = (size_t)i_dbl;
@@ -156,15 +160,16 @@ size_t get_bin_gid(const double x_pt,
 
 
 KOKKOS_FUNCTION
-double kernel_bs(const double r[3], double h) {
+double kernel(const double r[3], double h) {
     
-    double xij = 0.0;
+    double diff_sqrd = 0.0;
     for(size_t dim=0; dim<3; dim++){
-        xij += r[dim]*r[dim];
+        diff_sqrd += r[dim]*r[dim];
     } // dim
 
-    double q = sqrt(xij)/h;
-    double alpha = 2.0/(3.0*h);
+    const double radius = sqrt(diff_sqrd);
+    const double q = radius/h;
+    const double alpha = 2.0/(3.0*h);
     if (q < 0.0) return 0.0; // defensive
     if (q < 1.0) return (alpha * (1.0 - 1.5*q*q + 0.75*q*q*q));
     if (q < 2.0) return (alpha * 0.25 * pow(2.0 - q, 3));
@@ -175,15 +180,14 @@ double kernel_bs(const double r[3], double h) {
 
 KOKKOS_FUNCTION
 // derivative dW/dx_i = - dW/dr where r = xj-xi
-void grad_kernel_bs(double *grad_W, const double r[3], const double h) {
+void grad_kernel(double *grad_W, const double r[3], const double h) {
 
-    double xij = 0.0;
+    double diff_sqrd = 0.0;
     for(size_t dim=0; dim<3; dim++){
-        xij += r[dim]*r[dim];
+        diff_sqrd += r[dim]*r[dim];
     } // dim
-    // sqrt(xij) = radius
 
-    const double radius = sqrt(xij);
+    const double radius = sqrt(diff_sqrd);
     const double q = radius/h;
 
     double df_dq = 0.0; // derivative of the dimensionless kernel shape function f(q)
@@ -202,7 +206,7 @@ void grad_kernel_bs(double *grad_W, const double r[3], const double h) {
 
     const double dW_dr = (df_dq / h);
     // grad W = dW/dr * (rij / radius)
-    const double invr = 1.0 / radius;
+    const double invr = 1.0 /(radius + 1e-16);
 
     for (size_t dim=0; dim<3; ++dim) {
         grad_W[dim] = dW_dr * r[dim] * invr;
@@ -215,7 +219,7 @@ void grad_kernel_bs(double *grad_W, const double r[3], const double h) {
 // Gaussian function part of the RBF
 // rbf = exp(-(xj - x)*(xj - x)/h)
 KOKKOS_FUNCTION
-double kernel(const double r[3], const double h){
+double kernel_g(const double r[3], const double h){
 
     double diff_sqrd = 0.0;
 
@@ -223,7 +227,7 @@ double kernel(const double r[3], const double h){
         diff_sqrd += r[dim]*r[dim];
     } // dim
 
-    double norm = 1.0 / (h * h * h * pow(PI, 1.5));
+    double norm = 1.0; // / (h * h * h * pow(PI, 1.5));
     return norm * exp(-diff_sqrd / (h * h));
 } // end of function
 
@@ -249,7 +253,7 @@ double kernel_syn(const double r[3], const double hi, const double hj){
 // Gradient Gaussian function
 // d/dx rbf = d/dx (exp(-(xj - xi)*(xj - x)/hi^2) 
 KOKKOS_FUNCTION
-void grad_kernel(double *grad_W, const double r[3], const double h){
+void grad_kernel_g(double *grad_W, const double r[3], const double h){
 
     double diff_sqrd = 0.0;
 
@@ -289,79 +293,121 @@ void grad_kernel_sym(double *gradW, const double r[3], const double hi, const do
     }
 }
 
+#if defined(P2)
+    // Polynomial basis up to quadratic in 3D (10 terms)
+    const size_t num_poly_basis = 10;
+    KOKKOS_INLINE_FUNCTION
+    void poly_basis(const double r[3], double *p) {
 
-// Polynomial basis up to quadratic in 3D (10 terms)
-const size_t num_poly_basis = 10;
-KOKKOS_INLINE_FUNCTION
-void poly_basis(const double r[3], double *p) {
+        p[0] = 1.0;
+        p[1] = r[0];
+        p[2] = r[1];
+        p[3] = r[2];
+        p[4] = r[0] * r[0];
+        p[5] = r[0] * r[1];
+        p[6] = r[0] * r[2];
+        p[7] = r[1] * r[1];
+        p[8] = r[1] * r[2];
+        p[9] = r[2] * r[2];
 
-    p[0] = 1.0;
-    p[1] = r[0];
-    p[2] = r[1];
-    p[3] = r[2];
-    p[4] = r[0] * r[0];
-    p[5] = r[0] * r[1];
-    p[6] = r[0] * r[2];
-    p[7] = r[1] * r[1];
-    p[8] = r[1] * r[2];
-    p[9] = r[2] * r[2];
+        // for high-order will use (x^a y^b z^c)
 
-    // for high-order will use (x^a y^b z^c)
-
-    return;
-} // end function
+        return;
+    } // end function
 
 
-KOKKOS_INLINE_FUNCTION
-void grad_poly_basis(const double r[3], double (*grad_p)[3]) {
-    
-    const double drdx = -1.0;
+    KOKKOS_INLINE_FUNCTION
+    void grad_poly_basis(const double r[3], double (*grad_p)[3]) {
+        
+        const double drdx = -1.0;
 
-    grad_p[0][0] = 0.0;
-    grad_p[1][0] = drdx;
-    grad_p[2][0] = 0.0;
-    grad_p[3][0] = 0.0;
-    grad_p[4][0] = 2.0*r[0]*drdx;
-    grad_p[5][0] = r[1]*drdx;
-    grad_p[6][0] = r[2]*drdx;
-    grad_p[7][0] = 0.0;
-    grad_p[8][0] = 0.0;
-    grad_p[9][0] = 0.0;
+        grad_p[0][0] = 0.0;
+        grad_p[1][0] = drdx;
+        grad_p[2][0] = 0.0;
+        grad_p[3][0] = 0.0;
+        grad_p[4][0] = 2.0*r[0]*drdx;
+        grad_p[5][0] = r[1]*drdx;
+        grad_p[6][0] = r[2]*drdx;
+        grad_p[7][0] = 0.0;
+        grad_p[8][0] = 0.0;
+        grad_p[9][0] = 0.0;
 
-    // for high-order will use (x^a y^b z^c)
+        // for high-order will use (x^a y^b z^c)
 
-    const double drdy = -1.0;
+        const double drdy = -1.0;
 
-    grad_p[0][1] = 0.0;
-    grad_p[1][1] = 0.0;
-    grad_p[2][1] = drdy;
-    grad_p[3][1] = 0.0;
-    grad_p[4][1] = 0.0;
-    grad_p[5][1] = r[0]*drdy;
-    grad_p[6][1] = 0.0;
-    grad_p[7][1] = 2.0*r[1]*drdy;
-    grad_p[8][1] = r[2]*drdy;
-    grad_p[9][1] = 0.0;
+        grad_p[0][1] = 0.0;
+        grad_p[1][1] = 0.0;
+        grad_p[2][1] = drdy;
+        grad_p[3][1] = 0.0;
+        grad_p[4][1] = 0.0;
+        grad_p[5][1] = r[0]*drdy;
+        grad_p[6][1] = 0.0;
+        grad_p[7][1] = 2.0*r[1]*drdy;
+        grad_p[8][1] = r[2]*drdy;
+        grad_p[9][1] = 0.0;
 
-    // for high-order will use (x^a y^b z^c)
+        // for high-order will use (x^a y^b z^c)
 
-    const double drdz = -1.0;
+        const double drdz = -1.0;
 
-    grad_p[0][2] = 0.0;
-    grad_p[1][2] = 0.0;
-    grad_p[2][2] = 0.0;
-    grad_p[3][2] = drdz;
-    grad_p[4][2] = 0.0;
-    grad_p[5][2] = 0.0;
-    grad_p[6][2] = r[0]*drdz;
-    grad_p[7][2] = 0.0;
-    grad_p[8][2] = r[1]*drdz;
-    grad_p[9][2] = 2.0*r[2]*drdz;
+        grad_p[0][2] = 0.0;
+        grad_p[1][2] = 0.0;
+        grad_p[2][2] = 0.0;
+        grad_p[3][2] = drdz;
+        grad_p[4][2] = 0.0;
+        grad_p[5][2] = 0.0;
+        grad_p[6][2] = r[0]*drdz;
+        grad_p[7][2] = 0.0;
+        grad_p[8][2] = r[1]*drdz;
+        grad_p[9][2] = 2.0*r[2]*drdz;
 
-    // for high-order will use (x^a y^b z^c)
+        // for high-order will use (x^a y^b z^c)
 
-    return;
-} // end function
+        return;
+    } // end function
+#else
+    // Polynomial basis up to quadratic in 3D (10 terms)
+    const size_t num_poly_basis = 4;
+    KOKKOS_INLINE_FUNCTION
+    void poly_basis(const double r[3], double *p) {
+
+        p[0] = 1.0;
+        p[1] = r[0];
+        p[2] = r[1];
+        p[3] = r[2];
+
+        return;
+    } // end function
+
+
+    KOKKOS_INLINE_FUNCTION
+    void grad_poly_basis(const double r[3], double (*grad_p)[3]) {
+        
+        const double drdx = -1.0;
+
+        grad_p[0][0] = 0.0;
+        grad_p[1][0] = drdx;
+        grad_p[2][0] = 0.0;
+        grad_p[3][0] = 0.0;
+
+        const double drdy = -1.0;
+
+        grad_p[0][1] = 0.0;
+        grad_p[1][1] = 0.0;
+        grad_p[2][1] = drdy;
+        grad_p[3][1] = 0.0;
+
+        const double drdz = -1.0;
+
+        grad_p[0][2] = 0.0;
+        grad_p[1][2] = 0.0;
+        grad_p[2][2] = 0.0;
+        grad_p[3][2] = drdz;
+
+        return;
+    } // end function
+#endif
 
 
 void calc_basis_functions(
@@ -452,8 +498,10 @@ void calc_basis_and_grad_basis_functions(
             r[2] = x(neighbor_point_gid,2) - x(point_gid,2); // z_j-z_i
 
             double W = kernel(r,h);
+            //printf("kernel = %f \n", W);
             double grad_W[3]; 
             grad_kernel(grad_W,r,h);
+            //printf("grad kernel = %f, %f, %f \n", grad_W[0], grad_W[1], grad_W[2]);
 
             double p[num_poly_basis]; 
             poly_basis(r,p);
@@ -701,9 +749,9 @@ int main(int argc, char *argv[])
         }
         else {
 
-            double dx = LX/((double)num_1d_x);
-            double dy = LY/((double)num_1d_y);
-            double dz = LZ/((double)num_1d_z);
+            double dx = (LX-X0)/((double)num_1d_x - 1);
+            double dy = (LY-Y0)/((double)num_1d_y - 1);
+            double dz = (LZ-Z0)/((double)num_1d_z - 1);
 
             size_t point_gid = 0;  
             for(size_t k=0; k<num_1d_z; k++){
@@ -741,10 +789,16 @@ int main(int argc, char *argv[])
         // ----------------------------
         
         // the number of nodes in the mesh
-        size_t num_bins_x = (size_t)( round(LX/bin_dx) );  
-        size_t num_bins_y = (size_t)( round(LY/bin_dy) );  
-        size_t num_bins_z = (size_t)( round(LZ/bin_dz) );  
+        size_t num_bins_x = (size_t)( round( (LX - X0)/bin_dx) + 1 );  
+        size_t num_bins_y = (size_t)( round( (LY - Y0)/bin_dy) + 1 );  
+        size_t num_bins_z = (size_t)( round( (LZ - Z0)/bin_dz) + 1 );  
+        //  bin_dx = (LX-X0)/(num_bins_x - 1);
+        //  bin_dy = (LY-Y0)/(num_bins_y - 1);
+        //  bin_dz = (LZ-Z0)/(num_bins_z - 1);
+
+
         size_t num_bins = num_bins_x*num_bins_y*num_bins_z;
+        printf("num bins x=%zu, y=%zu, z=%zu \n", num_bins_x, num_bins_y, num_bins_z);
 
         // bins and their connectivity to each other and points
         DCArrayKokkos <bin_keys_t> keys_in_bin(num_bins, "keys_in_bin"); // mapping from gid to (i,j,k)
@@ -805,7 +859,8 @@ int main(int argc, char *argv[])
                                          point_positions(point_gid,1), 
                                          point_positions(point_gid,2),
                                          num_bins_x, 
-                                         num_bins_y);
+                                         num_bins_y,
+                                         num_bins_z);
 
             size_t storage_lid = Kokkos::atomic_fetch_add(&num_points_in_bin(bin_gid), 1);
             points_bin_gid(point_gid) = bin_gid; // the id of the bin
@@ -833,6 +888,21 @@ int main(int argc, char *argv[])
             points_in_bin(bin_gid, storage_lid) = point_gid;
 
         }); // end for all
+
+
+        for(size_t bin_gid=0; bin_gid<num_bins; bin_gid++){
+            if(num_points_in_bin.host(bin_gid) > 0){
+                size_t i = keys_in_bin(bin_gid).i;
+                size_t j = keys_in_bin(bin_gid).j; 
+                size_t k = keys_in_bin(bin_gid).k;
+
+                double bin_x = ((double)i)*bin_dx;
+                double bin_y = ((double)j)*bin_dy;
+                double bin_z = ((double)k)*bin_dz;
+                printf("num points in bin = %zu, bin keys = (%zu, %zu, %zu), bin x = (%f, %f, %f) \n", 
+                    num_points_in_bin.host(bin_gid), i, j, k, bin_x, bin_y, bin_z);
+            }
+        } // end for
 
 
 
@@ -885,20 +955,52 @@ int main(int argc, char *argv[])
                 } // end for icount
 
                 // the min number of points required to solve the system is num_poly_basis+1, was 2*num_poly_basis
-                if (num_points_found > num_points_fit  || num_points_found==num_points){
+                if (num_points_found >= num_points_fit  || num_points_found==num_points){
 
-                    points_bin_stencil(point_gid,0) = imin;
-                    points_bin_stencil(point_gid,1) = imax;
-                    points_bin_stencil(point_gid,2) = jmin;
-                    points_bin_stencil(point_gid,3) = jmax;
-                    points_bin_stencil(point_gid,4) = kmin;
-                    points_bin_stencil(point_gid,5) = kmax;
+                    const double x_pt_middle = bin_dx*((double)i) + X0; 
+                    const double y_pt_middle = bin_dy*((double)j) + Y0; 
+                    const double z_pt_middle = bin_dz*((double)k) + Z0; 
 
-                    points_num_neighbors(point_gid) = num_points_found; // including node_i in the list of neighbors
-                    //points_num_neighbors(point_gid) = num_points_found - 1; // the -1 is because counted point i as a neighbor
+                    const double x_pt_minus = bin_dx*((double)imin) + X0; 
+                    const double y_pt_minus = bin_dy*((double)jmin) + Y0; 
+                    const double z_pt_minus = bin_dz*((double)kmin) + Z0; 
+                    
+                    const double x_pt_plus = bin_dx*((double)imax) + X0; 
+                    const double y_pt_plus = bin_dy*((double)jmax) + Y0; 
+                    const double z_pt_plus = bin_dz*((double)kmax) + Z0; 
 
-                    break;
-                }
+                    const double dist_minus = sqrt( (x_pt_minus - x_pt_middle)*(x_pt_minus - x_pt_middle) +
+                                                    (y_pt_minus - y_pt_middle)*(y_pt_minus - y_pt_middle) +
+                                                    (z_pt_minus - z_pt_middle)*(z_pt_minus - z_pt_middle) );
+
+                    const double dist_plus = sqrt( (x_pt_plus - x_pt_middle)*(x_pt_plus - x_pt_middle) +
+                                                   (y_pt_plus - y_pt_middle)*(y_pt_plus - y_pt_middle) +
+                                                   (z_pt_plus - z_pt_middle)*(z_pt_plus - z_pt_middle) );
+
+                    printf("h = %f, dist_m = %f, dist_p = %f, num_points=%zu, imin = %d, imax = %d, jmin = %d,  jmax = %d, kmin = %d,  kmax = %d, \n", 
+                             h_kernel, dist_minus, dist_plus, num_points_found, imin, imax, jmin, jmax, kmin, kmax);
+
+                    // only exit when we exceed kernel distance
+                    if (dist_minus >= h_kernel || dist_plus >= h_kernel || num_points_found==num_points){
+
+                        //printf("exiting \n\n");
+
+                        points_bin_stencil(point_gid,0) = imin;
+                        points_bin_stencil(point_gid,1) = imax;
+                        points_bin_stencil(point_gid,2) = jmin;
+                        points_bin_stencil(point_gid,3) = jmax;
+                        points_bin_stencil(point_gid,4) = kmin;
+                        points_bin_stencil(point_gid,5) = kmax;
+
+                        points_num_neighbors(point_gid) = num_points_found; // including node_i in the list of neighbors
+                        points_num_neighbors(point_gid) = num_points_found - 1; // the -1 is because we counted point i as a neighbor
+
+                        break;
+                    }
+                    // else increase stencil size
+
+
+                } // end of check
                 
             } // end for stencil
 
@@ -1015,9 +1117,7 @@ int main(int argc, char *argv[])
                             size_t neighbor_point_gid = points_in_bin(neighbor_bin_gid, neighbor_pt_lid);
                             
                             // make sure its a neighbor
-                            //if(neighbor_point_gid != point_gid){
-
-                            // I am including point_i in the neighbor list
+                            if(neighbor_point_gid != point_gid){
 
                                 // save the neighbor
                                 size_t num_saved = Kokkos::atomic_fetch_add(&points_num_neighbors(point_gid), 1);
@@ -1046,7 +1146,7 @@ int main(int argc, char *argv[])
 
                                 } // end if
 
-                            //} // end if neighbor != point_gid
+                            } // end if neighbor != point_gid
 
                         } // neighbor_point_lid
 
@@ -1411,7 +1511,7 @@ int main(int argc, char *argv[])
                 // conservative mesh-free FE
                 double contrib = 0.0;
                 for (int dim=0; dim<3; ++dim) {
-                    contrib += 0.5*(g_ij[dim] - g_ji[dim]) * (u(j_gid, dim) - u(i_gid, dim));
+                    contrib += 0.5*(g_ij[dim] - g_ji[dim]) * (u(j_gid, dim) + u(i_gid, dim));
                 }
                 div(i_gid) += vol(i_gid) * vol(j_gid) * contrib;
 
@@ -1424,7 +1524,7 @@ int main(int argc, char *argv[])
 
             }
             div(i_gid) /= vol(i_gid);
-            //div_fd(i_gid) /= vol(i_gid);  // finite difference doesn't have the V_i on the right side, so no division
+            // remember: finite difference doesn't have the V_i on the right side, so no division
         });
         div.update_host();
         div_fd.update_host();
@@ -1444,97 +1544,6 @@ int main(int argc, char *argv[])
             }
         } // end for point_gid
 
- /*       
-        DCArrayKokkos <double> div(num_points);
-        div.set_values(0.0);
-
-        FOR_ALL(i_gid, 0, num_points, {
-                
-            for(size_t j_lid = 0; j_lid<points_num_neighbors(i_gid); j_lid++){                
-
-                // get the point gid for this neighbor
-                size_t j_gid = points_in_point(i_gid, j_lid);
-
-                // get the local id of my neighbor that matches my point_gid
-                size_t i_lid = reverse_neighbor_lid(i_gid, j_lid);
-
-                if(i_gid != points_in_point(j_gid, i_lid)){
-                    printf("CHECK: point i = %d, reverse map point i = %zu for j = %zu \n", i_gid, points_in_point(j_gid, i_lid), j_gid);
-                }
-
-
-                double g_ij[3];
-                double g_ji[3];
-                for (int dim=0; dim<3; ++dim) {
-                    g_ij[dim] = grad_basis(i_gid,j_lid,dim);
-                    g_ji[dim] = grad_basis(j_gid,i_lid,dim);
-                }
-
-                double Delta[3];
-                for (int dim=0; dim<3; ++dim) {
-                    Delta[dim] = g_ij[dim] - g_ji[dim];
-                }
-
-                double pair_dot = 0.0;
-                for (int dim=0; dim<3; ++dim){
-                    pair_dot += 0.5*(point_positions(i_gid,dim) + point_positions(j_gid,dim)) * Delta[dim];
-                }
-
-                div(i_gid) += vol(i_gid) * vol(j_gid) * pair_dot;
-
-                // // contribution to i
-                // Kokkos::atomic_add(&div(i_gid), contrib); 
-
-                // // // contribution to j
-                // Kokkos::atomic_add(&div(j_gid), -contrib);
-
-
-                // checks 
-                double Delta_norm = 0.0;
-                for (int d=0; d<3; ++d){ 
-                    Delta_norm += (g_ij[d]-g_ji[d])*(g_ij[d]-g_ji[d]);
-                } // end for
-
-                printf("pair %d,%zu: |Delta|=%g  g_ij=(%g,%g,%g)  g_ji=(%g,%g,%g)\n", i_gid, j_gid, sqrt(Delta_norm),
-                    g_ij[0],g_ij[1],g_ij[2], g_ji[0],g_ji[1],g_ji[2]);
-
-                
-            } // end neighbors
-
-        }); // end parallel over points
-        Kokkos::fence();
-
-        FOR_ALL(point_gid, 0, num_points, {
-            div(point_gid) /= vol(point_gid);
-        });
-        div.update_host();
-
-        for(size_t point_gid=0; point_gid<num_points; point_gid++){
-            printf("div = %f at point %zu \n", div.host(point_gid), point_gid);
-        }
-
-*/
-                // double dot_prod = 0.0;
-                // for (size_t dim=0; dim<3; dim++){                  
-                //     dot_prod += (grad_basis(point_gid,neighbor_point_lid,dim) - grad_basis(neighbor_point_gid,neighbor_lid,dim))*
-                //                 (point_positions(neighbor_point_gid,dim) - point_positions(point_gid,dim)); 
-                // }
-                // div(point_gid) += vol(point_gid)*vol(neighbor_point_gid)*0.5*dot_prod;
-
-        // other coding 
-        // dot_prod = 0.0;
-        // for (size_t dim=0; dim<3; dim++) {
-        //     dot_prod += grad_basis(point_gid,neighbor_point_lid,dim) *
-        //                 (point_positions(neighbor_point_gid,dim)- point_positions(point_gid,dim));
-        // }
-
-        // // contribution to i
-        // Kokkos::atomic_add(&div(point_gid),
-        //     0.5 * vol(point_gid) * vol(neighbor_point_gid) * dot_prod);
-
-        // // // contribution to j
-        // Kokkos::atomic_add(&div(neighbor_point_gid),
-        //     -0.5 * vol(point_gid) * vol(neighbor_point_gid) * dot_prod);
 
 
         double conserve_check;
