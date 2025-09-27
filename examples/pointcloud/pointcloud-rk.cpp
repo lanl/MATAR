@@ -405,7 +405,7 @@ void grad_kernel_sym(double *gradW, const double r[3], const double hi, const do
 
 
     KOKKOS_INLINE_FUNCTION
-    void grad_poly_basis(const double r[3], double (*grad_p)[3], size_t eval_point) {
+    void grad_poly_basis(const double r[3], double (*grad_p)[3], bool derivative_wrt_i) {
         
         double drdx = -1.0;  // default is derivative with respect to i
         double drdy = -1.0;  // default is derivative with respect to i
@@ -1228,8 +1228,7 @@ int main(int argc, char *argv[])
 
 
         // build the reverse map
-        DRaggedRightArrayKokkos <int> reverse_neighbor_lid(points_num_neighbors); 
-        reverse_neighbor_lid.set_values(-1);
+        DRaggedRightArrayKokkos <size_t> reverse_neighbor_lid(points_num_neighbors); 
 
         FOR_ALL(point_gid, 0, num_points, {
                 
