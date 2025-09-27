@@ -79,8 +79,8 @@ const size_t num_1d_x = 5;
 const size_t num_1d_y = 5;
 const size_t num_1d_z = 5;
 
-const double h_kernel = 2/5.;
-const double num_points_fit = 27; // minimum to fit is 3x3x3
+const double h_kernel = 2.0/5.;
+const double num_points_fit = 27; // minimum to fit on structured mesh is 3x3x3
 
 const size_t num_points = num_1d_x*num_1d_y*num_1d_z;
 
@@ -775,14 +775,14 @@ int main(int argc, char *argv[])
 
         // point locations
         if(RAND_CLOUD){
-        srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
-            for(size_t i=0; i<num_points; i++){
-                point_positions.host(i, 0) = X0 + LX*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
-                point_positions.host(i, 1) = Y0 + LY*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
-                point_positions.host(i, 2) = Z0 + LZ*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
+            srand(static_cast<unsigned int>(time(0))); // Seed the random number generator
+                for(size_t i=0; i<num_points; i++){
+                    point_positions.host(i, 0) = X0 + LX*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
+                    point_positions.host(i, 1) = Y0 + LY*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
+                    point_positions.host(i, 2) = Z0 + LZ*static_cast<double>(rand())/static_cast<double>(RAND_MAX);
+                }
+                vol.set_values(1.0);
             }
-            vol.set_values(1.0);
-        }
         else {
 
             double dx = (LX-X0)/((double)num_1d_x - 1);
@@ -850,6 +850,8 @@ int main(int argc, char *argv[])
         // ----------------------------
         // Make bins here
         // ----------------------------
+
+        printf("making bins \n");
         
         // the number of nodes in the mesh
         size_t num_bins_x = (size_t)( round( (LX - X0)/bin_dx) + 1 );  
@@ -877,6 +879,7 @@ int main(int argc, char *argv[])
         DCArrayKokkos <size_t> points_num_neighbors(num_points, "num_neighbors");
         
         printf("Starting timers \n\n");
+
 
         // start timer
         auto time_1 = std::chrono::high_resolution_clock::now();
@@ -913,6 +916,8 @@ int main(int argc, char *argv[])
 
         // start timer
         auto time_3 = std::chrono::high_resolution_clock::now();
+
+        printf("building neighbor point list \n");
 
         // save bin id to points
         FOR_ALL(point_gid, 0, num_points, {
@@ -953,19 +958,19 @@ int main(int argc, char *argv[])
         }); // end for all
 
 
-        for(size_t bin_gid=0; bin_gid<num_bins; bin_gid++){
-            if(num_points_in_bin.host(bin_gid) > 0){
-                size_t i = keys_in_bin(bin_gid).i;
-                size_t j = keys_in_bin(bin_gid).j; 
-                size_t k = keys_in_bin(bin_gid).k;
+        // for(size_t bin_gid=0; bin_gid<num_bins; bin_gid++){
+        //     if(num_points_in_bin.host(bin_gid) > 0){
+        //         size_t i = keys_in_bin(bin_gid).i;
+        //         size_t j = keys_in_bin(bin_gid).j; 
+        //         size_t k = keys_in_bin(bin_gid).k;
 
-                double bin_x = ((double)i)*bin_dx;
-                double bin_y = ((double)j)*bin_dy;
-                double bin_z = ((double)k)*bin_dz;
-                //printf("num points in bin = %zu, bin keys = (%zu, %zu, %zu), bin x = (%f, %f, %f) \n", 
-                //    num_points_in_bin.host(bin_gid), i, j, k, bin_x, bin_y, bin_z);
-            }
-        } // end for
+        //         double bin_x = ((double)i)*bin_dx;
+        //         double bin_y = ((double)j)*bin_dy;
+        //         double bin_z = ((double)k)*bin_dz;
+        //         //printf("num points in bin = %zu, bin keys = (%zu, %zu, %zu), bin x = (%f, %f, %f) \n", 
+        //         //    num_points_in_bin.host(bin_gid), i, j, k, bin_x, bin_y, bin_z);
+        //     }
+        // } // end for
 
 
 
@@ -1255,6 +1260,7 @@ int main(int argc, char *argv[])
         // end timer
         auto time_4 = std::chrono::high_resolution_clock::now();
 
+        printf("done building neighbor point list \n");
 
         // ----------------------------------------
         // Find basis that reconstructs polynomial 
