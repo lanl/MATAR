@@ -73,14 +73,15 @@ const double PI = 3.14159265358979323846;
 
 #define P2 // P1 or P2
 #define CUBIC_SPLINE // CUBIC_SPLINE or GAUSS kernel
+
 bool RAND_CLOUD = true; // RAND_CLOUD or uniform
 
 const size_t num_1d_x = 5;
 const size_t num_1d_y = 5;
 const size_t num_1d_z = 5;
 
-const double h_kernel = 2.0/5.;
-const double num_points_fit = 27; // minimum to fit on structured mesh is 3x3x3
+const double h_kernel = 2.0/5.; // it is always 2/num_1d_x
+const double num_points_fit = 27; // minimum to P2 fit on structured mesh is 3x3x3
 
 const size_t num_points = num_1d_x*num_1d_y*num_1d_z;
 
@@ -97,6 +98,7 @@ const double Z0 = 0.0;
 const double LX = 1.0;   // length in x-dir
 const double LY = 1.0;
 const double LZ = 1.0;
+
 
 bool check_maps = false; // CPU only!!!!
 
@@ -1405,9 +1407,10 @@ int main(int argc, char *argv[])
             if(fabs(linear_preserving-point_positions(point_gid,0))>1e-13)
                 printf("linear fcn error = %f, ", fabs(linear_preserving-point_positions(point_gid,0)));
 
+        #if defined(P2)
             if(fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0))>1e-13)
                 printf("quadratic fcn error = %f at i=%zu \n", fabs(quadratic_preserving-point_positions(point_gid,0)*point_positions(point_gid,0)), point_gid);
-
+        #endif
 
             // -----------------
             // gradient checks
@@ -1463,6 +1466,7 @@ int main(int argc, char *argv[])
             }
 
 
+        #if defined(P2)
             // Sum(grad(P2)) = [2]; 
             FOR_REDUCE_SUM(neighbor_point_lid, 0, points_num_neighbors.host(point_gid), grad_x_p2_lcl, {
                 // get the point gid for this neighboring
@@ -1487,6 +1491,7 @@ int main(int argc, char *argv[])
                         fabs(grad_y_p2-2.0*point_positions(point_gid,1)), 
                         fabs(grad_z_p2-2.0*point_positions(point_gid,2)));
             }
+        #endif
 
         } // end for point gid
 
