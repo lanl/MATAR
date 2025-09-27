@@ -72,14 +72,14 @@ const double PI = 3.14159265358979323846;
 
 
 #define P2 // P1 or P2
-#define CUBIC_SPLINE // CUBIC_SPLINE or GUASS
+#define CUBIC_SPLINE // CUBIC_SPLINE or GAUSS kernel
 bool RAND_CLOUD = true; // RAND_CLOUD or uniform
 
-const size_t num_1d_x = 3;
-const size_t num_1d_y = 3;
-const size_t num_1d_z = 3;
+const size_t num_1d_x = 5;
+const size_t num_1d_y = 5;
+const size_t num_1d_z = 5;
 
-const double h_kernel = 2/3.;
+const double h_kernel = 2/5.;
 const double num_points_fit = 27; // minimum to fit is 3x3x3
 
 const size_t num_points = num_1d_x*num_1d_y*num_1d_z;
@@ -1602,8 +1602,6 @@ int main(int argc, char *argv[])
         } // end for point_gid
 
 
-
-
         double conserve_check;
         double conserve_check_lcl;
         FOR_REDUCE_SUM(point_gid, 0, num_points, 
@@ -1615,16 +1613,85 @@ int main(int argc, char *argv[])
                 size_t neighbor_point_gid = points_in_point(point_gid, neighbor_point_lid);
 
                 // get the local id of my neighbor that matches my point_gid
-                //size_t neighbor_lid = reverse_neighbor_lid(point_gid, neighbor_point_lid);
+                size_t neighbor_lid = reverse_neighbor_lid(point_gid, neighbor_point_lid);
 
                 for (size_t dim=0; dim<3; dim++){
+                    // from point i
                     conserve_check_lcl += 0.5*(grad_basis_i(point_gid,neighbor_point_lid,dim) - grad_basis_j(point_gid,neighbor_point_lid,dim));
-                    //conserve_check_lcl += 0.5*(grad_basis_i(point_gid,neighbor_point_lid,dim) - grad_basis_j(neighbor_point_gid,neighbor_lid,dim));
+
+                    // from neighbor point
+                    conserve_check_lcl += 0.5*(grad_basis_i(neighbor_point_gid,neighbor_lid,dim) - grad_basis_j(neighbor_point_gid,neighbor_lid,dim));
                 }
             }
 
         }, conserve_check);
         printf("conservation error = %f \n\n", conserve_check);
+
+
+
+        printf("Testing sin(u) of vector field u = (x, y, z) \n\n");
+
+        FOR_ALL(i, 0, num_points, {
+            u(i, 0) = sin(point_positions(i, 0));        
+            u(i, 1) = sin(point_positions(i, 1));
+            u(i, 2) = sin(point_positions(i, 2));
+        });
+        u.update_device();
+
+        DCArrayKokkos <double> div_sinx(num_points);
+        div_sinx.set_values(0.0);
+
+        DCArrayKokkos <double> div_fd_sinx(num_points);
+        div_fd_sinx.set_values(0.0);
+
+        FOR_ALL(i_gid, 0, num_points, {
+
+            for(size_t j_lid = 0; j_lid<points_num_neighbors(i_gid); j_lid++){     
+
+                size_t j_gid = points_in_point(i_gid, j_lid);
+                size_t i_lid = reverse_neighbor_lid(i_gid, j_lid);
+
+                if(i_gid != points_in_point(j_gid, i_lid)){
+                    printf("CHECK: point i = %d, reverse map point i = %zu for j = %zu \n", i_gid, points_in_point(j_gid, i_lid), j_gid);
+                }
+                //printf("map check: edge points (%d,%zu), rev from j = %zu using i_lid = %zu \n", i_gid, j_gid,  points_in_point(j_gid, i_lid), i_lid);
+
+                double g_ij[3];
+                double g_ji[3];
+                double sum[3];
+                for (int dim=0; dim<3; ++dim) {
+                    g_ij[dim] = grad_basis_i(i_gid,j_lid,dim);
+                    g_ji[dim] = grad_basis_j(i_gid,j_lid,dim);
+                    sum[dim] = g_ij[dim] + g_ji[dim];
+                }
+                double norm = sqrt(sum[0]*sum[0] + sum[1]*sum[1] + sum[2]*sum[2]);
+                //printf("errors: norm=%f, g_ij = (%f, %f, %f), g_ji = (%f, %f, %f) \n", norm, g_ij[0], g_ij[1], g_ij[2], g_ji[0], g_ji[1], g_ji[2]);
+
+                // conservative mesh-free FE
+                double contrib = 0.0;
+                for (int dim=0; dim<3; ++dim) {
+                    contrib += 0.5*(g_ij[dim] - g_ji[dim]) * (u(j_gid, dim) + u(i_gid, dim));
+                }
+                div_sinx(i_gid) += vol(i_gid) * vol(j_gid) * contrib;
+
+                // finite difference
+                contrib = 0.0;
+                for (int dim=0; dim<3; ++dim) {
+                    contrib += g_ij[dim]*u(j_gid, dim)*vol(j_gid);
+                }
+                div_fd_sinx(i_gid) += contrib;
+
+            } // end loop over neighbors
+
+            div_sinx(i_gid) /= vol(i_gid);
+            // remember: finite difference doesn't have the V_i on the right side, so no division
+        });
+        div_sinx.update_host();
+        div_fd_sinx.update_host();
+
+
+
+       
 
 
 
@@ -1648,12 +1715,24 @@ int main(int argc, char *argv[])
         }
 
         out << "\nPOINT_DATA " << num_points << "\n";
-        out << "SCALARS field float 1\n";
+        out << "SCALARS error_div(x) float 1\n";
         out << "LOOKUP_TABLE default\n";
         for (size_t point_gid = 0; point_gid < num_points; ++point_gid) {
-            out << div.host(point_gid) << "\n";
+            out << div.host(point_gid)-3 << "\n";
         }
 
+        out << "SCALARS error_div(sin(x)) float 1\n";
+        out << "LOOKUP_TABLE default\n";
+        for (size_t point_gid = 0; point_gid < num_points; ++point_gid) {
+            // vec[0] = sin(x), dvec[0]/dx = cos(x)
+            // vec[1] = sin(y), dvec[1]/dy = cos(y)
+            // vec[2] = sin(z), dvec[2]/dz = cos(z)
+            double val0 = cos(point_positions.host(point_gid,0));
+            double val1 = cos(point_positions.host(point_gid,1));
+            double val2 = cos(point_positions.host(point_gid,2));
+            double exact_div = val0 + val1 + val2;
+            out << (div_sinx.host(point_gid) - exact_div) << "\n";
+        }
 
         printf("Finished \n\n");
 
