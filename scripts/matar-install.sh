@@ -2,6 +2,7 @@
 
 kokkos_build_type=${1}
 trilinos=${2}
+debug=${3}
 
 rm -rf ${MATAR_INSTALL_DIR}
 mkdir -p ${MATAR_BUILD_DIR} 
@@ -9,6 +10,16 @@ mkdir -p ${MATAR_BUILD_DIR}
 cmake_options=(
     -D CMAKE_INSTALL_PREFIX="${MATAR_INSTALL_DIR}"
 )
+
+if [ "$debug" = "enabled" ]; then
+    cmake_options+=(
+        -D CMAKE_BUILD_TYPE=Debug
+    )
+else
+    cmake_options+=(
+        -D CMAKE_BUILD_TYPE=Release
+    )
+fi
 
 if [ "$kokkos_build_type" = "none" ]; then
     cmake_options+=(

@@ -199,6 +199,7 @@ TEST(Test_FMatrixKokkos, operator_access)
     }
 }
 
+#ifndef NDEBUG
 // Test bounds checking
 TEST(Test_FMatrixKokkos, bounds_checking)
 {
@@ -212,6 +213,7 @@ TEST(Test_FMatrixKokkos, bounds_checking)
     // Test invalid access - should throw
     EXPECT_DEATH(A(0,0), ".*");
 }
+#endif
 
 // Test different types
 TEST(Test_FMatrixKokkos, different_types)

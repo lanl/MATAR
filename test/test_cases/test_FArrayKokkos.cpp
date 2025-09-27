@@ -214,6 +214,7 @@ TEST(Test_FArrayKokkos, operator_access)
     EXPECT_EQ(A7(1, 1, 1, 1, 1, 1, 1), 42.0);
 }
 
+#ifndef NDEBUG
 // Test bounds checking
 TEST(Test_FArrayKokkos, bounds_checking)
 {
@@ -232,6 +233,7 @@ TEST(Test_FArrayKokkos, bounds_checking)
     EXPECT_DEATH(A3(6, 5, 2), ".*");
     EXPECT_DEATH(A3(6, 2, 5), ".*");
 }
+#endif
 
 // Test different data types
 TEST(Test_FArrayKokkos, different_types)

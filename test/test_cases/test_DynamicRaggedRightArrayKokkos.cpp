@@ -139,6 +139,7 @@ TEST(DynamicRaggedRightArrayKokkosTest, DifferentDataTypes) {
     EXPECT_EQ(array_int(0, 0), 42);
 }
 
+#ifndef NDEBUG
 // Test out-of-bounds access
 TEST(DynamicRaggedRightArrayKokkosTest, OutOfBoundsAccess) {
     DynamicRaggedRightArrayKokkos<double> array(3, 2, "test_array");
@@ -149,6 +150,7 @@ TEST(DynamicRaggedRightArrayKokkosTest, OutOfBoundsAccess) {
     // Test accessing beyond column bounds
     EXPECT_DEATH(array(0, 2), ".*");  // Initial column size is 2
 }
+#endif
 
 // Test get_kokkos_dual_view
 TEST(DynamicRaggedRightArrayKokkosTest, GetKokkosDualView) {

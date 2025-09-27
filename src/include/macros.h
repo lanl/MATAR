@@ -198,6 +198,35 @@
     GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
 
 
+// the REDUCE Product loop
+
+
+#define \
+    RPROD1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+                        Kokkos::RangePolicy<> ( (x0), (x1) ),  \
+                        KOKKOS_LAMBDA(const int (i), decltype(var) &(var)){fcn}, \
+                        Kokkos::Prod< decltype(result) > ( (result) ) )
+
+#define \
+    RPROD2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+        KOKKOS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+        Kokkos::Prod< decltype(result) > ( (result) ) )
+
+#define \
+    RPROD3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+        KOKKOS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+        Kokkos::Prod< decltype(result) > ( (result) ) )
+
+#define \
+    FOR_REDUCE_PRODUCT(...) \
+    GET_MACRO(__VA_ARGS__, _13, RPROD3D, _11, _10, RPROD2D, _8, _7, RPROD1D)(__VA_ARGS__)
+
+
 // the DO_REDUCE_SUM loop
 #define \
     DO_RSUM1D(i, x0, x1, var, fcn, result) \
@@ -273,6 +302,18 @@
                         Kokkos::Max< decltype(result) > ( (result) ) )
 
 #define \
+    FOR_REDUCE_MAX_SECOND(j, y0, y1, lmax, fcn, result) \
+    Kokkos::parallel_reduce( \
+                            Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j), decltype(lmax) &(lmax) ) \
+                            {fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
+    DO_REDUCE_MAX_THIRD(k, z0, z1, lmax, fcn, result) \
+    Kokkos::parallel_reduce( \
+                            Kokkos::ThreadVectorRange( teamMember, z0, z1+1 ), [&] ( const int (k), decltype(lmax) &(lmax) ) \
+                            {fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+
+#define \
     DO_REDUCE_MAX(...) \
     GET_MACRO(__VA_ARGS__, _13, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__)
 
@@ -299,6 +340,18 @@
                         Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
                         KOKKOS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
                         Kokkos::Min< decltype(result) >(result) )
+
+#define \
+    FOR_REDUCE_MIN_SECOND(j, y0, y1, lmin, fcn, result) \
+    Kokkos::parallel_reduce( \
+                            Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j), decltype(lmin) &(lmin) ) \
+                            {fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+
+#define \
+    DO_REDUCE_MIN_THIRD(k, z0, z1, lmin, fcn, result) \
+    Kokkos::parallel_reduce( \
+                            Kokkos::ThreadVectorRange( teamMember, z0, z1+1 ), [&] ( const int (k), decltype(lmin) &(lmin) ) \
+                            {fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
 
 #define \
     FOR_REDUCE_MIN(...) \
@@ -447,64 +500,64 @@ teamMember.team_rank()
 #define \
 FOR_FIRST(i, x0, x1, fcn) \
 Kokkos::parallel_for( \
-                        Kokkos::TeamPolicy<>( x1-x0, Kokkos::AUTO, 32 ), \
+                        Kokkos::TeamPolicy<>( (x1)-(x0), Kokkos::AUTO, 32 ), \
                         KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
-                        { const int i = TEAM_ID + x0; fcn} )
+                        { const int (i) = TEAM_ID + (x0); fcn} )
     
 #define \
 FOR_SECOND(j, y0, y1, fcn) \
 Kokkos::parallel_for( \
-                        Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j) ) \
+                        Kokkos::TeamThreadRange( teamMember,(y0), (y1) ), [&] ( const int (j) ) \
                         {fcn} )
 
 #define \
 FOR_REDUCE_SUM_SECOND(j, y0, y1, lsum, fcn, result) \
 Kokkos::parallel_reduce( \
-                        Kokkos::TeamThreadRange( teamMember, y0, y1 ), [&] ( const int (j), decltype(lsum) &(lsum) ) \
-                        {fcn}, result )
+                        Kokkos::TeamThreadRange( teamMember, (y0), (y1) ), [&] ( const int (j), decltype(lsum) &(lsum) ) \
+                        {fcn}, (result) )
 
 #define \
 FOR_THIRD(k, z0, z1, fcn) \
 Kokkos::parallel_for( \
-                        Kokkos::ThreadVectorRange( teamMember, z0, z1 ), [&] ( const int (k) ) \
+                        Kokkos::ThreadVectorRange( teamMember, (z0), (z1) ), [&] ( const int (k) ) \
                         {fcn} )
 
 #define \
 FOR_REDUCE_SUM_THIRD(k, z0, z1, lsum, fcn, result) \
 Kokkos::parallel_reduce( \
-                        Kokkos::ThreadVectorRange( teamMember, z0, z1 ), [&] ( const int (k), decltype(lsum) &(lsum) ) \
-                        {fcn}, result )
+                        Kokkos::ThreadVectorRange( teamMember, (z0), (z1) ), [&] ( const int (k), decltype(lsum) &(lsum) ) \
+                        {fcn}, (result) )
 
 #define \
 DO_FIRST(i, x0, x1, fcn) \
 Kokkos::parallel_for( \
-                        Kokkos::TeamPolicy<>( x1-x0+1, Kokkos::AUTO, 32 ), \
+                        Kokkos::TeamPolicy<>( (x1)-(x0)+1, Kokkos::AUTO, 32 ), \
                         KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
-                        { const int i = TEAM_ID + x0; fcn} )
+                        { const int (i) = TEAM_ID + (x0); fcn} )
     
 #define \
 DO_SECOND(j, y0, y1, fcn) \
 Kokkos::parallel_for( \
-                        Kokkos::TeamThreadRange( teamMember, y0, y1+1 ), [&] ( const int (j) ) \
+                        Kokkos::TeamThreadRange( teamMember, (y0), (y1)+1 ), [&] ( const int (j) ) \
                         {fcn} )
 
 #define \
 DO_REDUCE_SUM_SECOND(j, y0, y1, lsum, fcn, result) \
 Kokkos::parallel_reduce( \
-                        Kokkos::TeamThreadRange( teamMember, y0, y1+1 ), [&] ( const int (j), decltype(lsum) &(lsum) ) \
-                        {fcn}, result )
+                        Kokkos::TeamThreadRange( teamMember, (y0), (y1)+1 ), [&] ( const int (j), decltype(lsum) &(lsum) ) \
+                        {fcn}, (result) )
 
 #define \
 DO_THIRD(k, z0, z1, fcn) \
 Kokkos::parallel_for( \
-                        Kokkos::ThreadVectorRange( teamMember, z0, z1+1 ), [&] ( const int (k) ) \
+                        Kokkos::ThreadVectorRange( teamMember, (z0), (z1)+1 ), [&] ( const int (k) ) \
                         {fcn} )
 
 #define \
 DO_REDUCE_SUM_THIRD(k, z0, z1, lsum, fcn, result) \
 Kokkos::parallel_reduce( \
-                        Kokkos::ThreadVectorRange( teamMember, z0, z1+1 ), [&] ( const int (k), decltype(lsum) &(lsum) ) \
-                        {fcn}, result )
+                        Kokkos::ThreadVectorRange( teamMember, (z0), (z1)+1 ), [&] ( const int (k), decltype(lsum) &(lsum) ) \
+                        {fcn}, (result) )
 
 //Kokkos Initialize
 #define \
@@ -843,6 +896,23 @@ void reduce_max (int i_start, int i_end,
     result = var;
 };  // end for_reduce
 
+
+
+
+// MIN
+template <typename T, typename F>
+void reduce_prod (int i_start, int i_end,
+                  T var,
+                 const F &lambda_fcn, T &result){
+    var = 1.0;
+    for (int i=i_start; i<i_end; i++){
+        lambda_fcn(i, var);
+    }
+    result = var;
+};  // end for_reduce
+
+
+
 #endif  // if not kokkos
 
 
@@ -966,6 +1036,8 @@ void reduce_max (int i_start, int i_end,
 #define \
     FOR_REDUCE_MAX(...) \
     GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
+
+
 
 
 // DO_REDUCE_MAX

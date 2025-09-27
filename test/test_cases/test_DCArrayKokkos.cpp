@@ -260,6 +260,7 @@ TEST(Test_DCArrayKokkos, host_device_updates)
     }
 }
 
+#ifndef NDEBUG
 // Test bounds checking
 TEST(Test_DCArrayKokkos, bounds_checking)
 {
@@ -278,6 +279,7 @@ TEST(Test_DCArrayKokkos, bounds_checking)
     EXPECT_DEATH(A3.host(2, 5, 2), "");
     EXPECT_DEATH(A3.host(2, 2, 5), "");
 }
+#endif
 
 // Test different data types
 TEST(Test_DCArrayKokkos, different_types)
