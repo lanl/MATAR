@@ -88,108 +88,111 @@ if (KOKKOS)
     add_definitions(-DHAVE_THREADS=1)
   endif()
 
-  add_executable(testsetval test_set_values.cpp)
-  target_link_libraries(testsetval ${LINKING_LIBRARIES})
+  # add_executable(testsetval test_set_values.cpp)
+  # target_link_libraries(testsetval ${LINKING_LIBRARIES})
 
-  add_executable(mtestkokkos main_kokkos.cpp)
-  target_link_libraries(mtestkokkos ${LINKING_LIBRARIES})
+  # add_executable(mtestkokkos main_kokkos.cpp)
+  # target_link_libraries(mtestkokkos ${LINKING_LIBRARIES})
 
 
-  add_executable(drrak_test test_drrak.cpp)
-  target_link_libraries(drrak_test ${LINKING_LIBRARIES})
+  # add_executable(drrak_test test_drrak.cpp)
+  # target_link_libraries(drrak_test ${LINKING_LIBRARIES})
 
-  add_executable(test_kokkos_for kokkos_for.cpp)
-  target_link_libraries(test_kokkos_for ${LINKING_LIBRARIES})
+  # add_executable(test_kokkos_for kokkos_for.cpp)
+  # target_link_libraries(test_kokkos_for ${LINKING_LIBRARIES})
 
-  add_executable(test_dual_types test_dual_types.cpp)
-  target_link_libraries(test_dual_types ${LINKING_LIBRARIES})
+  # add_executable(test_dual_types test_dual_types.cpp)
+  # target_link_libraries(test_dual_types ${LINKING_LIBRARIES})
 
-  add_executable(kokkos_csr CSRKokkos.cpp)
-  target_link_libraries(kokkos_csr ${LINKING_LIBRARIES})
+  # add_executable(kokkos_csr CSRKokkos.cpp)
+  # target_link_libraries(kokkos_csr ${LINKING_LIBRARIES})
 
-  add_executable(kokkos_csc CSCKokkos.cpp)
-  target_link_libraries(kokkos_csc ${LINKING_LIBRARIES})
+  # add_executable(kokkos_csc CSCKokkos.cpp)
+  # target_link_libraries(kokkos_csc ${LINKING_LIBRARIES})
 
-  add_executable(mtr_kokkos-simple mtr-kokkos-simple.cpp)
-  target_link_libraries(mtr_kokkos-simple ${LINKING_LIBRARIES})
+  # add_executable(mtr_kokkos-simple mtr-kokkos-simple.cpp)
+  # target_link_libraries(mtr_kokkos-simple ${LINKING_LIBRARIES})
 
-  add_executable(annkokkos ann_kokkos.cpp)
-  target_link_libraries(annkokkos ${LINKING_LIBRARIES})
+  # add_executable(annkokkos ann_kokkos.cpp)
+  # target_link_libraries(annkokkos ${LINKING_LIBRARIES})
 
-  add_executable(annkokkos_compare ann_kokkos_compare.cpp)
-  target_link_libraries(annkokkos_compare ${LINKING_LIBRARIES})
+  # add_executable(annkokkos_compare ann_kokkos_compare.cpp)
+  # target_link_libraries(annkokkos_compare ${LINKING_LIBRARIES})
 
-  #add_executable(ompperftest ompperftest.cpp)
-  #target_link_libraries(ompperftest ${LINKING_LIBRARIES})
+  # #add_executable(ompperftest ompperftest.cpp)
+  # #target_link_libraries(ompperftest ${LINKING_LIBRARIES})
 
-  add_executable(lu_test test_lu_solve.cpp)
-  target_link_libraries(lu_test ${LINKING_LIBRARIES})
+  # add_executable(lu_test test_lu_solve.cpp)
+  # target_link_libraries(lu_test ${LINKING_LIBRARIES})
 
-  add_executable(qr_test test_qr_solve.cpp)
-  target_link_libraries(qr_test ${LINKING_LIBRARIES})
+  # add_executable(qr_test test_qr_solve.cpp)
+  # target_link_libraries(qr_test ${LINKING_LIBRARIES})
 
-  if (Matar_ENABLE_TRILINOS)
-    add_executable(anndistributed ann_distributed.cpp)
-    target_link_libraries(anndistributed ${LINKING_LIBRARIES})
+  # if (Matar_ENABLE_TRILINOS)
+  #   add_executable(anndistributed ann_distributed.cpp)
+  #   target_link_libraries(anndistributed ${LINKING_LIBRARIES})
     
-    add_executable(anndistributed_crs ann_distributed_crs.cpp)
-    target_link_libraries(anndistributed_crs ${LINKING_LIBRARIES})
+  #   add_executable(anndistributed_crs ann_distributed_crs.cpp)
+  #   target_link_libraries(anndistributed_crs ${LINKING_LIBRARIES})
 
-    add_executable(test_tpetra_farray test_tpetra_farray.cpp)
-    target_link_libraries(test_tpetra_farray ${LINKING_LIBRARIES})
+  #   add_executable(test_tpetra_farray test_tpetra_farray.cpp)
+  #   target_link_libraries(test_tpetra_farray ${LINKING_LIBRARIES})
 
-    add_executable(test_tpetra_carray test_tpetra_carray.cpp)
-    target_link_libraries(test_tpetra_carray ${LINKING_LIBRARIES})
+  #   add_executable(test_tpetra_carray test_tpetra_carray.cpp)
+  #   target_link_libraries(test_tpetra_carray ${LINKING_LIBRARIES})
 
-    add_executable(test_tpetra_crs test_tpetra_crs.cpp)
-    target_link_libraries(test_tpetra_crs ${LINKING_LIBRARIES})
+  #   add_executable(test_tpetra_crs test_tpetra_crs.cpp)
+  #   target_link_libraries(test_tpetra_crs ${LINKING_LIBRARIES})
 
-    add_executable(test_tpetra_mesh test_tpetra_mesh.cpp)
-    target_link_libraries(test_tpetra_mesh ${LINKING_LIBRARIES})
-  endif()
+  #   add_executable(test_tpetra_mesh test_tpetra_mesh.cpp)
+  #   target_link_libraries(test_tpetra_mesh ${LINKING_LIBRARIES})
+  # endif()
 
-  if (OPENMP)
-    add_executable(parallel_hello_world parallel_hello_world.cpp)
-    target_link_libraries(parallel_hello_world ${LINKING_LIBRARIES})
-  endif()
+  # if (OPENMP)
+  #   add_executable(parallel_hello_world parallel_hello_world.cpp)
+  #   target_link_libraries(parallel_hello_world ${LINKING_LIBRARIES})
+  # endif()
 
-  if (MPI)
-    include_directories(laplaceMPI)
-    add_subdirectory(laplaceMPI)
-  endif()
+  # if (MPI)
+  #   include_directories(laplaceMPI)
+  #   add_subdirectory(laplaceMPI)
+  # endif()
 
 endif()
 
-### HIP Linking error, will add back in after fixed
-if (NOT HIP)
-    include_directories(virtualFcnKokkos)
-    add_subdirectory(virtualFcnKokkos)
-endif()
+# ### HIP Linking error, will add back in after fixed
+# if (NOT HIP)
+#     include_directories(virtualFcnKokkos)
+#     add_subdirectory(virtualFcnKokkos)
+# endif()
 
-# In testing, not working
-#include_directories(gArrayofgArrays)
-#add_subdirectory(gArrayofgArrays)
+# # In testing, not working
+# #include_directories(gArrayofgArrays)
+# #add_subdirectory(gArrayofgArrays)
 
-include_directories(virtualFcnMATAR)
-add_subdirectory(virtualFcnMATAR)
+# include_directories(virtualFcnMATAR)
+# add_subdirectory(virtualFcnMATAR)
 
-include_directories(laplace)
-add_subdirectory(laplace)
+# include_directories(laplace)
+# add_subdirectory(laplace)
 
-include_directories(halfspace_cooling)
-add_subdirectory(halfspace_cooling)
+# include_directories(halfspace_cooling)
+# add_subdirectory(halfspace_cooling)
 
-include_directories(watt-graph)
-add_subdirectory(watt-graph)
+# include_directories(watt-graph)
+# add_subdirectory(watt-graph)
 
-#include_directories(matar_fortran)
-#add_subdirectory(matar_fortran)
+# #include_directories(matar_fortran)
+# #add_subdirectory(matar_fortran)
 
-include_directories(sparsetests)
-add_subdirectory(sparsetests)
+# include_directories(sparsetests)
+# add_subdirectory(sparsetests)
 
-include_directories(test_rocm)
-add_subdirectory(test_rocm)
+# include_directories(test_rocm)
+# add_subdirectory(test_rocm)
+
+include_directories(mesh_decomp)
+add_subdirectory(mesh_decomp)
 
 #include_directories(phaseField/srcKokkosVerbose)
 #add_subdirectory(phaseField/srcKokkosVerbose)

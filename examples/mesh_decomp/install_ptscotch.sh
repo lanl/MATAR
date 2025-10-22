@@ -11,8 +11,10 @@ LIB_DIR="lib"
 
 # echo "Installing Scotch and PT-Scotch to ${INSTALL_PREFIX}"
 
-# Create lib directory
-mkdir -p "${LIB_DIR}"
+# Create lib directory if it doesn't exist
+if [ ! -d "${LIB_DIR}" ]; then
+    mkdir -p "${LIB_DIR}"
+fi
 cd ${LIB_DIR}
 # Clone and build Scotch
 echo "Cloning Scotch..."

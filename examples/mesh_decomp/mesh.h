@@ -36,7 +36,6 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "matar.h"
 #include "state.h"
-#include "ref_elem.h"
 #include <cmath>
 
 #define PI 3.141592653589793
