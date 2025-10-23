@@ -303,6 +303,13 @@ struct Mesh_t
     RaggedRightArrayKokkos<size_t> bdy_nodes_in_set; ///< Boundary nodes in a boundary set
     DCArrayKokkos<size_t> num_bdy_nodes_in_set; ///< Number of boundary nodes in a set
 
+
+    // MPI Decomposition Data Definitions ---- //
+    DCArrayKokkos<size_t> local_to_global_node_mapping; ///< Local to global node mapping
+    
+    DCArrayKokkos<size_t> local_to_global_elem_mapping; ///< Local to global element mapping
+
+
     // initialization methods
     void initialize_nodes(const size_t num_nodes_inp)
     {
