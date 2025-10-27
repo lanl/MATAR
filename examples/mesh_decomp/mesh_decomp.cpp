@@ -112,16 +112,20 @@ int main(int argc, char** argv) {
     // Initial mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {2, 2, 2};
+    int num_elems_dim[3] = {4, 4, 4};
 
     Mesh_t initial_mesh;
     GaussPoint_t initial_GaussPoints;
     node_t initial_node;
 
     // Create mesh, gauss points, and node data structures on each rank
+    // This is the initial partitioned mesh
     Mesh_t mesh;
     GaussPoint_t GaussPoints;
     node_t node;
+
+    // Mesh partitioned by pt-scotch
+    Mesh_t final_mesh; 
 
     int num_elements_on_rank = 0;
     int num_nodes_on_rank = 0;
@@ -718,42 +722,112 @@ int main(int argc, char** argv) {
 
 
 
-    // --- Simple compact CSR build using global neighbor GIDs (recommended) ---
+    /**********************************************************************************
+     * Build PT-Scotch distributed graph representation of the mesh for repartitioning *
+     **********************************************************************************
+     *
+     * This section constructs the distributed graph (SCOTCH_Dgraph) needed by PT-Scotch
+     * for mesh repartitioning. In this graph, each mesh element is a vertex, and edges
+     * correspond to mesh-neighbor relationships (i.e., elements that share a face or are
+     * otherwise neighbors per your mesh definition).
+     *
+     * We use the compact CSR (Compressed Sparse Row) representation, passing only the
+     * essential information required by PT-Scotch.
+     * 
+     * Variables and structures used:
+     *   - SCOTCH_Dgraph dgraph:
+     *       The distributed graph instance managed by PT-Scotch. Each MPI rank creates
+     *       and fills in its portion of the global graph.
+     * 
+     *   - const SCOTCH_Num baseval:
+     *       The base value for vertex and edge numbering. Set to 0 for C-style zero-based
+     *       arrays. Always use 0 unless you are using Fortran style 1-based arrays.
+     * 
+     *   - const SCOTCH_Num vertlocnbr:
+     *       The *number of local vertices* (mesh elements) defined on this MPI rank.
+     *       In our mesh, this is mesh.num_elems. PT-Scotch expects each rank to specify
+     *       its own local vertex count.
+     *
+     *   - const SCOTCH_Num vertlocmax:
+     *       The *maximum number of local vertices* that could be stored (capacity). We
+     *       allocate with no unused holes, so vertlocmax = vertlocnbr.
+     *
+     *   - std::vector<SCOTCH_Num> vertloctab:
+     *       CSR array [size vertlocnbr+1]: for each local vertex i, vertloctab[i]
+     *       gives the index in edgeloctab where the neighbor list of vertex i begins.
+     *       PT-Scotch expects this array to be of size vertlocnbr+1, where the difference
+     *       vertloctab[i+1] - vertloctab[i] gives the number of edges for vertex i.
+     *
+     *   - std::vector<SCOTCH_Num> edgeloctab:
+     *       CSR array [variable size]: a flattened list of *neighboring element global IDs*,
+     *       in no particular order. For vertex i, its neighbors are located at
+     *       edgeloctab[vertloctab[i]...vertloctab[i+1]-1].
+     *       In this compact CSR, these are global IDs (GIDs), enabling PT-Scotch to
+     *       recognize edges both within and across ranks.
+     *
+     *   - std::map<int, size_t> elem_gid_to_offset:
+     *       Helper map: For a given element global ID, gives the starting offset in 
+     *       the flattened neighbor array (elems_in_elem_on_rank) where this element's
+     *       list of neighbor GIDs begins. This allows efficient neighbor list lookup.
+     *
+     *   - (other arrays used, from mesh setup and communication phase)
+     *       - elements_on_rank: vector of global element IDs owned by this rank.
+     *       - num_elements_on_rank: number of owned elements.
+     *       - num_elems_in_elem_per_rank: array, for each owned element, how many
+     *         neighbors it has.
+     *       - elems_in_elem_on_rank: flattened array of global neighbor IDs for all local elements.
+     *
+     **********************************************************************************/
+
+    // --- Step 1: Initialize the PT-Scotch distributed graph object on this MPI rank ---
     SCOTCH_Dgraph dgraph;
     if (SCOTCH_dgraphInit(&dgraph, MPI_COMM_WORLD) != 0) {
         std::cerr << "[rank " << rank << "] SCOTCH_dgraphInit failed\n";
         MPI_Abort(MPI_COMM_WORLD, 1);
     }
 
-    const SCOTCH_Num baseval = 0;                       // 0-based
+    // Set base value for numbering (0 for C-style arrays)
+    const SCOTCH_Num baseval = 0;
+
+    // vertlocnbr: Number of elements (vertices) that are local to this MPI rank
     const SCOTCH_Num vertlocnbr = static_cast<SCOTCH_Num>(mesh.num_elems);
-    const SCOTCH_Num vertlocmax = vertlocnbr;           // no holes
 
-    // Build compact CSR: vertloctab (size vertlocnbr+1) and edgeloctab (neighbors as GLOBAL elem GIDs)
+    // vertlocmax: Maximum possible local vertices (no holes, so identical to vertlocnbr)
+    const SCOTCH_Num vertlocmax = vertlocnbr;
+
+    // --- Step 2: Build compact CSR arrays for PT-Scotch (vertloctab, edgeloctab) ---
+    // vertloctab: for each local mesh element [vertex], gives index in edgeloctab where its neighbor list begins
     std::vector<SCOTCH_Num> vertloctab(vertlocnbr + 1);
-    std::vector<SCOTCH_Num> edgeloctab;
-    edgeloctab.reserve(vertlocnbr * 6); // heuristic reserve
 
-    // Build the graph from elems_in_elem_on_rank which contains global neighbor IDs
-    // First, create a map from element GID to its position in elems_in_elem_on_rank
+    // edgeloctab: flat array of neighbor global IDs for all local elements, built in order
+    std::vector<SCOTCH_Num> edgeloctab;
+    edgeloctab.reserve(vertlocnbr * 6); // heuristic: assume typical mesh degree is ~6, for performance
+
+    // Construct a map from element GID to its offset into elems_in_elem_on_rank (the array of neighbor GIDs)
+    // This allows, for a given element GID, quick lookup of where its neighbor list starts in the flat array.
     std::map<int, size_t> elem_gid_to_offset;
     size_t current_offset = 0;
     for (size_t k = 0; k < num_elements_on_rank; k++) {
         elem_gid_to_offset[elements_on_rank[k]] = current_offset;
         current_offset += num_elems_in_elem_per_rank[k];
     }
-    
-    SCOTCH_Num offset = 0;
+
+    // --- Step 3: Fill in the CSR arrays, looping over each locally-owned element ---
+    SCOTCH_Num offset = 0; // running count of edges encountered
+
     for (size_t lid = 0; lid < mesh.num_elems; ++lid) {
+
+        // Record current edge offset for vertex lid in vertloctab
         vertloctab[lid] = offset;
 
-        // Get local element's global ID
+        // Obtain this local element's global ID (from mapping)
         int elem_gid = mesh.local_to_global_elem_mapping.host(lid);
-        
-        // Get the offset in elems_in_elem_on_rank for this element
+
+        // Find offset in the flattened neighbor array for this element's neighbor list
         size_t elems_in_elem_offset = elem_gid_to_offset[elem_gid];
-        
-        // Get neighbor count - need to find the right index in elements_on_rank
+
+        // For this element, find the count of its neighbors
+        // This requires finding its index in the elements_on_rank array
         size_t idx = 0;
         for (size_t k = 0; k < num_elements_on_rank; k++) {
             if (elements_on_rank[k] == elem_gid) {
@@ -762,27 +836,33 @@ int main(int argc, char** argv) {
             }
         }
         size_t num_nbrs = num_elems_in_elem_per_rank[idx];
-        
+
+        // Append each neighbor (by its GLOBAL elem GID) to edgeloctab
         for (size_t j = 0; j < num_nbrs; ++j) {
-            // Get global neighbor ID from elems_in_elem_on_rank
-            size_t neighbor_gid = elems_in_elem_on_rank[elems_in_elem_offset + j];
+            size_t neighbor_gid = elems_in_elem_on_rank[elems_in_elem_offset + j]; // This is a global element ID!
             edgeloctab.push_back(static_cast<SCOTCH_Num>(neighbor_gid));
-            ++offset;
+            ++offset; // Increment running edge count
         }
     }
-    vertloctab[vertlocnbr] = offset;
-    const SCOTCH_Num edgelocnbr = offset;
-    const SCOTCH_Num edgelocsiz = edgelocnbr;
 
-    // Debug: print graph structure
+    // vertloctab[vertlocnbr] stores total number of edges written, finalizes the CSR structure
+    vertloctab[vertlocnbr] = offset;
+
+    // edgelocnbr/edgelocsiz: Number of edge endpoints defined locally
+    // (PT-Scotch's distributed graphs allow edges to be replicated or owned by either endpoint)
+    const SCOTCH_Num edgelocnbr = offset; // total number of edge endpoints (sum of all local neighbor degrees)
+    const SCOTCH_Num edgelocsiz = edgelocnbr; // allocated size matches number of endpoints
+
+    // Optionally print graph structure for debugging/validation
     if (print_info) {
-        std::cout << "Rank " << rank << ": vertlocnbr=" << vertlocnbr << ", edgelocnbr=" << edgelocnbr << std::endl;
-        std::cout << "vertloctab: ";
+        std::cout << "Rank " << rank << ": vertlocnbr = # of local elements(vertices) = " << vertlocnbr
+                  << ", edgelocnbr = # of local edge endpoints = " << edgelocnbr << std::endl;
+        std::cout << "vertloctab (CSR row offsets): ";
         for (size_t i = 0; i <= vertlocnbr; i++) {
             std::cout << vertloctab[i] << " ";
         }
         std::cout << std::endl;
-        std::cout << "edgeloctab (first 20): ";
+        std::cout << "edgeloctab (first 20 neighbor GIDs): ";
         for (size_t i = 0; i < std::min((size_t)20, edgeloctab.size()); i++) {
             std::cout << edgeloctab[i] << " ";
         }
@@ -790,36 +870,48 @@ int main(int argc, char** argv) {
     }
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // NOTE: Using compact CSR => pass vendloctab = nullptr, vlblloctab = nullptr.
-    //       edgeloctab contains GLOBAL neighbor IDs; SCOTCH will discover remote vertices itself.
-    int rc = SCOTCH_dgraphBuild(&dgraph,
-                                baseval,
-                                vertlocnbr,
-                                vertlocmax,
-                                vertloctab.data(),   // compact offsets
-                                /*vendloctab*/ nullptr,
-                                /*veloloctab*/ nullptr,
-                                /*vlblloctab*/ nullptr,
-                                edgelocnbr,
-                                edgelocsiz,
-                                edgeloctab.data(),
-                                /*edgegsttab*/ nullptr,
-                                /*edloloctab*/ nullptr);
+    /**************************************************************************
+     * Step 4: Build the distributed graph using PT-Scotch's SCOTCH_dgraphBuild
+     *
+     *   - PT-Scotch will use our CSR arrays. Since we use compact representation,
+     *     most optional arrays ("veloloctab", "vlblloctab", "edgegsttab", "edloloctab")
+     *     can be passed as nullptr.
+     *   - edgeloctab contains *GLOBAL element GIDs* of neighbors. PT-Scotch uses this
+     *     to discover connections across processor boundaries, so you do not have to
+     *     encode ownership or partition information yourself.
+     **************************************************************************/
+    int rc = SCOTCH_dgraphBuild(
+                &dgraph,
+                baseval,                // start index (0)
+                vertlocnbr,             // local vertex count (local elements)
+                vertlocmax,             // local vertex max (no holes)
+                vertloctab.data(),      // row offsets in edgeloctab
+                /*vendloctab*/ nullptr, // end of row offsets (compact CSR => nullptr)
+                /*veloloctab*/ nullptr, // vertex weights, not used
+                /*vlblloctab*/ nullptr, // vertex global labels (we use GIDs in edgeloctab)
+                edgelocnbr,             // local edge endpoints count
+                edgelocsiz,             // size of edge array
+                edgeloctab.data(),      // global neighbor IDs for each local node
+                /*edgegsttab*/ nullptr, // ghost edge array, not used
+                /*edloloctab*/ nullptr  // edge weights, not used
+    );
     if (rc != 0) {
         std::cerr << "[rank " << rank << "] SCOTCH_dgraphBuild failed rc=" << rc << "\n";
         SCOTCH_dgraphFree(&dgraph);
         MPI_Abort(MPI_COMM_WORLD, rc);
     }
 
-    // Print graph info after build but before check
+    // Optionally, print rank summary after graph build for further validation
     if (print_info) {
-        SCOTCH_Num vertlocnbr_out, vertloctab_size;
+        SCOTCH_Num vertlocnbr_out;
         SCOTCH_dgraphSize(&dgraph, &vertlocnbr_out, nullptr, nullptr, nullptr);
-        std::cout << "Rank " << rank << ": After dgraphBuild, vertlocnbr=" << vertlocnbr_out << std::endl;
+        std::cout << "Rank " << rank << ": After dgraphBuild, vertlocnbr = " << vertlocnbr_out << std::endl;
     }
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // Sanity check
+    /********************************************************
+     * Step 5: Validate the graph using SCOTCH_dgraphCheck
+     ********************************************************/
     rc = SCOTCH_dgraphCheck(&dgraph);
     if (rc != 0) {
         std::cerr << "[rank " << rank << "] SCOTCH_dgraphCheck failed rc=" << rc << "\n";
@@ -827,16 +919,21 @@ int main(int argc, char** argv) {
         MPI_Abort(MPI_COMM_WORLD, rc);
     }
 
-    // Partition the mesh using pt-scotch
-    // Partition into world_size parts
-    // Note: Since we already have a distributed mesh, we're asking for a repartition
-    SCOTCH_Arch archdat;
+    /**************************************************************
+     * Step 6: Partition (repartition) the mesh using PT-Scotch
+     * - Each vertex (mesh element) will be assigned a part (mesh chunk).
+     * - Arch is initialized for a complete graph of world_size parts (one per rank).
+     * - Loki
+     **************************************************************/
+    SCOTCH_Arch archdat;        // PT-Scotch architecture structure: describes desired partition topology
     SCOTCH_archInit(&archdat);
-    SCOTCH_archCmplt(&archdat, static_cast<SCOTCH_Num>(world_size));
-    
-    SCOTCH_Strat stratdat;
+    SCOTCH_archCmplt(&archdat, static_cast<SCOTCH_Num>(world_size)); // Partition into world_size complete nodes
+
+    SCOTCH_Strat stratdat;      // PT-Scotch strategy object: holds partitioning options/settings
     SCOTCH_stratInit(&stratdat);
-    
+
+    // partloctab: output array mapping each local element (vertex) to a *target partition number*
+    // After partitioning, partloctab[i] gives the part-assignment (in [0,world_size-1]) for local element i.
     std::vector<SCOTCH_Num> partloctab(vertlocnbr);
     rc = SCOTCH_dgraphMap(&dgraph, &archdat, &stratdat, partloctab.data());
     if (rc != 0) {
@@ -846,20 +943,27 @@ int main(int argc, char** argv) {
         SCOTCH_dgraphFree(&dgraph);
         MPI_Abort(MPI_COMM_WORLD, rc);
     }
-    
+
+    // Clean up PT-Scotch strategy and architecture objects
     SCOTCH_stratExit(&stratdat);
     SCOTCH_archExit(&archdat);
 
-    // Print partition assignment (optional)
-    for (size_t lid = 0; lid < mesh.num_elems; ++lid) {
-        size_t gid = mesh.local_to_global_elem_mapping.host(lid);
-        std::cout << "[rank " << rank << "] elem_local=" << lid << " gid=" << gid
-                << " -> part=" << partloctab[lid] << "\n";
+    /***************************************************************************
+     * Step 7 (Optional): Print out the partitioning assignment per element
+     * - Each local element's local index lid and global ID (gid) are listed with the
+     *   part to which PT-Scotch has assigned them.
+     ***************************************************************************/
+    for(int rank_id = 0; rank_id < world_size; rank_id++) {
+        if(rank_id == rank) {
+            for (size_t lid = 0; lid < mesh.num_elems; ++lid) {
+                size_t gid = mesh.local_to_global_elem_mapping.host(lid);
+                std::cout << "[rank " << rank_id << "] elem_local=" << lid << " gid=" << gid
+                        << " -> part=" << partloctab[lid] << "\n";
+            }
+            MPI_Barrier(MPI_COMM_WORLD);
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
     }
-    
-
-
-    MPI_Barrier(MPI_COMM_WORLD);
 
 
 
