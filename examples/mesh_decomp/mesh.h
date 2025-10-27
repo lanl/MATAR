@@ -221,6 +221,8 @@ struct Mesh_t
     // Patch: A discretization of a surface by subdividing the surface using the nodes
     // Corner: A element-node pair
 
+    bool verbose = false;
+
     // ---- Global Mesh Definitions ---- //
     mesh_init::elem_name_tag elem_kind = mesh_init::linear_tensor_element; ///< The type of elements used in the mesh
 
@@ -308,6 +310,7 @@ struct Mesh_t
     DCArrayKokkos<size_t> local_to_global_node_mapping; ///< Local to global node mapping
     
     DCArrayKokkos<size_t> local_to_global_elem_mapping; ///< Local to global element mapping
+    
 
 
     // initialization methods
@@ -550,7 +553,7 @@ struct Mesh_t
 
         // DCArrayKokkos <size_t> gauss_ordering_in_elem; // dimensions will be (num_patches_in_elem, num_gauss_in_patch);
 
-        printf("Number of dimensions = %zu \n", num_dims);
+        if (verbose) printf("Number of dimensions = %zu \n", num_dims);
 
         if (num_dims == 3) {
             // num_patches_in_surf = [1^2, 2^2, 3^2, 4^2, ... , Pn^2]
@@ -973,7 +976,7 @@ struct Mesh_t
         node_ordering_in_elem.update_device();
         Kokkos::fence();
 
-        printf("Built node ordering \n");
+        if (verbose) printf("Built node ordering \n");
 
         // for saving the hash keys of the patches and then the neighboring elem_gid
         CArrayKokkos<int> hash_keys_in_elem(num_elems, num_patches_in_elem, num_nodes_in_patch, "hash_keys_in_elem"); // always 4 ids in 3D
@@ -1447,16 +1450,16 @@ struct Mesh_t
     void build_connectivity()
     {
         build_corner_connectivity();
-        printf("Built corner connectivity \n");
+        if (verbose) printf("Built corner connectivity \n");
 
         build_elem_elem_connectivity();
-        printf("Built element-element connectivity \n");
+        if (verbose) printf("Built element-element connectivity \n");
 
         build_patch_connectivity();
-        printf("Built patch connectivity \n");
+        if (verbose) printf("Built patch connectivity \n");
 
         build_node_node_connectivity();
-        printf("Built node-node connectivity \n");
+        if (verbose) printf("Built node-node connectivity \n");
     }
 
     /////////////////////////////////////////////////////////////////////////////

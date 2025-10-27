@@ -7,7 +7,17 @@
 
 using namespace mtr;
 
-
+#include <map>
+#include <memory>
+#include <cstring>
+#include <sys/stat.h>
+#include <iostream>
+#include <regex>    // for string pattern recoginition
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <string>   
+#include <mpi.h>
 
 
 
@@ -33,6 +43,61 @@ using namespace mtr;
 inline int get_id(int i, int j, int k, int num_i, int num_j)
 {
     return i + j * num_i + k * num_i * num_j;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn PointIndexFromIJK
+///
+/// \brief Given (i,j,k) coordinates within the Lagrange hex, return an 
+/// offset into the local connectivity (PointIds) array. The order parameter
+/// must point to an array of 3 integers specifying the order along each 
+/// axis of the hexahedron.
+///
+/////////////////////////////////////////////////////////////////////////////
+inline int PointIndexFromIJK(int i, int j, int k, const int* order)
+{
+    bool ibdy = (i == 0 || i == order[0]);
+    bool jbdy = (j == 0 || j == order[1]);
+    bool kbdy = (k == 0 || k == order[2]);
+    // How many boundaries do we lie on at once?
+    int nbdy = (ibdy ? 1 : 0) + (jbdy ? 1 : 0) + (kbdy ? 1 : 0);
+
+    if (nbdy == 3) { // Vertex DOF
+        // ijk is a corner node. Return the proper index (somewhere in [0,7]):
+        return (i ? (j ? 2 : 1) : (j ? 3 : 0)) + (k ? 4 : 0);
+    }
+
+    int offset = 8;
+    if (nbdy == 2) { // Edge DOF
+        if (!ibdy) { // On i axis
+            return (i - 1) + (j ? order[0] - 1 + order[1] - 1 : 0) + (k ? 2 * (order[0] - 1 + order[1] - 1) : 0) + offset;
+        }
+        if (!jbdy) { // On j axis
+            return (j - 1) + (i ? order[0] - 1 : 2 * (order[0] - 1) + order[1] - 1) + (k ? 2 * (order[0] - 1 + order[1] - 1) : 0) + offset;
+        }
+        // !kbdy, On k axis
+        offset += 4 * (order[0] - 1) + 4 * (order[1] - 1);
+        return (k - 1) + (order[2] - 1) * (i ? (j ? 3 : 1) : (j ? 2 : 0)) + offset;
+    }
+
+    offset += 4 * (order[0] - 1 + order[1] - 1 + order[2] - 1);
+    if (nbdy == 1) { // Face DOF
+        if (ibdy) { // On i-normal face
+            return (j - 1) + ((order[1] - 1) * (k - 1)) + (i ? (order[1] - 1) * (order[2] - 1) : 0) + offset;
+        }
+        offset += 2 * (order[1] - 1) * (order[2] - 1);
+        if (jbdy) { // On j-normal face
+            return (i - 1) + ((order[0] - 1) * (k - 1)) + (j ? (order[2] - 1) * (order[0] - 1) : 0) + offset;
+        }
+        offset += 2 * (order[2] - 1) * (order[0] - 1);
+        // kbdy, On k-normal face
+        return (i - 1) + ((order[0] - 1) * (j - 1)) + (k ? (order[0] - 1) * (order[1] - 1) : 0) + offset;
+    }
+
+    // nbdy == 0: Body DOF
+    offset += 2 * ( (order[1] - 1) * (order[2] - 1) + (order[2] - 1) * (order[0] - 1) + (order[0] - 1) * (order[1] - 1));
+    return offset + (i - 1) + (order[0] - 1) * ( (j - 1) + (order[1] - 1) * ( (k - 1)));
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -162,5 +227,269 @@ void build_3d_box(
     // Build connectivity
     mesh.build_connectivity();
 } // end build_3d_box
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+    ///
+    /// \fn write_vtk
+    ///
+    /// \brief Writes a vtk output file
+    ///
+    /// \param mesh mesh
+    /// \param node node data
+    /// \param rank rank
+    ///
+    /////////////////////////////////////////////////////////////////////////////
+    void write_vtk(Mesh_t& mesh,
+        node_t& node,
+        int rank)
+    {
+
+        CArray<double> graphics_times(1);
+        int graphics_id = 0;
+        graphics_times(0) = 0.0;
+
+        // ---- Update host data ----
+
+        // material point values
+        // State.MaterialPoints.den.update_host();
+        // State.MaterialPoints.pres.update_host();
+        // State.MaterialPoints.stress.update_host();
+        // State.MaterialPoints.sspd.update_host();
+        // State.MaterialPoints.sie.update_host();
+        // State.MaterialPoints.mass.update_host();
+        // State.MaterialPoints.conductivity.update_host();
+        // State.MaterialPoints.temp_grad.update_host();
+        // State.MaterialPoints.eroded.update_host();
+
+
+        // gauss point values
+        // State.GaussPoints.vol.update_host();
+
+        // nodal values
+        node.coords.update_host();
+        // State.node.vel.update_host();
+        // State.node.mass.update_host();
+        // State.node.temp.update_host();
+
+        Kokkos::fence();
+
+
+        const int num_cell_scalar_vars = 1;
+        const int num_cell_vec_vars    = 0;
+        const int num_cell_tensor_vars = 0;
+
+        const int num_point_scalar_vars = 1;
+        const int num_point_vec_vars = 1;
+
+
+        // Scalar values associated with a cell
+        const char cell_scalar_var_names[num_cell_scalar_vars][15] = {
+            "rank_id"
+        };
+        
+        // const char cell_vec_var_names[num_cell_vec_vars][15] = {
+            
+        // };
+
+        const char point_scalar_var_names[num_point_scalar_vars][15] = {
+            "rank_id"
+        };
+
+        const char point_vec_var_names[num_point_vec_vars][15] = {
+            "pos"
+        };
+
+        // short hand
+        const size_t num_nodes = mesh.num_nodes;
+        const size_t num_elems = mesh.num_elems;
+        const size_t num_dims  = mesh.num_dims;
+
+        // save the cell state to an array for exporting to graphics files
+        auto elem_fields = CArray<double>(num_elems, num_cell_scalar_vars);
+        int  elem_switch = 1;
+
+
+        // save the output scale fields to a single 2D array
+
+
+        // export material centeric data to the elements
+        elem_fields(0, 0) = rank;
+
+
+        // save the vertex vector fields to an array for exporting to graphics files
+        CArray<double> vec_fields(num_nodes, num_point_vec_vars, 3);
+        CArray<double> point_scalar_fields(num_nodes, num_point_scalar_vars);
+
+        for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
+            // position, var 0
+            vec_fields(node_gid, 0, 0) = node.coords.host(node_gid, 0);
+            vec_fields(node_gid, 0, 1) = node.coords.host(node_gid, 1);
+            vec_fields(node_gid, 0, 2) = node.coords.host(node_gid, 2);
+
+            point_scalar_fields(node_gid, 0) = rank;
+        } // end for loop over vertices
+
+
+        FILE* out[20];   // the output files that are written to
+        char  filename[100]; // char string
+        int   max_len = sizeof filename;
+        int   str_output_len;
+
+        struct stat st;
+
+        if (stat("vtk", &st) != 0) {
+            system("mkdir vtk");
+        }
+
+        // snprintf(filename, max_len, "ensight/data/%s.%05d.%s", name, graphics_id, vec_var_names[var]);
+
+        //sprintf(filename, "vtk/Fierro.%05d.vtk", graphics_id);  // mesh file
+        str_output_len = snprintf(filename, max_len, "vtk/Fierro.%05d_rank%d.vtk", graphics_id, rank);
+        if (str_output_len >= max_len) { fputs("Filename length exceeded; string truncated", stderr); }
+         // mesh file
+        
+        out[0] = fopen(filename, "w");
+
+        fprintf(out[0], "# vtk DataFile Version 2.0\n");  // part 2
+        fprintf(out[0], "Mesh for Fierro\n");             // part 2
+        fprintf(out[0], "ASCII \n");                      // part 3
+        fprintf(out[0], "DATASET UNSTRUCTURED_GRID\n\n"); // part 4
+
+        fprintf(out[0], "POINTS %zu float\n", mesh.num_nodes);
+
+        // write all components of the point coordinates
+        for (size_t node_gid = 0; node_gid < mesh.num_nodes; node_gid++) {
+            fprintf(out[0],
+                    "%f %f %f\n",
+                    node.coords.host(node_gid, 0),
+                    node.coords.host(node_gid, 1),
+                    node.coords.host(node_gid, 2));
+        } // end for
+
+        /*
+        ---------------------------------------------------------------------------
+        Write the elems
+        ---------------------------------------------------------------------------
+        */
+
+        fprintf(out[0], "\n");
+        fprintf(out[0], "CELLS %lu %lu\n", mesh.num_elems, mesh.num_elems + mesh.num_elems * mesh.num_nodes_in_elem);  // size=all printed values
+
+        int Pn_order   = mesh.Pn;
+        int order[3]   = { Pn_order, Pn_order, Pn_order };
+
+        // const int num_1D_points = Pn_order+1;
+
+        // write all global point numbers for this elem
+        for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
+            fprintf(out[0], "%lu ", mesh.num_nodes_in_elem); // num points in this elem
+
+            for (int k = 0; k <= Pn_order; k++) {
+                for (int j = 0; j <= Pn_order; j++) {
+                    for (int i = 0; i <= Pn_order; i++) {
+                        size_t node_lid = PointIndexFromIJK(i, j, k, order);
+                        fprintf(out[0], "%lu ", mesh.nodes_in_elem.host(elem_gid, node_lid));
+                    }
+                }
+            }
+
+            fprintf(out[0], "\n");
+        } // end for
+
+        // Write the element types
+        fprintf(out[0], "\n");
+        fprintf(out[0], "CELL_TYPES %zu \n", mesh.num_elems);
+        // VTK_LAGRANGE_HEXAHEDRON: 72,
+        // VTK_HIGHER_ORDER_HEXAHEDRON: 67
+        // VTK_BIQUADRATIC_QUADRATIC_HEXAHEDRON = 33
+        // element types: https://vtk.org/doc/nightly/html/vtkCellType_8h_source.html
+        // element types: https://kitware.github.io/vtk-js/api/Common_DataModel_CellTypes.html
+        // vtk format: https://www.kitware.com//modeling-arbitrary-order-lagrange-finite-elements-in-the-visualization-toolkit/
+        for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
+            fprintf(out[0], "%d \n", 72);
+        }
+
+        /*
+        ---------------------------------------------------------------------------
+        Write the nodal vector variables to file
+        ---------------------------------------------------------------------------
+        */
+
+        fprintf(out[0], "\n");
+        fprintf(out[0], "POINT_DATA %zu \n", mesh.num_nodes);
+
+        // vtk vector vars = (position, velocity)
+        for (int var = 0; var < num_point_vec_vars; var++) {
+            fprintf(out[0], "VECTORS %s float \n", point_vec_var_names[var]);
+            for (size_t node_gid = 0; node_gid < mesh.num_nodes; node_gid++) {
+                fprintf(out[0], "%f %f %f\n",
+                        vec_fields(node_gid, var, 0),
+                        vec_fields(node_gid, var, 1),
+                        vec_fields(node_gid, var, 2));
+            } // end for nodes
+        } // end for vec_vars
+
+
+        // vtk scalar vars = (temp)
+        for (int var = 0; var < num_point_scalar_vars; var++) {
+            fprintf(out[0], "SCALARS %s float 1\n", point_scalar_var_names[var]);
+            fprintf(out[0], "LOOKUP_TABLE default\n");
+            for (size_t node_gid = 0; node_gid < mesh.num_nodes; node_gid++) {
+                fprintf(out[0], "%f\n",
+                        point_scalar_fields(node_gid, 0));
+            } // end for nodes
+        } // end for vec_vars
+
+        /*
+        ---------------------------------------------------------------------------
+        Write the scalar elem variable to file
+        ---------------------------------------------------------------------------
+        */
+        fprintf(out[0], "\n");
+        fprintf(out[0], "CELL_DATA %zu \n", mesh.num_elems);
+
+        for (int var = 0; var < num_cell_scalar_vars; var++) {
+            fprintf(out[0], "SCALARS %s float 1\n", cell_scalar_var_names[var]); // the 1 is number of scalar components [1:4]
+            fprintf(out[0], "LOOKUP_TABLE default\n");
+            for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
+                fprintf(out[0], "%f\n", rank);
+            } // end for elem
+        } // end for cell scalar_vars
+
+        fclose(out[0]);
+
+        // graphics_times(graphics_id) = time_value;
+
+        // Write time series metadata
+        //sprintf(filename, "vtk/Fierro.vtk.series", graphics_id);  // mesh file
+        str_output_len = snprintf(filename, max_len, "vtk/Fierro.vtk.series"); 
+        if (str_output_len >= max_len) { fputs("Filename length exceeded; string truncated", stderr); }
+        // mesh file
+
+        out[0] = fopen(filename, "w");
+
+        fprintf(out[0], "{\n");
+        fprintf(out[0], "  \"file-series-version\" : \"1.0\",\n");
+        fprintf(out[0], "  \"files\" : [\n");
+
+        for (int i = 0; i <= graphics_id; i++) {
+            fprintf(out[0], "    { \"name\" : \"Fierro.%05d.vtk\", \"time\" : %12.5e },\n", i, graphics_times(i) );
+        }
+
+        // fprintf(out[0], "%12.5e\n", graphics_times(i));
+        fprintf(out[0], "  ]\n"); // part 4
+        fprintf(out[0], "}"); // part 4
+
+        fclose(out[0]);
+
+        // increment graphics id counter
+        // graphics_id++;
+
+
+    } // end write vtk old
+
+
 
 #endif
