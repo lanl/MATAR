@@ -51,7 +51,7 @@ void print_rank_mesh_info(Mesh_t& mesh, int rank) {
     std::cout<<"Mesh has "<<mesh.num_nodes<<" nodes"<<std::endl;
 
     for (int i = 0; i < mesh.num_elems; i++) {
-        std::cout<<"Element "<<i<<" has nodes: ";
+        std::cout<<"Element "<<i<<" has nodes global id: "<<mesh.local_to_global_elem_mapping.host(i)<<" and local nodes:";
         for (int j = 0; j < mesh.num_nodes_in_elem; j++) {
             std::cout<<mesh.nodes_in_elem.host(i, j)<<" ";
         }
@@ -112,7 +112,7 @@ int main(int argc, char** argv) {
     // Initial mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {4, 4, 4};
+    int num_elems_dim[3] = {2, 2, 2};
 
     Mesh_t initial_mesh;
     GaussPoint_t initial_GaussPoints;
@@ -126,6 +126,7 @@ int main(int argc, char** argv) {
 
     // Mesh partitioned by pt-scotch
     Mesh_t final_mesh; 
+    node_t final_node;
 
     int num_elements_on_rank = 0;
     int num_nodes_on_rank = 0;
@@ -717,7 +718,7 @@ int main(int argc, char** argv) {
 
 
 // ****************************************************************************************** 
-//     Repartition the mesh using pt-scotch
+//     Compute a repartition of the mesh using pt-scotch
 // ****************************************************************************************** 
 
 
@@ -947,6 +948,9 @@ int main(int argc, char** argv) {
     // Clean up PT-Scotch strategy and architecture objects
     SCOTCH_stratExit(&stratdat);
     SCOTCH_archExit(&archdat);
+    
+    // Free the graph now that we have the partition assignments
+    SCOTCH_dgraphFree(&dgraph);
 
     /***************************************************************************
      * Step 7 (Optional): Print out the partitioning assignment per element
@@ -967,11 +971,238 @@ int main(int argc, char** argv) {
 
 
 
+// ****************************************************************************************** 
+//     Build the final mesh from the repartition
+// ****************************************************************************************** 
 
 
 
+    MPI_Barrier(MPI_COMM_WORLD);
+    if (rank == 0) std::cout << "\n=== Starting Mesh Redistribution Phase ===\n";
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // -------------- Phase 1: Determine elements to send to each rank --------------
+    std::vector<std::vector<int>> elems_to_send(world_size);
+    for (int lid = 0; lid < mesh.num_elems; ++lid) {
+        int dest = static_cast<int>(partloctab[lid]);
+        int elem_gid = static_cast<int>(mesh.local_to_global_elem_mapping.host(lid));
+        elems_to_send[dest].push_back(elem_gid);
+    }
+
+    // -------------- Phase 2: Exchange element GIDs --------------
+    std::vector<int> sendcounts(world_size), recvcounts(world_size);
+    for (int r = 0; r < world_size; ++r)
+        sendcounts[r] = static_cast<int>(elems_to_send[r].size());
+
+    MPI_Alltoall(sendcounts.data(), 1, MPI_INT, recvcounts.data(), 1, MPI_INT, MPI_COMM_WORLD);
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // Compute displacements
+    std::vector<int> sdispls(world_size), rdispls(world_size);
+    int send_total = 0, recv_total = 0;
+    for (int r = 0; r < world_size; ++r) {
+        sdispls[r] = send_total;
+        rdispls[r] = recv_total;
+        send_total += sendcounts[r];
+        recv_total += recvcounts[r];
+    }
 
 
+    // Flatten send buffer
+    std::vector<int> sendbuf;
+    sendbuf.reserve(send_total);
+    for (int r = 0; r < world_size; ++r)
+        sendbuf.insert(sendbuf.end(), elems_to_send[r].begin(), elems_to_send[r].end());
+
+    // Receive new local element GIDs
+    std::vector<int> recvbuf(recv_total);
+    MPI_Alltoallv(sendbuf.data(), sendcounts.data(), sdispls.data(), MPI_INT,
+                recvbuf.data(), recvcounts.data(), rdispls.data(), MPI_INT, MPI_COMM_WORLD);
+    
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // New elements owned by this rank
+    std::vector<int> new_elem_gids = recvbuf;
+    int num_new_elems = static_cast<int>(new_elem_gids.size());
+    
+    
+    if (print_info) {
+        std::cout << "[rank " << rank << "] new elems: " << num_new_elems << std::endl;
+    }
+
+    // -------------- Phase 3: Send element–node connectivity --------------
+    int nodes_per_elem = mesh.num_nodes_in_elem;
+
+    // Flatten element-node connectivity by global node IDs
+    std::vector<int> conn_sendbuf;
+    for (int r = 0; r < world_size; ++r) {
+        for (int gid : elems_to_send[r]) {
+            // find local element lid from gid
+            int lid = -1;
+            for (int i = 0; i < mesh.num_elems; ++i)
+                if (mesh.local_to_global_elem_mapping.host(i) == gid) { lid = i; break; }
+
+            for (int j = 0; j < nodes_per_elem; ++j) {
+                int node_lid = mesh.nodes_in_elem.host(lid, j);
+                int node_gid = mesh.local_to_global_node_mapping.host(node_lid);
+                conn_sendbuf.push_back(node_gid);
+            }
+        }
+    }
+
+    // element-node connectivity counts (ints per dest rank)
+    std::vector<int> conn_sendcounts(world_size), conn_recvcounts(world_size);
+    for (int r = 0; r < world_size; ++r)
+        conn_sendcounts[r] = sendcounts[r] * nodes_per_elem;
+
+    MPI_Alltoall(conn_sendcounts.data(), 1, MPI_INT, conn_recvcounts.data(), 1, MPI_INT, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    std::vector<int> conn_sdispls(world_size), conn_rdispls(world_size);
+    int conn_send_total = 0, conn_recv_total = 0;
+    for (int r = 0; r < world_size; ++r) {
+        conn_sdispls[r] = conn_send_total;
+        conn_rdispls[r] = conn_recv_total;
+        conn_send_total += conn_sendcounts[r];
+        conn_recv_total += conn_recvcounts[r];
+    }
+
+    std::vector<int> conn_recvbuf(conn_recv_total);
+    MPI_Alltoallv(conn_sendbuf.data(), conn_sendcounts.data(), conn_sdispls.data(), MPI_INT,
+                conn_recvbuf.data(), conn_recvcounts.data(), conn_rdispls.data(), MPI_INT, MPI_COMM_WORLD);
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+
+    // -------------- Phase 4: Build new node list (unique GIDs) --------------
+    std::set<int> node_gid_set(conn_recvbuf.begin(), conn_recvbuf.end());
+    std::vector<int> new_node_gids(node_gid_set.begin(), node_gid_set.end());
+    int num_new_nodes = static_cast<int>(new_node_gids.size());
+
+    // Build map gid→lid
+    std::unordered_map<int,int> node_gid_to_lid;
+    for (int i = 0; i < num_new_nodes; ++i)
+        node_gid_to_lid[new_node_gids[i]] = i;
+
+    if (print_info)
+        std::cout << "[rank " << rank << "] owns " << num_new_nodes << " unique nodes\n";
+
+
+    // -------------- Phase 5: Request node coordinates --------------
+    std::vector<double> node_coords_sendbuf;
+    for (int r = 0; r < world_size; ++r) {
+        for (int gid : elems_to_send[r]) {
+            int lid = -1;
+            for (int i = 0; i < mesh.num_elems; ++i)
+                if (mesh.local_to_global_elem_mapping.host(i) == gid) { lid = i; break; }
+
+            for (int j = 0; j < nodes_per_elem; ++j) {
+                int node_lid = mesh.nodes_in_elem.host(lid, j);
+                int node_gid = mesh.local_to_global_node_mapping.host(node_lid);
+
+                node_coords_sendbuf.push_back(node.coords.host(node_lid, 0));
+                node_coords_sendbuf.push_back(node.coords.host(node_lid, 1));
+                node_coords_sendbuf.push_back(node.coords.host(node_lid, 2));
+            }
+        }
+    }
+
+    // Each node is 3 doubles; same sendcounts scaling applies
+    std::vector<int> coord_sendcounts(world_size), coord_recvcounts(world_size);
+    for (int r = 0; r < world_size; ++r)
+        coord_sendcounts[r] = sendcounts[r] * nodes_per_elem * 3;
+
+    MPI_Alltoall(coord_sendcounts.data(), 1, MPI_INT, coord_recvcounts.data(), 1, MPI_INT, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    std::vector<int> coord_sdispls(world_size), coord_rdispls(world_size);
+    int coord_send_total = 0, coord_recv_total = 0;
+    for (int r = 0; r < world_size; ++r) {
+        coord_sdispls[r] = coord_send_total;
+        coord_rdispls[r] = coord_recv_total;
+        coord_send_total += coord_sendcounts[r];
+        coord_recv_total += coord_recvcounts[r];
+    }
+
+    std::vector<double> coord_recvbuf(coord_recv_total);
+    MPI_Alltoallv(node_coords_sendbuf.data(), coord_sendcounts.data(), coord_sdispls.data(), MPI_DOUBLE,
+                coord_recvbuf.data(), coord_recvcounts.data(), coord_rdispls.data(), MPI_DOUBLE, MPI_COMM_WORLD);
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // -------------- Phase 6: Build the final_mesh --------------
+    final_mesh.initialize_nodes(num_new_nodes);
+    final_mesh.initialize_elems(num_new_elems, mesh.num_dims);
+    final_mesh.local_to_global_node_mapping = DCArrayKokkos<size_t>(num_new_nodes);
+    final_mesh.local_to_global_elem_mapping = DCArrayKokkos<size_t>(num_new_elems);
+
+    // Fill global mappings
+    for (int i = 0; i < num_new_nodes; ++i)
+        final_mesh.local_to_global_node_mapping.host(i) = new_node_gids[i];
+    for (int i = 0; i < num_new_elems; ++i)
+        final_mesh.local_to_global_elem_mapping.host(i) = new_elem_gids[i];
+
+    final_mesh.local_to_global_node_mapping.update_device();
+    final_mesh.local_to_global_elem_mapping.update_device();
+
+    // // Rebuild nodes_in_elem
+    // for (int e = 0; e < num_new_elems; ++e) {
+    //     for (int j = 0; j < nodes_per_elem; ++j) {
+    //         int node_gid = conn_recvbuf[e * nodes_per_elem + j];
+    //         int node_lid = node_gid_to_lid[node_gid];
+    //         final_mesh.nodes_in_elem.host(e, j) = node_lid;
+    //     }
+    // }
+    // final_mesh.nodes_in_elem.update_device();
+
+
+    // rebuild the local element-node connectivity using the local node ids
+    for(int i = 0; i < num_new_elems; i++) {
+        for(int j = 0; j < nodes_per_elem; j++) {
+
+            int node_gid = conn_recvbuf[i * nodes_per_elem + j];
+
+            int node_lid = -1;
+
+            // Search through the local to global mapp to find the equivalent local index
+            for(int k = 0; k < num_new_nodes; k++){
+
+                if(node_gid == final_mesh.local_to_global_node_mapping.host(k)) {
+                    node_lid = k;
+                    break;
+                }
+            }
+
+            final_mesh.nodes_in_elem.host(i, j) = node_lid;
+        }
+    }
+
+    final_mesh.nodes_in_elem.update_device();
+
+    // Fill node coordinates
+    final_node.initialize(num_new_nodes, 3, {node_state::coords});
+    for (int i = 0; i < num_new_nodes; ++i) {
+        final_node.coords.host(i, 0) = coord_recvbuf[i*3 + 0];
+        final_node.coords.host(i, 1) = coord_recvbuf[i*3 + 1];
+        final_node.coords.host(i, 2) = coord_recvbuf[i*3 + 2];
+    }
+    final_node.coords.update_device();
+
+    // Connectivity rebuild
+    final_mesh.build_connectivity();
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    for(int i = 0; i < world_size; i++) {
+        if(rank == i) {
+            print_rank_mesh_info(final_mesh, i);
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+
+    write_vtk(final_mesh, final_node, rank);
 
     } // end MATAR scope
     MATAR_FINALIZE();
