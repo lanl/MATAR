@@ -112,7 +112,7 @@ int main(int argc, char** argv) {
     // Initial mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {2, 2, 2};
+    int num_elems_dim[3] = {20, 20, 20};
 
     Mesh_t initial_mesh;
     GaussPoint_t initial_GaussPoints;
@@ -1181,11 +1181,34 @@ int main(int argc, char** argv) {
     final_mesh.nodes_in_elem.update_device();
 
     // Fill node coordinates
+    // coord_recvbuf contains coords in element-node order, but we need them in node order
+    // Build a map from node GID to coordinates
+    std::map<int, std::array<double, 3>> node_gid_to_coords;
+    int coord_idx = 0;
+    for (int e = 0; e < num_new_elems; ++e) {
+        for (int j = 0; j < nodes_per_elem; ++j) {
+            int node_gid = conn_recvbuf[e * nodes_per_elem + j];
+            if (node_gid_to_coords.find(node_gid) == node_gid_to_coords.end()) {
+                node_gid_to_coords[node_gid] = {
+                    coord_recvbuf[coord_idx*3 + 0],
+                    coord_recvbuf[coord_idx*3 + 1],
+                    coord_recvbuf[coord_idx*3 + 2]
+                };
+            }
+            coord_idx++;
+        }
+    }
+    
+    // Now fill coordinates in node order
     final_node.initialize(num_new_nodes, 3, {node_state::coords});
     for (int i = 0; i < num_new_nodes; ++i) {
-        final_node.coords.host(i, 0) = coord_recvbuf[i*3 + 0];
-        final_node.coords.host(i, 1) = coord_recvbuf[i*3 + 1];
-        final_node.coords.host(i, 2) = coord_recvbuf[i*3 + 2];
+        int node_gid = new_node_gids[i];
+        auto it = node_gid_to_coords.find(node_gid);
+        if (it != node_gid_to_coords.end()) {
+            final_node.coords.host(i, 0) = it->second[0];
+            final_node.coords.host(i, 1) = it->second[1];
+            final_node.coords.host(i, 2) = it->second[2];
+        }
     }
     final_node.coords.update_device();
 
