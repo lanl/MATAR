@@ -26,7 +26,19 @@ if (KOKKOS)
   # Add include directories for MPI and Scotch/PT-Scotch
   target_include_directories(mesh_decomp PRIVATE ${MPI_CXX_INCLUDE_PATH} ${CMAKE_CURRENT_LIST_DIR}/lib/scotch/build/src/include)
   
-  # Link libraries
-  target_link_libraries(mesh_decomp ${LINKING_LIBRARIES} MPI::MPI_CXX)
-  target_link_directories(mesh_decomp PRIVATE ${CMAKE_CURRENT_LIST_DIR}/lib/scotch/build/src/lib)
+  # Link libraries - order matters! libptscotch depends on libscotch
+  # Use -Wl,--whole-archive to ensure all symbols are included from static libraries
+  # Note: Only link libptscotcherr.a (not libscotcherr.a) to avoid multiple definitions
+  target_link_libraries(mesh_decomp ${LINKING_LIBRARIES} MPI::MPI_CXX 
+    -Wl,--whole-archive
+    ${CMAKE_CURRENT_LIST_DIR}/lib/scotch/build/lib/libscotch.a
+    -Wl,--no-whole-archive
+    -Wl,--whole-archive
+    ${CMAKE_CURRENT_LIST_DIR}/lib/scotch/build/lib/libptscotcherr.a
+    ${CMAKE_CURRENT_LIST_DIR}/lib/scotch/build/lib/libptscotch.a
+    -Wl,--no-whole-archive
+    -lz     # zlib for gzip compression
+    -lbz2   # bzip2 library
+    -llzma  # xz compression library
+  )
 endif()

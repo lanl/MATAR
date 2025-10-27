@@ -27,7 +27,10 @@ cd scotch
 echo "Building Scotch..."
 mkdir build
 cd build
-cmake ..
+cmake .. -DCMAKE_BUILD_TYPE=Release \
+         -DSCOTCH_MPI=ON \
+         -DMPI_C_COMPILER=mpicc \
+         -DMPI_Fortran_COMPILER=mpifort
 make
 
 echo "Installation complete! Libraries installed in: ${INSTALL_PREFIX}"

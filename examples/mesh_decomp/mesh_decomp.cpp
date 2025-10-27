@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
     timer.start();
 
     bool print_info = true;
-    bool print_vtk = true;
+    bool print_vtk = false;
 
 
     MPI_Init(&argc, &argv);
@@ -154,7 +154,7 @@ int main(int argc, char** argv) {
     if (rank == 0) {
         std::cout<<"World size: "<<world_size<<std::endl;
         std::cout<<"Rank "<<rank<<" Building initial mesh"<<std::endl;
-        
+    
         std::cout<<"Initializing mesh"<<std::endl;
         build_3d_box(initial_mesh, initial_GaussPoints, initial_node, origin, length, num_elems_dim);
 
@@ -294,8 +294,8 @@ int main(int argc, char** argv) {
 
                 for (int j = 0; j < nodes_to_send[i].size(); j++) {
                     std::cout<<nodes_to_send[i][j]<<" ";
-                }
-                std::cout<<std::endl;
+        }
+        std::cout<<std::endl;
             }
         }
     }
@@ -504,20 +504,146 @@ int main(int argc, char** argv) {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // if (rank == 1) {
 
-    //     std::cout << "Rank " << rank << " received element-node connectivity (" 
-    //             << num_elements_on_rank << " elements, " << nodes_in_elem_on_rank.size() << " entries):" << std::endl;
-    //     for (int elem = 0; elem < num_elements_on_rank; elem++) {
-    //         std::cout << "  Element " << elem << " nodes: ";
-    //         for (int node = 0; node < num_nodes_per_elem; node++) {
-    //             int idx = elem * num_nodes_per_elem + node;
-    //             std::cout << nodes_in_elem_on_rank[idx] << " ";
-    //         }
-    //         std::cout << std::endl;
-    //     }
-    // }
+// ****************************************************************************************** 
+//     Send the element-element connectivity data from the initial mesh to each rank
+// ****************************************************************************************** 
 
+    // First, rank 0 computes how many connectivity entries each rank will receive
+    // and scatters that information
+    std::vector<int> elem_elem_counts(world_size);
+    int total_elem_elem_entries = 0;
+    
+    
+    if (rank == 0){
+        // Calculate total number of connectivity entries for each rank
+        for(int i = 0; i < world_size; i++) {
+            elem_elem_counts[i] = 0;
+            for(int k = 0; k < elements_to_send[i].size(); k++) {
+                elem_elem_counts[i] += initial_mesh.num_elems_in_elem(elements_to_send[i][k]);
+            }
+
+            std::cout << "Rank " << i << " will receive " << elem_elem_counts[i] << " element-element connectivity entries" << std::endl;
+        }
+
+        // Print element-element connectivity entries for each rank in the initial mesh
+        for(int i = 0; i < world_size; i++) {
+            std::cout << std::endl;
+            std::cout << "Rank " << i << " will receive element-element connectivity entries for the following elements: "<<std::endl;
+            for(int k = 0; k < elements_to_send[i].size(); k++) {
+                std::cout << "Element " << elements_to_send[i][k] << " has " << initial_mesh.num_elems_in_elem(elements_to_send[i][k]) << " element-element connectivity entries: ";
+                for(int l = 0; l < initial_mesh.num_elems_in_elem(elements_to_send[i][k]); l++) {
+                    std::cout << initial_mesh.elems_in_elem(elements_to_send[i][k], l) << " ";
+                }
+                std::cout << std::endl;
+            }
+            std::cout << std::endl;
+        }
+    }
+    
+
+    // Define total_elem_elem_entries to be the sum of the elem_elem_counts
+    // Scatter the counts to each rank
+    MPI_Scatter(elem_elem_counts.data(), 1, MPI_INT,
+                &total_elem_elem_entries, 1, MPI_INT,
+                0, MPI_COMM_WORLD);
+    
+    std::vector<int> elems_in_elem_on_rank(total_elem_elem_entries);
+    
+    // Now scatter the num_elems_in_elem for each element on each rank
+    std::vector<int> num_elems_in_elem_per_rank(num_elements_on_rank);
+    
+    if (rank == 0) {
+        std::vector<int> all_num_elems_in_elem;
+        std::vector<int> displs_ee(world_size);
+        int displacement = 0;
+        
+        for(int i = 0; i < world_size; i++) {
+            displs_ee[i] = displacement;
+            for(int k = 0; k < elements_to_send[i].size(); k++) {
+                all_num_elems_in_elem.push_back(initial_mesh.num_elems_in_elem(elements_to_send[i][k]));
+            }
+            displacement += elements_to_send[i].size();
+        }
+        
+        MPI_Scatterv(all_num_elems_in_elem.data(), elems_per_rank.data(), displs_ee.data(), MPI_INT,
+                     num_elems_in_elem_per_rank.data(), num_elements_on_rank, MPI_INT,
+                     0, MPI_COMM_WORLD);
+    } else {
+        MPI_Scatterv(nullptr, nullptr, nullptr, MPI_INT,
+                     num_elems_in_elem_per_rank.data(), num_elements_on_rank, MPI_INT,
+                     0, MPI_COMM_WORLD);
+    }
+    
+    if (rank == 0){
+        // Prepare the element-element connectivity data for each rank
+        std::vector<int> all_elems_in_elem;
+        std::vector<int> sendcounts(world_size);
+        std::vector<int> displs(world_size);
+        
+        int displacement = 0;
+        
+        for(int i = 0; i < world_size; i++) {
+            sendcounts[i] = elem_elem_counts[i];
+            displs[i] = displacement;
+            
+            // Copy element-element connectivity for rank i
+            for(int k = 0; k < elements_to_send[i].size(); k++) {
+                for(int l = 0; l < initial_mesh.num_elems_in_elem(elements_to_send[i][k]); l++) {
+                    all_elems_in_elem.push_back(initial_mesh.elems_in_elem(elements_to_send[i][k], l));
+                }
+            }
+            displacement += elem_elem_counts[i];
+        }
+
+        // Send the element-element connectivity data to each rank using MPI_Scatterv
+        MPI_Scatterv(all_elems_in_elem.data(), sendcounts.data(), displs.data(), MPI_INT,
+                     elems_in_elem_on_rank.data(), total_elem_elem_entries, MPI_INT,
+                     0, MPI_COMM_WORLD);
+    }
+    else {
+        MPI_Scatterv(nullptr, nullptr, nullptr, MPI_INT,
+                     elems_in_elem_on_rank.data(), total_elem_elem_entries, MPI_INT,
+                     0, MPI_COMM_WORLD);
+    }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    if (rank == 0 && print_info) {
+        std::cout << "Rank " << rank << " received element-element connectivity (" 
+                << num_elements_on_rank << " elements, " << elems_in_elem_on_rank.size() << " entries):" << std::endl;
+        
+        int offset = 0;
+        for (int elem = 0; elem < num_elements_on_rank; elem++) {
+            std::cout << "  Element " << elem << " has neighbors: ";
+            int num_neighbors = num_elems_in_elem_per_rank[elem];
+            for (int j = 0; j < num_neighbors; j++) {
+                std::cout << elems_in_elem_on_rank[offset + j] << " ";
+            }
+            offset += num_neighbors;
+            std::cout << std::endl;
+        }
+    }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    if (rank == 1 && print_info) {
+        std::cout << "Rank " << rank << " received element-element connectivity (" 
+                << num_elements_on_rank << " elements, " << elems_in_elem_on_rank.size() << " entries):" << std::endl;
+        
+        int offset = 0;
+        for (int elem = 0; elem < num_elements_on_rank; elem++) {
+            std::cout << "  Element " << elem << " has neighbors: ";
+            int num_neighbors = num_elems_in_elem_per_rank[elem];
+            for (int j = 0; j < num_neighbors; j++) {
+                std::cout << elems_in_elem_on_rank[offset + j] << " ";
+            }
+            offset += num_neighbors;
+            std::cout << std::endl;
+        }
+    }
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
 // ****************************************************************************************** 
 //     Initialize the mesh data structures for each rank
@@ -585,7 +711,163 @@ int main(int argc, char** argv) {
         write_vtk(mesh, node, rank);
     }
 
-   
+
+// ****************************************************************************************** 
+//     Repartition the mesh using pt-scotch
+// ****************************************************************************************** 
+
+
+
+    // --- Simple compact CSR build using global neighbor GIDs (recommended) ---
+    SCOTCH_Dgraph dgraph;
+    if (SCOTCH_dgraphInit(&dgraph, MPI_COMM_WORLD) != 0) {
+        std::cerr << "[rank " << rank << "] SCOTCH_dgraphInit failed\n";
+        MPI_Abort(MPI_COMM_WORLD, 1);
+    }
+
+    const SCOTCH_Num baseval = 0;                       // 0-based
+    const SCOTCH_Num vertlocnbr = static_cast<SCOTCH_Num>(mesh.num_elems);
+    const SCOTCH_Num vertlocmax = vertlocnbr;           // no holes
+
+    // Build compact CSR: vertloctab (size vertlocnbr+1) and edgeloctab (neighbors as GLOBAL elem GIDs)
+    std::vector<SCOTCH_Num> vertloctab(vertlocnbr + 1);
+    std::vector<SCOTCH_Num> edgeloctab;
+    edgeloctab.reserve(vertlocnbr * 6); // heuristic reserve
+
+    // Build the graph from elems_in_elem_on_rank which contains global neighbor IDs
+    // First, create a map from element GID to its position in elems_in_elem_on_rank
+    std::map<int, size_t> elem_gid_to_offset;
+    size_t current_offset = 0;
+    for (size_t k = 0; k < num_elements_on_rank; k++) {
+        elem_gid_to_offset[elements_on_rank[k]] = current_offset;
+        current_offset += num_elems_in_elem_per_rank[k];
+    }
+    
+    SCOTCH_Num offset = 0;
+    for (size_t lid = 0; lid < mesh.num_elems; ++lid) {
+        vertloctab[lid] = offset;
+
+        // Get local element's global ID
+        int elem_gid = mesh.local_to_global_elem_mapping.host(lid);
+        
+        // Get the offset in elems_in_elem_on_rank for this element
+        size_t elems_in_elem_offset = elem_gid_to_offset[elem_gid];
+        
+        // Get neighbor count - need to find the right index in elements_on_rank
+        size_t idx = 0;
+        for (size_t k = 0; k < num_elements_on_rank; k++) {
+            if (elements_on_rank[k] == elem_gid) {
+                idx = k;
+                break;
+            }
+        }
+        size_t num_nbrs = num_elems_in_elem_per_rank[idx];
+        
+        for (size_t j = 0; j < num_nbrs; ++j) {
+            // Get global neighbor ID from elems_in_elem_on_rank
+            size_t neighbor_gid = elems_in_elem_on_rank[elems_in_elem_offset + j];
+            edgeloctab.push_back(static_cast<SCOTCH_Num>(neighbor_gid));
+            ++offset;
+        }
+    }
+    vertloctab[vertlocnbr] = offset;
+    const SCOTCH_Num edgelocnbr = offset;
+    const SCOTCH_Num edgelocsiz = edgelocnbr;
+
+    // Debug: print graph structure
+    if (print_info) {
+        std::cout << "Rank " << rank << ": vertlocnbr=" << vertlocnbr << ", edgelocnbr=" << edgelocnbr << std::endl;
+        std::cout << "vertloctab: ";
+        for (size_t i = 0; i <= vertlocnbr; i++) {
+            std::cout << vertloctab[i] << " ";
+        }
+        std::cout << std::endl;
+        std::cout << "edgeloctab (first 20): ";
+        for (size_t i = 0; i < std::min((size_t)20, edgeloctab.size()); i++) {
+            std::cout << edgeloctab[i] << " ";
+        }
+        std::cout << std::endl;
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // NOTE: Using compact CSR => pass vendloctab = nullptr, vlblloctab = nullptr.
+    //       edgeloctab contains GLOBAL neighbor IDs; SCOTCH will discover remote vertices itself.
+    int rc = SCOTCH_dgraphBuild(&dgraph,
+                                baseval,
+                                vertlocnbr,
+                                vertlocmax,
+                                vertloctab.data(),   // compact offsets
+                                /*vendloctab*/ nullptr,
+                                /*veloloctab*/ nullptr,
+                                /*vlblloctab*/ nullptr,
+                                edgelocnbr,
+                                edgelocsiz,
+                                edgeloctab.data(),
+                                /*edgegsttab*/ nullptr,
+                                /*edloloctab*/ nullptr);
+    if (rc != 0) {
+        std::cerr << "[rank " << rank << "] SCOTCH_dgraphBuild failed rc=" << rc << "\n";
+        SCOTCH_dgraphFree(&dgraph);
+        MPI_Abort(MPI_COMM_WORLD, rc);
+    }
+
+    // Print graph info after build but before check
+    if (print_info) {
+        SCOTCH_Num vertlocnbr_out, vertloctab_size;
+        SCOTCH_dgraphSize(&dgraph, &vertlocnbr_out, nullptr, nullptr, nullptr);
+        std::cout << "Rank " << rank << ": After dgraphBuild, vertlocnbr=" << vertlocnbr_out << std::endl;
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // Sanity check
+    rc = SCOTCH_dgraphCheck(&dgraph);
+    if (rc != 0) {
+        std::cerr << "[rank " << rank << "] SCOTCH_dgraphCheck failed rc=" << rc << "\n";
+        SCOTCH_dgraphFree(&dgraph);
+        MPI_Abort(MPI_COMM_WORLD, rc);
+    }
+
+    // Partition the mesh using pt-scotch
+    // Partition into world_size parts
+    // Note: Since we already have a distributed mesh, we're asking for a repartition
+    SCOTCH_Arch archdat;
+    SCOTCH_archInit(&archdat);
+    SCOTCH_archCmplt(&archdat, static_cast<SCOTCH_Num>(world_size));
+    
+    SCOTCH_Strat stratdat;
+    SCOTCH_stratInit(&stratdat);
+    
+    std::vector<SCOTCH_Num> partloctab(vertlocnbr);
+    rc = SCOTCH_dgraphMap(&dgraph, &archdat, &stratdat, partloctab.data());
+    if (rc != 0) {
+        std::cerr << "[rank " << rank << "] SCOTCH_dgraphMap failed rc=" << rc << "\n";
+        SCOTCH_stratExit(&stratdat);
+        SCOTCH_archExit(&archdat);
+        SCOTCH_dgraphFree(&dgraph);
+        MPI_Abort(MPI_COMM_WORLD, rc);
+    }
+    
+    SCOTCH_stratExit(&stratdat);
+    SCOTCH_archExit(&archdat);
+
+    // Print partition assignment (optional)
+    for (size_t lid = 0; lid < mesh.num_elems; ++lid) {
+        size_t gid = mesh.local_to_global_elem_mapping.host(lid);
+        std::cout << "[rank " << rank << "] elem_local=" << lid << " gid=" << gid
+                << " -> part=" << partloctab[lid] << "\n";
+    }
+    
+
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+
+
+
+
+
+
+
 
     } // end MATAR scope
     MATAR_FINALIZE();
