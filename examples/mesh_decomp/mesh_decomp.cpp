@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
     Timer timer;
     timer.start();
 
-    bool print_info = true;
+    bool print_info = false;
     bool print_vtk = false;
 
 
@@ -112,7 +112,7 @@ int main(int argc, char** argv) {
     // Initial mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {20, 20, 20};
+    int num_elems_dim[3] = {100, 100, 100};
 
     Mesh_t initial_mesh;
     GaussPoint_t initial_GaussPoints;
@@ -156,6 +156,8 @@ int main(int argc, char** argv) {
 // ********************************************************  
 //              Build the initial mesh
 // ********************************************************  
+    double t_init_mesh_start = MPI_Wtime();
+
     if (rank == 0) {
         std::cout<<"World size: "<<world_size<<std::endl;
         std::cout<<"Rank "<<rank<<" Building initial mesh"<<std::endl;
@@ -176,8 +178,12 @@ int main(int argc, char** argv) {
 
     // int MPI_Bcast(void *buffer, int count, MPI_Datatype datatype, int root, MPI_Comm comm);
     MPI_Bcast(&num_nodes_per_elem, 1, MPI_INT, 0, MPI_COMM_WORLD); 
-
     MPI_Barrier(MPI_COMM_WORLD);
+
+    double t_init_mesh_end = MPI_Wtime();
+    if (rank == 0) {
+        std::cout << "Initial mesh generation + broadcast took " << (t_init_mesh_end - t_init_mesh_start) << " seconds." << std::endl;
+    }
     
 // ********************************************************  
 //        Scatter the number of elements to each rank
@@ -187,6 +193,7 @@ int main(int argc, char** argv) {
     // MPI_Scatter(const void *sendbuf, int sendcount, MPI_Datatype sendtype,
     //             void *recvbuf, int recvcount, MPI_Datatype recvtype,
     //             int root, MPI_Comm comm)
+    double t_scatter_start = MPI_Wtime();
     MPI_Scatter(elems_per_rank.data(), 1, MPI_INT, 
                 &num_elements_on_rank, 1, MPI_INT, 
                 0, MPI_COMM_WORLD);
@@ -197,11 +204,18 @@ int main(int argc, char** argv) {
     elements_on_rank.resize(num_elements_on_rank);
     
 
-
+    MPI_Barrier(MPI_COMM_WORLD);
+    double t_scatter_end = MPI_Wtime();
+    if(rank == 0) {
+        std::cout<<" Finished scattering the number of elements to each rank"<<std::endl;
+        std::cout << " Scatter operation took " << (t_scatter_end - t_scatter_start) << " seconds." << std::endl;
+    }
 
 // ********************************************************  
 //     Scatter the actual element global ids to each rank
 // ******************************************************** 
+    double t_scatter_gids_start = MPI_Wtime();
+
     if (rank == 0) {
 
         //print elements per rank
@@ -253,9 +267,15 @@ int main(int argc, char** argv) {
                      elements_on_rank.data(), num_elements_on_rank, MPI_INT,
                      0, MPI_COMM_WORLD);
     }
-    
 
     MPI_Barrier(MPI_COMM_WORLD);
+    double t_scatter_gids_end = MPI_Wtime();
+    if(rank == 0) {
+        std::cout<<" Finished scattering the actual element global ids to each rank"<<std::endl;
+        std::cout << " Scattering the actual element global ids to each rank took " 
+                  << (t_scatter_gids_end - t_scatter_gids_start) << " seconds." << std::endl;
+    }
+    
 
     if (print_info) {
         std::cout << "Rank " << rank << " received elements: ";
@@ -265,12 +285,17 @@ int main(int argc, char** argv) {
         std::cout << std::endl;
     }
     
+
     MPI_Barrier(MPI_COMM_WORLD);
+    
 
 
 // ****************************************************************************************** 
 //     Scatter the number of nodes to each rank and compute which nodes to send to each rank
 // ****************************************************************************************** 
+
+    // Timer: Start measuring time for node scattering
+    double t_scatter_nodes_start = MPI_Wtime();
 
     if (rank == 0) {
 
@@ -285,11 +310,13 @@ int main(int argc, char** argv) {
             nodes_to_send[i] = std::vector<int>(nodes_set.begin(), nodes_set.end());
         } 
 
+        for (int i = 0; i < world_size; i++) {
+            nodes_per_rank[i] = nodes_to_send[i].size();
+        }
+
         if (print_info) {
 
-            for (int i = 0; i < world_size; i++) {
-                nodes_per_rank[i] = nodes_to_send[i].size();
-            }
+            
             std::cout<<std::endl;
             // print the nodes_to_send array
             for (int i = 0; i < world_size; i++) {
@@ -299,8 +326,8 @@ int main(int argc, char** argv) {
 
                 for (int j = 0; j < nodes_to_send[i].size(); j++) {
                     std::cout<<nodes_to_send[i][j]<<" ";
-        }
-        std::cout<<std::endl;
+                }
+                std::cout<<std::endl;
             }
         }
     }
@@ -308,19 +335,33 @@ int main(int argc, char** argv) {
     // Send the number of nodes to each rank using MPI_scatter
     MPI_Scatter(nodes_per_rank.data(), 1, MPI_INT, &num_nodes_on_rank, 1, MPI_INT, 0, MPI_COMM_WORLD); 
 
+    // resize the nodes_on_rank vector to hold the received data
+    nodes_on_rank.resize(num_nodes_on_rank);
+
     MPI_Barrier(MPI_COMM_WORLD);
 
     if (print_info) {
         std::cout << "Rank " << rank << " received " << num_nodes_on_rank << " nodes" << std::endl;
     }
 
-    // resize the nodes_on_rank vector to hold the received data
-    nodes_on_rank.resize(num_nodes_on_rank);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // Timer: End measuring time for node scattering
+    double t_scatter_nodes_end = MPI_Wtime();
+
+    if(rank == 0) {
+        std::cout<<" Finished scattering the number of nodes to each rank"<<std::endl;
+        std::cout << " Scattering the number of nodes to each rank took " 
+                  << (t_scatter_nodes_end - t_scatter_nodes_start) << " seconds." << std::endl;
+    }
 
 
 // ****************************************************************************************** 
 //     Scatter the actual node global ids to each rank
 // ****************************************************************************************** 
+    // Timer: Start measuring time for scattering node global ids
+    double t_scatter_nodeids_start = MPI_Wtime();
+
     if (rank == 0) {
 
         // Prepare data for MPI_Scatterv (scatter with variable counts)
@@ -354,20 +395,31 @@ int main(int argc, char** argv) {
                      0, MPI_COMM_WORLD);
     }
     else {
-
         MPI_Scatterv(nullptr, nullptr, nullptr, MPI_INT,
             nodes_on_rank.data(), num_nodes_on_rank, MPI_INT,
             0, MPI_COMM_WORLD);
-
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
+
+    // Timer: End measuring time for scattering node global ids
+    double t_scatter_nodeids_end = MPI_Wtime();
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) {
+        std::cout<<" Finished scattering the actual node global ids to each rank"<<std::endl;
+        std::cout << " Scattering node global ids took "
+                  << (t_scatter_nodeids_end - t_scatter_nodeids_start) << " seconds." << std::endl;
+    }
 
 // ****************************************************************************************** 
 //     Scatter the node positions to each rank
 // ****************************************************************************************** 
     // Create a flat 1D vector for node positions (3 coordinates per node)
     std::vector<double> node_pos_on_rank_flat(num_nodes_on_rank * 3);
+
+    // Timer for scattering node positions
+    double t_scatter_nodepos_start = MPI_Wtime();
 
     if(rank == 0)
     {
@@ -437,6 +489,15 @@ int main(int argc, char** argv) {
         std::cout << std::endl;
     }
 
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    double t_scatter_nodepos_end = MPI_Wtime();
+    if(rank == 0) {
+        std::cout<<" Finished scattering the node positions to each rank"<<std::endl;
+        std::cout << " Scattering node positions took "
+                  << (t_scatter_nodepos_end - t_scatter_nodepos_start) << " seconds." << std::endl;
+    }
+
 // ****************************************************************************************** 
 //     Initialize the node state variables
 // ****************************************************************************************** 
@@ -460,6 +521,8 @@ int main(int argc, char** argv) {
     // Send the element-node connectivity data from the initial mesh to each rank
     std::vector<int> nodes_in_elem_on_rank(num_elements_on_rank * num_nodes_per_elem);
     
+    double t_scatter_elemnode_start = MPI_Wtime();
+
     if (rank == 0) {
         // Prepare element-node connectivity data for each rank
         std::vector<int> all_nodes_in_elem;
@@ -493,6 +556,13 @@ int main(int argc, char** argv) {
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    double t_scatter_elemnode_end = MPI_Wtime();
+    if(rank == 0) {
+        std::cout << " Finished scattering the element-node connectivity data from the initial mesh to each rank" << std::endl;
+        std::cout << " Scattering element-node connectivity took "
+                  << (t_scatter_elemnode_end - t_scatter_elemnode_start) << " seconds." << std::endl;
+    }
+
     if (rank == 0 && print_info) {
 
         std::cout << "Rank " << rank << " received element-node connectivity (" 
@@ -508,6 +578,7 @@ int main(int argc, char** argv) {
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished scattering the element-node connectivity data from the initial mesh to each rank"<<std::endl;
 
 
 // ****************************************************************************************** 
@@ -520,6 +591,8 @@ int main(int argc, char** argv) {
     int total_elem_elem_entries = 0;
     
     
+    double t_scatter_elem_elem_start = MPI_Wtime();
+
     if (rank == 0){
         // Calculate total number of connectivity entries for each rank
         for(int i = 0; i < world_size; i++) {
@@ -528,21 +601,23 @@ int main(int argc, char** argv) {
                 elem_elem_counts[i] += initial_mesh.num_elems_in_elem(elements_to_send[i][k]);
             }
 
-            std::cout << "Rank " << i << " will receive " << elem_elem_counts[i] << " element-element connectivity entries" << std::endl;
+            if(print_info) std::cout << "Rank " << i << " will receive " << elem_elem_counts[i] << " element-element connectivity entries" << std::endl;
         }
 
         // Print element-element connectivity entries for each rank in the initial mesh
-        for(int i = 0; i < world_size; i++) {
-            std::cout << std::endl;
-            std::cout << "Rank " << i << " will receive element-element connectivity entries for the following elements: "<<std::endl;
-            for(int k = 0; k < elements_to_send[i].size(); k++) {
-                std::cout << "Element " << elements_to_send[i][k] << " has " << initial_mesh.num_elems_in_elem(elements_to_send[i][k]) << " element-element connectivity entries: ";
-                for(int l = 0; l < initial_mesh.num_elems_in_elem(elements_to_send[i][k]); l++) {
-                    std::cout << initial_mesh.elems_in_elem(elements_to_send[i][k], l) << " ";
+        if(print_info) {
+            for(int i = 0; i < world_size; i++) {
+                std::cout << std::endl;
+                std::cout << "Rank " << i << " will receive element-element connectivity entries for the following elements: "<<std::endl;
+                for(int k = 0; k < elements_to_send[i].size(); k++) {
+                    std::cout << "Element " << elements_to_send[i][k] << " has " << initial_mesh.num_elems_in_elem(elements_to_send[i][k]) << " element-element connectivity entries: ";
+                    for(int l = 0; l < initial_mesh.num_elems_in_elem(elements_to_send[i][k]); l++) {
+                        std::cout << initial_mesh.elems_in_elem(elements_to_send[i][k], l) << " ";
+                    }
+                    std::cout << std::endl;
                 }
                 std::cout << std::endl;
             }
-            std::cout << std::endl;
         }
     }
     
@@ -552,7 +627,15 @@ int main(int argc, char** argv) {
     MPI_Scatter(elem_elem_counts.data(), 1, MPI_INT,
                 &total_elem_elem_entries, 1, MPI_INT,
                 0, MPI_COMM_WORLD);
-    
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    double t_scatter_elem_elem_end = MPI_Wtime();
+    if(rank == 0) {
+        std::cout<<" Finished scattering the number of element-element connectivity entries to each rank"<<std::endl;
+        std::cout<<" Scattering element-element connectivity counts took "
+                 << (t_scatter_elem_elem_end - t_scatter_elem_elem_start) << " seconds." << std::endl;
+    }
+
     std::vector<int> elems_in_elem_on_rank(total_elem_elem_entries);
     
     // Now scatter the num_elems_in_elem for each element on each rank
@@ -580,6 +663,9 @@ int main(int argc, char** argv) {
                      0, MPI_COMM_WORLD);
     }
     
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished scattering the actual element-element connectivity counts per element to each rank"<<std::endl;
+
     if (rank == 0){
         // Prepare the element-element connectivity data for each rank
         std::vector<int> all_elems_in_elem;
@@ -613,6 +699,9 @@ int main(int argc, char** argv) {
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished receiving the actual element-element connectivity entries to each rank"<<std::endl;
 
     if (rank == 0 && print_info) {
         std::cout << "Rank " << rank << " received element-element connectivity (" 
@@ -670,6 +759,12 @@ int main(int argc, char** argv) {
     mesh.local_to_global_node_mapping.update_device();
     mesh.local_to_global_elem_mapping.update_device();
 
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Starting reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
+
+    // Timer for reverse mapping of element-node connectivity
+    double t_reverse_map_start = MPI_Wtime();
+
     // rebuild the local element-node connectivity using the local node ids
     for(int i = 0; i < num_elements_on_rank; i++) {
         for(int j = 0; j < num_nodes_per_elem; j++) {
@@ -678,12 +773,18 @@ int main(int argc, char** argv) {
 
             int node_lid = -1;
 
-            // Search through the local to global mapp to find the equivalent local index
-            for(int k = 0; k < num_nodes_on_rank; k++){
-
-                if(node_gid == mesh.local_to_global_node_mapping.host(k)) {
-                    node_lid = k;
+            // Use binary search to find the local node index for node_gid
+            int left = 0, right = num_nodes_on_rank - 1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                size_t mid_gid = mesh.local_to_global_node_mapping.host(mid);
+                if (node_gid == mid_gid) {
+                    node_lid = mid;
                     break;
+                } else if (node_gid < mid_gid) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
                 }
             }
 
@@ -691,6 +792,13 @@ int main(int argc, char** argv) {
         }
     }
 
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    double t_reverse_map_end = MPI_Wtime();
+    if(rank == 0) {
+        std::cout<<" Finished reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
+        std::cout<<" Reverse mapping time: " << (t_reverse_map_end - t_reverse_map_start) << " seconds." << std::endl;
+    }
 
     mesh.nodes_in_elem.update_device();
 
@@ -910,6 +1018,9 @@ int main(int argc, char** argv) {
     }
     MPI_Barrier(MPI_COMM_WORLD);
 
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished building the distributed graph using PT-Scotch"<<std::endl;
+
     /********************************************************
      * Step 5: Validate the graph using SCOTCH_dgraphCheck
      ********************************************************/
@@ -932,6 +1043,7 @@ int main(int argc, char** argv) {
 
     SCOTCH_Strat stratdat;      // PT-Scotch strategy object: holds partitioning options/settings
     SCOTCH_stratInit(&stratdat);
+    SCOTCH_stratDgraphMapBuild(&stratdat, SCOTCH_STRATQUALITY, world_size, 0, 0.01); // zero is recursion count, 0=automatic
 
     // partloctab: output array mapping each local element (vertex) to a *target partition number*
     // After partitioning, partloctab[i] gives the part-assignment (in [0,world_size-1]) for local element i.
@@ -958,7 +1070,7 @@ int main(int argc, char** argv) {
      *   part to which PT-Scotch has assigned them.
      ***************************************************************************/
     for(int rank_id = 0; rank_id < world_size; rank_id++) {
-        if(rank_id == rank) {
+        if(rank_id == rank && print_info) {
             for (size_t lid = 0; lid < mesh.num_elems; ++lid) {
                 size_t gid = mesh.local_to_global_elem_mapping.host(lid);
                 std::cout << "[rank " << rank_id << "] elem_local=" << lid << " gid=" << gid
@@ -1021,6 +1133,7 @@ int main(int argc, char** argv) {
                 recvbuf.data(), recvcounts.data(), rdispls.data(), MPI_INT, MPI_COMM_WORLD);
     
     MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished exchanging element GIDs"<<std::endl;
 
     // New elements owned by this rank
     std::vector<int> new_elem_gids = recvbuf;
@@ -1057,7 +1170,10 @@ int main(int argc, char** argv) {
         conn_sendcounts[r] = sendcounts[r] * nodes_per_elem;
 
     MPI_Alltoall(conn_sendcounts.data(), 1, MPI_INT, conn_recvcounts.data(), 1, MPI_INT, MPI_COMM_WORLD);
+
+
     MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished exchanging element–node connectivity counts"<<std::endl;
 
     std::vector<int> conn_sdispls(world_size), conn_rdispls(world_size);
     int conn_send_total = 0, conn_recv_total = 0;
@@ -1073,7 +1189,7 @@ int main(int argc, char** argv) {
                 conn_recvbuf.data(), conn_recvcounts.data(), conn_rdispls.data(), MPI_INT, MPI_COMM_WORLD);
 
     MPI_Barrier(MPI_COMM_WORLD);
-
+    if(rank == 0) std::cout<<" Finished exchanging element–node connectivity"<<std::endl;
 
     // -------------- Phase 4: Build new node list (unique GIDs) --------------
     std::set<int> node_gid_set(conn_recvbuf.begin(), conn_recvbuf.end());
@@ -1115,6 +1231,7 @@ int main(int argc, char** argv) {
 
     MPI_Alltoall(coord_sendcounts.data(), 1, MPI_INT, coord_recvcounts.data(), 1, MPI_INT, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished exchanging node coordinates counts"<<std::endl;
 
     std::vector<int> coord_sdispls(world_size), coord_rdispls(world_size);
     int coord_send_total = 0, coord_recv_total = 0;
@@ -1130,6 +1247,7 @@ int main(int argc, char** argv) {
                 coord_recvbuf.data(), coord_recvcounts.data(), coord_rdispls.data(), MPI_DOUBLE, MPI_COMM_WORLD);
 
     MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished exchanging node coordinates"<<std::endl;
 
     // -------------- Phase 6: Build the final_mesh --------------
     final_mesh.initialize_nodes(num_new_nodes);
@@ -1146,17 +1264,9 @@ int main(int argc, char** argv) {
     final_mesh.local_to_global_node_mapping.update_device();
     final_mesh.local_to_global_elem_mapping.update_device();
 
-    // // Rebuild nodes_in_elem
-    // for (int e = 0; e < num_new_elems; ++e) {
-    //     for (int j = 0; j < nodes_per_elem; ++j) {
-    //         int node_gid = conn_recvbuf[e * nodes_per_elem + j];
-    //         int node_lid = node_gid_to_lid[node_gid];
-    //         final_mesh.nodes_in_elem.host(e, j) = node_lid;
-    //     }
-    // }
-    // final_mesh.nodes_in_elem.update_device();
 
-
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Starting reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
     // rebuild the local element-node connectivity using the local node ids
     for(int i = 0; i < num_new_elems; i++) {
         for(int j = 0; j < nodes_per_elem; j++) {
@@ -1165,18 +1275,27 @@ int main(int argc, char** argv) {
 
             int node_lid = -1;
 
-            // Search through the local to global mapp to find the equivalent local index
-            for(int k = 0; k < num_new_nodes; k++){
-
-                if(node_gid == final_mesh.local_to_global_node_mapping.host(k)) {
-                    node_lid = k;
+            // Binary search through local_to_global_node_mapping to find the equivalent local index
+            int left = 0, right = num_new_nodes - 1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                size_t mid_gid = final_mesh.local_to_global_node_mapping.host(mid);
+                if (node_gid == mid_gid) {
+                    node_lid = mid;
                     break;
+                } else if (node_gid < mid_gid) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
                 }
             }
 
             final_mesh.nodes_in_elem.host(i, j) = node_lid;
         }
     }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
 
     final_mesh.nodes_in_elem.update_device();
 
@@ -1217,7 +1336,7 @@ int main(int argc, char** argv) {
     MPI_Barrier(MPI_COMM_WORLD);
 
     for(int i = 0; i < world_size; i++) {
-        if(rank == i) {
+        if(rank == i && print_info) {
             print_rank_mesh_info(final_mesh, i);
         }
         MPI_Barrier(MPI_COMM_WORLD);
