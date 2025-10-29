@@ -231,16 +231,16 @@ void build_3d_box(
 
 
 /////////////////////////////////////////////////////////////////////////////
-    ///
-    /// \fn write_vtk
-    ///
-    /// \brief Writes a vtk output file
-    ///
-    /// \param mesh mesh
-    /// \param node node data
-    /// \param rank rank
-    ///
-    /////////////////////////////////////////////////////////////////////////////
+///
+/// \fn write_vtk
+///
+/// \brief Writes a vtk output file
+///
+/// \param mesh mesh
+/// \param node node data
+/// \param rank rank
+///
+/////////////////////////////////////////////////////////////////////////////
     void write_vtk(Mesh_t& mesh,
         node_t& node,
         int rank)
@@ -276,7 +276,7 @@ void build_3d_box(
         Kokkos::fence();
 
 
-        const int num_cell_scalar_vars = 1;
+        const int num_cell_scalar_vars = 2;
         const int num_cell_vec_vars    = 0;
         const int num_cell_tensor_vars = 0;
 
@@ -285,8 +285,8 @@ void build_3d_box(
 
 
         // Scalar values associated with a cell
-        const char cell_scalar_var_names[num_cell_scalar_vars][15] = {
-            "rank_id"
+        const char cell_scalar_var_names[num_cell_scalar_vars][30] = {
+            "rank_id", "elems_in_elem_owned"
         };
         
         // const char cell_vec_var_names[num_cell_vec_vars][15] = {
@@ -316,6 +316,11 @@ void build_3d_box(
 
         // export material centeric data to the elements
         elem_fields(0, 0) = rank;
+
+        for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
+            elem_fields(elem_gid, 0) = rank;
+            elem_fields(elem_gid, 1) = (double)mesh.num_elems_in_elem(elem_gid);
+        }
 
 
         // save the vertex vector fields to an array for exporting to graphics files
@@ -454,7 +459,7 @@ void build_3d_box(
             fprintf(out[0], "SCALARS %s float 1\n", cell_scalar_var_names[var]); // the 1 is number of scalar components [1:4]
             fprintf(out[0], "LOOKUP_TABLE default\n");
             for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
-                fprintf(out[0], "%f\n", rank);
+                fprintf(out[0], "%f\n",  elem_fields(elem_gid, var));
             } // end for elem
         } // end for cell scalar_vars
 

@@ -308,16 +308,19 @@ struct Mesh_t
 
     // MPI Decomposition Data Definitions ---- //
     DCArrayKokkos<size_t> local_to_global_node_mapping; ///< Local to global node mapping
-    
     DCArrayKokkos<size_t> local_to_global_elem_mapping; ///< Local to global element mapping
+
+    // Data structure for ghost elements required for MPI comms
+    size_t num_ghost_elems; ///< Number of ghost elements on this rank (from neighboring MPI ranks)
     
+
+
 
 
     // initialization methods
     void initialize_nodes(const size_t num_nodes_inp)
     {
         num_nodes = num_nodes_inp;
-
         return;
     }; // end method
 
