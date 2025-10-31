@@ -631,9 +631,7 @@ void write_vtu(Mesh_t& mesh,
             for (int j = 0; j <= Pn_order; j++) {
                 for (int i = 0; i <= Pn_order; i++) {
                     size_t node_lid = PointIndexFromIJK(i, j, k, order);
-                    size_t node_idx = mesh.nodes_in_elem.host(elem_gid, node_lid);
-                    // Cast to int for Int32 format (valid for node indices < 2^31)
-                    fprintf(vtu_file, " %d", static_cast<int>(node_idx));
+                    fprintf(vtu_file, " %zu", static_cast<unsigned long>(mesh.nodes_in_elem.host(elem_gid, node_lid)));
                 }
             }
         }
