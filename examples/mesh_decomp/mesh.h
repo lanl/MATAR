@@ -310,8 +310,11 @@ struct Mesh_t
     DCArrayKokkos<size_t> local_to_global_node_mapping; ///< Local to global node mapping
     DCArrayKokkos<size_t> local_to_global_elem_mapping; ///< Local to global element mapping
 
-    // Data structure for ghost elements required for MPI comms
+    size_t num_owned_elems; ///< Number of owned elements on this rank
     size_t num_ghost_elems; ///< Number of ghost elements on this rank (from neighboring MPI ranks)
+    
+    size_t num_owned_nodes; ///< Number of owned nodes on this rank
+    size_t num_ghost_nodes; ///< Number of ghost nodes on this rank (from neighboring MPI ranks)
     
 
 

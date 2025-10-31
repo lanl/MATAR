@@ -280,7 +280,7 @@ void build_3d_box(
         const int num_cell_vec_vars    = 0;
         const int num_cell_tensor_vars = 0;
 
-        const int num_point_scalar_vars = 1;
+        const int num_point_scalar_vars = 2;
         const int num_point_vec_vars = 1;
 
 
@@ -294,7 +294,7 @@ void build_3d_box(
         // };
 
         const char point_scalar_var_names[num_point_scalar_vars][15] = {
-            "rank_id"
+            "rank_id", "elems_in_node"
         };
 
         const char point_vec_var_names[num_point_vec_vars][15] = {
@@ -302,9 +302,10 @@ void build_3d_box(
         };
 
         // short hand
-        const size_t num_nodes = mesh.num_nodes;
-        const size_t num_elems = mesh.num_elems;
+        const size_t num_nodes = mesh.num_owned_nodes;
+        const size_t num_elems = mesh.num_owned_elems;
         const size_t num_dims  = mesh.num_dims;
+
 
         // save the cell state to an array for exporting to graphics files
         auto elem_fields = CArray<double>(num_elems, num_cell_scalar_vars);
@@ -316,7 +317,7 @@ void build_3d_box(
 
         // export material centeric data to the elements
 
-        for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
+        for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
             elem_fields(elem_gid, 0) = rank;
             elem_fields(elem_gid, 1) = (double)mesh.num_elems_in_elem(elem_gid);
             elem_fields(elem_gid, 2) = mesh.local_to_global_elem_mapping.host(elem_gid);
@@ -334,6 +335,11 @@ void build_3d_box(
             vec_fields(node_gid, 0, 2) = node.coords.host(node_gid, 2);
 
             point_scalar_fields(node_gid, 0) = rank;
+            point_scalar_fields(node_gid, 1) = (double)mesh.num_corners_in_node(node_gid);
+
+            if(node_gid == 0) {
+                std::cout << "*******[rank " << rank << "]   - num_corners_in_node: " << mesh.num_corners_in_node(node_gid) << std::endl;
+            }
         } // end for loop over vertices
 
 
@@ -362,10 +368,10 @@ void build_3d_box(
         fprintf(out[0], "ASCII \n");                      // part 3
         fprintf(out[0], "DATASET UNSTRUCTURED_GRID\n\n"); // part 4
 
-        fprintf(out[0], "POINTS %zu float\n", mesh.num_nodes);
+        fprintf(out[0], "POINTS %zu float\n", num_nodes);
 
         // write all components of the point coordinates
-        for (size_t node_gid = 0; node_gid < mesh.num_nodes; node_gid++) {
+        for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
             fprintf(out[0],
                     "%f %f %f\n",
                     node.coords.host(node_gid, 0),
@@ -380,7 +386,7 @@ void build_3d_box(
         */
 
         fprintf(out[0], "\n");
-        fprintf(out[0], "CELLS %lu %lu\n", mesh.num_elems, mesh.num_elems + mesh.num_elems * mesh.num_nodes_in_elem);  // size=all printed values
+        fprintf(out[0], "CELLS %lu %lu\n", num_elems, num_elems + num_elems * mesh.num_nodes_in_elem);  // size=all printed values
 
         int Pn_order   = mesh.Pn;
         int order[3]   = { Pn_order, Pn_order, Pn_order };
@@ -388,7 +394,7 @@ void build_3d_box(
         // const int num_1D_points = Pn_order+1;
 
         // write all global point numbers for this elem
-        for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
+        for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
             fprintf(out[0], "%lu ", mesh.num_nodes_in_elem); // num points in this elem
 
             for (int k = 0; k <= Pn_order; k++) {
@@ -405,14 +411,14 @@ void build_3d_box(
 
         // Write the element types
         fprintf(out[0], "\n");
-        fprintf(out[0], "CELL_TYPES %zu \n", mesh.num_elems);
+        fprintf(out[0], "CELL_TYPES %zu \n", num_elems);
         // VTK_LAGRANGE_HEXAHEDRON: 72,
         // VTK_HIGHER_ORDER_HEXAHEDRON: 67
         // VTK_BIQUADRATIC_QUADRATIC_HEXAHEDRON = 33
         // element types: https://vtk.org/doc/nightly/html/vtkCellType_8h_source.html
         // element types: https://kitware.github.io/vtk-js/api/Common_DataModel_CellTypes.html
         // vtk format: https://www.kitware.com//modeling-arbitrary-order-lagrange-finite-elements-in-the-visualization-toolkit/
-        for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
+        for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
             fprintf(out[0], "%d \n", 72);
         }
 
@@ -423,12 +429,12 @@ void build_3d_box(
         */
 
         fprintf(out[0], "\n");
-        fprintf(out[0], "POINT_DATA %zu \n", mesh.num_nodes);
+        fprintf(out[0], "POINT_DATA %zu \n", num_nodes);
 
         // vtk vector vars = (position, velocity)
         for (int var = 0; var < num_point_vec_vars; var++) {
             fprintf(out[0], "VECTORS %s float \n", point_vec_var_names[var]);
-            for (size_t node_gid = 0; node_gid < mesh.num_nodes; node_gid++) {
+            for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
                 fprintf(out[0], "%f %f %f\n",
                         vec_fields(node_gid, var, 0),
                         vec_fields(node_gid, var, 1),
@@ -437,15 +443,15 @@ void build_3d_box(
         } // end for vec_vars
 
 
-        // vtk scalar vars = (temp)
+        // vtk scalar vars = (rank_id, elems_in_node)
         for (int var = 0; var < num_point_scalar_vars; var++) {
             fprintf(out[0], "SCALARS %s float 1\n", point_scalar_var_names[var]);
             fprintf(out[0], "LOOKUP_TABLE default\n");
-            for (size_t node_gid = 0; node_gid < mesh.num_nodes; node_gid++) {
+            for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
                 fprintf(out[0], "%f\n",
-                        point_scalar_fields(node_gid, 0));
+                        point_scalar_fields(node_gid, var));
             } // end for nodes
-        } // end for vec_vars
+        } // end for scalar_vars
 
         /*
         ---------------------------------------------------------------------------
@@ -453,12 +459,12 @@ void build_3d_box(
         ---------------------------------------------------------------------------
         */
         fprintf(out[0], "\n");
-        fprintf(out[0], "CELL_DATA %zu \n", mesh.num_elems);
+        fprintf(out[0], "CELL_DATA %zu \n", num_elems);
 
         for (int var = 0; var < num_cell_scalar_vars; var++) {
             fprintf(out[0], "SCALARS %s float 1\n", cell_scalar_var_names[var]); // the 1 is number of scalar components [1:4]
             fprintf(out[0], "LOOKUP_TABLE default\n");
-            for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
+            for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
                 fprintf(out[0], "%f\n",  elem_fields(elem_gid, var));
             } // end for elem
         } // end for cell scalar_vars
@@ -496,5 +502,270 @@ void build_3d_box(
     } // end write vtk old
 
 
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn write_vtu
+///
+/// \brief Writes a VTU (XML VTK) output file per MPI rank and a PVTU file
+///        for parallel visualization in ParaView
+///
+/// \param mesh mesh
+/// \param node node data
+/// \param rank MPI rank
+/// \param comm MPI communicator
+///
+/////////////////////////////////////////////////////////////////////////////
+void write_vtu(Mesh_t& mesh,
+               node_t& node,
+               int rank,
+               MPI_Comm comm)
+{
+    int world_size;
+    MPI_Comm_size(comm, &world_size);
+
+    CArray<double> graphics_times(1);
+    int graphics_id = 0;
+    graphics_times(0) = 0.0;
+
+    // ---- Update host data ----
+    node.coords.update_host();
+    Kokkos::fence();
+
+    const int num_cell_scalar_vars = 3;
+    const int num_cell_vec_vars    = 0;
+    const int num_cell_tensor_vars = 0;
+
+    const int num_point_scalar_vars = 2;
+    const int num_point_vec_vars = 1;
+
+    // Scalar values associated with a cell
+    const char cell_scalar_var_names[num_cell_scalar_vars][30] = {
+        "rank_id", "elems_in_elem_owned", "global_elem_id"
+    };
+
+    const char point_scalar_var_names[num_point_scalar_vars][15] = {
+        "rank_id", "elems_in_node"
+    };
+
+    const char point_vec_var_names[num_point_vec_vars][15] = {
+        "pos"
+    };
+
+    // short hand
+    const size_t num_nodes = mesh.num_owned_nodes;
+    const size_t num_elems = mesh.num_owned_elems;
+    const size_t num_dims  = mesh.num_dims;
+
+    // save the cell state to an array for exporting to graphics files
+    auto elem_fields = CArray<double>(num_elems, num_cell_scalar_vars);
+
+    for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
+        elem_fields(elem_gid, 0) = rank;
+        elem_fields(elem_gid, 1) = (double)mesh.num_elems_in_elem(elem_gid);
+        elem_fields(elem_gid, 2) = mesh.local_to_global_elem_mapping.host(elem_gid);
+    }
+
+    // save the vertex vector fields to an array for exporting to graphics files
+    CArray<double> vec_fields(num_nodes, num_point_vec_vars, 3);
+    CArray<double> point_scalar_fields(num_nodes, num_point_scalar_vars);
+
+    for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
+        // position, var 0
+        vec_fields(node_gid, 0, 0) = node.coords.host(node_gid, 0);
+        vec_fields(node_gid, 0, 1) = node.coords.host(node_gid, 1);
+        vec_fields(node_gid, 0, 2) = node.coords.host(node_gid, 2);
+
+        point_scalar_fields(node_gid, 0) = rank;
+        point_scalar_fields(node_gid, 1) = (double)mesh.num_corners_in_node(node_gid);
+    }
+
+    // File management
+    char filename[200];
+    int max_len = sizeof filename;
+    int str_output_len;
+
+    struct stat st;
+    if (stat("vtk", &st) != 0) {
+        system("mkdir vtk");
+    }
+
+    // Create VTU filename for this rank
+    str_output_len = snprintf(filename, max_len, "vtk/Fierro.%05d_rank%d.vtu", graphics_id, rank);
+    if (str_output_len >= max_len) { fputs("Filename length exceeded; string truncated", stderr); }
+
+    FILE* vtu_file = fopen(filename, "w");
+    if (!vtu_file) {
+        std::cerr << "[rank " << rank << "] Failed to open VTU file: " << filename << std::endl;
+        return;
+    }
+
+    // Write VTU XML header
+    fprintf(vtu_file, "<?xml version=\"1.0\"?>\n");
+    fprintf(vtu_file, "<VTKFile type=\"UnstructuredGrid\" version=\"0.1\" byte_order=\"LittleEndian\">\n");
+    fprintf(vtu_file, "  <UnstructuredGrid>\n");
+    fprintf(vtu_file, "    <Piece NumberOfPoints=\"%zu\" NumberOfCells=\"%zu\">\n", num_nodes, num_elems);
+
+    // Write Points (coordinates)
+    fprintf(vtu_file, "      <Points>\n");
+    fprintf(vtu_file, "        <DataArray type=\"Float32\" NumberOfComponents=\"3\" format=\"ascii\">\n");
+    for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
+        fprintf(vtu_file, "          %f %f %f\n",
+                node.coords.host(node_gid, 0),
+                node.coords.host(node_gid, 1),
+                node.coords.host(node_gid, 2));
+    }
+    fprintf(vtu_file, "        </DataArray>\n");
+    fprintf(vtu_file, "      </Points>\n");
+
+    // Write Cells (connectivity)
+    fprintf(vtu_file, "      <Cells>\n");
+    
+    // Connectivity array - all node indices for all cells, space-separated
+    fprintf(vtu_file, "        <DataArray type=\"Int32\" Name=\"connectivity\" format=\"ascii\">\n");
+    int Pn_order = mesh.Pn;
+    int order[3] = { Pn_order, Pn_order, Pn_order };
+    
+    // Write connectivity: all node IDs for all elements, space-separated
+    for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
+        for (int k = 0; k <= Pn_order; k++) {
+            for (int j = 0; j <= Pn_order; j++) {
+                for (int i = 0; i <= Pn_order; i++) {
+                    size_t node_lid = PointIndexFromIJK(i, j, k, order);
+                    size_t node_idx = mesh.nodes_in_elem.host(elem_gid, node_lid);
+                    // Cast to int for Int32 format (valid for node indices < 2^31)
+                    fprintf(vtu_file, " %d", static_cast<int>(node_idx));
+                }
+            }
+        }
+    }
+    fprintf(vtu_file, "\n");
+    fprintf(vtu_file, "        </DataArray>\n");
+
+    // Offsets array - cumulative index where each cell's connectivity ends
+    fprintf(vtu_file, "        <DataArray type=\"Int32\" Name=\"offsets\" format=\"ascii\">\n");
+    int offset = 0;
+    for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
+        offset += static_cast<int>(mesh.num_nodes_in_elem);
+        fprintf(vtu_file, " %d", offset);
+    }
+    fprintf(vtu_file, "\n");
+    fprintf(vtu_file, "        </DataArray>\n");
+
+    // Types array (72 = VTK_LAGRANGE_HEXAHEDRON)
+    fprintf(vtu_file, "        <DataArray type=\"UInt8\" Name=\"types\" format=\"ascii\">\n");
+    for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
+        fprintf(vtu_file, " 72");
+    }
+    fprintf(vtu_file, "\n");
+    fprintf(vtu_file, "        </DataArray>\n");
+    fprintf(vtu_file, "      </Cells>\n");
+
+    // Write PointData (node fields)
+    fprintf(vtu_file, "      <PointData>\n");
+    
+    // Point vector variables
+    for (int var = 0; var < num_point_vec_vars; var++) {
+        fprintf(vtu_file, "        <DataArray type=\"Float32\" Name=\"%s\" NumberOfComponents=\"3\" format=\"ascii\">\n", 
+                point_vec_var_names[var]);
+        for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
+            fprintf(vtu_file, "          %f %f %f\n",
+                    vec_fields(node_gid, var, 0),
+                    vec_fields(node_gid, var, 1),
+                    vec_fields(node_gid, var, 2));
+        }
+        fprintf(vtu_file, "        </DataArray>\n");
+    }
+
+    // Point scalar variables
+    for (int var = 0; var < num_point_scalar_vars; var++) {
+        fprintf(vtu_file, "        <DataArray type=\"Float32\" Name=\"%s\" format=\"ascii\">\n", 
+                point_scalar_var_names[var]);
+        for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
+            fprintf(vtu_file, "          %f\n", point_scalar_fields(node_gid, var));
+        }
+        fprintf(vtu_file, "        </DataArray>\n");
+    }
+    fprintf(vtu_file, "      </PointData>\n");
+
+    // Write CellData (element fields)
+    fprintf(vtu_file, "      <CellData>\n");
+    for (int var = 0; var < num_cell_scalar_vars; var++) {
+        fprintf(vtu_file, "        <DataArray type=\"Float32\" Name=\"%s\" format=\"ascii\">\n", 
+                cell_scalar_var_names[var]);
+        for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
+            fprintf(vtu_file, "          %f\n", elem_fields(elem_gid, var));
+        }
+        fprintf(vtu_file, "        </DataArray>\n");
+    }
+    fprintf(vtu_file, "      </CellData>\n");
+
+    // Close VTU file
+    fprintf(vtu_file, "    </Piece>\n");
+    fprintf(vtu_file, "  </UnstructuredGrid>\n");
+    fprintf(vtu_file, "</VTKFile>\n");
+    fclose(vtu_file);
+
+    // Write PVTU file (only rank 0, after all ranks have written their VTU files)
+    MPI_Barrier(comm);
+    
+    if (rank == 0) {
+        str_output_len = snprintf(filename, max_len, "vtk/Fierro.%05d.pvtu", graphics_id);
+        if (str_output_len >= max_len) { fputs("Filename length exceeded; string truncated", stderr); }
+
+        FILE* pvtu_file = fopen(filename, "w");
+        if (!pvtu_file) {
+            std::cerr << "[rank 0] Failed to open PVTU file: " << filename << std::endl;
+            return;
+        }
+
+        // Write PVTU XML header
+        fprintf(pvtu_file, "<?xml version=\"1.0\"?>\n");
+        fprintf(pvtu_file, "<VTKFile type=\"PUnstructuredGrid\" version=\"0.1\" byte_order=\"LittleEndian\">\n");
+        fprintf(pvtu_file, "  <PUnstructuredGrid GhostLevel=\"0\">\n");
+        
+        // Write PPoints
+        fprintf(pvtu_file, "    <PPoints>\n");
+        fprintf(pvtu_file, "      <PDataArray type=\"Float32\" NumberOfComponents=\"3\"/>\n");
+        fprintf(pvtu_file, "    </PPoints>\n");
+
+        // Write PCells
+        fprintf(pvtu_file, "    <PCells>\n");
+        fprintf(pvtu_file, "      <PDataArray type=\"Int32\" Name=\"connectivity\"/>\n");
+        fprintf(pvtu_file, "      <PDataArray type=\"Int32\" Name=\"offsets\"/>\n");
+        fprintf(pvtu_file, "      <PDataArray type=\"UInt8\" Name=\"types\"/>\n");
+        fprintf(pvtu_file, "    </PCells>\n");
+
+        // Write PPointData
+        fprintf(pvtu_file, "    <PPointData>\n");
+        for (int var = 0; var < num_point_vec_vars; var++) {
+            fprintf(pvtu_file, "      <PDataArray type=\"Float32\" Name=\"%s\" NumberOfComponents=\"3\"/>\n",
+                    point_vec_var_names[var]);
+        }
+        for (int var = 0; var < num_point_scalar_vars; var++) {
+            fprintf(pvtu_file, "      <PDataArray type=\"Float32\" Name=\"%s\"/>\n",
+                    point_scalar_var_names[var]);
+        }
+        fprintf(pvtu_file, "    </PPointData>\n");
+
+        // Write PCellData
+        fprintf(pvtu_file, "    <PCellData>\n");
+        for (int var = 0; var < num_cell_scalar_vars; var++) {
+            fprintf(pvtu_file, "      <PDataArray type=\"Float32\" Name=\"%s\"/>\n",
+                    cell_scalar_var_names[var]);
+        }
+        fprintf(pvtu_file, "    </PCellData>\n");
+
+        // Write Piece references for each rank
+        for (int r = 0; r < world_size; r++) {
+            fprintf(pvtu_file, "    <Piece Source=\"Fierro.%05d_rank%d.vtu\"/>\n", graphics_id, r);
+        }
+
+        // Close PVTU file
+        fprintf(pvtu_file, "  </PUnstructuredGrid>\n");
+        fprintf(pvtu_file, "</VTKFile>\n");
+        fclose(pvtu_file);
+    }
+
+} // end write_vtu
 
 #endif

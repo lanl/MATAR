@@ -84,7 +84,7 @@ int main(int argc, char** argv) {
     // Initial mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {4, 4, 1};
+    int num_elems_dim[3] = {25, 25, 25};
 
     Mesh_t initial_mesh;
     GaussPoint_t initial_GaussPoints;
@@ -1720,7 +1720,7 @@ int main(int argc, char** argv) {
         if (rank == r) {
             std::cout << "[rank " << rank << "] Finished building extended mesh structure" << std::endl;
             std::cout << "[rank " << rank << "]   - Owned elements: " << final_mesh.num_elems << std::endl;
-            std::cout << "[rank " << rank << "]   - Ghost elements: " << final_mesh.num_ghost_elems << std::endl;
+            std::cout << "[rank " << rank << "]   - Ghost elements: " << ghost_elem_gids.size() << std::endl;
             std::cout << "[rank " << rank << "]   - Total extended elements: " << total_extended_elems << std::endl;
             std::cout << "[rank " << rank << "]   - Owned nodes: " << final_mesh.num_nodes << std::endl;
             std::cout << "[rank " << rank << "]   - Ghost-only nodes: " << ghost_only_nodes.size() << std::endl;
@@ -1763,6 +1763,24 @@ int main(int argc, char** argv) {
     mesh_with_ghosts.local_to_global_node_mapping.update_device();
     mesh_with_ghosts.local_to_global_elem_mapping.update_device();
 
+    mesh_with_ghosts.num_ghost_elems = ghost_elem_gids.size();
+    mesh_with_ghosts.num_ghost_nodes = ghost_only_nodes.size();
+    
+    // Set owned counts for write_vtk (excludes ghost elements/nodes)
+    mesh_with_ghosts.num_owned_elems = final_mesh.num_elems;
+    mesh_with_ghosts.num_owned_nodes = final_mesh.num_nodes;
+
+
+    // Print num ghost elements and nodes on each rank sequentially
+    for (int r = 0; r < world_size; ++r) {
+        if (rank == r) {
+            std::cout << "*******[rank " << rank << "]   - Ghost elements: " << mesh_with_ghosts.num_ghost_elems << std::endl;
+            std::cout << "*******[rank " << rank << "]   - Ghost-only nodes: " << mesh_with_ghosts.num_ghost_nodes << std::endl;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+
 
     MPI_Barrier(MPI_COMM_WORLD);
     if(rank == 0) std::cout<<" Starting reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
@@ -1783,6 +1801,11 @@ int main(int argc, char** argv) {
 
     mesh_with_ghosts.build_connectivity();
     MPI_Barrier(MPI_COMM_WORLD);
+    
+    
+    
+    
+    
     if(rank == 0) std::cout << " Finished building extended mesh structure" << std::endl;
 
     MPI_Barrier(MPI_COMM_WORLD);
@@ -2021,7 +2044,7 @@ int main(int argc, char** argv) {
 
 
     // write_vtk(final_mesh, final_node, rank);
-    write_vtk(mesh_with_ghosts, node_with_ghosts, rank);
+    write_vtu(mesh_with_ghosts, node_with_ghosts, rank, MPI_COMM_WORLD);
 
 
     MPI_Barrier(MPI_COMM_WORLD);
