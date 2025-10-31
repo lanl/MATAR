@@ -276,7 +276,7 @@ void build_3d_box(
         Kokkos::fence();
 
 
-        const int num_cell_scalar_vars = 2;
+        const int num_cell_scalar_vars = 3;
         const int num_cell_vec_vars    = 0;
         const int num_cell_tensor_vars = 0;
 
@@ -286,7 +286,7 @@ void build_3d_box(
 
         // Scalar values associated with a cell
         const char cell_scalar_var_names[num_cell_scalar_vars][30] = {
-            "rank_id", "elems_in_elem_owned"
+            "rank_id", "elems_in_elem_owned", "global_elem_id"
         };
         
         // const char cell_vec_var_names[num_cell_vec_vars][15] = {
@@ -315,11 +315,11 @@ void build_3d_box(
 
 
         // export material centeric data to the elements
-        elem_fields(0, 0) = rank;
 
         for (size_t elem_gid = 0; elem_gid < mesh.num_elems; elem_gid++) {
             elem_fields(elem_gid, 0) = rank;
             elem_fields(elem_gid, 1) = (double)mesh.num_elems_in_elem(elem_gid);
+            elem_fields(elem_gid, 2) = mesh.local_to_global_elem_mapping.host(elem_gid);
         }
 
 

@@ -16,55 +16,6 @@
 #include "scotch.h"
 #include "ptscotch.h"
 
-// Timer class for timing the execution of the matrix multiplication
-class Timer {
-    private:
-        std::chrono::high_resolution_clock::time_point start_time;
-        std::chrono::high_resolution_clock::time_point end_time;
-        bool is_running;
-    
-    public:
-        Timer() : is_running(false) {}
-        
-        void start() {
-            start_time = std::chrono::high_resolution_clock::now();
-            is_running = true;
-        }
-        
-        double stop() {
-            if (!is_running) {
-                std::cerr << "Timer was not running!" << std::endl;
-                return 0.0;
-            }
-            end_time = std::chrono::high_resolution_clock::now();
-            is_running = false;
-            
-            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
-            return duration.count() / 1000.0; // Convert to milliseconds
-        }
-};
-
-void print_rank_mesh_info(Mesh_t& mesh, int rank) {
-
-    std::cout<<std::endl;
-    std::cout<<"Rank "<<rank<<" printing mesh info"<<std::endl;
-    std::cout<<"Mesh has "<<mesh.num_elems<<" elements"<<std::endl;
-    std::cout<<"Mesh has "<<mesh.num_nodes<<" nodes"<<std::endl;
-
-    for (int i = 0; i < mesh.num_elems; i++) {
-        std::cout<<"Element "<<i<<" has nodes global id: "<<mesh.local_to_global_elem_mapping.host(i)<<" and local nodes:";
-        for (int j = 0; j < mesh.num_nodes_in_elem; j++) {
-            std::cout<<mesh.nodes_in_elem.host(i, j)<<" ";
-        }
-        std::cout<<std::endl;
-        std::cout<<"Which have global indices of : ";
-        for (int k = 0; k < mesh.num_nodes_in_elem; k++) {
-            std::cout<<mesh.local_to_global_node_mapping.host(mesh.nodes_in_elem.host(i, k))<<" ";
-        }
-        std::cout<<std::endl;
-    }
-    std::cout<<std::endl;
-}
 
 void calc_elements_per_rank(std::vector<int>& elems_per_rank, int num_elems, int world_size){
     // Compute elements to send to each rank; handle remainders for non-even distribution
@@ -89,12 +40,29 @@ void print_mesh_info(Mesh_t& mesh){
     std::cout<<std::endl;
 }
 
+void print_rank_mesh_info(Mesh_t& mesh, int rank) {
+
+    std::cout<<std::endl;
+    std::cout<<"Rank "<<rank<<" printing mesh info"<<std::endl;
+    std::cout<<"Mesh has "<<mesh.num_elems<<" elements"<<std::endl;
+    std::cout<<"Mesh has "<<mesh.num_nodes<<" nodes"<<std::endl;
+
+    for (int i = 0; i < mesh.num_elems; i++) {
+        std::cout<<"Element "<<i<<" has nodes global id: "<<mesh.local_to_global_elem_mapping.host(i)<<" and local nodes:";
+        for (int j = 0; j < mesh.num_nodes_in_elem; j++) {
+            std::cout<<mesh.nodes_in_elem.host(i, j)<<" ";
+        }
+        std::cout<<std::endl;
+        std::cout<<"Which have global indices of : ";
+        for (int k = 0; k < mesh.num_nodes_in_elem; k++) {
+            std::cout<<mesh.local_to_global_node_mapping.host(mesh.nodes_in_elem.host(i, k))<<" ";
+        }
+        std::cout<<std::endl;
+    }
+    std::cout<<std::endl;
+}
 
 int main(int argc, char** argv) {
-
-    // Create and start timer
-    Timer timer;
-    timer.start();
 
     bool print_info = false;
     bool print_vtk = false;
@@ -110,10 +78,13 @@ int main(int argc, char** argv) {
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
 
+    double t_main_start = MPI_Wtime();
+
+
     // Initial mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {2, 2, 2};
+    int num_elems_dim[3] = {4, 4, 1};
 
     Mesh_t initial_mesh;
     GaussPoint_t initial_GaussPoints;
@@ -128,6 +99,9 @@ int main(int argc, char** argv) {
     // Mesh partitioned by pt-scotch
     Mesh_t final_mesh; 
     node_t final_node;
+
+    Mesh_t mesh_with_ghosts;
+    node_t node_with_ghosts;
 
     int num_elements_on_rank = 0;
     int num_nodes_on_rank = 0;
@@ -948,7 +922,7 @@ int main(int argc, char** argv) {
         size_t num_nbrs = num_elems_in_elem_per_rank[idx];
 
         // Append each neighbor (by its GLOBAL elem GID) to edgeloctab
-        for (size_t j = 0; j < num_nbrs; ++j) {
+        for (size_t j = 0; j < num_nbrs; j++) {
             size_t neighbor_gid = elems_in_elem_on_rank[elems_in_elem_offset + j]; // This is a global element ID!
             edgeloctab.push_back(static_cast<SCOTCH_Num>(neighbor_gid));
             ++offset; // Increment running edge count
@@ -1036,15 +1010,84 @@ int main(int argc, char** argv) {
      * Step 6: Partition (repartition) the mesh using PT-Scotch
      * - Each vertex (mesh element) will be assigned a part (mesh chunk).
      * - Arch is initialized for a complete graph of world_size parts (one per rank).
-     * - Loki
      **************************************************************/
+    // SCOTCH_Arch controls the "architecture" for partitioning: the topology
+    // (number and connectivity of parts) to which the graph will be mapped.
+    // The archdat variable encodes this. Below are common options:
+    //
+    // - SCOTCH_archCmplt(&archdat, nbparts)
+    //     * Creates a "complete graph" architecture with nbparts nodes (fully connected).
+    //       Every part is equally distant from every other part.
+    //       This is typically used when minimizing only *balance* and *edge cut*,
+    //       not considering any underlying machine topology.
+    //
+    // - SCOTCH_archHcub(&archdat, dimension)
+    //     * Hypercube architecture (rare in modern use).
+    //       Sets up a hypercube of given dimension.
+    //
+    // - SCOTCH_archTleaf / SCOTCH_archTleafX
+    //     * Tree architectures, for hierarchically structured architectures.
+    //
+    // - SCOTCH_archMesh2 / SCOTCH_archMesh3
+    //     * 2D or 3D mesh topology architectures (useful for grid/matrix machines).
+    //
+    // - SCOTCH_archBuild
+    //     * General: builds any architecture from a descriptor string.
+    //
+    // For distributed mesh partitioning to MPI ranks (where all ranks are equal),
+    // the most common and appropriate is "complete graph" (Cmplt): each part (rank)
+    // is equally reachable from any other (no communication topology bias).
     SCOTCH_Arch archdat;        // PT-Scotch architecture structure: describes desired partition topology
     SCOTCH_archInit(&archdat);
-    SCOTCH_archCmplt(&archdat, static_cast<SCOTCH_Num>(world_size)); // Partition into world_size complete nodes
+    // Partition into 'world_size' equally connected parts (each MPI rank is a "node")
+    // Other topology options could be substituted above according to your needs (see docs).
+    SCOTCH_archCmplt(&archdat, static_cast<SCOTCH_Num>(world_size)); 
 
+
+
+    
+    // ===================== PT-Scotch Strategy Selection and Documentation ======================
+    // The PT-Scotch "strategy" (stratdat here) controls the algorithms and heuristics used for partitioning.
+    // You can specify a string or build a strategy using functions that adjust speed, quality, and recursion.
+    //
+    // Common strategy flags (see "scotch.h", "ptscotch.h", and PT-Scotch documentation):
+    //
+    // - SCOTCH_STRATDEFAULT:     Use the default (fast, reasonable quality) partitioning strategy.
+    //                            Useful for quick, generic partitions where quality is not critical.
+    //
+    // - SCOTCH_STRATSPEED:       Aggressively maximizes speed (at the cost of cut quality).
+    //                            For large runs or test runs where speed is more important than minimizing edgecut.
+    //
+    // - SCOTCH_STRATQUALITY:     Prioritizes partition *quality* (minimizing edge cuts, maximizing load balance).
+    //                            Slower than the default. Use when high-quality partitioning is desired.
+    //
+    // - SCOTCH_STRATBALANCE:     Tradeoff between speed and quality for balanced workload across partitions.
+    //                            Use if load balance is more critical than cut size.
+    //
+    // Additional Options:
+    // - Strategy can also be specified as a string (see Scotch manual, e.g., "b{sep=m{...} ...}").
+    // - Recursion count parameter (here, set to 0) controls strategy recursion depth (0 = automatic).
+    // - Imbalance ratio (here, 0.01) allows minor imbalance in part weight for better cut quality.
+    //
+    // Example usage:
+    //   SCOTCH_stratDgraphMapBuild(&strat, SCOTCH_STRATQUALITY, nparts, 0, 0.01);
+    //      ^ quality-focused, nparts=number of parts/ranks
+    //   SCOTCH_stratDgraphMapBuild(&strat, SCOTCH_STRATSPEED, nparts, 0, 0.05);
+    //      ^ speed-focused, allow 5% imbalance
+    //
+    // Reference:
+    // - https://gitlab.inria.fr/scotch/scotch/-/blob/master/doc/libptscotch.pdf
+    // - SCOTCH_stratDgraphMapBuild() and related "strategy" documentation.
+    //
+    // --------------- Set up the desired partitioning strategy here: ---------------
     SCOTCH_Strat stratdat;      // PT-Scotch strategy object: holds partitioning options/settings
     SCOTCH_stratInit(&stratdat);
-    SCOTCH_stratDgraphMapBuild(&stratdat, SCOTCH_STRATQUALITY, world_size, 0, 0.01); // zero is recursion count, 0=automatic
+
+    // Select partitioning strategy for this run:
+    // Use SCOTCH_STRATQUALITY for best cut quality.
+    // To change: replace with SCOTCH_STRATDEFAULT, SCOTCH_STRATSPEED, or SCOTCH_STRATBALANCE as discussed above.
+    // Arguments: (strategy object, strategy flag, #parts, recursion (0=auto), imbalance ratio)
+    SCOTCH_stratDgraphMapBuild(&stratdat, SCOTCH_STRATQUALITY, world_size, 0, 0.01);
 
     // partloctab: output array mapping each local element (vertex) to a *target partition number*
     // After partitioning, partloctab[i] gives the part-assignment (in [0,world_size-1]) for local element i.
@@ -1070,7 +1113,7 @@ int main(int argc, char** argv) {
      * - Each local element's local index lid and global ID (gid) are listed with the
      *   part to which PT-Scotch has assigned them.
      ***************************************************************************/
-    print_info = true;
+    print_info = false;
     for(int rank_id = 0; rank_id < world_size; rank_id++) {
         if(rank_id == rank && print_info) {
             for (size_t lid = 0; lid < mesh.num_elems; ++lid) {
@@ -1159,7 +1202,7 @@ int main(int argc, char** argv) {
             for (int i = 0; i < mesh.num_elems; ++i)
                 if (mesh.local_to_global_elem_mapping.host(i) == gid) { lid = i; break; }
 
-            for (int j = 0; j < nodes_per_elem; ++j) {
+            for (int j = 0; j < nodes_per_elem; j++) {
                 int node_lid = mesh.nodes_in_elem.host(lid, j);
                 int node_gid = mesh.local_to_global_node_mapping.host(node_lid);
                 conn_sendbuf.push_back(node_gid);
@@ -1216,7 +1259,7 @@ int main(int argc, char** argv) {
             for (int i = 0; i < mesh.num_elems; ++i)
                 if (mesh.local_to_global_elem_mapping.host(i) == gid) { lid = i; break; }
 
-            for (int j = 0; j < nodes_per_elem; ++j) {
+            for (int j = 0; j < nodes_per_elem; j++) {
                 int node_lid = mesh.nodes_in_elem.host(lid, j);
                 int node_gid = mesh.local_to_global_node_mapping.host(node_lid);
 
@@ -1308,7 +1351,7 @@ int main(int argc, char** argv) {
     std::map<int, std::array<double, 3>> node_gid_to_coords;
     int coord_idx = 0;
     for (int e = 0; e < num_new_elems; ++e) {
-        for (int j = 0; j < nodes_per_elem; ++j) {
+        for (int j = 0; j < nodes_per_elem; j++) {
             int node_gid = conn_recvbuf[e * nodes_per_elem + j];
             if (node_gid_to_coords.find(node_gid) == node_gid_to_coords.end()) {
                 node_gid_to_coords[node_gid] = {
@@ -1346,28 +1389,20 @@ int main(int argc, char** argv) {
 
     double t_ghost_start = MPI_Wtime();
     
-    // Update host arrays for ghost detection
-    final_mesh.local_to_global_elem_mapping.update_host();
-    final_mesh.local_to_global_node_mapping.update_host();
-    final_mesh.nodes_in_elem.update_host();
-    Kokkos::fence();
-    
-    // Build a set of locally-owned element global IDs for fast lookup
-    std::set<size_t> local_elem_gids;
-    for (int i = 0; i < num_new_elems; ++i) {
-        local_elem_gids.insert(final_mesh.local_to_global_elem_mapping.host(i));
-    }
-    
-    // Exchange element GIDs with all ranks to know who owns what
-    // Collect all locally-owned element global IDs to send to other ranks
-    std::vector<size_t> local_elem_gids_vec(local_elem_gids.begin(), local_elem_gids.end());
-    
     // First, gather the number of elements each rank owns
     std::vector<int> elem_counts(world_size);
-    int local_elem_count = static_cast<int>(local_elem_gids_vec.size());
-    
-    MPI_Allgather(&local_elem_count, 1, MPI_INT, elem_counts.data(), 1, MPI_INT, MPI_COMM_WORLD);
-    
+
+    // int MPI_Allgather(
+    //     const void* sendbuf,      // Data to send from this process
+    //     int sendcount,            // Number of elements to send
+    //     MPI_Datatype sendtype,    // Type of send data
+    //     void* recvbuf,            // Buffer to receive all data
+    //     int recvcount,            // Number of elements to receive from each process
+    //     MPI_Datatype recvtype,    // Type of receive data
+    //     MPI_Comm comm             // Communicator
+    // );
+    MPI_Allgather(&final_mesh.num_elems, 1, MPI_INT, elem_counts.data(), 1, MPI_INT, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
     // Compute displacements
     std::vector<int> elem_displs(world_size);
     int total_elems = 0;
@@ -1378,10 +1413,21 @@ int main(int argc, char** argv) {
     
     // Gather all element GIDs from all ranks
     std::vector<size_t> all_elem_gids(total_elems);
-    MPI_Allgatherv(local_elem_gids_vec.data(), local_elem_count, MPI_UNSIGNED_LONG_LONG,
+
+    // int MPI_Allgatherv(
+    //     const void* sendbuf,      // Data to send from this process
+    //     int sendcount,            // Number of elements THIS process sends
+    //     MPI_Datatype sendtype,    // Type of send data
+    //     void* recvbuf,            // Buffer to receive all data
+    //     const int* recvcounts,    // Array: number of elements from each process
+    //     const int* displs,        // Array: displacement for each process's data
+    //     MPI_Datatype recvtype,    // Type of receive data
+    //     MPI_Comm comm             // Communicator
+    // );
+    MPI_Allgatherv(final_mesh.local_to_global_elem_mapping.host_pointer(), final_mesh.num_elems, MPI_UNSIGNED_LONG_LONG,
                    all_elem_gids.data(), elem_counts.data(), elem_displs.data(), 
                    MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
-    
+    MPI_Barrier(MPI_COMM_WORLD);
     // Build a map: element GID -> owning rank
     std::map<size_t, int> elem_gid_to_rank;
     for (int r = 0; r < world_size; ++r) {
@@ -1400,7 +1446,7 @@ int main(int argc, char** argv) {
     // First, collect all nodes that belong to our locally-owned elements
     std::set<size_t> local_elem_nodes;
     for (int lid = 0; lid < num_new_elems; ++lid) {
-        for (int j = 0; j < nodes_per_elem; ++j) {
+        for (int j = 0; j < nodes_per_elem; j++) {
             size_t node_lid = final_mesh.nodes_in_elem.host(lid, j);
             size_t node_gid = final_mesh.local_to_global_node_mapping.host(node_lid);
             local_elem_nodes.insert(node_gid);
@@ -1414,7 +1460,7 @@ int main(int argc, char** argv) {
     
     for (int lid = 0; lid < num_new_elems; ++lid) {
         size_t elem_gid = final_mesh.local_to_global_elem_mapping.host(lid);
-        for (int j = 0; j < nodes_per_elem; ++j) {
+        for (int j = 0; j < nodes_per_elem; j++) {
             size_t node_lid = final_mesh.nodes_in_elem.host(lid, j);
             size_t node_gid = final_mesh.local_to_global_node_mapping.host(node_lid);
             elem_node_conn.push_back(elem_gid);
@@ -1427,7 +1473,7 @@ int main(int argc, char** argv) {
     // First, gather the sizes from each rank
     std::vector<int> conn_sizes(world_size);
     MPI_Allgather(&local_conn_size, 1, MPI_INT, conn_sizes.data(), 1, MPI_INT, MPI_COMM_WORLD);
-    
+    MPI_Barrier(MPI_COMM_WORLD);
     // Compute displacements
     std::vector<int> conn_displs(world_size);
     int total_conn = 0;
@@ -1441,6 +1487,12 @@ int main(int argc, char** argv) {
     MPI_Allgatherv(elem_node_conn.data(), local_conn_size, MPI_UNSIGNED_LONG_LONG,
                    all_conn.data(), conn_sizes.data(), conn_displs.data(),
                    MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
+    // create a set for local_elem_gids
+    std::set<size_t> local_elem_gids;
+    for (int i = 0; i < num_new_elems; ++i) {
+        local_elem_gids.insert(final_mesh.local_to_global_elem_mapping.host(i));
+    }
     
     // Build a map: node GID -> set of element GIDs that contain it (from other ranks)
     std::map<size_t, std::set<size_t>> node_to_ext_elem;
@@ -1506,32 +1558,445 @@ int main(int argc, char** argv) {
     }
     
     // Print ghost element info if requested
-    print_info = true;
+    print_info = false;
     for(int i = 0; i < world_size; i++) {
+        MPI_Barrier(MPI_COMM_WORLD);
         if(rank == i && print_info) {
             std::cout << "[rank " << rank << "] owns " << num_new_elems 
                   << " elements and has " << final_mesh.num_ghost_elems << " ghost elements" << std::endl;
             std::cout << "[rank " << rank << "] owned element global IDs: ";
-            for (int j = 0; j < num_new_elems; ++j) {
+            for (int j = 0; j < final_mesh.num_elems; j++) {
                 std::cout << final_mesh.local_to_global_elem_mapping(j) << " ";
             }
-            std::cout << std::endl;
-            
-            
-            
-            std::cout << "[rank " << rank << "] ghost element GIDs: ";
-            for (size_t gid : ghost_elem_gids) {
+
+            // Print global IDs of ghost elements
+            std::cout << std::endl << "[rank " << rank << "] ghost element global IDs: ";
+            for (const auto& gid : ghost_elem_gids) {
                 std::cout << gid << " ";
             }
             std::cout << std::endl;
         }
+        
         MPI_Barrier(MPI_COMM_WORLD);
     }
 
+
+
+    // Build the connectivity that includes ghost elements
+    // Create an extended mesh with owned elements first, then ghost elements appended
     
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Starting to build extended mesh with ghost elements" << std::endl;
+    
+    // Step 1: Extract ghost element-node connectivity from all_conn
+    // Build a map: ghost_elem_gid -> vector of node_gids (ordered as in all_conn)
+    std::map<size_t, std::vector<size_t>> ghost_elem_to_nodes;
+    for (const size_t& ghost_gid : ghost_elem_gids) {
+        ghost_elem_to_nodes[ghost_gid].reserve(nodes_per_elem);
+    }
+    
+    // Extract nodes for each ghost element from all_conn
+    // The all_conn array has pairs (elem_gid, node_gid) for each rank's elements
+    for (int r = 0; r < world_size; ++r) {
+        if (r == rank) continue;  // Skip our own data (we already have owned element connectivity)
+        int num_pairs = conn_sizes[r] / 2;
+        
+        // Process pairs in order - each element's nodes are contiguous
+        for (int i = 0; i < num_pairs; ++i) {
+            int offset = conn_displs[r] + i * 2;
+            size_t elem_gid = all_conn[offset];
+            size_t node_gid = all_conn[offset + 1];
+            
+            // If this is one of our ghost elements, record its node (in order)
+            auto it = ghost_elem_to_nodes.find(elem_gid);
+            if (it != ghost_elem_to_nodes.end()) {
+                it->second.push_back(node_gid);
+            }
+        }
+    }
+    
+    // Verify each ghost element has the correct number of nodes
+    for (auto& pair : ghost_elem_to_nodes) {
+        if (pair.second.size() != static_cast<size_t>(nodes_per_elem)) {
+            std::cerr << "[rank " << rank << "] ERROR: Ghost element " << pair.first 
+                      << " has " << pair.second.size() << " nodes, expected " << nodes_per_elem << std::endl;
+        }
+    }
+    
+    // Step 2: Build extended node list (owned nodes first, then ghost-only nodes)
+    // Start with owned nodes
+    std::map<size_t, int> node_gid_to_extended_lid;
+    int extended_node_lid = 0;
+    
+    // Add all owned nodes
+    for (int i = 0; i < final_mesh.num_nodes; ++i) {
+        size_t node_gid = final_mesh.local_to_global_node_mapping.host(i);
+        node_gid_to_extended_lid[node_gid] = extended_node_lid++;
+    }
+    
+    // Add ghost-only nodes (nodes that belong to ghost elements but not to owned elements)
+    std::set<size_t> ghost_only_nodes;
+    for (const auto& pair : ghost_elem_to_nodes) {
+        for (size_t node_gid : pair.second) {
+            // Check if we already have this node
+            if (node_gid_to_extended_lid.find(node_gid) == node_gid_to_extended_lid.end()) {
+                ghost_only_nodes.insert(node_gid);
+            }
+        }
+    }
+    
+    // Assign extended local IDs to ghost-only nodes
+    for (size_t node_gid : ghost_only_nodes) {
+        node_gid_to_extended_lid[node_gid] = extended_node_lid++;
+    }
+    
+    int total_extended_nodes = extended_node_lid;
+    
+    // Step 3: Prepare requests for ghost node coordinates from owning ranks (if needed later)
+    // Build request list: for each ghost node, find an owning rank via any ghost element that contains it
+    std::map<int, std::vector<size_t>> rank_to_ghost_node_requests;
+    for (size_t node_gid : ghost_only_nodes) {
+        // Find which rank owns an element containing this node
+        // Look through ghost elements
+        for (const auto& pair : ghost_elem_to_nodes) {
+            size_t ghost_elem_gid = pair.first;
+            const std::vector<size_t>& nodes = pair.second;
+            bool found = false;
+            for (size_t ngid : nodes) {
+                if (ngid == node_gid) {
+                    found = true;
+                    break;
+                }
+            }
+            if (found) {
+                auto owner_it = elem_gid_to_rank.find(ghost_elem_gid);
+                if (owner_it != elem_gid_to_rank.end()) {
+                    rank_to_ghost_node_requests[owner_it->second].push_back(node_gid);
+                    break;
+                }
+            }
+        }
+    }
+    
+    // Step 4: Build extended element list and node connectivity
+    // Owned elements: 0 to num_new_elems-1 (already have these)
+    // Ghost elements: num_new_elems to num_new_elems + num_ghost_elems - 1
+    
+    // Create extended element-node connectivity array
+    int total_extended_elems = final_mesh.num_elems + final_mesh.num_ghost_elems;
+    std::vector<std::vector<int>> extended_nodes_in_elem(total_extended_elems);
+    
+    // Copy owned element connectivity (convert to extended node LIDs)
+    for (int lid = 0; lid < final_mesh.num_elems; ++lid) {
+        extended_nodes_in_elem[lid].reserve(nodes_per_elem);
+        for (int j = 0; j < nodes_per_elem; j++) {
+            size_t node_lid = final_mesh.nodes_in_elem.host(lid, j);
+            size_t node_gid = final_mesh.local_to_global_node_mapping.host(node_lid);
+            int ext_lid = node_gid_to_extended_lid[node_gid];
+            extended_nodes_in_elem[lid].push_back(ext_lid);
+        }
+    }
+    
+    // Add ghost element connectivity (map ghost node GIDs to extended node LIDs)
+    int ghost_elem_ext_lid = final_mesh.num_elems;
+    std::vector<size_t> ghost_elem_gids_ordered(ghost_elem_gids.begin(), ghost_elem_gids.end());
+    std::sort(ghost_elem_gids_ordered.begin(), ghost_elem_gids_ordered.end());
+    
+    for (size_t ghost_gid : ghost_elem_gids_ordered) {
+        auto it = ghost_elem_to_nodes.find(ghost_gid);
+        if (it == ghost_elem_to_nodes.end()) continue;
+        
+        extended_nodes_in_elem[ghost_elem_ext_lid].reserve(nodes_per_elem);
+        for (size_t node_gid : it->second) {
+            int ext_lid = node_gid_to_extended_lid[node_gid];
+            extended_nodes_in_elem[ghost_elem_ext_lid].push_back(ext_lid);
+        }
+        ghost_elem_ext_lid++;
+    }
+    
+    MPI_Barrier(MPI_COMM_WORLD);
+    // Sequential rank-wise printing of extended mesh structure info
+    for (int r = 0; r < world_size; ++r) {
+        if (rank == r) {
+            std::cout << "[rank " << rank << "] Finished building extended mesh structure" << std::endl;
+            std::cout << "[rank " << rank << "]   - Owned elements: " << final_mesh.num_elems << std::endl;
+            std::cout << "[rank " << rank << "]   - Ghost elements: " << final_mesh.num_ghost_elems << std::endl;
+            std::cout << "[rank " << rank << "]   - Total extended elements: " << total_extended_elems << std::endl;
+            std::cout << "[rank " << rank << "]   - Owned nodes: " << final_mesh.num_nodes << std::endl;
+            std::cout << "[rank " << rank << "]   - Ghost-only nodes: " << ghost_only_nodes.size() << std::endl;
+            std::cout << "[rank " << rank << "]   - Total extended nodes: " << total_extended_nodes << std::endl;
+            std::cout << std::flush;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+    
+    // The extended_nodes_in_elem vector now contains the connectivity for both owned and ghost elements
+    // Each element's nodes are stored using extended local node IDs (0-based, contiguous)
+    
+    // Build reverse maps: extended_lid -> gid for nodes and elements
+    std::vector<size_t> extended_lid_to_node_gid(total_extended_nodes);
+    for (const auto& pair : node_gid_to_extended_lid) {
+        extended_lid_to_node_gid[pair.second] = pair.first;
+    }
+    
+    // Build extended element GID list: owned first, then ghost
+    std::vector<size_t> extended_lid_to_elem_gid(total_extended_elems);
+    // Owned elements
+    for (int i = 0; i < final_mesh.num_elems; ++i) {
+        extended_lid_to_elem_gid[i] = final_mesh.local_to_global_elem_mapping.host(i);
+    }
+    // Ghost elements (in sorted order)
+    for (size_t idx = 0; idx < ghost_elem_gids_ordered.size(); ++idx) {
+        extended_lid_to_elem_gid[final_mesh.num_elems + idx] = ghost_elem_gids_ordered[idx];
+    }
+    
+    mesh_with_ghosts.initialize_nodes(total_extended_nodes);
+    mesh_with_ghosts.initialize_elems(total_extended_elems, 3);
+    mesh_with_ghosts.local_to_global_node_mapping = DCArrayKokkos<size_t>(total_extended_nodes);
+    mesh_with_ghosts.local_to_global_elem_mapping = DCArrayKokkos<size_t>(total_extended_elems);
+    for (int i = 0; i < total_extended_nodes; i++) {
+        mesh_with_ghosts.local_to_global_node_mapping.host(i) = extended_lid_to_node_gid[i];
+    }
+    for (int i = 0; i < total_extended_elems; i++) {
+        mesh_with_ghosts.local_to_global_elem_mapping.host(i) = extended_lid_to_elem_gid[i];
+    }
+    mesh_with_ghosts.local_to_global_node_mapping.update_device();
+    mesh_with_ghosts.local_to_global_elem_mapping.update_device();
+
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Starting reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    // rebuild the local element-node connectivity using the local node ids
+    // extended_nodes_in_elem already contains extended local node IDs, so we can use them directly
+    for(int i = 0; i < total_extended_elems; i++) {
+        for(int j = 0; j < nodes_per_elem; j++) {
+            mesh_with_ghosts.nodes_in_elem.host(i, j) = extended_nodes_in_elem[i][j];
+        }
+    }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<" Finished reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
+
+    mesh_with_ghosts.nodes_in_elem.update_device();
+
+    mesh_with_ghosts.build_connectivity();
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Finished building extended mesh structure" << std::endl;
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    node_with_ghosts.initialize(total_extended_nodes, 3, {node_state::coords});
+    
+    // The goal here is to populate node_with_ghosts.coords using globally gathered ghost node coordinates,
+    // since final_node does not contain ghost node coordinates.
+    //
+    // Each rank will:
+    //  1. Gather coordinates of its owned nodes (from final_node).
+    //  2. Use MPI to gather all coordinates for all required (owned + ghost) global node IDs
+    //     into a structure mapping global ID -> coordinate.
+    //  3. Use this map to fill node_with_ghosts.coords.
+
+    // 1. Build list of all global node IDs needed on this rank (owned + ghosts)
+    std::vector<size_t> all_needed_node_gids(total_extended_nodes);
+    for (int i = 0; i < total_extended_nodes; ++i) {
+        all_needed_node_gids[i] = mesh_with_ghosts.local_to_global_node_mapping.host(i);
+    }
+
+    // 2. Build owned node GIDs and their coordinates
+    std::vector<size_t> owned_gids(final_mesh.num_nodes);
+    for (int i = 0; i < owned_gids.size(); ++i)
+        owned_gids[i] = final_mesh.local_to_global_node_mapping.host(i);
+
+     // 3. Gather all GIDs in the world that are needed anywhere (owned or ghosted, by any rank)
+     //    so we can distribute the needed coordinate data.
+     // The easiest is to Allgather everyone's "owned_gids" and coords
+ 
+     int local_owned_count = static_cast<int>(owned_gids.size());
+     std::vector<int> owned_counts(world_size, 0);
+     if (local_owned_count < 0) local_owned_count = 0; // Clean up possibility of -1
+
+    // a) Gather counts
+    owned_counts.resize(world_size, 0);
+    MPI_Allgather(&local_owned_count, 1, MPI_INT, owned_counts.data(), 1, MPI_INT, MPI_COMM_WORLD);
+
+    // b) Displacements and total
+    std::vector<int> owned_displs(world_size,0);
+    int total_owned = 0;
+    for (int r=0; r<world_size; ++r) {
+        owned_displs[r] = total_owned;
+        total_owned += owned_counts[r];
+    }
+
+    // c) Global GIDs (size: total_owned)
+    std::vector<size_t> all_owned_gids(total_owned);
+    MPI_Allgatherv(owned_gids.data(), local_owned_count, MPI_UNSIGNED_LONG_LONG,
+                   all_owned_gids.data(), owned_counts.data(), owned_displs.data(),
+                   MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
+
+    // d) Global coords (size: total_owned x 3)
+    std::vector<double> owned_coords_send(3*local_owned_count, 0.0);
+    for (int i=0; i<local_owned_count; ++i) {
+        owned_coords_send[3*i+0] = final_node.coords.host(i,0);
+        owned_coords_send[3*i+1] = final_node.coords.host(i,1);
+        owned_coords_send[3*i+2] = final_node.coords.host(i,2);
+    }
+    std::vector<double> all_owned_coords(3 * total_owned, 0.0);
+
+    // Create coordinate-specific counts and displacements (in units of doubles, not nodes)
+    std::vector<int> coord_counts(world_size);
+    std::vector<int> coord_displs(world_size);
+    for (int r=0; r<world_size; ++r) {
+        coord_counts[r] = 3 * owned_counts[r];  // Each node has 3 doubles
+        coord_displs[r] = 3 * owned_displs[r];  // Displacement in doubles
+    }
+
+    MPI_Allgatherv(owned_coords_send.data(), 3*local_owned_count, MPI_DOUBLE,
+                   all_owned_coords.data(), coord_counts.data(), coord_displs.data(),
+                   MPI_DOUBLE, MPI_COMM_WORLD);
+
+    // e) Build map: gid -> coord[3]
+    std::unordered_map<size_t, std::array<double,3>> gid_to_coord;
+    for (int i=0; i<total_owned; ++i) {
+        std::array<double,3> xyz = {
+            all_owned_coords[3*i+0],
+            all_owned_coords[3*i+1],
+            all_owned_coords[3*i+2]
+        };
+         gid_to_coord[all_owned_gids[i]] = xyz;
+    }
+
+    // 4. Finally, fill node_with_ghosts.coords with correct coordinates.
+    for (int i = 0; i < total_extended_nodes; ++i) {
+        size_t gid = mesh_with_ghosts.local_to_global_node_mapping.host(i);
+        auto it = gid_to_coord.find(gid);
+        if (it != gid_to_coord.end()) {
+            node_with_ghosts.coords.host(i,0) = it->second[0];
+            node_with_ghosts.coords.host(i,1) = it->second[1];
+            node_with_ghosts.coords.host(i,2) = it->second[2];
+        } else {
+            // Could happen if there's a bug: fill with zeros for safety
+            node_with_ghosts.coords.host(i,0) = 0.0;
+            node_with_ghosts.coords.host(i,1) = 0.0;
+            node_with_ghosts.coords.host(i,2) = 0.0;
+        }
+    }
+    node_with_ghosts.coords.update_device();
+
+
+
+
+    // --------------------------------------------------------------------------------------
+    // Build reverse map via global IDs: for each local element gid, find ranks that ghost it.
+    // Steps:
+    // 1) Each rank contributes its ghost element GIDs.
+    // 2) Allgatherv ghost GIDs to build gid -> [ranks that ghost it].
+    // 3) For each locally-owned element gid, lookup ranks that ghost it and record targets.
+    // --------------------------------------------------------------------------------------
+    std::vector<std::vector<std::pair<int, size_t>>> boundary_elem_targets(final_mesh.num_elems);
+
+    // Prepare local ghost list as vector
+    std::vector<size_t> ghost_gids_vec;
+    ghost_gids_vec.reserve(ghost_elem_gids.size());
+    for (const auto &g : ghost_elem_gids) ghost_gids_vec.push_back(g);
+
+    // Exchange counts
+    std::vector<int> ghost_counts(world_size, 0);
+    int local_ghost_count = static_cast<int>(ghost_gids_vec.size());
+    MPI_Allgather(&local_ghost_count, 1, MPI_INT, ghost_counts.data(), 1, MPI_INT, MPI_COMM_WORLD);
+
+    // Displacements and recv buffer
+    std::vector<int> ghost_displs(world_size, 0);
+    int total_ghosts = 0;
+    for (int r = 0; r < world_size; ++r) {
+        ghost_displs[r] = total_ghosts;
+        total_ghosts += ghost_counts[r];
+    }
+    std::vector<size_t> all_ghost_gids(total_ghosts);
+
+    // Gather ghost gids
+    MPI_Allgatherv(ghost_gids_vec.data(), local_ghost_count, MPI_UNSIGNED_LONG_LONG,
+                   all_ghost_gids.data(), ghost_counts.data(), ghost_displs.data(),
+                   MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Finished gathering ghost element GIDs" << std::endl;
+    
+    
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Starting to build the reverse map for communication" << std::endl;
+    // Build map gid -> ranks that ghost it
+    std::unordered_map<size_t, std::vector<int>> gid_to_ghosting_ranks;
+    gid_to_ghosting_ranks.reserve(static_cast<size_t>(total_ghosts));
+    for (int r = 0; r < world_size; ++r) {
+        int cnt = ghost_counts[r];
+        int off = ghost_displs[r];
+        for (int i = 0; i < cnt; ++i) {
+            size_t g = all_ghost_gids[off + i];
+            gid_to_ghosting_ranks[g].push_back(r);
+        }
+    }
+
+    // For each local element, list destinations: ranks that ghost our gid
+    for (int elem_lid = 0; elem_lid < final_mesh.num_elems; elem_lid++) {
+        size_t local_elem_gid = final_mesh.local_to_global_elem_mapping.host(elem_lid);
+        auto it = gid_to_ghosting_ranks.find(local_elem_gid);
+        if (it == gid_to_ghosting_ranks.end()) continue;
+        const std::vector<int> &dest_ranks = it->second;
+        for (int rr : dest_ranks) {
+            if (rr == rank) continue;
+            boundary_elem_targets[elem_lid].push_back(std::make_pair(rr, local_elem_gid));
+        }
+    }
+
+    std::cout.flush();
+    MPI_Barrier(MPI_COMM_WORLD);
+    // Optional: print a compact summary of reverse map for verification (limited output)
+    for(int i = 0; i < world_size; i++) {
+        if (rank == i && print_info) {
+            std::cout << std::endl;
+            for (int elem_lid = 0; elem_lid < final_mesh.num_elems; elem_lid++) {
+
+                size_t local_elem_gid = final_mesh.local_to_global_elem_mapping.host(elem_lid);
+                if (boundary_elem_targets[elem_lid].empty()) 
+                {
+                    std::cout << "[rank " << rank << "] " << "elem_lid: "<< elem_lid <<" -  elem_gid: " << local_elem_gid << " sends to: no ghost elements" << std::endl;
+                }
+                else
+                {
+                    std::cout << "[rank " << rank << "] " << "elem_lid: "<< elem_lid <<" -  elem_gid: " << local_elem_gid << " sends to: ";
+                    int shown = 0;
+                    for (const auto &pr : boundary_elem_targets[elem_lid]) {
+                        if (shown >= 12) { std::cout << " ..."; break; }
+                        std::cout << "(r" << pr.first << ":gid " << pr.second << ") ";
+                        shown++;
+                    }
+                    std::cout << std::endl;
+                }
+            }
+            std::cout.flush();
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+    print_info = false;
 
     
     MPI_Barrier(MPI_COMM_WORLD);
+
+
+
+// NOTES:
+// We need to create communication maps for nodes, specifically an index list of 
+// -- Owned (nodes unique to this rank)
+// -- Shared (nodes on the boundary of this rank)
+// -- Ghost (nodes on the boundary of this rank that are owned by other ranks)
+
+
+// What we currently have is a communication plan for elements, eg. Each shared element (element on an MPI boundary) knows which rank and associated element global id on that rank it is connected to. 
+
+
 
 
 
@@ -1555,16 +2020,24 @@ int main(int argc, char** argv) {
     MPI_Barrier(MPI_COMM_WORLD);
 
 
-    write_vtk(final_mesh, final_node, rank);
+    // write_vtk(final_mesh, final_node, rank);
+    write_vtk(mesh_with_ghosts, node_with_ghosts, rank);
+
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // Stop timer and get execution time
+    double t_main_end = MPI_Wtime();
+    
+    if(rank == 0) {
+        printf("Total execution time: %.2f seconds\n", t_main_end - t_main_start);
+    }
 
     } // end MATAR scope
     MATAR_FINALIZE();
     MPI_Finalize();
 
-     // Stop timer and get execution time
-    double time_ms = timer.stop();
-     
-    printf("Execution time: %.2f ms\n", time_ms);
+
 
     return 0;
 }
