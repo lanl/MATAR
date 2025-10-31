@@ -116,7 +116,6 @@ inline int PointIndexFromIJK(int i, int j, int k, const int* order)
 /////////////////////////////////////////////////////////////////////////////
 void build_3d_box(
     Mesh_t& mesh,
-    GaussPoint_t& GaussPoints,
     node_t&   node,
     double origin[3],
     double length[3],
@@ -252,26 +251,7 @@ void build_3d_box(
 
         // ---- Update host data ----
 
-        // material point values
-        // State.MaterialPoints.den.update_host();
-        // State.MaterialPoints.pres.update_host();
-        // State.MaterialPoints.stress.update_host();
-        // State.MaterialPoints.sspd.update_host();
-        // State.MaterialPoints.sie.update_host();
-        // State.MaterialPoints.mass.update_host();
-        // State.MaterialPoints.conductivity.update_host();
-        // State.MaterialPoints.temp_grad.update_host();
-        // State.MaterialPoints.eroded.update_host();
-
-
-        // gauss point values
-        // State.GaussPoints.vol.update_host();
-
-        // nodal values
         node.coords.update_host();
-        // State.node.vel.update_host();
-        // State.node.mass.update_host();
-        // State.node.temp.update_host();
 
         Kokkos::fence();
 
