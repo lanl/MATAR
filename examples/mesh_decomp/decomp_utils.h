@@ -15,6 +15,9 @@
 #include "state.h"
 #include "mesh_io.h"
 
+
+#include "communication_plan.h"
+
 // Include Scotch headers
 #include "scotch.h"
 #include "ptscotch.h"
@@ -2013,6 +2016,11 @@ void partition_mesh(
 
 
 
+    // Build communication plans for elements 
+    CommunicationPlan element_comm_plan;
+
+
+    element_comm_plan.initialize(num_send_ranks, num_recv_ranks);
 
 
 
@@ -2120,6 +2128,16 @@ void partition_mesh(
     
     MPI_Barrier(MPI_COMM_WORLD);
     if(rank == 0) std::cout << " Finished building node communication reverse map" << std::endl;
+
+
+
+
+    // Build communication plans for elements and nodes
+    CommunicationPlan element_comm_plan;
+    CommunicationPlan node_comm_plan;
+
+    element_comm_plan.build(intermediate_mesh, world_size, rank, boundary_elem_targets, boundary_elem_local_ids, boundary_to_ghost_ranks);
+    node_comm_plan.build(intermediate_mesh, world_size, rank, boundary_node_targets, boundary_node_local_ids, boundary_to_ghost_ranks);
 
 
 }

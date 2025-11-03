@@ -55,6 +55,8 @@ enum class node_state
 /////////////////////////////////////////////////////////////////////////////
 struct node_t
 {
+
+    // Replace with MPIDCArrayKokkos
     DCArrayKokkos<double> coords;     ///< Nodal coordinates
     DCArrayKokkos<double> coords_n0;  ///< Nodal coordinates at tn=0 of time integration
     

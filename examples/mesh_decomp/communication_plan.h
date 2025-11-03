@@ -9,12 +9,6 @@
  *   node.velocity.comm()  -> automatically syncs ghost nodes
  *   elem.density.comm()   -> automatically syncs ghost elements
  * 
- * Memory layout philosophy:
- * - Only std::vector<POD types> (int, size_t, double)
- * - CSR-style indexing for variable-length per-rank data
- * - No std::map, std::set, std::pair, or nested containers
- * - Pre-allocated MPI buffers to avoid repeated allocations
- * - Separate element and node communication plans
  */
  struct CommunicationPlan {
     
@@ -25,30 +19,26 @@
 
     // --- Ghost Send Plan: Owned elements/nodes -> destination ranks --- (Works for both elements and nodes)
     int num_send_ranks;                            // Number of destination ranks
-    std::vector<int> send_rank_ids;                // [size: num_send_ranks] Destination rank IDs
-    std::vector<int> send_ghost_offsets;            // [size: num_send_ranks+1] CSR offsets into send_ghost_lids
-    std::vector<int> send_ghost_lids;               // [size: total_send_ghosts] Local IDs of owned elements/nodes to send
+    DCArrayKokkos<size_t> send_rank_ids;                // [size: num_send_ranks] Destination rank IDs
+    DCArrayKokkos<size_t> send_ghost_offsets;            // [size: num_send_ranks+1] CSR offsets into send_ghost_lids
+    DCArrayKokkos<size_t> send_ghost_lids;               // [size: total_send_ghosts] Local IDs of owned elements/nodes to send
     std::vector<size_t> send_ghost_gids;            // [size: total_send_ghosts] Global IDs (for debug/validation)
     
     // --- Ghost Receive Plan: Ghost elements/nodes <- source ranks --- (Works for both elements and nodes)
     int num_recv_ranks;                            // Number of source ranks
-    std::vector<int> recv_rank_ids;                // [size: num_recv_ranks] Source rank IDs
-    std::vector<int> recv_ghost_offsets;            // [size: num_recv_ranks+1] CSR offsets into recv_ghost_lids
-    std::vector<int> recv_ghost_lids;               // [size: total_recv_ghosts] Local IDs of ghost elements/nodes (>= num_owned)
+    DCArrayKokkos<size_t> recv_rank_ids;                // [size: num_recv_ranks] Source rank IDs
+    DCArrayKokkos<size_t> recv_ghost_offsets;            // [size: num_recv_ranks+1] CSR offsets into recv_ghost_lids
+    DCArrayKokkos<size_t> recv_ghost_lids;               // [size: total_recv_ghosts] Local IDs of ghost elements/nodes (>= num_owned)
     std::vector<size_t> recv_ghost_gids;            // [size: total_recv_ghosts] Global IDs
 
     
-    // --- MPI Communication Buffers (pre-allocated, reusable) ---
-    std::vector<double> ghost_send_buffer;          // Flat buffer for ghost data
-    std::vector<double> ghost_recv_buffer;          // Flat buffer for ghost data
-    
-    std::vector<MPI_Request> send_requests;        // Request handles for sends
-    std::vector<MPI_Request> recv_requests;        // Request handles for receives
-    std::vector<MPI_Status> mpi_statuses;          // Status array for MPI_Waitall
+    DCArrayKokkos<MPI_Request> send_requests;        // Request handles for sends
+    DCArrayKokkos<MPI_Request> recv_requests;        // Request handles for receives
+    DCArrayKokkos<MPI_Status> mpi_statuses;          // Status array for MPI_Waitall
     
     // --- Persistent communication (optional optimization) ---
-    std::vector<MPI_Request> persistent_send_requests;
-    std::vector<MPI_Request> persistent_recv_requests;
+    DCArrayKokkos<MPI_Request> persistent_send_requests;
+    DCArrayKokkos<MPI_Request> persistent_recv_requests;
     bool has_persistent_comm;
     
     
@@ -57,10 +47,10 @@
     bool has_graph_comm;                            // Whether graph communicator is initialized
     
     // Counts and displacements for MPI_Neighbor_alltoallv
-    std::vector<int> send_counts;                   // [num_send_ranks] Number of items to send per neighbor
-    std::vector<int> send_displs;                   // [num_send_ranks] Displacements in send buffer
-    std::vector<int> recv_counts;                   // [num_recv_ranks] Number of items to recv per neighbor
-    std::vector<int> recv_displs;                   // [num_recv_ranks] Displacements in recv buffer
+    DCArrayKokkos<size_t> send_counts;                   // [num_send_ranks] Number of items to send per neighbor
+    DCArrayKokkos<size_t> send_displs;                   // [num_send_ranks] Displacements in send buffer
+    DCArrayKokkos<size_t> recv_counts;                   // [num_recv_ranks] Number of items to recv per neighbor
+    DCArrayKokkos<size_t> recv_displs;                   // [num_recv_ranks] Displacements in recv buffer
     
     // --- Persistent Neighborhood Collectives (MPI-4.0+) ---
     MPI_Request persistent_neighbor_request;        // Persistent request for neighborhood collective
@@ -96,245 +86,31 @@
     }
     
     
-    /**
-     * @brief Build communication plan from mesh with flat array inputs
-     * @param mesh Reference to partitioned mesh (with ghost elements/nodes)
-     * @param world_size Number of MPI ranks
-     * @param my_rank Current MPI rank ID
-     * @param boundary_ghost_dest_ranks Flat array of destination ranks for boundary elements [size: sum of neighbors]
-     * @param boundary_ghsot_dest_offsets CSR offsets: boundary_ghost_dest_offsets[elem_lid] = start index in boundary_ghost_dest_ranks
-     * @param boundary_ghost_dest_gids Flat array of global ghost IDs to send [size: sum of neighbors]
-     * @param all_ghost_gids All ghost global IDs across all ranks
-     * @param all_ghost_owner_ranks Owner rank for each ghost GID
-     * 
-     * This build() function takes only flat arrays as input (no std::map, std::set, std::pair).
-     * The caller must pre-process the mesh data into flat CSR-style arrays.
-     * 
-     * Implementation:
-     * 1. Group sends/receives by rank using flat arrays and CSR indexing
-     * 2. Pre-allocate all MPI buffers
-     * 3. Store everything in contiguous memory
-     */
-    void build(
-        const Mesh_t& mesh,
-        int world_size,
-        int my_rank,
-        const int* boundary_ghost_dest_ranks,      // Flat array of dest ranks
-        const int* boundary_ghost_dest_offsets,    // CSR offsets [size: num_owned_ghosts+1]
-        const size_t* boundary_ghost_dest_gids,    // Flat array of ghost GIDs
-        const size_t* all_ghost_gids,              // All ghost GIDs
-        const int* all_ghost_owner_ranks,          // Owner ranks indexed by GID
-    );
+    void initialize(int num_send_ranks, int num_recv_ranks){
+        this->num_send_ranks = num_send_ranks;
+        this->num_recv_ranks = num_recv_ranks;
+        
+        send_rank_ids = DCArrayKokkos<size_t>(num_send_ranks, "send_rank_ids");
+        recv_rank_ids = DCArrayKokkos<size_t>(num_recv_ranks, "recv_rank_ids");
+        send_ghost_offsets = DCArrayKokkos<size_t>(num_send_ranks + 1, "send_ghost_offsets");
+        recv_ghost_offsets = DCArrayKokkos<size_t>(num_recv_ranks + 1, "recv_ghost_offsets");
+        send_ghost_lids = DCArrayKokkos<size_t>(total_send_ghosts, "send_ghost_lids");
+        recv_ghost_lids = DCArrayKokkos<size_t>(total_recv_ghosts, "recv_ghost_lids");
+        send_ghost_gids = std::vector<size_t>(total_send_ghosts, "send_ghost_gids");
+        recv_ghost_gids = std::vector<size_t>(total_recv_ghosts, "recv_ghost_gids");
+        send_requests = DCArrayKokkos<MPI_Request>(total_send_ghosts, "send_requests");
+        recv_requests = DCArrayKokkos<MPI_Request>(total_recv_ghosts, "recv_requests");
+        mpi_statuses = DCArrayKokkos<MPI_Status>(total_send_ghosts + total_recv_ghosts, "mpi_statuses");
+        persistent_send_requests = DCArrayKokkos<MPI_Request>(total_send_ghosts, "persistent_send_requests");
+        persistent_recv_requests = DCArrayKokkos<MPI_Request>(total_recv_ghosts, "persistent_recv_requests");
+        send_counts = DCArrayKokkos<size_t>(num_send_ranks, "send_counts");
+        send_displs = DCArrayKokkos<size_t>(num_send_ranks, "send_displs");
+        recv_counts = DCArrayKokkos<size_t>(num_recv_ranks, "recv_counts");
+        recv_displs = DCArrayKokkos<size_t>(num_recv_ranks, "recv_displs");
+        
+    }
     
-    
-    // ========================================================================
-    // COMMUNICATION INTERFACE - FOR DISTRIBUTED DATA STRUCTURES
-    // ========================================================================
-    
-    /**
-     * @brief Pack and exchange data with automatic ghost synchronization
-     * @param data_ptr Pointer to data array [size: num_total_items * stride]
-     * @param num_fields Number of fields per item (stride)
-     * @param item_type 0=elements, 1=nodes
-     * @param comm MPI communicator
-     * @param blocking If true, waits for completion before returning
-     * 
-     * This is the main interface for distributed structures like:
-     *   node.velocity.comm()  internally calls:
-     *     comm_plan.communicate(node.velocity.data(), 3, 1, MPI_COMM_WORLD, true)
-     */
-    void communicate(double* data_ptr, int num_fields, int item_type, 
-                    MPI_Comm comm = MPI_COMM_WORLD, bool blocking = true);
-    
-    
-    /**
-     * @brief Non-blocking version: initiate communication
-     * Returns immediately; user must call wait_communication()
-     */
-    void communicate_begin(double* data_ptr, int num_fields, int item_type,
-                          MPI_Comm comm = MPI_COMM_WORLD);
-    
-    
-    /**
-     * @brief Wait for non-blocking communication to complete
-     */
-    void wait_communication(double* data_ptr, int num_fields, int item_type);
-    
-    
-    // ========================================================================
-    // LOW-LEVEL PACK/UNPACK (for manual control)
-    // ========================================================================
-    
-    /**
-     * @brief Pack element data from contiguous array into send buffer
-     * @param data_ptr Pointer to element data [size: num_total_elems * num_fields]
-     * @param num_fields Stride (fields per element)
-     * 
-     * Packs data in layout: [elem0_field0, elem0_field1, ..., elem1_field0, ...]
-     */
-    void pack_ghosts(const double* data_ptr, int num_fields, int field_dimension);
-    
-    
-    /**
-     * @brief Unpack received element data into ghost elements
-     */
-    void unpack_ghosts(double* data_ptr, int num_fields, int field_dimension);
-    
-    
-    
-    // ========================================================================
-    // MPI EXCHANGE PRIMITIVES
-    // ========================================================================
-    
-    /**
-     * @brief Execute MPI_Isend/Irecv for elements
-     */
-    void exchange_ghosts_begin(int num_fields, int field_dimension, MPI_Comm comm = MPI_COMM_WORLD);
-    
-    
-    /**
-     * @brief Wait for element exchange to complete
-     */
-    void exchange_ghosts_wait();
-    
-    
-    
-    // ========================================================================
-    // PERSISTENT COMMUNICATION (OPTIMIZATION)
-    // ========================================================================
-    
-    /**
-     * @brief Setup persistent MPI communication handles (one-time setup)
-     * Call once after build(), then use start_persistent/wait_persistent
-     */
-    void init_persistent(int elem_fields, int node_fields, MPI_Comm comm = MPI_COMM_WORLD);
-    
-    
-    /**
-     * @brief Start persistent send/recv (must call pack_* first)
-     */
-    void start_persistent();
-    
-    
-    /**
-     * @brief Wait for persistent communication (then call unpack_*)
-     */
-    void wait_persistent();
-    
-    
-    /**
-     * @brief Free persistent communication handles
-     */
-    void free_persistent();
-    
-    
-    // ========================================================================
-    // NEIGHBORHOOD COLLECTIVES (MPI-3.0+)
-    // ========================================================================
-    
-    /**
-     * @brief Create distributed graph communicator from communication pattern
-     * 
-     * Call this ONCE after populating send_rank_ids and recv_rank_ids.
-     * The graph communicator encodes the sparse communication topology and is
-     * reused for all subsequent neighborhood collective calls.
-     * 
-     * @param base_comm Base communicator (usually MPI_COMM_WORLD)
-     * 
-     * Example from your output:
-     *   rank 0 sends to: {2, 3, 4, 10, 11}
-     *   rank 0 receives from: {computed from ghost ownership}
-     * 
-     * This creates a directed graph where edges represent communication channels.
-     * MPI can optimize routing and minimize network contention.
-     * 
-     * Requirements: MPI-3.0+ (2012)
-     */
-    void create_graph_communicator(MPI_Comm base_comm = MPI_COMM_WORLD);
-    
-    
-    /**
-     * @brief Exchange ghost data using MPI_Neighbor_alltoallv
-     * 
-     * Uses the pre-created graph communicator for efficient sparse communication.
-     * This is cleaner than manual Isend/Irecv loops and allows MPI to optimize.
-     * 
-     * @param data_ptr Pointer to data array [size: num_total_items * num_fields]
-     * @param num_fields Number of fields per item (e.g., 3 for velocity)
-     * 
-     * Workflow:
-     * 1. Pack owned items into send buffer
-     * 2. Call MPI_Neighbor_alltoallv (blocking but fast with graph_comm)
-     * 3. Unpack ghost items from receive buffer
-     * 
-     * The graph_comm is reused each call - only pack/unpack overhead per timestep.
-     * 
-     * Requirements: Must call create_graph_communicator() once before using this.
-     */
-    void exchange_ghosts_neighborhood(double* data_ptr, int num_fields);
-    
-    
-    /**
-     * @brief Initialize persistent neighborhood collective (MPI-4.0+)
-     * 
-     * Creates a persistent MPI request that pre-allocates all internal buffers
-     * and communication paths. Provides maximum performance for repeated exchanges
-     * with the same num_fields.
-     * 
-     * @param num_fields Number of fields per item (must be same for all timesteps)
-     * 
-     * Call once during setup:
-     *   comm_plan.create_graph_communicator(MPI_COMM_WORLD);
-     *   comm_plan.init_persistent_neighborhood(3);  // For 3D velocity
-     * 
-     * Then use exchange_ghosts_persistent() each timestep.
-     * 
-     * Requirements: MPI-4.0+ (2021). Check with: mpirun --version
-     */
-    void init_persistent_neighborhood(int num_fields);
-    
-    
-    /**
-     * @brief Exchange ghosts using persistent neighborhood collective (FASTEST)
-     * 
-     * Must call init_persistent_neighborhood() once before using this.
-     * This is the fastest ghost exchange method for fixed communication patterns.
-     * 
-     * @param data_ptr Pointer to data array [size: num_total_items * num_fields]
-     * 
-     * Workflow:
-     * 1. Pack data into same send buffer used during init
-     * 2. MPI_Start() - extremely fast, no setup overhead
-     * 3. MPI_Wait() - wait for completion
-     * 4. Unpack from receive buffer
-     * 
-     * Typical speedup vs standard neighborhood: 1.2-1.5x
-     * 
-     * Note: Falls back to exchange_ghosts_neighborhood() if MPI-4 unavailable.
-     */
-    void exchange_ghosts_persistent(double* data_ptr);
-    
-    
-    /**
-     * @brief Free persistent neighborhood collective resources
-     * 
-     * Call at end of simulation to release MPI resources.
-     * Automatically called by destructor if not explicitly freed.
-     */
-    void free_persistent_neighborhood();
-    
-    
-    // ========================================================================
-    // UTILITIES
-    // ========================================================================
-    
-    void print_summary(int rank) const;
-    bool validate(MPI_Comm comm = MPI_COMM_WORLD) const;
-    size_t send_volume(int elem_fields, int node_fields) const;
-    size_t recv_volume(int elem_fields, int node_fields) const;
-    bool needs_communication() const;
-    int num_neighbor_ranks() const;
-    
+
     
     // ========================================================================
     // INLINE IMPLEMENTATIONS - NEIGHBORHOOD COLLECTIVES
