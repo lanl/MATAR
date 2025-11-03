@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     // Mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {100, 100, 100};
+    int num_elems_dim[3] = {50, 50, 50};
 
     // Initial mesh built on rank zero
     Mesh_t initial_mesh;
@@ -65,6 +65,7 @@ int main(int argc, char** argv) {
     // write_vtk(intermediate_mesh, intermediate_node, rank);
     MPI_Barrier(MPI_COMM_WORLD);
     write_vtu(final_mesh, final_node, rank, MPI_COMM_WORLD);
+    // write_vtk(final_mesh, final_node, rank);
     MPI_Barrier(MPI_COMM_WORLD);
 
     // Stop timer and get execution time

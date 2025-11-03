@@ -19,6 +19,11 @@
 #include "scotch.h"
 #include "ptscotch.h"
 
+
+
+
+
+
 void partition_mesh(
     Mesh_t& initial_mesh,
     Mesh_t& final_mesh,
@@ -44,7 +49,7 @@ void partition_mesh(
 
     int num_nodes_per_elem = 0;
 
-    std::vector<int> elements_on_rank;  
+    
     std::vector<int> nodes_on_rank;
 
 
@@ -64,13 +69,9 @@ void partition_mesh(
     std::vector<std::vector<double>> node_pos_on_rank(world_size);
 
 
-
-
     if (rank == 0) {
 
         num_nodes_per_elem = initial_mesh.num_nodes_in_elem;
-
-        // Compute elements to send to each rank; handle remainders for non-even distribution
 
         // Compute elements to send to each rank; handle remainders for non-even distribution
         std::fill(elems_per_rank.begin(), elems_per_rank.end(), initial_mesh.num_elems / world_size);
@@ -80,6 +81,8 @@ void partition_mesh(
         }
     }
 
+    // Broadcasts the value of num_nodes_per_elem from the root rank (0) to all other ranks in MPI_COMM_WORLD.
+    // After this call, all ranks will have the same value for num_nodes_per_elem.
     MPI_Bcast(&num_nodes_per_elem, 1, MPI_INT, 0, MPI_COMM_WORLD); 
     MPI_Barrier(MPI_COMM_WORLD);
 
@@ -98,78 +101,74 @@ void partition_mesh(
     
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // Resize the elements_on_rank vector to hold the received data
-    elements_on_rank.resize(num_elements_on_rank);
-    
 
+    // Vector of element to send to each rank using a naive partitioning (0-m, m-n, n-o, etc.)
+    std::vector<int> elements_on_rank(num_elements_on_rank);  
     MPI_Barrier(MPI_COMM_WORLD);
     double t_scatter_end = MPI_Wtime();
-    if(rank == 0) {
-        std::cout<<" Finished scattering the number of elements to each rank"<<std::endl;
-        std::cout << " Scatter operation took " << (t_scatter_end - t_scatter_start) << " seconds." << std::endl;
-    }
 
-
-    // ********************************************************  
-    //     Scatter the actual element global ids to each rank
-    // ******************************************************** 
+// ********************************************************  
+//     Scatter the actual element global ids to each rank
+// ******************************************************** 
     double t_scatter_gids_start = MPI_Wtime();
 
     if (rank == 0) {
 
-        //print elements per rank
-        std::cout<<std::endl;
+        // Populate the elements_to_send array by finding all elements in the elements_per_rank array and adding them to the elements_to_send array
+    
         int elem_gid = 0;
-        for (int i = 0; i < world_size; i++) {
+        for (int rank = 0; rank < world_size; rank++) {
 
-            for (int j = 0; j < elems_per_rank[i]; j++) {
-                elements_to_send[i].push_back(elem_gid);
+            for (int j = 0; j < elems_per_rank[rank]; j++) {
+                elements_to_send[rank].push_back(elem_gid);
                 elem_gid++;
             }
         }
 
-        if (print_info) {
-            for (int i = 0; i < world_size; i++) {
-                std::cout<<std::endl;
-                std::cout<<"Rank "<<i<<" will get "<<elems_per_rank[i]<<" elements: ";
-                for (int j = 0; j < elems_per_rank[i]; j++) {
-                    std::cout<<elements_to_send[i][j]<<" ";
-                }
-            }
-            std::cout<<std::endl;
-        }
-
         // Prepare data for MPI_Scatterv (scatter with variable counts)
         // Flatten the 2D elements_to_send into a 1D array
-        std::vector<int> all_elements;
-        std::vector<int> sendcounts(world_size);
-        std::vector<int> displs(world_size);
+        std::vector<int> all_elements; // array of all elements to be sent to each rank
+        std::vector<int> sendcounts(world_size); // array of the number of elements to send to each rank
+        std::vector<int> displs(world_size); // array of the displacement for each rank in the flattened array
         
-        int displacement = 0;
+        int displacement = 0; // displacement is the starting index of the elements for the current rank in the flattened array
         for (int i = 0; i < world_size; i++) {
-            sendcounts[i] = elems_per_rank[i];
-            displs[i] = displacement;
+            sendcounts[i] = elems_per_rank[i]; // number of elements to send to each rank
+            displs[i] = displacement; // displacement for each rank in the flattened array
             // Copy elements for rank i to the flattened array
             for (int j = 0; j < elems_per_rank[i]; j++) {
-                all_elements.push_back(elements_to_send[i][j]);
+                all_elements.push_back(elements_to_send[i][j]); // add the elements to the flattened array
             }
-            displacement += elems_per_rank[i];
+            displacement += elems_per_rank[i]; // increment the displacement by the number of elements to send to the next rank
         }
 
         // Send the elements to each rank
+        // all_elements.data(): Pointer to the flattened array of all elements to be sent to each rank
+        // sendcounts.data(): Array with the number of elements to send to each rank
+        // displs.data(): Array with the displacement for each rank in the flattened array
+        // MPI_INT: Data type of the elements (integer)
+        // elements_on_rank.data(): Pointer to the buffer where each rank will receive its elements
+        // num_elements_on_rank: Number of elements that the receiving rank expects to receive
+        // MPI_INT: Data type of the receive buffer (integer)
+        // 0: The root rank (rank 0) that is performing the scatter
+        // MPI_COMM_WORLD: The communicator
         MPI_Scatterv(all_elements.data(), sendcounts.data(), displs.data(), MPI_INT,
                     elements_on_rank.data(), num_elements_on_rank, MPI_INT,
                     0, MPI_COMM_WORLD);
     } 
     else {
+        // If the rank is not the root rank, it will receive nullptr for the sendbuf, sendcounts, and displs arrays
         MPI_Scatterv(nullptr, nullptr, nullptr, MPI_INT,
                     elements_on_rank.data(), num_elements_on_rank, MPI_INT,
                     0, MPI_COMM_WORLD);
     }
 
+    // Wait for all ranks to complete the scatter operation
     MPI_Barrier(MPI_COMM_WORLD);
+
+    // Timer: End measuring time for scattering element global ids
     double t_scatter_gids_end = MPI_Wtime();
-    if(rank == 0) {
+    if(rank == 0 && print_info) {
         std::cout<<" Finished scattering the actual element global ids to each rank"<<std::endl;
         std::cout << " Scattering the actual element global ids to each rank took " 
                 << (t_scatter_gids_end - t_scatter_gids_start) << " seconds." << std::endl;
@@ -186,8 +185,6 @@ void partition_mesh(
 
 
     MPI_Barrier(MPI_COMM_WORLD);
-
-
 
 
 // ****************************************************************************************** 
@@ -1641,6 +1638,7 @@ void partition_mesh(
     MPI_Barrier(MPI_COMM_WORLD);
     // Sequential rank-wise printing of extended mesh structure info
     for (int r = 0; r < world_size; ++r) {
+        MPI_Barrier(MPI_COMM_WORLD);
         if (rank == r) {
             std::cout << "[rank " << rank << "] Finished building extended mesh structure" << std::endl;
             std::cout << "[rank " << rank << "]   - Owned elements: " << intermediate_mesh.num_elems << std::endl;
@@ -1743,7 +1741,7 @@ void partition_mesh(
 // ****************************************************************************************** 
 
 
- final_node.initialize(total_extended_nodes, 3, {node_state::coords});
+    final_node.initialize(total_extended_nodes, 3, {node_state::coords});
     
     // The goal here is to populate final_node.coords using globally gathered ghost node coordinates,
     // since intermediate_node does not contain ghost node coordinates.
@@ -1880,6 +1878,7 @@ void partition_mesh(
     
     MPI_Barrier(MPI_COMM_WORLD);
     if(rank == 0) std::cout << " Starting to build the reverse map for communication" << std::endl;
+    
     // Build map gid -> ranks that ghost it
     std::unordered_map<size_t, std::vector<int>> gid_to_ghosting_ranks;
     gid_to_ghosting_ranks.reserve(static_cast<size_t>(total_ghosts));
@@ -1906,6 +1905,10 @@ void partition_mesh(
 
     std::cout.flush();
     MPI_Barrier(MPI_COMM_WORLD);
+
+    
+    
+
     // Optional: print a compact summary of reverse map for verification (limited output)
     for(int i = 0; i < world_size; i++) {
         if (rank == i && print_info) {
@@ -1929,7 +1932,76 @@ void partition_mesh(
                     std::cout << std::endl;
                 }
             }
-            std::cout.flush();
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+
+    // Add a vector to store boundary element local_ids (those who have ghost destinations across ranks)
+    std::vector<int> boundary_elem_local_ids;
+    std::vector<std::vector<int>> boundary_to_ghost_ranks;  // ragged array dimensions (num_boundary_elems, num_ghost_ranks)
+
+    std::set<int> ghost_comm_ranks; // set of ranks that this rank communicates with
+    
+
+    for (int elem_lid = 0; elem_lid < intermediate_mesh.num_elems; elem_lid++) {
+
+        int local_elem_gid = intermediate_mesh.local_to_global_elem_mapping.host(elem_lid);
+        if (boundary_elem_targets[elem_lid].empty()) 
+        {
+            continue;
+        }
+        else
+        {
+            // Fill in vector of boundary local_ids
+            boundary_elem_local_ids.push_back(elem_lid);
+            std::vector<int> ghost_ranks_for_this_boundary_elem;
+            for (const auto &pr : boundary_elem_targets[elem_lid]) {
+                ghost_ranks_for_this_boundary_elem.push_back(pr.first);
+                ghost_comm_ranks.insert(pr.first);
+            }
+            boundary_to_ghost_ranks.push_back(ghost_ranks_for_this_boundary_elem);
+        }
+    }
+
+    int num_ghost_comm_ranks = ghost_comm_ranks.size();
+    std::vector<int> ghost_comm_ranks_vec(num_ghost_comm_ranks);
+    int i = 0;
+    for (const auto &r : ghost_comm_ranks) {
+        ghost_comm_ranks_vec[i] = r;
+        i++;
+    }
+
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    for (int r = 0; r < world_size; ++r) {
+        MPI_Barrier(MPI_COMM_WORLD);
+        if (rank == r) {
+            std::cout << std::endl;
+            std::cout << "[rank " << rank << "] communicates to ranks: ";
+            for (int i = 0; i < num_ghost_comm_ranks; ++i) {
+                std::cout << ghost_comm_ranks_vec[i] << " ";
+            }
+            std::cout << std::endl;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+    // Print out the boundary element local ids on each rank sequentially
+    for (int r = 0; r < world_size; ++r) {
+        MPI_Barrier(MPI_COMM_WORLD);
+        if (rank == r && print_info) {
+            std::cout << std::endl;
+            std::cout << "[rank " << rank << "] Boundary element global ids: " <<std::endl;
+            for (int bid = 0; bid < boundary_elem_local_ids.size(); ++bid) {
+                size_t global_elem_gid = intermediate_mesh.local_to_global_elem_mapping.host(boundary_elem_local_ids[bid]);
+                std::cout <<"Boundary element local id: " << boundary_elem_local_ids[bid] << " - Global id: " << global_elem_gid << " - Ghost ranks: ";
+                for (int j = 0; j < boundary_to_ghost_ranks[bid].size(); ++j) {
+                    std::cout << boundary_to_ghost_ranks[bid][j] << " ";
+                }
+                std::cout << std::endl;
+            }
         }
         MPI_Barrier(MPI_COMM_WORLD);
     }
@@ -1943,12 +2015,114 @@ void partition_mesh(
 
 
 
+
+
+
+
+    // --------------------------------------------------------------------------------------
+    // Build reverse map via global IDs: for each local node gid, find ranks that ghost it.
+    // Steps:
+    // 1) Each rank contributes its ghost node GIDs.
+    // 2) Allgatherv ghost node GIDs to build gid -> [ranks that ghost it].
+    // 3) For each locally-owned node gid, lookup ranks that ghost it and record targets.
+    // --------------------------------------------------------------------------------------
+    
+    std::vector<std::vector<std::pair<int, size_t>>> boundary_node_targets(intermediate_mesh.num_nodes);
+    
+    // Prepare local ghost node list as vector
+    std::vector<size_t> ghost_node_gids_vec;
+    ghost_node_gids_vec.reserve(ghost_only_nodes.size());
+    for (const auto &g : ghost_only_nodes) ghost_node_gids_vec.push_back(g);
+    
+    // Exchange counts
+    std::vector<int> ghost_node_counts(world_size, 0);
+    int local_ghost_node_count = static_cast<int>(ghost_node_gids_vec.size());
+    MPI_Allgather(&local_ghost_node_count, 1, MPI_INT, ghost_node_counts.data(), 1, MPI_INT, MPI_COMM_WORLD);
+    
+    // Displacements and recv buffer
+    std::vector<int> ghost_node_displs(world_size, 0);
+    int total_ghost_nodes = 0;
+    for (int r = 0; r < world_size; ++r) {
+        ghost_node_displs[r] = total_ghost_nodes;
+        total_ghost_nodes += ghost_node_counts[r];
+    }
+    std::vector<size_t> all_ghost_node_gids(total_ghost_nodes);
+    
+    // Gather ghost node gids
+    MPI_Allgatherv(ghost_node_gids_vec.data(), local_ghost_node_count, MPI_UNSIGNED_LONG_LONG,
+                   all_ghost_node_gids.data(), ghost_node_counts.data(), ghost_node_displs.data(),
+                   MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
+    
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Finished gathering ghost node GIDs" << std::endl;
+    
+    
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Starting to build the reverse map for node communication" << std::endl;
+    
+    // Build map node_gid -> ranks that ghost it
+    std::unordered_map<size_t, std::vector<int>> node_gid_to_ghosting_ranks;
+    node_gid_to_ghosting_ranks.reserve(static_cast<size_t>(total_ghost_nodes));
+    for (int r = 0; r < world_size; ++r) {
+        int cnt = ghost_node_counts[r];
+        int off = ghost_node_displs[r];
+        for (int i = 0; i < cnt; ++i) {
+            size_t g = all_ghost_node_gids[off + i];
+            node_gid_to_ghosting_ranks[g].push_back(r);
+        }
+    }
+    
+    // For each local node, list destinations: ranks that ghost our node gid
+    for (int node_lid = 0; node_lid < intermediate_mesh.num_nodes; node_lid++) {
+        size_t local_node_gid = intermediate_mesh.local_to_global_node_mapping.host(node_lid);
+        auto it = node_gid_to_ghosting_ranks.find(local_node_gid);
+        if (it == node_gid_to_ghosting_ranks.end()) continue;
+        const std::vector<int> &dest_ranks = it->second;
+        for (int rr : dest_ranks) {
+            if (rr == rank) continue;
+            boundary_node_targets[node_lid].push_back(std::make_pair(rr, local_node_gid));
+        }
+    }
+    
+    std::cout.flush();
+    MPI_Barrier(MPI_COMM_WORLD);
+    print_info = false;
+    
+    // Optional: print a compact summary of node reverse map for verification (limited output)
+    for(int i = 0; i < world_size; i++) {
+        if (rank == i && print_info) {
+            std::cout << std::endl;
+            for (int node_lid = 0; node_lid < intermediate_mesh.num_nodes; node_lid++) {
+                
+                size_t local_node_gid = intermediate_mesh.local_to_global_node_mapping.host(node_lid);
+                if (boundary_node_targets[node_lid].empty()) 
+                {
+                    std::cout << "[rank " << rank << "] " << "node_lid: "<< node_lid <<" -  node_gid: " << local_node_gid << " sends to: no ghost nodes" << std::endl;
+                }
+                else
+                {
+                    std::cout << "[rank " << rank << "] " << "node_lid: "<< node_lid <<" -  node_gid: " << local_node_gid << " sends to: ";
+                    int shown = 0;
+                    for (const auto &pr : boundary_node_targets[node_lid]) {
+                        if (shown >= 12) { std::cout << " ..."; break; }
+                        std::cout << "(r" << pr.first << ":gid " << pr.second << ") ";
+                        shown++;
+                    }
+                    std::cout << std::endl;
+                }
+            }
+            std::cout.flush();
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+    
+    print_info = false;
+    
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Finished building node communication reverse map" << std::endl;
+
+
 }
-
-
-
-
-
 
 
 

@@ -515,7 +515,7 @@ void write_vtu(Mesh_t& mesh,
     const int num_cell_vec_vars    = 0;
     const int num_cell_tensor_vars = 0;
 
-    const int num_point_scalar_vars = 2;
+    const int num_point_scalar_vars = 3;
     const int num_point_vec_vars = 1;
 
     // Scalar values associated with a cell
@@ -524,7 +524,7 @@ void write_vtu(Mesh_t& mesh,
     };
 
     const char point_scalar_var_names[num_point_scalar_vars][15] = {
-        "rank_id", "elems_in_node"
+        "rank_id", "elems_in_node", "global_node_id"
     };
 
     const char point_vec_var_names[num_point_vec_vars][15] = {
@@ -557,6 +557,7 @@ void write_vtu(Mesh_t& mesh,
 
         point_scalar_fields(node_gid, 0) = rank;
         point_scalar_fields(node_gid, 1) = (double)mesh.num_corners_in_node(node_gid);
+        point_scalar_fields(node_gid, 2) = (double)mesh.local_to_global_node_mapping.host(node_gid);
     }
 
     // File management
