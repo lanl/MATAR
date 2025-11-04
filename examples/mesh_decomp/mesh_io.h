@@ -497,6 +497,7 @@ void build_3d_box(
 /////////////////////////////////////////////////////////////////////////////
 void write_vtu(Mesh_t& mesh,
                node_t& node,
+               GaussPoint_t& gauss_point,
                int rank,
                MPI_Comm comm)
 {
@@ -511,7 +512,7 @@ void write_vtu(Mesh_t& mesh,
     node.coords.update_host();
     Kokkos::fence();
 
-    const int num_cell_scalar_vars = 3;
+    const int num_cell_scalar_vars = 4;
     const int num_cell_vec_vars    = 0;
     const int num_cell_tensor_vars = 0;
 
@@ -520,7 +521,7 @@ void write_vtu(Mesh_t& mesh,
 
     // Scalar values associated with a cell
     const char cell_scalar_var_names[num_cell_scalar_vars][30] = {
-        "rank_id", "elems_in_elem_owned", "global_elem_id"
+        "rank_id", "elems_in_elem_owned", "global_elem_id", "field_value"
     };
 
     const char point_scalar_var_names[num_point_scalar_vars][15] = {
@@ -543,6 +544,7 @@ void write_vtu(Mesh_t& mesh,
         elem_fields(elem_gid, 0) = rank;
         elem_fields(elem_gid, 1) = (double)mesh.num_elems_in_elem(elem_gid);
         elem_fields(elem_gid, 2) = mesh.local_to_global_elem_mapping.host(elem_gid);
+        elem_fields(elem_gid, 3) = gauss_point.fields.host(elem_gid);
     }
 
     // save the vertex vector fields to an array for exporting to graphics files

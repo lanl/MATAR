@@ -16,8 +16,6 @@
 #include "mesh_io.h"
 
 
-#include "communication_plan.h"
-
 // Include Scotch headers
 #include "scotch.h"
 #include "ptscotch.h"
@@ -32,6 +30,7 @@ void partition_mesh(
     Mesh_t& final_mesh,
     node_t& initial_node,
     node_t& final_node,
+    GaussPoint_t& gauss_point,
     int world_size,
     int rank){
 
@@ -1675,6 +1674,56 @@ void partition_mesh(
         extended_lid_to_elem_gid[intermediate_mesh.num_elems + idx] = ghost_elem_gids_ordered[idx];
     }
 
+    // Build array: for each ghost element, store which rank owns it (where to receive data from)
+    std::vector<int> ghost_elem_owner_ranks(ghost_elem_gids_ordered.size());
+    for (size_t i = 0; i < ghost_elem_gids_ordered.size(); ++i) {
+        size_t ghost_gid = ghost_elem_gids_ordered[i];
+        auto it = elem_gid_to_rank.find(ghost_gid);
+        if (it != elem_gid_to_rank.end()) {
+            ghost_elem_owner_ranks[i] = it->second;
+        } else {
+            std::cerr << "[rank " << rank << "] ERROR: Ghost element GID " << ghost_gid 
+                      << " not found in elem_gid_to_rank map!" << std::endl;
+            ghost_elem_owner_ranks[i] = -1; // Invalid rank as error indicator
+        }
+    }
+
+    // Optional: Print ghost element receive pattern
+    if (print_info) {
+        for (int r = 0; r < world_size; ++r) {
+            MPI_Barrier(MPI_COMM_WORLD);
+            if (rank == r) {
+                std::cout << "[rank " << rank << "] Ghost element receive pattern:" << std::endl;
+                for (size_t i = 0; i < ghost_elem_gids_ordered.size(); ++i) {
+                    size_t ghost_ext_lid = intermediate_mesh.num_elems + i;
+                    std::cout << "  Ghost elem ext_lid=" << ghost_ext_lid 
+                              << " gid=" << ghost_elem_gids_ordered[i]
+                              << " receives from rank " << ghost_elem_owner_ranks[i] << std::endl;
+                }
+            }
+            MPI_Barrier(MPI_COMM_WORLD);
+        }
+    }
+
+    // Create a std::set of all the ranks this rank will receive data from
+    std::set<int> ghost_elem_receive_ranks;
+    for (size_t i = 0; i < ghost_elem_gids_ordered.size(); ++i) {
+        ghost_elem_receive_ranks.insert(ghost_elem_owner_ranks[i]);
+    }
+
+
+    // Print with ranks this rank will receive element data from sequentially
+    for (int r = 0; r < world_size; ++r) {
+        MPI_Barrier(MPI_COMM_WORLD);
+        if (rank == r) {
+            std::cout << "[rank " << rank << "] Ranks this rank will receive element data from: ";
+            for (int rank : ghost_elem_receive_ranks) {
+                std::cout << rank << " ";
+            }
+            std::cout << std::endl;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
 
 
 // ****************************************************************************************** 
@@ -1792,6 +1841,7 @@ void partition_mesh(
                    all_owned_gids.data(), owned_counts.data(), owned_displs.data(),
                    MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
 
+
     // d) Global coords (size: total_owned x 3)
     std::vector<double> owned_coords_send(3*local_owned_count, 0.0);
     for (int i=0; i<local_owned_count; ++i) {
@@ -1842,13 +1892,14 @@ void partition_mesh(
     final_node.coords.update_device();
 
 
-    // --------------------------------------------------------------------------------------
-    // Build reverse map via global IDs: for each local element gid, find ranks that ghost it.
-    // Steps:
-    // 1) Each rank contributes its ghost element GIDs.
-    // 2) Allgatherv ghost GIDs to build gid -> [ranks that ghost it].
-    // 3) For each locally-owned element gid, lookup ranks that ghost it and record targets.
-    // --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+// Build the send patterns for elements
+// Build reverse map via global IDs: for each local element gid, find ranks that ghost it.
+// Steps:
+// 1) Each rank contributes its ghost element GIDs.
+// 2) Allgatherv ghost GIDs to build gid -> [ranks that ghost it].
+// 3) For each locally-owned element gid, lookup ranks that ghost it and record targets.
+// --------------------------------------------------------------------------------------
     std::vector<std::vector<std::pair<int, size_t>>> boundary_elem_targets(intermediate_mesh.num_elems);
 
     // Prepare local ghost list as vector
@@ -1909,8 +1960,6 @@ void partition_mesh(
     std::cout.flush();
     MPI_Barrier(MPI_COMM_WORLD);
 
-    
-    
 
     // Optional: print a compact summary of reverse map for verification (limited output)
     for(int i = 0; i < world_size; i++) {
@@ -1982,7 +2031,7 @@ void partition_mesh(
         MPI_Barrier(MPI_COMM_WORLD);
         if (rank == r) {
             std::cout << std::endl;
-            std::cout << "[rank " << rank << "] communicates to ranks: ";
+            std::cout << "[rank " << rank << "] elements communicates to ranks: ";
             for (int i = 0; i < num_ghost_comm_ranks; ++i) {
                 std::cout << ghost_comm_ranks_vec[i] << " ";
             }
@@ -1990,6 +2039,8 @@ void partition_mesh(
         }
         MPI_Barrier(MPI_COMM_WORLD);
     }
+
+    print_info = false;
 
     // Print out the boundary element local ids on each rank sequentially
     for (int r = 0; r < world_size; ++r) {
@@ -2009,31 +2060,415 @@ void partition_mesh(
         MPI_Barrier(MPI_COMM_WORLD);
     }
 
+
+    final_mesh.num_boundary_elems = boundary_elem_local_ids.size();
+    final_mesh.boundary_elem_local_ids = DCArrayKokkos<size_t>(final_mesh.num_boundary_elems);
+    for (int i = 0; i < final_mesh.num_boundary_elems; i++) {
+        final_mesh.boundary_elem_local_ids.host(i) = boundary_elem_local_ids[i];
+    }
+    final_mesh.boundary_elem_local_ids.update_device();
+
     print_info = false;
 
     
     MPI_Barrier(MPI_COMM_WORLD);
 
 
+// ****************************************************************************************** 
+//     Create MPI distributed graph communicator for element communication
+// ****************************************************************************************** 
+    // MPI_Dist_graph_create_adjacent creates a distributed graph topology communicator
+    // that efficiently represents the communication pattern between ranks.
+    // This allows MPI to optimize communication based on the actual connectivity pattern.
+    
+    // ---------- Prepare input communicator ----------
+    // comm_old: The base communicator from which to create the graph communicator
+    MPI_Comm comm_old = MPI_COMM_WORLD;
+    
+    // ---------- Prepare INCOMING edges (sources) ----------
+    // indegree: Number of ranks from which this rank will RECEIVE data
+    // These are the ranks that own elements which are ghosted on this rank
+    std::vector<int> ghost_elem_receive_ranks_vec(ghost_elem_receive_ranks.begin(), 
+                                                    ghost_elem_receive_ranks.end());
+    // The number of ranks from which this rank will receive data (incoming neighbors)
+    int indegree = static_cast<int>(ghost_elem_receive_ranks_vec.size());
+    
+    // sources: Array of source rank IDs (ranks we receive from)
+    // Each element corresponds to a rank that owns elements we ghost
+    int* sources = (indegree > 0) ? ghost_elem_receive_ranks_vec.data() : MPI_UNWEIGHTED;
+    
+    // sourceweights: Weights on incoming edges (not used here, set to MPI_UNWEIGHTED)
+    // Could be used to specify communication volume if needed for optimization
+    int* sourceweights = MPI_UNWEIGHTED;
+    
+    // ---------- Prepare OUTGOING edges (destinations) ----------
+    // outdegree: Number of ranks to which this rank will SEND data
+    // These are the ranks that ghost elements owned by this rank
+    int outdegree = num_ghost_comm_ranks;
+    
+    // destinations: Array of destination rank IDs (ranks we send to)
+    // Each element corresponds to a rank that ghosts our owned elements
+    int* destinations = (outdegree > 0) ? ghost_comm_ranks_vec.data() : MPI_UNWEIGHTED;
+    
+    // destweights: Weights on outgoing edges (not used here, set to MPI_UNWEIGHTED)
+    // Could be used to specify communication volume if needed for optimization
+    int* destweights = MPI_UNWEIGHTED;
+    
+    // ---------- Additional parameters ----------
+    // info: Hints for optimization (MPI_INFO_NULL means use defaults)
+    MPI_Info info = MPI_INFO_NULL;
+    
+    // reorder: Whether to allow MPI to reorder ranks for optimization (0=no reordering)
+    // Setting to 0 preserves original rank numbering
+    int reorder = 0;
+    
+    // ---------- Output communicator ----------
+    // graph_comm: The new distributed graph communicator that will be created
+    MPI_Comm graph_comm;
+    
+    // Create the distributed graph communicator
+    // This call collectively creates a communicator where each rank specifies:
+    //   - Which ranks it receives from (sources/indegree)
+    //   - Which ranks it sends to (destinations/outdegree)
+    // MPI can then optimize collective operations and point-to-point communication
+    // based on this connectivity information.
+    MPI_Dist_graph_create_adjacent(
+        comm_old,           // Input: base communicator
+        indegree,           // Input: number of incoming neighbors (ranks we receive from)
+        sources,            // Input: array of source ranks [indegree elements]
+        sourceweights,      // Input: weights on incoming edges (MPI_UNWEIGHTED)
+        outdegree,          // Input: number of outgoing neighbors (ranks we send to)
+        destinations,       // Input: array of destination ranks [outdegree elements]
+        destweights,        // Input: weights on outgoing edges (MPI_UNWEIGHTED)
+        info,               // Input: optimization hints (MPI_INFO_NULL)
+        reorder,            // Input: allow rank reordering (0=no)
+        &graph_comm         // Output: new distributed graph communicator
+    );
 
-    // Build communication plans for elements 
-    CommunicationPlan element_comm_plan;
+    // Optional: Verify the graph communicator was created successfully
+    if (rank == 0) {
+        std::cout << " Created MPI distributed graph communicator for element communication" << std::endl;
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // ============================================================================
+    // Verify the distributed graph communicator
+    // ============================================================================
+    // Query the graph to verify it matches what we specified
+    int indegree_out, outdegree_out, weighted;
+    MPI_Dist_graph_neighbors_count(graph_comm, &indegree_out, &outdegree_out, &weighted);
+    
+    // Allocate arrays to receive neighbor information
+    std::vector<int> sources_out(indegree_out);
+    std::vector<int> sourceweights_out(indegree_out);
+    std::vector<int> destinations_out(outdegree_out);
+    std::vector<int> destweights_out(outdegree_out);
+    
+    // Retrieve the actual neighbors from the graph communicator
+    MPI_Dist_graph_neighbors(graph_comm, 
+                             indegree_out, sources_out.data(), sourceweights_out.data(),
+                             outdegree_out, destinations_out.data(), destweights_out.data());
+    
+    // Print verification information for each rank sequentially
+    for (int r = 0; r < world_size; ++r) {
+        MPI_Barrier(MPI_COMM_WORLD);
+        if (rank == r) {
+            std::cout << "\n[rank " << rank << "] Graph Communicator Verification:" << std::endl;
+            std::cout << "  Indegree (receives from " << indegree_out << " ranks): ";
+            for (int i = 0; i < indegree_out; ++i) {
+                std::cout << sources_out[i] << " ";
+            }
+            std::cout << std::endl;
+            
+            std::cout << "  Outdegree (sends to " << outdegree_out << " ranks): ";
+            for (int i = 0; i < outdegree_out; ++i) {
+                std::cout << destinations_out[i] << " ";
+            }
+            std::cout << std::endl;
+            
+            std::cout << "  Weighted: " << (weighted ? "yes" : "no") << std::endl;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+    
+    // Additional verification: Check if the queried values match our input
+    bool verification_passed = true;
+    if (indegree_out != indegree) {
+        std::cerr << "[rank " << rank << "] ERROR: indegree mismatch! "
+                  << "Expected " << indegree << ", got " << indegree_out << std::endl;
+        verification_passed = false;
+    }
+    if (outdegree_out != outdegree) {
+        std::cerr << "[rank " << rank << "] ERROR: outdegree mismatch! "
+                  << "Expected " << outdegree << ", got " << outdegree_out << std::endl;
+        verification_passed = false;
+    }
+    
+    // Check if source and destination ranks match (order may differ)
+    std::set<int> sources_set_in(ghost_elem_receive_ranks_vec.begin(), ghost_elem_receive_ranks_vec.end());
+    std::set<int> sources_set_out(sources_out.begin(), sources_out.end());
+    if (sources_set_in != sources_set_out) {
+        std::cerr << "[rank " << rank << "] ERROR: source ranks mismatch!" << std::endl;
+        verification_passed = false;
+    }
+    
+    std::set<int> dests_set_in(ghost_comm_ranks_vec.begin(), ghost_comm_ranks_vec.end());
+    std::set<int> dests_set_out(destinations_out.begin(), destinations_out.end());
+    if (dests_set_in != dests_set_out) {
+        std::cerr << "[rank " << rank << "] ERROR: destination ranks mismatch!" << std::endl;
+        verification_passed = false;
+    }
+    
+    // Global verification check
+    int local_passed = verification_passed ? 1 : 0;
+    int global_passed = 0;
+    MPI_Allreduce(&local_passed, &global_passed, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
+    if (rank == 0) {
+        if (global_passed) {
+            std::cout << "\n✓ Graph communicator verification PASSED on all ranks\n" << std::endl;
+        } else {
+            std::cout << "\n✗ Graph communicator verification FAILED on one or more ranks\n" << std::endl;
+        }
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
 
 
-    element_comm_plan.initialize(num_send_ranks, num_recv_ranks);
 
 
 
+// ****************************************************************************************** 
+//     Test element communication using MPI_Neighbor_alltoallv
+// ****************************************************************************************** 
+    // Gauss points share the same communication plan as elements.
+    // This test initializes gauss point fields on owned elements and exchanges them with ghost elements.
 
+    print_info = true;  // Enable debug output for communication test
 
+    gauss_point.initialize(final_mesh.num_elems, 1, {gauss_pt_state::fields});
 
-    // --------------------------------------------------------------------------------------
-    // Build reverse map via global IDs: for each local node gid, find ranks that ghost it.
-    // Steps:
-    // 1) Each rank contributes its ghost node GIDs.
-    // 2) Allgatherv ghost node GIDs to build gid -> [ranks that ghost it].
-    // 3) For each locally-owned node gid, lookup ranks that ghost it and record targets.
-    // --------------------------------------------------------------------------------------
+    // Initialize the gauss point fields on each rank
+    // Set owned elements to rank number, ghost elements to -1 (to verify communication)
+    for (int i = 0; i < final_mesh.num_owned_elems; i++) {
+        gauss_point.fields.host(i) = static_cast<double>(rank);
+    }
+    for (int i = final_mesh.num_owned_elems; i < final_mesh.num_elems; i++) {
+        gauss_point.fields.host(i) = -1.0;  // Ghost elements should be updated
+    }
+    gauss_point.fields.update_device();
+
+    // ========== Build send counts and displacements for OUTGOING neighbors (destinations) ==========
+    // For MPI_Neighbor_alltoallv with graph communicator:
+    //   - elem_sendcounts[i] = number of elements to send to i-th outgoing neighbor (destinations_out[i])
+    //   - elem_sdispls[i] = starting position in send buffer for i-th outgoing neighbor
+    
+    std::vector<int> elem_sendcounts(outdegree_out, 0);
+    std::vector<int> elem_sdispls(outdegree_out, 0);
+    
+    // Count how many boundary elements go to each destination rank
+    // boundary_elem_targets[elem_lid] contains pairs (dest_rank, elem_gid) for each boundary element
+    std::map<int, std::vector<int>> elems_to_send_by_rank;  // rank -> list of boundary element local IDs
+    
+    for (int elem_lid = 0; elem_lid < intermediate_mesh.num_elems; elem_lid++) {
+        if (!boundary_elem_targets[elem_lid].empty()) {
+            for (const auto &pr : boundary_elem_targets[elem_lid]) {
+                int dest_rank = pr.first;
+                elems_to_send_by_rank[dest_rank].push_back(elem_lid);
+            }
+        }
+    }
+    
+    // Fill elem_sendcounts based on the graph communicator's destination order
+    int total_send = 0;
+    for (int i = 0; i < outdegree_out; i++) {
+        int dest_rank = destinations_out[i];
+        elem_sendcounts[i] = static_cast<int>(elems_to_send_by_rank[dest_rank].size());
+        elem_sdispls[i] = total_send;
+        total_send += elem_sendcounts[i];
+    }
+    
+    // Debug: Print send counts
+    if (print_info) {
+        for (int r = 0; r < world_size; ++r) {
+            MPI_Barrier(MPI_COMM_WORLD);
+            if (rank == r) {
+                std::cout << "[rank " << rank << "] Send counts: ";
+                for (int i = 0; i < outdegree_out; i++) {
+                    std::cout << "to_rank_" << destinations_out[i] << "=" << elem_sendcounts[i] << " ";
+                }
+                std::cout << "(total=" << total_send << ")" << std::endl;
+            }
+            MPI_Barrier(MPI_COMM_WORLD);
+        }
+    }
+    
+    // ========== Build receive counts and displacements for INCOMING neighbors (sources) ==========
+    //   - elem_recvcounts[i] = number of elements to receive from i-th incoming neighbor (sources_out[i])
+    //   - elem_rdispls[i] = starting position in recv buffer for i-th incoming neighbor
+    
+    std::vector<int> elem_recvcounts(indegree_out, 0);
+    std::vector<int> elem_rdispls(indegree_out, 0);
+    
+    // Count how many ghost elements come from each source rank
+    // ghost_elem_owner_ranks[i] tells us which rank owns the i-th ghost element
+    std::map<int, std::vector<int>> elems_to_recv_by_rank;  // rank -> list of ghost element indices
+    
+    for (size_t i = 0; i < ghost_elem_owner_ranks.size(); i++) {
+        int source_rank = ghost_elem_owner_ranks[i];
+        elems_to_recv_by_rank[source_rank].push_back(static_cast<int>(i));
+    }
+    
+    // Fill elem_recvcounts based on the graph communicator's source order
+    int total_recv = 0;
+    for (int i = 0; i < indegree_out; i++) {
+        int source_rank = sources_out[i];
+        elem_recvcounts[i] = static_cast<int>(elems_to_recv_by_rank[source_rank].size());
+        elem_rdispls[i] = total_recv;
+        total_recv += elem_recvcounts[i];
+    }
+    
+    // Debug: Print receive counts
+    if (print_info) {
+        for (int r = 0; r < world_size; ++r) {
+            MPI_Barrier(MPI_COMM_WORLD);
+            if (rank == r) {
+                std::cout << "[rank " << rank << "] Recv counts: ";
+                for (int i = 0; i < indegree_out; i++) {
+                    std::cout << "from_rank_" << sources_out[i] << "=" << elem_recvcounts[i] << " ";
+                }
+                std::cout << "(total=" << total_recv << ", expected_ghosts=" << final_mesh.num_ghost_elems << ")" << std::endl;
+            }
+            MPI_Barrier(MPI_COMM_WORLD);
+        }
+    }
+    
+    // ========== Build send buffer organized by destination rank ==========
+    std::vector<double> elem_send_buffer(total_send);
+    int send_idx = 0;
+    
+    for (int i = 0; i < outdegree_out; i++) {
+        int dest_rank = destinations_out[i];
+        const auto& elems_for_this_rank = elems_to_send_by_rank[dest_rank];
+        
+        for (int elem_lid : elems_for_this_rank) {
+            elem_send_buffer[send_idx++] = gauss_point.fields.host(elem_lid);
+        }
+    }
+    
+    // ========== Allocate receive buffer ==========
+    std::vector<double> elem_recv_buffer(total_recv);
+    
+    // ========== Exchange data using MPI_Neighbor_alltoallv ==========
+    // MPI_Neighbor_alltoallv exchanges data with neighbors in the graph communicator topology
+    // - elem_sendcounts[i]: number of doubles to send to i-th outgoing neighbor
+    // - elem_recvcounts[i]: number of doubles to receive from i-th incoming neighbor
+    // - The order of neighbors must match the order returned by MPI_Dist_graph_neighbors
+    
+    MPI_Neighbor_alltoallv(
+        elem_send_buffer.data(),   // Send buffer with boundary element data
+        elem_sendcounts.data(),    // Number of elements to send to each outgoing neighbor [outdegree]
+        elem_sdispls.data(),       // Displacement in send buffer for each outgoing neighbor [outdegree]
+        MPI_DOUBLE,                // Send data type
+        elem_recv_buffer.data(),   // Receive buffer for ghost element data
+        elem_recvcounts.data(),    // Number of elements to receive from each incoming neighbor [indegree]
+        elem_rdispls.data(),       // Displacement in recv buffer for each incoming neighbor [indegree]
+        MPI_DOUBLE,                // Receive data type
+        graph_comm                 // Distributed graph communicator
+    );
+    
+    // ========== Update ghost element fields from receive buffer ==========
+    // Unpack received data back into ghost elements in the correct order
+    
+    // Track which ghost elements have been updated for debugging
+    std::vector<bool> ghost_updated(final_mesh.num_ghost_elems, false);
+    
+    int recv_idx = 0;
+    for (int i = 0; i < indegree_out; i++) {
+        int source_rank = sources_out[i];
+        const auto& ghost_indices = elems_to_recv_by_rank[source_rank];
+        
+        for (int ghost_idx : ghost_indices) {
+            int ghost_elem_local_id = final_mesh.num_owned_elems + ghost_idx;
+            gauss_point.fields.host(ghost_elem_local_id) = elem_recv_buffer[recv_idx++];  
+            ghost_updated[ghost_idx] = true;
+        }
+    }
+    
+    // Debug: Check which ghosts weren't updated
+    if (print_info) {
+        std::vector<int> missing_ghosts;
+        for (size_t i = 0; i < ghost_updated.size(); i++) {
+            if (!ghost_updated[i]) {
+                missing_ghosts.push_back(static_cast<int>(i));
+            }
+        }
+        
+        if (!missing_ghosts.empty()) {
+            for (int r = 0; r < world_size; ++r) {
+                MPI_Barrier(MPI_COMM_WORLD);
+                if (rank == r) {
+                    std::cout << "[rank " << rank << "] WARNING: " << missing_ghosts.size() 
+                              << " ghost elements not in elems_to_recv_by_rank: ";
+                    for (size_t i = 0; i < std::min(missing_ghosts.size(), size_t(10)); i++) {
+                        std::cout << missing_ghosts[i] << " ";
+                    }
+                    if (missing_ghosts.size() > 10) std::cout << "...";
+                    std::cout << std::endl;
+                }
+                MPI_Barrier(MPI_COMM_WORLD);
+            }
+        }
+    }
+    
+    gauss_point.fields.update_device();
+    
+    // ========== Verify the communication worked correctly ==========
+    bool comm_test_passed = true;
+    for (int i = final_mesh.num_owned_elems; i < final_mesh.num_elems; i++) {
+        if (gauss_point.fields.host(i) < 0.0) {
+            std::cerr << "[rank " << rank << "] ERROR: Ghost element " << i 
+                      << " was not updated (value = " << gauss_point.fields.host(i) << ")" << std::endl;
+            comm_test_passed = false;
+        }
+    }
+    
+    int local_test_passed = comm_test_passed ? 1 : 0;
+    int global_test_passed = 0;
+    MPI_Allreduce(&local_test_passed, &global_test_passed, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
+    
+    MPI_Barrier(MPI_COMM_WORLD);
+    if (rank == 0) {
+        if (global_test_passed) {
+            std::cout << "\n✓ Element communication test PASSED on all ranks\n" << std::endl;
+        } else {
+            std::cout << "\n✗ Element communication test FAILED on one or more ranks\n" << std::endl;
+        }
+    }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    print_info = false;  // Disable debug output after communication test
+
+    // Loop over all elements and average the values of elements connected to that element
+    for (int i = 0; i < final_mesh.num_elems; i++) {
+        double value = 0.0;
+        for (int j = 0; j < final_mesh.num_elems_in_elem(i); j++) {
+            value += gauss_point.fields.host(final_mesh.elems_in_elem(i, j));
+        }
+        value /= final_mesh.num_elems_in_elem(i);
+        gauss_point.fields.host(i) = value;
+    }
+    gauss_point.fields.update_device();
+
+   
+
+// --------------------------------------------------------------------------------------
+// Build the send pattern for nodes
+// Build reverse map via global IDs: for each local node gid, find ranks that ghost it.
+// Steps:
+// 1) Each rank contributes its ghost node GIDs.
+// 2) Allgatherv ghost node GIDs to build gid -> [ranks that ghost it].
+// 3) For each locally-owned node gid, lookup ranks that ghost it and record targets.
+// --------------------------------------------------------------------------------------
     
     std::vector<std::vector<std::pair<int, size_t>>> boundary_node_targets(intermediate_mesh.num_nodes);
     
@@ -2129,15 +2564,7 @@ void partition_mesh(
     MPI_Barrier(MPI_COMM_WORLD);
     if(rank == 0) std::cout << " Finished building node communication reverse map" << std::endl;
 
-
-
-
-    // Build communication plans for elements and nodes
-    CommunicationPlan element_comm_plan;
-    CommunicationPlan node_comm_plan;
-
-    element_comm_plan.build(intermediate_mesh, world_size, rank, boundary_elem_targets, boundary_elem_local_ids, boundary_to_ghost_ranks);
-    node_comm_plan.build(intermediate_mesh, world_size, rank, boundary_node_targets, boundary_node_local_ids, boundary_to_ghost_ranks);
+    
 
 
 }

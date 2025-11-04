@@ -82,7 +82,7 @@ struct node_t
 // Possible gauss point states, used to initialize GaussPoint_t
 enum class gauss_pt_state
 {
-    volume
+    fields
 };
 
 /////////////////////////////////////////////////////////////////////////////
@@ -95,7 +95,7 @@ enum class gauss_pt_state
 struct GaussPoint_t
 {
 
-    DCArrayKokkos<double> vol;  ///< GaussPoint volume
+    DCArrayKokkos<double> fields;  ///< GaussPoint fields
     
 
     // initialization method (num_cells, num_dims)
@@ -104,8 +104,8 @@ struct GaussPoint_t
 
         for (auto field : gauss_pt_states){
             switch(field){
-                case gauss_pt_state::volume:
-                    if (vol.size() == 0) this->vol = DCArrayKokkos<double>(num_gauss_pnts, "gauss_point_volume");
+                case gauss_pt_state::fields:
+                    if (fields.size() == 0) this->fields = DCArrayKokkos<double>(num_gauss_pnts, "gauss_point_fields");
                     break;
                 default:
                     std::cout<<"Desired gauss point state not understood in GaussPoint_t initialize"<<std::endl;

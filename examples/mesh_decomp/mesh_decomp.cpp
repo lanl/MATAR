@@ -44,6 +44,8 @@ int main(int argc, char** argv) {
     Mesh_t final_mesh;
     node_t final_node;
 
+    GaussPoint_t gauss_point;
+
 // ********************************************************  
 //              Build the initial mesh
 // ********************************************************  
@@ -60,11 +62,11 @@ int main(int argc, char** argv) {
 // ********************************************************  
 //             Partition and balance the mesh
 // ********************************************************  
-    partition_mesh(initial_mesh, final_mesh, initial_node, final_node, world_size, rank);
+    partition_mesh(initial_mesh, final_mesh, initial_node, final_node, gauss_point, world_size, rank);
 
     // write_vtk(intermediate_mesh, intermediate_node, rank);
     MPI_Barrier(MPI_COMM_WORLD);
-    write_vtu(final_mesh, final_node, rank, MPI_COMM_WORLD);
+    write_vtu(final_mesh, final_node, gauss_point, rank, MPI_COMM_WORLD);
     // write_vtk(final_mesh, final_node, rank);
     MPI_Barrier(MPI_COMM_WORLD);
 

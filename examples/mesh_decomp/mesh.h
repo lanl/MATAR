@@ -310,11 +310,17 @@ struct Mesh_t
     DCArrayKokkos<size_t> local_to_global_node_mapping; ///< Local to global node mapping
     DCArrayKokkos<size_t> local_to_global_elem_mapping; ///< Local to global element mapping
 
+    // Element communicaiton data definitions
     size_t num_owned_elems; ///< Number of owned elements on this rank
-    size_t num_ghost_elems; ///< Number of ghost elements on this rank (from neighboring MPI ranks)
+    size_t num_boundary_elems; ///< Number of boundary elements on this rank (send data to neighboring MPI ranks)
+    DCArrayKokkos<size_t> boundary_elem_local_ids; ///< Local IDs of boundary elements on this rank (send data to neighboring MPI ranks)
+    size_t num_ghost_elems; ///< Number of ghost elements on this rank (receive data from neighboring MPI ranks)
     
+    // Node communicaiton data definitions
     size_t num_owned_nodes; ///< Number of owned nodes on this rank
-    size_t num_ghost_nodes; ///< Number of ghost nodes on this rank (from neighboring MPI ranks)
+    size_t num_boundary_nodes; ///< Number of boundary nodes on this rank (send data to neighboring MPI ranks)
+    DCArrayKokkos<size_t> boundary_node_local_ids; ///< Local IDs of boundary nodes on this rank (send data to neighboring MPI ranks)
+    size_t num_ghost_nodes; ///< Number of ghost nodes on this rank (receive data from neighboring MPI ranks)
     
 
 
