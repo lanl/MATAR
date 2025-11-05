@@ -717,9 +717,9 @@ void partition_mesh(
 
 
 
-    if (print_vtk) {
-        write_vtk(naive_mesh, naive_node, rank);
-    }
+    // if (print_vtk) {
+    //     write_vtk(naive_mesh, naive_node, rank);
+    // }
 
 
 
@@ -2076,7 +2076,7 @@ void partition_mesh(
 
 
 // ****************************************************************************************** 
-//     Create MPI distributed graph communicator for element communication
+//     Create Communication Plan for element communication
 // ****************************************************************************************** 
 
 
@@ -2115,48 +2115,22 @@ void partition_mesh(
 
     // Initialize the graph communicator for element communication
     element_communication_plan.initialize_graph_communicator(outdegree, ghost_comm_ranks_vec.data(), indegree, ghost_elem_receive_ranks_vec.data());
-    
-    // Optional: Verify the graph communicator was created successfully
-    if (rank == 0) {
-        std::cout << " Created MPI distributed graph communicator for element communication" << std::endl;
-    }
     MPI_Barrier(MPI_COMM_WORLD);
-
-    
-
-    // ============================================================================
-    // Verify the distributed graph communicator
-    // ============================================================================
-    element_communication_plan.verify_graph_communicator();
+    // Optional: Verify the graph communicator was created successfully
+    if(print_info) element_communication_plan.verify_graph_communicator();
 
 
 // ****************************************************************************************** 
-//     Test element communication using MPI_Neighbor_alltoallv
+//     Build send counts and displacements for element communication
 // ****************************************************************************************** 
-    // Gauss points share the same communication plan as elements.
-    // This test initializes gauss point fields on owned elements and exchanges them with ghost elements.
 
-    print_info = true;  // Enable debug output for communication test
-
-    gauss_point.initialize(final_mesh.num_elems, 1, {gauss_pt_state::fields});
-
-    // Initialize the gauss point fields on each rank
-    // Set owned elements to rank number, ghost elements to -1 (to verify communication)
-    for (int i = 0; i < final_mesh.num_owned_elems; i++) {
-        gauss_point.fields.host(i) = static_cast<double>(rank);
-    }
-    for (int i = final_mesh.num_owned_elems; i < final_mesh.num_elems; i++) {
-        gauss_point.fields.host(i) = -1.0;  // Ghost elements should be updated
-    }
-    gauss_point.fields.update_device();
-
-    // ========== Build send counts and displacements for OUTGOING neighbors (destinations) ==========
+ // ========== Build send counts and displacements for OUTGOING neighbors (destinations) ==========
     // For MPI_Neighbor_alltoallv with graph communicator:
     //   - elem_sendcounts[i] = number of elements to send to i-th outgoing neighbor (destinations_out[i])
     //   - elem_sdispls[i] = starting position in send buffer for i-th outgoing neighbor
     
-    std::vector<int> elem_sendcounts(element_communication_plan.num_send_ranks, 0);
-    std::vector<int> elem_sdispls(element_communication_plan.num_send_ranks, 0);
+    // std::vector<int> elem_sendcounts(element_communication_plan.num_send_ranks, 0);
+    // std::vector<int> elem_sdispls(element_communication_plan.num_send_ranks, 0);
     
     // Count how many boundary elements go to each destination rank
     // boundary_elem_targets[elem_lid] contains pairs (dest_rank, elem_gid) for each boundary element
@@ -2170,37 +2144,24 @@ void partition_mesh(
             }
         }
     }
-    
-    // Fill elem_sendcounts based on the graph communicator's destination order
-    int total_send = 0;
+
+    // Serialize into a DRaggedRightArrayKokkos
+    CArrayKokkos<size_t> strides_array(element_communication_plan.num_send_ranks);
     for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
         int dest_rank = element_communication_plan.send_rank_ids.host(i);
-        elem_sendcounts[i] = static_cast<int>(elems_to_send_by_rank[dest_rank].size());
-        elem_sdispls[i] = total_send;
-        total_send += elem_sendcounts[i];
+        strides_array(i) = elems_to_send_by_rank[dest_rank].size();
     }
-    
-    // Debug: Print send counts
-    if (print_info) {
-        for (int r = 0; r < world_size; ++r) {
-            MPI_Barrier(MPI_COMM_WORLD);
-            if (rank == r) {
-                std::cout << "[rank " << rank << "] Send counts: ";
-                for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
-                    std::cout << "to_rank_" << element_communication_plan.send_rank_ids.host(i) << "=" << elem_sendcounts[i] << " ";
-                }
-                std::cout << "(total=" << total_send << ")" << std::endl;
-            }
-            MPI_Barrier(MPI_COMM_WORLD);
+    DRaggedRightArrayKokkos<int> elems_to_send_by_rank_rr(strides_array, "elems_to_send_by_rank");
+
+    // Fill in the data
+    for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
+        int dest_rank = element_communication_plan.send_rank_ids.host(i);
+        for (int j = 0; j < elems_to_send_by_rank[dest_rank].size(); j++) {
+            elems_to_send_by_rank_rr.host(i, j) = elems_to_send_by_rank[dest_rank][j];
         }
     }
-    
-    // ========== Build receive counts and displacements for INCOMING neighbors (sources) ==========
-    //   - elem_recvcounts[i] = number of elements to receive from i-th incoming neighbor (sources_out[i])
-    //   - elem_rdispls[i] = starting position in recv buffer for i-th incoming neighbor
-    
-    std::vector<int> elem_recvcounts(element_communication_plan.num_recv_ranks, 0);
-    std::vector<int> elem_rdispls(element_communication_plan.num_recv_ranks, 0);
+    elems_to_send_by_rank_rr.update_device();
+
     
     // Count how many ghost elements come from each source rank
     // ghost_elem_owner_ranks[i] tells us which rank owns the i-th ghost element
@@ -2210,61 +2171,102 @@ void partition_mesh(
         int source_rank = ghost_elem_owner_ranks[i];
         elems_to_recv_by_rank[source_rank].push_back(static_cast<int>(i));
     }
-    
-    // Fill elem_recvcounts based on the graph communicator's source order
-    int total_recv = 0;
+
+    // ========== Serialize into a DRaggedRightArrayKokkos ==========
+    CArrayKokkos<size_t> elem_recv_strides_array(element_communication_plan.num_recv_ranks);
     for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
         int source_rank = element_communication_plan.recv_rank_ids.host(i);
-        elem_recvcounts[i] = static_cast<int>(elems_to_recv_by_rank[source_rank].size());
-        elem_rdispls[i] = total_recv;
-        total_recv += elem_recvcounts[i];
+        elem_recv_strides_array(i) = elems_to_recv_by_rank[source_rank].size();
     }
-    
-    // Debug: Print receive counts
-    if (print_info) {
-        for (int r = 0; r < world_size; ++r) {
-            MPI_Barrier(MPI_COMM_WORLD);
-            if (rank == r) {
-                std::cout << "[rank " << rank << "] Recv counts: ";
-                for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
-                    std::cout << "from_rank_" << element_communication_plan.recv_rank_ids.host(i) << "=" << elem_recvcounts[i] << " ";
-                }
-                std::cout << "(total=" << total_recv << ", expected_ghosts=" << final_mesh.num_ghost_elems << ")" << std::endl;
-            }
-            MPI_Barrier(MPI_COMM_WORLD);
+    DRaggedRightArrayKokkos<int> elems_to_recv_by_rank_rr(elem_recv_strides_array, "elems_to_recv_by_rank");
+    // Fill in the data
+    for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
+        int source_rank = element_communication_plan.recv_rank_ids.host(i);
+        for (int j = 0; j < elems_to_recv_by_rank[source_rank].size(); j++) {
+            elems_to_recv_by_rank_rr.host(i, j) = elems_to_recv_by_rank[source_rank][j];
         }
     }
+    elems_to_recv_by_rank_rr.update_device();
+
+    element_communication_plan.setup_send_recv(elems_to_send_by_rank_rr, elems_to_recv_by_rank_rr);
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Finished building the send and recv counts and displacements for element communication" << std::endl;
+    MPI_Barrier(MPI_COMM_WORLD);
+    
+// ****************************************************************************************** 
+//     Test element communication using MPI_Neighbor_alltoallv
+// ****************************************************************************************** 
+    // Gauss points share the same communication plan as elements.
+    // This test initializes gauss point fields on owned elements and exchanges them with ghost elements.
+
+    print_info = true;  // Enable debug output for communication test
+
+    gauss_point.initialize(final_mesh.num_elems, 1, {gauss_pt_state::fields}); // , &element_communication_plan
+
+    // Initialize the gauss point fields on each rank
+    // Set owned elements to rank number, ghost elements to -1 (to verify communication)
+    for (int i = 0; i < final_mesh.num_owned_elems; i++) {
+        gauss_point.fields.host(i) = static_cast<double>(rank);
+    }
+    for (int i = final_mesh.num_owned_elems; i < final_mesh.num_elems; i++) {
+        gauss_point.fields.host(i) = -1.0;  // Ghost elements should be updated
+    }
+    gauss_point.fields.update_device();
+
+
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Starting to build the send buffer for element communication" << std::endl;
+    MPI_Barrier(MPI_COMM_WORLD);
     
     // ========== Build send buffer organized by destination rank ==========
-    std::vector<double> elem_send_buffer(total_send);
+    std::vector<double> elem_send_buffer(element_communication_plan.total_send_count);
     int send_idx = 0;
     
     for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
-        int dest_rank = element_communication_plan.send_rank_ids.host(i);
-        const auto& elems_for_this_rank = elems_to_send_by_rank[dest_rank];
+        // Get the number of elements to send to this neighbor
+        size_t num_elems_to_send = elems_to_send_by_rank_rr.stride_host(i);
+        if(rank == 0) std::cout << " Sending " << num_elems_to_send << " elements to rank " << element_communication_plan.send_rank_ids.host(i) << std::endl;
         
-        for (int elem_lid : elems_for_this_rank) {
-            elem_send_buffer[send_idx++] = gauss_point.fields.host(elem_lid);
+        for (size_t j = 0; j < num_elems_to_send; j++) {
+            int elem_lid = elems_to_send_by_rank_rr.host(i, j);
+            if(rank == 0) std::cout << " Sending element " << elem_lid << std::endl;
+            double value = gauss_point.fields.host(elem_lid);
+
+            if(rank == 0) std::cout << " Value: " << value << std::endl;
+            elem_send_buffer[send_idx++] = value;
         }
     }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Finished building the send buffer for element communication" << std::endl;
+    MPI_Barrier(MPI_COMM_WORLD);
     
     // ========== Allocate receive buffer ==========
-    std::vector<double> elem_recv_buffer(total_recv);
+    std::vector<double> elem_recv_buffer(element_communication_plan.total_recv_count);
+
+
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Finished building the receive buffer for element communication" << std::endl;
+    MPI_Barrier(MPI_COMM_WORLD);
+   
+
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Starting to exchange element data using MPI_Neighbor_alltoallv" << std::endl;
+    MPI_Barrier(MPI_COMM_WORLD);
     
-    // ========== Exchange data using MPI_Neighbor_alltoallv ==========
-    // MPI_Neighbor_alltoallv exchanges data with neighbors in the graph communicator topology
-    // - elem_sendcounts[i]: number of doubles to send to i-th outgoing neighbor
-    // - elem_recvcounts[i]: number of doubles to receive from i-th incoming neighbor
-    // - The order of neighbors must match the order returned by MPI_Dist_graph_neighbors
+
     
     MPI_Neighbor_alltoallv(
         elem_send_buffer.data(),   // Send buffer with boundary element data
-        elem_sendcounts.data(),    // Number of elements to send to each outgoing neighbor [outdegree]
-        elem_sdispls.data(),       // Displacement in send buffer for each outgoing neighbor [outdegree]
+        element_communication_plan.send_counts_.host_pointer(),           // Number of elements to send to each outgoing neighbor [outdegree]
+        element_communication_plan.send_displs_.host_pointer(),           // Displacement in send buffer for each outgoing neighbor [outdegree]
         MPI_DOUBLE,                // Send data type
         elem_recv_buffer.data(),   // Receive buffer for ghost element data
-        elem_recvcounts.data(),    // Number of elements to receive from each incoming neighbor [indegree]
-        elem_rdispls.data(),       // Displacement in recv buffer for each incoming neighbor [indegree]
+        element_communication_plan.recv_counts_.host_pointer(),           // Number of elements to receive from each incoming neighbor [indegree]
+        element_communication_plan.recv_displs_.host_pointer(),           // Displacement in recv buffer for each incoming neighbor [indegree]
         MPI_DOUBLE,                // Receive data type
         element_communication_plan.mpi_comm_graph                 // Distributed graph communicator
     );
@@ -2277,10 +2279,11 @@ void partition_mesh(
     
     int recv_idx = 0;
     for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
-        int source_rank = element_communication_plan.recv_rank_ids.host(i);
-        const auto& ghost_indices = elems_to_recv_by_rank[source_rank];
+        // Get the number of ghost elements from this source rank
+        size_t num_ghosts_from_source = elems_to_recv_by_rank_rr.stride_host(i);
         
-        for (int ghost_idx : ghost_indices) {
+        for (size_t j = 0; j < num_ghosts_from_source; j++) {
+            int ghost_idx = elems_to_recv_by_rank_rr.host(i, j);
             int ghost_elem_local_id = final_mesh.num_owned_elems + ghost_idx;
             gauss_point.fields.host(ghost_elem_local_id) = elem_recv_buffer[recv_idx++];  
             ghost_updated[ghost_idx] = true;

@@ -51,6 +51,25 @@
     // This is a good optimization for large meshes, but will require maps from MPI_comm_world rank IDs to the new reordered rank IDs.
     int reorder = 0; 
 
+
+
+
+
+    DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_per_rank] Indices of items to send to each rank
+    DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_per_rank] Indices of items to receive from each rank
+
+    DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
+    DCArrayKokkos<int> recv_counts_; // [size: num_recv_ranks] Number of items to receive from each rank
+    
+    
+    DCArrayKokkos<int> send_displs_; // [size: num_send_ranks] Starting index of items to send to each rank
+    DCArrayKokkos<int> recv_displs_; // [size: num_recv_ranks] Starting index of items to receive from each rank
+
+    int total_send_count;
+    int total_recv_count;
+
+    
+
     
     // ========================================================================
     // CONSTRUCTOR / INITIALIZATION
@@ -212,5 +231,72 @@
         MPI_Barrier(mpi_comm_world);
     }
 
+
+    void setup_send_recv(DRaggedRightArrayKokkos<int> &rank_send_ids, DRaggedRightArrayKokkos<int> &rank_recv_ids){
+
+        this->send_indices_ = rank_send_ids;
+        this->recv_indices_ = rank_recv_ids;
+
+
+        // Setup send data
+        this->send_counts_ = DCArrayKokkos<int>(num_send_ranks, "send_counts");
+        this->total_send_count = 0;
+        for(int i = 0; i < num_send_ranks; i++){
+            this->send_counts_.host(i) = rank_send_ids.stride_host(i);
+            this->total_send_count += this->send_counts_.host(i);
+        }
+        this->send_counts_.update_device();
+
+        this->send_displs_ = DCArrayKokkos<int>(num_send_ranks, "send_displs");
+        for(int i = 0; i < num_send_ranks; i++){
+            this->send_displs_.host(i) = 0;
+            for(int j = 0; j < i; j++){
+                this->send_displs_.host(i) += this->send_counts_.host(j);
+            }
+        }
+        this->send_displs_.update_device();
+
+        // Setup recv data
+        this->recv_counts_ = DCArrayKokkos<int>(num_recv_ranks, "recv_counts");
+        this->total_recv_count = 0;
+        for(int i = 0; i < num_recv_ranks; i++){
+            this->recv_counts_.host(i) = rank_recv_ids.stride_host(i);
+            this->total_recv_count += this->recv_counts_.host(i);
+        }
+        this->recv_counts_.update_device();
+
+        this->recv_displs_ = DCArrayKokkos<int>(num_recv_ranks, "recv_displs");
+        for(int i = 0; i < num_recv_ranks; i++){
+            this->recv_displs_.host(i) = 0;
+            for(int j = 0; j < i; j++){
+                this->recv_displs_.host(i) += this->recv_counts_.host(j);
+            }
+        }
+        this->recv_displs_.update_device();
+
+
+        // Print the send and recv data sequentially per MPI rank for clarity
+        MPI_Barrier(mpi_comm_world);
+        int rank, nprocs;
+        MPI_Comm_rank(mpi_comm_world, &rank);
+        MPI_Comm_size(mpi_comm_world, &nprocs);
+        for(int r = 0; r < nprocs; r++) {
+            MPI_Barrier(mpi_comm_world);
+            if(rank == r) {
+                std::cout << "==============================" << std::endl;
+                std::cout << "CommunicationPlan info for rank " << rank << std::endl;
+                for(int i = 0; i < num_send_ranks; i++){
+                    std::cout << "  Send count to rank[" << i << "] (dest rank " << this->send_rank_ids.host(i) << "): " << this->send_counts_.host(i) << std::endl;
+                    std::cout << "  Send displs to rank[" << i << "]: " << this->send_displs_.host(i) << std::endl;
+                }
+                for(int i = 0; i < num_recv_ranks; i++){
+                    std::cout << "  Recv count from rank[" << i << "] (source rank " << this->recv_rank_ids.host(i) << "): " << this->recv_counts_.host(i) << std::endl;
+                    std::cout << "  Recv displs from rank[" << i << "]: " << this->recv_displs_.host(i) << std::endl;
+                }
+                std::cout << "==============================" << std::endl << std::flush;
+            }
+        }
+        MPI_Barrier(mpi_comm_world);
+    }
 
 };

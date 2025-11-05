@@ -1,5 +1,5 @@
-#ifndef MPIDARRAYKOKKOS_H
-#define MPIDARRAYKOKKOS_H
+#ifndef MPICARRAYKOKKOS_H
+#define MPICARRAYKOKKOS_H
 
 #include "matar.h"
 #include "communication_plan.h"
@@ -7,38 +7,42 @@
 using namespace mtr;
 
 /////////////////////////
-// MPIDArrayKokkos:  Dual type for managing distributed data on both CPU and GPU.
+// MPICArrayKokkos:  Dual type for managing distributed data on both CPU and GPU.
 // 
-// Enhanced with automatic ghost synchronization via CommunicationPlan.
-// Allocates space for owned + ghost items and provides communicate() method.
-//
-// Usage:
-//   node.coords.communicate()  -> syncs ghost nodes automatically
-//   elem.density.communicate() -> syncs ghost elements automatically
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class MPIDArrayKokkos {
+class MPICArrayKokkos {
 
-    // this is manage
-    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+    // Dual view for managing data on both CPU and GPU
+    DCArrayKokkos<T> this_array_;
     
 protected:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
-    int mpi_recv_rank_;
-    int mpi_tag_;
+
     MPI_Comm mpi_comm_;
     MPI_Status mpi_status_;
     MPI_Datatype mpi_datatype_;
     MPI_Request mpi_request_;
-    TArray1D this_array_;
+
     
     // --- Ghost Communication Support ---
     CommunicationPlan* comm_plan_;      // Pointer to shared communication plan
-    size_t num_owned_items_;            // Number of owned items (nodes/elements)
-    size_t num_total_items_;            // Total items including ghosts (owned + ghost)
-    size_t num_fields_;                 // Fields per item (e.g., 3 for 3D coordinates)
+
+
+    DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
+    DCArrayKokkos<int> recv_counts_; // [size: num_recv_ranks] Number of items to receive from each rank
+    DCArrayKokkos<int> send_displs_; // [size: num_send_ranks] Starting index of items to send to each rank
+    DCArrayKokkos<int> recv_displs_; // [size: num_recv_ranks] Starting index of items to receive from each rank
+
+
+    DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_by_rank] Indices of items to send to each rank
+    DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_by_rank] Indices of items to receive from each rank
+    
+    
+    size_t num_owned_;            // Number of owned items (nodes/elements)
+    size_t num_ghost_;            // Number of ghost items (nodes/elements)
     
     void set_mpi_type();
 
@@ -46,131 +50,28 @@ public:
     // Data member to access host view
     ViewCArray <T> host;
 
-    MPIDArrayKokkos();
+    MPICArrayKokkos();
     
-    MPIDArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPICArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIDArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPICArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIDArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIDArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIDArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIDArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPIDArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
                  size_t dim3, size_t dim4, size_t dim5,
                  size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
-    
-    // ========================================================================
-    // DISTRIBUTED COMMUNICATION METHODS (NEW)
-    // ========================================================================
-    
-    /**
-     * @brief Set communication plan and ghost metadata
-     * 
-     * Call this ONCE after allocating the array to enable ghost communication.
-     * Multiple fields can share the same CommunicationPlan pointer.
-     * 
-     * @param plan Pointer to shared CommunicationPlan (node or element plan)
-     * @param num_owned Number of owned items on this rank
-     * @param num_total Total items including ghosts (owned + ghost)
-     * 
-     * Example:
-     *   node.coords = MPIDArrayKokkos<double>(num_total_nodes, 3);
-     *   node.coords.set_communication_plan(&node_comm_plan, num_owned_nodes, num_total_nodes);
-     */
-    void set_communication_plan(CommunicationPlan* plan, size_t num_owned, size_t num_total);
-    
-    
-    /**
-     * @brief Synchronize ghost data using neighborhood collectives
-     * 
-     * Automatically exchanges boundary → ghost data for this field.
-     * Uses the CommunicationPlan provided via set_communication_plan().
-     * 
-     * Workflow:
-     * 1. Updates host data from device (if needed)
-     * 2. Packs owned boundary items
-     * 3. Calls MPI_Neighbor_alltoallv (via comm_plan)
-     * 4. Unpacks into ghost items
-     * 5. Updates device with new ghost data
-     * 
-     * Example usage:
-     *   // Update owned nodes
-     *   for (int i = 0; i < num_owned_nodes; i++) {
-     *       node.coords(i, 0) += dt * velocity(i, 0);
-     *   }
-     *   
-     *   // Sync ghosts
-     *   node.coords.communicate();
-     *   
-     *   // Now ghost data is current
-     */
-    void communicate();
-    
-    
-    /**
-     * @brief Non-blocking version: start ghost exchange
-     * 
-     * For advanced users who want to overlap computation with communication.
-     * Must call communicate_wait() before accessing ghost data.
-     */
-    void communicate_begin();
-    
-    
-    /**
-     * @brief Wait for non-blocking ghost exchange to complete
-     */
-    void communicate_wait();
-    
-    
-    /**
-     * @brief Get number of owned items (excludes ghosts)
-     */
-    KOKKOS_INLINE_FUNCTION
-    size_t num_owned() const { return num_owned_items_; }
-    
-    
-    /**
-     * @brief Get total items including ghosts
-     */
-    KOKKOS_INLINE_FUNCTION
-    size_t num_total() const { return num_total_items_; }
-    
-    
-    /**
-     * @brief Check if ghost communication is configured
-     */
-    bool has_communication_plan() const { return comm_plan_ != nullptr; }
-    
-    // These functions can setup the data needed for halo send/receives
-    // Not necessary for standard MPI comms
-    void mpi_setup();
 
-    void mpi_setup(int recv_rank);
-
-    void mpi_setup(int recv_rank, int tag);
-
-    void mpi_setup(int recv_rank, int tag, MPI_Comm comm);
-
-    void mpi_set_rank(int recv_rank);
-
-    void mpi_set_tag(int tag);
-
-    void mpi_set_comm(MPI_Comm comm);
-
-    int get_rank();
-
-    int get_tag();
-
-    MPI_Comm get_comm();
 
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
@@ -197,6 +98,13 @@ public:
     
     KOKKOS_INLINE_FUNCTION
     MPIDArrayKokkos& operator=(const MPIDArrayKokkos& temp);
+
+
+    // Method to set comm plan
+    KOKKOS_INLINE_FUNCTION
+    void initialize_comm_plan(CommunicationPlan* comm_plan);
+
+
 
     // GPU Method
     // Method that returns size
@@ -240,121 +148,205 @@ public:
 }; // End of MPIDArrayKokkos
 
 
-// // ============================================================================
-// // INLINE IMPLEMENTATIONS - DISTRIBUTED COMMUNICATION
-// // ============================================================================
 
-// /**
-//  * @brief Default constructor - initialize ghost communication members
-//  */
-// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-// KOKKOS_INLINE_FUNCTION
-// MPIDArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPIDArrayKokkos() 
-//     : comm_plan_(nullptr), 
-//       num_owned_items_(0), 
-//       num_total_items_(0), 
-//       num_fields_(0) 
-// {
-//     // Base constructor handles array initialization
-// }
+// Default constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos()
+    : this_array_() { }
 
+// Overloaded 1D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, const std::string& tag_string) {
+    this_array_ = DCArrayKokkos<T>(dim0, tag_string);
+    host = ViewCArray <T> (this_array_.view_host().data(), dim0);
+}
 
-// /**
-//  * @brief Set communication plan and ghost metadata
-//  */
-// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-// inline void MPIDArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_communication_plan(
-//     CommunicationPlan* plan, 
-//     size_t num_owned, 
-//     size_t num_total)
-// {
-//     comm_plan_ = plan;
-//     num_owned_items_ = num_owned;
-//     num_total_items_ = num_total;
-    
-//     // Infer number of fields from array dimensions
-//     // Assumption: dim0 = num_items, dim1+ = fields
-//     if (order_ == 1) {
-//         num_fields_ = 1;  // Scalar field
-//     } else if (order_ == 2) {
-//         num_fields_ = dims_[1];  // Vector field (e.g., coords[num_nodes, 3])
-//     } else {
-//         // For higher order tensors, treat everything after dim0 as fields
-//         num_fields_ = 1;
-//         for (size_t i = 1; i < order_; i++) {
-//             num_fields_ *= dims_[i];
-//         }
-//     }
-    
-//     // Validate dimensions match total items
-//     if (dims_[0] != num_total) {
-//         std::cerr << "Error: Array dim0 (" << dims_[0] << ") does not match num_total (" 
-//                   << num_total << ")" << std::endl;
-//         std::cerr << "       Array must be allocated with size = num_owned + num_ghost" << std::endl;
-//     }
-// }
+// Overloaded 2D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
+    this_array_ = DCArrayKokkos<T>(dim0, dim1, tag_string);
+    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1);
+}
 
+// Overloaded 3D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string) {
+    this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, tag_string);
+    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2);
+}
 
-// /**
-//  * @brief Synchronize ghost data using neighborhood collectives
-//  */
-// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-// inline void MPIDArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::communicate()
-// {
-//     if (!comm_plan_) {
-//         std::cerr << "Error: CommunicationPlan not set. Call set_communication_plan() first." << std::endl;
-//         return;
-//     }
-    
-//     if (!comm_plan_->has_graph_comm) {
-//         std::cerr << "Error: Graph communicator not initialized in CommunicationPlan." << std::endl;
-//         std::cerr << "       Call comm_plan.create_graph_communicator() first." << std::endl;
-//         return;
-//     }
-    
-//     // 1. Update host from device (ensure data is current on CPU for MPI)
-//     this->update_host();
-    
-//     // 2. Get raw pointer to data
-//     T* data_ptr = this->host_pointer();
-    
-//     // 3. Convert to double* for MPI communication
-//     // TODO: Support other types (int, float, etc.) with template specialization
-//     static_assert(std::is_same<T, double>::value, 
-//                   "Currently only double supported for ghost communication");
-    
-//     double* double_ptr = reinterpret_cast<double*>(data_ptr);
-    
-//     // 4. Call neighborhood collective exchange
-//     comm_plan_->exchange_ghosts_neighborhood(double_ptr, static_cast<int>(num_fields_));
-    
-//     // 5. Update device with new ghost data
-//     this->update_device();
-// }
+// Overloaded 4D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
+    this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, tag_string);
+    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2, dim3);
+}
+
+// Overloaded 5D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string& tag_string) {
+    this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, tag_string);
+    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2, dim3, dim4);
+}
+
+// Overloaded 6D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string) {
+    this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, tag_string);
+    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2, dim3, dim4, dim5);
+}
+
+// Overloaded 7D constructor
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string) {
+    this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
+    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+}
 
 
-// /**
-//  * @brief Non-blocking version: start ghost exchange
-//  */
-// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-// inline void MPIDArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::communicate_begin()
-// {
-//     // TODO: Implement non-blocking version using Isend/Irecv
-//     // For now, just call blocking version
-//     std::cerr << "Warning: communicate_begin() not yet implemented, using blocking communicate()" << std::endl;
-//     communicate();
-// }
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+    assert(order_ == 1 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 1D!");
+    assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 1D!");
+    return this_array_(i);
+}
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+    assert(order_ == 2 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 2D!");
+    assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 2D!");
+    assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 2D!");
+    return this_array_(i, j);
+}
 
-// /**
-//  * @brief Wait for non-blocking ghost exchange to complete
-//  */
-// template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-// inline void MPIDArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::communicate_wait()
-// {
-//     // TODO: Implement non-blocking version
-//     // For now, this is a no-op since communicate_begin() is blocking
-// }
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+    assert(order_ == 3 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 3D!");
+    assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 3D!");
+    assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 3D!");
+    assert(k < dims_[2] && "k is out of bounds in MPICArrayKokkos 3D!");
+    return this_array_(i, j, k);
+}
 
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+    assert(order_ == 4 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 4D!");
+    assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 4D!");
+    assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 4D!");
+    assert(k < dims_[2] && "k is out of bounds in MPICArrayKokkos 4D!");
+    assert(l < dims_[3] && "l is out of bounds in MPICArrayKokkos 4D!");
+    return this_array_(i, j, k, l);
+}
 
-// #endif // MPIDARRAYKOKKOS_H
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const {
+    assert(order_ == 5 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 5D!");
+    assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 5D!");
+    assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 5D!");
+    assert(k < dims_[2] && "k is out of bounds in MPICArrayKokkos 5D!");
+    assert(l < dims_[3] && "l is out of bounds in MPICArrayKokkos 5D!");
+    assert(m < dims_[4] && "m is out of bounds in MPICArrayKokkos 5D!");
+    return this_array_(i, j, k, l, m);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const {
+    assert(order_ == 6 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 6D!");
+    assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 6D!");
+    assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 6D!");
+    assert(k < dims_[2] && "k is out of bounds in MPICArrayKokkos 6D!");
+    assert(l < dims_[3] && "l is out of bounds in MPICArrayKokkos 6D!");
+    assert(m < dims_[4] && "m is out of bounds in MPICArrayKokkos 6D!");
+    assert(n < dims_[5] && "n is out of bounds in MPICArrayKokkos 6D!");
+    return this_array_(i, j, k, l, m, n);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const {
+    assert(order_ == 7 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 7D!");
+    assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 7D!");
+    assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 7D!");
+    assert(k < dims_[2] && "k is out of bounds in MPICArrayKokkos 7D!");
+    assert(l < dims_[3] && "l is out of bounds in MPICArrayKokkos 7D!");
+    assert(m < dims_[4] && "m is out of bounds in MPICArrayKokkos 7D!");
+    assert(n < dims_[5] && "n is out of bounds in MPICArrayKokkos 7D!");
+    assert(o < dims_[6] && "o is out of bounds in MPICArrayKokkos 7D!");
+    return this_array_(i, j, k, l, m, n, o);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+MPIDArrayKokkos& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const MPIDArrayKokkos& temp) {
+    this_array_ = temp.this_array_;
+    return *this;
+}
+
+// Return size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
+    return this_array_.size();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
+    return this_array_.extent();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+    assert(i < order_ && "MPICArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    assert(dims_[i]>0 && "Access to MPICArrayKokkos dims is out of bounds!");
+    return this_array_.dims(i);
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+    return this_array_.order();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
+    return this_array_.device_pointer();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+T* MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
+    return this_array_.host_pointer();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
+    return this_array_.get_kokkos_dual_view();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+    this_array_.update_host();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+    this_array_.update_device();
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+KOKKOS_INLINE_FUNCTION
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPICArrayKokkos() {
+    this_array_.~DCArrayKokkos();
+}
+
+#endif
