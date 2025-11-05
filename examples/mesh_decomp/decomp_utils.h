@@ -14,6 +14,7 @@
 #include "mesh.h"
 #include "state.h"
 #include "mesh_io.h"
+#include "communication_plan.h"
 
 
 // Include Scotch headers
@@ -2077,13 +2078,14 @@ void partition_mesh(
 // ****************************************************************************************** 
 //     Create MPI distributed graph communicator for element communication
 // ****************************************************************************************** 
+
+
+    CommunicationPlan element_communication_plan;
+    element_communication_plan.initialize(MPI_COMM_WORLD);
     // MPI_Dist_graph_create_adjacent creates a distributed graph topology communicator
     // that efficiently represents the communication pattern between ranks.
     // This allows MPI to optimize communication based on the actual connectivity pattern.
     
-    // ---------- Prepare input communicator ----------
-    // comm_old: The base communicator from which to create the graph communicator
-    MPI_Comm comm_old = MPI_COMM_WORLD;
     
     // ---------- Prepare INCOMING edges (sources) ----------
     // indegree: Number of ranks from which this rank will RECEIVE data
@@ -2096,6 +2098,7 @@ void partition_mesh(
     // sources: Array of source rank IDs (ranks we receive from)
     // Each element corresponds to a rank that owns elements we ghost
     int* sources = (indegree > 0) ? ghost_elem_receive_ranks_vec.data() : MPI_UNWEIGHTED;
+
     
     // sourceweights: Weights on incoming edges (not used here, set to MPI_UNWEIGHTED)
     // Could be used to specify communication volume if needed for optimization
@@ -2109,132 +2112,22 @@ void partition_mesh(
     // destinations: Array of destination rank IDs (ranks we send to)
     // Each element corresponds to a rank that ghosts our owned elements
     int* destinations = (outdegree > 0) ? ghost_comm_ranks_vec.data() : MPI_UNWEIGHTED;
-    
-    // destweights: Weights on outgoing edges (not used here, set to MPI_UNWEIGHTED)
-    // Could be used to specify communication volume if needed for optimization
-    int* destweights = MPI_UNWEIGHTED;
-    
-    // ---------- Additional parameters ----------
-    // info: Hints for optimization (MPI_INFO_NULL means use defaults)
-    MPI_Info info = MPI_INFO_NULL;
-    
-    // reorder: Whether to allow MPI to reorder ranks for optimization (0=no reordering)
-    // Setting to 0 preserves original rank numbering
-    int reorder = 0;
-    
-    // ---------- Output communicator ----------
-    // graph_comm: The new distributed graph communicator that will be created
-    MPI_Comm graph_comm;
-    
-    // Create the distributed graph communicator
-    // This call collectively creates a communicator where each rank specifies:
-    //   - Which ranks it receives from (sources/indegree)
-    //   - Which ranks it sends to (destinations/outdegree)
-    // MPI can then optimize collective operations and point-to-point communication
-    // based on this connectivity information.
-    MPI_Dist_graph_create_adjacent(
-        comm_old,           // Input: base communicator
-        indegree,           // Input: number of incoming neighbors (ranks we receive from)
-        sources,            // Input: array of source ranks [indegree elements]
-        sourceweights,      // Input: weights on incoming edges (MPI_UNWEIGHTED)
-        outdegree,          // Input: number of outgoing neighbors (ranks we send to)
-        destinations,       // Input: array of destination ranks [outdegree elements]
-        destweights,        // Input: weights on outgoing edges (MPI_UNWEIGHTED)
-        info,               // Input: optimization hints (MPI_INFO_NULL)
-        reorder,            // Input: allow rank reordering (0=no)
-        &graph_comm         // Output: new distributed graph communicator
-    );
 
+    // Initialize the graph communicator for element communication
+    element_communication_plan.initialize_graph_communicator(outdegree, ghost_comm_ranks_vec.data(), indegree, ghost_elem_receive_ranks_vec.data());
+    
     // Optional: Verify the graph communicator was created successfully
     if (rank == 0) {
         std::cout << " Created MPI distributed graph communicator for element communication" << std::endl;
     }
     MPI_Barrier(MPI_COMM_WORLD);
 
+    
+
     // ============================================================================
     // Verify the distributed graph communicator
     // ============================================================================
-    // Query the graph to verify it matches what we specified
-    int indegree_out, outdegree_out, weighted;
-    MPI_Dist_graph_neighbors_count(graph_comm, &indegree_out, &outdegree_out, &weighted);
-    
-    // Allocate arrays to receive neighbor information
-    std::vector<int> sources_out(indegree_out);
-    std::vector<int> sourceweights_out(indegree_out);
-    std::vector<int> destinations_out(outdegree_out);
-    std::vector<int> destweights_out(outdegree_out);
-    
-    // Retrieve the actual neighbors from the graph communicator
-    MPI_Dist_graph_neighbors(graph_comm, 
-                             indegree_out, sources_out.data(), sourceweights_out.data(),
-                             outdegree_out, destinations_out.data(), destweights_out.data());
-    
-    // Print verification information for each rank sequentially
-    for (int r = 0; r < world_size; ++r) {
-        MPI_Barrier(MPI_COMM_WORLD);
-        if (rank == r) {
-            std::cout << "\n[rank " << rank << "] Graph Communicator Verification:" << std::endl;
-            std::cout << "  Indegree (receives from " << indegree_out << " ranks): ";
-            for (int i = 0; i < indegree_out; ++i) {
-                std::cout << sources_out[i] << " ";
-            }
-            std::cout << std::endl;
-            
-            std::cout << "  Outdegree (sends to " << outdegree_out << " ranks): ";
-            for (int i = 0; i < outdegree_out; ++i) {
-                std::cout << destinations_out[i] << " ";
-            }
-            std::cout << std::endl;
-            
-            std::cout << "  Weighted: " << (weighted ? "yes" : "no") << std::endl;
-        }
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
-    
-    // Additional verification: Check if the queried values match our input
-    bool verification_passed = true;
-    if (indegree_out != indegree) {
-        std::cerr << "[rank " << rank << "] ERROR: indegree mismatch! "
-                  << "Expected " << indegree << ", got " << indegree_out << std::endl;
-        verification_passed = false;
-    }
-    if (outdegree_out != outdegree) {
-        std::cerr << "[rank " << rank << "] ERROR: outdegree mismatch! "
-                  << "Expected " << outdegree << ", got " << outdegree_out << std::endl;
-        verification_passed = false;
-    }
-    
-    // Check if source and destination ranks match (order may differ)
-    std::set<int> sources_set_in(ghost_elem_receive_ranks_vec.begin(), ghost_elem_receive_ranks_vec.end());
-    std::set<int> sources_set_out(sources_out.begin(), sources_out.end());
-    if (sources_set_in != sources_set_out) {
-        std::cerr << "[rank " << rank << "] ERROR: source ranks mismatch!" << std::endl;
-        verification_passed = false;
-    }
-    
-    std::set<int> dests_set_in(ghost_comm_ranks_vec.begin(), ghost_comm_ranks_vec.end());
-    std::set<int> dests_set_out(destinations_out.begin(), destinations_out.end());
-    if (dests_set_in != dests_set_out) {
-        std::cerr << "[rank " << rank << "] ERROR: destination ranks mismatch!" << std::endl;
-        verification_passed = false;
-    }
-    
-    // Global verification check
-    int local_passed = verification_passed ? 1 : 0;
-    int global_passed = 0;
-    MPI_Allreduce(&local_passed, &global_passed, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
-    MPI_Barrier(MPI_COMM_WORLD);
-    if (rank == 0) {
-        if (global_passed) {
-            std::cout << "\n✓ Graph communicator verification PASSED on all ranks\n" << std::endl;
-        } else {
-            std::cout << "\n✗ Graph communicator verification FAILED on one or more ranks\n" << std::endl;
-        }
-    }
-    MPI_Barrier(MPI_COMM_WORLD);
-
-
-
+    element_communication_plan.verify_graph_communicator();
 
 
 // ****************************************************************************************** 
@@ -2262,8 +2155,8 @@ void partition_mesh(
     //   - elem_sendcounts[i] = number of elements to send to i-th outgoing neighbor (destinations_out[i])
     //   - elem_sdispls[i] = starting position in send buffer for i-th outgoing neighbor
     
-    std::vector<int> elem_sendcounts(outdegree_out, 0);
-    std::vector<int> elem_sdispls(outdegree_out, 0);
+    std::vector<int> elem_sendcounts(element_communication_plan.num_send_ranks, 0);
+    std::vector<int> elem_sdispls(element_communication_plan.num_send_ranks, 0);
     
     // Count how many boundary elements go to each destination rank
     // boundary_elem_targets[elem_lid] contains pairs (dest_rank, elem_gid) for each boundary element
@@ -2280,8 +2173,8 @@ void partition_mesh(
     
     // Fill elem_sendcounts based on the graph communicator's destination order
     int total_send = 0;
-    for (int i = 0; i < outdegree_out; i++) {
-        int dest_rank = destinations_out[i];
+    for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
+        int dest_rank = element_communication_plan.send_rank_ids.host(i);
         elem_sendcounts[i] = static_cast<int>(elems_to_send_by_rank[dest_rank].size());
         elem_sdispls[i] = total_send;
         total_send += elem_sendcounts[i];
@@ -2293,8 +2186,8 @@ void partition_mesh(
             MPI_Barrier(MPI_COMM_WORLD);
             if (rank == r) {
                 std::cout << "[rank " << rank << "] Send counts: ";
-                for (int i = 0; i < outdegree_out; i++) {
-                    std::cout << "to_rank_" << destinations_out[i] << "=" << elem_sendcounts[i] << " ";
+                for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
+                    std::cout << "to_rank_" << element_communication_plan.send_rank_ids.host(i) << "=" << elem_sendcounts[i] << " ";
                 }
                 std::cout << "(total=" << total_send << ")" << std::endl;
             }
@@ -2306,8 +2199,8 @@ void partition_mesh(
     //   - elem_recvcounts[i] = number of elements to receive from i-th incoming neighbor (sources_out[i])
     //   - elem_rdispls[i] = starting position in recv buffer for i-th incoming neighbor
     
-    std::vector<int> elem_recvcounts(indegree_out, 0);
-    std::vector<int> elem_rdispls(indegree_out, 0);
+    std::vector<int> elem_recvcounts(element_communication_plan.num_recv_ranks, 0);
+    std::vector<int> elem_rdispls(element_communication_plan.num_recv_ranks, 0);
     
     // Count how many ghost elements come from each source rank
     // ghost_elem_owner_ranks[i] tells us which rank owns the i-th ghost element
@@ -2320,8 +2213,8 @@ void partition_mesh(
     
     // Fill elem_recvcounts based on the graph communicator's source order
     int total_recv = 0;
-    for (int i = 0; i < indegree_out; i++) {
-        int source_rank = sources_out[i];
+    for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
+        int source_rank = element_communication_plan.recv_rank_ids.host(i);
         elem_recvcounts[i] = static_cast<int>(elems_to_recv_by_rank[source_rank].size());
         elem_rdispls[i] = total_recv;
         total_recv += elem_recvcounts[i];
@@ -2333,8 +2226,8 @@ void partition_mesh(
             MPI_Barrier(MPI_COMM_WORLD);
             if (rank == r) {
                 std::cout << "[rank " << rank << "] Recv counts: ";
-                for (int i = 0; i < indegree_out; i++) {
-                    std::cout << "from_rank_" << sources_out[i] << "=" << elem_recvcounts[i] << " ";
+                for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
+                    std::cout << "from_rank_" << element_communication_plan.recv_rank_ids.host(i) << "=" << elem_recvcounts[i] << " ";
                 }
                 std::cout << "(total=" << total_recv << ", expected_ghosts=" << final_mesh.num_ghost_elems << ")" << std::endl;
             }
@@ -2346,8 +2239,8 @@ void partition_mesh(
     std::vector<double> elem_send_buffer(total_send);
     int send_idx = 0;
     
-    for (int i = 0; i < outdegree_out; i++) {
-        int dest_rank = destinations_out[i];
+    for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
+        int dest_rank = element_communication_plan.send_rank_ids.host(i);
         const auto& elems_for_this_rank = elems_to_send_by_rank[dest_rank];
         
         for (int elem_lid : elems_for_this_rank) {
@@ -2373,7 +2266,7 @@ void partition_mesh(
         elem_recvcounts.data(),    // Number of elements to receive from each incoming neighbor [indegree]
         elem_rdispls.data(),       // Displacement in recv buffer for each incoming neighbor [indegree]
         MPI_DOUBLE,                // Receive data type
-        graph_comm                 // Distributed graph communicator
+        element_communication_plan.mpi_comm_graph                 // Distributed graph communicator
     );
     
     // ========== Update ghost element fields from receive buffer ==========
@@ -2383,8 +2276,8 @@ void partition_mesh(
     std::vector<bool> ghost_updated(final_mesh.num_ghost_elems, false);
     
     int recv_idx = 0;
-    for (int i = 0; i < indegree_out; i++) {
-        int source_rank = sources_out[i];
+    for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
+        int source_rank = element_communication_plan.recv_rank_ids.host(i);
         const auto& ghost_indices = elems_to_recv_by_rank[source_rank];
         
         for (int ghost_idx : ghost_indices) {
