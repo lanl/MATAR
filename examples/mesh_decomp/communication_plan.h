@@ -1,3 +1,10 @@
+#ifndef COMMUNICATION_PLAN_H
+#define COMMUNICATION_PLAN_H
+
+#include "matar.h"
+
+using namespace mtr;
+
 /**
  * @struct CommunicationPlan
  * @brief Manages efficient MPI communication for ghost element and node data exchange
@@ -69,7 +76,7 @@
     int total_recv_count;
 
     
-
+    
     
     // ========================================================================
     // CONSTRUCTOR / INITIALIZATION
@@ -103,7 +110,7 @@
         
         this->num_send_ranks = num_send_ranks;
         this->num_recv_ranks = num_recv_ranks;
-
+        
         this->send_rank_ids = DCArrayKokkos<int>(num_send_ranks, "send_rank_ids");
         for(int i = 0; i < num_send_ranks; i++){
             this->send_rank_ids(i) = send_rank_ids[i];
@@ -114,7 +121,7 @@
         for(int i = 0; i < num_recv_ranks; i++){
             this->recv_rank_ids(i) = recv_rank_ids[i];
         }
-
+        
         MPI_Dist_graph_create_adjacent(
             mpi_comm_world,
             num_recv_ranks,
@@ -234,8 +241,8 @@
 
     void setup_send_recv(DRaggedRightArrayKokkos<int> &rank_send_ids, DRaggedRightArrayKokkos<int> &rank_recv_ids){
 
-        this->send_indices_ = rank_send_ids;
-        this->recv_indices_ = rank_recv_ids;
+        this->send_indices_ = rank_send_ids; // ods of element data to send to each rank
+        this->recv_indices_ = rank_recv_ids; //
 
 
         // Setup send data
@@ -300,3 +307,5 @@
     }
 
 };
+
+#endif // COMMUNICATION_PLAN_H

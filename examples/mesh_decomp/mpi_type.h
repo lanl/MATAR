@@ -15,6 +15,9 @@ class MPICArrayKokkos {
 
     // Dual view for managing data on both CPU and GPU
     DCArrayKokkos<T> this_array_;
+
+    DCArrayKokkos<T> send_buffer_;
+    DCArrayKokkos<T> recv_buffer_;
     
 protected:
     size_t dims_[7];
@@ -97,12 +100,16 @@ public:
                   size_t n, size_t o) const;
     
     KOKKOS_INLINE_FUNCTION
-    MPIDArrayKokkos& operator=(const MPIDArrayKokkos& temp);
+    MPICArrayKokkos& operator=(const MPICArrayKokkos& temp);
 
 
     // Method to set comm plan
     KOKKOS_INLINE_FUNCTION
-    void initialize_comm_plan(CommunicationPlan* comm_plan);
+    void initialize_comm_plan(CommunicationPlan& comm_plan){
+        comm_plan_ = &comm_plan;
+        send_buffer_ = DCArrayKokkos<T>(comm_plan_->total_send_count, "send_buffer");
+        recv_buffer_ = DCArrayKokkos<T>(comm_plan_->total_recv_count, "recv_buffer");
+    };
 
 
 
@@ -132,7 +139,7 @@ public:
 
     // Method returns kokkos dual view
     KOKKOS_INLINE_FUNCTION
-    TArray1D get_kokkos_dual_view() const;
+    Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits> get_kokkos_dual_view() const;
 
     // Method that update host view
     void update_host();
@@ -140,11 +147,174 @@ public:
     // Method that update device view
     void update_device();
 
+    // Method that builds the send buffer
+    void fill_send_buffer(){
+
+        int rank;
+        MPI_Comm_rank(comm_plan_->mpi_comm_world, &rank);
+
+        // this_array_.update_host();
+        int send_idx = 0;
+        for(int i = 0; i < comm_plan_->num_send_ranks; i++){
+            for(int j = 0; j < comm_plan_->send_counts_.host(i); j++){
+                int src_idx = comm_plan_->send_indices_.host(i, j);
+                send_buffer_.host(send_idx) = this_array_.host(src_idx);
+                if(rank == 0) std::cout << "MPICArrayKokkos::fill_send_buffer() - send_buffer(" << send_idx << ") = " << this_array_.host(src_idx) << std::endl;
+                send_idx++;
+            }
+        }
+    };
+
+    // Method that copies the recv buffer
+    void copy_recv_buffer(){
+        int rank;
+        MPI_Comm_rank(comm_plan_->mpi_comm_world, &rank);
+
+        // NOTE: Do NOT call recv_buffer_.update_host() here!
+        // MPI already wrote directly to host memory, so calling update_host()
+        // would overwrite the received data by copying stale device data
+        int recv_idx = 0;
+        for(int i = 0; i < comm_plan_->num_recv_ranks; i++){
+            for(int j = 0; j < comm_plan_->recv_counts_.host(i); j++){
+                int dest_idx = comm_plan_->recv_indices_.host(i, j);
+                this_array_.host(dest_idx) = recv_buffer_.host(recv_idx);
+                //if(rank == 0) std::cout << "MPICArrayKokkos::copy_recv_buffer() - this_array(" << dest_idx << ") = " << recv_buffer_.host(recv_idx) << std::endl;
+                recv_idx++;
+            }
+        }
+    };
+
+    void communicate(){
+        int rank;
+        MPI_Comm_rank(comm_plan_->mpi_comm_world, &rank);
+        
+        if(rank == 0) {
+            std::cout << "MPICArrayKokkos::communicate() - this_array size: " << this_array_.size() << std::endl;
+            std::cout << "MPICArrayKokkos::communicate() - send_buffer size: " << send_buffer_.size() 
+                      << ", recv_buffer size: " << recv_buffer_.size() << std::endl;
+            std::cout << "MPICArrayKokkos::communicate() - total_send_count: " << comm_plan_->total_send_count 
+                      << ", total_recv_count: " << comm_plan_->total_recv_count << std::endl;
+        }
+        
+        fill_send_buffer();
+
+        if(rank == 0) std::cout << "MPICArrayKokkos::communicate() - Starting MPI_Neighbor_alltoallv" << std::endl;
+
+
+        MPI_Barrier(comm_plan_->mpi_comm_world);
+        
+        // Verify buffer sizes match expected
+        if(rank == 0) {
+            std::cout << "Send buffer size check: " << send_buffer_.size() << " vs expected " << comm_plan_->total_send_count << std::endl;
+            std::cout << "Recv buffer size check: " << recv_buffer_.size() << " vs expected " << comm_plan_->total_recv_count << std::endl;
+            
+            // Print first few send values
+            std::cout << "MPICArrayKokkos::communicate() - send_buffer values: ";
+            for(int i = 0; i < 10 && i < send_buffer_.size(); i++) {
+                std::cout << send_buffer_.host(i) << " ";
+            }
+            std::cout << std::endl;
+            
+            // Print send counts and displs
+            std::cout << "Send counts: ";
+            int total_send = 0;
+            for(int i = 0; i < comm_plan_->num_send_ranks; i++) {
+                int count = comm_plan_->send_counts_.host(i);
+                std::cout << count << " ";
+                total_send += count;
+            }
+            std::cout << "(total=" << total_send << ")" << std::endl;
+            
+            std::cout << "Send displs: ";
+            for(int i = 0; i < comm_plan_->num_send_ranks; i++) {
+                std::cout << comm_plan_->send_displs_.host(i) << " ";
+            }
+            std::cout << std::endl;
+            
+            // Print recv counts and displs
+            std::cout << "Recv counts: ";
+            int total_recv = 0;
+            for(int i = 0; i < comm_plan_->num_recv_ranks; i++) {
+                int count = comm_plan_->recv_counts_.host(i);
+                std::cout << count << " ";
+                total_recv += count;
+            }
+            std::cout << "(total=" << total_recv << ")" << std::endl;
+            
+            std::cout << "Recv displs: ";
+            for(int i = 0; i < comm_plan_->num_recv_ranks; i++) {
+                std::cout << comm_plan_->recv_displs_.host(i) << " ";
+            }
+            std::cout << std::endl;
+        }
+        
+        MPI_Barrier(MPI_COMM_WORLD);
+        if(rank == 0) std::cout << "MPICArrayKokkos::communicate() calling MPI_Neighbor_alltoallv"<<std::endl;
+        MPI_Barrier(MPI_COMM_WORLD);
+        
+        // CRITICAL: Get all pointers BEFORE the MPI call and store them in local stack variables
+        // This prevents Kokkos from deallocating during the MPI call
+        // Use nullptr for empty arrays to avoid accessing element 0 of 0-sized array (undefined behavior)
+        T* send_buf_ptr = (send_buffer_.size() > 0) ? &send_buffer_.host(0) : nullptr;
+        T* recv_buf_ptr = (recv_buffer_.size() > 0) ? &recv_buffer_.host(0) : nullptr;
+        int* send_cnt_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_counts_.host(0) : nullptr;
+        int* send_dsp_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_displs_.host(0) : nullptr;
+        int* recv_cnt_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_counts_.host(0) : nullptr;
+        int* recv_dsp_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_displs_.host(0) : nullptr;
+        
+        if(rank == 0) {
+            std::cout << "Pointer addresses:" << std::endl;
+            std::cout << "  send_buf_ptr = " << (void*)send_buf_ptr << std::endl;
+            std::cout << "  send_cnt_ptr = " << (void*)send_cnt_ptr << std::endl;
+            std::cout << "  send_dsp_ptr = " << (void*)send_dsp_ptr << std::endl;
+            std::cout << "  recv_buf_ptr = " << (void*)recv_buf_ptr << std::endl;
+            std::cout << "  recv_cnt_ptr = " << (void*)recv_cnt_ptr << std::endl;
+            std::cout << "  recv_dsp_ptr = " << (void*)recv_dsp_ptr << std::endl;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+        
+        MPI_Neighbor_alltoallv(
+            &send_buffer_.host(0),
+            &comm_plan_->send_counts_.host(0),
+            &comm_plan_->send_displs_.host(0),
+            MPI_DOUBLE,
+            &recv_buffer_.host(0),
+            &comm_plan_->recv_counts_.host(0),
+            &comm_plan_->recv_displs_.host(0), 
+            MPI_DOUBLE, 
+            comm_plan_->mpi_comm_graph);
+        
+        MPI_Barrier(MPI_COMM_WORLD);
+        if(rank == 0) std::cout << "MPICArrayKokkos::communicate() finished MPI_Neighbor_alltoallv"<<std::endl;
+        MPI_Barrier(MPI_COMM_WORLD);
+        
+        if(rank == 0) std::cout << "MPICArrayKokkos::communicate() about to copy recv buffer"<<std::endl;
+        MPI_Barrier(MPI_COMM_WORLD);
+        
+        copy_recv_buffer();
+
+        MPI_Barrier(MPI_COMM_WORLD);
+        if(rank == 0) std::cout << "MPICArrayKokkos::communicate() finished copying recv buffer"<<std::endl;
+        MPI_Barrier(MPI_COMM_WORLD);
+        
+        if(rank == 0) std::cout << "MPICArrayKokkos::communicate() about to update device"<<std::endl;
+        MPI_Barrier(MPI_COMM_WORLD);
+
+        //this_array_.update_device();  // Commented out - not needed since nothing runs on device
+
+        MPI_Barrier(MPI_COMM_WORLD);
+        if(rank == 0) std::cout << "MPICArrayKokkos::communicate() finished updating device (skipped)"<<std::endl;
+        MPI_Barrier(MPI_COMM_WORLD);
+        
+        if(rank == 0) std::cout << "MPICArrayKokkos::communicate() about to return"<<std::endl;
+        MPI_Barrier(MPI_COMM_WORLD);
+    };
+
     
 
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
-    ~MPIDArrayKokkos ();
+    ~MPICArrayKokkos ();
 }; // End of MPIDArrayKokkos
 
 
@@ -158,49 +328,49 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos()
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, const std::string& tag_string) {
     this_array_ = DCArrayKokkos<T>(dim0, tag_string);
-    host = ViewCArray <T> (this_array_.view_host().data(), dim0);
+    host = ViewCArray <T> (this_array_.host_pointer(), dim0);
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
     this_array_ = DCArrayKokkos<T>(dim0, dim1, tag_string);
-    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1);
+    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1);
 }
 
 // Overloaded 3D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string) {
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, tag_string);
-    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2);
+    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2);
 }
 
 // Overloaded 4D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, tag_string);
-    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2, dim3);
+    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3);
 }
 
 // Overloaded 5D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string& tag_string) {
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, tag_string);
-    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2, dim3, dim4);
+    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4);
 }
 
 // Overloaded 6D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string) {
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, tag_string);
-    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2, dim3, dim4, dim5);
+    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5);
 }
 
 // Overloaded 7D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string) {
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
-    host = ViewCArray <T> (this_array_.view_host().data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
 }
 
 
@@ -283,8 +453,12 @@ T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-MPIDArrayKokkos& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const MPIDArrayKokkos& temp) {
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const MPICArrayKokkos& temp) {
     this_array_ = temp.this_array_;
+    host = temp.host;  // Also copy the host ViewCArray
+    comm_plan_ = temp.comm_plan_;
+    send_buffer_ = temp.send_buffer_;
+    recv_buffer_ = temp.recv_buffer_;
     return *this;
 }
 
@@ -346,7 +520,8 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPICArrayKokkos() {
-    this_array_.~DCArrayKokkos();
+    // Member variables (this_array_, send_buffer_, recv_buffer_) are automatically
+    // destroyed by the compiler - no explicit cleanup needed
 }
 
 #endif

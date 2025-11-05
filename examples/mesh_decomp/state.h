@@ -35,6 +35,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define STATE_H
 
 #include "matar.h"
+#include "mpi_type.h"
 
 using namespace mtr;
 
@@ -95,17 +96,24 @@ enum class gauss_pt_state
 struct GaussPoint_t
 {
 
-    DCArrayKokkos<double> fields;  ///< GaussPoint fields
+    //DCArrayKokkos<double> fields;  ///< GaussPoint fields
+
+
+    MPICArrayKokkos<double> fields;
     
 
     // initialization method (num_cells, num_dims)
-    void initialize(size_t num_gauss_pnts, size_t num_dims, std::vector<gauss_pt_state> gauss_pt_states)
+    void initialize(size_t num_gauss_pnts, size_t num_dims, std::vector<gauss_pt_state> gauss_pt_states, CommunicationPlan& comm_plan)
     {
 
         for (auto field : gauss_pt_states){
             switch(field){
                 case gauss_pt_state::fields:
-                    if (fields.size() == 0) this->fields = DCArrayKokkos<double>(num_gauss_pnts, "gauss_point_fields");
+                    //if (fields.size() == 0) this->fields = DCArrayKokkos<double>(num_gauss_pnts, "gauss_point_fields");
+                    if (fields.size() == 0){
+                        this->fields = MPICArrayKokkos<double>(num_gauss_pnts, "gauss_point_fields");
+                        this->fields.initialize_comm_plan(comm_plan);
+                    } 
                     break;
                 default:
                     std::cout<<"Desired gauss point state not understood in GaussPoint_t initialize"<<std::endl;
