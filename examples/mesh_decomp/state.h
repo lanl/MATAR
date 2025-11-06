@@ -97,11 +97,7 @@ enum class gauss_pt_state
 struct GaussPoint_t
 {
 
-    //DCArrayKokkos<double> fields;  ///< GaussPoint fields
-
-
     MPICArrayKokkos<double> fields;
-
     MPICArrayKokkos<double> fields_vec;
 
     // initialization method (num_cells, num_dims)
@@ -120,7 +116,7 @@ struct GaussPoint_t
                 case gauss_pt_state::fields_vec:
                     if (fields_vec.size() == 0){
                         this->fields_vec = MPICArrayKokkos<double>(num_gauss_pnts, num_dims, "gauss_point_fields_vec");
-                        this->fields_vec.initialize_comm_plan(comm_plan);
+                        this->fields_vec.initialize_mesh_comm_plan(comm_plan);
                     } 
                     break;
                 default:

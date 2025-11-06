@@ -166,8 +166,8 @@ public:
     MPICArrayKokkos& operator=(const MPICArrayKokkos& temp);
 
 
-    // Method to set comm plan
-    void initialize_comm_plan(CommunicationPlan& comm_plan){
+    // Method to set comm plan for halo communication
+    void initialize_mesh_comm_plan(CommunicationPlan& comm_plan){
         comm_plan_ = &comm_plan;
         
         size_t send_size = comm_plan_->total_send_count * stride_;
@@ -244,11 +244,6 @@ public:
     // Such that all the boundary elements going to a given rank are contiguous in the send buffer.
     void fill_send_buffer(){
 
-
-      
-        T* src_ptr = this_array_.host_pointer();
-
-        
         size_t send_idx = 0;
         for(int i = 0; i < comm_plan_->num_send_ranks; i++){
             for(int j = 0; j < comm_plan_->send_counts_.host(i); j++){
@@ -256,7 +251,7 @@ public:
                 
                 // Copy all values associated with this element (handles multi-dimensional arrays)
                 for(size_t k = 0; k < stride_; k++){
-                    send_buffer_.host(send_idx + k) = src_ptr[src_idx * stride_ + k];
+                    send_buffer_.host(send_idx + k) = this_array_.host_pointer()[src_idx * stride_ + k];
                 }
                 send_idx += stride_;
             }
@@ -265,9 +260,7 @@ public:
 
     // Method that copies the recv buffer into the this_array
     void copy_recv_buffer(){
-        
-        T* dest_ptr = this_array_.host_pointer();
-        
+
         size_t recv_idx = 0;
         for(int i = 0; i < comm_plan_->num_recv_ranks; i++){
             for(int j = 0; j < comm_plan_->recv_counts_.host(i); j++){
@@ -275,7 +268,7 @@ public:
                 
                 // Copy all values associated with this element (handles multi-dimensional arrays)
                 for(size_t k = 0; k < stride_; k++){
-                    dest_ptr[dest_idx * stride_ + k] = recv_buffer_.host(recv_idx + k);
+                    this_array_.host_pointer()[dest_idx * stride_ + k] = recv_buffer_.host(recv_idx + k);
                 }
                 
                 recv_idx += stride_;
@@ -316,6 +309,38 @@ public:
 
         this_array_.update_device();
     };
+
+
+
+    // MPI send wrapper
+    void send(size_t count, int dest, int tag, MPI_Comm comm);
+
+    // MPI recieve wrapper
+    void recv(size_t count, int dest, int tag, MPI_Comm comm);
+
+    // MPI broadcast wrapper
+    void broadcast(size_t count, int root, MPI_Comm comm);
+
+    // MPI scatter wrapper
+    void scatter(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
+
+    // MPI gather wrapper
+    void gather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
+
+    // MPI allgather wrapper
+    void allgather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm);
+
+    // MPI send wrapper
+    void isend(size_t count, int dest, int tag, MPI_Comm comm);
+
+    // MPI recieve wrapper
+    void irecv(size_t count, int dest, int tag, MPI_Comm comm);
+
+    // MPI wait wrapper for sender
+    void wait_send();
+
+    // MPI wait wrapper for receiver
+    void wait_recv();
 
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
@@ -531,8 +556,7 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPICArrayKokkos() {
-    // Member variables (this_array_, send_buffer_, recv_buffer_) are automatically
-    // destroyed by the compiler - no explicit cleanup needed
+
 }
 
 #endif
