@@ -1812,9 +1812,9 @@ void partition_mesh(
     }
 
     // 2. Build owned node GIDs and their coordinates
-    std::vector<size_t> owned_gids(intermediate_mesh.num_nodes);
-    for (int i = 0; i < owned_gids.size(); ++i)
-        owned_gids[i] = intermediate_mesh.local_to_global_node_mapping.host(i);
+    std::vector<size_t> owned_gids(final_mesh.num_owned_nodes);
+    for (int i = 0; i < final_mesh.num_owned_nodes; ++i)
+        owned_gids[i] = final_mesh.local_to_global_node_mapping.host(i);
 
      // 3. Gather all GIDs in the world that are needed anywhere (owned or ghosted, by any rank)
      //    so we can distribute the needed coordinate data.
@@ -1901,16 +1901,18 @@ void partition_mesh(
     // 2) Allgatherv ghost GIDs to build gid -> [ranks that ghost it].
     // 3) For each locally-owned element gid, lookup ranks that ghost it and record targets.
     // --------------------------------------------------------------------------------------
-    std::vector<std::vector<std::pair<int, size_t>>> boundary_elem_targets(intermediate_mesh.num_elems);
+    std::vector<std::vector<std::pair<int, size_t>>> boundary_elem_targets(final_mesh.num_owned_elems);
 
     // Prepare local ghost list as vector
     std::vector<size_t> ghost_gids_vec;
-    ghost_gids_vec.reserve(ghost_elem_gids.size());
-    for (const auto &g : ghost_elem_gids) ghost_gids_vec.push_back(g);
+    ghost_gids_vec.reserve(final_mesh.num_ghost_elems);
+    for (int i = 0; i < final_mesh.num_ghost_elems; ++i) {
+        ghost_gids_vec.push_back(final_mesh.local_to_global_elem_mapping.host(final_mesh.num_owned_elems + i)); // Ghost elements are after the owned elements in the global element mapping
+    }
 
     // Exchange counts
     std::vector<int> ghost_counts(world_size, 0);
-    int local_ghost_count = static_cast<int>(ghost_gids_vec.size());
+    int local_ghost_count = final_mesh.num_ghost_elems;
     MPI_Allgather(&local_ghost_count, 1, MPI_INT, ghost_counts.data(), 1, MPI_INT, MPI_COMM_WORLD);
 
     // Displacements and recv buffer
@@ -1947,8 +1949,8 @@ void partition_mesh(
     }
 
     // For each local element, list destinations: ranks that ghost our gid
-    for (int elem_lid = 0; elem_lid < intermediate_mesh.num_elems; elem_lid++) {
-        size_t local_elem_gid = intermediate_mesh.local_to_global_elem_mapping.host(elem_lid);
+    for (int elem_lid = 0; elem_lid < final_mesh.num_owned_elems; elem_lid++) {
+        size_t local_elem_gid = final_mesh.local_to_global_elem_mapping.host(elem_lid);
         auto it = gid_to_ghosting_ranks.find(local_elem_gid);
         if (it == gid_to_ghosting_ranks.end()) continue;
         const std::vector<int> &dest_ranks = it->second;
@@ -1966,9 +1968,9 @@ void partition_mesh(
     for(int i = 0; i < world_size; i++) {
         if (rank == i && print_info) {
             std::cout << std::endl;
-            for (int elem_lid = 0; elem_lid < intermediate_mesh.num_elems; elem_lid++) {
+            for (int elem_lid = 0; elem_lid < final_mesh.num_owned_elems; elem_lid++) {
 
-                size_t local_elem_gid = intermediate_mesh.local_to_global_elem_mapping.host(elem_lid);
+                size_t local_elem_gid = final_mesh.local_to_global_elem_mapping.host(elem_lid);
                 if (boundary_elem_targets[elem_lid].empty()) 
                 {
                     std::cout << "[rank " << rank << "] " << "elem_lid: "<< elem_lid <<" -  elem_gid: " << local_elem_gid << " sends to: no ghost elements" << std::endl;
@@ -1997,9 +1999,9 @@ void partition_mesh(
     std::set<int> ghost_comm_ranks; // set of ranks that this rank communicates with
     
 
-    for (int elem_lid = 0; elem_lid < intermediate_mesh.num_elems; elem_lid++) {
+    for (int elem_lid = 0; elem_lid < final_mesh.num_owned_elems; elem_lid++) {
 
-        int local_elem_gid = intermediate_mesh.local_to_global_elem_mapping.host(elem_lid);
+        int local_elem_gid = final_mesh.local_to_global_elem_mapping.host(elem_lid);
         if (boundary_elem_targets[elem_lid].empty()) 
         {
             continue;
@@ -2217,20 +2219,30 @@ void partition_mesh(
     // Gauss points share the same communication plan as elements.
     // This test initializes gauss point fields on owned elements and exchanges them with ghost elements.
 
-    gauss_point.initialize(final_mesh.num_elems, 1, {gauss_pt_state::fields}, element_communication_plan); // , &element_communication_plan
+    std::vector<gauss_pt_state> gauss_pt_states = {gauss_pt_state::fields, gauss_pt_state::fields_vec};
+
+    gauss_point.initialize(final_mesh.num_elems, final_mesh.num_dims, gauss_pt_states, element_communication_plan); // , &element_communication_plan
 
     // Initialize the gauss point fields on each rank
     // Set owned elements to rank number, ghost elements to -1 (to verify communication)
     for (int i = 0; i < final_mesh.num_owned_elems; i++) {
         // if(rank == 0) std::cout << " Setting owned element " << i << " to rank " << rank << std::endl;
         gauss_point.fields.host(i) = static_cast<double>(rank);
+        gauss_point.fields_vec.host(i, 0) = static_cast<double>(rank);
+        gauss_point.fields_vec.host(i, 1) = static_cast<double>(rank);
+        gauss_point.fields_vec.host(i, 2) = static_cast<double>(rank);
     }
     for (int i = final_mesh.num_owned_elems; i < final_mesh.num_elems; i++) {
         gauss_point.fields.host(i) = -1.0;  // Ghost elements should be updated
+        gauss_point.fields_vec.host(i, 0) = -1.0;
+        gauss_point.fields_vec.host(i, 1) = -1.0;
+        gauss_point.fields_vec.host(i, 2) = -1.0;
     }
     gauss_point.fields.update_device();
-
+    gauss_point.fields_vec.update_device();
+    
     gauss_point.fields.communicate();
+    gauss_point.fields_vec.communicate();
     
     // Loop over all elements and average the values of elements connected to that element
     for (int i = 0; i < final_mesh.num_elems; i++) {
@@ -2241,7 +2253,17 @@ void partition_mesh(
         value /= final_mesh.num_elems_in_elem(i);
         gauss_point.fields.host(i) = value;
     }
-    gauss_point.fields.update_device();
+    for (int i = 0; i < final_mesh.num_elems; i++) {
+        double value = 0.0;
+        for (int j = 0; j < final_mesh.num_elems_in_elem(i); j++) {
+            value += gauss_point.fields_vec.host(final_mesh.elems_in_elem(i, j), 0);
+        }
+        value /= final_mesh.num_elems_in_elem(i);
+        gauss_point.fields_vec.host(i, 0) = value;
+        gauss_point.fields_vec.host(i, 1) = value;
+        gauss_point.fields_vec.host(i, 2) = value;
+    }
+    gauss_point.fields_vec.update_device();
 
 
 

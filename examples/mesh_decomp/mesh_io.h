@@ -513,7 +513,7 @@ void write_vtu(Mesh_t& mesh,
     Kokkos::fence();
 
     const int num_cell_scalar_vars = 4;
-    const int num_cell_vec_vars    = 0;
+    const int num_cell_vec_vars    = 1;
     const int num_cell_tensor_vars = 0;
 
     const int num_point_scalar_vars = 3;
@@ -522,6 +522,10 @@ void write_vtu(Mesh_t& mesh,
     // Scalar values associated with a cell
     const char cell_scalar_var_names[num_cell_scalar_vars][30] = {
         "rank_id", "elems_in_elem_owned", "global_elem_id", "field_value"
+    };
+
+    const char cell_vec_var_names[num_cell_vec_vars][15] = {
+        "field_vec"
     };
 
     const char point_scalar_var_names[num_point_scalar_vars][15] = {
@@ -539,12 +543,16 @@ void write_vtu(Mesh_t& mesh,
 
     // save the cell state to an array for exporting to graphics files
     auto elem_fields = CArray<double>(num_elems, num_cell_scalar_vars);
-
+    auto elem_vec_fields = CArray<double>(num_elems, num_cell_vec_vars, 3);
+    
     for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
         elem_fields(elem_gid, 0) = rank;
         elem_fields(elem_gid, 1) = (double)mesh.num_elems_in_elem(elem_gid);
         elem_fields(elem_gid, 2) = mesh.local_to_global_elem_mapping.host(elem_gid);
         elem_fields(elem_gid, 3) = gauss_point.fields.host(elem_gid);
+        elem_vec_fields(elem_gid, 0, 0) = gauss_point.fields_vec.host(elem_gid, 0);
+        elem_vec_fields(elem_gid, 0, 1) = gauss_point.fields_vec.host(elem_gid, 1);
+        elem_vec_fields(elem_gid, 0, 2) = gauss_point.fields_vec.host(elem_gid, 2);
     }
 
     // save the vertex vector fields to an array for exporting to graphics files
@@ -670,6 +678,22 @@ void write_vtu(Mesh_t& mesh,
 
     // Write CellData (element fields)
     fprintf(vtu_file, "      <CellData>\n");
+    
+    // Cell vector variables
+    for (int var = 0; var < num_cell_vec_vars; var++) {
+        fprintf(vtu_file, "        <DataArray type=\"Float32\" Name=\"%s\" NumberOfComponents=\"3\" format=\"ascii\">\n", 
+                cell_vec_var_names[var]);
+        for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
+            // TODO: Populate cell vector field data from appropriate source
+            fprintf(vtu_file, "          %f %f %f\n", 
+                gauss_point.fields_vec.host(elem_gid, 0), 
+                gauss_point.fields_vec.host(elem_gid, 1), 
+                gauss_point.fields_vec.host(elem_gid, 2));
+        }
+        fprintf(vtu_file, "        </DataArray>\n");
+    }
+    
+    // Cell scalar variables
     for (int var = 0; var < num_cell_scalar_vars; var++) {
         fprintf(vtu_file, "        <DataArray type=\"Float32\" Name=\"%s\" format=\"ascii\">\n", 
                 cell_scalar_var_names[var]);
@@ -730,6 +754,10 @@ void write_vtu(Mesh_t& mesh,
 
         // Write PCellData
         fprintf(pvtu_file, "    <PCellData>\n");
+        for (int var = 0; var < num_cell_vec_vars; var++) {
+            fprintf(pvtu_file, "      <PDataArray type=\"Float32\" Name=\"%s\" NumberOfComponents=\"3\"/>\n",
+                    cell_vec_var_names[var]);
+        }
         for (int var = 0; var < num_cell_scalar_vars; var++) {
             fprintf(pvtu_file, "      <PDataArray type=\"Float32\" Name=\"%s\"/>\n",
                     cell_scalar_var_names[var]);
