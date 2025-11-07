@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     // Mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {180, 180, 180};
+    int num_elems_dim[3] = {100, 100, 100};
 
     // Initial mesh built on rank zero
     Mesh_t initial_mesh;
@@ -69,6 +69,9 @@ int main(int argc, char** argv) {
     double t_partition_start = MPI_Wtime();
     partition_mesh(initial_mesh, final_mesh, initial_node, final_node, gauss_point, world_size, rank);
     double t_partition_end = MPI_Wtime();
+    
+    
+    
     if(rank == 0) {
         printf("Mesh partitioning time: %.2f seconds\n", t_partition_end - t_partition_start);
     }

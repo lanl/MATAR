@@ -63,7 +63,7 @@ void naive_partition_mesh(
         // Compute elements to send to each rank; handle remainders for non-even distribution
         std::fill(elems_per_rank.begin(), elems_per_rank.end(), initial_mesh.num_elems / world_size);
         int remainder = initial_mesh.num_elems % world_size;
-        for (int i = 0; i < remainder; ++i) {
+        for (int i = 0; i < remainder; i++) {
             elems_per_rank[i] += 1;
         }
     }
@@ -529,6 +529,8 @@ void naive_partition_mesh(
     return;
 }
 
+
+
 void partition_mesh(
     Mesh_t& initial_mesh,
     Mesh_t& final_mesh,
@@ -658,7 +660,7 @@ void partition_mesh(
     // --- Step 3: Fill in the CSR arrays, looping over each locally-owned element ---
     SCOTCH_Num offset = 0; // running count of edges encountered
 
-    for (size_t lid = 0; lid < naive_mesh.num_elems; ++lid) {
+    for (size_t lid = 0; lid < naive_mesh.num_elems; lid++) {
 
         // Record current edge offset for vertex lid in vertloctab
         vertloctab[lid] = offset;
@@ -876,7 +878,7 @@ void partition_mesh(
     print_info = false;
     for(int rank_id = 0; rank_id < world_size; rank_id++) {
         if(rank_id == rank && print_info) {
-            for (size_t lid = 0; lid < naive_mesh.num_elems; ++lid) {
+            for (size_t lid = 0; lid < naive_mesh.num_elems; lid++) {
                 size_t gid = naive_mesh.local_to_global_elem_mapping.host(lid);
                 std::cout << "[rank " << rank_id << "] elem_local=" << lid << " gid=" << gid
                         << " -> part=" << partloctab[lid] << "\n";
@@ -886,9 +888,6 @@ void partition_mesh(
         MPI_Barrier(MPI_COMM_WORLD);
     }
     print_info = false;
-
-
-
 
 // ****************************************************************************************** 
 //     Build the final mesh from the repartition
@@ -902,7 +901,7 @@ void partition_mesh(
 
     // -------------- Phase 1: Determine elements to send to each rank --------------
     std::vector<std::vector<int>> elems_to_send(world_size);
-    for (int lid = 0; lid < naive_mesh.num_elems; ++lid) {
+    for (int lid = 0; lid < naive_mesh.num_elems; lid++) {
         int dest = static_cast<int>(partloctab[lid]);
         int elem_gid = static_cast<int>(naive_mesh.local_to_global_elem_mapping.host(lid));
         elems_to_send[dest].push_back(elem_gid);
@@ -929,23 +928,23 @@ void partition_mesh(
 
 
     // Flatten send buffer
-    std::vector<int> sendbuf;
-    sendbuf.reserve(send_total);
+    // send_elems: flattened list of element global IDs (GIDs) that this rank is sending to all other ranks.
+    // For each rank r, elems_to_send[r] contains the element GIDs that should be owned by rank r after repartitioning.
+    std::vector<int> send_elems;
+    send_elems.reserve(send_total);
     for (int r = 0; r < world_size; ++r)
-        sendbuf.insert(sendbuf.end(), elems_to_send[r].begin(), elems_to_send[r].end());
+        send_elems.insert(send_elems.end(), elems_to_send[r].begin(), elems_to_send[r].end());
 
-    // Receive new local element GIDs
-    std::vector<int> recvbuf(recv_total);
-    MPI_Alltoallv(sendbuf.data(), sendcounts.data(), sdispls.data(), MPI_INT,
-                recvbuf.data(), recvcounts.data(), rdispls.data(), MPI_INT, MPI_COMM_WORLD);
+    // new_elem_gids: receives the list of new element global IDs this rank will own after the exchange.
+    // It is filled after MPI_Alltoallv completes, and contains the GIDs for the elements new to (or remained on) this rank.
+    std::vector<int> new_elem_gids(recv_total);
+    MPI_Alltoallv(send_elems.data(), sendcounts.data(), sdispls.data(), MPI_INT,
+                new_elem_gids.data(), recvcounts.data(), rdispls.data(), MPI_INT, MPI_COMM_WORLD);
     
     MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout<<" Finished exchanging element GIDs"<<std::endl;
-
-    // New elements owned by this rank
-    std::vector<int> new_elem_gids = recvbuf;
-    int num_new_elems = static_cast<int>(new_elem_gids.size());
     
+    // New elements owned by this rank
+    int num_new_elems = static_cast<int>(new_elem_gids.size());
     
     if (print_info) {
         std::cout << "[rank " << rank << "] new elems: " << num_new_elems << std::endl;
@@ -956,12 +955,12 @@ void partition_mesh(
 
     // Flatten element-node connectivity by global node IDs
     std::vector<int> conn_sendbuf;
-    for (int r = 0; r < world_size; ++r) {
-        for (int gid : elems_to_send[r]) {
-            // find local element lid from gid
+    for (int r = 0; r < world_size; r++) {
+        for (int elem_gid : elems_to_send[r]) {
+            // find local element lid from elem_gid
             int lid = -1;
-            for (int i = 0; i < naive_mesh.num_elems; ++i)
-                if (naive_mesh.local_to_global_elem_mapping.host(i) == gid) { lid = i; break; }
+            for (int i = 0; i < naive_mesh.num_elems; i++)
+                if (naive_mesh.local_to_global_elem_mapping.host(i) == elem_gid) { lid = i; break; }
 
             for (int j = 0; j < nodes_per_elem; j++) {
                 int node_lid = naive_mesh.nodes_in_elem.host(lid, j);
@@ -973,7 +972,7 @@ void partition_mesh(
 
     // element-node connectivity counts (ints per dest rank)
     std::vector<int> conn_sendcounts(world_size), conn_recvcounts(world_size);
-    for (int r = 0; r < world_size; ++r)
+    for (int r = 0; r < world_size; r++)
         conn_sendcounts[r] = sendcounts[r] * nodes_per_elem;
 
     MPI_Alltoall(conn_sendcounts.data(), 1, MPI_INT, conn_recvcounts.data(), 1, MPI_INT, MPI_COMM_WORLD);
@@ -1005,7 +1004,7 @@ void partition_mesh(
 
     // Build map gid→lid
     std::unordered_map<int,int> node_gid_to_lid;
-    for (int i = 0; i < num_new_nodes; ++i)
+    for (int i = 0; i < num_new_nodes; i++)
         node_gid_to_lid[new_node_gids[i]] = i;
 
     if (print_info)
@@ -1017,7 +1016,7 @@ void partition_mesh(
     for (int r = 0; r < world_size; ++r) {
         for (int gid : elems_to_send[r]) {
             int lid = -1;
-            for (int i = 0; i < naive_mesh.num_elems; ++i)
+            for (int i = 0; i < naive_mesh.num_elems; i++)
                 if (naive_mesh.local_to_global_elem_mapping.host(i) == gid) { lid = i; break; }
 
             for (int j = 0; j < nodes_per_elem; j++) {
@@ -1063,9 +1062,9 @@ void partition_mesh(
     intermediate_mesh.local_to_global_elem_mapping = DCArrayKokkos<size_t>(num_new_elems);
 
     // Fill global mappings
-    for (int i = 0; i < num_new_nodes; ++i)
+    for (int i = 0; i < num_new_nodes; i++)
         intermediate_mesh.local_to_global_node_mapping.host(i) = new_node_gids[i];
-    for (int i = 0; i < num_new_elems; ++i)
+    for (int i = 0; i < num_new_elems; i++)
         intermediate_mesh.local_to_global_elem_mapping.host(i) = new_elem_gids[i];
 
     intermediate_mesh.local_to_global_node_mapping.update_device();
@@ -1075,10 +1074,10 @@ void partition_mesh(
     MPI_Barrier(MPI_COMM_WORLD);
     if(rank == 0) std::cout<<" Starting reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
     // rebuild the local element-node connectivity using the local node ids
-    for(int i = 0; i < num_new_elems; i++) {
-        for(int j = 0; j < nodes_per_elem; j++) {
+    for(int i = 0; i < intermediate_mesh.num_elems; i++) {
+        for(int j = 0; j < intermediate_mesh.num_nodes_in_elem; j++) {
 
-            int node_gid = conn_recvbuf[i * nodes_per_elem + j];
+            int node_gid = conn_recvbuf[i * intermediate_mesh.num_nodes_in_elem + j];
 
             int node_lid = -1;
 
@@ -1096,7 +1095,6 @@ void partition_mesh(
                     left = mid + 1;
                 }
             }
-
             intermediate_mesh.nodes_in_elem.host(i, j) = node_lid;
         }
     }
@@ -1111,9 +1109,9 @@ void partition_mesh(
     // Build a map from node GID to coordinates
     std::map<int, std::array<double, 3>> node_gid_to_coords;
     int coord_idx = 0;
-    for (int e = 0; e < num_new_elems; ++e) {
-        for (int j = 0; j < nodes_per_elem; j++) {
-            int node_gid = conn_recvbuf[e * nodes_per_elem + j];
+    for (int e = 0; e < intermediate_mesh.num_elems; ++e) {
+        for (int j = 0; j < intermediate_mesh.num_nodes_in_elem; j++) {
+            int node_gid = conn_recvbuf[e * intermediate_mesh.num_nodes_in_elem + j];
             if (node_gid_to_coords.find(node_gid) == node_gid_to_coords.end()) {
                 node_gid_to_coords[node_gid] = {
                     coord_recvbuf[coord_idx*3 + 0],
@@ -1127,7 +1125,7 @@ void partition_mesh(
     
     // Now fill coordinates in node order
     intermediate_node.initialize(num_new_nodes, 3, {node_state::coords});
-    for (int i = 0; i < num_new_nodes; ++i) {
+    for (int i = 0; i < num_new_nodes; i++) {
         int node_gid = new_node_gids[i];
         auto it = node_gid_to_coords.find(node_gid);
         if (it != node_gid_to_coords.end()) {
@@ -1152,18 +1150,9 @@ void partition_mesh(
     
     // First, gather the number of elements each rank owns
     std::vector<int> elem_counts(world_size);
-
-    // int MPI_Allgather(
-    //     const void* sendbuf,      // Data to send from this process
-    //     int sendcount,            // Number of elements to send
-    //     MPI_Datatype sendtype,    // Type of send data
-    //     void* recvbuf,            // Buffer to receive all data
-    //     int recvcount,            // Number of elements to receive from each process
-    //     MPI_Datatype recvtype,    // Type of receive data
-    //     MPI_Comm comm             // Communicator
-    // );
     MPI_Allgather(&intermediate_mesh.num_elems, 1, MPI_INT, elem_counts.data(), 1, MPI_INT, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
+    
     // Compute displacements
     std::vector<int> elem_displs(world_size);
     int total_elems = 0;
@@ -1174,17 +1163,6 @@ void partition_mesh(
     
     // Gather all element GIDs from all ranks
     std::vector<size_t> all_elem_gids(total_elems);
-
-    // int MPI_Allgatherv(
-    //     const void* sendbuf,      // Data to send from this process
-    //     int sendcount,            // Number of elements THIS process sends
-    //     MPI_Datatype sendtype,    // Type of send data
-    //     void* recvbuf,            // Buffer to receive all data
-    //     const int* recvcounts,    // Array: number of elements from each process
-    //     const int* displs,        // Array: displacement for each process's data
-    //     MPI_Datatype recvtype,    // Type of receive data
-    //     MPI_Comm comm             // Communicator
-    // );
     MPI_Allgatherv(intermediate_mesh.local_to_global_elem_mapping.host_pointer(), intermediate_mesh.num_elems, MPI_UNSIGNED_LONG_LONG,
                    all_elem_gids.data(), elem_counts.data(), elem_displs.data(), 
                    MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
@@ -1192,36 +1170,32 @@ void partition_mesh(
     // Build a map: element GID -> owning rank
     std::map<size_t, int> elem_gid_to_rank;
     for (int r = 0; r < world_size; ++r) {
-        for (int i = 0; i < elem_counts[r]; ++i) {
+        for (int i = 0; i < elem_counts[r]; i++) {
             size_t gid = all_elem_gids[elem_displs[r] + i];
             elem_gid_to_rank[gid] = r;
         }
     }
     
-    // Strategy: Find ghost elements by checking neighbors of our boundary elements.
-    // A boundary element is one that has a neighbor owned by another rank.
-    // However, since build_connectivity() only includes locally-owned elements,
-    // we need to use a different approach: find elements on other ranks that share
+    // Strategy: Find elements on other ranks that share
     // nodes with our locally-owned elements.
     
     // First, collect all nodes that belong to our locally-owned elements
     std::set<size_t> local_elem_nodes;
-    for (int lid = 0; lid < num_new_elems; ++lid) {
-        for (int j = 0; j < nodes_per_elem; j++) {
-            size_t node_lid = intermediate_mesh.nodes_in_elem.host(lid, j);
-            size_t node_gid = intermediate_mesh.local_to_global_node_mapping.host(node_lid);
-            local_elem_nodes.insert(node_gid);
-        }
+
+    for(int node_rid = 0; node_rid < intermediate_mesh.num_nodes; node_rid++) {
+        size_t node_gid = intermediate_mesh.local_to_global_node_mapping.host(node_rid);
+        local_elem_nodes.insert(node_gid);
     }
+    
     
     // Now collect element-to-node connectivity to send to all ranks
     // Format: for each element, list its node GIDs (each entry is a pair: elem_gid, node_gid)
     std::vector<size_t> elem_node_conn;
     int local_conn_size = 0;
     
-    for (int lid = 0; lid < num_new_elems; ++lid) {
+    for (int lid = 0; lid < intermediate_mesh.num_elems; lid++) {
         size_t elem_gid = intermediate_mesh.local_to_global_elem_mapping.host(lid);
-        for (int j = 0; j < nodes_per_elem; j++) {
+        for (int j = 0; j < intermediate_mesh.num_nodes_in_elem; j++) {
             size_t node_lid = intermediate_mesh.nodes_in_elem.host(lid, j);
             size_t node_gid = intermediate_mesh.local_to_global_node_mapping.host(node_lid);
             elem_node_conn.push_back(elem_gid);
@@ -1229,12 +1203,15 @@ void partition_mesh(
         }
         local_conn_size += nodes_per_elem * 2;  // Each pair is 2 size_ts
     }
+
+   
     
     // Exchange element-node connectivity with all ranks using Allgather
     // First, gather the sizes from each rank
     std::vector<int> conn_sizes(world_size);
     MPI_Allgather(&local_conn_size, 1, MPI_INT, conn_sizes.data(), 1, MPI_INT, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
+    
     // Compute displacements
     std::vector<int> conn_displs(world_size);
     int total_conn = 0;
@@ -1249,9 +1226,40 @@ void partition_mesh(
                    all_conn.data(), conn_sizes.data(), conn_displs.data(),
                    MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
+
+    
+    DCArrayKokkos<size_t> local_nodes_in_elem(intermediate_mesh.num_elems, intermediate_mesh.num_nodes_in_elem);
+    DCArrayKokkos<size_t> all_nodes_in_elem(total_elems, intermediate_mesh.num_nodes_in_elem);
+
+    std::vector<int> mtr_conn_sizes(world_size);
+    
+
+    local_nodes_in_elem = intermediate_mesh.nodes_in_elem;
+    int mtr_size = intermediate_mesh.num_elems * intermediate_mesh.num_nodes_in_elem;
+
+    MPI_Allgather(&mtr_size, 1, MPI_INT, mtr_conn_sizes.data(), 1, MPI_INT, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // Compute displacements
+    std::vector<int> mtr_conn_displs(world_size);
+    int total_mtr_conn = 0;
+    for (int r = 0; r < world_size; ++r) {
+        mtr_conn_displs[r] = total_mtr_conn;
+        total_mtr_conn += mtr_conn_sizes[r];
+    }
+
+
+    MPI_Allgatherv(local_nodes_in_elem.host_pointer(), mtr_size, MPI_UNSIGNED_LONG_LONG,
+                   all_nodes_in_elem.host_pointer(), mtr_conn_sizes.data(), mtr_conn_displs.data(),
+                   MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+
+
+    
     // create a set for local_elem_gids
     std::set<size_t> local_elem_gids;
-    for (int i = 0; i < num_new_elems; ++i) {
+    for (int i = 0; i < intermediate_mesh.num_elems; i++) {
         local_elem_gids.insert(intermediate_mesh.local_to_global_elem_mapping.host(i));
     }
     
@@ -1261,7 +1269,7 @@ void partition_mesh(
         if (r == rank) continue;  // Skip our own data
         // Process pairs from rank r: conn_sizes[r] is in units of size_ts, so num_pairs = conn_sizes[r] / 2
         int num_pairs = conn_sizes[r] / 2;
-        for (int i = 0; i < num_pairs; ++i) {
+        for (int i = 0; i < num_pairs; i++) {
             // Each pair is 2 size_ts, starting at conn_displs[r]
             int offset = conn_displs[r] + i * 2;
             size_t elem_gid = all_conn[offset];
@@ -1288,24 +1296,25 @@ void partition_mesh(
     // Additional check: elements that are neighbors of our locally-owned elements
     // but are owned by other ranks (these might already be in ghost_elem_gids, but check connectivity)
     
-    for (int lid = 0; lid < num_new_elems; ++lid) {
-        size_t num_neighbors = intermediate_mesh.num_elems_in_elem(lid);
+    // for (int lid = 0; lid < num_new_elems; lid++) {
+    //     size_t num_neighbors = intermediate_mesh.num_elems_in_elem(lid);
         
-        for (size_t nbr_idx = 0; nbr_idx < num_neighbors; ++nbr_idx) {
-            size_t neighbor_lid = intermediate_mesh.elems_in_elem(lid, nbr_idx);
+    //     for (size_t nbr_idx = 0; nbr_idx < num_neighbors; ++nbr_idx) {
+    //         size_t neighbor_lid = intermediate_mesh.elems_in_elem(lid, nbr_idx);
             
-            if (neighbor_lid < static_cast<size_t>(num_new_elems)) {
-                size_t neighbor_gid = intermediate_mesh.local_to_global_elem_mapping(neighbor_lid);
+    //         if (neighbor_lid < static_cast<size_t>(num_new_elems)) {
+    //             size_t neighbor_gid = intermediate_mesh.local_to_global_elem_mapping(neighbor_lid);
                 
-                // Check if neighbor is owned by this rank
-                auto it = elem_gid_to_rank.find(neighbor_gid);
-                if (it != elem_gid_to_rank.end() && it->second != rank) {
-                    // Neighbor is owned by another rank - it's a ghost for us
-                    ghost_elem_gids.insert(neighbor_gid);
-                }
-            }
-        }
-    }
+    //             // Check if neighbor is owned by this rank
+    //             auto it = elem_gid_to_rank.find(neighbor_gid);
+    //             if (it != elem_gid_to_rank.end() && it->second != rank) {
+    //                 // Neighbor is owned by another rank - it's a ghost for us
+    //                 std::cout << "[rank " << rank << "] found ghost element " << neighbor_gid << std::endl;
+    //                 ghost_elem_gids.insert(neighbor_gid);
+    //             }
+    //         }
+    //     }
+    // }
     
     // Count unique ghost elements
     intermediate_mesh.num_ghost_elems = ghost_elem_gids.size();
@@ -1317,32 +1326,6 @@ void partition_mesh(
         std::cout << " Finished calculating ghost elements" << std::endl;
         std::cout << " Ghost element calculation took " << (t_ghost_end - t_ghost_start) << " seconds." << std::endl;
     }
-    
-    // Print ghost element info if requested
-    print_info = false;
-    for(int i = 0; i < world_size; i++) {
-        MPI_Barrier(MPI_COMM_WORLD);
-        if(rank == i && print_info) {
-            std::cout << "[rank " << rank << "] owns " << num_new_elems 
-                  << " elements and has " << intermediate_mesh.num_ghost_elems << " ghost elements" << std::endl;
-            std::cout << "[rank " << rank << "] owned element global IDs: ";
-            for (int j = 0; j < intermediate_mesh.num_elems; j++) {
-                std::cout << intermediate_mesh.local_to_global_elem_mapping(j) << " ";
-            }
-
-            // Print global IDs of ghost elements
-            std::cout << std::endl << "[rank " << rank << "] ghost element global IDs: ";
-            for (const auto& gid : ghost_elem_gids) {
-                std::cout << gid << " ";
-            }
-            std::cout << std::endl;
-        }
-        
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
-
-
-
     // Build the connectivity that includes ghost elements
     // Create an extended mesh with owned elements first, then ghost elements appended
     
@@ -1353,17 +1336,18 @@ void partition_mesh(
     // Build a map: ghost_elem_gid -> vector of node_gids (ordered as in all_conn)
     std::map<size_t, std::vector<size_t>> ghost_elem_to_nodes;
     for (const size_t& ghost_gid : ghost_elem_gids) {
-        ghost_elem_to_nodes[ghost_gid].reserve(nodes_per_elem);
+        ghost_elem_to_nodes[ghost_gid].reserve(intermediate_mesh.num_nodes_in_elem);
     }
     
     // Extract nodes for each ghost element from all_conn
     // The all_conn array has pairs (elem_gid, node_gid) for each rank's elements
     for (int r = 0; r < world_size; ++r) {
         if (r == rank) continue;  // Skip our own data (we already have owned element connectivity)
+        
         int num_pairs = conn_sizes[r] / 2;
         
         // Process pairs in order - each element's nodes are contiguous
-        for (int i = 0; i < num_pairs; ++i) {
+        for (int i = 0; i < num_pairs; i++) {
             int offset = conn_displs[r] + i * 2;
             size_t elem_gid = all_conn[offset];
             size_t node_gid = all_conn[offset + 1];
@@ -1378,9 +1362,9 @@ void partition_mesh(
     
     // Verify each ghost element has the correct number of nodes
     for (auto& pair : ghost_elem_to_nodes) {
-        if (pair.second.size() != static_cast<size_t>(nodes_per_elem)) {
+        if (pair.second.size() != static_cast<size_t>(intermediate_mesh.num_nodes_in_elem)) {
             std::cerr << "[rank " << rank << "] ERROR: Ghost element " << pair.first 
-                      << " has " << pair.second.size() << " nodes, expected " << nodes_per_elem << std::endl;
+                      << " has " << pair.second.size() << " nodes, expected " << intermediate_mesh.num_nodes_in_elem << std::endl;
         }
     }
     
@@ -1390,7 +1374,7 @@ void partition_mesh(
     int extended_node_lid = 0;
     
     // Add all owned nodes
-    for (int i = 0; i < intermediate_mesh.num_nodes; ++i) {
+    for (int i = 0; i < intermediate_mesh.num_nodes; i++) {
         size_t node_gid = intermediate_mesh.local_to_global_node_mapping.host(i);
         node_gid_to_extended_lid[node_gid] = extended_node_lid++;
     }
@@ -1448,7 +1432,7 @@ void partition_mesh(
     std::vector<std::vector<int>> extended_nodes_in_elem(total_extended_elems);
     
     // Copy owned element connectivity (convert to extended node LIDs)
-    for (int lid = 0; lid < intermediate_mesh.num_elems; ++lid) {
+    for (int lid = 0; lid < intermediate_mesh.num_elems; lid++) {
         extended_nodes_in_elem[lid].reserve(nodes_per_elem);
         for (int j = 0; j < nodes_per_elem; j++) {
             size_t node_lid = intermediate_mesh.nodes_in_elem.host(lid, j);
@@ -1505,17 +1489,17 @@ void partition_mesh(
     // Build extended element GID list: owned first, then ghost
     std::vector<size_t> extended_lid_to_elem_gid(total_extended_elems);
     // Owned elements
-    for (int i = 0; i < intermediate_mesh.num_elems; ++i) {
+    for (int i = 0; i < intermediate_mesh.num_elems; i++) {
         extended_lid_to_elem_gid[i] = intermediate_mesh.local_to_global_elem_mapping.host(i);
     }
     // Ghost elements (in sorted order)
-    for (size_t idx = 0; idx < ghost_elem_gids_ordered.size(); ++idx) {
-        extended_lid_to_elem_gid[intermediate_mesh.num_elems + idx] = ghost_elem_gids_ordered[idx];
+    for (size_t i = 0; i < ghost_elem_gids_ordered.size(); i++) {
+        extended_lid_to_elem_gid[intermediate_mesh.num_elems + i] = ghost_elem_gids_ordered[i];
     }
 
     // Build array: for each ghost element, store which rank owns it (where to receive data from)
     std::vector<int> ghost_elem_owner_ranks(ghost_elem_gids_ordered.size());
-    for (size_t i = 0; i < ghost_elem_gids_ordered.size(); ++i) {
+    for (size_t i = 0; i < ghost_elem_gids_ordered.size(); i++) {
         size_t ghost_gid = ghost_elem_gids_ordered[i];
         auto it = elem_gid_to_rank.find(ghost_gid);
         if (it != elem_gid_to_rank.end()) {
@@ -1529,7 +1513,7 @@ void partition_mesh(
 
     // Create a std::set of all the ranks this rank will receive data from
     std::set<int> ghost_elem_receive_ranks;
-    for (size_t i = 0; i < ghost_elem_gids_ordered.size(); ++i) {
+    for (size_t i = 0; i < ghost_elem_gids_ordered.size(); i++) {
         ghost_elem_receive_ranks.insert(ghost_elem_owner_ranks[i]);
     }
 
@@ -1595,13 +1579,13 @@ void partition_mesh(
 
     // 1. Build list of all global node IDs needed on this rank (owned + ghosts)
     std::vector<size_t> all_needed_node_gids(total_extended_nodes);
-    for (int i = 0; i < total_extended_nodes; ++i) {
+    for (int i = 0; i < total_extended_nodes; i++) {
         all_needed_node_gids[i] = final_mesh.local_to_global_node_mapping.host(i);
     }
 
     // 2. Build owned node GIDs and their coordinates
     std::vector<size_t> owned_gids(final_mesh.num_owned_nodes);
-    for (int i = 0; i < final_mesh.num_owned_nodes; ++i)
+    for (int i = 0; i < final_mesh.num_owned_nodes; i++)
         owned_gids[i] = final_mesh.local_to_global_node_mapping.host(i);
 
      // 3. Gather all GIDs in the world that are needed anywhere (owned or ghosted, by any rank)
@@ -1633,7 +1617,7 @@ void partition_mesh(
 
     // d) Global coords (size: total_owned x 3)
     std::vector<double> owned_coords_send(3*local_owned_count, 0.0);
-    for (int i=0; i<local_owned_count; ++i) {
+    for (int i=0; i<local_owned_count; i++) {
         owned_coords_send[3*i+0] = intermediate_node.coords.host(i,0);
         owned_coords_send[3*i+1] = intermediate_node.coords.host(i,1);
         owned_coords_send[3*i+2] = intermediate_node.coords.host(i,2);
@@ -1654,7 +1638,7 @@ void partition_mesh(
 
     // e) Build map: gid -> coord[3]
     std::unordered_map<size_t, std::array<double,3>> gid_to_coord;
-    for (int i=0; i<total_owned; ++i) {
+    for (int i=0; i<total_owned; i++) {
         std::array<double,3> xyz = {
             all_owned_coords[3*i+0],
             all_owned_coords[3*i+1],
@@ -1664,7 +1648,7 @@ void partition_mesh(
     }
 
     // 4. Finally, fill final_node.coords with correct coordinates.
-    for (int i = 0; i < total_extended_nodes; ++i) {
+    for (int i = 0; i < total_extended_nodes; i++) {
         size_t gid = final_mesh.local_to_global_node_mapping.host(i);
         auto it = gid_to_coord.find(gid);
         if (it != gid_to_coord.end()) {
@@ -1694,7 +1678,7 @@ void partition_mesh(
     // Prepare local ghost list as vector
     std::vector<size_t> ghost_gids_vec;
     ghost_gids_vec.reserve(final_mesh.num_ghost_elems);
-    for (int i = 0; i < final_mesh.num_ghost_elems; ++i) {
+    for (int i = 0; i < final_mesh.num_ghost_elems; i++) {
         ghost_gids_vec.push_back(final_mesh.local_to_global_elem_mapping.host(final_mesh.num_owned_elems + i)); // Ghost elements are after the owned elements in the global element mapping
     }
 
@@ -1724,7 +1708,7 @@ void partition_mesh(
     for (int r = 0; r < world_size; ++r) {
         int cnt = ghost_counts[r];
         int off = ghost_displs[r];
-        for (int i = 0; i < cnt; ++i) {
+        for (int i = 0; i < cnt; i++) {
             size_t g = all_ghost_gids[off + i];
             gid_to_ghosting_ranks[g].push_back(r);
         }
@@ -2014,7 +1998,7 @@ void partition_mesh(
     // for (int r = 0; r < world_size; ++r) {
     //     int cnt = ghost_node_counts[r];
     //     int off = ghost_node_displs[r];
-    //     for (int i = 0; i < cnt; ++i) {
+    //     for (int i = 0; i < cnt; i++) {
     //         size_t g = all_ghost_node_gids[off + i];
     //         node_gid_to_ghosting_ranks[g].push_back(r);
     //     }
