@@ -22,30 +22,19 @@
 #include "ptscotch.h"
 
 
-
-
-
-
-void partition_mesh(
+void naive_partition_mesh(
     Mesh_t& initial_mesh,
-    Mesh_t& final_mesh,
     node_t& initial_node,
-    node_t& final_node,
-    GaussPoint_t& gauss_point,
+    Mesh_t& naive_mesh,
+    node_t& naive_node,
+    std::vector<int>& elems_in_elem_on_rank,
+    std::vector<int>& num_elems_in_elem_per_rank,
     int world_size,
-    int rank){
+    int rank)
+{
+
 
     bool print_info = false;
-    bool print_vtk = false;
-
-    // Create mesh, gauss points, and node data structures on each rank
-    // This is the initial partitioned mesh
-    Mesh_t naive_mesh;
-    node_t naive_node;
-
-    // Mesh partitioned by pt-scotch, not including ghost
-    Mesh_t intermediate_mesh; 
-    node_t intermediate_node;
 
     int num_elements_on_rank = 0;
     int num_nodes_on_rank = 0;
@@ -68,10 +57,6 @@ void partition_mesh(
     // Create a 2D vector to hold the nodal positions on each rank
     std::vector<std::vector<double>> node_pos_to_send(world_size);
 
-    // create a 2D vector to hold the node positions on each rank
-    std::vector<std::vector<double>> node_pos_on_rank(world_size);
-
-
     if (rank == 0) {
 
         num_nodes_per_elem = initial_mesh.num_nodes_in_elem;
@@ -89,9 +74,9 @@ void partition_mesh(
     MPI_Bcast(&num_nodes_per_elem, 1, MPI_INT, 0, MPI_COMM_WORLD); 
     MPI_Barrier(MPI_COMM_WORLD);
 
-// ********************************************************  
-//        Scatter the number of elements to each rank
-// ******************************************************** 
+    // ********************************************************  
+    //        Scatter the number of elements to each rank
+    // ******************************************************** 
     // All ranks participate in the scatter operation
     // MPI_Scatter signature:
     // MPI_Scatter(const void *sendbuf, int sendcount, MPI_Datatype sendtype,
@@ -110,9 +95,9 @@ void partition_mesh(
     MPI_Barrier(MPI_COMM_WORLD);
     double t_scatter_end = MPI_Wtime();
 
-// ********************************************************  
-//     Scatter the actual element global ids to each rank
-// ******************************************************** 
+    // ********************************************************  
+    //     Scatter the actual element global ids to each rank
+    // ******************************************************** 
     double t_scatter_gids_start = MPI_Wtime();
 
     if (rank == 0) {
@@ -169,34 +154,10 @@ void partition_mesh(
     // Wait for all ranks to complete the scatter operation
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // Timer: End measuring time for scattering element global ids
-    double t_scatter_gids_end = MPI_Wtime();
-    if(rank == 0 && print_info) {
-        std::cout<<" Finished scattering the actual element global ids to each rank"<<std::endl;
-        std::cout << " Scattering the actual element global ids to each rank took " 
-                << (t_scatter_gids_end - t_scatter_gids_start) << " seconds." << std::endl;
-    }
 
-
-    if (print_info) {
-        std::cout << "Rank " << rank << " received elements: ";
-        for (int i = 0; i < num_elements_on_rank; i++) {
-            std::cout << elements_on_rank[i] << " ";
-        }
-        std::cout << std::endl;
-    }
-
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-
-// ****************************************************************************************** 
-//     Scatter the number of nodes to each rank and compute which nodes to send to each rank
-// ****************************************************************************************** 
-
-    // Timer: Start measuring time for node scattering
-    double t_scatter_nodes_start = MPI_Wtime();
-
+    // ****************************************************************************************** 
+    //     Scatter the number of nodes to each rank and compute which nodes to send to each rank
+    // ****************************************************************************************** 
     if (rank == 0) {
 
         // Populate the nodes_to_send array by finding all nodes in the elements in elements_to_send and removing duplicates    
@@ -246,20 +207,9 @@ void partition_mesh(
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // Timer: End measuring time for node scattering
-    double t_scatter_nodes_end = MPI_Wtime();
-
-    if(rank == 0) {
-        std::cout<<" Finished scattering the number of nodes to each rank"<<std::endl;
-        std::cout << " Scattering the number of nodes to each rank took " 
-                  << (t_scatter_nodes_end - t_scatter_nodes_start) << " seconds." << std::endl;
-    }
-
-
-
-// ****************************************************************************************** 
-//     Scatter the actual node global ids to each rank
-// ****************************************************************************************** 
+    // ****************************************************************************************** 
+    //     Scatter the actual node global ids to each rank
+    // ****************************************************************************************** 
     // Timer: Start measuring time for scattering node global ids
     double t_scatter_nodeids_start = MPI_Wtime();
 
@@ -303,20 +253,9 @@ void partition_mesh(
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    // Timer: End measuring time for scattering node global ids
-    double t_scatter_nodeids_end = MPI_Wtime();
-
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) {
-        std::cout<<" Finished scattering the actual node global ids to each rank"<<std::endl;
-        std::cout << " Scattering node global ids took "
-                  << (t_scatter_nodeids_end - t_scatter_nodeids_start) << " seconds." << std::endl;
-    }
-
-
-// ****************************************************************************************** 
-//     Scatter the node positions to each rank
-// ****************************************************************************************** 
+    // ****************************************************************************************** 
+    //     Scatter the node positions to each rank
+    // ****************************************************************************************** 
     // Create a flat 1D vector for node positions (3 coordinates per node)
     std::vector<double> node_pos_on_rank_flat(num_nodes_on_rank * 3);
 
@@ -366,43 +305,9 @@ void partition_mesh(
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    if (rank == 0 && print_info) {
-        // Print out the node positions on this rank
-        std::cout << "Rank " << rank << " received node positions: ";
-        for (int i = 0; i < num_nodes_on_rank; i++) {
-            std::cout << "(" << node_pos_on_rank_flat[i*3] << ", " 
-                      << node_pos_on_rank_flat[i*3+1] << ", " 
-                      << node_pos_on_rank_flat[i*3+2] << ") ";
-        }
-        std::cout << std::endl;
-    }
-
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    if (rank == 1 && print_info) {
-        // Print out the node positions on this rank
-        std::cout << "Rank " << rank << " received node positions: ";
-        for (int i = 0; i < num_nodes_on_rank; i++) {
-            std::cout << "(" << node_pos_on_rank_flat[i*3] << ", " 
-                      << node_pos_on_rank_flat[i*3+1] << ", " 
-                      << node_pos_on_rank_flat[i*3+2] << ") ";
-        }
-        std::cout << std::endl;
-    }
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    double t_scatter_nodepos_end = MPI_Wtime();
-    if(rank == 0) {
-        std::cout<<" Finished scattering the node positions to each rank"<<std::endl;
-        std::cout << " Scattering node positions took "
-                  << (t_scatter_nodepos_end - t_scatter_nodepos_start) << " seconds." << std::endl;
-    }
-
-// ****************************************************************************************** 
-//     Initialize the node state variables
-// ****************************************************************************************** 
+    // ****************************************************************************************** 
+    //     Initialize the node state variables
+    // ****************************************************************************************** 
 
     // initialize node state variables, for now, we just need coordinates, the rest will be initialize by the respective solvers
     std::vector<node_state> required_node_state = { node_state::coords };
@@ -417,9 +322,9 @@ void partition_mesh(
     naive_node.coords.update_device();
 
 
-// ****************************************************************************************** 
-//     Send the element-node connectivity data from the initial mesh to each rank
-// ****************************************************************************************** 
+    // ****************************************************************************************** 
+    //     Send the element-node connectivity data from the initial mesh to each rank
+    // ****************************************************************************************** 
 
     // Send the element-node connectivity data from the initial mesh to each rank
     std::vector<int> nodes_in_elem_on_rank(num_elements_on_rank * num_nodes_per_elem);
@@ -458,37 +363,14 @@ void partition_mesh(
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
-
-    double t_scatter_elemnode_end = MPI_Wtime();
-    if(rank == 0) {
-        std::cout << " Finished scattering the element-node connectivity data from the initial mesh to each rank" << std::endl;
-        std::cout << " Scattering element-node connectivity took "
-                  << (t_scatter_elemnode_end - t_scatter_elemnode_start) << " seconds." << std::endl;
-    }
-
-    if (rank == 0 && print_info) {
-
-        std::cout << "Rank " << rank << " received element-node connectivity (" 
-                << num_elements_on_rank << " elements, " << nodes_in_elem_on_rank.size() << " entries):" << std::endl;
-        for (int elem = 0; elem < num_elements_on_rank; elem++) {
-            std::cout << "  Element " << elem << " nodes: ";
-            for (int node = 0; node < num_nodes_per_elem; node++) {
-                int idx = elem * num_nodes_per_elem + node;
-                std::cout << nodes_in_elem_on_rank[idx] << " ";
-            }
-            std::cout << std::endl;
-        }
-    }
-
-    MPI_Barrier(MPI_COMM_WORLD);
     if(rank == 0) std::cout<<" Finished scattering the element-node connectivity data from the initial mesh to each rank"<<std::endl;
 
 
 
 
-// ****************************************************************************************** 
-//     Send the element-element connectivity data from the initial mesh to each rank
-// ****************************************************************************************** 
+    // ****************************************************************************************** 
+    //     Send the element-element connectivity data from the initial mesh to each rank
+    // ****************************************************************************************** 
 
     // First, rank 0 computes how many connectivity entries each rank will receive
     // and scatters that information
@@ -505,28 +387,9 @@ void partition_mesh(
             for(int k = 0; k < elements_to_send[i].size(); k++) {
                 elem_elem_counts[i] += initial_mesh.num_elems_in_elem(elements_to_send[i][k]);
             }
-
-            if(print_info) std::cout << "Rank " << i << " will receive " << elem_elem_counts[i] << " element-element connectivity entries" << std::endl;
-        }
-
-        // Print element-element connectivity entries for each rank in the initial mesh
-        if(print_info) {
-            for(int i = 0; i < world_size; i++) {
-                std::cout << std::endl;
-                std::cout << "Rank " << i << " will receive element-element connectivity entries for the following elements: "<<std::endl;
-                for(int k = 0; k < elements_to_send[i].size(); k++) {
-                    std::cout << "Element " << elements_to_send[i][k] << " has " << initial_mesh.num_elems_in_elem(elements_to_send[i][k]) << " element-element connectivity entries: ";
-                    for(int l = 0; l < initial_mesh.num_elems_in_elem(elements_to_send[i][k]); l++) {
-                        std::cout << initial_mesh.elems_in_elem(elements_to_send[i][k], l) << " ";
-                    }
-                    std::cout << std::endl;
-                }
-                std::cout << std::endl;
-            }
         }
     }
     
-
     // Define total_elem_elem_entries to be the sum of the elem_elem_counts
     // Scatter the counts to each rank
     MPI_Scatter(elem_elem_counts.data(), 1, MPI_INT,
@@ -541,10 +404,10 @@ void partition_mesh(
                  << (t_scatter_elem_elem_end - t_scatter_elem_elem_start) << " seconds." << std::endl;
     }
 
-    std::vector<int> elems_in_elem_on_rank(total_elem_elem_entries);
+    elems_in_elem_on_rank.resize(total_elem_elem_entries);
     
     // Now scatter the num_elems_in_elem for each element on each rank
-    std::vector<int> num_elems_in_elem_per_rank(num_elements_on_rank);
+    num_elems_in_elem_per_rank.resize(num_elements_on_rank);
     
     if (rank == 0) {
         std::vector<int> all_num_elems_in_elem;
@@ -645,9 +508,9 @@ void partition_mesh(
     MPI_Barrier(MPI_COMM_WORLD);
 
 
-// ****************************************************************************************** 
-//     Initialize the naive_mesh data structures for each rank
-// ****************************************************************************************** 
+    // ****************************************************************************************** 
+    //     Initialize the naive_mesh data structures for each rank
+    // ****************************************************************************************** 
     naive_mesh.initialize_nodes(num_nodes_on_rank);
     naive_mesh.initialize_elems(num_elements_on_rank, 3);
 
@@ -714,12 +577,40 @@ void partition_mesh(
 
     naive_mesh.build_connectivity();
     MPI_Barrier(MPI_COMM_WORLD);
+    
+
+    return;
+}
+
+void partition_mesh(
+    Mesh_t& initial_mesh,
+    Mesh_t& final_mesh,
+    node_t& initial_node,
+    node_t& final_node,
+    GaussPoint_t& gauss_point,
+    int world_size,
+    int rank){
+
+    bool print_info = false;
+    bool print_vtk = false;
+
+    // Create mesh, gauss points, and node data structures on each rank
+    // This is the initial partitioned mesh
+    Mesh_t naive_mesh;
+    node_t naive_node;
+
+    // Mesh partitioned by pt-scotch, not including ghost
+    Mesh_t intermediate_mesh; 
+    node_t intermediate_node;
 
 
+    // Helper arrays to hold element-element connectivity for naive partitioning that include what would be ghost, without having to build the full mesh
+    std::vector<int> elems_in_elem_on_rank;
+    std::vector<int> num_elems_in_elem_per_rank;
 
-    // if (print_vtk) {
-    //     write_vtk(naive_mesh, naive_node, rank);
-    // }
+    naive_partition_mesh(initial_mesh, initial_node, naive_mesh, naive_node, elems_in_elem_on_rank, num_elems_in_elem_per_rank, world_size, rank);
+
+
 
 
 
@@ -784,7 +675,7 @@ void partition_mesh(
      *         neighbors it has.
      *       - elems_in_elem_on_rank: flattened array of global neighbor IDs for all local elements.
      *
-     **********************************************************************************/
+    **********************************************************************************/
 
     // --- Step 1: Initialize the PT-Scotch distributed graph object on this MPI rank ---
     SCOTCH_Dgraph dgraph;
@@ -814,9 +705,10 @@ void partition_mesh(
     // This allows, for a given element GID, quick lookup of where its neighbor list starts in the flat array.
     std::map<int, size_t> elem_gid_to_offset;
     size_t current_offset = 0;
-    for (size_t k = 0; k < num_elements_on_rank; k++) {
-        elem_gid_to_offset[elements_on_rank[k]] = current_offset;
-        current_offset += num_elems_in_elem_per_rank[k];
+    for (size_t k = 0; k < naive_mesh.num_elems; k++) {
+        int elem_gid_on_rank = naive_mesh.local_to_global_elem_mapping.host(k);
+        elem_gid_to_offset[elem_gid_on_rank] = current_offset;
+        current_offset += num_elems_in_elem_per_rank[k]; // WARNING< THIS MUST INCLUDE GHOST< WHICH DONT EXISTS ON THE NAIVE MESH
     }
 
     // --- Step 3: Fill in the CSR arrays, looping over each locally-owned element ---
@@ -836,8 +728,9 @@ void partition_mesh(
         // For this element, find the count of its neighbors
         // This requires finding its index in the elements_on_rank array
         size_t idx = 0;
-        for (size_t k = 0; k < num_elements_on_rank; k++) {
-            if (elements_on_rank[k] == elem_gid) {
+        for (size_t k = 0; k < naive_mesh.num_elems; k++) {
+            int elem_gid_on_rank = naive_mesh.local_to_global_elem_mapping.host(k);
+            if (elem_gid_on_rank == elem_gid) {
                 idx = k;
                 break;
             }

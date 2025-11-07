@@ -116,6 +116,12 @@ public:
     // Data member to access host view
     ViewCArray <T> host;
 
+
+    // Note, consider this for sending blocks without dealing with stride_
+    // MPI_Datatype vector_type;
+    // MPI_Type_contiguous(stride_, mpi_type_map<T>::value(), &vector_type);
+    // MPI_Type_commit(&vector_type);
+
     MPICArrayKokkos();
     
     MPICArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
@@ -167,7 +173,7 @@ public:
 
 
     // Method to set comm plan for halo communication
-    void initialize_mesh_comm_plan(CommunicationPlan& comm_plan){
+    void initialize_comm_plan(CommunicationPlan& comm_plan){
         comm_plan_ = &comm_plan;
         
         size_t send_size = comm_plan_->total_send_count * stride_;
@@ -288,6 +294,8 @@ public:
         // int* recv_dsp_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_displs_.host(0) : nullptr;
 
     // Method that communicates the data between the ranks
+    // NOTE: This is a blocking communication operation, 
+    // if you want to use non-blocking communication, you can use the following: MPI_Ineighbor_alltoallv
     void communicate(){
 
         this_array_.update_host();
@@ -310,37 +318,43 @@ public:
         this_array_.update_device();
     };
 
+    void set_values(const T& value){
+        this_array_.set_values(value);
+    };
 
 
-    // MPI send wrapper
-    void send(size_t count, int dest, int tag, MPI_Comm comm);
+    void reduce_sum(T& result){};
 
-    // MPI recieve wrapper
-    void recv(size_t count, int dest, int tag, MPI_Comm comm);
 
-    // MPI broadcast wrapper
-    void broadcast(size_t count, int root, MPI_Comm comm);
+    // // MPI send wrapper
+    // void send(size_t count, int dest, int tag, MPI_Comm comm);
 
-    // MPI scatter wrapper
-    void scatter(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
+    // // MPI recieve wrapper
+    // void recv(size_t count, int dest, int tag, MPI_Comm comm);
 
-    // MPI gather wrapper
-    void gather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
+    // // MPI broadcast wrapper
+    // void broadcast(size_t count, int root, MPI_Comm comm);
 
-    // MPI allgather wrapper
-    void allgather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm);
+    // // MPI scatter wrapper
+    // void scatter(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
 
-    // MPI send wrapper
-    void isend(size_t count, int dest, int tag, MPI_Comm comm);
+    // // MPI gather wrapper
+    // void gather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
 
-    // MPI recieve wrapper
-    void irecv(size_t count, int dest, int tag, MPI_Comm comm);
+    // // MPI allgather wrapper
+    // void allgather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm);
 
-    // MPI wait wrapper for sender
-    void wait_send();
+    // // MPI send wrapper
+    // void isend(size_t count, int dest, int tag, MPI_Comm comm);
 
-    // MPI wait wrapper for receiver
-    void wait_recv();
+    // // MPI recieve wrapper
+    // void irecv(size_t count, int dest, int tag, MPI_Comm comm);
+
+    // // MPI wait wrapper for sender
+    // void wait_send();
+
+    // // MPI wait wrapper for receiver
+    // void wait_recv();
 
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
@@ -350,12 +364,17 @@ public:
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos()
-    : this_array_(), stride_(1) { }
+    : this_array_(), stride_(1), length_(0), order_(0) {
+        for (int i = 0; i < 7; i++) {
+            dims_[i] = 0;
+        }
+    }
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, const std::string& tag_string) 
-    : stride_(1) {
+    : stride_(1), length_(dim0), order_(1) {
+    dims_[0] = dim0;
     this_array_ = DCArrayKokkos<T>(dim0, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0);
 }
@@ -363,7 +382,10 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, c
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) 
-    : stride_(dim1) {
+    : stride_(dim1), length_(dim0 * dim1), order_(2) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+
     this_array_ = DCArrayKokkos<T>(dim0, dim1, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1);
 }
@@ -371,7 +393,10 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
 // Overloaded 3D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string) 
-    : stride_(dim1 * dim2) {
+    : stride_(dim1 * dim2), length_(dim0 * dim1 * dim2), order_(3) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2);
 }
@@ -379,7 +404,11 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
 // Overloaded 4D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) 
-    : stride_(dim1 * dim2 * dim3) {
+    : stride_(dim1 * dim2 * dim3), length_(dim0 * dim1 * dim2 * dim3), order_(4) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3);
 }
@@ -387,7 +416,12 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
 // Overloaded 5D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string& tag_string) 
-    : stride_(dim1 * dim2 * dim3 * dim4) {
+    : stride_(dim1 * dim2 * dim3 * dim4), length_(dim0 * dim1 * dim2 * dim3 * dim4), order_(5) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4);
 }
@@ -395,7 +429,13 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
 // Overloaded 6D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string) 
-    : stride_(dim1 * dim2 * dim3 * dim4 * dim5) {
+    : stride_(dim1 * dim2 * dim3 * dim4 * dim5), length_(dim0 * dim1 * dim2 * dim3 * dim4 * dim5), order_(6) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5);
 }
@@ -403,7 +443,14 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
 // Overloaded 7D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string) 
-    : stride_(dim1 * dim2 * dim3 * dim4 * dim5 * dim6) {
+    : stride_(dim1 * dim2 * dim3 * dim4 * dim5 * dim6), length_(dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6), order_(7) {
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
 }

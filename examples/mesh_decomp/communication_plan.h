@@ -59,9 +59,6 @@ using namespace mtr;
     int reorder = 0; 
 
 
-
-
-
     DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_per_rank] Indices of items to send to each rank
     DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_per_rank] Indices of items to receive from each rank
 
