@@ -278,31 +278,11 @@ using namespace mtr;
         }
         this->recv_displs_.update_device();
 
-
-        // Print the send and recv data sequentially per MPI rank for clarity
-        MPI_Barrier(mpi_comm_world);
-        int rank, nprocs;
-        MPI_Comm_rank(mpi_comm_world, &rank);
-        MPI_Comm_size(mpi_comm_world, &nprocs);
-        for(int r = 0; r < nprocs; r++) {
-            MPI_Barrier(mpi_comm_world);
-            if(rank == r) {
-                std::cout << "==============================" << std::endl;
-                std::cout << "CommunicationPlan info for rank " << rank << std::endl;
-                for(int i = 0; i < num_send_ranks; i++){
-                    std::cout << "  Send count to rank[" << i << "] (dest rank " << this->send_rank_ids.host(i) << "): " << this->send_counts_.host(i) << std::endl;
-                    std::cout << "  Send displs to rank[" << i << "]: " << this->send_displs_.host(i) << std::endl;
-                }
-                for(int i = 0; i < num_recv_ranks; i++){
-                    std::cout << "  Recv count from rank[" << i << "] (source rank " << this->recv_rank_ids.host(i) << "): " << this->recv_counts_.host(i) << std::endl;
-                    std::cout << "  Recv displs from rank[" << i << "]: " << this->recv_displs_.host(i) << std::endl;
-                }
-                std::cout << "==============================" << std::endl << std::flush;
-            }
-        }
         MPI_Barrier(mpi_comm_world);
     }
 
 };
 
 #endif // COMMUNICATION_PLAN_H
+
+

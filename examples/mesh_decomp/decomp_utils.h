@@ -33,7 +33,6 @@ void naive_partition_mesh(
     int rank)
 {
 
-
     bool print_info = false;
 
     int num_elements_on_rank = 0;
@@ -176,8 +175,6 @@ void naive_partition_mesh(
         }
 
         if (print_info) {
-
-            
             std::cout<<std::endl;
             // print the nodes_to_send array
             for (int i = 0; i < world_size; i++) {
@@ -363,9 +360,6 @@ void naive_partition_mesh(
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout<<" Finished scattering the element-node connectivity data from the initial mesh to each rank"<<std::endl;
-
-
 
 
     // ****************************************************************************************** 
@@ -397,12 +391,6 @@ void naive_partition_mesh(
                 0, MPI_COMM_WORLD);
 
     MPI_Barrier(MPI_COMM_WORLD);
-    double t_scatter_elem_elem_end = MPI_Wtime();
-    if(rank == 0) {
-        std::cout<<" Finished scattering the number of element-element connectivity entries to each rank"<<std::endl;
-        std::cout<<" Scattering element-element connectivity counts took "
-                 << (t_scatter_elem_elem_end - t_scatter_elem_elem_start) << " seconds." << std::endl;
-    }
 
     elems_in_elem_on_rank.resize(total_elem_elem_entries);
     
@@ -432,7 +420,6 @@ void naive_partition_mesh(
     }
     
     MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout<<" Finished scattering the actual element-element connectivity counts per element to each rank"<<std::endl;
 
     if (rank == 0){
         // Prepare the element-element connectivity data for each rank
@@ -468,45 +455,6 @@ void naive_partition_mesh(
 
     MPI_Barrier(MPI_COMM_WORLD);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout<<" Finished receiving the actual element-element connectivity entries to each rank"<<std::endl;
-
-    if (rank == 0 && print_info) {
-        std::cout << "Rank " << rank << " received element-element connectivity (" 
-                << num_elements_on_rank << " elements, " << elems_in_elem_on_rank.size() << " entries):" << std::endl;
-        
-        int offset = 0;
-        for (int elem = 0; elem < num_elements_on_rank; elem++) {
-            std::cout << "  Element " << elem << " has neighbors: ";
-            int num_neighbors = num_elems_in_elem_per_rank[elem];
-            for (int j = 0; j < num_neighbors; j++) {
-                std::cout << elems_in_elem_on_rank[offset + j] << " ";
-            }
-            offset += num_neighbors;
-            std::cout << std::endl;
-        }
-    }
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    if (rank == 1 && print_info) {
-        std::cout << "Rank " << rank << " received element-element connectivity (" 
-                << num_elements_on_rank << " elements, " << elems_in_elem_on_rank.size() << " entries):" << std::endl;
-        
-        int offset = 0;
-        for (int elem = 0; elem < num_elements_on_rank; elem++) {
-            std::cout << "  Element " << elem << " has neighbors: ";
-            int num_neighbors = num_elems_in_elem_per_rank[elem];
-            for (int j = 0; j < num_neighbors; j++) {
-                std::cout << elems_in_elem_on_rank[offset + j] << " ";
-            }
-            offset += num_neighbors;
-            std::cout << std::endl;
-        }
-    }
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
 
     // ****************************************************************************************** 
     //     Initialize the naive_mesh data structures for each rank
@@ -529,7 +477,6 @@ void naive_partition_mesh(
     naive_mesh.local_to_global_elem_mapping.update_device();
 
     MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout<<" Starting reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
 
     // Timer for reverse mapping of element-node connectivity
     double t_reverse_map_start = MPI_Wtime();
@@ -564,7 +511,7 @@ void naive_partition_mesh(
     MPI_Barrier(MPI_COMM_WORLD);
 
     double t_reverse_map_end = MPI_Wtime();
-    if(rank == 0) {
+    if(rank == 0 && print_info) {
         std::cout<<" Finished reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
         std::cout<<" Reverse mapping time: " << (t_reverse_map_end - t_reverse_map_start) << " seconds." << std::endl;
     }
@@ -609,9 +556,6 @@ void partition_mesh(
     std::vector<int> num_elems_in_elem_per_rank;
 
     naive_partition_mesh(initial_mesh, initial_node, naive_mesh, naive_node, elems_in_elem_on_rank, num_elems_in_elem_per_rank, world_size, rank);
-
-
-
 
 
 // ****************************************************************************************** 
@@ -1533,21 +1477,22 @@ void partition_mesh(
     
     MPI_Barrier(MPI_COMM_WORLD);
     // Sequential rank-wise printing of extended mesh structure info
-    for (int r = 0; r < world_size; ++r) {
-        MPI_Barrier(MPI_COMM_WORLD);
-        if (rank == r) {
-            std::cout << "[rank " << rank << "] Finished building extended mesh structure" << std::endl;
-            std::cout << "[rank " << rank << "]   - Owned elements: " << intermediate_mesh.num_elems << std::endl;
-            std::cout << "[rank " << rank << "]   - Ghost elements: " << ghost_elem_gids.size() << std::endl;
-            std::cout << "[rank " << rank << "]   - Total extended elements: " << total_extended_elems << std::endl;
-            std::cout << "[rank " << rank << "]   - Owned nodes: " << intermediate_mesh.num_nodes << std::endl;
-            std::cout << "[rank " << rank << "]   - Ghost-only nodes: " << ghost_only_nodes.size() << std::endl;
-            std::cout << "[rank " << rank << "]   - Total extended nodes: " << total_extended_nodes << std::endl;
-            std::cout << std::flush;
+    if(print_info) {
+        for (int r = 0; r < world_size; ++r) {
+            MPI_Barrier(MPI_COMM_WORLD);
+            if (rank == r) {
+                std::cout << "[rank " << rank << "] Finished building extended mesh structure" << std::endl;
+                std::cout << "[rank " << rank << "]   - Owned elements: " << intermediate_mesh.num_elems << std::endl;
+                std::cout << "[rank " << rank << "]   - Ghost elements: " << ghost_elem_gids.size() << std::endl;
+                std::cout << "[rank " << rank << "]   - Total extended elements: " << total_extended_elems << std::endl;
+                std::cout << "[rank " << rank << "]   - Owned nodes: " << intermediate_mesh.num_nodes << std::endl;
+                std::cout << "[rank " << rank << "]   - Ghost-only nodes: " << ghost_only_nodes.size() << std::endl;
+                std::cout << "[rank " << rank << "]   - Total extended nodes: " << total_extended_nodes << std::endl;
+                std::cout << std::flush;
+            }
+            MPI_Barrier(MPI_COMM_WORLD);
         }
-        MPI_Barrier(MPI_COMM_WORLD);
     }
-    
     // The extended_nodes_in_elem vector now contains the connectivity for both owned and ghost elements
     // Each element's nodes are stored using extended local node IDs (0-based, contiguous)
     
@@ -1582,49 +1527,15 @@ void partition_mesh(
         }
     }
 
-    // Optional: Print ghost element receive pattern
-    if (print_info) {
-        for (int r = 0; r < world_size; ++r) {
-            MPI_Barrier(MPI_COMM_WORLD);
-            if (rank == r) {
-                std::cout << "[rank " << rank << "] Ghost element receive pattern:" << std::endl;
-                for (size_t i = 0; i < ghost_elem_gids_ordered.size(); ++i) {
-                    size_t ghost_ext_lid = intermediate_mesh.num_elems + i;
-                    std::cout << "  Ghost elem ext_lid=" << ghost_ext_lid 
-                              << " gid=" << ghost_elem_gids_ordered[i]
-                              << " receives from rank " << ghost_elem_owner_ranks[i] << std::endl;
-                }
-            }
-            MPI_Barrier(MPI_COMM_WORLD);
-        }
-    }
-
     // Create a std::set of all the ranks this rank will receive data from
     std::set<int> ghost_elem_receive_ranks;
     for (size_t i = 0; i < ghost_elem_gids_ordered.size(); ++i) {
         ghost_elem_receive_ranks.insert(ghost_elem_owner_ranks[i]);
     }
 
-
-    // Print with ranks this rank will receive element data from sequentially
-    for (int r = 0; r < world_size; ++r) {
-        MPI_Barrier(MPI_COMM_WORLD);
-        if (rank == r) {
-            std::cout << "[rank " << rank << "] Ranks this rank will receive element data from: ";
-            for (int rank : ghost_elem_receive_ranks) {
-                std::cout << rank << " ";
-            }
-            std::cout << std::endl;
-        }
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
-
-
 // ****************************************************************************************** 
 //     Build the final partitioned mesh
 // ****************************************************************************************** 
-
-
 
 
     final_mesh.initialize_nodes(total_extended_nodes);
@@ -1643,24 +1554,9 @@ void partition_mesh(
     final_mesh.num_ghost_elems = ghost_elem_gids.size();
     final_mesh.num_ghost_nodes = ghost_only_nodes.size();
     
-    // Set owned counts for write_vtk (excludes ghost elements/nodes)
+
     final_mesh.num_owned_elems = intermediate_mesh.num_elems;
     final_mesh.num_owned_nodes = intermediate_mesh.num_nodes;
-
-
-    // Print num ghost elements and nodes on each rank sequentially
-    for (int r = 0; r < world_size; ++r) {
-        if (rank == r) {
-            std::cout << "*******[rank " << rank << "]   - Ghost elements: " << final_mesh.num_ghost_elems << std::endl;
-            std::cout << "*******[rank " << rank << "]   - Ghost-only nodes: " << final_mesh.num_ghost_nodes << std::endl;
-        }
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
-
-
-
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout<<" Starting reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
 
     MPI_Barrier(MPI_COMM_WORLD);
     // rebuild the local element-node connectivity using the local node ids
@@ -1672,11 +1568,10 @@ void partition_mesh(
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout<<" Finished reverse mapping of the element-node connectivity from the global node ids to the local node ids"<<std::endl;
 
     final_mesh.nodes_in_elem.update_device();
-
     final_mesh.build_connectivity();
+
     MPI_Barrier(MPI_COMM_WORLD);
     
     if(rank == 0) std::cout << " Finished building final mesh structure with ghost nodes and elements" << std::endl;
@@ -1822,12 +1717,6 @@ void partition_mesh(
                    all_ghost_gids.data(), ghost_counts.data(), ghost_displs.data(),
                    MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout << " Finished gathering ghost element GIDs" << std::endl;
-    
-    
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout << " Starting to build the reverse map for communication" << std::endl;
     
     // Build map gid -> ranks that ghost it
     std::unordered_map<size_t, std::vector<int>> gid_to_ghosting_ranks;
@@ -1853,38 +1742,8 @@ void partition_mesh(
         }
     }
 
-    std::cout.flush();
     MPI_Barrier(MPI_COMM_WORLD);
     
-
-    // Optional: print a compact summary of reverse map for verification (limited output)
-    for(int i = 0; i < world_size; i++) {
-        if (rank == i && print_info) {
-            std::cout << std::endl;
-            for (int elem_lid = 0; elem_lid < final_mesh.num_owned_elems; elem_lid++) {
-
-                size_t local_elem_gid = final_mesh.local_to_global_elem_mapping.host(elem_lid);
-                if (boundary_elem_targets[elem_lid].empty()) 
-                {
-                    std::cout << "[rank " << rank << "] " << "elem_lid: "<< elem_lid <<" -  elem_gid: " << local_elem_gid << " sends to: no ghost elements" << std::endl;
-                }
-                else
-                {
-                    std::cout << "[rank " << rank << "] " << "elem_lid: "<< elem_lid <<" -  elem_gid: " << local_elem_gid << " sends to: ";
-                    int shown = 0;
-                    for (const auto &pr : boundary_elem_targets[elem_lid]) {
-                        if (shown >= 12) { std::cout << " ..."; break; }
-                        std::cout << "(r" << pr.first << ":gid " << pr.second << ") ";
-                        shown++;
-                    }
-                    std::cout << std::endl;
-                }
-            }
-        }
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
-
-
     // Add a vector to store boundary element local_ids (those who have ghost destinations across ranks)
     std::vector<int> boundary_elem_local_ids;
     std::vector<std::vector<int>> boundary_to_ghost_ranks;  // ragged array dimensions (num_boundary_elems, num_ghost_ranks)
@@ -1922,40 +1781,6 @@ void partition_mesh(
 
 
     MPI_Barrier(MPI_COMM_WORLD);
-
-    for (int r = 0; r < world_size; ++r) {
-        MPI_Barrier(MPI_COMM_WORLD);
-        if (rank == r) {
-            std::cout << std::endl;
-            std::cout << "[rank " << rank << "] elements communicates to ranks: ";
-            for (int i = 0; i < num_ghost_comm_ranks; ++i) {
-                std::cout << ghost_comm_ranks_vec[i] << " ";
-            }
-            std::cout << std::endl;
-        }
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
-
-    print_info = false;
-
-    // Print out the boundary element local ids on each rank sequentially
-    for (int r = 0; r < world_size; ++r) {
-        MPI_Barrier(MPI_COMM_WORLD);
-        if (rank == r && print_info) {
-            std::cout << std::endl;
-            std::cout << "[rank " << rank << "] Boundary element global ids: " <<std::endl;
-            for (int bid = 0; bid < boundary_elem_local_ids.size(); ++bid) {
-                size_t global_elem_gid = intermediate_mesh.local_to_global_elem_mapping.host(boundary_elem_local_ids[bid]);
-                std::cout <<"Boundary element local id: " << boundary_elem_local_ids[bid] << " - Global id: " << global_elem_gid << " - Ghost ranks: ";
-                for (int j = 0; j < boundary_to_ghost_ranks[bid].size(); ++j) {
-                    std::cout << boundary_to_ghost_ranks[bid][j] << " ";
-                }
-                std::cout << std::endl;
-            }
-        }
-        MPI_Barrier(MPI_COMM_WORLD);
-    }
-
 
     final_mesh.num_boundary_elems = boundary_elem_local_ids.size();
     final_mesh.boundary_elem_local_ids = DCArrayKokkos<size_t>(final_mesh.num_boundary_elems);
@@ -2084,26 +1909,8 @@ void partition_mesh(
         }
     }
     elems_to_recv_by_rank_rr.update_device();
-
-    // Debug: Print send vs recv counts per neighbor to diagnose mismatch
-    if (print_info) {
-        std::cout << "[rank " << rank << "] Send/Recv count comparison:" << std::endl;
-        for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
-            int dest_rank = element_communication_plan.send_rank_ids.host(i);
-            int send_count = elems_to_send_by_rank_rr.stride_host(i);
-            std::cout << "  To rank " << dest_rank << ": sending " << send_count << " elements" << std::endl;
-        }
-        for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
-            int src_rank = element_communication_plan.recv_rank_ids.host(i);
-            int recv_count = elems_to_recv_by_rank_rr.stride_host(i);
-            std::cout << "  From rank " << src_rank << ": expecting " << recv_count << " elements" << std::endl;
-        }
-    }
-
     element_communication_plan.setup_send_recv(elems_to_send_by_rank_rr, elems_to_recv_by_rank_rr);
 
-    MPI_Barrier(MPI_COMM_WORLD);
-    if(rank == 0) std::cout << " Finished building the send and recv counts and displacements for element communication" << std::endl;
     MPI_Barrier(MPI_COMM_WORLD);
     
 // ****************************************************************************************** 
@@ -2119,7 +1926,6 @@ void partition_mesh(
     // Initialize the gauss point fields on each rank
     // Set owned elements to rank number, ghost elements to -1 (to verify communication)
     for (int i = 0; i < final_mesh.num_owned_elems; i++) {
-        // if(rank == 0) std::cout << " Setting owned element " << i << " to rank " << rank << std::endl;
         gauss_point.fields.host(i) = static_cast<double>(rank);
         gauss_point.fields_vec.host(i, 0) = static_cast<double>(rank);
         gauss_point.fields_vec.host(i, 1) = static_cast<double>(rank);

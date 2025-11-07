@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     // Mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {50, 50, 50};
+    int num_elems_dim[3] = {180, 180, 180};
 
     // Initial mesh built on rank zero
     Mesh_t initial_mesh;
@@ -54,15 +54,24 @@ int main(int argc, char** argv) {
     if (rank == 0) {
         std::cout<<"World size: "<<world_size<<std::endl;
         std::cout<<"Rank "<<rank<<" Building initial mesh"<<std::endl;
-    
+
         std::cout<<"Initializing mesh"<<std::endl;
         build_3d_box(initial_mesh,  initial_node, origin, length, num_elems_dim);
+
+        double t_init_mesh_end = MPI_Wtime();
+        std::cout << "Initial mesh build time: " << (t_init_mesh_end - t_init_mesh_start) << " seconds" << std::endl;
     }
+    MPI_Barrier(MPI_COMM_WORLD);
 
 // ********************************************************  
 //             Partition and balance the mesh
 // ********************************************************  
+    double t_partition_start = MPI_Wtime();
     partition_mesh(initial_mesh, final_mesh, initial_node, final_node, gauss_point, world_size, rank);
+    double t_partition_end = MPI_Wtime();
+    if(rank == 0) {
+        printf("Mesh partitioning time: %.2f seconds\n", t_partition_end - t_partition_start);
+    }
 
     // write_vtk(intermediate_mesh, intermediate_node, rank);
     MPI_Barrier(MPI_COMM_WORLD);
