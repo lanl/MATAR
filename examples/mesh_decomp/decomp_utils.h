@@ -849,7 +849,7 @@ void partition_mesh(
     // Use SCOTCH_STRATQUALITY for best cut quality.
     // To change: replace with SCOTCH_STRATDEFAULT, SCOTCH_STRATSPEED, or SCOTCH_STRATBALANCE as discussed above.
     // Arguments: (strategy object, strategy flag, #parts, recursion (0=auto), imbalance ratio)
-    SCOTCH_stratDgraphMapBuild(&stratdat, SCOTCH_STRATQUALITY, world_size, 0, 0.01);
+    SCOTCH_stratDgraphMapBuild(&stratdat, SCOTCH_STRATQUALITY, world_size, 0, 0.001);
 
     // partloctab: output array mapping each local element (vertex) to a *target partition number*
     // After partitioning, partloctab[i] gives the part-assignment (in [0,world_size-1]) for local element i.
@@ -1144,16 +1144,71 @@ void partition_mesh(
 
 // ****************************************************************************************** 
 //     Build the ghost elements and nodes
-// ****************************************************************************************** 
+// ================================================================================================**
+//
+// OVERVIEW OF GHOST ELEMENT IDENTIFICATION:
+// ==========================================
+// In distributed memory parallel computing with MPI, each processor (rank) owns a subset of mesh
+// elements. However, to perform computations that depend on element neighbors or to maintain
+// consistency at domain boundaries, we need ghost elements: copies of elements from neighboring
+// ranks that share nodes with our locally-owned elements.
+//
+// This algorithm identifies and extracts ghost element data in 5 steps:
+//  1. Gather ownership information: Which rank owns which elements (via MPI_Allgatherv)
+//  2. Collect local element-node connectivity for distribution
+//  3. Broadcast connectivity to all ranks (via MPI_Allgatherv)
+//  4. Identify which remote elements touch our local elements
+//  5. Extract the full connectivity data for identified ghost elements
+//
+// KEY DATA STRUCTURES:
+//  - elem_gid_to_rank: Map from element global ID to owning rank
+//  - all_elem_gids: Every element GID from every rank (on every rank)
+//  - all_conn: Flattened (elem_gid, node_gid) pairs from every rank (on every rank)
+//  - ghost_elem_gids: Set of remote element GIDs that are ghosts for this rank
+//  - ghost_elem_to_nodes: Map from ghost element GID to its node GIDs
+//
+// WHY THIS APPROACH?
+// - MPI_Allgatherv is efficient for gathering all data to all ranks
+// - Connectivity pairs allow flexible reconstruction of element-node relationships
+// - Using sets and maps for efficient lookups (O(log n) instead of O(n))
+// - Distributed computation avoids a single bottleneck rank
+//
 
     double t_ghost_start = MPI_Wtime();
     
-    // First, gather the number of elements each rank owns
+    // ========================================================================
+    // STEP 1: Gather element ownership information from all ranks
+    // ========================================================================
+    // In a distributed mesh, each rank owns a subset of elements. To identify
+    // ghost elements (elements from other ranks needed by this rank), we need
+    // to know which rank owns each element. This section uses MPI collective
+    // operations to gather element GID ownership information.
+    //
+    // MPI COLLECTIVE OPERATIONS EXPLAINED:
+    // ====================================
+    // - MPI_Barrier: Synchronizes all ranks; waits until all ranks reach this point
+    // - MPI_Allgather: Each rank sends one item of data; each rank receives one item from each rank
+    //   Input: Each rank provides local data
+    //   Output: Every rank has data from every rank in order (rank 0's data, rank 1's data, ...)
+    // - MPI_Allgatherv: Like MPI_Allgather but for variable-sized data
+    //   Input: Each rank provides data of potentially different sizes
+    //   Output: Every rank has all data from all ranks, with displacement arrays specifying where each rank's data goes
+    //
+    // COMMUNICATION PATTERN VISUALIZATION:
+    // Rank 0: elem_count[0] ----> All ranks receive: [elem_count[0], elem_count[1], elem_count[2], ...]
+    // Rank 1: elem_count[1] /
+    // Rank 2: elem_count[2] /
+    
+    // MPI_Allgather: Each rank sends its element count, every rank receives
+    // the count from every other rank. Result: elem_counts[r] = number of
+    // elements owned by rank r.
     std::vector<int> elem_counts(world_size);
     MPI_Allgather(&intermediate_mesh.num_elems, 1, MPI_INT, elem_counts.data(), 1, MPI_INT, MPI_COMM_WORLD);
-    MPI_Barrier(MPI_COMM_WORLD);
+    MPI_Barrier(MPI_COMM_WORLD);  // Synchronize all ranks before proceeding
     
-    // Compute displacements
+    // Compute displacements: offset into the global array for each rank's data
+    // Example: if elem_counts = [100, 150, 120], then
+    // elem_displs = [0, 100, 250] (where each rank's data starts in all_elem_gids)
     std::vector<int> elem_displs(world_size);
     int total_elems = 0;
     for (int r = 0; r < world_size; ++r) {
@@ -1161,13 +1216,18 @@ void partition_mesh(
         total_elems += elem_counts[r];
     }
     
-    // Gather all element GIDs from all ranks
+    // MPI_Allgatherv: Gather variable-sized data from all ranks into one array
+    // Each rank contributes its local_to_global_elem_mapping, which maps
+    // local element indices to global element GIDs. After this call,
+    // all_elem_gids contains ALL element GIDs from all ranks, organized by rank.
     std::vector<size_t> all_elem_gids(total_elems);
     MPI_Allgatherv(intermediate_mesh.local_to_global_elem_mapping.host_pointer(), intermediate_mesh.num_elems, MPI_UNSIGNED_LONG_LONG,
                    all_elem_gids.data(), elem_counts.data(), elem_displs.data(), 
                    MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
-    // Build a map: element GID -> owning rank
+    
+    // Build a lookup map: element GID -> owning rank
+    // This allows O(log n) lookups to determine which rank owns any given element.
     std::map<size_t, int> elem_gid_to_rank;
     for (int r = 0; r < world_size; ++r) {
         for (int i = 0; i < elem_counts[r]; i++) {
@@ -1176,43 +1236,66 @@ void partition_mesh(
         }
     }
     
-    // Strategy: Find elements on other ranks that share
-    // nodes with our locally-owned elements.
+    // ========================================================================
+    // STEP 2: Build element-to-node connectivity for local elements
+    // ========================================================================
+    // Ghost elements are elements from other ranks that share nodes with our
+    // locally-owned elements. To identify them, we need to exchange element-node
+    // connectivity information with all other ranks.
     
-    // First, collect all nodes that belong to our locally-owned elements
+    // Collect all nodes that belong to our locally-owned elements
+    // This set will be used later to check if a remote element is relevant
     std::set<size_t> local_elem_nodes;
-
     for(int node_rid = 0; node_rid < intermediate_mesh.num_nodes; node_rid++) {
         size_t node_gid = intermediate_mesh.local_to_global_node_mapping.host(node_rid);
         local_elem_nodes.insert(node_gid);
     }
     
-    
-    // Now collect element-to-node connectivity to send to all ranks
-    // Format: for each element, list its node GIDs (each entry is a pair: elem_gid, node_gid)
+    // ========================================================================
+    // STEP 3: Exchange element-to-node connectivity via MPI_Allgatherv
+    // ========================================================================
+    // Build a flattened connectivity array: pairs of (elem_gid, node_gid)
+    // Example for 2 elements with 8 nodes each:
+    //   elem_node_conn = [elem0_gid, node0, elem0_gid, node1, ..., elem1_gid, node0, ...]
+    //
+    // This format is chosen because it's easy to serialize and deserialize over MPI,
+    // and allows us to reconstruct the full element-node relationships.
     std::vector<size_t> elem_node_conn;
     int local_conn_size = 0;
     
+    // For each locally-owned element, record its GID and all its node GIDs
     for (int lid = 0; lid < intermediate_mesh.num_elems; lid++) {
         size_t elem_gid = intermediate_mesh.local_to_global_elem_mapping.host(lid);
+        
+        // Access nodes_in_elem[lid][*] to get all nodes in this element
         for (int j = 0; j < intermediate_mesh.num_nodes_in_elem; j++) {
-            size_t node_lid = intermediate_mesh.nodes_in_elem.host(lid, j);
-            size_t node_gid = intermediate_mesh.local_to_global_node_mapping.host(node_lid);
+            size_t node_lid = intermediate_mesh.nodes_in_elem.host(lid, j);  // Local index
+            size_t node_gid = intermediate_mesh.local_to_global_node_mapping.host(node_lid);  // Global index
+            
             elem_node_conn.push_back(elem_gid);
             elem_node_conn.push_back(node_gid);
         }
-        local_conn_size += nodes_per_elem * 2;  // Each pair is 2 size_ts
+        local_conn_size += nodes_per_elem * 2;  // Each element contributes (num_nodes_in_elem * 2) size_ts
     }
 
    
     
-    // Exchange element-node connectivity with all ranks using Allgather
-    // First, gather the sizes from each rank
+    // ========================================================================
+    // Perform MPI communication to gather connectivity from all ranks
+    // ========================================================================
+    // Similar to Step 1, we use MPI_Allgatherv to collect all element-node
+    // connectivity pairs. This is a two-stage process:
+    // 1) Gather the size of each rank's connectivity data
+    // 2) Gather the actual connectivity data with proper offsets
+    
+    // Stage 1: Gather connectivity sizes from each rank
+    // conn_sizes[r] = number of size_t values that rank r will send
     std::vector<int> conn_sizes(world_size);
     MPI_Allgather(&local_conn_size, 1, MPI_INT, conn_sizes.data(), 1, MPI_INT, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
     
-    // Compute displacements
+    // Compute displacements for the second MPI_Allgatherv call
+    // Displcements tell each rank where its data should be placed in the global array
     std::vector<int> conn_displs(world_size);
     int total_conn = 0;
     for (int r = 0; r < world_size; ++r) {
@@ -1220,72 +1303,59 @@ void partition_mesh(
         total_conn += conn_sizes[r];
     }
     
-    // Gather all element-node pairs from all ranks
+    // Stage 2: Gather all element-node connectivity data
+    // After this call, all_conn contains the flattened connectivity from every rank,
+    // organized by rank. Access data from rank r using indices [conn_displs[r], conn_displs[r] + conn_sizes[r])
     std::vector<size_t> all_conn(total_conn);
     MPI_Allgatherv(elem_node_conn.data(), local_conn_size, MPI_UNSIGNED_LONG_LONG,
                    all_conn.data(), conn_sizes.data(), conn_displs.data(),
                    MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
     MPI_Barrier(MPI_COMM_WORLD);
-
     
-    DCArrayKokkos<size_t> local_nodes_in_elem(intermediate_mesh.num_elems, intermediate_mesh.num_nodes_in_elem);
-    DCArrayKokkos<size_t> all_nodes_in_elem(total_elems, intermediate_mesh.num_nodes_in_elem);
-
-    std::vector<int> mtr_conn_sizes(world_size);
+    // ========================================================================
+    // STEP 4: Identify ghost elements
+    // ========================================================================
+    // A ghost element is an element owned by another rank that shares at least
+    // one node with our locally-owned elements. This step identifies all such elements.
     
-
-    local_nodes_in_elem = intermediate_mesh.nodes_in_elem;
-    int mtr_size = intermediate_mesh.num_elems * intermediate_mesh.num_nodes_in_elem;
-
-    MPI_Allgather(&mtr_size, 1, MPI_INT, mtr_conn_sizes.data(), 1, MPI_INT, MPI_COMM_WORLD);
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    // Compute displacements
-    std::vector<int> mtr_conn_displs(world_size);
-    int total_mtr_conn = 0;
-    for (int r = 0; r < world_size; ++r) {
-        mtr_conn_displs[r] = total_mtr_conn;
-        total_mtr_conn += mtr_conn_sizes[r];
-    }
-
-
-    MPI_Allgatherv(local_nodes_in_elem.host_pointer(), mtr_size, MPI_UNSIGNED_LONG_LONG,
-                   all_nodes_in_elem.host_pointer(), mtr_conn_sizes.data(), mtr_conn_displs.data(),
-                   MPI_UNSIGNED_LONG_LONG, MPI_COMM_WORLD);
-    MPI_Barrier(MPI_COMM_WORLD);
-
-
-
-    
-    // create a set for local_elem_gids
+    // Build a set of locally-owned element GIDs for quick lookup
     std::set<size_t> local_elem_gids;
     for (int i = 0; i < intermediate_mesh.num_elems; i++) {
         local_elem_gids.insert(intermediate_mesh.local_to_global_elem_mapping.host(i));
     }
     
-    // Build a map: node GID -> set of element GIDs that contain it (from other ranks)
+    // Build a temporary map: node GID -> set of element GIDs (from other ranks) that contain it
+    // This helps us identify which remote elements are adjacent to our local elements
     std::map<size_t, std::set<size_t>> node_to_ext_elem;
+    
+    // Iterate through connectivity data from each rank (except ourselves)
     for (int r = 0; r < world_size; ++r) {
-        if (r == rank) continue;  // Skip our own data
-        // Process pairs from rank r: conn_sizes[r] is in units of size_ts, so num_pairs = conn_sizes[r] / 2
+        if (r == rank) continue;  // Skip our own data - we already know our elements
+        
+        // Parse the connectivity data for rank r
+        // Data format: [elem0_gid, node0, elem0_gid, node1, ..., elem1_gid, node0, ...]
+        // Each pair is 2 size_ts, so num_pairs = conn_sizes[r] / 2
         int num_pairs = conn_sizes[r] / 2;
+        
         for (int i = 0; i < num_pairs; i++) {
-            // Each pair is 2 size_ts, starting at conn_displs[r]
+            // Offset into all_conn for this pair (elem_gid, node_gid)
             int offset = conn_displs[r] + i * 2;
             size_t elem_gid = all_conn[offset];
             size_t node_gid = all_conn[offset + 1];
             
-            // If this node is in one of our elements, then the element is a potential ghost
+            // Check if this node belongs to one of our locally-owned elements
             if (local_elem_nodes.find(node_gid) != local_elem_nodes.end()) {
-                // Check if this element is not owned by us
+                // Check if this element is NOT owned by us (i.e., it's from another rank)
                 if (local_elem_gids.find(elem_gid) == local_elem_gids.end()) {
+                    // This is a ghost element for us
                     node_to_ext_elem[node_gid].insert(elem_gid);
                 }
             }
         }
     }
     
-    // Collect all unique ghost element GIDs
+    // Extract all unique ghost element GIDs
+    // We use a set to eliminate duplicates (same ghost element might share multiple nodes with us)
     std::set<size_t> ghost_elem_gids;
     for (const auto& pair : node_to_ext_elem) {
         for (size_t elem_gid : pair.second) {
@@ -1316,7 +1386,7 @@ void partition_mesh(
     //     }
     // }
     
-    // Count unique ghost elements
+    // Store the count of ghost elements for later use
     intermediate_mesh.num_ghost_elems = ghost_elem_gids.size();
     
     MPI_Barrier(MPI_COMM_WORLD);
@@ -1326,33 +1396,43 @@ void partition_mesh(
         std::cout << " Finished calculating ghost elements" << std::endl;
         std::cout << " Ghost element calculation took " << (t_ghost_end - t_ghost_start) << " seconds." << std::endl;
     }
-    // Build the connectivity that includes ghost elements
-    // Create an extended mesh with owned elements first, then ghost elements appended
+    
+    // ========================================================================
+    // STEP 5: Extract ghost element connectivity
+    // ========================================================================
+    // Now that we know which elements are ghosts, we need to extract their
+    // full node connectivity from all_conn. This allows us to properly construct
+    // the extended mesh with ghost elements included.
     
     MPI_Barrier(MPI_COMM_WORLD);
     if(rank == 0) std::cout << " Starting to build extended mesh with ghost elements" << std::endl;
     
-    // Step 1: Extract ghost element-node connectivity from all_conn
-    // Build a map: ghost_elem_gid -> vector of node_gids (ordered as in all_conn)
+    // Build a map: ghost_elem_gid -> vector of node_gids
+    // We pre-allocate the vector size to avoid repeated reallocations
     std::map<size_t, std::vector<size_t>> ghost_elem_to_nodes;
     for (const size_t& ghost_gid : ghost_elem_gids) {
         ghost_elem_to_nodes[ghost_gid].reserve(intermediate_mesh.num_nodes_in_elem);
     }
     
-    // Extract nodes for each ghost element from all_conn
-    // The all_conn array has pairs (elem_gid, node_gid) for each rank's elements
+    // ========================================================================
+    // Extract nodes for each ghost element from the globally-collected all_conn
+    // ========================================================================
+    // The all_conn array was populated by MPI_Allgatherv and contains connectivity
+    // pairs (elem_gid, node_gid) for all elements from all ranks. We now parse
+    // this data to extract the nodes for each ghost element.
     for (int r = 0; r < world_size; ++r) {
-        if (r == rank) continue;  // Skip our own data (we already have owned element connectivity)
+        if (r == rank) continue;  // Skip our own data - we already have owned element connectivity
         
+        // Parse connectivity data for rank r
         int num_pairs = conn_sizes[r] / 2;
         
-        // Process pairs in order - each element's nodes are contiguous
         for (int i = 0; i < num_pairs; i++) {
+            // Calculate offset for this pair: displacement + (pair_index * 2)
             int offset = conn_displs[r] + i * 2;
             size_t elem_gid = all_conn[offset];
             size_t node_gid = all_conn[offset + 1];
             
-            // If this is one of our ghost elements, record its node (in order)
+            // If this element is one of our identified ghost elements, record its node
             auto it = ghost_elem_to_nodes.find(elem_gid);
             if (it != ghost_elem_to_nodes.end()) {
                 it->second.push_back(node_gid);
@@ -1360,7 +1440,10 @@ void partition_mesh(
         }
     }
     
-    // Verify each ghost element has the correct number of nodes
+    // ========================================================================
+    // Validation: Verify each ghost element has the correct number of nodes
+    // ========================================================================
+    // This catch detects issues in the MPI communication or parsing logic
     for (auto& pair : ghost_elem_to_nodes) {
         if (pair.second.size() != static_cast<size_t>(intermediate_mesh.num_nodes_in_elem)) {
             std::cerr << "[rank " << rank << "] ERROR: Ghost element " << pair.first 
