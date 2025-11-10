@@ -58,6 +58,10 @@ int main(int argc, char** argv) {
         std::cout<<"Initializing mesh"<<std::endl;
         build_3d_box(initial_mesh,  initial_node, origin, length, num_elems_dim);
 
+
+        // Read the mesh from a file
+        // read_vtk_mesh(initial_mesh, initial_node, 3, "meshes/buste.vtk");
+
         double t_init_mesh_end = MPI_Wtime();
         std::cout << "Initial mesh build time: " << (t_init_mesh_end - t_init_mesh_start) << " seconds" << std::endl;
     }

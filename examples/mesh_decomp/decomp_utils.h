@@ -909,7 +909,7 @@ void partition_mesh(
 
     // -------------- Phase 2: Exchange element GIDs --------------
     std::vector<int> sendcounts(world_size), recvcounts(world_size);
-    for (int r = 0; r < world_size; ++r)
+    for (int r = 0; r < world_size; r++)
         sendcounts[r] = static_cast<int>(elems_to_send[r].size());
 
     MPI_Alltoall(sendcounts.data(), 1, MPI_INT, recvcounts.data(), 1, MPI_INT, MPI_COMM_WORLD);
@@ -919,7 +919,7 @@ void partition_mesh(
     // Compute displacements
     std::vector<int> sdispls(world_size), rdispls(world_size);
     int send_total = 0, recv_total = 0;
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         sdispls[r] = send_total;
         rdispls[r] = recv_total;
         send_total += sendcounts[r];
@@ -932,7 +932,7 @@ void partition_mesh(
     // For each rank r, elems_to_send[r] contains the element GIDs that should be owned by rank r after repartitioning.
     std::vector<int> send_elems;
     send_elems.reserve(send_total);
-    for (int r = 0; r < world_size; ++r)
+    for (int r = 0; r < world_size; r++)
         send_elems.insert(send_elems.end(), elems_to_send[r].begin(), elems_to_send[r].end());
 
     // new_elem_gids: receives the list of new element global IDs this rank will own after the exchange.
@@ -983,7 +983,7 @@ void partition_mesh(
 
     std::vector<int> conn_sdispls(world_size), conn_rdispls(world_size);
     int conn_send_total = 0, conn_recv_total = 0;
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         conn_sdispls[r] = conn_send_total;
         conn_rdispls[r] = conn_recv_total;
         conn_send_total += conn_sendcounts[r];
@@ -1013,7 +1013,7 @@ void partition_mesh(
 
     // -------------- Phase 5: Request node coordinates --------------
     std::vector<double> node_coords_sendbuf;
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         for (int gid : elems_to_send[r]) {
             int lid = -1;
             for (int i = 0; i < naive_mesh.num_elems; i++)
@@ -1032,7 +1032,7 @@ void partition_mesh(
 
     // Each node is 3 doubles; same sendcounts scaling applies
     std::vector<int> coord_sendcounts(world_size), coord_recvcounts(world_size);
-    for (int r = 0; r < world_size; ++r)
+    for (int r = 0; r < world_size; r++)
         coord_sendcounts[r] = sendcounts[r] * nodes_per_elem * 3;
 
     MPI_Alltoall(coord_sendcounts.data(), 1, MPI_INT, coord_recvcounts.data(), 1, MPI_INT, MPI_COMM_WORLD);
@@ -1041,7 +1041,7 @@ void partition_mesh(
 
     std::vector<int> coord_sdispls(world_size), coord_rdispls(world_size);
     int coord_send_total = 0, coord_recv_total = 0;
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         coord_sdispls[r] = coord_send_total;
         coord_rdispls[r] = coord_recv_total;
         coord_send_total += coord_sendcounts[r];
@@ -1211,7 +1211,7 @@ void partition_mesh(
     // elem_displs = [0, 100, 250] (where each rank's data starts in all_elem_gids)
     std::vector<int> elem_displs(world_size);
     int total_elems = 0;
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         elem_displs[r] = total_elems;
         total_elems += elem_counts[r];
     }
@@ -1229,7 +1229,7 @@ void partition_mesh(
     // Build a lookup map: element GID -> owning rank
     // This allows O(log n) lookups to determine which rank owns any given element.
     std::map<size_t, int> elem_gid_to_rank;
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         for (int i = 0; i < elem_counts[r]; i++) {
             size_t gid = all_elem_gids[elem_displs[r] + i];
             elem_gid_to_rank[gid] = r;
@@ -1298,7 +1298,7 @@ void partition_mesh(
     // Displcements tell each rank where its data should be placed in the global array
     std::vector<int> conn_displs(world_size);
     int total_conn = 0;
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         conn_displs[r] = total_conn;
         total_conn += conn_sizes[r];
     }
@@ -1329,7 +1329,7 @@ void partition_mesh(
     std::map<size_t, std::set<size_t>> node_to_ext_elem;
     
     // Iterate through connectivity data from each rank (except ourselves)
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         if (r == rank) continue;  // Skip our own data - we already know our elements
         
         // Parse the connectivity data for rank r
@@ -1390,12 +1390,7 @@ void partition_mesh(
     intermediate_mesh.num_ghost_elems = ghost_elem_gids.size();
     
     MPI_Barrier(MPI_COMM_WORLD);
-    double t_ghost_end = MPI_Wtime();
     
-    if (rank == 0) {
-        std::cout << " Finished calculating ghost elements" << std::endl;
-        std::cout << " Ghost element calculation took " << (t_ghost_end - t_ghost_start) << " seconds." << std::endl;
-    }
     
     // ========================================================================
     // STEP 5: Extract ghost element connectivity
@@ -1420,7 +1415,7 @@ void partition_mesh(
     // The all_conn array was populated by MPI_Allgatherv and contains connectivity
     // pairs (elem_gid, node_gid) for all elements from all ranks. We now parse
     // this data to extract the nodes for each ghost element.
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         if (r == rank) continue;  // Skip our own data - we already have owned element connectivity
         
         // Parse connectivity data for rank r
@@ -1545,7 +1540,7 @@ void partition_mesh(
     MPI_Barrier(MPI_COMM_WORLD);
     // Sequential rank-wise printing of extended mesh structure info
     if(print_info) {
-        for (int r = 0; r < world_size; ++r) {
+        for (int r = 0; r < world_size; r++) {
             MPI_Barrier(MPI_COMM_WORLD);
             if (rank == r) {
                 std::cout << "[rank " << rank << "] Finished building extended mesh structure" << std::endl;
@@ -1636,6 +1631,13 @@ void partition_mesh(
 
     MPI_Barrier(MPI_COMM_WORLD);
 
+    double t_ghost_end = MPI_Wtime();
+    
+    if (rank == 0) {
+        std::cout << " Finished calculating ghost elements" << std::endl;
+        std::cout << " Ghost element calculation took " << (t_ghost_end - t_ghost_start) << " seconds." << std::endl;
+    }
+
     final_mesh.nodes_in_elem.update_device();
     final_mesh.build_connectivity();
 
@@ -1686,7 +1688,7 @@ void partition_mesh(
     // b) Displacements and total
     std::vector<int> owned_displs(world_size,0);
     int total_owned = 0;
-    for (int r=0; r<world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         owned_displs[r] = total_owned;
         total_owned += owned_counts[r];
     }
@@ -1700,7 +1702,7 @@ void partition_mesh(
 
     // d) Global coords (size: total_owned x 3)
     std::vector<double> owned_coords_send(3*local_owned_count, 0.0);
-    for (int i=0; i<local_owned_count; i++) {
+    for (int i = 0; i < local_owned_count; i++) {
         owned_coords_send[3*i+0] = intermediate_node.coords.host(i,0);
         owned_coords_send[3*i+1] = intermediate_node.coords.host(i,1);
         owned_coords_send[3*i+2] = intermediate_node.coords.host(i,2);
@@ -1710,7 +1712,7 @@ void partition_mesh(
     // Create coordinate-specific counts and displacements (in units of doubles, not nodes)
     std::vector<int> coord_counts(world_size);
     std::vector<int> coord_displs(world_size);
-    for (int r=0; r<world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         coord_counts[r] = 3 * owned_counts[r];  // Each node has 3 doubles
         coord_displs[r] = 3 * owned_displs[r];  // Displacement in doubles
     }
@@ -1721,7 +1723,7 @@ void partition_mesh(
 
     // e) Build map: gid -> coord[3]
     std::unordered_map<size_t, std::array<double,3>> gid_to_coord;
-    for (int i=0; i<total_owned; i++) {
+    for (int i = 0; i < total_owned; i++) {
         std::array<double,3> xyz = {
             all_owned_coords[3*i+0],
             all_owned_coords[3*i+1],
@@ -1749,7 +1751,7 @@ void partition_mesh(
 
 
     // --------------------------------------------------------------------------------------
-// Build the send patterns for elements
+    // Build the send patterns for elements
     // Build reverse map via global IDs: for each local element gid, find ranks that ghost it.
     // Steps:
     // 1) Each rank contributes its ghost element GIDs.
@@ -1773,7 +1775,7 @@ void partition_mesh(
     // Displacements and recv buffer
     std::vector<int> ghost_displs(world_size, 0);
     int total_ghosts = 0;
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         ghost_displs[r] = total_ghosts;
         total_ghosts += ghost_counts[r];
     }
@@ -1788,7 +1790,7 @@ void partition_mesh(
     // Build map gid -> ranks that ghost it
     std::unordered_map<size_t, std::vector<int>> gid_to_ghosting_ranks;
     gid_to_ghosting_ranks.reserve(static_cast<size_t>(total_ghosts));
-    for (int r = 0; r < world_size; ++r) {
+    for (int r = 0; r < world_size; r++) {
         int cnt = ghost_counts[r];
         int off = ghost_displs[r];
         for (int i = 0; i < cnt; i++) {
@@ -2057,7 +2059,7 @@ void partition_mesh(
     // // Displacements and recv buffer
     // std::vector<int> ghost_node_displs(world_size, 0);
     // int total_ghost_nodes = 0;
-    // for (int r = 0; r < world_size; ++r) {
+    // for (int r = 0; r < world_size; r++) {
     //     ghost_node_displs[r] = total_ghost_nodes;
     //     total_ghost_nodes += ghost_node_counts[r];
     // }
@@ -2078,7 +2080,7 @@ void partition_mesh(
     // // Build map node_gid -> ranks that ghost it
     // std::unordered_map<size_t, std::vector<int>> node_gid_to_ghosting_ranks;
     // node_gid_to_ghosting_ranks.reserve(static_cast<size_t>(total_ghost_nodes));
-    // for (int r = 0; r < world_size; ++r) {
+    // for (int r = 0; r < world_size; r++) {
     //     int cnt = ghost_node_counts[r];
     //     int off = ghost_node_displs[r];
     //     for (int i = 0; i < cnt; i++) {
@@ -2135,9 +2137,6 @@ void partition_mesh(
     
     // MPI_Barrier(MPI_COMM_WORLD);
     // if(rank == 0) std::cout << " Finished building node communication reverse map" << std::endl;
-
-
-
 
 }
 
