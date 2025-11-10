@@ -35,7 +35,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define STATE_H
 
 #include "matar.h"
-#include "mpi_type.h"
+// #include "mpi_type.h"
 
 using namespace mtr;
 
