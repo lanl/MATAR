@@ -21,6 +21,29 @@
 #include "scotch.h"
 #include "ptscotch.h"
 
+/**
+ * @brief Partitions the input mesh into a naive element-based decomposition across MPI ranks.
+ *
+ * This function splits the input mesh (and its associated node information) evenly among the given number of MPI ranks.
+ * It assigns contiguous blocks of elements (and the corresponding nodes and nodal data) to each rank.
+ * 
+ * The function constructs:
+ * - The sub-mesh (naive_mesh) and its nodes (naive_node) for the local rank.
+ * - Maps and vectors indicating elements and nodes present on each rank.
+ * - Auxiliary arrays (elems_in_elem_on_rank, num_elems_in_elem_per_rank) for local element connectivity and neighbor look-ups.
+ *
+ * The decomposition is "naive" in that it uses a simple contiguous block assignment, without regard to mesh topology or quality of partitioning.
+ * This function is generally used as the preliminary step before repartitioning with tools like PT-Scotch or for algorithm prototyping.
+ *
+ * @param initial_mesh[in]         The input mesh containing all elements/nodes on rank 0.
+ * @param initial_node[in]         The nodal data for the input mesh on rank 0.
+ * @param naive_mesh[out]          The mesh on this rank after naive partitioning.
+ * @param naive_node[out]          The nodal data on this rank after naive partitioning.
+ * @param elems_in_elem_on_rank[out]   Vector of element-to-element connectivity for this rank's local mesh.
+ * @param num_elems_in_elem_per_rank[out] Vector of counts for element neighbors for each local element.
+ * @param world_size[in]           Number of MPI ranks (world size).
+ * @param rank[in]                 This MPI rank's id.
+ */
 
 void naive_partition_mesh(
     Mesh_t& initial_mesh,
@@ -530,6 +553,32 @@ void naive_partition_mesh(
 }
 
 
+/**
+ * @brief Partitions the input mesh using PT-Scotch and constructs the final distributed mesh.
+ *
+ * This function performs parallel mesh partitioning using a two-stage approach:
+ *   1. A naive partition is first constructed (simple assignment of mesh elements/nodes across ranks).
+ *   2. PT-Scotch is then used to repartition the mesh for load balancing and improved connectivity.
+ *
+ * The partitioned mesh, nodal data, and associated connectivity/gauss point information
+ * are distributed among MPI ranks as a result. The procedure ensures that each rank receives
+ * its assigned portion of the mesh and associated data in the final (target) decomposition.
+ *
+ * @param initial_mesh[in]  The input (global) mesh, present on rank 0 or all ranks at start.
+ * @param final_mesh[out]   The mesh assigned to this rank after PT-Scotch decomposition.
+ * @param initial_node[in]  Nodal data for the input (global) mesh; must match initial_mesh.
+ * @param final_node[out]   Nodal data for this rank after decomposition (corresponds to final_mesh).
+ * @param gauss_point[out]  Gauss point data structure, filled out for this rank's mesh.
+ * @param world_size[in]    Number of MPI ranks in use (the total number of partitions).
+ * @param rank[in]          This process's MPI rank ID.
+ *
+ * Internals:
+ * - The routine uses a naive_partition_mesh() helper to create an initial contiguous mesh partition.
+ * - It then uses PT-Scotch distributed graph routines to compute an improved partition and create the final mesh layout.
+ * - Both element-to-element and node-to-element connectivity, as well as mapping and ghosting information,
+ *   are managed and exchanged across ranks.
+ * - MPI routines synchronize and exchange the relevant mesh and nodal data following the computed partition.
+ */
 
 void partition_mesh(
     Mesh_t& initial_mesh,
@@ -557,13 +606,9 @@ void partition_mesh(
     std::vector<int> elems_in_elem_on_rank;
     std::vector<int> num_elems_in_elem_per_rank;
 
+
+    // Perform the naive partitioning of the mesh
     naive_partition_mesh(initial_mesh, initial_node, naive_mesh, naive_node, elems_in_elem_on_rank, num_elems_in_elem_per_rank, world_size, rank);
-
-
-// ****************************************************************************************** 
-//     Compute a repartition of the mesh using pt-scotch
-// ****************************************************************************************** 
-
 
 
     /**********************************************************************************
@@ -1906,7 +1951,7 @@ void partition_mesh(
     element_communication_plan.initialize_graph_communicator(outdegree, ghost_comm_ranks_vec.data(), indegree, ghost_elem_receive_ranks_vec.data());
     MPI_Barrier(MPI_COMM_WORLD);
     // Optional: Verify the graph communicator was created successfully
-    if(print_info) element_communication_plan.verify_graph_communicator();
+    // if(print_info) element_communication_plan.verify_graph_communicator();
 
 
 // ****************************************************************************************** 
@@ -2036,7 +2081,7 @@ void partition_mesh(
 
 
     // --------------------------------------------------------------------------------------
-// Build the send pattern for nodes
+    // TODO: Build the send pattern for nodes --------------------------------------------------------------------------------------
     // Build reverse map via global IDs: for each local node gid, find ranks that ghost it.
     // Steps:
     // 1) Each rank contributes its ghost node GIDs.

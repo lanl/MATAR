@@ -1,12 +1,13 @@
 #ifndef MPICARRAYKOKKOS_H
 #define MPICARRAYKOKKOS_H
 
+// #ifdef HAVE_MPI
+#include <mpi.h>
 #include "matar.h"
 #include "communication_plan.h"
 
-using namespace mtr;
-
-// Add this before the MPICArrayKokkos class definition
+namespace mtr
+{
 
 // Type trait to map C++ types to MPI_Datatype
 template <typename T>
@@ -70,8 +71,7 @@ struct mpi_type_map<bool> {
 
 
 /////////////////////////
-// MPICArrayKokkos:  Dual type for managing distributed data on both CPU and GPU.
-// 
+// MPICArrayKokkos:  Type for managing distributed data on both CPU and GPU.
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class MPICArrayKokkos {
@@ -321,40 +321,6 @@ public:
     void set_values(const T& value){
         this_array_.set_values(value);
     };
-
-
-    void reduce_sum(T& result){};
-
-
-    // // MPI send wrapper
-    // void send(size_t count, int dest, int tag, MPI_Comm comm);
-
-    // // MPI recieve wrapper
-    // void recv(size_t count, int dest, int tag, MPI_Comm comm);
-
-    // // MPI broadcast wrapper
-    // void broadcast(size_t count, int root, MPI_Comm comm);
-
-    // // MPI scatter wrapper
-    // void scatter(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
-
-    // // MPI gather wrapper
-    // void gather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, int root, MPI_Comm comm);
-
-    // // MPI allgather wrapper
-    // void allgather(size_t send_count, MPIArrayKokkos recv_buffer, size_t recv_count, MPI_Comm comm);
-
-    // // MPI send wrapper
-    // void isend(size_t count, int dest, int tag, MPI_Comm comm);
-
-    // // MPI recieve wrapper
-    // void irecv(size_t count, int dest, int tag, MPI_Comm comm);
-
-    // // MPI wait wrapper for sender
-    // void wait_send();
-
-    // // MPI wait wrapper for receiver
-    // void wait_recv();
 
     // Deconstructor
     virtual KOKKOS_INLINE_FUNCTION
@@ -606,4 +572,8 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPICArrayKokkos() {
 
 }
 
-#endif
+} // end namespace mtr
+
+
+// #endif // end if have MPI
+#endif // end if MPICARRAYKOKKOS_H

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.1.3)
 
 # Find MPI
 find_package(MPI REQUIRED)
+add_definitions(-DHAVE_MPI=1)
 
 find_package(Matar REQUIRED)
 

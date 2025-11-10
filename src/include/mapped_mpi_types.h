@@ -45,7 +45,7 @@
 #include <mpi.h>
 #include <mpi_types.h>
 #include "partition_map.h"
-#include "communication_plan.h"
+// #include "communication_plan.h"
 
 namespace mtr
 {
