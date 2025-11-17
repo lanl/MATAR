@@ -43,7 +43,9 @@ using namespace mtr;
 // Possible node states, used to initialize node_t
 enum class node_state
 {
-    coords
+    coords,
+    scalar_field,
+    vector_field
 };
 
 
@@ -58,17 +60,68 @@ struct node_t
 {
 
     // Replace with MPIDCArrayKokkos
-    DCArrayKokkos<double> coords;     ///< Nodal coordinates
-    DCArrayKokkos<double> coords_n0;  ///< Nodal coordinates at tn=0 of time integration
+    MPICArrayKokkos<double> coords;     ///< Nodal coordinates
+    MPICArrayKokkos<double> coords_n0;  ///< Nodal coordinates at tn=0 of time integration
     
+    MPICArrayKokkos<double> scalar_field; ///< Scalar field on a node
+    MPICArrayKokkos<double> vector_field; ///< Vector field on a node
+
+
     // initialization method (num_nodes, num_dims, state to allocate)
     void initialize(size_t num_nodes, size_t num_dims, std::vector<node_state> node_states)
+    {
+
+        CommunicationPlan comm_plan;
+        
+        for (auto field : node_states){
+            switch(field){
+                case node_state::coords:
+                    if (coords.size() == 0){
+                        this->coords = MPICArrayKokkos<double>(num_nodes, num_dims, "node_coordinates");
+                        this->coords.initialize_comm_plan(comm_plan);
+                    }
+                    if (coords_n0.size() == 0){
+                        this->coords_n0 = MPICArrayKokkos<double>(num_nodes, num_dims, "node_coordinates_n0");
+                        this->coords_n0.initialize_comm_plan(comm_plan);
+                    }
+                    break;
+                case node_state::scalar_field:
+                    if (scalar_field.size() == 0) this->scalar_field = MPICArrayKokkos<double>(num_nodes, "node_scalar_field");
+                    this->scalar_field.initialize_comm_plan(comm_plan);
+                    break;
+                case node_state::vector_field:
+                    if (vector_field.size() == 0) this->vector_field = MPICArrayKokkos<double>(num_nodes, num_dims, "node_vector_field");
+                    this->vector_field.initialize_comm_plan(comm_plan);
+                    break;
+                default:
+                    std::cout<<"Desired node state not understood in node_t initialize"<<std::endl;
+                    throw std::runtime_error("**** Error in State Field Name ****");
+            }
+        }
+    }; // end method
+    
+    // initialization method (num_nodes, num_dims, state to allocate)
+    void initialize(size_t num_nodes, size_t num_dims, std::vector<node_state> node_states, CommunicationPlan& comm_plan)
     {
         for (auto field : node_states){
             switch(field){
                 case node_state::coords:
-                    if (coords.size() == 0) this->coords = DCArrayKokkos<double>(num_nodes, num_dims, "node_coordinates");
-                    if (coords_n0.size() == 0) this->coords_n0 = DCArrayKokkos<double>(num_nodes, num_dims, "node_coordinates_n0");
+                    if (coords.size() == 0){
+                        this->coords = MPICArrayKokkos<double>(num_nodes, num_dims, "node_coordinates");
+                        this->coords.initialize_comm_plan(comm_plan);
+                    }
+                    if (coords_n0.size() == 0){
+                        this->coords_n0 = MPICArrayKokkos<double>(num_nodes, num_dims, "node_coordinates_n0");
+                        this->coords_n0.initialize_comm_plan(comm_plan);
+                    }
+                    break;
+                case node_state::scalar_field:
+                    if (scalar_field.size() == 0) this->scalar_field = MPICArrayKokkos<double>(num_nodes, "node_scalar_field");
+                    this->scalar_field.initialize_comm_plan(comm_plan);
+                    break;
+                case node_state::vector_field:
+                    if (vector_field.size() == 0) this->vector_field = MPICArrayKokkos<double>(num_nodes, num_dims, "node_vector_field");
+                    this->vector_field.initialize_comm_plan(comm_plan);
                     break;
                 default:
                     std::cout<<"Desired node state not understood in node_t initialize"<<std::endl;

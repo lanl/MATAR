@@ -301,7 +301,7 @@ public:
         this_array_.update_host();
        
         fill_send_buffer();
-        
+
         MPI_Neighbor_alltoallv(
             send_buffer_.host_pointer(),
             send_counts_.host_pointer(),

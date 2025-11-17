@@ -5,6 +5,8 @@
 #include <mpi.h>
 #include "matar.h"
 
+#include <set>
+
 using namespace mtr;
 
 /**
@@ -19,11 +21,19 @@ using namespace mtr;
  *   elem.density.comm()   -> automatically syncs ghost elements
  * 
  */
+enum class communication_plan_type {
+    no_communication,
+    all_to_all_graph
+};
+
+
  struct CommunicationPlan {
     
     // ========================================================================
     // Metadata for MPI neighbor graph communication 
     // ========================================================================
+
+    communication_plan_type comm_type = communication_plan_type::no_communication;
 
     // MPI world communicator
     MPI_Comm mpi_comm_world;
@@ -164,6 +174,7 @@ using namespace mtr;
      */
     void initialize_graph_communicator(int num_send_ranks, int* send_rank_ids, int num_recv_ranks, int* recv_rank_ids){
         
+        this->comm_type = communication_plan_type::all_to_all_graph;
         // Check if the MPI_COMM_WORLD communicator has been initialized.
         if(!has_comm_world){
             throw std::runtime_error("MPI communicator for the world has not been initialized");
@@ -205,105 +216,105 @@ using namespace mtr;
         has_comm_graph = true;
     }
 
-    // void verify_graph_communicator(){
-    //     if(!has_comm_graph){
-    //         throw std::runtime_error("MPI graph communicator has not been initialized");
-    //     }
+    void verify_graph_communicator(){
+        if(!has_comm_graph){
+            throw std::runtime_error("MPI graph communicator has not been initialized");
+        }
 
-    //     // ============================================================================
-    //     // Verify the distributed graph communicator
-    //     // ============================================================================
-    //     // Query the graph to verify it matches what we specified
-    //     int indegree_out, outdegree_out, weighted;
-    //     MPI_Dist_graph_neighbors_count(mpi_comm_graph, &indegree_out, &outdegree_out, &weighted);
+        // ============================================================================
+        // Verify the distributed graph communicator
+        // ============================================================================
+        // Query the graph to verify it matches what we specified
+        int indegree_out, outdegree_out, weighted;
+        MPI_Dist_graph_neighbors_count(mpi_comm_graph, &indegree_out, &outdegree_out, &weighted);
         
-    //     // Allocate arrays to receive neighbor information
-    //     std::vector<int> sources_out(indegree_out);
-    //     std::vector<int> sourceweights_out(indegree_out);
-    //     std::vector<int> destinations_out(outdegree_out);
-    //     std::vector<int> destweights_out(outdegree_out);
+        // Allocate arrays to receive neighbor information
+        std::vector<int> sources_out(indegree_out);
+        std::vector<int> sourceweights_out(indegree_out);
+        std::vector<int> destinations_out(outdegree_out);
+        std::vector<int> destweights_out(outdegree_out);
         
-    //     // Retrieve the actual neighbors from the graph communicator
-    //     MPI_Dist_graph_neighbors(mpi_comm_graph, 
-    //                             indegree_out, sources_out.data(), sourceweights_out.data(),
-    //                             outdegree_out, destinations_out.data(), destweights_out.data());
+        // Retrieve the actual neighbors from the graph communicator
+        MPI_Dist_graph_neighbors(mpi_comm_graph, 
+                                indegree_out, sources_out.data(), sourceweights_out.data(),
+                                outdegree_out, destinations_out.data(), destweights_out.data());
         
-    //     int rank = -1;
-    //     MPI_Comm_rank(mpi_comm_world, &rank);
+        int rank = -1;
+        MPI_Comm_rank(mpi_comm_world, &rank);
 
-    //     // Additional verification: Check if the queried values match our input
-    //     bool verification_passed = true;
+        // Additional verification: Check if the queried values match our input
+        bool verification_passed = true;
         
-    //     // Print verification information for each rank sequentially
-    //     for (int r = 0; r < world_size; ++r) {
-    //         MPI_Barrier(mpi_comm_world);
-    //         if (rank == r) {
-    //             std::cout << "\n[rank " << rank << "] Graph Communicator Verification:" << std::endl;
-    //             std::cout << "  Indegree (receives from " << indegree_out << " ranks): ";
-    //             for (int i = 0; i < indegree_out; ++i) {
-    //                 std::cout << sources_out[i] << " ";
-    //             }
-    //             std::cout << std::endl;
+        // Print verification information for each rank sequentially
+        for (int r = 0; r < world_size; ++r) {
+            MPI_Barrier(mpi_comm_world);
+            if (rank == r) {
+                std::cout << "\n[rank " << rank << "] Graph Communicator Verification:" << std::endl;
+                std::cout << "  Indegree (receives from " << indegree_out << " ranks): ";
+                for (int i = 0; i < indegree_out; ++i) {
+                    std::cout << sources_out[i] << " ";
+                }
+                std::cout << std::endl;
                 
-    //             std::cout << "  Outdegree (sends to " << outdegree_out << " ranks): ";
-    //             for (int i = 0; i < outdegree_out; ++i) {
-    //                 std::cout << destinations_out[i] << " ";
-    //             }
-    //             std::cout << std::endl;
+                std::cout << "  Outdegree (sends to " << outdegree_out << " ranks): ";
+                for (int i = 0; i < outdegree_out; ++i) {
+                    std::cout << destinations_out[i] << " ";
+                }
+                std::cout << std::endl;
                 
-    //             std::cout << "  Weighted: " << (weighted ? "yes" : "no") << std::endl;
-    //         }
-    //         MPI_Barrier(mpi_comm_world);
-    //     }
+                std::cout << "  Weighted: " << (weighted ? "yes" : "no") << std::endl;
+            }
+            MPI_Barrier(mpi_comm_world);
+        }
         
-    //     // Check if the counts match our stored values
-    //     if (indegree_out != num_recv_ranks) {
-    //         std::cerr << "[rank " << rank << "] ERROR: indegree mismatch! "
-    //                   << "Expected " << num_recv_ranks << ", got " << indegree_out << std::endl;
-    //         verification_passed = false;
-    //     }
-    //     if (outdegree_out != num_send_ranks) {
-    //         std::cerr << "[rank " << rank << "] ERROR: outdegree mismatch! "
-    //                   << "Expected " << num_send_ranks << ", got " << outdegree_out << std::endl;
-    //         verification_passed = false;
-    //     }
+        // Check if the counts match our stored values
+        if (indegree_out != num_recv_ranks) {
+            std::cerr << "[rank " << rank << "] ERROR: indegree mismatch! "
+                      << "Expected " << num_recv_ranks << ", got " << indegree_out << std::endl;
+            verification_passed = false;
+        }
+        if (outdegree_out != num_send_ranks) {
+            std::cerr << "[rank " << rank << "] ERROR: outdegree mismatch! "
+                      << "Expected " << num_send_ranks << ", got " << outdegree_out << std::endl;
+            verification_passed = false;
+        }
         
-    //     // Check if source ranks match (build set from our stored recv_rank_ids)
-    //     std::set<int> sources_set_in;
-    //     for (int i = 0; i < num_recv_ranks; ++i) {
-    //         sources_set_in.insert(recv_rank_ids.host(i));
-    //     }
-    //     std::set<int> sources_set_out(sources_out.begin(), sources_out.end());
-    //     if (sources_set_in != sources_set_out) {
-    //         std::cerr << "[rank " << rank << "] ERROR: source ranks mismatch!" << std::endl;
-    //         verification_passed = false;
-    //     }
+        // Check if source ranks match (build set from our stored recv_rank_ids)
+        std::set<int> sources_set_in;
+        for (int i = 0; i < num_recv_ranks; ++i) {
+            sources_set_in.insert(recv_rank_ids.host(i));
+        }
+        std::set<int> sources_set_out(sources_out.begin(), sources_out.end());
+        if (sources_set_in != sources_set_out) {
+            std::cerr << "[rank " << rank << "] ERROR: source ranks mismatch!" << std::endl;
+            verification_passed = false;
+        }
         
-    //     // Check if destination ranks match (build set from our stored send_rank_ids)
-    //     std::set<int> dests_set_in;
-    //     for (int i = 0; i < num_send_ranks; ++i) {
-    //         dests_set_in.insert(send_rank_ids.host(i));
-    //     }
-    //     std::set<int> dests_set_out(destinations_out.begin(), destinations_out.end());
-    //     if (dests_set_in != dests_set_out) {
-    //         std::cerr << "[rank " << rank << "] ERROR: destination ranks mismatch!" << std::endl;
-    //         verification_passed = false;
-    //     }
+        // Check if destination ranks match (build set from our stored send_rank_ids)
+        std::set<int> dests_set_in;
+        for (int i = 0; i < num_send_ranks; ++i) {
+            dests_set_in.insert(send_rank_ids.host(i));
+        }
+        std::set<int> dests_set_out(destinations_out.begin(), destinations_out.end());
+        if (dests_set_in != dests_set_out) {
+            std::cerr << "[rank " << rank << "] ERROR: destination ranks mismatch!" << std::endl;
+            verification_passed = false;
+        }
         
-    //     // Global verification check
-    //     int local_passed = verification_passed ? 1 : 0;
-    //     int global_passed = 0;
-    //     MPI_Allreduce(&local_passed, &global_passed, 1, MPI_INT, MPI_MIN, mpi_comm_world);
-    //     MPI_Barrier(mpi_comm_world);
-    //     if (rank == 0) {
-    //         if (global_passed) {
-    //             std::cout << "\n✓ Graph communicator verification PASSED on all ranks\n" << std::endl;
-    //         } else {
-    //             std::cout << "\n✗ Graph communicator verification FAILED on one or more ranks\n" << std::endl;
-    //         }
-    //     }
-    //     MPI_Barrier(mpi_comm_world);
-    // }
+        // Global verification check
+        int local_passed = verification_passed ? 1 : 0;
+        int global_passed = 0;
+        MPI_Allreduce(&local_passed, &global_passed, 1, MPI_INT, MPI_MIN, mpi_comm_world);
+        MPI_Barrier(mpi_comm_world);
+        if (rank == 0) {
+            if (global_passed) {
+                std::cout << "\n✓ Graph communicator verification PASSED on all ranks\n" << std::endl;
+            } else {
+                std::cout << "\n✗ Graph communicator verification FAILED on one or more ranks\n" << std::endl;
+            }
+        }
+        MPI_Barrier(mpi_comm_world);
+    }
 
     void setup_send_recv(DRaggedRightArrayKokkos<int> &rank_send_ids, DRaggedRightArrayKokkos<int> &rank_recv_ids){
 

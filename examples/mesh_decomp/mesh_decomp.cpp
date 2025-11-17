@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
 
 
         // Read the mesh from a file
-        read_vtk_mesh(initial_mesh, initial_node, 3, "/home/jacobmoore/Desktop/repos/MATAR/meshes/impellerOpt.vtk");
+        // read_vtk_mesh(initial_mesh, initial_node, 3, "/home/jacobmoore/Desktop/repos/MATAR/meshes/impellerOpt.vtk");
 
         double t_init_mesh_end = MPI_Wtime();
         std::cout << "Initial mesh build time: " << (t_init_mesh_end - t_init_mesh_start) << " seconds" << std::endl;
