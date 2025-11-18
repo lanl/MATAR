@@ -33,8 +33,8 @@ int main(int argc, char** argv) {
 
     // Mesh size
     double origin[3] = {0.0, 0.0, 0.0};
-    double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {100, 100, 100};
+    double length[3] = {1.0, 0.5, 0.5};
+    int num_elems_dim[3] = {2, 1, 1};
 
     // Initial mesh built on rank zero
     Mesh_t initial_mesh;
@@ -58,6 +58,9 @@ int main(int argc, char** argv) {
         std::cout<<"Initializing mesh"<<std::endl;
         build_3d_box(initial_mesh,  initial_node, origin, length, num_elems_dim);
 
+        
+
+        // write_vtk(initial_mesh, initial_node, rank);
 
         // Read the mesh from a file
         // read_vtk_mesh(initial_mesh, initial_node, 3, "/home/jacobmoore/Desktop/repos/MATAR/meshes/impellerOpt.vtk");
@@ -67,6 +70,7 @@ int main(int argc, char** argv) {
     }
     MPI_Barrier(MPI_COMM_WORLD);
 
+    
 // ********************************************************  
 //             Partition and balance the mesh
 // ********************************************************  

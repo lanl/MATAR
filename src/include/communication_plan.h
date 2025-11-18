@@ -359,6 +359,156 @@ enum class communication_plan_type {
 
         MPI_Barrier(mpi_comm_world);
     }
+
+    void verify_send_recv(){
+        
+        if(!has_comm_graph){
+            throw std::runtime_error("Graph communicator has not been initialized");
+        }
+
+        int rank = -1;
+        MPI_Comm_rank(mpi_comm_world, &rank);
+
+        bool local_verification_passed = true;
+
+        // ============================================================================
+        // Local Verification: Check consistency of counts and displacements
+        // ============================================================================
+
+        // Verify send counts and displacements
+        int computed_total_send = 0;
+        for(int i = 0; i < num_send_ranks; i++){
+            computed_total_send += send_counts_.host(i);
+            
+            // Verify displacements are consistent
+            int expected_displs = 0;
+            for(int j = 0; j < i; j++){
+                expected_displs += send_counts_.host(j);
+            }
+            if(send_displs_.host(i) != expected_displs){
+                std::cerr << "[rank " << rank << "] ERROR: send_displs[" << i << "] mismatch! "
+                          << "Expected " << expected_displs << ", got " << send_displs_.host(i) << std::endl;
+                local_verification_passed = false;
+            }
+        }
+
+        // Verify total send count
+        if(computed_total_send != total_send_count){
+            std::cerr << "[rank " << rank << "] ERROR: total_send_count mismatch! "
+                      << "Expected " << computed_total_send << ", got " << total_send_count << std::endl;
+            local_verification_passed = false;
+        }
+
+        // Verify recv counts and displacements
+        int computed_total_recv = 0;
+        for(int i = 0; i < num_recv_ranks; i++){
+            computed_total_recv += recv_counts_.host(i);
+            
+            // Verify displacements are consistent
+            int expected_displs = 0;
+            for(int j = 0; j < i; j++){
+                expected_displs += recv_counts_.host(j);
+            }
+            if(recv_displs_.host(i) != expected_displs){
+                std::cerr << "[rank " << rank << "] ERROR: recv_displs[" << i << "] mismatch! "
+                          << "Expected " << expected_displs << ", got " << recv_displs_.host(i) << std::endl;
+                local_verification_passed = false;
+            }
+        }
+
+        // Verify total recv count
+        if(computed_total_recv != total_recv_count){
+            std::cerr << "[rank " << rank << "] ERROR: total_recv_count mismatch! "
+                      << "Expected " << computed_total_recv << ", got " << total_recv_count << std::endl;
+            local_verification_passed = false;
+        }
+
+        // Verify send indices are within bounds (basic sanity check)
+        for(int i = 0; i < num_send_ranks; i++){
+            for(int j = 0; j < send_indices_.stride_host(i); j++){
+                int idx = send_indices_.host(i, j);
+                if(idx < 0){
+                    std::cerr << "[rank " << rank << "] ERROR: negative send index at rank " << i 
+                              << ", index " << j << ": " << idx << std::endl;
+                    local_verification_passed = false;
+                }
+            }
+        }
+
+        // Verify recv indices are within bounds (basic sanity check)
+        for(int i = 0; i < num_recv_ranks; i++){
+            for(int j = 0; j < recv_indices_.stride_host(i); j++){
+                int idx = recv_indices_.host(i, j);
+                if(idx < 0){
+                    std::cerr << "[rank " << rank << "] ERROR: negative recv index at rank " << i 
+                              << ", index " << j << ": " << idx << std::endl;
+                    local_verification_passed = false;
+                }
+            }
+        }
+
+        // ============================================================================
+        // Print local verification information for each rank sequentially
+        // ============================================================================
+        for (int r = 0; r < world_size; ++r) {
+            MPI_Barrier(mpi_comm_world);
+            if (rank == r) {
+                std::cout << "\n[rank " << rank << "] Send/Recv Communication Plan Verification:" << std::endl;
+                
+                std::cout << "  Send Configuration:" << std::endl;
+                std::cout << "    - Num send ranks: " << num_send_ranks << std::endl;
+                std::cout << "    - Total send count: " << total_send_count << std::endl;
+                std::cout << "    - Send counts per rank: ";
+                for (int i = 0; i < num_send_ranks; ++i) {
+                    std::cout << send_counts_.host(i) << " ";
+                }
+                std::cout << std::endl;
+                std::cout << "    - Send displacements: ";
+                for (int i = 0; i < num_send_ranks; ++i) {
+                    std::cout << send_displs_.host(i) << " ";
+                }
+                std::cout << std::endl;
+                
+                std::cout << "  Recv Configuration:" << std::endl;
+                std::cout << "    - Num recv ranks: " << num_recv_ranks << std::endl;
+                std::cout << "    - Total recv count: " << total_recv_count << std::endl;
+                std::cout << "    - Recv counts per rank: ";
+                for (int i = 0; i < num_recv_ranks; ++i) {
+                    std::cout << recv_counts_.host(i) << " ";
+                }
+                std::cout << std::endl;
+                std::cout << "    - Recv displacements: ";
+                for (int i = 0; i < num_recv_ranks; ++i) {
+                    std::cout << recv_displs_.host(i) << " ";
+                }
+                std::cout << std::endl;
+            }
+            MPI_Barrier(mpi_comm_world);
+        }
+
+        // ============================================================================
+        // Global Verification: Use MPI to verify consistency across ranks
+        // ============================================================================
+        int local_passed = local_verification_passed ? 1 : 0;
+        int global_passed = 0;
+        MPI_Allreduce(&local_passed, &global_passed, 1, MPI_INT, MPI_MIN, mpi_comm_world);
+        MPI_Barrier(mpi_comm_world);
+
+        if (rank == 0) {
+            if (global_passed) {
+                std::cout << "\n✓ Send/Recv communication plan verification PASSED on all ranks\n" << std::endl;
+            } else {
+                std::cout << "\n✗ Send/Recv communication plan verification FAILED on one or more ranks\n" << std::endl;
+            }
+        }
+        MPI_Barrier(mpi_comm_world);
+
+        if(!global_passed){
+            throw std::runtime_error("Send/Recv communication plan verification failed");
+        }
+    }
+
+
 }; // End of CommunicationPlan
 
 #endif // end if HAVE_MPI

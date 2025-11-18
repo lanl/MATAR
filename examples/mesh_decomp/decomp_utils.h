@@ -676,9 +676,11 @@ void build_ghost(
     // STEP 2: Build index sets for local elements and nodes
     // ========================================================================
     std::set<size_t> local_node_gids;
+    std::map<size_t, int> global_to_local_node_mapping;  // GID -> local index mapping
     for(int node_rid = 0; node_rid < input_mesh.num_nodes; node_rid++) {
         size_t node_gid = input_mesh.local_to_global_node_mapping.host(node_rid);
         local_node_gids.insert(node_gid);
+        global_to_local_node_mapping[node_gid] = node_rid;
     }
 
     // Build a set of locally-owned element GIDs for quick lookup
@@ -778,8 +780,7 @@ void build_ghost(
             
             // Check if this node belongs to one of our locally-owned elements
             if (local_node_gids.find(node_gid) != local_node_gids.end()) {
-                ghost_node_gids.insert(node_gid);
-                ghost_node_recv_rank[node_gid] = r;
+                
                 // Check if this element is NOT owned by us (i.e., it's from another rank)
                 if (local_elem_gids.find(elem_gid) == local_elem_gids.end()) {
                     // This is a ghost element for us
@@ -788,6 +789,122 @@ void build_ghost(
             }
         }
     }
+    MPI_Barrier(MPI_COMM_WORLD);
+
+
+    std::map<int, std::set<size_t>> ghost_nodes_from_ranks;
+
+    std::set<size_t> shared_nodes; // nodes on MPI rank boundaries
+    
+    // Iterate through connectivity data from each rank (except ourselves)
+    for (int r = 0; r < world_size; r++) {
+        if (r == rank) continue;  // Skip our own data - we already know our elements
+        
+        // Parse the connectivity data for rank r
+        // Data format: [elem0_gid, node0, elem0_gid, node1, ..., elem1_gid, node0, ...]
+        // Each pair is 2 size_ts, so num_pairs = conn_sizes[r] / 2
+        int num_pairs = conn_sizes[r] / 2;
+        
+        for (int i = 0; i < num_pairs; i++) {
+            // Offset into all_conn for this pair (elem_gid, node_gid)
+            int offset = conn_displs[r] + i * 2;
+            size_t elem_gid = all_conn[offset];
+            size_t node_gid = all_conn[offset + 1];
+            
+            // Check if this element belongs to one of our ghost elements
+            if (ghost_elem_gids.find(elem_gid) != ghost_elem_gids.end()) {
+                
+                // Check if this node is NOT owned by us (i.e., it's from another rank)
+                if (local_node_gids.find(node_gid) == local_node_gids.end()) {
+                    // This is a ghost node for us
+                    ghost_node_gids.insert(node_gid);
+                    ghost_node_recv_rank[node_gid] = r;
+                    ghost_nodes_from_ranks[r].insert(node_gid);
+                }
+            }
+        }
+    }
+
+    // WARNING: HERE IS THE BUG:
+    // When we create the send pattern for ghost nodes, we are not filtering out nodes that are on MPI rank boundaries
+
+    // Create a vecor of the ranks that this rank will receive data from for ghost nodes
+    std::set<int> ghost_node_receive_ranks;
+    for (const auto& pair : ghost_node_recv_rank) {
+        ghost_node_receive_ranks.insert(pair.second);
+    }
+
+    std::vector<int> ghost_node_receive_ranks_vec(ghost_node_receive_ranks.begin(), ghost_node_receive_ranks.end());
+
+    
+    // Print out the ghost node receive ranks for each rank sequentially
+    for (int r = 0; r < world_size; r++) {
+        if (rank == r) {    
+            MPI_Barrier(MPI_COMM_WORLD);
+            std::cout << "Rank " << rank << " will receive data from the following ranks for ghost nodes: ";
+            for (int r : ghost_node_receive_ranks_vec) {
+                std::cout << r << " ";
+            }
+            std::cout << std::endl;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+    
+    // Find which nodes *we own* are ghosted on other ranks, and on which ranks
+    // We want: for each of our local nodes, the list of ranks that ghost it
+    
+    // Map: local_node_gid -> set of remote ranks that ghost this node
+    std::map<size_t, std::set<int>> local_node_gid_to_ghosting_ranks;
+
+    std::vector<std::set<size_t>> ghosted_nodes_on_ranks(world_size);
+    
+    // Iterate through connectivity from all ranks except ourselves
+    for (int r = 0; r < world_size; r++) {
+        if (r == rank) continue; // skip our own rank
+        
+        int num_pairs = conn_sizes[r] / 2;
+        for (int i = 0; i < num_pairs; i++) {
+            int offset = conn_displs[r] + i * 2;
+            size_t elem_gid = all_conn[offset];
+            size_t node_gid = all_conn[offset + 1];
+            
+            // If this node is owned by us, and remote rank references it, they are ghosting it
+            if (local_node_gids.find(node_gid) != local_node_gids.end()) {
+                local_node_gid_to_ghosting_ranks[node_gid].insert(r);
+                ghosted_nodes_on_ranks[r].insert(node_gid);
+            }
+        }
+    }
+
+    // Use the map to create a vector of the ranks that this rank will receive data from for ghost nodes
+    std::set<int> ghost_node_send_ranks;
+    for (const auto& pair : local_node_gid_to_ghosting_ranks) {
+        ghost_node_send_ranks.insert(pair.second.begin(), pair.second.end());
+    }
+    std::vector<int> ghost_node_send_ranks_vec(ghost_node_send_ranks.begin(), ghost_node_send_ranks.end());
+
+    std::map<int, std::vector<int>> nodes_to_send_by_rank;  // rank -> list of local node indices
+    for (int r = 0; r < world_size; r++) {
+        if (r == rank) continue;
+        for (size_t node_gid : ghosted_nodes_on_ranks[r]) {
+            int local_node_id = global_to_local_node_mapping[node_gid];
+            nodes_to_send_by_rank[r].push_back(local_node_id);
+        }
+    }
+
+    //print out the nodes to send by rank for each rank sequentially
+    for (int r = 0; r < world_size; r++) {
+        if (rank == r) {
+            std::cout << "Rank " << rank << " will send data to the following ranks for ghost nodes: ";
+            for (const auto& rank_node_pair : nodes_to_send_by_rank) {
+                std::cout << rank_node_pair.first << " ";
+            }
+            std::cout << std::endl;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
 
     // Store the count of ghost elements for later use
     input_mesh.num_ghost_elems = ghost_elem_gids.size();
@@ -870,6 +987,7 @@ void build_ghost(
             }
         }
     }
+
 
     // Assign extended local IDs to ghost-only nodes
     for (size_t node_gid : ghost_only_nodes) {
@@ -1055,7 +1173,8 @@ void build_ghost(
     // ****************************************************************************************** 
 
 
-    output_node.initialize(total_extended_nodes, 3, {node_state::coords});
+    output_node.initialize(total_extended_nodes, 3, {node_state::coords}, node_communication_plan);
+    MPI_Barrier(MPI_COMM_WORLD);
 
     // The goal here is to populate output_node.coords using globally gathered ghost node coordinates,
     // since input_node does not contain ghost node coordinates.
@@ -1278,7 +1397,7 @@ void build_ghost(
     MPI_Barrier(MPI_COMM_WORLD);
 
 
-    
+// Initialize graph comms for elements    
     // MPI_Dist_graph_create_adjacent creates a distributed graph topology communicator
     // that efficiently represents the communication pattern between ranks.
     // This allows MPI to optimize communication based on the actual connectivity pattern.
@@ -1290,11 +1409,11 @@ void build_ghost(
     std::vector<int> ghost_elem_receive_ranks_vec(ghost_elem_receive_ranks.begin(), 
                                                     ghost_elem_receive_ranks.end());
     // The number of ranks from which this rank will receive data (incoming neighbors)
-    int indegree = static_cast<int>(ghost_elem_receive_ranks_vec.size());
+    int elem_indegree = static_cast<int>(ghost_elem_receive_ranks_vec.size());
     
     // sources: Array of source rank IDs (ranks we receive from)
     // Each element corresponds to a rank that owns elements we ghost
-    int* sources = (indegree > 0) ? ghost_elem_receive_ranks_vec.data() : MPI_UNWEIGHTED;
+    int* sources = (elem_indegree > 0) ? ghost_elem_receive_ranks_vec.data() : MPI_UNWEIGHTED;
 
     
     // sourceweights: Weights on incoming edges (not used here, set to MPI_UNWEIGHTED)
@@ -1311,11 +1430,40 @@ void build_ghost(
     int* destinations = (outdegree > 0) ? ghost_comm_ranks_vec.data() : MPI_UNWEIGHTED;
 
     // Initialize the graph communicator for element communication
-    element_communication_plan.initialize_graph_communicator(outdegree, ghost_comm_ranks_vec.data(), indegree, ghost_elem_receive_ranks_vec.data());
+    element_communication_plan.initialize_graph_communicator(outdegree, ghost_comm_ranks_vec.data(), elem_indegree, ghost_elem_receive_ranks_vec.data());
     MPI_Barrier(MPI_COMM_WORLD);
     
     // Optional: Verify the graph communicator was created successfully
     // if(print_info) element_communication_plan.verify_graph_communicator();
+
+
+// Initialize graph comms for nodes    
+    // ---------- Prepare INCOMING edges (sources) ----------
+    // indegree: Number of ranks from which this rank will RECEIVE data
+    // These are the ranks that own nodes which are ghosted on this rank
+    int node_indegree = static_cast<int>(ghost_node_receive_ranks.size());
+    int* node_sources = (node_indegree > 0) ? ghost_node_receive_ranks_vec.data() : MPI_UNWEIGHTED;
+    
+    // sourceweights: Weights on incoming edges (not used here, set to MPI_UNWEIGHTED)
+    int* node_sourceweights = MPI_UNWEIGHTED;   
+
+    // ---------- Prepare OUTGOING edges (destinations) ----------
+    // outdegree: Number of ranks to which this rank will SEND data
+    // These are the ranks that ghost nodes owned by this rank
+    int node_outdegree = static_cast<int>(ghost_node_send_ranks.size());
+    int* node_destinations = (node_outdegree > 0) ? ghost_node_send_ranks_vec.data() : MPI_UNWEIGHTED;
+
+    // destinationweights: Weights on outgoing edges (not used here, set to MPI_UNWEIGHTED)
+    int* node_destinationweights = MPI_UNWEIGHTED;
+
+    // Initialize the graph communicator for node communication
+    node_communication_plan.initialize_graph_communicator(node_outdegree, node_destinations, node_indegree, node_sources);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // Optional: Verify the graph communicator was created successfully
+    print_info = true;
+    if(print_info) node_communication_plan.verify_graph_communicator();
+    print_info = false;
 
 // ****************************************************************************************** 
 //     Build send counts and displacements for element communication
@@ -1399,9 +1547,111 @@ void build_ghost(
     // 2) Allgatherv ghost node GIDs to build gid -> [ranks that ghost it].
     // 3) For each locally-owned node gid, lookup ranks that ghost it and record targets.
     // --------------------------------------------------------------------------------------
-    
-   
 
+
+    // Print out the nodes to send by rank for each rank sequentially
+    for (int r = 0; r < world_size; r++) {
+        if (rank == r) {
+            std::cout << "Rank " << rank << " will send data to the following ranks for ghost nodes: ";
+            for (const auto& rank_node_pair : nodes_to_send_by_rank) {
+                std::cout << rank_node_pair.first << " ";
+            }
+            std::cout << std::endl;
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+
+    // Serialize into a DRaggedRightArrayKokkos
+    CArrayKokkos<size_t> node_send_strides_array(node_communication_plan.num_send_ranks);
+    for (int i = 0; i < node_communication_plan.num_send_ranks; i++) {
+        int dest_rank = node_communication_plan.send_rank_ids.host(i);
+        node_send_strides_array(i) = nodes_to_send_by_rank[dest_rank].size();
+    }
+    DRaggedRightArrayKokkos<int> nodes_to_send_by_rank_rr(node_send_strides_array, "nodes_to_send_by_rank");
+
+    // Fill in the data
+    for (int i = 0; i < node_communication_plan.num_send_ranks; i++) {
+        int dest_rank = node_communication_plan.send_rank_ids.host(i);
+        for (int j = 0; j < nodes_to_send_by_rank[dest_rank].size(); j++) {
+            nodes_to_send_by_rank_rr.host(i, j) = nodes_to_send_by_rank[dest_rank][j];
+        }
+    }
+    nodes_to_send_by_rank_rr.update_device();
+
+
+
+    // Count how many ghost nodes come from each source rank
+    std::map<int, std::vector<int>> nodes_to_recv_by_rank;  // rank -> list of ghost node indices
+    int ghost_node_index = 0;
+    for (size_t ghost_node_gid : ghost_node_gids) {
+        int source_rank = ghost_node_recv_rank[ghost_node_gid];
+        int ghost_node_local_id = output_mesh.num_owned_nodes + ghost_node_index;
+        nodes_to_recv_by_rank[source_rank].push_back(ghost_node_local_id);
+        ghost_node_index++;
+    }
+    
+    // Serialize into a DRaggedRightArrayKokkos
+    CArrayKokkos<size_t> nodes_recv_strides_array(node_communication_plan.num_recv_ranks);
+    for (int i = 0; i < node_communication_plan.num_recv_ranks; i++) {
+        int source_rank = node_communication_plan.recv_rank_ids.host(i);
+        nodes_recv_strides_array(i) = nodes_to_recv_by_rank[source_rank].size();
+    }
+    DRaggedRightArrayKokkos<int> nodes_to_recv_by_rank_rr(nodes_recv_strides_array, "nodes_to_recv_by_rank");
+    // Fill in the data
+    for (int i = 0; i < node_communication_plan.num_recv_ranks; i++) {
+        int source_rank = node_communication_plan.recv_rank_ids.host(i);
+        for (int j = 0; j < nodes_to_recv_by_rank[source_rank].size(); j++) {
+            size_t local_id = nodes_to_recv_by_rank[source_rank][j];
+            nodes_to_recv_by_rank_rr.host(i, j) = nodes_to_recv_by_rank[source_rank][j];
+        }
+    }
+    nodes_to_recv_by_rank_rr.update_device();
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // print the nodes to send by rank rr for each rank sequentially
+    for (int r = 0; r < world_size; r++) {
+        if (rank == r) {
+            std::cout << "Rank " << rank << " will send nodes to the following ranks (nodes_to_send_by_rank_rr):" << std::endl;
+            for (int i = 0; i < node_communication_plan.num_send_ranks; i++) {
+                int dest_rank = node_communication_plan.send_rank_ids.host(i);
+                std::cout << "  To rank " << dest_rank << ": [";
+                for (int j = 0; j < nodes_to_send_by_rank[dest_rank].size(); j++) {
+                    int global_node_id = output_mesh.local_to_global_node_mapping.host(nodes_to_send_by_rank[dest_rank][j]);
+                    std::cout << global_node_id << " ";
+                }
+                std::cout << "]" << std::endl;
+            }
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+
+    // print the nodes to send by rank rr for each rank sequentially
+    for (int r = 0; r < world_size; r++) {
+        if (rank == r) {
+            std::cout << "Rank " << rank << " will receive nodes from the following ranks (nodes_to_recv_by_rank_rr):" << std::endl;
+            for (int i = 0; i < node_communication_plan.num_recv_ranks; i++) {
+                int source_rank = node_communication_plan.recv_rank_ids.host(i);
+                std::cout << "  From rank " << source_rank << ": [";
+                for (int j = 0; j < nodes_to_recv_by_rank[source_rank].size(); j++) {
+                    int global_node_id = output_mesh.local_to_global_node_mapping.host(nodes_to_recv_by_rank[source_rank][j]);
+                    std::cout << global_node_id << " ";
+                }
+                std::cout << "]" << std::endl;
+            }
+        }
+        MPI_Barrier(MPI_COMM_WORLD);
+    }
+
+
+
+
+    node_communication_plan.setup_send_recv(nodes_to_send_by_rank_rr, nodes_to_recv_by_rank_rr);
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    node_communication_plan.verify_send_recv();
 
 }
 
@@ -2106,41 +2356,41 @@ void partition_mesh(
     std::vector<node_state> node_states = {node_state::coords, node_state::scalar_field, node_state::vector_field};
     final_node.initialize(final_mesh.num_nodes, 3, node_states, node_communication_plan);
     
-    for (int i = 0; i < final_mesh.num_owned_nodes; i++) {
-        final_node.scalar_field.host(i) = static_cast<double>(rank);
-        final_node.vector_field.host(i, 0) = static_cast<double>(rank);
-        final_node.vector_field.host(i, 1) = static_cast<double>(rank);
-        final_node.vector_field.host(i, 2) = static_cast<double>(rank);
-    }
-    for (int i = final_mesh.num_owned_nodes; i < final_mesh.num_nodes; i++) {
-        final_node.scalar_field.host(i) = -1.0;
-        final_node.vector_field.host(i, 0) = -1.0;
-        final_node.vector_field.host(i, 1) = -1.0;
-        final_node.vector_field.host(i, 2) = -1.0;
-    }
+    // for (int i = 0; i < final_mesh.num_owned_nodes; i++) {
+    //     final_node.scalar_field.host(i) = static_cast<double>(rank);
+    //     final_node.vector_field.host(i, 0) = static_cast<double>(rank);
+    //     final_node.vector_field.host(i, 1) = static_cast<double>(rank);
+    //     final_node.vector_field.host(i, 2) = static_cast<double>(rank);
+    // }
+    // for (int i = final_mesh.num_owned_nodes; i < final_mesh.num_nodes; i++) {
+    //     final_node.scalar_field.host(i) = -1.0;
+    //     final_node.vector_field.host(i, 0) = -1.0;
+    //     final_node.vector_field.host(i, 1) = -1.0;
+    //     final_node.vector_field.host(i, 2) = -1.0;
+    // }
 
-    final_node.coords.update_device();
-    final_node.scalar_field.update_device();
-    final_node.vector_field.update_device();
+    // final_node.coords.update_device();
+    // final_node.scalar_field.update_device();
+    // final_node.vector_field.update_device();
 
-    final_node.scalar_field.communicate();
-    final_node.vector_field.communicate();
-    MPI_Barrier(MPI_COMM_WORLD);
+    // final_node.scalar_field.communicate();
+    // // final_node.vector_field.communicate();
+    // MPI_Barrier(MPI_COMM_WORLD);
 
 
-    // Update scalar field to visualize the communication
+    // // Update scalar field to visualize the communication
 
-    for(int elem_lid = 0; elem_lid < final_mesh.num_elems; elem_lid++) {
-        double value = 0.0;
-        for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            value += final_node.scalar_field.host(final_mesh.nodes_in_elem(elem_lid, j));
-        }
-        value /= final_mesh.num_nodes_in_elem;
+    // for(int elem_lid = 0; elem_lid < final_mesh.num_elems; elem_lid++) {
+    //     double value = 0.0;
+    //     for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
+    //         value += final_node.scalar_field.host(final_mesh.nodes_in_elem(elem_lid, j));
+    //     }
+    //     value /= final_mesh.num_nodes_in_elem;
 
-        for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            final_node.scalar_field.host(final_mesh.nodes_in_elem(elem_lid, j)) = value;
-        }
-    }
+    //     for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
+    //         final_node.scalar_field.host(final_mesh.nodes_in_elem(elem_lid, j)) = value;
+    //     }
+    // }
 
 
    
