@@ -1724,14 +1724,54 @@ void build_ghost(
 
 
 
-    // Count how many ghost nodes come from each source rank
-    std::map<int, std::vector<int>> nodes_to_recv_by_rank;  // rank -> list of ghost node indices
-    int ghost_node_index = 0;
-    for (size_t ghost_node_gid : ghost_node_gids) {
-        int source_rank = ghost_node_recv_rank[ghost_node_gid];
-        int ghost_node_local_id = output_mesh.num_owned_nodes + ghost_node_index;
-        nodes_to_recv_by_rank[source_rank].push_back(ghost_node_local_id);
-        ghost_node_index++;
+    // For each ghost element, determine which nodes need to be received from the owning rank
+    // Build the receive list based on ghost element nodes, not on ghost_node_gids
+    // This ensures we receive all nodes needed by ghost elements
+    std::map<int, std::set<size_t>> node_set_to_recv_by_rank;  // rank -> set of node GIDs to receive
+    
+    for (int i = 0; i < output_mesh.num_ghost_elems; i++) {
+        int ghost_elem_lid = output_mesh.num_owned_elems + i;
+        size_t ghost_elem_gid = output_mesh.local_to_global_elem_mapping.host(ghost_elem_lid);
+        int owning_rank = elem_gid_to_rank.at(ghost_elem_gid);
+        
+        // Collect all nodes in this ghost element
+        for (int j = 0; j < nodes_per_elem; j++) {
+            size_t node_lid = output_mesh.nodes_in_elem.host(ghost_elem_lid, j);
+            size_t node_gid = output_mesh.local_to_global_node_mapping.host(node_lid);
+            
+            // Only receive nodes that:
+            // 1. We don't own (not in local_node_gids)
+            // 2. Are NOT shared (not on MPI rank boundary)
+            // Shared nodes are already known to both ranks via element connectivity
+            if (local_node_gids.find(node_gid) == local_node_gids.end() && 
+                shared_nodes_on_ranks[owning_rank].find(node_gid) == shared_nodes_on_ranks[owning_rank].end()) {
+                node_set_to_recv_by_rank[owning_rank].insert(node_gid);
+            }
+        }
+    }
+    
+    // Convert node GIDs to local indices and build nodes_to_recv_by_rank
+    std::map<int, std::vector<int>> nodes_to_recv_by_rank;  // rank -> list of ghost node local indices
+    std::map<size_t, int> node_gid_to_ghost_lid;  // map ghost node GID to its local index in output_mesh
+    
+    // Build the GID->local index mapping for ALL ghost nodes in output_mesh
+    // Ghost nodes are those with local IDs >= num_owned_nodes
+    for (int i = output_mesh.num_owned_nodes; i < output_mesh.num_nodes; i++) {
+        size_t node_gid = output_mesh.local_to_global_node_mapping.host(i);
+        node_gid_to_ghost_lid[node_gid] = i;
+    }
+    
+    // Now convert the GID sets to local index vectors
+    for (const auto& pair : node_set_to_recv_by_rank) {
+        int source_rank = pair.first;
+        const std::set<size_t>& node_gids = pair.second;
+        
+        for (size_t node_gid : node_gids) {
+            auto it = node_gid_to_ghost_lid.find(node_gid);
+            if (it != node_gid_to_ghost_lid.end()) {
+                nodes_to_recv_by_rank[source_rank].push_back(it->second);
+            }
+        }
     }
     
     // Serialize into a DRaggedRightArrayKokkos
@@ -1762,7 +1802,7 @@ void build_ghost(
                 int dest_rank = node_communication_plan.send_rank_ids.host(i);
                 std::cout << "  To rank " << dest_rank << ": [";
                 for (int j = 0; j < nodes_to_send_by_rank[dest_rank].size(); j++) {
-                    int global_node_id = output_mesh.local_to_global_node_mapping.host(nodes_to_send_by_rank[dest_rank][j]);
+                    int global_node_id = nodes_to_send_by_rank[dest_rank][j];
                     std::cout << global_node_id << " ";
                 }
                 std::cout << "]" << std::endl;
@@ -1781,7 +1821,8 @@ void build_ghost(
                 int source_rank = node_communication_plan.recv_rank_ids.host(i);
                 std::cout << "  From rank " << source_rank << ": [";
                 for (int j = 0; j < nodes_to_recv_by_rank[source_rank].size(); j++) {
-                    int global_node_id = output_mesh.local_to_global_node_mapping.host(nodes_to_recv_by_rank[source_rank][j]);
+                    int node_lid = nodes_to_recv_by_rank[source_rank][j];
+                    size_t global_node_id = output_mesh.local_to_global_node_mapping.host(node_lid);
                     std::cout << global_node_id << " ";
                 }
                 std::cout << "]" << std::endl;
