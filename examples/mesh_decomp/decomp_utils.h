@@ -1486,7 +1486,7 @@ void build_ghost(
                 
                 // Only send nodes that are NOT shared (not on MPI rank boundary)
                 // Shared nodes are already known to both ranks
-                if (shared_nodes.find(node_gid) == shared_nodes.end()) {
+                if (shared_nodes_on_ranks[ghosting_rank].find(node_gid) == shared_nodes_on_ranks[ghosting_rank].end()) { // WARNING: THIS SHOULD BE MOFIFIED TO ONLY FILTER SHARED NODES WITH THIS SPECIFIC RANK
                     node_set_to_send_by_rank[ghosting_rank].insert(node_gid);
                 }
             }
@@ -1716,7 +1716,8 @@ void build_ghost(
     for (int i = 0; i < node_communication_plan.num_send_ranks; i++) {
         int dest_rank = node_communication_plan.send_rank_ids.host(i);
         for (int j = 0; j < nodes_to_send_by_rank[dest_rank].size(); j++) {
-            nodes_to_send_by_rank_rr.host(i, j) = nodes_to_send_by_rank[dest_rank][j];
+            int node_gid = output_mesh.local_to_global_node_mapping.host(nodes_to_send_by_rank[dest_rank][j]);
+            nodes_to_send_by_rank_rr.host(i, j) = node_gid;
         }
     }
     nodes_to_send_by_rank_rr.update_device();
@@ -1761,7 +1762,7 @@ void build_ghost(
                 int dest_rank = node_communication_plan.send_rank_ids.host(i);
                 std::cout << "  To rank " << dest_rank << ": [";
                 for (int j = 0; j < nodes_to_send_by_rank[dest_rank].size(); j++) {
-                    int global_node_id = nodes_to_send_by_rank[dest_rank][j];
+                    int global_node_id = output_mesh.local_to_global_node_mapping.host(nodes_to_send_by_rank[dest_rank][j]);
                     std::cout << global_node_id << " ";
                 }
                 std::cout << "]" << std::endl;
