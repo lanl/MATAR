@@ -287,8 +287,8 @@ void build_3d_box(
         const int num_cell_vec_vars    = 0;
         const int num_cell_tensor_vars = 0;
 
-        const int num_point_scalar_vars = 2;
-        const int num_point_vec_vars = 1;
+        const int num_point_scalar_vars = 3;
+        const int num_point_vec_vars = 2;
 
 
         // Scalar values associated with a cell
@@ -301,11 +301,11 @@ void build_3d_box(
         // };
 
         const char point_scalar_var_names[num_point_scalar_vars][15] = {
-            "rank_id", "elems_in_node"
+            "rank_id", "elems_in_node", "scalar_field"
         };
 
         const char point_vec_var_names[num_point_vec_vars][15] = {
-            "pos"
+            "pos", "vector_field"
         };
 
         // short hand
@@ -341,8 +341,14 @@ void build_3d_box(
             vec_fields(node_gid, 0, 1) = node.coords.host(node_gid, 1);
             vec_fields(node_gid, 0, 2) = node.coords.host(node_gid, 2);
 
+            // vector field, var 1
+            vec_fields(node_gid, 1, 0) = node.vector_field.host(node_gid, 0);
+            vec_fields(node_gid, 1, 1) = node.vector_field.host(node_gid, 1);
+            vec_fields(node_gid, 1, 2) = node.vector_field.host(node_gid, 2);
+
             point_scalar_fields(node_gid, 0) = rank;
             point_scalar_fields(node_gid, 1) = (double)mesh.num_corners_in_node(node_gid);
+            point_scalar_fields(node_gid, 2) = node.scalar_field.host(node_gid);
 
             if(node_gid == 0) {
                 std::cout << "*******[rank " << rank << "]   - num_corners_in_node: " << mesh.num_corners_in_node(node_gid) << std::endl;

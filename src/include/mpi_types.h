@@ -175,6 +175,10 @@ public:
     // Method to set comm plan for halo communication
     void initialize_comm_plan(CommunicationPlan& comm_plan){
         comm_plan_ = &comm_plan;
+
+        if(comm_plan_->comm_type == communication_plan_type::no_communication){
+            return;
+        }
         
         size_t send_size = comm_plan_->total_send_count * stride_;
         size_t recv_size = comm_plan_->total_recv_count * stride_;
