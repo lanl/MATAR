@@ -58,10 +58,6 @@ int main(int argc, char** argv) {
         std::cout<<"Initializing mesh"<<std::endl;
         build_3d_box(initial_mesh,  initial_node, origin, length, num_elems_dim);
 
-        
-
-        // write_vtk(initial_mesh, initial_node, rank);
-
         // Read the mesh from a file
         // read_vtk_mesh(initial_mesh, initial_node, 3, "/home/jacobmoore/Desktop/repos/MATAR/meshes/impellerOpt.vtk");
 

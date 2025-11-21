@@ -67,10 +67,11 @@ inline std::vector<std::string> split(std::string s, std::string delimiter)
 /// \param Number of j indices
 ///
 /////////////////////////////////////////////////////////////////////////////
-inline int get_id(int i, int j, int k, int num_i, int num_j)
+KOKKOS_INLINE_FUNCTION
+size_t get_id(int i, int j, int k, int num_i, int num_j)
 {
     return i + j * num_i + k * num_i * num_j;
-}
+} // end get_id
 
 /////////////////////////////////////////////////////////////////////////////
 ///
@@ -189,20 +190,40 @@ void build_3d_box(
 
     // --- Build nodes ---
 
-    // populate the point data structures
-    for (int k = 0; k < num_points_k; k++) {
-        for (int j = 0; j < num_points_j; j++) {
-            for (int i = 0; i < num_points_i; i++) {
-                // global id for the point
-                int node_gid = get_id(i, j, k, num_points_i, num_points_j);
+    CArrayDual<double> origin_mtr(3, "origin_mtr");
+    origin_mtr(0) = origin[0];
+    origin_mtr(1) = origin[1];
+    origin_mtr(2) = origin[2];
+    origin_mtr.update_device();
 
-                // store the point coordinates
-                node.coords.host(node_gid, 0) = origin[0] + (double)i * dx;
-                node.coords.host(node_gid, 1) = origin[1] + (double)j * dy;
-                node.coords.host(node_gid, 2) = origin[2] + (double)k * dz;
-            } // end for i
-        } // end for j
-    } // end for k
+    // populate the point data structures
+    FOR_ALL(k, 0, num_points_k,
+            j, 0, num_points_j,
+            i, 0, num_points_i,{
+
+        // global id for the point
+        size_t node_gid = get_id(i, j, k, num_points_i, num_points_j);
+
+        // store the point coordinates
+        node.coords.host(node_gid, 0) = origin_mtr(0) + (double)i * dx;
+        node.coords.host(node_gid, 1) = origin_mtr(1) + (double)j * dy;
+        node.coords.host(node_gid, 2) = origin_mtr(2) + (double)k * dz;
+    });
+
+    // populate the point data structures
+    // for (int k = 0; k < num_points_k; k++) {
+    //     for (int j = 0; j < num_points_j; j++) {
+    //         for (int i = 0; i < num_points_i; i++) {
+    //             // global id for the point
+    //             int node_gid = get_id(i, j, k, num_points_i, num_points_j);
+
+    //             // store the point coordinates
+    //             node.coords.host(node_gid, 0) = origin[0] + (double)i * dx;
+    //             node.coords.host(node_gid, 1) = origin[1] + (double)j * dy;
+    //             node.coords.host(node_gid, 2) = origin[2] + (double)k * dz;
+    //         } // end for i
+    //     } // end for j
+    // } // end for k
 
 
     node.coords.update_device();
@@ -212,43 +233,75 @@ void build_3d_box(
 
     // --- Build elems  ---
 
-    // populate the elem center data structures
-    for (int k = 0; k < num_elems_k; k++) {
-        for (int j = 0; j < num_elems_j; j++) {
-            for (int i = 0; i < num_elems_i; i++) {
-                // global id for the elem
-                int elem_gid = get_id(i, j, k, num_elems_i, num_elems_j);
+    // // populate the elem center data structures
+    // for (int k = 0; k < num_elems_k; k++) {
+    //     for (int j = 0; j < num_elems_j; j++) {
+    //         for (int i = 0; i < num_elems_i; i++) {
+                
+    //             // global id for the elem
+    //             int elem_gid = get_id(i, j, k, num_elems_i, num_elems_j);
 
-                // store the point IDs for this elem where the range is
-                // (i:i+1, j:j+1, k:k+1) for a linear hexahedron
-                int this_point = 0;
-                for (int kcount = k; kcount <= k + 1; kcount++) {
-                    for (int jcount = j; jcount <= j + 1; jcount++) {
-                        for (int icount = i; icount <= i + 1; icount++) {
-                            // global id for the points
-                            int node_gid = get_id(icount, jcount, kcount,
-                                                num_points_i, num_points_j);
+    //             // store the point IDs for this elem where the range is
+    //             // (i:i+1, j:j+1, k:k+1) for a linear hexahedron
+    //             int this_point = 0;
+    //             for (int kcount = k; kcount <= k + 1; kcount++) {
+    //                 for (int jcount = j; jcount <= j + 1; jcount++) {
+    //                     for (int icount = i; icount <= i + 1; icount++) {
+    //                         // global id for the points
+    //                         int node_gid = get_id(icount, jcount, kcount,
+    //                                             num_points_i, num_points_j);
 
-                            // convert this_point index to the FE index convention
-                            int this_index = this_point; //convert_point_number_in_Hex(this_point);
+    //                         // convert this_point index to the FE index convention
+    //                         int this_index = this_point; //convert_point_number_in_Hex(this_point);
 
-                            // store the points in this elem according the the finite
-                            // element numbering convention
-                            mesh.nodes_in_elem.host(elem_gid, this_index) = node_gid;
+    //                         // store the points in this elem according the the finite
+    //                         // element numbering convention
+    //                         mesh.nodes_in_elem.host(elem_gid, this_index) = node_gid;
 
-                            // increment the point counting index
-                            this_point = this_point + 1;
-                        } // end for icount
-                    } // end for jcount
-                }  // end for kcount
-            } // end for i
-        } // end for j
-    } // end for k
+    //                         // increment the point counting index
+    //                         this_point = this_point + 1;
+    //                     } // end for icount
+    //                 } // end for jcount
+    //             }  // end for kcount
+    //         } // end for i
+    //     } // end for j
+    // } // end for k
+
+    // populate the point data structures
+    FOR_ALL(k, 0, num_elems_k,
+            j, 0, num_elems_j,
+            i, 0, num_elems_i,{
+
+        // global id for the elem
+        size_t elem_gid = get_id(i, j, k, num_elems_i, num_elems_j);
+
+        // store the point IDs for this elem where the range is
+        // (i:i+1, j:j+1, k:k+1) for a linear hexahedron
+        int this_point = 0;
+        for (int kcount = k; kcount <= k + 1; kcount++) {
+            for (int jcount = j; jcount <= j + 1; jcount++) {
+                for (int icount = i; icount <= i + 1; icount++) {
+                    // global id for the points
+                    size_t node_gid = get_id(icount, jcount, kcount,
+                                        num_points_i, num_points_j);
+
+                    // convert this_point index to the FE index convention
+                    int this_index = this_point; //convert_point_number_in_Hex(this_point);
+
+                    // store the points in this elem according the the finite
+                    // element numbering convention
+                    mesh.nodes_in_elem.host(elem_gid, this_index) = node_gid;
+
+                    // increment the point counting index
+                    this_point++;
+                } // end for icount
+            } // end for jcount
+        }  // end for kcount
+    }); // end parallel for
 
     // update device side
     mesh.nodes_in_elem.update_device();
-
-
+    Kokkos::fence();
 
     // Build connectivity
     mesh.build_connectivity();
