@@ -205,67 +205,15 @@ void build_3d_box(
         size_t node_gid = get_id(i, j, k, num_points_i, num_points_j);
 
         // store the point coordinates
-        node.coords.host(node_gid, 0) = origin_mtr(0) + (double)i * dx;
-        node.coords.host(node_gid, 1) = origin_mtr(1) + (double)j * dy;
-        node.coords.host(node_gid, 2) = origin_mtr(2) + (double)k * dz;
+        node.coords(node_gid, 0) = origin_mtr(0) + (double)i * dx;
+        node.coords(node_gid, 1) = origin_mtr(1) + (double)j * dy;
+        node.coords(node_gid, 2) = origin_mtr(2) + (double)k * dz;
     });
-
-    // populate the point data structures
-    // for (int k = 0; k < num_points_k; k++) {
-    //     for (int j = 0; j < num_points_j; j++) {
-    //         for (int i = 0; i < num_points_i; i++) {
-    //             // global id for the point
-    //             int node_gid = get_id(i, j, k, num_points_i, num_points_j);
-
-    //             // store the point coordinates
-    //             node.coords.host(node_gid, 0) = origin[0] + (double)i * dx;
-    //             node.coords.host(node_gid, 1) = origin[1] + (double)j * dy;
-    //             node.coords.host(node_gid, 2) = origin[2] + (double)k * dz;
-    //         } // end for i
-    //     } // end for j
-    // } // end for k
-
-
-    node.coords.update_device();
+    // Update the host side
+    node.coords.update_host();
 
     // initialize elem variables
     mesh.initialize_elems(num_elems, num_dim);
-
-    // --- Build elems  ---
-
-    // // populate the elem center data structures
-    // for (int k = 0; k < num_elems_k; k++) {
-    //     for (int j = 0; j < num_elems_j; j++) {
-    //         for (int i = 0; i < num_elems_i; i++) {
-                
-    //             // global id for the elem
-    //             int elem_gid = get_id(i, j, k, num_elems_i, num_elems_j);
-
-    //             // store the point IDs for this elem where the range is
-    //             // (i:i+1, j:j+1, k:k+1) for a linear hexahedron
-    //             int this_point = 0;
-    //             for (int kcount = k; kcount <= k + 1; kcount++) {
-    //                 for (int jcount = j; jcount <= j + 1; jcount++) {
-    //                     for (int icount = i; icount <= i + 1; icount++) {
-    //                         // global id for the points
-    //                         int node_gid = get_id(icount, jcount, kcount,
-    //                                             num_points_i, num_points_j);
-
-    //                         // convert this_point index to the FE index convention
-    //                         int this_index = this_point; //convert_point_number_in_Hex(this_point);
-
-    //                         // store the points in this elem according the the finite
-    //                         // element numbering convention
-    //                         mesh.nodes_in_elem.host(elem_gid, this_index) = node_gid;
-
-    //                         // increment the point counting index
-    //                         this_point = this_point + 1;
-    //                     } // end for icount
-    //                 } // end for jcount
-    //             }  // end for kcount
-    //         } // end for i
-    //     } // end for j
-    // } // end for k
 
     // populate the point data structures
     FOR_ALL(k, 0, num_elems_k,
@@ -290,7 +238,7 @@ void build_3d_box(
 
                     // store the points in this elem according the the finite
                     // element numbering convention
-                    mesh.nodes_in_elem.host(elem_gid, this_index) = node_gid;
+                    mesh.nodes_in_elem(elem_gid, this_index) = node_gid;
 
                     // increment the point counting index
                     this_point++;
@@ -299,8 +247,9 @@ void build_3d_box(
         }  // end for kcount
     }); // end parallel for
 
-    // update device side
-    mesh.nodes_in_elem.update_device();
+    // Update the host side
+    mesh.nodes_in_elem.update_host();
+
     Kokkos::fence();
 
     // Build connectivity
