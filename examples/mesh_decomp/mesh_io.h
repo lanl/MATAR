@@ -354,9 +354,6 @@ void build_3d_box(
             point_scalar_fields(node_gid, 1) = (double)mesh.num_corners_in_node(node_gid);
             point_scalar_fields(node_gid, 2) = node.scalar_field.host(node_gid);
 
-            if(node_gid == 0) {
-                std::cout << "*******[rank " << rank << "]   - num_corners_in_node: " << mesh.num_corners_in_node(node_gid) << std::endl;
-            }
         } // end for loop over vertices
 
 
@@ -588,6 +585,7 @@ void write_vtu(Mesh_t& mesh,
     });
     MATAR_FENCE();
     num_elems_in_elem.update_host();
+    MATAR_FENCE();
     
     for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
         elem_fields(elem_gid, 0) = rank;

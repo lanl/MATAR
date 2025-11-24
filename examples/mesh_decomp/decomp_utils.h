@@ -2335,6 +2335,8 @@ void partition_mesh(
     
     gauss_point.fields.communicate();
     gauss_point.fields_vec.communicate();
+
+    CArrayKokkos <double> tmp(final_mesh.num_elems);
     
     // Loop over all elements and average the values of elements connected to that element
     FOR_ALL(i, 0, final_mesh.num_elems, {
@@ -2343,7 +2345,9 @@ void partition_mesh(
             value += gauss_point.fields(final_mesh.elems_in_elem(i, j));
         }
         value /= final_mesh.num_elems_in_elem(i);
-        gauss_point.fields(i) = value;
+
+        tmp(i) = value;
+        
 
         value = 0.0;
         for (int j = 0; j < final_mesh.num_elems_in_elem(i); j++) {
@@ -2354,6 +2358,11 @@ void partition_mesh(
         gauss_point.fields_vec(i, 1) = value;
         gauss_point.fields_vec(i, 2) = value;
     });
+
+    FOR_ALL(i, 0, final_mesh.num_elems, {
+        gauss_point.fields(i) = tmp(i);
+    });
+
     gauss_point.fields.update_host();
     gauss_point.fields_vec.update_host();
 
