@@ -398,7 +398,7 @@ void naive_partition_mesh(
             std::cout<< "Rank = "<< i <<std::endl;
 
             for(int k = 0; k < elements_to_send[i].size(); k++) {
-                all_num_elems_in_elem.push_back(tmp_num_elems_in_elem(elements_to_send[i][k]));
+                all_num_elems_in_elem.push_back(tmp_num_elems_in_elem.host(elements_to_send[i][k]));
             }
 
             std::cout<< " Finished all_num_elem_elem" <<std::endl;
@@ -621,6 +621,8 @@ void build_ghost(
     // Rank 0: elem_count[0] ----> All ranks receive: [elem_count[0], elem_count[1], elem_count[2], ...]
     // Rank 1: elem_count[1] /
     // Rank 2: elem_count[2] /
+
+    int num_dim = input_mesh.num_dims;
 
     int nodes_per_elem = input_mesh.num_nodes_in_elem;
 
@@ -1133,16 +1135,15 @@ void build_ghost(
     output_mesh.build_connectivity();
 
     MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Finished building final mesh structure" << std::endl;
 
-    if(rank == 0) std::cout << " Finished building final mesh structure with ghost nodes and elements" << std::endl;
-    MPI_Barrier(MPI_COMM_WORLD);
 
     // ****************************************************************************************** 
     //     Build the final nodes that include ghost
     // ****************************************************************************************** 
 
 
-    output_node.initialize(total_extended_nodes, 3, {node_state::coords}, node_communication_plan);
+    output_node.initialize(total_extended_nodes, num_dim, {node_state::coords}, node_communication_plan);
     MPI_Barrier(MPI_COMM_WORLD);
 
     // The goal here is to populate output_node.coords using globally gathered ghost node coordinates,
@@ -1203,35 +1204,37 @@ void build_ghost(
 
 
     // d) Global coords (size: total_owned x 3)
-    std::vector<double> owned_coords_send(3*local_owned_count, 0.0);
+    std::vector<double> owned_coords_send(num_dim*local_owned_count, 0.0);
     for (int i = 0; i < local_owned_count; i++) {
-        owned_coords_send[3*i+0] = input_node.coords.host(i,0);
-        owned_coords_send[3*i+1] = input_node.coords.host(i,1);
-        owned_coords_send[3*i+2] = input_node.coords.host(i,2);
+        for(int dim = 0; dim < num_dim; dim++){
+            owned_coords_send[num_dim*i+dim] = input_node.coords.host(i,dim);
+        }
     }
-    std::vector<double> all_owned_coords(3 * total_owned, 0.0);
+    std::vector<double> all_owned_coords(num_dim * total_owned, 0.0);
 
     // Create coordinate-specific counts and displacements (in units of doubles, not nodes)
+    MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout << " Getting coord_counts" << std::endl;
+
     std::vector<int> coord_counts(world_size);
     std::vector<int> coord_displs(world_size);
     for (int r = 0; r < world_size; r++) {
-        coord_counts[r] = 3 * owned_counts[r];  // Each node has 3 doubles
-        coord_displs[r] = 3 * owned_displs[r];  // Displacement in doubles
+        coord_counts[r] = num_dim * owned_counts[r];  // Each node has num_dim doubles
+        coord_displs[r] = num_dim * owned_displs[r];  // Displacement in doubles
     }
 
-    MPI_Allgatherv(owned_coords_send.data(), 3*local_owned_count, MPI_DOUBLE,
+    MPI_Allgatherv(owned_coords_send.data(), num_dim*local_owned_count, MPI_DOUBLE,
                 all_owned_coords.data(), coord_counts.data(), coord_displs.data(),
                 MPI_DOUBLE, MPI_COMM_WORLD);
 
     // e) Build map: gid -> coord[3]
-    std::unordered_map<size_t, std::array<double,3>> gid_to_coord;
+    std::unordered_map<size_t, std::vector<double>> gid_to_coord;
     for (int i = 0; i < total_owned; i++) {
-        std::array<double,3> xyz = {
-            all_owned_coords[3*i+0],
-            all_owned_coords[3*i+1],
-            all_owned_coords[3*i+2]
-        };
-        gid_to_coord[all_owned_gids[i]] = xyz;
+        std::vector<double> xyz(num_dim);  // size is runtime-dependent
+        for (int dim = 0; dim < num_dim; dim++) {
+            xyz[dim] = all_owned_coords[num_dim * i + dim];
+        }
+        gid_to_coord[all_owned_gids[i]] = std::move(xyz);
     }
 
     // 4. Finally, fill output_node.coords with correct coordinates.
@@ -1239,14 +1242,14 @@ void build_ghost(
         size_t gid = output_mesh.local_to_global_node_mapping.host(i);
         auto it = gid_to_coord.find(gid);
         if (it != gid_to_coord.end()) {
-            output_node.coords.host(i,0) = it->second[0];
-            output_node.coords.host(i,1) = it->second[1];
-            output_node.coords.host(i,2) = it->second[2];
+            for (int dim = 0; dim < num_dim; dim++) {
+                output_node.coords.host(i,dim) = it->second[dim];
+            }
         } else {
             // Could happen if there's a bug: fill with zeros for safety
-            output_node.coords.host(i,0) = 0.0;
-            output_node.coords.host(i,1) = 0.0;
-            output_node.coords.host(i,2) = 0.0;
+            for (int dim = 0; dim < num_dim; dim++) {
+                output_node.coords.host(i,dim) = 0.0;
+            }
         }
     }
     output_node.coords.update_device();
@@ -1314,6 +1317,7 @@ void build_ghost(
     }
 
     MPI_Barrier(MPI_COMM_WORLD);
+    if(rank == 0) std::cout<<"After boundary_elem_targets"<<std::endl;
 
     // Add a vector to store boundary element local_ids (those who have ghost destinations across ranks)
     std::vector<int> boundary_elem_local_ids;
@@ -1354,7 +1358,7 @@ void build_ghost(
     MPI_Barrier(MPI_COMM_WORLD);
 
     output_mesh.num_boundary_elems = boundary_elem_local_ids.size();
-    output_mesh.boundary_elem_local_ids = DCArrayKokkos<size_t>(output_mesh.num_boundary_elems);
+    output_mesh.boundary_elem_local_ids = DCArrayKokkos<size_t>(output_mesh.num_boundary_elems, "boundary_elem_local_ids");
     for (int i = 0; i < output_mesh.num_boundary_elems; i++) {
         output_mesh.boundary_elem_local_ids.host(i) = boundary_elem_local_ids[i];
     }
@@ -1421,7 +1425,7 @@ void build_ghost(
     
     // sourceweights: Weights on incoming edges (not used here, set to MPI_UNWEIGHTED)
     // Could be used to specify communication volume if needed for optimization
-    int* sourceweights = MPI_UNWEIGHTED;
+    // int* sourceweights = MPI_UNWEIGHTED;
     
     // ---------- Prepare OUTGOING edges (destinations) ----------
     // outdegree: Number of ranks to which this rank will SEND data
@@ -1448,7 +1452,7 @@ void build_ghost(
     int* node_sources = (node_indegree > 0) ? ghost_node_receive_ranks_vec.data() : MPI_UNWEIGHTED;
     
     // sourceweights: Weights on incoming edges (not used here, set to MPI_UNWEIGHTED)
-    int* node_sourceweights = MPI_UNWEIGHTED;   
+    //int* node_sourceweights = MPI_UNWEIGHTED;   
 
     // ---------- Prepare OUTGOING edges (destinations) ----------
     // outdegree: Number of ranks to which this rank will SEND data
@@ -1457,11 +1461,12 @@ void build_ghost(
     int* node_destinations = (node_outdegree > 0) ? ghost_node_send_ranks_vec.data() : MPI_UNWEIGHTED;
 
     // destinationweights: Weights on outgoing edges (not used here, set to MPI_UNWEIGHTED)
-    int* node_destinationweights = MPI_UNWEIGHTED;
+    // int* node_destinationweights = MPI_UNWEIGHTED;
 
     // Initialize the graph communicator for node communication
     node_communication_plan.initialize_graph_communicator(node_outdegree, node_destinations, node_indegree, node_sources);
     MPI_Barrier(MPI_COMM_WORLD);
+    if (rank == 0) std::cout<<"After node graph communicator"<<std::endl;
 
     // ****************************************************************************************** 
     //     Build send counts and displacements for element communication
@@ -1489,11 +1494,12 @@ void build_ghost(
     }
 
     // Serialize into a DRaggedRightArrayKokkos
-    CArrayKokkos<size_t> strides_array(element_communication_plan.num_send_ranks);
+    DCArrayKokkos<size_t> strides_array(element_communication_plan.num_send_ranks, "strides_for_elems_to_send");
     for (int i = 0; i < element_communication_plan.num_send_ranks; i++) {
         int dest_rank = element_communication_plan.send_rank_ids.host(i);
-        strides_array(i) = elems_to_send_by_rank[dest_rank].size();
+        strides_array.host(i) = elems_to_send_by_rank[dest_rank].size();
     }
+    strides_array.update_device();
     DRaggedRightArrayKokkos<int> elems_to_send_by_rank_rr(strides_array, "elems_to_send_by_rank");
 
     // Fill in the data
@@ -1517,12 +1523,13 @@ void build_ghost(
     }
 
     // ========== Serialize into a DRaggedRightArrayKokkos ==========
-    CArrayKokkos<size_t> elem_recv_strides_array(element_communication_plan.num_recv_ranks);
+    DCArrayKokkos<size_t> elem_recv_strides_array(element_communication_plan.num_recv_ranks, "elem_recv_strides_array");
     for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
         int source_rank = element_communication_plan.recv_rank_ids.host(i);
-        elem_recv_strides_array(i) = elems_to_recv_by_rank[source_rank].size();
+        elem_recv_strides_array.host(i) = elems_to_recv_by_rank[source_rank].size();
        
     }
+    elem_recv_strides_array.update_device();
     DRaggedRightArrayKokkos<int> elems_to_recv_by_rank_rr(elem_recv_strides_array, "elems_to_recv_by_rank");
     // Fill in the data
     for (int i = 0; i < element_communication_plan.num_recv_ranks; i++) {
@@ -1532,6 +1539,7 @@ void build_ghost(
         }
     }
     elems_to_recv_by_rank_rr.update_device();
+    MATAR_FENCE();
     element_communication_plan.setup_send_recv(elems_to_send_by_rank_rr, elems_to_recv_by_rank_rr);
 
     MPI_Barrier(MPI_COMM_WORLD);
@@ -1547,11 +1555,12 @@ void build_ghost(
     // --------------------------------------------------------------------------------------
 
     // Serialize into a DRaggedRightArrayKokkos
-    CArrayKokkos<size_t> node_send_strides_array(node_communication_plan.num_send_ranks);
+    DCArrayKokkos<size_t> node_send_strides_array(node_communication_plan.num_send_ranks,"node_send_strides_array");
     for (int i = 0; i < node_communication_plan.num_send_ranks; i++) {
         int dest_rank = node_communication_plan.send_rank_ids.host(i);
-        node_send_strides_array(i) = nodes_to_send_by_rank[dest_rank].size();
+        node_send_strides_array.host(i) = nodes_to_send_by_rank[dest_rank].size();
     }
+    node_send_strides_array.update_device();
     DRaggedRightArrayKokkos<int> nodes_to_send_by_rank_rr(node_send_strides_array, "nodes_to_send_by_rank");
 
     // Fill in the data
@@ -1616,11 +1625,12 @@ void build_ghost(
     }
     
     // Serialize into a DRaggedRightArrayKokkos
-    CArrayKokkos<size_t> nodes_recv_strides_array(node_communication_plan.num_recv_ranks);
+    DCArrayKokkos<size_t> nodes_recv_strides_array(node_communication_plan.num_recv_ranks, "nodes_recv_strides_array");
     for (int i = 0; i < node_communication_plan.num_recv_ranks; i++) {
         int source_rank = node_communication_plan.recv_rank_ids.host(i);
-        nodes_recv_strides_array(i) = nodes_to_recv_by_rank[source_rank].size();
+        nodes_recv_strides_array.host(i) = nodes_to_recv_by_rank[source_rank].size();
     }
+    nodes_recv_strides_array.update_device();
     DRaggedRightArrayKokkos<int> nodes_to_recv_by_rank_rr(nodes_recv_strides_array, "nodes_to_recv_by_rank");
     // Fill in the data
     for (int i = 0; i < node_communication_plan.num_recv_ranks; i++) {
@@ -1681,7 +1691,7 @@ void partition_mesh(
     int rank){
 
     bool print_info = false;
-    bool print_vtk = false;
+    // bool print_vtk = false;
 
     int num_dim = initial_mesh.num_dims;
 
@@ -1809,7 +1819,7 @@ void partition_mesh(
     for (size_t k = 0; k < naive_mesh.num_elems; k++) {
         int elem_gid_on_rank = naive_mesh.local_to_global_elem_mapping.host(k);
         elem_gid_to_offset[elem_gid_on_rank] = current_offset;
-        current_offset += num_elems_in_elem_per_rank(k); 
+        current_offset += num_elems_in_elem_per_rank.host(k); 
     }
 
     // --- Step 3: Fill in the CSR arrays, looping over each locally-owned element ---
@@ -1836,11 +1846,11 @@ void partition_mesh(
                 break;
             }
         }
-        size_t num_nbrs = num_elems_in_elem_per_rank(idx);
+        size_t num_nbrs = num_elems_in_elem_per_rank.host(idx);
 
         // Append each neighbor (by its GLOBAL elem GID) to edgeloctab
         for (size_t j = 0; j < num_nbrs; j++) {
-            size_t neighbor_gid = elems_in_elem_on_rank(elems_in_elem_offset + j); // This is a global element ID!
+            size_t neighbor_gid = elems_in_elem_on_rank.host(elems_in_elem_offset + j); // This is a global element ID!
             edgeloctab.push_back(static_cast<SCOTCH_Num>(neighbor_gid));
             ++offset; // Increment running edge count
         }
@@ -2206,8 +2216,8 @@ void partition_mesh(
     // -------------- Phase 6: Build the intermediate_mesh --------------
     intermediate_mesh.initialize_nodes(num_new_nodes);
     intermediate_mesh.initialize_elems(num_new_elems, naive_mesh.num_dims);
-    intermediate_mesh.local_to_global_node_mapping = DCArrayKokkos<size_t>(num_new_nodes);
-    intermediate_mesh.local_to_global_elem_mapping = DCArrayKokkos<size_t>(num_new_elems);
+    intermediate_mesh.local_to_global_node_mapping = DCArrayKokkos<size_t>(num_new_nodes, "intermediate_mesh.local_to_global_node_mapping");
+    intermediate_mesh.local_to_global_elem_mapping = DCArrayKokkos<size_t>(num_new_elems, "intermediate_mesh.local_to_global_elem_mapping");
 
     // Fill global mappings
     for (int i = 0; i < num_new_nodes; i++)
@@ -2330,19 +2340,19 @@ void partition_mesh(
     FOR_ALL(i, 0, final_mesh.num_elems, {
         double value = 0.0;
         for (int j = 0; j < final_mesh.num_elems_in_elem(i); j++) {
-            value += gauss_point.fields.host(final_mesh.elems_in_elem(i, j));
+            value += gauss_point.fields(final_mesh.elems_in_elem(i, j));
         }
         value /= final_mesh.num_elems_in_elem(i);
-        gauss_point.fields.host(i) = value;
+        gauss_point.fields(i) = value;
 
         value = 0.0;
         for (int j = 0; j < final_mesh.num_elems_in_elem(i); j++) {
-            value += gauss_point.fields_vec.host(final_mesh.elems_in_elem(i, j), 0);
+            value += gauss_point.fields_vec(final_mesh.elems_in_elem(i, j), 0);
         }
         value /= final_mesh.num_elems_in_elem(i);
-        gauss_point.fields_vec.host(i, 0) = value;
-        gauss_point.fields_vec.host(i, 1) = value;
-        gauss_point.fields_vec.host(i, 2) = value;
+        gauss_point.fields_vec(i, 0) = value;
+        gauss_point.fields_vec(i, 1) = value;
+        gauss_point.fields_vec(i, 2) = value;
     });
 
     gauss_point.fields_vec.update_device();
@@ -2380,12 +2390,12 @@ void partition_mesh(
 
         double value = 0.0;
         for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            value += final_node.scalar_field(final_mesh.nodes_in_elem(elem_lid, j));
+            value += final_node.scalar_field(final_mesh.nodes_in_elem(i, j));
         }
         value /= final_mesh.num_nodes_in_elem;
 
         for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            final_node.scalar_field(final_mesh.nodes_in_elem(elem_lid, j)) = value;
+            final_node.scalar_field(final_mesh.nodes_in_elem(i, j)) = value;
         }
     });
 

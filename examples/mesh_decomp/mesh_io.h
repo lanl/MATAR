@@ -191,12 +191,13 @@ void build_3d_box(
     // --- Build nodes ---
 
     CArrayDual<double> origin_mtr(3, "origin_mtr");
-    origin_mtr(0) = origin[0];
-    origin_mtr(1) = origin[1];
-    origin_mtr(2) = origin[2];
+    origin_mtr.host(0) = origin[0];
+    origin_mtr.host(1) = origin[1];
+    origin_mtr.host(2) = origin[2];
     origin_mtr.update_device();
 
     // populate the point data structures
+    std::cout<<"First FOR_ALL"<<std::endl;
     FOR_ALL(k, 0, num_points_k,
             j, 0, num_points_j,
             i, 0, num_points_i,{
@@ -216,6 +217,7 @@ void build_3d_box(
     mesh.initialize_elems(num_elems, num_dim);
 
     // populate the point data structures
+    std::cout<<"Second FOR_ALL"<<std::endl;
     FOR_ALL(k, 0, num_elems_k,
             j, 0, num_elems_j,
             i, 0, num_elems_i,{
@@ -579,10 +581,17 @@ void write_vtu(Mesh_t& mesh,
     // save the cell state to an array for exporting to graphics files
     auto elem_fields = CArray<double>(num_elems, num_cell_scalar_vars);
     auto elem_vec_fields = CArray<double>(num_elems, num_cell_vec_vars, 3);
+
+    DCArrayKokkos <double> num_elems_in_elem(mesh.num_elems, "tmp_num_elem_in_elem");
+    FOR_ALL(i, 0, mesh.num_elems, {
+        num_elems_in_elem(i) = (double)mesh.num_elems_in_elem(i);
+    });
+    MATAR_FENCE();
+    num_elems_in_elem.update_host();
     
     for (size_t elem_gid = 0; elem_gid < num_elems; elem_gid++) {
         elem_fields(elem_gid, 0) = rank;
-        elem_fields(elem_gid, 1) = (double)mesh.num_elems_in_elem(elem_gid);
+        elem_fields(elem_gid, 1) = num_elems_in_elem.host(elem_gid);
         elem_fields(elem_gid, 2) = mesh.local_to_global_elem_mapping.host(elem_gid);
         elem_fields(elem_gid, 3) = gauss_point.fields.host(elem_gid);
         elem_vec_fields(elem_gid, 0, 0) = gauss_point.fields_vec.host(elem_gid, 0);
@@ -593,6 +602,14 @@ void write_vtu(Mesh_t& mesh,
     // save the vertex vector fields to an array for exporting to graphics files
     CArray<double> vec_fields(num_nodes, num_point_vec_vars, 3);
     CArray<double> point_scalar_fields(num_nodes, num_point_scalar_vars);
+
+
+    DCArrayKokkos <double> num_elems_in_node(mesh.num_elems, "tmp_num_elems_in_node");
+    FOR_ALL(i, 0, mesh.num_elems, {
+        num_elems_in_node(i) = (double)mesh.num_corners_in_node(i);
+    });
+    MATAR_FENCE();
+    num_elems_in_node.update_host();
 
     for (size_t node_gid = 0; node_gid < num_nodes; node_gid++) {
         // position, var 0
@@ -606,7 +623,7 @@ void write_vtu(Mesh_t& mesh,
         vec_fields(node_gid, 1, 2) = node.vector_field.host(node_gid, 2);
 
         point_scalar_fields(node_gid, 0) = rank;
-        point_scalar_fields(node_gid, 1) = (double)mesh.num_corners_in_node(node_gid);
+        point_scalar_fields(node_gid, 1) = num_elems_in_node.host(node_gid);
         point_scalar_fields(node_gid, 2) = (double)mesh.local_to_global_node_mapping.host(node_gid);
         point_scalar_fields(node_gid, 3) = node.scalar_field.host(node_gid);
     }
