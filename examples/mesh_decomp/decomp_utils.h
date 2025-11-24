@@ -350,11 +350,18 @@ void naive_partition_mesh(
     std::vector<int> elem_elem_counts(world_size);
     
     if (rank == 0){
+
+        DCArrayKokkos<size_t> tmp_num_elems_in_elem(initial_mesh.num_elems, "tmp_elems_in_elem"); 
+        FOR_ALL(i, 0, initial_mesh.num_elems, {
+            tmp_num_elems_in_elem(i) = initial_mesh.num_elems_in_elem(i);
+        });
+        tmp_num_elems_in_elem.update_host();
+        MATAR_FENCE();
         // Calculate total number of connectivity entries for each rank
         for(int i = 0; i < world_size; i++) {
             elem_elem_counts[i] = 0;
             for(int k = 0; k < elements_to_send[i].size(); k++) {
-                elem_elem_counts[i] += initial_mesh.num_elems_in_elem(elements_to_send[i][k]);
+                elem_elem_counts[i] += tmp_num_elems_in_elem.host(elements_to_send[i][k]);
             }
         }
     }
@@ -366,6 +373,7 @@ void naive_partition_mesh(
                 0, MPI_COMM_WORLD);
 
     MPI_Barrier(MPI_COMM_WORLD);
+    if (rank == 0) std::cout<< " Finished scatter" <<std::endl;
 
     elems_in_elem_on_rank = CArrayDual<int>(total_elem_elem_entries, "elems_in_elem_on_rank");
 
@@ -376,12 +384,24 @@ void naive_partition_mesh(
         std::vector<int> all_num_elems_in_elem;
         std::vector<int> displs_ee(world_size);
         int displacement = 0;
+
+        DCArrayKokkos<size_t> tmp_num_elems_in_elem(initial_mesh.num_elems, "tmp_elems_in_elem"); 
+        FOR_ALL(i, 0, initial_mesh.num_elems, {
+            tmp_num_elems_in_elem(i) = initial_mesh.num_elems_in_elem(i);
+        });
+        tmp_num_elems_in_elem.update_host();
+        MATAR_FENCE();
         
         for(int i = 0; i < world_size; i++) {
             displs_ee[i] = displacement;
+
+            std::cout<< "Rank = "<< i <<std::endl;
+
             for(int k = 0; k < elements_to_send[i].size(); k++) {
-                all_num_elems_in_elem.push_back(initial_mesh.num_elems_in_elem(elements_to_send[i][k]));
+                all_num_elems_in_elem.push_back(tmp_num_elems_in_elem(elements_to_send[i][k]));
             }
+
+            std::cout<< " Finished all_num_elem_elem" <<std::endl;
             displacement += elements_to_send[i].size();
         }
         
@@ -397,12 +417,32 @@ void naive_partition_mesh(
     num_elems_in_elem_per_rank.update_device();
 
     if (rank == 0){
+
+        std::cout<<"Sending connectivity"<<std::endl;
         // Prepare the element-element connectivity data for each rank
         std::vector<int> all_elems_in_elem;
         std::vector<int> sendcounts(world_size);
         std::vector<int> displs(world_size);
         
         int displacement = 0;
+
+        DRaggedRightArrayKokkos<size_t> tmp_elems_in_elem(initial_mesh.num_elems_in_elem, "temp_elem_in_elem");
+
+        FOR_ALL(elem_gid, 0, initial_mesh.num_elems, {
+            for (size_t i = 0; i < initial_mesh.num_elems_in_elem(elem_gid); i++) {
+                tmp_elems_in_elem(elem_gid, i) = initial_mesh.elems_in_elem(elem_gid, i);
+            } // end for i
+        });  // end FOR_ALL elems
+        tmp_elems_in_elem.update_host();
+        Kokkos::fence();
+
+
+        DCArrayKokkos<size_t> tmp_num_elems_in_elem(initial_mesh.num_elems, "tmp_elems_in_elem"); 
+        FOR_ALL(i, 0, initial_mesh.num_elems, {
+            tmp_num_elems_in_elem(i) = initial_mesh.num_elems_in_elem(i);
+        });
+        tmp_num_elems_in_elem.update_host();
+        MATAR_FENCE();
         
         for(int i = 0; i < world_size; i++) {
             sendcounts[i] = elem_elem_counts[i];
@@ -410,8 +450,8 @@ void naive_partition_mesh(
             
             // Copy element-element connectivity for rank i
             for(int k = 0; k < elements_to_send[i].size(); k++) {
-                for(int l = 0; l < initial_mesh.num_elems_in_elem(elements_to_send[i][k]); l++) {
-                    all_elems_in_elem.push_back(initial_mesh.elems_in_elem(elements_to_send[i][k], l));
+                for(int l = 0; l < tmp_num_elems_in_elem.host(elements_to_send[i][k]); l++) {
+                    all_elems_in_elem.push_back(tmp_elems_in_elem.host(elements_to_send[i][k], l));
                 }
             }
             displacement += elem_elem_counts[i];
@@ -2287,16 +2327,15 @@ void partition_mesh(
     gauss_point.fields_vec.communicate();
     
     // Loop over all elements and average the values of elements connected to that element
-    for (int i = 0; i < final_mesh.num_elems; i++) {
+    FOR_ALL(i, 0, final_mesh.num_elems, {
         double value = 0.0;
         for (int j = 0; j < final_mesh.num_elems_in_elem(i); j++) {
             value += gauss_point.fields.host(final_mesh.elems_in_elem(i, j));
         }
         value /= final_mesh.num_elems_in_elem(i);
         gauss_point.fields.host(i) = value;
-    }
-    for (int i = 0; i < final_mesh.num_elems; i++) {
-        double value = 0.0;
+
+        value = 0.0;
         for (int j = 0; j < final_mesh.num_elems_in_elem(i); j++) {
             value += gauss_point.fields_vec.host(final_mesh.elems_in_elem(i, j), 0);
         }
@@ -2304,7 +2343,8 @@ void partition_mesh(
         gauss_point.fields_vec.host(i, 0) = value;
         gauss_point.fields_vec.host(i, 1) = value;
         gauss_point.fields_vec.host(i, 2) = value;
-    }
+    });
+
     gauss_point.fields_vec.update_device();
 
 
@@ -2336,18 +2376,19 @@ void partition_mesh(
 
 
     // Update scalar field to visualize the communication
+    FOR_ALL(i, 0, final_mesh.num_elems, {
 
-    for(int elem_lid = 0; elem_lid < final_mesh.num_elems; elem_lid++) {
         double value = 0.0;
         for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            value += final_node.scalar_field.host(final_mesh.nodes_in_elem(elem_lid, j));
+            value += final_node.scalar_field(final_mesh.nodes_in_elem(elem_lid, j));
         }
         value /= final_mesh.num_nodes_in_elem;
 
         for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            final_node.scalar_field.host(final_mesh.nodes_in_elem(elem_lid, j)) = value;
+            final_node.scalar_field(final_mesh.nodes_in_elem(elem_lid, j)) = value;
         }
-    }
+    });
+
 }
 
 #endif // DECOMP_UTILS_H
