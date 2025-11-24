@@ -303,7 +303,7 @@ public:
     void communicate(){
 
         this_array_.update_host();
-       
+        MATAR_FENCE();
         fill_send_buffer();
 
         MPI_Neighbor_alltoallv(

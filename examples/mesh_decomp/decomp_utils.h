@@ -295,6 +295,7 @@ void naive_partition_mesh(
             dim, 0, num_dim,{
         naive_node.coords(node_id, dim) = node_pos_on_rank(node_id, dim);
     });
+    MATAR_FENCE();
 
     naive_node.coords.update_host();
 
@@ -433,16 +434,18 @@ void naive_partition_mesh(
                 tmp_elems_in_elem(elem_gid, i) = initial_mesh.elems_in_elem(elem_gid, i);
             } // end for i
         });  // end FOR_ALL elems
+        MATAR_FENCE();
         tmp_elems_in_elem.update_host();
-        Kokkos::fence();
+
 
 
         DCArrayKokkos<size_t> tmp_num_elems_in_elem(initial_mesh.num_elems, "tmp_elems_in_elem"); 
         FOR_ALL(i, 0, initial_mesh.num_elems, {
             tmp_num_elems_in_elem(i) = initial_mesh.num_elems_in_elem(i);
         });
-        tmp_num_elems_in_elem.update_host();
         MATAR_FENCE();
+        tmp_num_elems_in_elem.update_host();
+        
         
         for(int i = 0; i < world_size; i++) {
             sendcounts[i] = elem_elem_counts[i];
@@ -2326,15 +2329,19 @@ void partition_mesh(
     }
     for (int i = final_mesh.num_owned_elems; i < final_mesh.num_elems; i++) {
         gauss_point.fields.host(i) = -1.0;  // Ghost elements should be updated
-        gauss_point.fields_vec.host(i, 0) = -1.0;
-        gauss_point.fields_vec.host(i, 1) = -1.0;
-        gauss_point.fields_vec.host(i, 2) = -1.0;
+        gauss_point.fields_vec.host(i, 0) = -100.0;
+        gauss_point.fields_vec.host(i, 1) = -100.0;
+        gauss_point.fields_vec.host(i, 2) = -100.0;
     }
     gauss_point.fields.update_device();
     gauss_point.fields_vec.update_device();
+
+    MPI_Barrier(MPI_COMM_WORLD);
     
     gauss_point.fields.communicate();
     gauss_point.fields_vec.communicate();
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     CArrayKokkos <double> tmp(final_mesh.num_elems);
     
@@ -2358,10 +2365,12 @@ void partition_mesh(
         gauss_point.fields_vec(i, 1) = value;
         gauss_point.fields_vec(i, 2) = value;
     });
+    MATAR_FENCE();
 
     FOR_ALL(i, 0, final_mesh.num_elems, {
         gauss_point.fields(i) = tmp(i);
     });
+    MATAR_FENCE();
 
     gauss_point.fields.update_host();
     gauss_point.fields_vec.update_host();
@@ -2371,6 +2380,19 @@ void partition_mesh(
     // Test node communication using MPI_Neighbor_alltoallv
     std::vector<node_state> node_states = {node_state::coords, node_state::scalar_field, node_state::vector_field};
     final_node.initialize(final_mesh.num_nodes, 3, node_states, node_communication_plan);
+
+    for (int r = 0; r < world_size; r++) {
+            MPI_Barrier(MPI_COMM_WORLD);
+            if (rank == r) {
+                std::cout << "[rank " << rank << "] Finished building extended mesh structure" << std::endl;
+                std::cout << "[rank " << rank << "]   - Owned elements: " << final_mesh.num_owned_elems << std::endl;
+                std::cout << "[rank " << rank << "]   - Ghost elements: " << final_mesh.num_elems - final_mesh.num_owned_elems << std::endl;
+                std::cout << "[rank " << rank << "]   - Owned nodes: " << final_mesh.num_owned_nodes << std::endl;
+                std::cout << "[rank " << rank << "]   - Ghost-only nodes: " << final_mesh.num_nodes - final_mesh.num_owned_nodes << std::endl;
+                std::cout << std::flush;
+            }
+            MPI_Barrier(MPI_COMM_WORLD);
+        }
     
     for (int i = 0; i < final_mesh.num_owned_nodes; i++) {
         final_node.scalar_field.host(i) = static_cast<double>(rank);
@@ -2379,15 +2401,19 @@ void partition_mesh(
         final_node.vector_field.host(i, 2) = static_cast<double>(rank);
     }
     for (int i = final_mesh.num_owned_nodes; i < final_mesh.num_nodes; i++) {
-        final_node.scalar_field.host(i) = -1.0;
-        final_node.vector_field.host(i, 0) = -1.0;
-        final_node.vector_field.host(i, 1) = -1.0;
-        final_node.vector_field.host(i, 2) = -1.0;
+        final_node.scalar_field.host(i) = -100.0;
+        final_node.vector_field.host(i, 0) = -100.0;
+        final_node.vector_field.host(i, 1) = -100.0;
+        final_node.vector_field.host(i, 2) = -100.0;
     }
 
     final_node.coords.update_device();
     final_node.scalar_field.update_device();
     final_node.vector_field.update_device();
+    MATAR_FENCE();
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    node_communication_plan.verify_graph_communicator();
 
     final_node.scalar_field.communicate();
     // final_node.vector_field.communicate();
@@ -2395,6 +2421,8 @@ void partition_mesh(
 
 
     // Update scalar field to visualize the communication
+
+    CArrayKokkos <double> tmp_too(final_mesh.num_elems);
     FOR_ALL(i, 0, final_mesh.num_elems, {
 
         double value = 0.0;
@@ -2402,12 +2430,26 @@ void partition_mesh(
             value += final_node.scalar_field(final_mesh.nodes_in_elem(i, j));
         }
         value /= final_mesh.num_nodes_in_elem;
+        tmp_too(i) = value;
+    });
+    MATAR_FENCE();
 
+    FOR_ALL(i, 0, final_mesh.num_elems, {
         for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            final_node.scalar_field(final_mesh.nodes_in_elem(i, j)) = value;
+            final_node.scalar_field(final_mesh.nodes_in_elem(i, j)) = tmp_too(i);
         }
     });
+    MATAR_FENCE();
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    if(rank == 0)std::cout<<"Print from rank 0"<<std::endl;
+    if(rank == 1)std::cout<<"Print from rank 1"<<std::endl;
+
+    MATAR_FENCE();
     final_node.scalar_field.update_host();
+    MATAR_FENCE();
+    MPI_Barrier(MPI_COMM_WORLD);
 }
 
 #endif // DECOMP_UTILS_H

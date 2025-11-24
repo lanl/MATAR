@@ -190,6 +190,7 @@ enum class communication_plan_type {
             this->send_rank_ids.host(i) = send_rank_ids[i];
         }
         this->send_rank_ids.update_device();
+        MATAR_FENCE();
 
         // Copy and store receive neighbor IDs (in-bound neighbors: where we will receive data from)
         this->recv_rank_ids = DCArrayKokkos<int>(num_recv_ranks, "recv_rank_ids");
@@ -197,6 +198,7 @@ enum class communication_plan_type {
             this->recv_rank_ids.host(i) = recv_rank_ids[i];
         }
         this->recv_rank_ids.update_device();
+        MATAR_FENCE();
         
         // Create the distributed graph communicator.
         // This call links this process to its explicit send and receive neighbors.
