@@ -2354,8 +2354,8 @@ void partition_mesh(
         gauss_point.fields_vec(i, 1) = value;
         gauss_point.fields_vec(i, 2) = value;
     });
-
-    gauss_point.fields_vec.update_device();
+    gauss_point.fields.update_host();
+    gauss_point.fields_vec.update_host();
 
 
 
@@ -2398,7 +2398,7 @@ void partition_mesh(
             final_node.scalar_field(final_mesh.nodes_in_elem(i, j)) = value;
         }
     });
-
+    final_node.scalar_field.update_host();
 }
 
 #endif // DECOMP_UTILS_H
