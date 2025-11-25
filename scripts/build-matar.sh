@@ -71,7 +71,7 @@ show_help() {
 build_action="full-app"
 execution="examples"
 machine="linux"
-kokkos_build_type="openmp"
+kokkos_build_type="serial"
 build_cores="1"
 trilinos="disabled"
 intel_mkl="disabled"
