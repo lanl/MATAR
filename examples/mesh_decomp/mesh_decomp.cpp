@@ -34,7 +34,7 @@ int main(int argc, char** argv) {
     // Mesh size
     double origin[3] = {0.0, 0.0, 0.0};
     double length[3] = {1.0, 1.0, 1.0};
-    int num_elems_dim[3] = {20, 20, 20};
+    int num_elems_dim[3] = {30, 30, 30};
 
     // Initial mesh built on rank zero
     Mesh_t initial_mesh;

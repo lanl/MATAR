@@ -2261,31 +2261,31 @@ void partition_mesh(
     // Fill node coordinates
     // coord_recvbuf contains coords in element-node order, but we need them in node order
     // Build a map from node GID to coordinates
-    std::map<int, std::array<double, 3>> node_gid_to_coords;
+    std::map<int, std::vector<double>> node_gid_to_coords;
     int coord_idx = 0;
-    for (int e = 0; e < intermediate_mesh.num_elems; ++e) {
+    for (int e = 0; e < intermediate_mesh.num_elems; e++) {
         for (int j = 0; j < intermediate_mesh.num_nodes_in_elem; j++) {
             int node_gid = conn_recvbuf[e * intermediate_mesh.num_nodes_in_elem + j];
             if (node_gid_to_coords.find(node_gid) == node_gid_to_coords.end()) {
-                node_gid_to_coords[node_gid] = {
-                    coord_recvbuf[coord_idx*3 + 0],
-                    coord_recvbuf[coord_idx*3 + 1],
-                    coord_recvbuf[coord_idx*3 + 2]
-                };
+                std::vector<double> coords(num_dim);
+                for (int d = 0; d < num_dim; d++) {
+                    coords[d] = coord_recvbuf[coord_idx * num_dim + d];
+                }
+                node_gid_to_coords[node_gid] = coords;
             }
             coord_idx++;
         }
     }
     
     // Now fill coordinates in node order
-    intermediate_node.initialize(num_new_nodes, 3, {node_state::coords});
+    intermediate_node.initialize(num_new_nodes, num_dim, {node_state::coords});
     for (int i = 0; i < num_new_nodes; i++) {
         int node_gid = new_node_gids[i];
         auto it = node_gid_to_coords.find(node_gid);
         if (it != node_gid_to_coords.end()) {
-            intermediate_node.coords.host(i, 0) = it->second[0];
-            intermediate_node.coords.host(i, 1) = it->second[1];
-            intermediate_node.coords.host(i, 2) = it->second[2];
+            for (int d = 0; d < num_dim; d++) {
+                intermediate_node.coords.host(i, d) = it->second[d];
+            }
         }
     }
     intermediate_node.coords.update_device();
@@ -2361,6 +2361,7 @@ void partition_mesh(
             value += gauss_point.fields_vec(final_mesh.elems_in_elem(i, j), 0);
         }
         value /= final_mesh.num_elems_in_elem(i);
+
         gauss_point.fields_vec(i, 0) = value;
         gauss_point.fields_vec(i, 1) = value;
         gauss_point.fields_vec(i, 2) = value;
@@ -2380,31 +2381,18 @@ void partition_mesh(
     // Test node communication using MPI_Neighbor_alltoallv
     std::vector<node_state> node_states = {node_state::coords, node_state::scalar_field, node_state::vector_field};
     final_node.initialize(final_mesh.num_nodes, 3, node_states, node_communication_plan);
-
-    for (int r = 0; r < world_size; r++) {
-            MPI_Barrier(MPI_COMM_WORLD);
-            if (rank == r) {
-                std::cout << "[rank " << rank << "] Finished building extended mesh structure" << std::endl;
-                std::cout << "[rank " << rank << "]   - Owned elements: " << final_mesh.num_owned_elems << std::endl;
-                std::cout << "[rank " << rank << "]   - Ghost elements: " << final_mesh.num_elems - final_mesh.num_owned_elems << std::endl;
-                std::cout << "[rank " << rank << "]   - Owned nodes: " << final_mesh.num_owned_nodes << std::endl;
-                std::cout << "[rank " << rank << "]   - Ghost-only nodes: " << final_mesh.num_nodes - final_mesh.num_owned_nodes << std::endl;
-                std::cout << std::flush;
-            }
-            MPI_Barrier(MPI_COMM_WORLD);
-        }
     
     for (int i = 0; i < final_mesh.num_owned_nodes; i++) {
         final_node.scalar_field.host(i) = static_cast<double>(rank);
-        final_node.vector_field.host(i, 0) = static_cast<double>(rank);
-        final_node.vector_field.host(i, 1) = static_cast<double>(rank);
-        final_node.vector_field.host(i, 2) = static_cast<double>(rank);
+        for(int dim = 0; dim < num_dim; dim++){
+            final_node.vector_field.host(i, dim) = static_cast<double>(rank);
+        }
     }
     for (int i = final_mesh.num_owned_nodes; i < final_mesh.num_nodes; i++) {
         final_node.scalar_field.host(i) = -100.0;
-        final_node.vector_field.host(i, 0) = -100.0;
-        final_node.vector_field.host(i, 1) = -100.0;
-        final_node.vector_field.host(i, 2) = -100.0;
+        for(int dim = 0; dim < num_dim; dim++){
+            final_node.vector_field.host(i, dim) = -100;
+        }
     }
 
     final_node.coords.update_device();
@@ -2416,38 +2404,35 @@ void partition_mesh(
     node_communication_plan.verify_graph_communicator();
 
     final_node.scalar_field.communicate();
-    // final_node.vector_field.communicate();
+    final_node.vector_field.communicate();
+    
+    MATAR_FENCE();
     MPI_Barrier(MPI_COMM_WORLD);
 
+    DCArrayKokkos <double> tmp_too(final_mesh.num_nodes);
+    for(int smooth = 0; smooth < 3; smooth++){
+        FOR_ALL(i, 0, final_mesh.num_nodes, {
 
-    // Update scalar field to visualize the communication
+            double value = final_node.scalar_field(i);
+            for(int j = 0; j < final_mesh.num_nodes_in_node(i); j++){
+                value += final_node.scalar_field(final_mesh.nodes_in_node(i, j));
+            }
+            value /= final_mesh.num_nodes_in_node(i) + 1;
+            tmp_too(i) = value;
+        });
+        MATAR_FENCE();
 
-    CArrayKokkos <double> tmp_too(final_mesh.num_elems);
-    FOR_ALL(i, 0, final_mesh.num_elems, {
+        FOR_ALL(i, 0, final_mesh.num_nodes, {
+            final_node.scalar_field(i) = tmp_too(i);
+            for(int dim = 0; dim < num_dim; dim++){
+                final_node.vector_field(i, dim) = tmp_too(i);
+            }
+        });
+        MATAR_FENCE();
+    }
 
-        double value = 0.0;
-        for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            value += final_node.scalar_field(final_mesh.nodes_in_elem(i, j));
-        }
-        value /= final_mesh.num_nodes_in_elem;
-        tmp_too(i) = value;
-    });
-    MATAR_FENCE();
-
-    FOR_ALL(i, 0, final_mesh.num_elems, {
-        for(int j = 0; j < final_mesh.num_nodes_in_elem; j++) {
-            final_node.scalar_field(final_mesh.nodes_in_elem(i, j)) = tmp_too(i);
-        }
-    });
-    MATAR_FENCE();
-
-    MPI_Barrier(MPI_COMM_WORLD);
-
-    if(rank == 0)std::cout<<"Print from rank 0"<<std::endl;
-    if(rank == 1)std::cout<<"Print from rank 1"<<std::endl;
-
-    MATAR_FENCE();
     final_node.scalar_field.update_host();
+
     MATAR_FENCE();
     MPI_Barrier(MPI_COMM_WORLD);
 }

@@ -197,7 +197,6 @@ void build_3d_box(
     origin_mtr.update_device();
 
     // populate the point data structures
-    std::cout<<"First FOR_ALL"<<std::endl;
     FOR_ALL(k, 0, num_points_k,
             j, 0, num_points_j,
             i, 0, num_points_i,{
@@ -217,7 +216,6 @@ void build_3d_box(
     mesh.initialize_elems(num_elems, num_dim);
 
     // populate the point data structures
-    std::cout<<"Second FOR_ALL"<<std::endl;
     FOR_ALL(k, 0, num_elems_k,
             j, 0, num_elems_j,
             i, 0, num_elems_i,{

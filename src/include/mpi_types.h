@@ -316,8 +316,9 @@ public:
             recv_displs_.host_pointer(), 
             mpi_type_map<T>::value(),  // MPI_TYPE
             comm_plan_->mpi_comm_graph);
-        
+        MATAR_FENCE();
         copy_recv_buffer();
+        MATAR_FENCE();
 
         this_array_.update_device();
     };
