@@ -83,9 +83,9 @@ class MPICArrayKokkos {
     DCArrayKokkos<T> recv_buffer_;
     
 protected:
-    size_t dims_[7];
-    size_t length_;
-    size_t order_;  // tensor order (rank)
+    size_t dims_[7] = {0,0,0,0,0,0,0};
+    size_t length_ = 0;
+    size_t order_ = 0;  // tensor order (rank)
 
     MPI_Comm mpi_comm_;
     MPI_Status mpi_status_;
@@ -94,7 +94,7 @@ protected:
 
     
     // --- Ghost Communication Support ---
-    CommunicationPlan* comm_plan_;      // Pointer to shared communication plan
+    CommunicationPlan* comm_plan_ = NULL;      // Pointer to shared communication plan
 
 
     DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
@@ -113,7 +113,7 @@ protected:
     size_t num_ghost_;            // Number of ghost items (nodes/elements)
 
 public:
-    // Data member to access host view
+    // Data member to access host view (initialized as pointer to this_array_.host_pointer())
     ViewCArray <T> host;
 
 
@@ -143,8 +143,6 @@ public:
                  size_t dim3, size_t dim4, size_t dim5,
                  size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
     
-
-
     KOKKOS_INLINE_FUNCTION
     T& operator()(size_t i) const;
 
@@ -254,6 +252,10 @@ public:
     // Such that all the boundary elements going to a given rank are contiguous in the send buffer.
     void fill_send_buffer(){
 
+        // Copy this_array_ to the host
+        this_array_.update_host();
+        MATAR_FENCE();
+
         size_t send_idx = 0;
         for(int i = 0; i < comm_plan_->num_send_ranks; i++){
             for(int j = 0; j < comm_plan_->send_counts_.host(i); j++){
@@ -284,7 +286,6 @@ public:
                 recv_idx += stride_;
             }
         }
-        this_array_.update_device();
     };
 
 
@@ -300,10 +301,25 @@ public:
     // Method that communicates the data between the ranks
     // NOTE: This is a blocking communication operation, 
     // if you want to use non-blocking communication, you can use the following: MPI_Ineighbor_alltoallv
+    
+    // TODO: Replace this with persistent communicator:
+    // MPI_Request req;
+
+    // // Create persistent operation ONCE
+    // MPI_Neighbor_alltoallv_init(
+    //     sendbuf, sendcounts, sdispls, mpi_type_map<T>::value(),
+    //     recvbuf, recvcounts, rdispls, mpi_type_map<T>::value(),
+    //     comm_plan_->mpi_comm_graph,
+    //     MPI_INFO_NULL,
+    //     &req);
+
+    // // Then inside time step loop:
+    // MPI_Start(&req);
+    // // modify sendbuf in-place as needed
+    // MPI_Wait(&req);
+
     void communicate(){
 
-        this_array_.update_host();
-        MATAR_FENCE();
         fill_send_buffer();
 
         MPI_Neighbor_alltoallv(
@@ -316,11 +332,10 @@ public:
             recv_displs_.host_pointer(), 
             mpi_type_map<T>::value(),  // MPI_TYPE
             comm_plan_->mpi_comm_graph);
-        MATAR_FENCE();
+        
         copy_recv_buffer();
-        MATAR_FENCE();
-
         this_array_.update_device();
+        MATAR_FENCE();
     };
 
     void set_values(const T& value){
@@ -339,7 +354,7 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos()
         for (int i = 0; i < 7; i++) {
             dims_[i] = 0;
         }
-    }
+}
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -507,12 +522,41 @@ T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const MPICArrayKokkos& temp) {
-    this_array_ = temp.this_array_;
-    host = temp.host;  // Also copy the host ViewCArray
-    comm_plan_ = temp.comm_plan_;
-    send_buffer_ = temp.send_buffer_;
-    recv_buffer_ = temp.recv_buffer_;
-    stride_ = temp.stride_;
+    
+    // Do nothing if the assignment is of the form x = x
+    if (this != &temp) {
+
+        this_array_ = temp.this_array_;
+        send_buffer_ = temp.send_buffer_;
+        recv_buffer_ = temp.recv_buffer_;
+
+        length_ = temp.length_;
+
+        for (int iter = 0; iter < temp.order_; iter++){
+            dims_[iter] = temp.dims_[iter];
+        } // end for
+
+        order_ = temp.order_;
+
+        mpi_status_ = temp.mpi_status_;
+        mpi_datatype_ = temp.mpi_datatype_;
+        mpi_request_ = temp.mpi_request_;
+        comm_plan_ = temp.comm_plan_;
+
+        send_counts_ = temp.send_counts_;
+        recv_counts_ = temp.recv_counts_;
+        send_displs_ = temp.send_displs_;
+        recv_displs_ = temp.recv_displs_;
+        stride_ = temp.stride_;
+
+        send_indices_ = temp.send_indices_;
+        recv_indices_ = temp.recv_indices_;
+
+        num_owned_ = temp.num_owned_;
+        num_ghost_ = temp.num_ghost_;
+
+        host = temp.host;  // Also copy the host ViewCArray
+    }
     return *this;
 }
 
@@ -533,7 +577,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
     assert(i < order_ && "MPICArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
-    assert(dims_[i]>0 && "Access to MPICArrayKokkos dims is out of bounds!");
+    assert(dims_[i] > 0 && "Access to MPICArrayKokkos dims is out of bounds!");
     return this_array_.dims(i);
 }
 

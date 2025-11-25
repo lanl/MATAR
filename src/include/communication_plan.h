@@ -9,25 +9,14 @@
 
 using namespace mtr;
 
-/**
- * @struct CommunicationPlan
- * @brief Manages efficient MPI communication for ghost element and node data exchange
- * 
- * Pure data-oriented design with only flat, contiguous arrays for maximum cache efficiency.
- * Designed to be embedded in distributed data structures for automatic ghost synchronization.
- * 
- * Usage pattern in distributed structures:
- *   node.velocity.comm()  -> automatically syncs ghost nodes
- *   elem.density.comm()   -> automatically syncs ghost elements
- * 
- */
+
 enum class communication_plan_type {
     no_communication,
     all_to_all_graph
 };
 
 
- struct CommunicationPlan {
+struct CommunicationPlan {
     
     // ========================================================================
     // Metadata for MPI neighbor graph communication 
@@ -220,6 +209,7 @@ enum class communication_plan_type {
         has_comm_graph = true;
     }
 
+    // Useful function for debugging, possibly remove
     void verify_graph_communicator(){
         if(!has_comm_graph){
             throw std::runtime_error("MPI graph communicator has not been initialized");
@@ -320,6 +310,7 @@ enum class communication_plan_type {
         MPI_Barrier(mpi_comm_world);
     }
 
+    // Setup send/receive metadata
     void setup_send_recv(DRaggedRightArrayKokkos<int> &rank_send_ids, DRaggedRightArrayKokkos<int> &rank_recv_ids){
 
         this->send_indices_ = rank_send_ids; // indices of element data to send to each rank
@@ -360,10 +351,10 @@ enum class communication_plan_type {
             }
         }
         this->recv_displs_.update_device();
-
-        MPI_Barrier(mpi_comm_world);
+        MATAR_FENCE();
     }
 
+    // Useful function for debugging, possibly remove
     void verify_send_recv(){
         
         if(!has_comm_graph){
@@ -511,8 +502,6 @@ enum class communication_plan_type {
             throw std::runtime_error("Send/Recv communication plan verification failed");
         }
     }
-
-
 }; // End of CommunicationPlan
 
 #endif // end if HAVE_MPI
