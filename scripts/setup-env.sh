@@ -31,6 +31,9 @@ export KOKKOS_SOURCE_DIR=${basedir}/src/Kokkos/kokkos
 export KOKKOS_BUILD_DIR=${builddir}/kokkos
 export KOKKOS_INSTALL_DIR=${installdir}/kokkos
 
+# adding this for Windows, telling CMake where Kokkos is installed
+export CMAKE_PREFIX_PATH="${KOKKOS_INSTALL_DIR}:${CMAKE_PREFIX_PATH}"
+
 export TRILINOS_SOURCE_DIR=${basedir}/lib/Trilinos
 export TRILINOS_BUILD_DIR=${TRILINOS_SOURCE_DIR}/build-${kokkos_build_type}
 export TRILINOS_INSTALL_DIR=${TRILINOS_BUILD_DIR}
@@ -38,6 +41,10 @@ export TRILINOS_INSTALL_DIR=${TRILINOS_BUILD_DIR}
 export MATAR_SOURCE_DIR=${basedir}
 export MATAR_BUILD_DIR=${builddir}/matar
 export MATAR_INSTALL_DIR=${installdir}/matar
+
+# adding this for Windows, I must tell cmake where MATAR is
+export CMAKE_PREFIX_PATH="${MATAR_INSTALL_DIR}:${CMAKE_PREFIX_PATH}"
+
 
 export MATAR_BUILD_CORES=$build_cores
 

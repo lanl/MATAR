@@ -52,8 +52,15 @@ fi
 # Print CMake options for reference
 echo "CMake Options: ${cmake_options[@]}"
 
+########################################
+# FORCE PORTABLE CMAKE GENERATOR HERE
+########################################
+# Choose Makefiles on Unix & MSYS2 unless Ninja is explicitly desired
+# To force Ninja instead, change to: -G Ninja
+GENERATOR="Unix Makefiles"
+
 # Configure Examples
-cmake "${cmake_options[@]}" -B "${EXAMPLE_BUILD_DIR}" -S "${EXAMPLE_SOURCE_DIR}"
+cmake -G "${GENERATOR}" "${cmake_options[@]}" -B "${EXAMPLE_BUILD_DIR}" -S "${EXAMPLE_SOURCE_DIR}"
 
 # Build Examples
 make -C "${EXAMPLE_BUILD_DIR}" -j${MATAR_BUILD_CORES}

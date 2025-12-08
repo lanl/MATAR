@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.8)
 
 # specify languages that project will use here
 #project(matar-fortran LANGUAGES CXX Fortran)

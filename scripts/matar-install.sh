@@ -58,8 +58,16 @@ fi
 # Print CMake options for reference
 echo "CMake Options: ${cmake_options[@]}"
 
+########################################
+# FORCE PORTABLE CMAKE GENERATOR HERE
+########################################
+# Choose Makefiles on Unix & MSYS2 unless Ninja is explicitly desired
+# To force Ninja instead, change to: -G Ninja
+GENERATOR="Unix Makefiles"
+
+
 # Configure Matar
-cmake "${cmake_options[@]}" -B "${MATAR_BUILD_DIR}" -S "${MATAR_SOURCE_DIR}"
+cmake -G "${GENERATOR}" "${cmake_options[@]}" -B "${MATAR_BUILD_DIR}" -S "${MATAR_SOURCE_DIR}"
 
 # Build Matar
 echo "Building Matar..."
