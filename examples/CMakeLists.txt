@@ -156,6 +156,9 @@ if (KOKKOS)
   if (MPI)
     include_directories(laplaceMPI)
     add_subdirectory(laplaceMPI)
+
+    include_directories(mesh_decomp)
+    add_subdirectory(mesh_decomp)
   endif()
 
 endif()
@@ -191,11 +194,12 @@ add_subdirectory(sparsetests)
 include_directories(test_rocm)
 add_subdirectory(test_rocm)
 
-#include_directories(phaseField/srcKokkosVerbose)
-#add_subdirectory(phaseField/srcKokkosVerbose)
 
-#include_directories(phaseField/srcMacros)
-#add_subdirectory(phaseField/srcMacros)
+# include_directories(phaseField/srcKokkosVerbose)
+# add_subdirectory(phaseField/srcKokkosVerbose)
 
-#include_directories(phaseFieldMPI)
-#add_subdirectory(phaseFieldMPI)
+# include_directories(phaseField/srcMacros)
+# add_subdirectory(phaseField/srcMacros)
+
+# include_directories(phaseFieldMPI)
+# add_subdirectory(phaseFieldMPI)

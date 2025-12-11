@@ -1,135 +1,510 @@
 #ifndef COMMUNICATION_PLAN_H
 #define COMMUNICATION_PLAN_H
-/**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
- This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
- National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
- Department of Energy/National Nuclear Security Administration. All rights in the program are
- reserved by Triad National Security, LLC, and the U.S. Department of Energy/National Nuclear
- Security Administration. The Government is granted for itself and others acting on its behalf a
- nonexclusive, paid-up, irrevocable worldwide license in this material to reproduce, prepare
- derivative works, distribute copies to the public, perform publicly and display publicly, and
- to permit others to do so.
- This program is open source under the BSD-3 License.
- Redistribution and use in source and binary forms, with or without modification, are permitted
- provided that the following conditions are met:
- 
- 1.  Redistributions of source code must retain the above copyright notice, this list of
- conditions and the following disclaimer.
- 
- 2.  Redistributions in binary form must reproduce the above copyright notice, this list of
- conditions and the following disclaimer in the documentation and/or other materials
- provided with the distribution.
- 
- 3.  Neither the name of the copyright holder nor the names of its contributors may be used
- to endorse or promote products derived from this software without specific prior
- written permission.
- THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
- IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
- CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
- EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
- PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
- OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
- WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
- OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
- ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- **********************************************************************************************/
 
-#include "host_types.h"
-#include "kokkos_types.h"
-#include <typeinfo>
 #ifdef HAVE_MPI
 #include <mpi.h>
-#include "partition_map.h"
+#include "matar.h"
 
-namespace mtr
-{
+#include <set>
 
-/////////////////////////
-/* CommunicationPlan:  Class storing relevant data and functions to perform comms between two different MATAR MPI types.
-                       The object for this class should not be reconstructed if the same comm plan is needed repeatedly; the setup is expensive.
-                       The comms routines such as execute_comms can be called repeatedly to avoid repeated setup of the plan.*/
-/////////////////////////
-template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
-class CommunicationPlan {
+using namespace mtr;
 
-    // this is manage
-    using TArray1D = Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits>;
+
+enum class communication_plan_type {
+    no_communication,
+    all_to_all_graph
+};
+
+
+struct CommunicationPlan {
     
-protected:
+    // ========================================================================
+    // Metadata for MPI neighbor graph communication 
+    // ========================================================================
 
-public:
+    communication_plan_type comm_type = communication_plan_type::no_communication;
+
+    // MPI world communicator
+    MPI_Comm mpi_comm_world;
+    bool has_comm_world = false;
+    int world_size = -1;
+
+    // MPI graph communicator
+    MPI_Comm mpi_comm_graph;
+    bool has_comm_graph = false;
+
+    // Number of send and recv ranks
+    int num_send_ranks;  // In MPI language, this is the outdegree of the graph communicator
+    int num_recv_ranks;  // In MPI language, this is the indegree of the graph communicator
+
+    // Rank IDs for send and recv ranks
+    DCArrayKokkos<int> send_rank_ids;  // [size: num_send_ranks] Destination rank IDs
+    DCArrayKokkos<int> recv_rank_ids;  // [size: num_recv_ranks] Source rank IDs
+
+    // recv_weights: Weights on incoming edges (not used here, set to MPI_UNWEIGHTED)
+    // Could be used to specify communication volume if needed for optimization
+    int* recv_weights = MPI_UNWEIGHTED; // [size: num_recv_ranks] Weights on incoming edges, set to MPI_UNWEIGHTED if not used
     
-    /*forward comms means communicating data to a vector that doesn't have a unique distribution of its global
-      indices amongst processes from a vector that does have a unique distribution amongst processes.
-      An example of forward comms in a finite element application would be communicating ghost data from 
-      the vector of local data.
+    // send_weights: Weights on outgoing edges (not used here, set to MPI_UNWEIGHTED)
+    // Could be used to specify communication volume if needed for optimization
+    int* send_weights = MPI_UNWEIGHTED; // [size: num_send_ranks] Weights on outgoing edges, set to MPI_UNWEIGHTED if not used
+    
+    // info: Hints for optimization (MPI_INFO_NULL means use defaults)
+    MPI_Info info = MPI_INFO_NULL;
+    
+    // reorder: Whether to allow MPI to reorder ranks for optimization (0=no reordering)
+    // Setting to 0 preserves original rank numbering
+    // Note: In the future, we may want to allow MPI to reorder ranks for optimization by setting to 1, 
+    // this would allow MPI to reorder the ranks to make them physically closer on the hardware. 
+    // This is a good optimization for large meshes, but will require maps from MPI_comm_world rank IDs to the new reordered rank IDs.
+    int reorder = 0; 
 
-      reverse comms means communicating data to a vector that has a unique distribution of its global
-      indices amongst processes from a vector that does not have a unique distribution amongst processes.
-      An example of reverse comms in a finite element application would be communicating force contributions from ghost
-      indices via summation to the entries of the uniquely owned vector that stores final tallies of forces.
-    */
-    bool reverse_comms_flag; //default is false
+    DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_per_rank] Indices of items to send to each rank
+    DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_per_rank] Indices of items to receive from each rank
 
-    CommunicationPlan();
+    DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
+    DCArrayKokkos<int> recv_counts_; // [size: num_recv_ranks] Number of items to receive from each rank
+    
+    
+    DCArrayKokkos<int> send_displs_; // [size: num_send_ranks] Starting index of items to send to each rank
+    DCArrayKokkos<int> recv_displs_; // [size: num_recv_ranks] Starting index of items to receive from each rank
 
-    //Copy Constructor
-    CommunicationPlan(const CommunicationPlan<T, Layout, ExecSpace,MemoryTraits> &temp){
-        *this = temp;
+    int total_send_count;   // Total number of items to send
+    int total_recv_count;   // Total number of items to receive
+
+    // ========================================================================
+    // CONSTRUCTOR / INITIALIZATION
+    // ========================================================================
+    
+    CommunicationPlan() 
+        : num_send_ranks(0), num_recv_ranks(0),
+          has_comm_graph(false) {}
+    
+    
+    // Destructor to free MPI resources
+    ~CommunicationPlan() {
+        // Free graph communicator
+        if (has_comm_graph && mpi_comm_graph != MPI_COMM_NULL) {
+            MPI_Comm_free(&mpi_comm_graph);
+        }
     }
     
-    CommunicationPlan(bool reverse_comms);
+    
+    void initialize(MPI_Comm comm_world){
+        this->mpi_comm_world = comm_world;
+        has_comm_world = true;
+        MPI_Comm_size(comm_world, &world_size);
+    }
+    
+    /**
+     * @brief Initialize an MPI distributed graph communicator for sparse neighbor communication.
+     *
+     * This function creates an MPI "dist graph communicator" tailored to the sparse data exchange
+     * patterns typical in mesh-based parallel applications. It establishes direct knowledge for MPI
+     * about which processes (ranks) each process will communicate with. This improves the efficiency 
+     * and clarity of later communication (for example, with MPI_Neighbor_alltoallv).
+     *
+     * This function is especially useful when the communication pattern is not all-to-all, but rather
+     * a sparse subset: for instance, where each process only exchanges data with a few neighbors.
+     *
+     * ==== Key Concepts ====
+     * - MPI Communicator:  An MPI object representing a group of processes that can communicate with each other.
+     *   For context, "MPI_COMM_WORLD" is a communicator including all processes, but a graph communicator
+     *   customizes direct process connections.
+     * - Rank:              Integer ID identifying a process in a communicator.
+     * - Distributed Graph: MPI can represent communication as a directed sparse graph, with edges from
+     *   this rank to those it needs to send to, and from those it will receive from.
+     *
+     * ==== Parameters ====
+     * @param num_send_ranks   [in] Number of ranks this process will send data to (out-neighbors).
+     * @param send_rank_ids    [in] Array of size num_send_ranks; each entry is the rank of a process to send to.
+     * @param num_recv_ranks   [in] Number of ranks this process will receive data from (in-neighbors).
+     * @param recv_rank_ids    [in] Array of size num_recv_ranks; each entry is the rank of a process to receive from.
+     *
+     * ==== Steps ====
+     *
+     * 1. Checks if the basic communicator has been initialized.
+     *    Throws an error if it has not.
+     *
+     * 2. Stores the send/receive neighbor counts and rank lists internally.
+     *    Copies the IDs into the internal device-host arrays.
+     *      - send_rank_ids: process IDs that will be destinations for outgoing messages.
+     *      - recv_rank_ids: process IDs that will provide incoming messages.
+     *
+     * 3. Calls MPI_Dist_graph_create_adjacent:
+     *    This constructs a new MPI communicator ("mpi_comm_graph") that encodes this process's
+     *    inbound and outbound neighbors. MPI uses this to optimize and route messages directly
+     *    and efficiently during later neighbor collectives.
+     *
+     *    - Note: The 'recv_weights' and 'send_weights' arguments are set to NULL here;
+     *            this means we are not giving extra weighting or priorities to any connection.
+     *    - The 'reorder' argument (set to 0 in this class) disables rank reordering;
+     *      this ensures the assignment of process ranks is preserved, which is often needed
+     *      for mapping data or results back to physical entities.
+     *    - On return, 'mpi_comm_graph' will allow use of "neighbor" collectives (MPI_Neighbor_alltoall[v], etc.),
+     *      which automatically use the provided topology to send/receive to only neighbors efficiently.
+     *
+     * 4. Marks the internal flag indicating that the graph communicator has been set up ("has_comm_graph").
+     *
+     * ==== Example Usage ====
+     * Suppose rank 0 will send to ranks 1 and 2, and receive from rank 3 only:
+     *    int send_ranks[2] = {1, 2};
+     *    int recv_ranks[1] = {3};
+     *    initialize_graph_communicator(2, send_ranks, 1, recv_ranks);
+     *
+     * ==== Why Use This? ====
+     * - This avoids the need to do manual pairwise MPI_Send/MPI_Recv in your code, 
+     *   and enables the use of neighbor collectives -- concise, scalable, and hard-to-get-wrong.
+     * - It explicitly tells MPI only about your neighbors, so it can optimize routes and memory.
+     * - If you have a large number of processes or a mesh/network with only local coupling,
+     *   this approach scales much better than using global/all-to-all communication.
+     *
+     * @throws std::runtime_error if the base communicator has not been initialized.
+     */
+    void initialize_graph_communicator(int num_send_ranks, int* send_rank_ids, int num_recv_ranks, int* recv_rank_ids){
+        
+        this->comm_type = communication_plan_type::all_to_all_graph;
+        // Check if the MPI_COMM_WORLD communicator has been initialized.
+        if(!has_comm_world){
+            throw std::runtime_error("MPI communicator for the world has not been initialized");
+        }
+        
+        // Store the number of outbound and inbound neighbors
+        this->num_send_ranks = num_send_ranks;
+        this->num_recv_ranks = num_recv_ranks;
+        
+        // Copy and store send neighbor IDs (out-bound neighbors: where we will send data to)
+        this->send_rank_ids = DCArrayKokkos<int>(num_send_ranks, "send_rank_ids");
+        for(int i = 0; i < num_send_ranks; i++){
+            this->send_rank_ids.host(i) = send_rank_ids[i];
+        }
+        this->send_rank_ids.update_device();
+        MATAR_FENCE();
 
-    KOKKOS_INLINE_FUNCTION
-    CommunicationPlan& operator=(const CommunicationPlan& temp);
+        // Copy and store receive neighbor IDs (in-bound neighbors: where we will receive data from)
+        this->recv_rank_ids = DCArrayKokkos<int>(num_recv_ranks, "recv_rank_ids");
+        for(int i = 0; i < num_recv_ranks; i++){
+            this->recv_rank_ids.host(i) = recv_rank_ids[i];
+        }
+        this->recv_rank_ids.update_device();
+        MATAR_FENCE();
+        
+        // Create the distributed graph communicator.
+        // This call links this process to its explicit send and receive neighbors.
+        // See https://www.open-mpi.org/doc/v4.0/man3/MPI_Dist_graph_create_adjacent.3.php for more details.
+        MPI_Dist_graph_create_adjacent(
+            mpi_comm_world,                                       // Existing communicator (usually MPI_COMM_WORLD)
+            num_recv_ranks,                                       // Number of in-neighbors (recv)
+            this->recv_rank_ids.host_pointer(),                   // Array of in-neighbor ranks (who we receive from)
+            recv_weights,                                         // Edge weights (NULL = unweighted)
+            num_send_ranks,                                       // Number of out-neighbors (send)
+            this->send_rank_ids.host_pointer(),                   // Array of out-neighbor ranks (who we send to)
+            send_weights,                                         // Edge weights (NULL = unweighted)
+            info,                                                 // Additional info for MPI (not used, set to MPI_INFO_NULL)
+            reorder,                                              // Allow MPI to reorder ranks for performance (0 disables)
+            &mpi_comm_graph                                       // [out] New graph communicator
+        );
 
-    // Deconstructor
-    virtual KOKKOS_INLINE_FUNCTION
-    ~CommunicationPlan ();
+        // Set the internal flag indicating that we have created the MPI distributed graph communicator.
+        has_comm_graph = true;
+    }
 
-    virtual void execute_comms(){}
+    // Useful function for debugging, possibly remove
+    void verify_graph_communicator(){
+        if(!has_comm_graph){
+            throw std::runtime_error("MPI graph communicator has not been initialized");
+        }
+
+        // ============================================================================
+        // Verify the distributed graph communicator
+        // ============================================================================
+        // Query the graph to verify it matches what we specified
+        int indegree_out, outdegree_out, weighted;
+        MPI_Dist_graph_neighbors_count(mpi_comm_graph, &indegree_out, &outdegree_out, &weighted);
+        
+        // Allocate arrays to receive neighbor information
+        std::vector<int> sources_out(indegree_out);
+        std::vector<int> sourceweights_out(indegree_out);
+        std::vector<int> destinations_out(outdegree_out);
+        std::vector<int> destweights_out(outdegree_out);
+        
+        // Retrieve the actual neighbors from the graph communicator
+        MPI_Dist_graph_neighbors(mpi_comm_graph, 
+                                indegree_out, sources_out.data(), sourceweights_out.data(),
+                                outdegree_out, destinations_out.data(), destweights_out.data());
+        
+        int rank = -1;
+        MPI_Comm_rank(mpi_comm_world, &rank);
+
+        // Additional verification: Check if the queried values match our input
+        bool verification_passed = true;
+        
+        // Print verification information for each rank sequentially
+        for (int r = 0; r < world_size; ++r) {
+            MPI_Barrier(mpi_comm_world);
+            if (rank == r) {
+                std::cout << "\n[rank " << rank << "] Graph Communicator Verification:" << std::endl;
+                std::cout << "  Indegree (receives from " << indegree_out << " ranks): ";
+                for (int i = 0; i < indegree_out; ++i) {
+                    std::cout << sources_out[i] << " ";
+                }
+                std::cout << std::endl;
+                
+                std::cout << "  Outdegree (sends to " << outdegree_out << " ranks): ";
+                for (int i = 0; i < outdegree_out; ++i) {
+                    std::cout << destinations_out[i] << " ";
+                }
+                std::cout << std::endl;
+                
+                std::cout << "  Weighted: " << (weighted ? "yes" : "no") << std::endl;
+            }
+            MPI_Barrier(mpi_comm_world);
+        }
+        
+        // Check if the counts match our stored values
+        if (indegree_out != num_recv_ranks) {
+            std::cerr << "[rank " << rank << "] ERROR: indegree mismatch! "
+                      << "Expected " << num_recv_ranks << ", got " << indegree_out << std::endl;
+            verification_passed = false;
+        }
+        if (outdegree_out != num_send_ranks) {
+            std::cerr << "[rank " << rank << "] ERROR: outdegree mismatch! "
+                      << "Expected " << num_send_ranks << ", got " << outdegree_out << std::endl;
+            verification_passed = false;
+        }
+        
+        // Check if source ranks match (build set from our stored recv_rank_ids)
+        std::set<int> sources_set_in;
+        for (int i = 0; i < num_recv_ranks; ++i) {
+            sources_set_in.insert(recv_rank_ids.host(i));
+        }
+        std::set<int> sources_set_out(sources_out.begin(), sources_out.end());
+        if (sources_set_in != sources_set_out) {
+            std::cerr << "[rank " << rank << "] ERROR: source ranks mismatch!" << std::endl;
+            verification_passed = false;
+        }
+        
+        // Check if destination ranks match (build set from our stored send_rank_ids)
+        std::set<int> dests_set_in;
+        for (int i = 0; i < num_send_ranks; ++i) {
+            dests_set_in.insert(send_rank_ids.host(i));
+        }
+        std::set<int> dests_set_out(destinations_out.begin(), destinations_out.end());
+        if (dests_set_in != dests_set_out) {
+            std::cerr << "[rank " << rank << "] ERROR: destination ranks mismatch!" << std::endl;
+            verification_passed = false;
+        }
+        
+        // Global verification check
+        int local_passed = verification_passed ? 1 : 0;
+        int global_passed = 0;
+        MPI_Allreduce(&local_passed, &global_passed, 1, MPI_INT, MPI_MIN, mpi_comm_world);
+        MPI_Barrier(mpi_comm_world);
+        if (rank == 0) {
+            if (global_passed) {
+                std::cout << "\n✓ Graph communicator verification PASSED on all ranks\n" << std::endl;
+            } else {
+                std::cout << "\n✗ Graph communicator verification FAILED on one or more ranks\n" << std::endl;
+            }
+        }
+        MPI_Barrier(mpi_comm_world);
+    }
+
+    // Setup send/receive metadata
+    void setup_send_recv(DRaggedRightArrayKokkos<int> &rank_send_ids, DRaggedRightArrayKokkos<int> &rank_recv_ids){
+
+        this->send_indices_ = rank_send_ids; // indices of element data to send to each rank
+        this->recv_indices_ = rank_recv_ids; // indices of element data to receive from each rank
+
+        // Setup send data
+        this->send_counts_ = DCArrayKokkos<int>(num_send_ranks, "send_counts");
+        this->total_send_count = 0;
+        for(int i = 0; i < num_send_ranks; i++){
+            this->send_counts_.host(i) = rank_send_ids.stride_host(i);
+            this->total_send_count += this->send_counts_.host(i);
+        }
+        this->send_counts_.update_device();
+
+        this->send_displs_ = DCArrayKokkos<int>(num_send_ranks, "send_displs");
+        for(int i = 0; i < num_send_ranks; i++){
+            this->send_displs_.host(i) = 0;
+            for(int j = 0; j < i; j++){
+                this->send_displs_.host(i) += this->send_counts_.host(j);
+            }
+        }
+        this->send_displs_.update_device();
+
+        // Setup recv data
+        this->recv_counts_ = DCArrayKokkos<int>(num_recv_ranks, "recv_counts");
+        this->total_recv_count = 0;
+        for(int i = 0; i < num_recv_ranks; i++){
+            this->recv_counts_.host(i) = rank_recv_ids.stride_host(i);
+            this->total_recv_count += this->recv_counts_.host(i);
+        }
+        this->recv_counts_.update_device();
+
+        this->recv_displs_ = DCArrayKokkos<int>(num_recv_ranks, "recv_displs");
+        for(int i = 0; i < num_recv_ranks; i++){
+            this->recv_displs_.host(i) = 0;
+            for(int j = 0; j < i; j++){
+                this->recv_displs_.host(i) += this->recv_counts_.host(j);
+            }
+        }
+        this->recv_displs_.update_device();
+        MATAR_FENCE();
+    }
+
+    // Useful function for debugging, possibly remove
+    void verify_send_recv(){
+        
+        if(!has_comm_graph){
+            throw std::runtime_error("Graph communicator has not been initialized");
+        }
+
+        int rank = -1;
+        MPI_Comm_rank(mpi_comm_world, &rank);
+
+        bool local_verification_passed = true;
+
+        // ============================================================================
+        // Local Verification: Check consistency of counts and displacements
+        // ============================================================================
+
+        // Verify send counts and displacements
+        int computed_total_send = 0;
+        for(int i = 0; i < num_send_ranks; i++){
+            computed_total_send += send_counts_.host(i);
+            
+            // Verify displacements are consistent
+            int expected_displs = 0;
+            for(int j = 0; j < i; j++){
+                expected_displs += send_counts_.host(j);
+            }
+            if(send_displs_.host(i) != expected_displs){
+                std::cerr << "[rank " << rank << "] ERROR: send_displs[" << i << "] mismatch! "
+                          << "Expected " << expected_displs << ", got " << send_displs_.host(i) << std::endl;
+                local_verification_passed = false;
+            }
+        }
+
+        // Verify total send count
+        if(computed_total_send != total_send_count){
+            std::cerr << "[rank " << rank << "] ERROR: total_send_count mismatch! "
+                      << "Expected " << computed_total_send << ", got " << total_send_count << std::endl;
+            local_verification_passed = false;
+        }
+
+        // Verify recv counts and displacements
+        int computed_total_recv = 0;
+        for(int i = 0; i < num_recv_ranks; i++){
+            computed_total_recv += recv_counts_.host(i);
+            
+            // Verify displacements are consistent
+            int expected_displs = 0;
+            for(int j = 0; j < i; j++){
+                expected_displs += recv_counts_.host(j);
+            }
+            if(recv_displs_.host(i) != expected_displs){
+                std::cerr << "[rank " << rank << "] ERROR: recv_displs[" << i << "] mismatch! "
+                          << "Expected " << expected_displs << ", got " << recv_displs_.host(i) << std::endl;
+                local_verification_passed = false;
+            }
+        }
+
+        // Verify total recv count
+        if(computed_total_recv != total_recv_count){
+            std::cerr << "[rank " << rank << "] ERROR: total_recv_count mismatch! "
+                      << "Expected " << computed_total_recv << ", got " << total_recv_count << std::endl;
+            local_verification_passed = false;
+        }
+
+        // Verify send indices are within bounds (basic sanity check)
+        for(int i = 0; i < num_send_ranks; i++){
+            for(int j = 0; j < send_indices_.stride_host(i); j++){
+                int idx = send_indices_.host(i, j);
+                if(idx < 0){
+                    std::cerr << "[rank " << rank << "] ERROR: negative send index at rank " << i 
+                              << ", index " << j << ": " << idx << std::endl;
+                    local_verification_passed = false;
+                }
+            }
+        }
+
+        // Verify recv indices are within bounds (basic sanity check)
+        for(int i = 0; i < num_recv_ranks; i++){
+            for(int j = 0; j < recv_indices_.stride_host(i); j++){
+                int idx = recv_indices_.host(i, j);
+                if(idx < 0){
+                    std::cerr << "[rank " << rank << "] ERROR: negative recv index at rank " << i 
+                              << ", index " << j << ": " << idx << std::endl;
+                    local_verification_passed = false;
+                }
+            }
+        }
+
+        // ============================================================================
+        // Print local verification information for each rank sequentially
+        // ============================================================================
+        for (int r = 0; r < world_size; ++r) {
+            MPI_Barrier(mpi_comm_world);
+            if (rank == r) {
+                std::cout << "\n[rank " << rank << "] Send/Recv Communication Plan Verification:" << std::endl;
+                
+                std::cout << "  Send Configuration:" << std::endl;
+                std::cout << "    - Num send ranks: " << num_send_ranks << std::endl;
+                std::cout << "    - Total send count: " << total_send_count << std::endl;
+                std::cout << "    - Send counts per rank: ";
+                for (int i = 0; i < num_send_ranks; ++i) {
+                    std::cout << send_counts_.host(i) << " ";
+                }
+                std::cout << std::endl;
+                std::cout << "    - Send displacements: ";
+                for (int i = 0; i < num_send_ranks; ++i) {
+                    std::cout << send_displs_.host(i) << " ";
+                }
+                std::cout << std::endl;
+                
+                std::cout << "  Recv Configuration:" << std::endl;
+                std::cout << "    - Num recv ranks: " << num_recv_ranks << std::endl;
+                std::cout << "    - Total recv count: " << total_recv_count << std::endl;
+                std::cout << "    - Recv counts per rank: ";
+                for (int i = 0; i < num_recv_ranks; ++i) {
+                    std::cout << recv_counts_.host(i) << " ";
+                }
+                std::cout << std::endl;
+                std::cout << "    - Recv displacements: ";
+                for (int i = 0; i < num_recv_ranks; ++i) {
+                    std::cout << recv_displs_.host(i) << " ";
+                }
+                std::cout << std::endl;
+            }
+            MPI_Barrier(mpi_comm_world);
+        }
+
+        // ============================================================================
+        // Global Verification: Use MPI to verify consistency across ranks
+        // ============================================================================
+        int local_passed = local_verification_passed ? 1 : 0;
+        int global_passed = 0;
+        MPI_Allreduce(&local_passed, &global_passed, 1, MPI_INT, MPI_MIN, mpi_comm_world);
+        MPI_Barrier(mpi_comm_world);
+
+        if (rank == 0) {
+            if (global_passed) {
+                std::cout << "\n✓ Send/Recv communication plan verification PASSED on all ranks\n" << std::endl;
+            } else {
+                std::cout << "\n✗ Send/Recv communication plan verification FAILED on one or more ranks\n" << std::endl;
+            }
+        }
+        MPI_Barrier(mpi_comm_world);
+
+        if(!global_passed){
+            throw std::runtime_error("Send/Recv communication plan verification failed");
+        }
+    }
 }; // End of CommunicationPlan
 
+#endif // end if HAVE_MPI
+#endif // end if COMMUNICATION_PLAN_H
 
-// Default constructor
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::CommunicationPlan() {
-    
-}
-
-// Overloaded 1D constructor
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-CommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::CommunicationPlan(bool reverse_comms) {
-    reverse_comms_flag = reverse_comms;
-}
-
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-CommunicationPlan<T,Layout,ExecSpace,MemoryTraits>& CommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::operator= (const CommunicationPlan& temp) {
-    
-    // Do nothing if the assignment is of the form x = x
-    if (this != &temp) {
-        reverse_comms_flag = temp.reverse_comms_flag;
-    }
-    
-    return *this;
-}
-
-template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-CommunicationPlan<T,Layout,ExecSpace,MemoryTraits>::~CommunicationPlan() {}
-
-////////////////////////////////////////////////////////////////////////////////
-// End of CommunicationPlan
-////////////////////////////////////////////////////////////////////////////////
-
-} // end namespace
-
-#endif // end if have MPI
-
-#endif // COMMUNICATION_PLAN_H
 
