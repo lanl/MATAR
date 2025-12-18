@@ -90,7 +90,10 @@
 #include <iostream>
 
 
-
+// -----------------------------------------
+// MACRO for expanding argvs to make MSVC work
+// -----------------------------------------
+#define EXPAND(x) x
 
 
 // -----------------------------------------
@@ -147,7 +150,7 @@
 
 #define \
     FOR_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _13, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__))
 
 
 // the DO_ALL loop
@@ -170,7 +173,7 @@
 
 #define \
     DO_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _13, _12, _11, DO3D, _9, _8, DO2D, _6, _5, DO1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, _12, _11, DO3D, _9, _8, DO2D, _6, _5, DO1D)(__VA_ARGS__))
 
 
 // the REDUCE SUM loop
@@ -195,7 +198,7 @@
 
 #define \
     FOR_REDUCE_SUM(...) \
-    GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__))
 
 
 // the REDUCE Product loop
@@ -224,7 +227,7 @@
 
 #define \
     FOR_REDUCE_PRODUCT(...) \
-    GET_MACRO(__VA_ARGS__, _13, RPROD3D, _11, _10, RPROD2D, _8, _7, RPROD1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, RPROD3D, _11, _10, RPROD2D, _8, _7, RPROD1D)(__VA_ARGS__))
 
 
 // the DO_REDUCE_SUM loop
@@ -249,7 +252,7 @@
 
 #define \
     DO_REDUCE_SUM(...) \
-    GET_MACRO(__VA_ARGS__, _13, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__))
 
 
 // the REDUCE MAX loop
@@ -276,7 +279,7 @@
 
 #define \
     FOR_REDUCE_MAX(...) \
-    GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__))
 
 
 // the DO_REDUCE_MAX loop
@@ -315,7 +318,7 @@
 
 #define \
     DO_REDUCE_MAX(...) \
-    GET_MACRO(__VA_ARGS__, _13, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__))
 
 
 
@@ -355,7 +358,7 @@
 
 #define \
     FOR_REDUCE_MIN(...) \
-    GET_MACRO(__VA_ARGS__, _13, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__))
 
 
 // the DO_REDUCE MIN loop
@@ -382,7 +385,7 @@
 
 #define \
     DO_REDUCE_MIN(...) \
-    GET_MACRO(__VA_ARGS__, _13, DO_RMIN3D, _11, _10, DO_RMIN2D, _8, _7, DO_RMIN1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, DO_RMIN3D, _11, _10, DO_RMIN2D, _8, _7, DO_RMIN1D)(__VA_ARGS__))
 
 
 
@@ -406,7 +409,7 @@ Kokkos::parallel_for( \
 
 #define \
 FOR_ALL_CLASS(...) \
-GET_MACRO(__VA_ARGS__, _13, _12, _11, FORCLASS3D, _9, _8, FORCLASS2D, _6, _5, FORCLASS1D)(__VA_ARGS__)
+EXPAND(GET_MACRO(__VA_ARGS__, _13, _12, _11, FORCLASS3D, _9, _8, FORCLASS2D, _6, _5, FORCLASS1D)(__VA_ARGS__))
 
 
 // the REDUCE SUM loop
@@ -431,7 +434,7 @@ Kokkos::parallel_reduce( \
 
 #define \
 FOR_REDUCE_SUM_CLASS(...) \
-GET_MACRO(__VA_ARGS__, _13, RSUMCLASS3D, _11, _10, RSUMCLASS2D, _8, _7, RSUMCLASS1D)(__VA_ARGS__)
+EXPAND(GET_MACRO(__VA_ARGS__, _13, RSUMCLASS3D, _11, _10, RSUMCLASS2D, _8, _7, RSUMCLASS1D)(__VA_ARGS__))
 
 
 
@@ -460,7 +463,7 @@ Kokkos::parallel_reduce( \
 
 #define \
 FOR_REDUCE_MAX_CLASS(...) \
-GET_MACRO(__VA_ARGS__, _13, RMAXCLASS3D, _11, _10, RMAXCLASS2D, _8, _7, RMAXCLASS1D)(__VA_ARGS__)
+EXPAND(GET_MACRO(__VA_ARGS__, _13, RMAXCLASS3D, _11, _10, RMAXCLASS2D, _8, _7, RMAXCLASS1D)(__VA_ARGS__))
 
 
 // the REDUCE MIN loop with variables in a class
@@ -487,7 +490,7 @@ Kokkos::parallel_reduce( \
 
 #define \
 FOR_REDUCE_MIN_CLASS(...) \
-GET_MACRO(__VA_ARGS__, _13, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(__VA_ARGS__)
+EXPAND(GET_MACRO(__VA_ARGS__, _13, RMINCLASS3D, _11, _10, RMINCLASS2D, _8, _7, RMINCLASS1D)(__VA_ARGS__))
 
 #define \
 TEAM_ID \
@@ -705,7 +708,7 @@ void for_all_delta (int i_start, int i_end, int i_delta,
 
 #define \
     FOR_LOOP(...) \
-    GET_MACRO(__VA_ARGS__, FOR3DLOOPDELTA, _12, _11, FOR3DLOOP, FOR2DLOOPDELTA, _8, FOR2DLOOP, _6, FOR1DLOOPDELTA, FOR1DLOOP)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, FOR3DLOOPDELTA, _12, _11, FOR3DLOOP, FOR2DLOOPDELTA, _8, FOR2DLOOP, _6, FOR1DLOOPDELTA, FOR1DLOOP)(__VA_ARGS__))
 
 
 // the DO_ALL loop
@@ -741,7 +744,7 @@ void for_all_delta (int i_start, int i_end, int i_delta,
              [&]( const int (i), const int (j), const int (k) ) {fcn} )
 #define \
     DO_LOOP(...) \
-    GET_MACRO(__VA_ARGS__, DO3DLOOPDELTA, _12, _11, DO3DLOOP, DO2DLOOPDELTA, _8, DO2DLOOP, _6, DO1DLOOPDELTA, DO1DLOOP)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, DO3DLOOPDELTA, _12, _11, DO3DLOOP, DO2DLOOPDELTA, _8, DO2DLOOP, _6, DO1DLOOPDELTA, DO1DLOOP)(__VA_ARGS__))
 
 
 
@@ -948,7 +951,7 @@ void reduce_prod (int i_start, int i_end,
              [&]( const int (i), const int (j), const int (k) ) {fcn} )
 #define \
     FOR_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _13, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, _12, _11, FOR3D, _9, _8, FOR2D, _6, _5, FOR1D)(__VA_ARGS__))
 
 
 // the DO_ALL loop
@@ -969,7 +972,7 @@ void reduce_prod (int i_start, int i_end,
              [&]( const int (i), const int (j), const int (k) ) {fcn} )
 #define \
     DO_ALL(...) \
-    GET_MACRO(__VA_ARGS__, _13, _12, _11, DO3D, _9, _8, DO2D, _6, _5, DO1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, _12, _11, DO3D, _9, _8, DO2D, _6, _5, DO1D)(__VA_ARGS__))
 
 
 // the REDUCE loops, no kokkos
@@ -991,7 +994,7 @@ void reduce_prod (int i_start, int i_end,
 
 #define \
     FOR_REDUCE_SUM(...) \
-    GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, RSUM3D, _11, _10, RSUM2D, _8, _7, RSUM1D)(__VA_ARGS__))
 
 
 // DO_REDUCE_SUM
@@ -1013,7 +1016,7 @@ void reduce_prod (int i_start, int i_end,
 
 #define \
     DO_REDUCE_SUM(...) \
-    GET_MACRO(__VA_ARGS__, _13, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__))
 
 
 // Reduce max
@@ -1035,7 +1038,7 @@ void reduce_prod (int i_start, int i_end,
 
 #define \
     FOR_REDUCE_MAX(...) \
-    GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, RMAX3D, _11, _10, RMAX2D, _8, _7, RMAX1D)(__VA_ARGS__))
 
 
 
@@ -1059,7 +1062,7 @@ void reduce_prod (int i_start, int i_end,
 
 #define \
     DO_REDUCE_MAX(...) \
-    GET_MACRO(__VA_ARGS__, _13, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, DO_RMAX3D, _11, _10, DO_RMAX2D, _8, _7, DO_RMAX1D)(__VA_ARGS__))
 
 
 // reduce min
@@ -1081,7 +1084,7 @@ void reduce_prod (int i_start, int i_end,
 
 #define \
     FOR_REDUCE_MIN(...) \
-    GET_MACRO(__VA_ARGS__, _13, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, RMIN3D, _11, _10, RMIN2D, _8, _7, RMIN1D)(__VA_ARGS__))
 
 
 // DO_REDUCE_MIN
@@ -1103,7 +1106,7 @@ void reduce_prod (int i_start, int i_end,
 
 #define \
     DO_REDUCE_MIN(...) \
-    GET_MACRO(__VA_ARGS__, _13, DO_RMIN3D, _11, _10, DO_RMIN2D, _8, _7, DO_RMIN1D)(__VA_ARGS__)
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, DO_RMIN3D, _11, _10, DO_RMIN2D, _8, _7, DO_RMIN1D)(__VA_ARGS__))
 
 
 #endif  // if not kokkos
