@@ -128,6 +128,10 @@ if (KOKKOS)
   add_executable(qr_test test_qr_solve.cpp)
   target_link_libraries(qr_test ${LINKING_LIBRARIES})
 
+  include_directories(pointcloud)
+  add_subdirectory(pointcloud)
+
+
   if (Matar_ENABLE_TRILINOS)
     add_executable(anndistributed ann_distributed.cpp)
     target_link_libraries(anndistributed ${LINKING_LIBRARIES})
