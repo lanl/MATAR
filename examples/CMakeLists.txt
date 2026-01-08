@@ -128,6 +128,9 @@ if (KOKKOS)
   add_executable(qr_test test_qr_solve.cpp)
   target_link_libraries(qr_test ${LINKING_LIBRARIES})
 
+  add_executable(lattice levelset_generator.cpp)
+  target_link_libraries(lattice ${LINKING_LIBRARIES})
+
   if (Matar_ENABLE_TRILINOS)
     add_executable(anndistributed ann_distributed.cpp)
     target_link_libraries(anndistributed ${LINKING_LIBRARIES})
