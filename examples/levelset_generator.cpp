@@ -52,11 +52,13 @@
 // -----------------------------------------------
 // inputs:
 
-const double box_dims = 15; // box dims
+const double box_dim_x = 5; // box dims
+const double box_dim_y = 7; // box dims
+const double box_dim_z = 15; // box dims
 const double r = 0.375; // radius of struts
 
 // parameters for NPR lattice option
-const double h2 = box_dims;
+const double h2 = box_dim_z;
 const double alpha1 = 0.5;
 const double alphah = 0.5;
 
@@ -66,20 +68,20 @@ const int num_pt_y = 300; // resolution
 const int num_pt_z = 300; // resolution
 
 // build sc=0; bcc=1; fcc=2; octet=3; other=4
-const size_t build_lattice_type = 4;
+const size_t build_lattice_type = 3;
 
 // -----------------------------------------------
 // -----------------------------------------------
 
 // spacing
-const double dx0 = (box_dims)/((double)num_pt_x-3.0); // delta's for extending mesh, +2 for ghosts
-const double dy0 = (box_dims)/((double)num_pt_y-3.0); 
-const double dz0 = (box_dims)/((double)num_pt_z-3.0); 
+const double dx0 = (box_dim_x)/((double)num_pt_x-3.0); // delta's for extending mesh, +2 for ghosts
+const double dy0 = (box_dim_y)/((double)num_pt_y-3.0); 
+const double dz0 = (box_dim_z)/((double)num_pt_z-3.0); 
 
 // the mesh dimensions
-const double XMax = box_dims + 1.5*dx0; 
-const double YMax = box_dims + 1.5*dy0; 
-const double ZMax = box_dims + 1.5*dz0; 
+const double XMax = box_dim_x + 1.5*dx0; 
+const double YMax = box_dim_y + 1.5*dy0; 
+const double ZMax = box_dim_z + 1.5*dz0; 
 
 const double X0 = 0.0 - 1.5*dx0; 
 const double Y0 = 0.0 - 1.5*dy0; 
@@ -739,27 +741,27 @@ int main(int argc, char *argv[])
 
                     // simple cube
 
-                    // coords of box corners
+                    // coords of box corners (follows i,j,k convention for a box)
                     vec_t a0(0.0,0.0,0.0);
-                    vec_t a1(box_dims,0.0,0.0);
-                    vec_t a2(0.0,box_dims,0.0);
-                    vec_t a3(box_dims,box_dims,0.0);
-                    vec_t a4(0.0,0.0,box_dims);
-                    vec_t a5(box_dims,0.0,box_dims);
-                    vec_t a6(0.0,box_dims,box_dims);
-                    vec_t a7(box_dims,box_dims,box_dims);
+                    vec_t a1(box_dim_x,0.0,0.0);
+                    vec_t a2(0.0,box_dim_y,0.0);
+                    vec_t a3(box_dim_x,box_dim_y,0.0);
+                    vec_t a4(0.0,0.0,box_dim_z);
+                    vec_t a5(box_dim_x,0.0,box_dim_z);
+                    vec_t a6(0.0,box_dim_y,box_dim_z);
+                    vec_t a7(box_dim_x,box_dim_y,box_dim_z);
 
                     if(build_lattice_type==0){
-                        levelset(i,j,k) = simple_cube(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dims/2.,box_dims/2.,box_dims/2.),vec_t(box_dims/2.,box_dims/2.,box_dims/2.),r);
+                        levelset(i,j,k) = simple_cube(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dim_x/2.,box_dim_y/2.,box_dim_z/2.),vec_t(box_dim_x/2.,box_dim_y/2.,box_dim_z/2.),r);
                     }
                     else if (build_lattice_type==1){ 
-                        levelset(i,j,k) = body_centered_cubic(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dims/2.,box_dims/2.,box_dims/2.),vec_t(box_dims/2.,box_dims/2.,box_dims/2.),r);
+                        levelset(i,j,k) = body_centered_cubic(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dim_x/2.,box_dim_y/2.,box_dim_z/2.),vec_t(box_dim_x/2.,box_dim_y/2.,box_dim_z/2.),r);
                     }
                     else if (build_lattice_type==2){
-                        levelset(i,j,k) = face_centered_cubic(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dims/2.,box_dims/2.,box_dims/2.),vec_t(box_dims/2.,box_dims/2.,box_dims/2.),r);
+                        levelset(i,j,k) = face_centered_cubic(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dim_x/2.,box_dim_y/2.,box_dim_z/2.),vec_t(box_dim_x/2.,box_dim_y/2.,box_dim_z/2.),r);
                     }
                     else if (build_lattice_type==3){
-                        levelset(i,j,k) = octet(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dims/2.,box_dims/2.,box_dims/2.),vec_t(box_dims/2.,box_dims/2.,box_dims/2.),r);
+                        levelset(i,j,k) = octet(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dim_x/2.,box_dim_y/2.,box_dim_z/2.),vec_t(box_dim_x/2.,box_dim_y/2.,box_dim_z/2.),r);
                     }   
                     else {
                         // testing objects
@@ -767,7 +769,9 @@ int main(int argc, char *argv[])
                         //levelset(i,j,k) = boxframe(p, vec_t(0.5,0.5,0.5), vec_t(0.5,0.5,0.5), r);
 
                         //levelset(i,j,k) = neg_nu(p, h2, alpha1, alphah, r);
-                        levelset(i,j,k) = stack3(p, box_dims, r, type);
+                        
+                        levelset(i,j,k) = stack3(p, box_dim_z, r, type);  // using box_dim_z here WARNING: need to make this function use box_dim_x, etc.
+
                         //levelset(i,j,k) = neg_nu_square(p, h2, alpha1, alphah, r);
                         //levelset(i,j,k) = hollow_capsule(p, a0, a7, r, r/2);
                         //levelset(i,j,k) = f2ccz(p,a0,a1,a2,a3,a4,a5,a6,a7,vec_t(box_dims/2.,box_dims/2.,box_dims/2.),vec_t(box_dims/2.,box_dims/2.,box_dims/2.),r);
