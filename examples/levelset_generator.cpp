@@ -52,8 +52,8 @@
 // -----------------------------------------------
 // inputs:
 
-const double box_dim_x = 5; // box dims
-const double box_dim_y = 7; // box dims
+const double box_dim_x = 15; // box dims
+const double box_dim_y = 15; // box dims
 const double box_dim_z = 15; // box dims
 const double r = 0.375; // radius of struts
 
@@ -68,7 +68,7 @@ const int num_pt_y = 300; // resolution
 const int num_pt_z = 300; // resolution
 
 // build sc=0; bcc=1; fcc=2; octet=3; other=4
-const size_t build_lattice_type = 3;
+const size_t build_lattice_type = 4;
 
 // -----------------------------------------------
 // -----------------------------------------------
@@ -540,33 +540,35 @@ double neg_nu(const vec_t &p,
 
 KOKKOS_INLINE_FUNCTION
 double stack3(const vec_t &p,
-              const double box_dims,
+              const double box_dim_x,
+              const double box_dim_y,
+              const double box_dim_z,
               const double r,
               const CArrayKokkos<int> &type)
 {
     double factor = (double)type.dims(0);
-    vec_t a0(0.0,0.0,0.0);
-    vec_t a1(box_dims/factor,0.0,0.0);
-    vec_t a2(0.0,box_dims/factor,0.0);
-    vec_t a3(box_dims/factor,box_dims/factor,0.0);
-    vec_t a4(0.0,0.0,box_dims/factor);
-    vec_t a5(box_dims/factor,0.0,box_dims/factor);
-    vec_t a6(0.0,box_dims/factor,box_dims/factor);
-    vec_t a7(box_dims/factor,box_dims/factor,box_dims/factor);
-    vec_t center(box_dims/factor/2,box_dims/factor/2,box_dims/factor/2);
+    vec_t a0(0.0, 0.0, 0.0);
+    vec_t a1(box_dim_x/factor, 0.0, 0.0);
+    vec_t a2(0.0, box_dim_y/factor, 0.0);
+    vec_t a3(box_dim_x/factor, box_dim_y/factor, 0.0);
+    vec_t a4(0.0, 0.0, box_dim_z/factor);
+    vec_t a5(box_dim_x/factor, 0.0, box_dim_z/factor);
+    vec_t a6(0.0, box_dim_y/factor, box_dim_z/factor);
+    vec_t a7(box_dim_x/factor, box_dim_y/factor, box_dim_z/factor);
+    vec_t center(box_dim_x/factor/2., box_dim_y/factor/2., box_dim_z/factor/2.);
     vec_t translate(0.0, 0.0, 0.0);
 
     double field = 0;
     double new_section;
     for (int i = 0; i < (int)type.dims(0); i++) {
-        translate.z = i*box_dims/factor;
+        translate.z = ((double)i)*box_dim_z/factor;
         for (int j = 0; j < (int)type.dims(1); j++) {
-            translate.y = j*box_dims/factor;
+            translate.y = ((double)j)*box_dim_y/factor;
             for (int k = 0; k < (int)type.dims(2); k++) {
                 if (type(i,j,k) > 3) {
                     continue;
                 }
-                translate.x = k*box_dims/factor;
+                translate.x = ((double)k)*box_dim_x/factor;
                 switch(type(i,j,k)) {
                     case 0:
                         new_section = simple_cube(p,a0+translate,a1+translate,a2+translate,a3+translate,a4+translate,a5+translate,a6+translate,a7+translate,center+translate,center,r);
@@ -770,7 +772,7 @@ int main(int argc, char *argv[])
 
                         //levelset(i,j,k) = neg_nu(p, h2, alpha1, alphah, r);
                         
-                        levelset(i,j,k) = stack3(p, box_dim_z, r, type);  // using box_dim_z here WARNING: need to make this function use box_dim_x, etc.
+                        levelset(i,j,k) = stack3(p, box_dim_x, box_dim_y, box_dim_z, r, type);  
 
                         //levelset(i,j,k) = neg_nu_square(p, h2, alpha1, alphah, r);
                         //levelset(i,j,k) = hollow_capsule(p, a0, a7, r, r/2);
