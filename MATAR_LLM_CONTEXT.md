@@ -22,6 +22,7 @@ This document provides comprehensive context for converting existing C/C++ (and 
 14. [Device Kernel Constraints](#14-device-kernel-constraints)
 15. [Fortran Interoperability](#15-fortran-interoperability)
 16. [Build Configuration](#16-build-configuration)
+17. [MPI and Distributed Communication](#17-mpi-and-distributed-communication)
 
 ---
 
@@ -52,7 +53,37 @@ int main(int argc, char* argv[])
 | `MATAR_FINALIZE()` | `Kokkos::finalize()` | No-op |
 | `MATAR_FENCE()` | `Kokkos::fence()` | No-op |
 
-`MATAR_FENCE()` is a synchronization barrier. It ensures all device operations have completed before the CPU proceeds. Place it after any parallel kernel that produces data consumed by subsequent host code or another kernel with a data dependency.
+`MATAR_FENCE()` is a synchronization barrier. It ensures all device operations have completed before the CPU proceeds. See the [fence placement rules](#fence-placement-rules) below for when fences are required vs. redundant.
+
+### Fence Placement Rules
+
+A fence is **needed** between two `FOR_ALL` blocks only if the second reads data written by the first. Over-fencing kills performance; under-fencing causes correctness bugs. Apply these rules:
+
+| Situation | Fence Needed? | Why |
+|-----------|:---:|-----|
+| `FOR_ALL` writes to `A`, next `FOR_ALL` reads `A` | **Yes** | Data dependency between kernels |
+| `FOR_ALL` writes to `A`, next `FOR_ALL` writes/reads only `B` | **No** | Independent data, no dependency |
+| `FOR_ALL` writes to `A`, then host code reads `A.host(i)` | **Yes** | Host reads device-written data |
+| `FOR_REDUCE_SUM(..., total)`, then host uses `total` | **No** | Reduction macros implicitly fence on the result variable |
+| `FOR_ALL` followed by `update_host()` | **Yes** | Must ensure kernel completes before sync |
+| `FOR_ALL` followed by timing (`std::chrono`) | **Yes** | Timer must see completed work |
+| Two `FOR_ALL` blocks, both only read (no writes) | **No** | Read-only kernels have no conflict |
+
+```cpp
+// NO fence needed: independent data
+FOR_ALL(i, 0, N, { A(i) = i; });
+FOR_ALL(i, 0, N, { B(i) = i * 2; });  // B is independent of A
+
+// FENCE needed: B reads A
+FOR_ALL(i, 0, N, { A(i) = i; });
+MATAR_FENCE();
+FOR_ALL(i, 0, N, { B(i) = A(i) * 2; });
+
+// NO fence needed after reduction: result is available immediately
+double loc = 0.0, total = 0.0;
+FOR_REDUCE_SUM(i, 0, N, loc, { loc += A(i); }, total);
+printf("total = %f\n", total);  // total is valid here without MATAR_FENCE()
+```
 
 ---
 
@@ -66,6 +97,13 @@ MATAR data structures are organized along three axes:
 |--------|--------|-----------------|-----------------|
 | **C** | Row-major (C-style) | Last index varies fastest in memory | Outermost loop = first index |
 | **F** | Column-major (Fortran-style) | First index varies fastest in memory | Outermost loop = last index |
+
+**GPU coalescing rule:** CUDA and HIP achieve coalesced memory access when adjacent threads access adjacent memory addresses. In `FOR_ALL(i, 0, N, j, 0, M, {...})`, the **last** index (`j`) is mapped to thread IDs. Therefore:
+
+- **`CArrayDevice` (last index fastest):** `FOR_ALL(i, ..., j, ..., { a(i,j) })` gives coalesced access because adjacent threads (adjacent `j`) access adjacent memory locations.
+- **`FArrayDevice` (first index fastest):** The same `FOR_ALL` ordering does **not** give coalesced access because adjacent threads (adjacent `j`) hit non-adjacent memory.
+
+**Optimization rule for GPU targets:** Prefer `CArrayDevice` with loop nests ordered so the innermost `FOR_ALL` index corresponds to the last array dimension. When correctness of an initial translation from Fortran is the priority and the access pattern is complex, use `FArrayDevice` to preserve Fortran semantics and optimize later. The `FArray` types give a correct first-pass translation from Fortran (preserving the original memory layout and loop ordering), but they may not give optimal GPU performance without reordering.
 
 ### Axis 2: Index Base
 
@@ -184,6 +222,31 @@ d.host(i, j)   // access on host side (CPU)
 d(i, j)        // access on device side (inside FOR_ALL / RUN)
 ```
 
+### Views as Array Slices
+
+View types can wrap a pointer into the **middle** of an existing array, reinterpreting a subregion as a new array with different dimensionality. This is the MATAR equivalent of Fortran's ability to pass `A(1,5)` to a subroutine that treats it as a 1D array starting from that element.
+
+```cpp
+// 3D array: B(num_blocks, rows, cols)
+CArrayDual<double> B(num_blocks, rows, cols);
+
+// Create a 2D view into block 1: starts at &B(1, 0, 0), shape is (rows, cols)
+ViewCArray<double> block1(B.host_pointer() + 1 * rows * cols, rows, cols);
+
+// block1(i, j) now aliases B(1, i, j) — no data copy
+for (int i = 0; i < rows; i++)
+    for (int j = 0; j < cols; j++)
+        block1(i, j) = some_value;
+
+// Device-side slicing for passing subarrays to functions
+ViewCArrayDevice<double> dev_slice(A.pointer() + offset, slice_len);
+FOR_ALL(i, 0, slice_len, {
+    dev_slice(i) *= 2.0;
+});
+```
+
+This pattern naturally handles legacy codes that pass array slices to subroutines. If the original code does `call sub(A(1,5), N)` in Fortran, the MATAR translation wraps `&A(1,5)` (or the equivalent `A.host_pointer() + linear_offset`) in a `ViewFMatrix` with the appropriate shape.
+
 ### Common Methods
 
 | Method | Description |
@@ -298,19 +361,21 @@ The `DO_REDUCE_*` variants follow the same argument patterns as `FOR_REDUCE_*` b
 
 The primary parallel loop macro. Indices iterate over `[start, end)`. Supports 1D, 2D, and 3D.
 
+**All index dimensions in a `FOR_ALL` are parallelized.** There is no "outer parallel, inner sequential" variant in the flat `FOR_ALL` form. A 2D `FOR_ALL(i, 0, N, j, 0, M, {...})` parallelizes over the entire `N * M` index space — both `i` and `j` are distributed across threads simultaneously via `Kokkos::MDRangePolicy`.
+
 ```cpp
-// 1D: 4 arguments
+// 1D: 4 arguments — parallelizes over N iterations
 FOR_ALL(i, 0, N, {
     a(i) = i;
 });
 
-// 2D: 7 arguments
+// 2D: 7 arguments — parallelizes over N*M iterations (both i and j)
 FOR_ALL(i, 0, N,
         j, 0, M, {
     a(i, j) = i + j;
 });
 
-// 3D: 10 arguments
+// 3D: 10 arguments — parallelizes over N*M*P iterations (all of i, j, k)
 FOR_ALL(i, 0, N,
         j, 0, M,
         k, 0, P, {
@@ -318,26 +383,48 @@ FOR_ALL(i, 0, N,
 });
 ```
 
+**Mixing parallel and serial:** When the inner loop has a data dependency (e.g., accumulating a sum along one dimension), use `FOR_ALL` for the parallel dimensions and a plain `for` loop inside the body for the serial dimension:
+
+```cpp
+// Outer i,j are parallel; inner k is serial (accumulates into local_sum)
+FOR_ALL(i, 0, N, j, 0, M, {
+    double local_sum = 0.0;
+    for (int k = 0; k < P; k++) {
+        local_sum += A(i, k) * B(k, j);
+    }
+    C(i, j) = local_sum;
+});
+```
+
+For finer-grained control over nested parallelism (e.g., tiled algorithms), use the hierarchical `FOR_FIRST`/`FOR_SECOND`/`FOR_THIRD` macros described in Section 7.
+
 **Loop ordering:** The inner loop varies the fastest and the outer loop varies the slowest. For optimal cache performance, match the loop index order to the data type's memory layout:
 - `CArray` / `CArrayDevice`: last index fastest → `FOR_ALL(i, ..., j, ..., { a(i,j) })` is correct
 - `FArray` / `FArrayDevice`: first index fastest → `FOR_ALL(i, ..., j, ..., { a(j,i) })` maps the fast-varying loop index to the fast-varying array index
 
 ### `DO_ALL` — Fortran-style inclusive range `[start, end]`
 
-Identical to `FOR_ALL` but the upper bound is **inclusive**. Designed for 1-based Fortran-style indexing.
+Same parallelization semantics as `FOR_ALL` (all dimensions parallelized), but the upper bound is **inclusive**. Designed for 1-based Fortran-style indexing with `FMatrix` types.
+
+**Underlying macro difference:** `FOR_ALL` passes ranges directly to `Kokkos::RangePolicy(x0, x1)` or `MDRangePolicy({x0,y0}, {x1,y1})`, making the upper bound exclusive. `DO_ALL` adds `+1` to every upper bound before passing to Kokkos: `RangePolicy(x0, x1+1)` or `MDRangePolicy({x0,y0}, {x1+1,y1+1})`. Additionally, `DO_ALL` uses `F_LOOP_ORDER` (Fortran-style iteration ordering) for its `MDRangePolicy`, while `FOR_ALL` uses `LOOP_ORDER` (C-style iteration ordering). Both ultimately expand to `Kokkos::parallel_for` with `KOKKOS_LAMBDA`.
 
 ```cpp
-// 1D: iterates i = 1, 2, ..., N
+// 1D: iterates i = 1, 2, ..., N (inclusive)
 DO_ALL(i, 1, N, {
     matrix(i) = i;
 });
 
-// 2D: iterates i = 1..N, j = 1..M
+// 2D: iterates i = 1..N, j = 1..M (both inclusive, both parallel)
 DO_ALL(j, 1, M,
        i, 1, N, {
     matrix(i, j) = i * j;
 });
 ```
+
+**When to use which:**
+- `FOR_ALL` with `CArray`/`CArrayDevice`: C-style code, 0-based indexing, `[0, N)`
+- `DO_ALL` with `FMatrix`/`FMatrixDevice`: Fortran-style code, 1-based indexing, `[1, N]`
+- The same `FOR_ALL` vs `DO_ALL` distinction applies to all reduction variants (`FOR_REDUCE_*` vs `DO_REDUCE_*`)
 
 ### `RUN` — Execute Once on Device
 
@@ -838,19 +925,35 @@ FOR_ALL(i, 0, N, j, 0, M, {
 });
 ```
 
-### 2. Missing MATAR_FENCE()
+### 2. Missing or Excessive MATAR_FENCE()
 
 ```cpp
+// BAD: immediately reading on host without fence
 FOR_ALL(i, 0, N, { a(i) = compute(i); });
-// BAD: immediately reading a(i) on host without fence
 double val = a.host(0);  // may not reflect device computation
 
-// GOOD:
+// GOOD: fence then sync to host
 FOR_ALL(i, 0, N, { a(i) = compute(i); });
 MATAR_FENCE();
 a.update_host();
 double val = a.host(0);  // correct
+
+// BAD: unnecessary fence between independent kernels (kills performance)
+FOR_ALL(i, 0, N, { A(i) = i; });
+MATAR_FENCE();  // wasteful — B doesn't depend on A
+FOR_ALL(i, 0, N, { B(i) = i * 2; });
+
+// GOOD: no fence needed for independent data
+FOR_ALL(i, 0, N, { A(i) = i; });
+FOR_ALL(i, 0, N, { B(i) = i * 2; });
+
+// NOTE: reduction results are immediately available (implicit fence)
+double loc = 0.0, total = 0.0;
+FOR_REDUCE_SUM(i, 0, N, loc, { loc += a(i); }, total);
+// total is valid here — no MATAR_FENCE() needed
 ```
+
+See the [Fence Placement Rules](#fence-placement-rules) in Section 1 for the complete decision table.
 
 ### 3. Forgetting update_host / update_device
 
@@ -1153,4 +1256,204 @@ export OMP_NUM_THREADS=8
 
 # CUDA (built with HAVE_CUDA)
 ./my_program
+```
+
+---
+
+## 17. MPI and Distributed Communication
+
+MATAR provides MPI-aware data types and a communication plan abstraction for distributed-memory parallelism. These are enabled when built with `HAVE_MPI` and `HAVE_KOKKOS`.
+
+### When to Use MPICArrayKokkos vs. Plain DCArrayKokkos
+
+| Type | Use Case |
+|------|----------|
+| `DCArrayKokkos<T>` (`CArrayDual<T>`) | Single-rank data. No MPI communication needed. Host/device sync only. |
+| `MPICArrayKokkos<T>` | Distributed data with ghost/halo regions. Wraps `DCArrayKokkos` internally and adds MPI send/recv buffer management, a `CommunicationPlan`, and a `communicate()` method that handles the full pack → exchange → unpack cycle. |
+
+Use `MPICArrayKokkos` when a data array is partitioned across MPI ranks and neighboring ranks need to exchange boundary (ghost/halo) data. Use plain `DCArrayKokkos` for rank-local data that never crosses MPI boundaries.
+
+### MPICArrayKokkos Overview
+
+`MPICArrayKokkos<T>` is a template class that wraps a `DCArrayKokkos<T>` with:
+- **Send and receive buffers** (`DCArrayKokkos<T>`) for packing/unpacking halo data
+- A **stride** value computed from trailing dimensions (for multi-dimensional arrays, each first-index element is a contiguous block of `dim1 * dim2 * ... * dimN` values)
+- A pointer to a shared **`CommunicationPlan`** that defines the neighbor topology
+- A `host` member (`ViewCArray<T>`) for convenient host-side access
+
+```cpp
+// Construction: same as CArrayDual, but MPI-aware
+MPICArrayKokkos<double> field(num_nodes, num_vars, "my_field");
+
+// Host access via .host member (ViewCArray)
+field.host(i, j) = value;
+
+// Device access inside FOR_ALL
+FOR_ALL(i, 0, num_nodes, j, 0, num_vars, {
+    field(i, j) = compute(i, j);
+});
+```
+
+### CommunicationPlan
+
+The `CommunicationPlan` struct encapsulates the MPI neighbor topology and send/recv metadata. It uses an MPI distributed graph communicator for efficient sparse neighbor communication.
+
+#### Construction and Setup (3 Steps)
+
+```cpp
+CommunicationPlan comm_plan;
+
+// Step 1: Initialize with MPI communicator
+comm_plan.initialize(MPI_COMM_WORLD);
+
+// Step 2: Define neighbor topology
+// Each rank specifies which ranks it sends to and receives from
+int send_ranks[] = {rank - 1, rank + 1};  // neighbors
+int recv_ranks[] = {rank - 1, rank + 1};
+comm_plan.initialize_graph_communicator(
+    2, send_ranks,   // num_send_ranks, send_rank_ids
+    2, recv_ranks    // num_recv_ranks, recv_rank_ids
+);
+
+// Step 3: Define which data elements to send/recv per neighbor
+// rank_send_ids: ragged array — row i lists element indices to send to neighbor i
+// rank_recv_ids: ragged array — row i lists element indices to receive from neighbor i
+DRaggedRightArrayKokkos<int> rank_send_ids(...);
+DRaggedRightArrayKokkos<int> rank_recv_ids(...);
+// ... fill send/recv index lists ...
+comm_plan.setup_send_recv(rank_send_ids, rank_recv_ids);
+```
+
+#### CommunicationPlan Members
+
+| Member | Type | Description |
+|--------|------|-------------|
+| `mpi_comm_world` | `MPI_Comm` | The base MPI communicator |
+| `mpi_comm_graph` | `MPI_Comm` | Distributed graph communicator for neighbor collectives |
+| `num_send_ranks` | `int` | Number of ranks this process sends to (out-degree) |
+| `num_recv_ranks` | `int` | Number of ranks this process receives from (in-degree) |
+| `send_rank_ids` | `DCArrayKokkos<int>` | Destination rank IDs |
+| `recv_rank_ids` | `DCArrayKokkos<int>` | Source rank IDs |
+| `send_indices_` | `DRaggedRightArrayKokkos<int>` | Per-neighbor indices of elements to send |
+| `recv_indices_` | `DRaggedRightArrayKokkos<int>` | Per-neighbor indices of elements to receive |
+| `send_counts_` / `recv_counts_` | `DCArrayKokkos<int>` | Number of elements per neighbor |
+| `send_displs_` / `recv_displs_` | `DCArrayKokkos<int>` | Displacement offsets for packing |
+| `total_send_count` / `total_recv_count` | `int` | Total elements across all neighbors |
+
+### Connecting MPICArrayKokkos to a CommunicationPlan
+
+```cpp
+// Create the MPI-aware array
+MPICArrayKokkos<double> field(num_owned + num_ghost, "field");
+
+// Connect to the communication plan
+field.initialize_comm_plan(comm_plan);
+// This allocates send/recv buffers sized to total_send_count * stride
+// and copies the per-neighbor counts/displacements (scaled by stride)
+```
+
+### The communicate() Cycle
+
+Calling `field.communicate()` performs the full halo exchange:
+
+1. **`fill_send_buffer()`**: Copies `this_array_` to host (`update_host`), then packs elements listed in `send_indices_` into the contiguous `send_buffer_` on the host. For multi-dimensional arrays, each element index packs `stride_` contiguous values.
+
+2. **`MPI_Neighbor_alltoallv()`**: Exchanges data with all neighbors using the graph communicator. Send/recv counts and displacements are pre-computed and scaled by stride.
+
+3. **`copy_recv_buffer()`**: Unpacks `recv_buffer_` into the ghost positions of `this_array_` using `recv_indices_`.
+
+4. **`update_device()`**: Syncs the updated array (with fresh ghost data) back to the device.
+
+```cpp
+// Typical time-step pattern:
+FOR_ALL(i, 0, num_owned, {
+    field(i) = compute_new_value(i);
+});
+MATAR_FENCE();
+
+field.communicate();  // pack → MPI exchange → unpack → update_device
+
+FOR_ALL(i, 0, num_owned + num_ghost, {
+    // Now ghost values from neighbors are available
+    result(i) = stencil(field, i);
+});
+```
+
+### Interaction Between update_host/update_device and MPI
+
+The `communicate()` method internally calls `update_host()` before packing and `update_device()` after unpacking. This means:
+- Before calling `communicate()`, ensure device data is current (place a `MATAR_FENCE()` after any kernel that wrote to the array).
+- After `communicate()` returns, the device copy already has fresh ghost data — no additional `update_device()` is needed.
+- If you need to inspect the data on the host after communication, call `update_host()` explicitly.
+
+### MPI Convenience Macros
+
+| Macro | Expands To |
+|-------|-----------|
+| `MATAR_MPI_INIT` | `MPI_Init(&argc, &argv)` |
+| `MATAR_MPI_FINALIZE` | `MPI_Finalize()` |
+| `MATAR_MPI_TIME` | `MPI_Wtime()` |
+| `MATAR_MPI_BARRIER` | `MPI_Barrier(MPI_COMM_WORLD)` |
+
+### Complete MPI Example Pattern
+
+```cpp
+#include <mpi.h>
+#include <matar.h>
+#include <communication_plan.h>
+
+using namespace mtr;
+
+int main(int argc, char* argv[]) {
+    MPI_Init(&argc, &argv);
+    MATAR_INITIALIZE(argc, argv);
+    {
+        int rank, size;
+        MPI_Comm_rank(MPI_COMM_WORLD, &rank);
+        MPI_Comm_size(MPI_COMM_WORLD, &size);
+
+        // 1. Build communication plan
+        CommunicationPlan comm_plan;
+        comm_plan.initialize(MPI_COMM_WORLD);
+
+        // Define neighbors (e.g., 1D domain decomposition)
+        std::vector<int> send_ids, recv_ids;
+        if (rank > 0)        { send_ids.push_back(rank - 1); recv_ids.push_back(rank - 1); }
+        if (rank < size - 1) { send_ids.push_back(rank + 1); recv_ids.push_back(rank + 1); }
+
+        comm_plan.initialize_graph_communicator(
+            send_ids.size(), send_ids.data(),
+            recv_ids.size(), recv_ids.data()
+        );
+
+        // Define which elements to send/recv (application-specific)
+        // ... build rank_send_ids, rank_recv_ids as DRaggedRightArrayKokkos<int> ...
+        comm_plan.setup_send_recv(rank_send_ids, rank_recv_ids);
+
+        // 2. Create MPI-aware array and connect
+        size_t num_owned = local_cells;
+        size_t num_ghost = ghost_cells;
+        MPICArrayKokkos<double> field(num_owned + num_ghost, "field");
+        field.initialize_comm_plan(comm_plan);
+
+        // 3. Compute + communicate loop
+        for (int step = 0; step < num_steps; step++) {
+            FOR_ALL(i, 0, num_owned, {
+                field(i) = update(field, i);
+            });
+            MATAR_FENCE();
+
+            field.communicate();  // halo exchange
+
+            // Now ghost data is fresh on device
+            FOR_ALL(i, 0, num_owned, {
+                result(i) = stencil_with_ghosts(field, i);
+            });
+            MATAR_FENCE();
+        }
+    }
+    MATAR_FINALIZE();
+    MPI_Finalize();
+    return 0;
+}
 ```
