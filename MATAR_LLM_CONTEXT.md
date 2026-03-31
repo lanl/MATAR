@@ -257,10 +257,10 @@ This pattern naturally handles legacy codes that pass array slices to subroutine
 | `extent()` | Same as `size()` |
 | `dims(n)` | Size along dimension `n` (0-indexed for Arrays, 1-indexed for Matrices) |
 | `order()` | Number of dimensions |
-| `pointer()` | Raw pointer to underlying data (device pointer for Device types) |
-| `device_pointer()` | Explicit device pointer (Dual types) |
-| `host_pointer()` | Explicit host pointer (Dual types) |
-| `set_values(val)` | Set all elements to `val` (parallel on device) |
+| `pointer()` | Raw pointer to underlying data. Available on Device and Host types only. **Dual types do NOT have `pointer()`** — use `device_pointer()` or `host_pointer()` instead. |
+| `device_pointer()` | Raw pointer to device-side memory (Dual types only) |
+| `host_pointer()` | Raw pointer to host-side memory (Dual types only) |
+| `set_values(val)` | Set all elements to `val` via `parallel_for` on the device. **Does NOT fence** — follow with `MATAR_FENCE()` if host code depends on the result, or `update_host()` if you need the values on the host. |
 | `update_host()` | Copy device data to host (Dual types only) |
 | `update_device()` | Copy host data to device (Dual types only) |
 | `get_kokkos_view()` | Access the underlying `Kokkos::View` (Device types) |
@@ -445,15 +445,35 @@ RUN({
 
 ### `FOR_LOOP` / `DO_LOOP` — Serial Convenience Loops
 
-Serial (non-parallel) loops with lambda-based syntax. `FOR_LOOP` uses half-open ranges; `DO_LOOP` uses inclusive ranges.
+Serial (non-parallel) loops with lambda-based syntax. `FOR_LOOP` uses half-open ranges; `DO_LOOP` uses inclusive ranges. Both support 1D, 2D, and 3D forms, plus **stride (delta) variants** for loops with a custom increment.
 
 ```cpp
+// 1D — basic
 FOR_LOOP(i, 0, N, {
     // serial iteration i = 0 .. N-1
 });
 
 DO_LOOP(i, 1, N, {
     // serial iteration i = 1 .. N
+});
+
+// 1D — with stride/delta (5 arguments before body)
+FOR_LOOP(i, 0, N, 2, {
+    // serial iteration i = 0, 2, 4, ... (stride of 2, half-open)
+});
+
+DO_LOOP(i, 1, N, 3, {
+    // serial iteration i = 1, 4, 7, ... (stride of 3, inclusive)
+});
+
+// 2D — with strides (9 arguments before body)
+FOR_LOOP(i, 0, N, i_delta, j, 0, M, j_delta, {
+    // serial 2D loop with custom strides on both dimensions
+});
+
+// 3D — with strides (13 arguments before body)
+FOR_LOOP(i, 0, N, i_delta, j, 0, M, j_delta, k, 0, P, k_delta, {
+    // serial 3D loop with custom strides on all dimensions
 });
 ```
 
@@ -527,12 +547,13 @@ FOR_REDUCE_PRODUCT(i, 0, N,
 
 ### `DO_REDUCE_*` — Inclusive-Range Variants
 
-All reduction macros have `DO_REDUCE_*` counterparts with inclusive upper bounds:
+SUM, MAX, and MIN reductions have `DO_REDUCE_*` counterparts with inclusive upper bounds. **There is no `DO_REDUCE_PRODUCT`.**
 
 ```cpp
 DO_REDUCE_SUM(i, 1, N, loc_sum, { loc_sum += a(i); }, total);
 DO_REDUCE_MAX(i, 1, N, loc_max, { ... }, global_max);
 DO_REDUCE_MIN(i, 1, N, loc_min, { ... }, global_min);
+// DO_REDUCE_PRODUCT does NOT exist — use FOR_REDUCE_PRODUCT with half-open range instead
 ```
 
 ---
@@ -650,7 +671,7 @@ for (int i = 0; i < N; i++)
 - Outside parallel regions on the CPU: use `data.host(i, j)`.
 - Call `update_device()` after host writes, before device reads.
 - Call `update_host()` after device writes, before host reads.
-- `set_values(val)` operates on the device copy.
+- `set_values(val)` launches an **async** `parallel_for` on the device copy — it does NOT fence. Follow with `update_host()` to get the values on the host.
 
 ---
 
@@ -726,7 +747,7 @@ FOR_ALL(i, 0, N, j, 0, N, {
 
 ### Example A: 2D Jacobi Heat Equation
 
-**Before (standard C++):**
+**Before (standard C++):** `PSEUDOCODE_PATTERN`
 
 ```cpp
 double temperature[height + 2][width + 2];
@@ -758,7 +779,7 @@ while (worst_dt > tolerance) {
 }
 ```
 
-**After (MATAR with GPU support):**
+**After (MATAR with GPU support):** `PSEUDOCODE_PATTERN`
 
 ```cpp
 MATAR_INITIALIZE(argc, argv);
@@ -809,7 +830,7 @@ MATAR_FINALIZE();
 
 ### Example B: Array Initialization and Sum
 
-**Before:**
+**Before:** `PSEUDOCODE_PATTERN`
 
 ```cpp
 int A[10];
@@ -819,7 +840,7 @@ int sum = 0;
 for (int i = 0; i < 10; i++) sum += A[i] * A[i];
 ```
 
-**After:**
+**After:** `COMPILES_AS_IS` (inside `MATAR_INITIALIZE`/`MATAR_FINALIZE` block)
 
 ```cpp
 CArrayDevice<int> A(10);
@@ -835,7 +856,7 @@ FOR_REDUCE_SUM(i, 0, 10, loc_sum, {
 
 ### Example C: Matrix Multiply
 
-**Before:**
+**Before:** `PSEUDOCODE_PATTERN`
 
 ```cpp
 for (int i = 0; i < N; i++)
@@ -846,7 +867,7 @@ for (int i = 0; i < N; i++)
     }
 ```
 
-**After:**
+**After:** `PSEUDOCODE_PATTERN`
 
 ```cpp
 CArrayDevice<double> A(N, N), B(N, N), C(N, N);
@@ -864,7 +885,7 @@ MATAR_FENCE();
 
 ### Example D: Wrapping Existing Memory
 
-**Before:**
+**Before:** `PSEUDOCODE_PATTERN`
 
 ```cpp
 int some_array[9];
@@ -873,7 +894,7 @@ for (int i = 0; i < 3; i++)
         some_array[i * 3 + j] = i + j;
 ```
 
-**After:**
+**After:** `PSEUDOCODE_PATTERN`
 
 ```cpp
 int some_array[9];
@@ -1013,12 +1034,22 @@ MATAR_FINALIZE();
 
 ### 7. `set_values` on Dual Types
 
-`set_values()` operates on the **device** copy. If you need the values on the host, call `update_host()` afterward:
+`set_values()` launches a `Kokkos::parallel_for` on the **device** copy. It is **asynchronous** — it does NOT fence internally. Rules:
+
+- If the next operation is another device kernel (`FOR_ALL`, `set_values`, etc.) on the **same** data, Kokkos execution-order guarantees serialization on the default stream — **no fence needed**.
+- If you need to **read** the values on the **host**, call `update_host()` afterward (which internally fences the device copy).
+- If you need a **device-side** guarantee before a kernel on **different** data that reads this data via a different view/pointer, insert `MATAR_FENCE()`.
 
 ```cpp
+// PSEUDOCODE_PATTERN
 CArrayDual<double> data(N);
-data.set_values(0.0);      // sets device copy to 0.0
-data.update_host();         // now host copy also has 0.0
+data.set_values(0.0);      // launches async parallel_for on device
+// No fence needed here — next FOR_ALL is on the same default execution space
+FOR_ALL(i, 0, N, {
+    data(i) += 1.0;        // reads data set by set_values — safe without fence
+});
+data.update_host();         // fences, then copies device → host
+// Now data.host(i) has 1.0 for all i
 ```
 
 ### 8. Using printf Inside Device Kernels
@@ -1472,8 +1503,13 @@ int main(int argc, char* argv[]) {
 Use these constraints as hard rules when generating MATAR code:
 
 1. **Use only macros that exist in `MATAR/src/include/macros.h`.**
-   - Valid loop macros include: `FOR_ALL`, `DO_ALL`, `RUN`, `FOR_LOOP`, `DO_LOOP`, `FOR_REDUCE_SUM`, `FOR_REDUCE_MAX`, `FOR_REDUCE_MIN`, `FOR_REDUCE_PRODUCT`, `DO_REDUCE_SUM`, `DO_REDUCE_MAX`, `DO_REDUCE_MIN`, and hierarchical/team variants.
-   - `DO_REDUCE_PRODUCT` does **not** exist.
+   - **Flat parallel loops:** `FOR_ALL`, `DO_ALL`, `RUN`
+   - **Serial convenience loops:** `FOR_LOOP`, `DO_LOOP` (and stride variants `FOR_LOOP_DIM` / `DO_LOOP_DIM` for loops with a delta/increment)
+   - **Reductions (half-open):** `FOR_REDUCE_SUM`, `FOR_REDUCE_MAX`, `FOR_REDUCE_MIN`, `FOR_REDUCE_PRODUCT`
+   - **Reductions (inclusive):** `DO_REDUCE_SUM`, `DO_REDUCE_MAX`, `DO_REDUCE_MIN` — **`DO_REDUCE_PRODUCT` does NOT exist**
+   - **Class-member variants** (use `KOKKOS_CLASS_LAMBDA`): `FOR_ALL_CLASS`, `RUN_CLASS`, `FOR_REDUCE_SUM_CLASS`, `FOR_REDUCE_MAX_CLASS`, `FOR_REDUCE_MIN_CLASS`
+   - **Hierarchical (team/thread/vector):** `FOR_FIRST`, `FOR_SECOND`, `FOR_THIRD`, `DO_FIRST`, `DO_SECOND`, `DO_THIRD`
+   - **Hierarchical reductions:** `FOR_REDUCE_SUM_SECOND`, `FOR_REDUCE_SUM_THIRD`, `DO_REDUCE_SUM_SECOND`, `DO_REDUCE_SUM_THIRD`, `FOR_REDUCE_MAX_SECOND`, `DO_REDUCE_MAX_THIRD`, `FOR_REDUCE_MIN_SECOND`, `DO_REDUCE_MIN_THIRD`
 
 2. **`FOR_ALL` and `DO_ALL` parallelize all listed dimensions.**
    - If a dimension must remain sequential, keep it as a plain inner `for` loop inside the macro body, or use hierarchical macros where appropriate.
