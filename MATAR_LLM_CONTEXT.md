@@ -23,6 +23,8 @@ This document provides comprehensive context for converting existing C/C++ (and 
 15. [Fortran Interoperability](#15-fortran-interoperability)
 16. [Build Configuration](#16-build-configuration)
 17. [MPI and Distributed Communication](#17-mpi-and-distributed-communication)
+18. [Ground Truth Constraints for LLMs](#18-ground-truth-constraints-for-llms)
+19. [LLM Output Contract](#19-llm-output-contract)
 
 ---
 
@@ -89,7 +91,7 @@ printf("total = %f\n", total);  // total is valid here without MATAR_FENCE()
 
 ## 2. Data Structure Taxonomy
 
-MATAR data structures are organized along three axes:
+MATAR data structures are organized along four axes:
 
 ### Axis 1: Memory Layout
 
@@ -245,7 +247,7 @@ FOR_ALL(i, 0, slice_len, {
 });
 ```
 
-This pattern naturally handles legacy codes that pass array slices to subroutines. If the original code does `call sub(A(1,5), N)` in Fortran, the MATAR translation wraps `&A(1,5)` (or the equivalent `A.host_pointer() + linear_offset`) in a `ViewFMatrix` with the appropriate shape.
+This pattern naturally handles legacy codes that pass array slices to subroutines. If the original code does `call sub(A(1,5), N)` in Fortran, MATAR typically wraps `&A(1,5)` as a **1D `ViewFArray`** (or `ViewFArrayDual`) of length `N`. Use `ViewFMatrix` only when the callee expects a 2D shape/leading dimension interpretation.
 
 ### Common Methods
 
@@ -353,9 +355,9 @@ The macros use variadic dispatch based on argument count. This table shows the e
 | `FOR_REDUCE_SUM` | `(i, lo, hi, var, {body}, result)` (6 args) | `(i, lo, hi, j, lo, hi, var, {body}, result)` (9 args) | `(i, lo, hi, j, lo, hi, k, lo, hi, var, {body}, result)` (12 args) |
 | `FOR_REDUCE_MAX` | same as SUM | same as SUM | same as SUM |
 | `FOR_REDUCE_MIN` | same as SUM | same as SUM | same as SUM |
-| `FOR_REDUCE_PRODUCT` | same as SUM | same as SUM | same as SUM |
+| `FOR_REDUCE_PRODUCT` | `(i, lo, hi, var, {body}, result)` (6 args) | `(i, lo, hi, j, lo, hi, var, {body}, result)` (9 args) | `(i, lo, hi, j, lo, hi, k, lo, hi, var, {body}, result)` (12 args) |
 
-The `DO_REDUCE_*` variants follow the same argument patterns as `FOR_REDUCE_*` but with inclusive upper bounds.
+The `DO_REDUCE_*` variants follow the same argument patterns as `FOR_REDUCE_*` but with inclusive upper bounds **for SUM/MAX/MIN**. There is no `DO_REDUCE_PRODUCT` macro in the current `macros.h`.
 
 ### `FOR_ALL` — C-style half-open range `[start, end)`
 
@@ -364,6 +366,7 @@ The primary parallel loop macro. Indices iterate over `[start, end)`. Supports 1
 **All index dimensions in a `FOR_ALL` are parallelized.** There is no "outer parallel, inner sequential" variant in the flat `FOR_ALL` form. A 2D `FOR_ALL(i, 0, N, j, 0, M, {...})` parallelizes over the entire `N * M` index space — both `i` and `j` are distributed across threads simultaneously via `Kokkos::MDRangePolicy`.
 
 ```cpp
+// COMPILES_AS_IS (assuming variables are declared)
 // 1D: 4 arguments — parallelizes over N iterations
 FOR_ALL(i, 0, N, {
     a(i) = i;
@@ -386,6 +389,7 @@ FOR_ALL(i, 0, N,
 **Mixing parallel and serial:** When the inner loop has a data dependency (e.g., accumulating a sum along one dimension), use `FOR_ALL` for the parallel dimensions and a plain `for` loop inside the body for the serial dimension:
 
 ```cpp
+// COMPILES_AS_IS (assuming variables are declared)
 // Outer i,j are parallel; inner k is serial (accumulates into local_sum)
 FOR_ALL(i, 0, N, j, 0, M, {
     double local_sum = 0.0;
@@ -406,9 +410,10 @@ For finer-grained control over nested parallelism (e.g., tiled algorithms), use 
 
 Same parallelization semantics as `FOR_ALL` (all dimensions parallelized), but the upper bound is **inclusive**. Designed for 1-based Fortran-style indexing with `FMatrix` types.
 
-**Underlying macro difference:** `FOR_ALL` passes ranges directly to `Kokkos::RangePolicy(x0, x1)` or `MDRangePolicy({x0,y0}, {x1,y1})`, making the upper bound exclusive. `DO_ALL` adds `+1` to every upper bound before passing to Kokkos: `RangePolicy(x0, x1+1)` or `MDRangePolicy({x0,y0}, {x1+1,y1+1})`. Additionally, `DO_ALL` uses `F_LOOP_ORDER` (Fortran-style iteration ordering) for its `MDRangePolicy`, while `FOR_ALL` uses `LOOP_ORDER` (C-style iteration ordering). Both ultimately expand to `Kokkos::parallel_for` with `KOKKOS_LAMBDA`.
+**Underlying macro difference:** `FOR_ALL` passes ranges directly to `Kokkos::RangePolicy(x0, x1)` or `MDRangePolicy({x0,y0}, {x1,y1})`, making the upper bound exclusive. `DO_ALL` adds `+1` to every upper bound before passing to Kokkos: `RangePolicy(x0, x1+1)` or `MDRangePolicy({x0,y0}, {x1+1,y1+1})`. Both ultimately expand to `Kokkos::parallel_for` with `KOKKOS_LAMBDA`. In the current `macros.h`, `LOOP_ORDER` and `F_LOOP_ORDER` are both `Kokkos::Iterate::Right`, so iteration order is effectively the same unless those macros are changed.
 
 ```cpp
+// COMPILES_AS_IS (assuming variables are declared)
 // 1D: iterates i = 1, 2, ..., N (inclusive)
 DO_ALL(i, 1, N, {
     matrix(i) = i;
@@ -1365,6 +1370,7 @@ Calling `field.communicate()` performs the full halo exchange:
 4. **`update_device()`**: Syncs the updated array (with fresh ghost data) back to the device.
 
 ```cpp
+// COMPILES_AS_IS (assuming variables are declared)
 // Typical time-step pattern:
 FOR_ALL(i, 0, num_owned, {
     field(i) = compute_new_value(i);
@@ -1398,6 +1404,7 @@ The `communicate()` method internally calls `update_host()` before packing and `
 ### Complete MPI Example Pattern
 
 ```cpp
+// PSEUDOCODE_PATTERN: fill in application-specific pieces
 #include <mpi.h>
 #include <matar.h>
 #include <communication_plan.h>
@@ -1457,3 +1464,70 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 ```
+
+---
+
+## 18. Ground Truth Constraints for LLMs
+
+Use these constraints as hard rules when generating MATAR code:
+
+1. **Use only macros that exist in `MATAR/src/include/macros.h`.**
+   - Valid loop macros include: `FOR_ALL`, `DO_ALL`, `RUN`, `FOR_LOOP`, `DO_LOOP`, `FOR_REDUCE_SUM`, `FOR_REDUCE_MAX`, `FOR_REDUCE_MIN`, `FOR_REDUCE_PRODUCT`, `DO_REDUCE_SUM`, `DO_REDUCE_MAX`, `DO_REDUCE_MIN`, and hierarchical/team variants.
+   - `DO_REDUCE_PRODUCT` does **not** exist.
+
+2. **`FOR_ALL` and `DO_ALL` parallelize all listed dimensions.**
+   - If a dimension must remain sequential, keep it as a plain inner `for` loop inside the macro body, or use hierarchical macros where appropriate.
+
+3. **Indexing is always `()` for MATAR arrays.**
+   - Never emit `[]` indexing for MATAR types.
+
+4. **For dual types, synchronize explicitly.**
+   - Host writes require `update_device()` before device reads.
+   - Device writes require `update_host()` before host reads.
+
+5. **Fence only when needed.**
+   - Required at dependency boundaries or before host/timing use.
+   - Avoid unnecessary fences between independent kernels.
+
+6. **Prefer aliases in `mtr::` namespace.**
+   - Example: `CArrayDual<T>` instead of direct underlying class names unless low-level control is needed.
+
+7. **MPI-aware distributed arrays use `MPICArrayKokkos`.**
+   - Plain `DCArrayKokkos` / `CArrayDual` are rank-local and do not perform communication.
+
+---
+
+## 19. LLM Output Contract
+
+When producing MATAR conversions, output must satisfy this checklist:
+
+- **Boilerplate**
+  - Include `#include <matar.h>`
+  - Use `using namespace mtr;`
+  - Wrap compute region between `MATAR_INITIALIZE(...)` and `MATAR_FINALIZE()`
+
+- **Data structure mapping**
+  - Choose `C*` vs `F*` based on target layout/coalescing goals
+  - Choose `Array` vs `Matrix` based on 0-based vs 1-based indexing
+  - Choose `Device` vs `Dual` vs `Host` based on execution/sync needs
+  - Use `View*` when wrapping existing pointers or slices
+
+- **Loop mapping**
+  - Replace parallelizable loops with `FOR_ALL` / `DO_ALL`
+  - Replace reductions with `FOR_REDUCE_*` / `DO_REDUCE_*`
+  - Keep dependency-carrying inner loops serial inside macro bodies
+
+- **Correctness and synchronization**
+  - Add `update_device()` / `update_host()` where required
+  - Add `MATAR_FENCE()` only at true synchronization boundaries
+  - Avoid race conditions (use reductions, atomics, or serial inner loops)
+
+- **MPI (if distributed)**
+  - Build `CommunicationPlan`
+  - Attach with `initialize_comm_plan(...)`
+  - Use `communicate()` at halo exchange points
+
+- **Output quality**
+  - Label examples as either:
+    - `COMPILES_AS_IS` (fully concrete except obvious variable declarations), or
+    - `PSEUDOCODE_PATTERN` (contains app-specific placeholders)
