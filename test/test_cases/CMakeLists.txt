@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.3)
+cmake_minimum_required(VERSION 3.5)
 
 # Find all test files in the current directory except test_main.cpp
 file(GLOB TEST_SOURCES "test_*.cpp")
