@@ -109,7 +109,48 @@ using SHArray1D     = Kokkos::View<size_t *,DefaultLayout,Kokkos::HostSpace>;
 //To disable asserts, uncomment the following line
 //#define NDEBUG
 
-
+// Bounds checking macros with enhanced error output
+// These macros provide detailed error messages in debug mode for bounds violations
+// The label parameter should be passed as a const char* (e.g., this_array_.label().c_str())
+// For types without labels, pass "" (empty string)
+#ifndef NDEBUG
+    // For 0-based array indexing (i must be < dim)
+    #define MATAR_CHECK_BOUNDS(i, dim, index_name, class_name, label) \
+        if ((i) >= (dim)) { \
+            printf("\n[MATAR BOUNDS ERROR]\n"); \
+            printf("  Class: %s\n", class_name); \
+            if ((label) && (label)[0] != '\0') printf("  Array Label: %s\n", label); \
+            printf("  Index '%s' = %zu is out of bounds (dimension size = %zu)\n\n", \
+                   index_name, (size_t)(i), (size_t)(dim)); \
+            assert(false && "MATAR bounds check failed"); \
+        }
+    
+    // For 1-based matrix indexing (i must be >= 1 and <= dim)
+    #define MATAR_CHECK_BOUNDS_MATRIX(i, dim, index_name, class_name, label) \
+        if ((i) < 1 || (i) > (dim)) { \
+            printf("\n[MATAR BOUNDS ERROR]\n"); \
+            printf("  Class: %s\n", class_name); \
+            if ((label) && (label)[0] != '\0') printf("  Array Label: %s\n", label); \
+            printf("  Index '%s' = %zu is out of bounds (valid range: 1 to %zu)\n\n", \
+                   index_name, (size_t)(i), (size_t)(dim)); \
+            assert(false && "MATAR bounds check failed"); \
+        }
+    
+    // For order/rank validation
+    #define MATAR_CHECK_ORDER(expected, actual, class_name, label) \
+        if ((expected) != (actual)) { \
+            printf("\n[MATAR ORDER MISMATCH ERROR]\n"); \
+            printf("  Class: %s\n", class_name); \
+            if ((label) && (label)[0] != '\0') printf("  Array Label: %s\n", label); \
+            printf("  Expected order %zu but got %zu\n\n", (size_t)(expected), (size_t)(actual)); \
+            assert(false && "MATAR order check failed"); \
+        }
+#else
+    // In Release mode, these macros do nothing
+    #define MATAR_CHECK_BOUNDS(i, dim, index_name, class_name, label) ((void)0)
+    #define MATAR_CHECK_BOUNDS_MATRIX(i, dim, index_name, class_name, label) ((void)0)
+    #define MATAR_CHECK_ORDER(expected, actual, class_name, label) ((void)0)
+#endif
 
 
 #ifdef HAVE_KOKKOS
@@ -375,8 +416,8 @@ FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::FArrayKokkos(size_t dim0, size_t 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()( size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in FArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in FArrayKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "FArrayKokkos 1D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "FArrayKokkos 1D", this_array_.label().c_str());
     return this_array_(i);
 }
 
@@ -384,9 +425,9 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()( size_t i) const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in FArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in FArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in FArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "FArrayKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "FArrayKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "FArrayKokkos 2D", this_array_.label().c_str());
     return this_array_(i + (j * dims_[0]));
 }
 
@@ -394,10 +435,10 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j)
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in FArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in FArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in FArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in FArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "FArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "FArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "FArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "FArrayKokkos 3D", this_array_.label().c_str());
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1]));
 }
@@ -406,11 +447,11 @@ T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in FArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in FArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in FArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in FArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in FArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "FArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "FArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "FArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "FArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "FArrayKokkos 4D", this_array_.label().c_str());
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2]));
@@ -421,12 +462,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in FArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in FArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in FArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in FArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in FArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in FArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "FArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "FArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "FArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "FArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "FArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "FArrayKokkos 5D", this_array_.label().c_str());
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -438,13 +479,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in FArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in FArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in FArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in FArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in FArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in FArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in FArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "FArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "FArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "FArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "FArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "FArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "FArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "FArrayKokkos 6D", this_array_.label().c_str());
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -457,14 +498,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in FArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in FArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in FArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in FArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in FArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in FArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in FArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in FArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "FArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "FArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "FArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "FArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "FArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "FArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "FArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "FArrayKokkos 7D", this_array_.label().c_str());
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -507,7 +548,7 @@ size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "FArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "FArrayKokkos dims()", this_array_.label().c_str());
     assert(dims_[i]>0 && "Access to FArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -759,8 +800,8 @@ ViewFArrayKokkos<T>::ViewFArrayKokkos(T *some_array, size_t dim0, size_t dim1,
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewFArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewFArrayKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "ViewFArrayKokkos 1D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewFArrayKokkos 1D", "");
     return this_array_[i];
 }
 
@@ -768,9 +809,9 @@ T& ViewFArrayKokkos<T>::operator()(size_t i) const {
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewFArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewFArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewFArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "ViewFArrayKokkos 2D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewFArrayKokkos 2D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewFArrayKokkos 2D", "");
     return this_array_[i + (j * dims_[0])];
 }
 
@@ -778,10 +819,10 @@ T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j) const {
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewFArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewFArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewFArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewFArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "ViewFArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewFArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewFArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewFArrayKokkos 3D", "");
     return this_array_[i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])];
 }
@@ -791,11 +832,11 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
                                    size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewFArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewFArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewFArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewFArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in ViewFArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "ViewFArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewFArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewFArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewFArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "ViewFArrayKokkos 4D", "");
     return this_array_[i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] *dims_[2])];
@@ -806,12 +847,12 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
                                    size_t l, size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewFArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewFArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewFArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewFArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in ViewFArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in ViewFArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "ViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "ViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "ViewFArrayKokkos 5D", "");
     return this_array_[i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -823,13 +864,13 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
                                    size_t l, size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewFArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewFArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewFArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewFArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in ViewFArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in ViewFArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in ViewFArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "ViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "ViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "ViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "ViewFArrayKokkos 6D", "");
     return this_array_[i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -843,14 +884,14 @@ KOKKOS_INLINE_FUNCTION
 T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
                                    size_t l, size_t m, size_t n,
                                    size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewFArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewFArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewFArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewFArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in ViewFArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in ViewFArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in ViewFArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in ViewFArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "ViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "ViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "ViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "ViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "ViewFArrayKokkos 7D", "");
     return this_array_[i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -874,7 +915,7 @@ size_t ViewFArrayKokkos<T>::extent() const {
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewFArrayKokkos<T>::dims(size_t i) const {
-    assert(i < order_ && "ViewFArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "ViewFArrayKokkos dims()", "");
     assert(dims_[i]>0 && "Access to ViewFArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -919,7 +960,7 @@ private:
     size_t dims_[7];
     size_t order_;
     size_t length_;
-    TArray1D this_matrix_;
+    TArray1D this_array_;
 
 public:
     FMatrixKokkos();
@@ -1017,7 +1058,7 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t dim1, const
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 2D constructor
@@ -1029,7 +1070,7 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t dim1, size_
     dims_[1] = dim2;
     order_ = 2;
     length_ = (dim1 * dim2);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 3D constructor
@@ -1043,7 +1084,7 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t dim1, size_
     dims_[2] = dim3;
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 4D constructor
@@ -1058,7 +1099,7 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t dim1, size_
     dims_[3] = dim4;
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 5D constructor
@@ -1075,7 +1116,7 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t dim1, size_
     dims_[4] = dim5;
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 5D constructor
@@ -1093,7 +1134,7 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t dim1, size_
     dims_[5] = dim6;
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 5D constructor
@@ -1113,46 +1154,46 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::FMatrixKokkos(size_t dim1, size_
     dims_[6] = dim7;
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in FMatrixKokkos 1D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in FMatrixKokkos in 1D!");
-    return this_matrix_((i - 1));
+    MATAR_CHECK_ORDER(1, order_, "FMatrixKokkos 1D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "FMatrixKokkos 1D", this_array_.label().c_str());
+    return this_array_((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in FMatrixKokkos 2D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in FMatrixKokkos in 2D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in FMatrixKokkos in 2D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0]));
+    MATAR_CHECK_ORDER(2, order_, "FMatrixKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "FMatrixKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "FMatrixKokkos 2D", this_array_.label().c_str());
+    return this_array_((i - 1) + ((j - 1) * dims_[0]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in FMatrixKokkos 3D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in FMatrixKokkos in 3D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in FMatrixKokkos in 3D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in FMatrixKokkos in 3D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(3, order_, "FMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "FMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "FMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "FMatrixKokkos 3D", this_array_.label().c_str());
+    return this_array_((i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in FMatrixKokkos 4D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in FMatrixKokkos in 4D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in FMatrixKokkos in 4D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in FMatrixKokkos in 4D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in FMatrixKokkos in 4D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(4, order_, "FMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "FMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "FMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "FMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "FMatrixKokkos 4D", this_array_.label().c_str());
+    return this_array_((i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2]));
 }
@@ -1161,13 +1202,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in FMatrixKokkos 5D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in FMatrixKokkos in 5D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in FMatrixKokkos in 5D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in FMatrixKokkos in 5D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in FMatrixKokkos in 5D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in FMatrixKokkos in 5D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(5, order_, "FMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "FMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "FMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "FMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "FMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "FMatrixKokkos 5D", this_array_.label().c_str());
+    return this_array_((i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
@@ -1177,14 +1218,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in FMatrixKokkos 6D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in FMatrixKokkos in 6D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in FMatrixKokkos in 6D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in FMatrixKokkos in 6D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in FMatrixKokkos in 6D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in FMatrixKokkos in 6D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in FMatrixKokkos in 6D!");
-    return this_matrix_[(i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(6, order_, "FMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "FMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "FMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "FMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "FMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "FMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "FMatrixKokkos 6D", this_array_.label().c_str());
+    return this_array_[(i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
@@ -1195,15 +1236,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in FMatrixKokkos 7D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in FMatrixKokkos in 7D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in FMatrixKokkos in 7D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in FMatrixKokkos in 7D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in FMatrixKokkos in 7D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in FMatrixKokkos in 7D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in FMatrixKokkos in 7D!");
-    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in FMatrixKokkos in 7D!");
-    return this_matrix_[(i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(7, order_, "FMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "FMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "FMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "FMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "FMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "FMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "FMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(o, dims_[6], "o", "FMatrixKokkos 7D", this_array_.label().c_str());
+    return this_array_[(i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
@@ -1222,7 +1263,7 @@ FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& FMatrixKokkos<T,Layout,ExecSpace
 
         order_ = temp.order_;
         length_ = temp.length_;
-        this_matrix_ = temp.this_matrix_;
+        this_array_ = temp.this_array_;
     }
     return *this;
 }
@@ -1245,7 +1286,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
     i--;
-    assert(i < order_ && "FMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "FMatrixKokkos dims()", this_array_.label().c_str());
     assert(dims_[i]>0 && "Access to FMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -1259,21 +1300,21 @@ size_t FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
-    return this_matrix_.data();
+    return this_array_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
-    return this_matrix_;
+    return this_array_;
 }
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.label();
+    return this_array_.label();
 }
 
 
@@ -1281,7 +1322,7 @@ const std::string FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() con
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void FMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for("SetValues_FMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        this_matrix_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -1304,7 +1345,7 @@ private:
     size_t dims_[7];
     size_t order_;
     size_t length_;
-    T* this_matrix_;
+    T* this_array_;
     
 public:
 
@@ -1389,7 +1430,7 @@ public:
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 ViewFMatrixKokkos<T>::ViewFMatrixKokkos() {
-    this_matrix_ = nullptr;
+    this_array_ = nullptr;
     length_ = order_ = 0;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
@@ -1403,7 +1444,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1) {
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 2D constructor
@@ -1415,7 +1456,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
     dims_[1] = dim2;
     order_ = 2;
     length_ = (dim1 * dim2);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 3D constructor
@@ -1428,7 +1469,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
     dims_[2] = dim3;
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 4D constructor
@@ -1443,7 +1484,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
     dims_[3] = dim4;
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 5D constructor
@@ -1459,7 +1500,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
     dims_[4] = dim5;
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 6D constructor
@@ -1477,7 +1518,7 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
     dims_[5] = dim6;
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 6D constructor
@@ -1496,37 +1537,37 @@ ViewFMatrixKokkos<T>::ViewFMatrixKokkos(T* some_matrix, size_t dim1,
     dims_[6] = dim7;
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewFMatrixKokkos 1D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrixKokkos 1D!");
-    return this_matrix_[(i - 1)];
+    MATAR_CHECK_ORDER(1, order_, "ViewFMatrixKokkos 1D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewFMatrixKokkos 1D", "");
+    return this_array_[(i - 1)];
 }
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewFMatrixKokkos 2D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrixKokkos 2D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrixKokkos 2D!");
-    return this_matrix_[(i - 1) + ((j - 1) * dims_[0])];
+    MATAR_CHECK_ORDER(2, order_, "ViewFMatrixKokkos 2D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewFMatrixKokkos 2D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewFMatrixKokkos 2D", "");
+    return this_array_[(i - 1) + ((j - 1) * dims_[0])];
 }
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const
 {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewFMatrixKokkos 3D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrixKokkos 3D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrixKokkos 3D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrixKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "ViewFMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewFMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewFMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewFMatrixKokkos 3D", "");
     
-    return this_matrix_[(i - 1) + ((j - 1) * dims_[0])
+    return this_array_[(i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])];
 }
 
@@ -1534,12 +1575,12 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k,
                                     size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewFMatrixKokkos 4D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrixKokkos 4D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrixKokkos 4D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrixKokkos 4D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewFMatrixKokkos 4D!");
-    return this_matrix_[(i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(4, order_, "ViewFMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewFMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewFMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewFMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "ViewFMatrixKokkos 4D", "");
+    return this_array_[(i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])];
 }
@@ -1548,13 +1589,13 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                     size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewFMatrixKokkos 5D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrixKokkos 5D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrixKokkos 5D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrixKokkos 5D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewFMatrixKokkos 5D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewFMatrixKokkos 5D!");
-    return this_matrix_[(i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(5, order_, "ViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "ViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "ViewFMatrixKokkos 5D", "");
+    return this_array_[(i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])];
@@ -1565,14 +1606,14 @@ KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                     size_t m, size_t n) const
 {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewFMatrixKokkos 6D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrixKokkos 6D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrixKokkos 6D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrixKokkos 6D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewFMatrixKokkos 6D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewFMatrixKokkos 6D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in ViewFMatrixKokkos 6D!");
-    return this_matrix_[(i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(6, order_, "ViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "ViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "ViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "ViewFMatrixKokkos 6D", "");
+    return this_array_[(i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
@@ -1584,15 +1625,15 @@ KOKKOS_INLINE_FUNCTION
 T& ViewFMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                     size_t m, size_t n, size_t o) const
 {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewFMatrixKokkos 7D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewFMatrixKokkos 7D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewFMatrixKokkos 7D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewFMatrixKokkos 7D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewFMatrixKokkos 7D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in ViewFMatrixKokkos 7D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in ViewFMatrixKokkos 7D!");
-    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in ViewFMatrixKokkos 7D!");
-    return this_matrix_[(i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(7, order_, "ViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "ViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "ViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "ViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(o, dims_[6], "o", "ViewFMatrixKokkos 7D", "");
+    return this_array_[(i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
@@ -1616,7 +1657,7 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewFMatrixKokkos<T>::dims(size_t i) const {
     i--;
-    assert(i < order_ && "ViewFMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "ViewFMatrixKokkos dims()", "");
     assert(dims_[i]>0 && "Access to ViewFMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -1630,13 +1671,13 @@ size_t ViewFMatrixKokkos<T>::order() const {
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T* ViewFMatrixKokkos<T>::pointer() const {
-    return this_matrix_;
+    return this_array_;
 }
 
 template <typename T>
 void ViewFMatrixKokkos<T>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_matrix_[i] = val;
+        this_array_[i] = val;
     });
 }
 
@@ -1888,27 +1929,27 @@ DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DFArrayKokkos(size_t dim0, size_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DFArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in DFArrayKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "DFArrayKokkos 1D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DFArrayKokkos 1D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DFArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in DFArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in DFArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "DFArrayKokkos 2D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DFArrayKokkos 2D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DFArrayKokkos 2D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(i + (j * dims_[0]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DFArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in DFArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in DFArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in DFArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "DFArrayKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DFArrayKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DFArrayKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DFArrayKokkos 3D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(i + (j * dims_[0])
                                 + (k * dims_[0] * dims_[1]));
 }
@@ -1916,11 +1957,11 @@ T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DFArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in DFArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in DFArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in DFArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in DFArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "DFArrayKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DFArrayKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DFArrayKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DFArrayKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DFArrayKokkos 4D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(i + (j * dims_[0])
                                 + (k * dims_[0] * dims_[1])
                                 + (l * dims_[0] * dims_[1] * dims_[2]));
@@ -1930,12 +1971,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DFArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in DFArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in DFArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in DFArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in DFArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in DFArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "DFArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DFArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DFArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DFArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DFArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DFArrayKokkos 5D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(i + (j * dims_[0])
                                 + (k * dims_[0] * dims_[1])
                                 + (l * dims_[0] * dims_[1] * dims_[2])
@@ -1946,13 +1987,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DFArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in DFArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in DFArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in DFArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in DFArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in DFArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in DFArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "DFArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DFArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DFArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DFArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DFArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DFArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DFArrayKokkos 6D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(i + (j * dims_[0])
                                 + (k * dims_[0] * dims_[1])
                                 + (l * dims_[0] * dims_[1] * dims_[2])
@@ -1964,14 +2005,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DFArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in DFArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in DFArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in DFArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in DFArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in DFArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in DFArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in DFArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "DFArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DFArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DFArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DFArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DFArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DFArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DFArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "DFArrayKokkos 7D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(i + (j * dims_[0])
                                 + (k * dims_[0] * dims_[1])
                                 + (l * dims_[0] * dims_[1] * dims_[2])
@@ -2016,7 +2057,7 @@ size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "DFArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "DFArrayKokkos dims()", this_array_.h_view.label().c_str());
     assert(dims_[i]>0 && "Access to DFArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -2374,27 +2415,27 @@ DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFArrayKokkos(T * inp_ar
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "DViewFArrayKokkos 1D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewFArrayKokkos 1D", "");
     return this_array_(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "DViewFArrayKokkos 2D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewFArrayKokkos 2D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewFArrayKokkos 2D", "");
     return this_array_(i + (j * dims_[0]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "DViewFArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewFArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewFArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewFArrayKokkos 3D", "");
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1]));
 }
@@ -2402,11 +2443,11 @@ T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "DViewFArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewFArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewFArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewFArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DViewFArrayKokkos 4D", "");
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2]));
@@ -2416,12 +2457,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in DViewFArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "DViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DViewFArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DViewFArrayKokkos 5D", "");
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -2432,13 +2473,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in DViewFArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in DViewFArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "DViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DViewFArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DViewFArrayKokkos 6D", "");
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -2450,14 +2491,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DViewFArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewFArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewFArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewFArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in DViewFArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in DViewFArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in DViewFArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "DViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DViewFArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "DViewFArrayKokkos 7D", "");
     return this_array_(i + (j * dims_[0])
                          + (k * dims_[0] * dims_[1])
                          + (l * dims_[0] * dims_[1] * dims_[2])
@@ -2503,7 +2544,7 @@ size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "DViewFArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "DViewFArrayKokkos dims()", "");
     assert(dims_[i]>0 && "Access to DViewFArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -2572,7 +2613,7 @@ private:
     size_t length_;
     size_t order_;  // tensor order (rank)
     bool   lock_ = false;
-    TArray1D this_matrix_;
+    TArray1D this_array_;
 
 public:
     DFMatrixKokkos();
@@ -2691,9 +2732,9 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, con
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewFMatrix
-    host = ViewFMatrix <T> (this_matrix_.view_host().data(), dim1);
+    host = ViewFMatrix <T> (this_array_.view_host().data(), dim1);
 }
 
 // Overloaded 2D constructor
@@ -2704,9 +2745,9 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, siz
     dims_[1] = dim2;
     order_ = 2;
     length_ = (dim1 * dim2);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewFMatrix
-    host = ViewFMatrix <T> (this_matrix_.view_host().data(), dim1, dim2);
+    host = ViewFMatrix <T> (this_array_.view_host().data(), dim1, dim2);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2718,9 +2759,9 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, siz
     dims_[2] = dim3;
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewFMatrix
-    host = ViewFMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3);
+    host = ViewFMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2733,9 +2774,9 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, siz
     dims_[3] = dim4;
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewFMatrix
-    host = ViewFMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3, dim4);
+    host = ViewFMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3, dim4);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2750,9 +2791,9 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, siz
     dims_[4] = dim5;
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewFMatrix
-    host = ViewFMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3, dim4, dim5);
+    host = ViewFMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3, dim4, dim5);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2768,9 +2809,9 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, siz
     dims_[5] = dim6;
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewFMatrix
-    host = ViewFMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3, dim4, dim5, dim6);
+    host = ViewFMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3, dim4, dim5, dim6);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2788,48 +2829,48 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DFMatrixKokkos(size_t dim1, siz
     dims_[6] = dim7;
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewFMatrix
-    host = ViewFMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3, dim4, dim5, dim6, dim7);
+    host = ViewFMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3, dim4, dim5, dim6, dim7);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 1D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 1D!");
-    return this_matrix_.view_device()((i - 1));
+    MATAR_CHECK_ORDER(1, order_, "DFMatrixKokkos 1D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DFMatrixKokkos 1D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 2D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 2D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 2D!");
-    return this_matrix_.view_device()((i - 1) + ((j - 1) * dims_[0]));
+    MATAR_CHECK_ORDER(2, order_, "DFMatrixKokkos 2D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DFMatrixKokkos 2D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DFMatrixKokkos 2D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((i - 1) + ((j - 1) * dims_[0]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 3D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 3D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 3D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 3D!");
-    return this_matrix_.view_device()((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(3, order_, "DFMatrixKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DFMatrixKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DFMatrixKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DFMatrixKokkos 3D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((i - 1) + ((j - 1) * dims_[0])
                                        + ((k - 1) * dims_[0] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 4D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 4D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 4D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 4D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DFMatrixKokkos 4D!");
-    return this_matrix_.view_device()((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(4, order_, "DFMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DFMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DFMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DFMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DFMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((i - 1) + ((j - 1) * dims_[0])
                                        + ((k - 1) * dims_[0] * dims_[1])
                                        + ((l - 1) * dims_[0] * dims_[1] * dims_[2]));
 }
@@ -2838,13 +2879,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 5D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 5D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 5D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 5D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DFMatrixKokkos 5D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DFMatrixKokkos 5D!");
-    return this_matrix_.view_device()((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(5, order_, "DFMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DFMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DFMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DFMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DFMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DFMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((i - 1) + ((j - 1) * dims_[0])
                                        + ((k - 1) * dims_[0] * dims_[1])
                                        + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                        + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
@@ -2854,14 +2895,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 6D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 6D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 6D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 6D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DFMatrixKokkos 6D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DFMatrixKokkos 6D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DFMatrixKokkos 6D!");
-    return this_matrix_.view_device()((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(6, order_, "DFMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DFMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DFMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DFMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DFMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DFMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "DFMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((i - 1) + ((j - 1) * dims_[0])
                                        + ((k - 1) * dims_[0] * dims_[1])
                                        + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                        + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
@@ -2872,15 +2913,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DFMatrixKokkos 7D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DFMatrixKokkos 7D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DFMatrixKokkos 7D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DFMatrixKokkos 7D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DFMatrixKokkos 7D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DFMatrixKokkos 7D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DFMatrixKokkos 7D!");
-    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in DFMatrixKokkos 7D!");
-    return this_matrix_.view_device()((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(7, order_, "DFMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DFMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DFMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DFMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DFMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DFMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "DFMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(o, dims_[6], "o", "DFMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((i - 1) + ((j - 1) * dims_[0])
                                        + ((k - 1) * dims_[0] * dims_[1])
                                        + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                        + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
@@ -2900,7 +2941,7 @@ DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DFMatrixKokkos<T,Layout,ExecSpa
 
         order_ = temp.order_;
         length_ = temp.length_;
-        this_matrix_ = temp.this_matrix_;
+        this_array_ = temp.this_array_;
         host = temp.host;
         lock_ = temp.lock_;
     }
@@ -2925,7 +2966,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
     i--;
-    assert(i < order_ && "DFMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "DFMatrixKokkos dims()", this_array_.h_view.label().c_str());
     assert(dims_[i]>0 && "Access to DFMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -2939,42 +2980,42 @@ size_t DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
-    return this_matrix_.view_device().data();
+    return this_array_.view_device().data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
-    return this_matrix_.view_host().data();
+    return this_array_.view_host().data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
     assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
-    this_matrix_.template modify<typename TArray1D::execution_space>();
-    this_matrix_.template sync<typename TArray1D::host_mirror_space>();
+    this_array_.template modify<typename TArray1D::execution_space>();
+    this_array_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
-    this_matrix_.template modify<typename TArray1D::host_mirror_space>();
-    this_matrix_.template sync<typename TArray1D::execution_space>();
+    this_array_.template modify<typename TArray1D::host_mirror_space>();
+    this_array_.template sync<typename TArray1D::execution_space>();
 }
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.view_host().label();
+    return this_array_.view_host().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_matrix_.view_device()(i) = val;
+        this_array_.view_device()(i) = val;
     });
 }
 
@@ -3010,8 +3051,8 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
-    TArray1D this_matrix_;
-    TArray1DHost this_matrix_host_;
+    TArray1D this_array_;
+    TArray1DHost this_array_host_;
     T * temp_inp_matrix_;
 
 public:
@@ -3128,12 +3169,12 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 1;
     length_ = dim1;
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
-    // Create host ViewFMatrix. Note: inp_matrix and this_matrix_host_.data() are the same pointer
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
+    // Create host ViewFMatrix. Note: inp_matrix and this_array_host_.data() are the same pointer
     host = ViewFMatrix <T> (inp_matrix, dim1);
 }
 
@@ -3146,11 +3187,11 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 2;
     length_ = (dim1 * dim2);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewFMatrix
     host = ViewFMatrix <T> (inp_matrix, dim1, dim2);
 }
@@ -3165,11 +3206,11 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewFMatrix
     host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3);
 }
@@ -3185,11 +3226,11 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewFMatrix
     host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4);
 }
@@ -3207,11 +3248,11 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewFMatrix
     host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5);
 }
@@ -3230,11 +3271,11 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewFMatrix
     host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5, dim6);
 }
@@ -3255,11 +3296,11 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewFMatrix
     host = ViewFMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5, dim6, dim7);
 }
@@ -3267,40 +3308,40 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewFMatrixKokkos(T * inp_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 1D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 1D!");
-    return this_matrix_((i - 1));
+    MATAR_CHECK_ORDER(1, order_, "DViewFMatrixKokkos 1D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewFMatrixKokkos 1D", "");
+    return this_array_((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 2D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 2D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 2D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0]));
+    MATAR_CHECK_ORDER(2, order_, "DViewFMatrixKokkos 2D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewFMatrixKokkos 2D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewFMatrixKokkos 2D", "");
+    return this_array_((i - 1) + ((j - 1) * dims_[0]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 3D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 3D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 3D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 3D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(3, order_, "DViewFMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewFMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewFMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewFMatrixKokkos 3D", "");
+    return this_array_((i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 4D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 4D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 4D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 4D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewFMatrixKokkos 4D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(4, order_, "DViewFMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewFMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewFMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewFMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DViewFMatrixKokkos 4D", "");
+    return this_array_((i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2]));
 }
@@ -3309,13 +3350,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 5D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 5D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 5D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 5D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewFMatrixKokkos 5D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewFMatrixKokkos 5D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(5, order_, "DViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DViewFMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DViewFMatrixKokkos 5D", "");
+    return this_array_((i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
@@ -3325,14 +3366,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 6D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 6D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 6D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 6D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewFMatrixKokkos 6D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewFMatrixKokkos 6D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DViewFMatrixKokkos 6D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(6, order_, "DViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DViewFMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "DViewFMatrixKokkos 6D", "");
+    return this_array_((i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
@@ -3343,15 +3384,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DViewFMatrixKokkos 7D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewFMatrixKokkos 7D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewFMatrixKokkos 7D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewFMatrixKokkos 7D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewFMatrixKokkos 7D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewFMatrixKokkos 7D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DViewFMatrixKokkos 7D!");
-    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in DViewFMatrixKokkos 7D!");
-    return this_matrix_((i - 1) + ((j - 1) * dims_[0])
+    MATAR_CHECK_ORDER(7, order_, "DViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "DViewFMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(o, dims_[6], "o", "DViewFMatrixKokkos 7D", "");
+    return this_array_((i - 1) + ((j - 1) * dims_[0])
                                 + ((k - 1) * dims_[0] * dims_[1])
                                 + ((l - 1) * dims_[0] * dims_[1] * dims_[2])
                                 + ((m - 1) * dims_[0] * dims_[1] * dims_[2] * dims_[3])
@@ -3372,8 +3413,8 @@ DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewFMatrixKokkos<T,Layout
         order_ = temp.order_;
         length_ = temp.length_;
         temp_inp_matrix_ = temp.temp_inp_matrix_;
-        this_matrix_host_ = temp.this_matrix_host_;
-        this_matrix_ = temp.this_matrix_;
+        this_array_host_ = temp.this_array_host_;
+        this_array_ = temp.this_array_;
 	host = temp.host;
     }
     
@@ -3397,7 +3438,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
     i--;
-    assert(i < order_ && "DViewFMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "DViewFMatrixKokkos dims()", "");
     assert(dims_[i]>0 && "Access to DViewFMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -3411,39 +3452,39 @@ size_t DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
-    return this_matrix_.data();
+    return this_array_.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
-    return this_matrix_host_.data();
+    return this_array_host_.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
     // Deep copy of device view to host view
-    deep_copy(this_matrix_host_, this_matrix_);
+    deep_copy(this_array_host_, this_array_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     // Deep copy of host view to device view
-    deep_copy(this_matrix_, this_matrix_host_);
+    deep_copy(this_array_, this_array_host_);
 }
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.label();
+    return this_array_.label();
 }
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_matrix_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -3666,27 +3707,27 @@ CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CArrayKokkos(size_t dim0, size_t 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in CArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in CArrayKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "CArrayKokkos 1D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "CArrayKokkos 1D", this_array_.label().c_str());
     return this_array_(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in CArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in CArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in CArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "CArrayKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "CArrayKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "CArrayKokkos 2D", this_array_.label().c_str());
     return this_array_(j + (i * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in CArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in CArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in CArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in CArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "CArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "CArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "CArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "CArrayKokkos 3D", this_array_.label().c_str());
     return this_array_(k + (j * dims_[2])
                          + (i * dims_[2] * dims_[1]));
 }
@@ -3694,11 +3735,11 @@ T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j,
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in CArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in CArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in CArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in CArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in CArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "CArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "CArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "CArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "CArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "CArrayKokkos 4D", this_array_.label().c_str());
     return this_array_(l + (k * dims_[3])
                          + (j * dims_[3] * dims_[2])
                          + (i * dims_[3] * dims_[2] * dims_[1]));
@@ -3708,12 +3749,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in CArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in CArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in CArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in CArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in CArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in CArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "CArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "CArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "CArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "CArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "CArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "CArrayKokkos 5D", this_array_.label().c_str());
     return this_array_(m + (l * dims_[4])
                          + (k * dims_[4] * dims_[3])
                          + (j * dims_[4] * dims_[3] * dims_[2])
@@ -3724,13 +3765,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in CArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in CArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in CArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in CArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in CArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in CArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in CArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "CArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "CArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "CArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "CArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "CArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "CArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "CArrayKokkos 6D", this_array_.label().c_str());
     return this_array_(n + (m * dims_[5])
                          + (l * dims_[5] * dims_[4])
                          + (k * dims_[5] * dims_[4] * dims_[3])
@@ -3742,14 +3783,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in CArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in CArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in CArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in CArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in CArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in CArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in CArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in CArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "CArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "CArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "CArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "CArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "CArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "CArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "CArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "CArrayKokkos 7D", this_array_.label().c_str());
     return this_array_(o + (n * dims_[6])
                          + (m * dims_[6] * dims_[5])
                          + (l * dims_[6] * dims_[5] * dims_[4])
@@ -3793,7 +3834,7 @@ size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "CArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "CArrayKokkos dims()", this_array_.label().c_str());
     assert(dims_[i]>0 && "Access to CArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -4047,27 +4088,27 @@ ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0,
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewCArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewCArrayKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "ViewCArrayKokkos 1D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewCArrayKokkos 1D", "");
     return this_array_[i];
 }
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewCArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewCArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewCArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "ViewCArrayKokkos 2D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewCArrayKokkos 2D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewCArrayKokkos 2D", "");
     return this_array_[j + (i * dims_[1])];
 }
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewCArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewCArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewCArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewCArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "ViewCArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewCArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewCArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewCArrayKokkos 3D", "");
     return this_array_[k + (j * dims_[2])
                          + (i * dims_[2] * dims_[1])];
 }
@@ -4076,11 +4117,11 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k,
                                    size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewCArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewCArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewCArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewCArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in ViewCArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "ViewCArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewCArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewCArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewCArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "ViewCArrayKokkos 4D", "");
     return this_array_[l + (k * dims_[3])
                          + (j * dims_[3] * dims_[2])
                          + (i * dims_[3] * dims_[2] * dims_[1])];
@@ -4090,12 +4131,12 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                    size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewCArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewCArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewCArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewCArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in ViewCArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in ViewCArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "ViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "ViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "ViewCArrayKokkos 5D", "");
     return this_array_[m + (l * dims_[4])
                          + (k * dims_[4] * dims_[3])
                          + (j * dims_[4] * dims_[3] * dims_[2])
@@ -4106,13 +4147,13 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                    size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewCArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewCArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewCArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewCArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in ViewCArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in ViewCArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in ViewCArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "ViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "ViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "ViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "ViewCArrayKokkos 6D", "");
     return this_array_[n + (m * dims_[5])
                          + (l * dims_[5] * dims_[4])
                          + (k * dims_[5] * dims_[4] * dims_[3])
@@ -4124,14 +4165,14 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                    size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewCArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in ViewCArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in ViewCArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in ViewCArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in ViewCArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in ViewCArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in ViewCArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in ViewCArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "ViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "ViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "ViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "ViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "ViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "ViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "ViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "ViewCArrayKokkos 7D", "");
     return this_array_[o + (n * dims_[6])
                          + (m * dims_[6] * dims_[5])
                          + (l * dims_[6] * dims_[5] * dims_[4])
@@ -4155,7 +4196,7 @@ size_t ViewCArrayKokkos<T>::extent() const {
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewCArrayKokkos<T>::dims(size_t i) const {
-    assert(i < order_ && "ViewCArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "ViewCArrayKokkos dims()", "");
     assert(dims_[i]>0 && "Access to ViewCArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -4199,7 +4240,7 @@ private:
     size_t dims_[7];
     size_t order_;
     size_t length_;
-    TArray1D this_matrix_;
+    TArray1D this_array_;
 
 public:
     CMatrixKokkos();
@@ -4297,7 +4338,7 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t dim1, const
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 2D constructor
@@ -4309,7 +4350,7 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t dim1, size_
     dims_[1] = dim2;
     order_ = 2;
     length_ = (dim1 * dim2);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 3D constructor
@@ -4323,7 +4364,7 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t dim1, size_
     dims_[2] = dim3;
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 4D constructor
@@ -4338,7 +4379,7 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t dim1, size_
     dims_[3] = dim4;
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 5D constructor
@@ -4356,7 +4397,7 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t dim1, size_
     dims_[4] = dim5;
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 6D constructor
@@ -4374,7 +4415,7 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t dim1, size_
     dims_[5] = dim6;
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // Overloaded 7D constructor
@@ -4394,46 +4435,46 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::CMatrixKokkos(size_t dim1, size_
     dims_[6] = dim7;
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in CMatrixKokkos 1D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrixKokkos 1D!");
-    return this_matrix_((i - 1));
+    MATAR_CHECK_ORDER(1, order_, "CMatrixKokkos 1D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "CMatrixKokkos 1D", this_array_.label().c_str());
+    return this_array_((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in CMatrixKokkos 2D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrixKokkos 2D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrixKokkos 2D!");
-    return this_matrix_((j - 1) + ((i - 1) * dims_[1]));
+    MATAR_CHECK_ORDER(2, order_, "CMatrixKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "CMatrixKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "CMatrixKokkos 2D", this_array_.label().c_str());
+    return this_array_((j - 1) + ((i - 1) * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in CMatrixKokkos 3D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrixKokkos 3D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrixKokkos 3D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrixKokkos 3D!");
-    return this_matrix_((k - 1) + ((j - 1) * dims_[2])
+    MATAR_CHECK_ORDER(3, order_, "CMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "CMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "CMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "CMatrixKokkos 3D", this_array_.label().c_str());
+    return this_array_((k - 1) + ((j - 1) * dims_[2])
                                 + ((i - 1) * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in CMatrixKokkos 4D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrixKokkos 4D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrixKokkos 4D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrixKokkos 4D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in CMatrixKokkos 4D!");
-    return this_matrix_((l - 1) + ((k - 1) * dims_[3])
+    MATAR_CHECK_ORDER(4, order_, "CMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "CMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "CMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "CMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "CMatrixKokkos 4D", this_array_.label().c_str());
+    return this_array_((l - 1) + ((k - 1) * dims_[3])
                                 + ((j - 1) * dims_[3] * dims_[2])
                                 + ((i - 1) * dims_[3] * dims_[2] * dims_[1]));
 }
@@ -4442,13 +4483,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in CMatrixKokkos 5D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrixKokkos 5D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrixKokkos 5D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrixKokkos 5D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in CMatrixKokkos 5D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in CMatrixKokkos 5D!");
-    return this_matrix_((m - 1) + ((l - 1) * dims_[4])
+    MATAR_CHECK_ORDER(5, order_, "CMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "CMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "CMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "CMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "CMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "CMatrixKokkos 5D", this_array_.label().c_str());
+    return this_array_((m - 1) + ((l - 1) * dims_[4])
                                 + ((k - 1) * dims_[4] * dims_[3])
                                 + ((j - 1) * dims_[4] * dims_[3] * dims_[2])
                                 + ((i - 1) * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
@@ -4458,14 +4499,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in CMatrixKokkos 6D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrixKokkos 6D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrixKokkos 6D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrixKokkos 6D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in CMatrixKokkos 6D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in CMatrixKokkos 6D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in CMatrixKokkos 6D!");
-    return this_matrix_((n - 1) + ((m - 1) * dims_[5])
+    MATAR_CHECK_ORDER(6, order_, "CMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "CMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "CMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "CMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "CMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "CMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "CMatrixKokkos 6D", this_array_.label().c_str());
+    return this_array_((n - 1) + ((m - 1) * dims_[5])
                                 + ((l - 1) * dims_[5] * dims_[4])
                                 + ((k - 1) * dims_[5] * dims_[4] * dims_[3])
                                 + ((j - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2])
@@ -4476,15 +4517,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                 size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in CMatrixKokkos 7D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in CMatrixKokkos 7D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in CMatrixKokkos 7D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in CMatrixKokkos 7D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in CMatrixKokkos 7D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in CMatrixKokkos 7D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in CMatrixKokkos 7D!");
-    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in CMatrixKokkos 7D!");
-    return this_matrix_((o-1) + ((n - 1) * dims_[6])
+    MATAR_CHECK_ORDER(7, order_, "CMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "CMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "CMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "CMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "CMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "CMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "CMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(o, dims_[6], "o", "CMatrixKokkos 7D", this_array_.label().c_str());
+    return this_array_((o-1) + ((n - 1) * dims_[6])
                               + ((m - 1) * dims_[6] * dims_[5])
                               + ((l - 1) * dims_[6] * dims_[5] * dims_[4])
                               + ((k - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3])
@@ -4506,7 +4547,7 @@ CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits> & CMatrixKokkos<T,Layout,ExecSpac
 
         order_ = temp.order_;
         length_ = temp.length_;
-        this_matrix_ = temp.this_matrix_;
+        this_array_ = temp.this_array_;
     }
     
     return *this;
@@ -4528,7 +4569,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
     i--;
-    assert(i < order_ && "CMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "CMatrixKokkos dims()", this_array_.label().c_str());
     assert(dims_[i]>0 && "Access to CMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -4542,28 +4583,28 @@ size_t CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::pointer() const {
-    return this_matrix_.data();
+    return this_array_.data();
 }
 
 //return the stored Kokkos view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() const {
-    return this_matrix_;
+    return this_array_;
 }
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.label();
+    return this_array_.label();
 }
 
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for("SetValues_CMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        this_matrix_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -4586,7 +4627,7 @@ private:
     size_t dims_[7];
     size_t order_;
     size_t length_;
-    T* this_matrix_;
+    T* this_array_;
 
 public:
     KOKKOS_INLINE_FUNCTION
@@ -4666,7 +4707,7 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 ViewCMatrixKokkos<T>::ViewCMatrixKokkos(){
     length_ = order_ = 0;
-    this_matrix_ = NULL;
+    this_array_ = NULL;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
     }
@@ -4679,7 +4720,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1) {
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 2D constructor
@@ -4691,7 +4732,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1,
     dims_[1] = dim2;
     order_ = 2;
     length_ = (dim1 * dim2);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 3D constructor
@@ -4704,7 +4745,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
     dims_[2] = dim3;
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 4D constructor
@@ -4718,7 +4759,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
     dims_[3] = dim4;
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 5D constructor
@@ -4733,7 +4774,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
     dims_[4] = dim5;
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 6D constructor
@@ -4750,7 +4791,7 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
     dims_[5] = dim6;
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 // Overloaded 7D constructor
@@ -4768,46 +4809,46 @@ ViewCMatrixKokkos<T>::ViewCMatrixKokkos(T* some_matrix, size_t dim1, size_t dim2
     dims_[6] = dim7;
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
-    this_matrix_ = some_matrix;
+    this_array_ = some_matrix;
 }
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in ViewCMatrixKokkos 1D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrixKokkos 1D!");
-    return this_matrix_[(i - 1)];
+    MATAR_CHECK_ORDER(1, order_, "ViewCMatrixKokkos 1D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewCMatrixKokkos 1D", "");
+    return this_array_[(i - 1)];
 }
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in ViewCMatrixKokkos 2D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrixKokkos 2D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrixKokkos 2D!");
-    return this_matrix_[(j - 1) + ((i - 1) * dims_[1])];
+    MATAR_CHECK_ORDER(2, order_, "ViewCMatrixKokkos 2D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewCMatrixKokkos 2D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewCMatrixKokkos 2D", "");
+    return this_array_[(j - 1) + ((i - 1) * dims_[1])];
 }
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in ViewCMatrixKokkos 3D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrixKokkos 3D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrixKokkos 3D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewCMatrixKokkos 3D!");
-    return this_matrix_[(k - 1) + ((j - 1) * dims_[2])
+    MATAR_CHECK_ORDER(3, order_, "ViewCMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewCMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewCMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewCMatrixKokkos 3D", "");
+    return this_array_[(k - 1) + ((j - 1) * dims_[2])
                                 + ((i - 1) * dims_[2] * dims_[1])];
 }
 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j , size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in ViewCMatrixKokkos 4D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in ViewCMatrixKokkos 4D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in ViewCMatrixKokkos 4D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in ViewCMatrixKokkos 4D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in ViewCMatrixKokkos 4D!");
-    return this_matrix_[(l - 1) + ((k - 1) * dims_[3])
+    MATAR_CHECK_ORDER(4, order_, "ViewCMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewCMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewCMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewCMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "ViewCMatrixKokkos 4D", "");
+    return this_array_[(l - 1) + ((k - 1) * dims_[3])
                                 + ((j - 1) * dims_[3] * dims_[2])
                                 + ((i - 1) * dims_[3] * dims_[2] * dims_[1])];
 }
@@ -4816,13 +4857,13 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                     size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in ViewCMatrixKokkos 5D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds for ViewCMatrixKokkos 5D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds for ViewCMatrixKokkos 5D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds for ViewCMatrixKokkos 5D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds for ViewCMatrixKokkos 5D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds for ViewCMatrixKokkos 5D!");
-    return this_matrix_[(m - 1) + ((l - 1) * dims_[4])
+    MATAR_CHECK_ORDER(5, order_, "ViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "ViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "ViewCMatrixKokkos 5D", "");
+    return this_array_[(m - 1) + ((l - 1) * dims_[4])
                                 + ((k - 1) * dims_[4] * dims_[3])
                                 + ((j - 1) * dims_[4] * dims_[3] * dims_[2])
                                 + ((i - 1) * dims_[4] * dims_[3] * dims_[2] * dims_[1])];
@@ -4832,14 +4873,14 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                     size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in ViewCMatrixKokkos 6D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds for ViewCMatrixKokkos 6D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds for ViewCMatrixKokkos 6D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds for ViewCMatrixKokkos 6D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds for ViewCMatrixKokkos 6D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds for ViewCMatrixKokkos 6D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds for ViewCMatrixKokkos 6D!");
-    return this_matrix_[(n - 1) + ((m - 1) * dims_[5])
+    MATAR_CHECK_ORDER(6, order_, "ViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "ViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "ViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "ViewCMatrixKokkos 6D", "");
+    return this_array_[(n - 1) + ((m - 1) * dims_[5])
                                 + ((l - 1) * dims_[5] * dims_[4])
                                 + ((k - 1) * dims_[5] * dims_[4] * dims_[3])
                                 + ((j - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2])
@@ -4850,15 +4891,15 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& ViewCMatrixKokkos<T>::operator()(size_t i, size_t j, size_t k, size_t l,
                                     size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in ViewCMatrixKokkos 7D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds for ViewCMatrixKokkos 7D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds for ViewCMatrixKokkos 7D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds for ViewCMatrixKokkos 7D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds for ViewCMatrixKokkos 7D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds for ViewCMatrixKokkos 7D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds for ViewCMatrixKokkos 7D!");
-    assert(o >= 1 && o <= dims_[6] && "o is out of bounds for ViewCMatrixKokkos 7D!");
-    return this_matrix_[o + ((n - 1) * dims_[6])
+    MATAR_CHECK_ORDER(7, order_, "ViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "ViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "ViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "ViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "ViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "ViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "ViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(o, dims_[6], "o", "ViewCMatrixKokkos 7D", "");
+    return this_array_[o + ((n - 1) * dims_[6])
                           + ((m - 1) * dims_[6] * dims_[5])
                           + ((l - 1) * dims_[6] * dims_[5] * dims_[4])
                           + ((k - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3])
@@ -4883,7 +4924,7 @@ template <typename T>
 KOKKOS_INLINE_FUNCTION
 size_t ViewCMatrixKokkos<T>::dims(size_t i) const {
     i--;
-    assert(i < order_ && "ViewCMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "ViewCMatrixKokkos dims()", "");
     assert(dims_[i]>0 && "Access to ViewCMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -4897,13 +4938,13 @@ size_t ViewCMatrixKokkos<T>::order() const {
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T* ViewCMatrixKokkos<T>::pointer() const {
-    return this_matrix_;
+    return this_array_;
 }
 
 template <typename T>
 void ViewCMatrixKokkos<T>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_matrix_[i] = val;
+        this_array_[i] = val;
     });
 }
 
@@ -5156,27 +5197,27 @@ DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DCArrayKokkos(size_t dim0, size_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DCArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in DCArrayKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "DCArrayKokkos 1D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DCArrayKokkos 1D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DCArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in DCArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in DCArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "DCArrayKokkos 2D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DCArrayKokkos 2D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DCArrayKokkos 2D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(j + (i * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DCArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in DCArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in DCArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in DCArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "DCArrayKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DCArrayKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DCArrayKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DCArrayKokkos 3D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(k + (j * dims_[2])
                                 + (i * dims_[2] * dims_[1]));
 }
@@ -5184,11 +5225,11 @@ T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DCArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in DCArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in DCArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in DCArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in DCArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "DCArrayKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DCArrayKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DCArrayKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DCArrayKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DCArrayKokkos 4D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(l + (k * dims_[3])
                                 + (j * dims_[3] * dims_[2])
                                 + (i * dims_[3] * dims_[2] * dims_[1]));
@@ -5198,12 +5239,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DCArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in DCArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in DCArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in DCArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in DCArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in DCArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "DCArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DCArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DCArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DCArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DCArrayKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DCArrayKokkos 5D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(m + (l * dims_[4])
                                 + (k * dims_[4] * dims_[3])
                                 + (j * dims_[4] * dims_[3] * dims_[2])
@@ -5214,13 +5255,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DCArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in DCArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in DCArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in DCArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in DCArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in DCArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in DCArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "DCArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DCArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DCArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DCArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DCArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DCArrayKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DCArrayKokkos 6D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(n + (m * dims_[5])
                                 + (l * dims_[5] * dims_[4])
                                 + (k * dims_[5] * dims_[4] * dims_[3])
@@ -5232,14 +5273,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DCArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in DCArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in DCArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in DCArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in DCArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in DCArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in DCArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in DCArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "DCArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DCArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DCArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DCArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DCArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DCArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DCArrayKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "DCArrayKokkos 7D", this_array_.h_view.label().c_str());
     return this_array_.view_device()(o + (n * dims_[6])
                                 + (m * dims_[6] * dims_[5])
                                 + (l * dims_[6] * dims_[5] * dims_[4])
@@ -5284,7 +5325,7 @@ size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "DCArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "DCArrayKokkos dims()", this_array_.h_view.label().c_str());
     assert(dims_[i]>0 && "Access to DCArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -5650,27 +5691,27 @@ DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCArrayKokkos(T * inp_ar
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DViewCArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewCArrayKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "DViewCArrayKokkos 1D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewCArrayKokkos 1D", "");
     return this_array_(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DViewCArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewCArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewCArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "DViewCArrayKokkos 2D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewCArrayKokkos 2D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewCArrayKokkos 2D", "");
     return this_array_(j + (i * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DViewCArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewCArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewCArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewCArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "DViewCArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewCArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewCArrayKokkos 3D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewCArrayKokkos 3D", "");
     return this_array_(k + (j * dims_[2])
                          + (i * dims_[2] * dims_[1]));
 }
@@ -5678,11 +5719,11 @@ T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DViewCArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewCArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewCArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewCArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in DViewCArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "DViewCArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewCArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewCArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewCArrayKokkos 4D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DViewCArrayKokkos 4D", "");
     return this_array_(l + (k * dims_[3])
                          + (j * dims_[3] * dims_[2])
                          + (i * dims_[3] * dims_[2] * dims_[1]));
@@ -5692,12 +5733,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DViewCArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewCArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewCArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewCArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in DViewCArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in DViewCArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "DViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DViewCArrayKokkos 5D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DViewCArrayKokkos 5D", "");
     return this_array_(m + (l * dims_[4])
                          + (k * dims_[4] * dims_[3])
                          + (j * dims_[4] * dims_[3] * dims_[2])
@@ -5708,13 +5749,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DViewCArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewCArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewCArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewCArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in DViewCArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in DViewCArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in DViewCArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "DViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DViewCArrayKokkos 6D", "");
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DViewCArrayKokkos 6D", "");
     return this_array_(n + (m * dims_[5])
                          + (l * dims_[5] * dims_[4])
                          + (k * dims_[5] * dims_[4] * dims_[3])
@@ -5726,14 +5767,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DViewCArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in DViewCArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in DViewCArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in DViewCArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in DViewCArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in DViewCArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in DViewCArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in DViewCArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "DViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DViewCArrayKokkos 7D", "");
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "DViewCArrayKokkos 7D", "");
     return this_array_(o + (n * dims_[6])
                          + (m * dims_[6] * dims_[5])
                          + (l * dims_[6] * dims_[5] * dims_[4])
@@ -5780,7 +5821,7 @@ size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < order_ && "DViewCArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "DViewCArrayKokkos dims()", "");
     assert(dims_[i]>0 && "Access to DViewCArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -5848,7 +5889,7 @@ private:
     size_t length_;
     size_t order_;  // tensor order (rank)
     bool   lock_ = false;
-    TArray1D this_matrix_;
+    TArray1D this_array_;
 
 public:
     // Data member to access host view
@@ -5966,9 +6007,9 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, con
     dims_[0] = dim1;
     order_ = 1;
     length_ = dim1;
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCMatrix
-    host = ViewCMatrix <T> (this_matrix_.view_host().data(), dim1);
+    host = ViewCMatrix <T> (this_array_.view_host().data(), dim1);
 }
 
 // Overloaded 2D constructor
@@ -5979,9 +6020,9 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, siz
     dims_[1] = dim2;
     order_ = 2;
     length_ = (dim1 * dim2);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCMatrix
-    host = ViewCMatrix <T> (this_matrix_.view_host().data(), dim1, dim2);
+    host = ViewCMatrix <T> (this_array_.view_host().data(), dim1, dim2);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -5993,9 +6034,9 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, siz
     dims_[2] = dim3;
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCMatrix
-    host = ViewCMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3);
+    host = ViewCMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -6008,9 +6049,9 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, siz
     dims_[3] = dim4;
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCMatrix
-    host = ViewCMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3, dim4);
+    host = ViewCMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3, dim4);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -6025,9 +6066,9 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, siz
     dims_[4] = dim5;
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCMatrix
-    host = ViewCMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3, dim4, dim5);
+    host = ViewCMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3, dim4, dim5);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -6043,9 +6084,9 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, siz
     dims_[5] = dim6;
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCMatrix
-    host = ViewCMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3, dim4, dim5, dim6);
+    host = ViewCMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3, dim4, dim5, dim6);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -6063,48 +6104,48 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DCMatrixKokkos(size_t dim1, siz
     dims_[6] = dim7;
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
-    this_matrix_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
     // Create host ViewCMatrix
-    host = ViewCMatrix <T> (this_matrix_.view_host().data(), dim1, dim2, dim3, dim4, dim5, dim6, dim7);
+    host = ViewCMatrix <T> (this_array_.view_host().data(), dim1, dim2, dim3, dim4, dim5, dim6, dim7);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 1D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 1D!");
-    return this_matrix_.view_device()((i - 1));
+    MATAR_CHECK_ORDER(1, order_, "DCMatrixKokkos 1D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DCMatrixKokkos 1D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 2D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 2D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 2D!");
-    return this_matrix_.view_device()((j - 1) + ((i - 1) * dims_[1]));
+    MATAR_CHECK_ORDER(2, order_, "DCMatrixKokkos 2D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DCMatrixKokkos 2D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DCMatrixKokkos 2D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((j - 1) + ((i - 1) * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 3D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 3D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 3D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 3D!");
-    return this_matrix_.view_device()((k - 1) + ((j - 1) * dims_[2])
+    MATAR_CHECK_ORDER(3, order_, "DCMatrixKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DCMatrixKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DCMatrixKokkos 3D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DCMatrixKokkos 3D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((k - 1) + ((j - 1) * dims_[2])
                                        + ((i - 1) * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 4D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 4D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 4D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 4D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DCMatrixKokkos 4D!");
-    return this_matrix_.view_device()((l - 1) + ((k - 1) * dims_[3])
+    MATAR_CHECK_ORDER(4, order_, "DCMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DCMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DCMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DCMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DCMatrixKokkos 4D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((l - 1) + ((k - 1) * dims_[3])
                                        + ((j - 1) * dims_[3] * dims_[2])
                                        + ((i - 1) * dims_[3] * dims_[2] * dims_[1]));
 }
@@ -6113,13 +6154,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 5D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 5D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 5D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 5D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DCMatrixKokkos 5D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DCMatrixKokkos 5D!");
-    return this_matrix_.view_device()((m - 1) + ((l - 1) * dims_[4])
+    MATAR_CHECK_ORDER(5, order_, "DCMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DCMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DCMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DCMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DCMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DCMatrixKokkos 5D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((m - 1) + ((l - 1) * dims_[4])
                                        + ((k - 1) * dims_[4] * dims_[3])
                                        + ((j - 1) * dims_[4] * dims_[3] * dims_[2])
                                        + ((i - 1) * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
@@ -6129,14 +6170,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 6D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 6D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 6D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 6D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DCMatrixKokkos 6D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DCMatrixKokkos 6D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DCMatrixKokkos 6D!");
-    return this_matrix_.view_device()((n - 1) + ((m - 1) * dims_[5])
+    MATAR_CHECK_ORDER(6, order_, "DCMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DCMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DCMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DCMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DCMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DCMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "DCMatrixKokkos 6D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((n - 1) + ((m - 1) * dims_[5])
                                        + ((l - 1) * dims_[5] * dims_[4])
                                        + ((k - 1) * dims_[5] * dims_[4] * dims_[3])
                                        + ((j - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2])
@@ -6147,15 +6188,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DCMatrixKokkos 7D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DCMatrixKokkos 7D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DCMatrixKokkos 7D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DCMatrixKokkos 7D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DCMatrixKokkos 7D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DCMatrixKokkos 7D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DCMatrixKokkos 7D!");
-    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in DCMatrixKokkos 7D!");
-    return this_matrix_.view_device()((o-1) + ((n - 1) * dims_[6])
+    MATAR_CHECK_ORDER(7, order_, "DCMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DCMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DCMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DCMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DCMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DCMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "DCMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(o, dims_[6], "o", "DCMatrixKokkos 7D", this_array_.h_view.label().c_str());
+    return this_array_.view_device()((o-1) + ((n - 1) * dims_[6])
                                      + ((m - 1) * dims_[6] * dims_[5])
                                      + ((l - 1) * dims_[6] * dims_[5] * dims_[4])
                                      + ((k - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3])
@@ -6175,7 +6216,7 @@ DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DCMatrixKokkos<T,Layout,ExecSpa
 
         order_ = temp.order_;
         length_ = temp.length_;
-        this_matrix_ = temp.this_matrix_;
+        this_array_ = temp.this_array_;
         host = temp.host;
         lock_ = temp.lock_;
     }
@@ -6200,7 +6241,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
     i--;
-    assert(i < order_ && "DCMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "DCMatrixKokkos dims()", this_array_.h_view.label().c_str());
     assert(dims_[i]>0 && "Access to DCMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -6214,42 +6255,42 @@ size_t DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
-    return this_matrix_.view_device().data();
+    return this_array_.view_device().data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
-    return this_matrix_.view_host().data();
+    return this_array_.view_host().data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
     assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
-    this_matrix_.template modify<typename TArray1D::execution_space>();
-    this_matrix_.template sync<typename TArray1D::host_mirror_space>();
+    this_array_.template modify<typename TArray1D::execution_space>();
+    this_array_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     assert(!lock_ && "This data is locked, no copy will be done.");
     if (lock_) return;
-    this_matrix_.template modify<typename TArray1D::host_mirror_space>();
-    this_matrix_.template sync<typename TArray1D::execution_space>();
+    this_array_.template modify<typename TArray1D::host_mirror_space>();
+    this_array_.template sync<typename TArray1D::execution_space>();
 }
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.view_host().label();
+    return this_array_.view_host().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_matrix_.view_device()(i) = val;
+        this_array_.view_device()(i) = val;
     });
 }
 
@@ -6285,8 +6326,8 @@ private:
     size_t dims_[7];
     size_t length_;
     size_t order_;  // tensor order (rank)
-    TArray1D this_matrix_;
-    TArray1DHost this_matrix_host_;
+    TArray1D this_array_;
+    TArray1DHost this_array_host_;
     T * temp_inp_matrix_;
 
 public:
@@ -6401,12 +6442,12 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 1;
     length_ = dim1;
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
-    // Create host ViewCMatrix. Note: inp_matrix and this_matrix_host_.data() are the same pointer
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
+    // Create host ViewCMatrix. Note: inp_matrix and this_array_host_.data() are the same pointer
     host = ViewCMatrix <T> (inp_matrix, dim1);
 }
 
@@ -6419,11 +6460,11 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 2;
     length_ = (dim1 * dim2);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewCMatrix
     host = ViewCMatrix <T> (inp_matrix, dim1, dim2);
 }
@@ -6438,11 +6479,11 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 3;
     length_ = (dim1 * dim2 * dim3);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewCMatrix
     host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3);
 }
@@ -6458,11 +6499,11 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 4;
     length_ = (dim1 * dim2 * dim3 * dim4);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewCMatrix
     host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4);
 }
@@ -6480,11 +6521,11 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 5;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewCMatrix
     host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5);
 }
@@ -6503,11 +6544,11 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 6;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewCMatrix
     host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5, dim6);
 }
@@ -6528,11 +6569,11 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
     order_ = 7;
     length_ = (dim1 * dim2 * dim3 * dim4 * dim5 * dim6 * dim7);
     // Create a 1D host view of the external allocation
-    this_matrix_host_ = TArray1DHost(inp_matrix, length_);
+    this_array_host_ = TArray1DHost(inp_matrix, length_);
     // Assign temp point to inp_matrix pointer that is passed in
     temp_inp_matrix_ = inp_matrix;
     // Create a device copy of that host view
-    this_matrix_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_matrix_host_);
+    this_array_ = create_mirror_view_and_copy(Kokkos::view_alloc(memspace, tag_string), this_array_host_);
     // Create host ViewCMatrix
     host = ViewCMatrix <T> (inp_matrix, dim1, dim2, dim3, dim4, dim5, dim6, dim7);
 }
@@ -6540,40 +6581,40 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DViewCMatrixKokkos(T * inp_
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 1D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 1D!");
-    return this_matrix_((i - 1));
+    MATAR_CHECK_ORDER(1, order_, "DViewCMatrixKokkos 1D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewCMatrixKokkos 1D", "");
+    return this_array_((i - 1));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 2D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 2D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 2D!");
-    return this_matrix_((j - 1) + ((i - 1) * dims_[1]));
+    MATAR_CHECK_ORDER(2, order_, "DViewCMatrixKokkos 2D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewCMatrixKokkos 2D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewCMatrixKokkos 2D", "");
+    return this_array_((j - 1) + ((i - 1) * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 3D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 3D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 3D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 3D!");
-    return this_matrix_((k - 1) + ((j - 1) * dims_[2])
+    MATAR_CHECK_ORDER(3, order_, "DViewCMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewCMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewCMatrixKokkos 3D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewCMatrixKokkos 3D", "");
+    return this_array_((k - 1) + ((j - 1) * dims_[2])
                                 + ((i - 1) * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 4D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 4D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 4D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 4D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 4D!");
-    return this_matrix_((l - 1) + ((k - 1) * dims_[3])
+    MATAR_CHECK_ORDER(4, order_, "DViewCMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewCMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewCMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewCMatrixKokkos 4D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DViewCMatrixKokkos 4D", "");
+    return this_array_((l - 1) + ((k - 1) * dims_[3])
                                 + ((j - 1) * dims_[3] * dims_[2])
                                 + ((i - 1) * dims_[3] * dims_[2] * dims_[1]));
 }
@@ -6582,13 +6623,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 5D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 5D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 5D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 5D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 5D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewCMatrixKokkos 5D!");
-    return this_matrix_((m - 1) + ((l - 1) * dims_[4])
+    MATAR_CHECK_ORDER(5, order_, "DViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DViewCMatrixKokkos 5D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DViewCMatrixKokkos 5D", "");
+    return this_array_((m - 1) + ((l - 1) * dims_[4])
                                 + ((k - 1) * dims_[4] * dims_[3])
                                 + ((j - 1) * dims_[4] * dims_[3] * dims_[2])
                                 + ((i - 1) * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
@@ -6598,14 +6639,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 6D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 6D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 6D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 6D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 6D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewCMatrixKokkos 6D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DViewCMatrixKokkos 6D!");
-    return this_matrix_((n - 1) + ((m - 1) * dims_[5])
+    MATAR_CHECK_ORDER(6, order_, "DViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DViewCMatrixKokkos 6D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "DViewCMatrixKokkos 6D", "");
+    return this_array_((n - 1) + ((m - 1) * dims_[5])
                                 + ((l - 1) * dims_[5] * dims_[4])
                                 + ((k - 1) * dims_[5] * dims_[4] * dims_[3])
                                 + ((j - 1) * dims_[5] * dims_[4] * dims_[3] * dims_[2])
@@ -6616,15 +6657,15 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DViewCMatrixKokkos 7D!");
-    assert(i >= 1 && i <= dims_[0] && "i is out of bounds in DViewCMatrixKokkos 7D!");
-    assert(j >= 1 && j <= dims_[1] && "j is out of bounds in DViewCMatrixKokkos 7D!");
-    assert(k >= 1 && k <= dims_[2] && "k is out of bounds in DViewCMatrixKokkos 7D!");
-    assert(l >= 1 && l <= dims_[3] && "l is out of bounds in DViewCMatrixKokkos 7D!");
-    assert(m >= 1 && m <= dims_[4] && "m is out of bounds in DViewCMatrixKokkos 7D!");
-    assert(n >= 1 && n <= dims_[5] && "n is out of bounds in DViewCMatrixKokkos 7D!");
-    assert(o >= 1 && o <= dims_[6] && "o is out of bounds in DViewCMatrixKokkos 7D!");
-    return this_matrix_(o + ((n - 1) * dims_[6])
+    MATAR_CHECK_ORDER(7, order_, "DViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(j, dims_[1], "j", "DViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(k, dims_[2], "k", "DViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(l, dims_[3], "l", "DViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(m, dims_[4], "m", "DViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(n, dims_[5], "n", "DViewCMatrixKokkos 7D", "");
+    MATAR_CHECK_BOUNDS_MATRIX(o, dims_[6], "o", "DViewCMatrixKokkos 7D", "");
+    return this_array_(o + ((n - 1) * dims_[6])
                           + ((m - 1) * dims_[6] * dims_[5])
                           + ((l - 1) * dims_[6] * dims_[5] * dims_[4])
                           + ((k - 1) * dims_[6] * dims_[5] * dims_[4] * dims_[3])
@@ -6645,8 +6686,8 @@ DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>& DViewCMatrixKokkos<T,Layout
         order_ = temp.order_;
         length_ = temp.length_;
         temp_inp_matrix_ = temp.temp_inp_matrix_;
-        this_matrix_host_ = temp.this_matrix_host_;
-        this_matrix_ = temp.this_matrix_;
+        this_array_host_ = temp.this_array_host_;
+        this_array_ = temp.this_array_;
         host = temp.host;
     }
     
@@ -6670,7 +6711,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
     i--;
-    assert(i < order_ && "DViewCMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_, "i", "DViewCMatrixKokkos dims()", "");
     assert(dims_[i]>0 && "Access to DViewCMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -6684,38 +6725,38 @@ size_t DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
-    return this_matrix_.data();
+    return this_array_.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
-    return this_matrix_host_.data();
+    return this_array_host_.data();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
     // Deep copy of device view to host view
-    deep_copy(this_matrix_host_, this_matrix_);
+    deep_copy(this_array_host_, this_array_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     // Deep copy of host view to device view
-    deep_copy(this_matrix_, this_matrix_host_);
+    deep_copy(this_array_, this_array_host_);
 }
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.label();
+    return this_array_.label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        this_matrix_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -7247,7 +7288,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(size_t i) const {
     // Ensure that i is within bounds
-    assert(i < (dims_[0]) && "i is greater than dims_[0] in DRaggedRightArray");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());
     return mystrides_dev_(i);
 }
 
@@ -7257,7 +7298,7 @@ KOKKOS_INLINE_FUNCTION
 size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dims(size_t i) const {
     // Ensure that i is within bounds
     assert(i >= 0 && "i is less than 0 in the DRaggedRightArrayKokkos class");
-    assert(i < 3 && "i is greater than 2 in the DRaggedRightArrayKokkos class");
+    MATAR_CHECK_BOUNDS(i, 3, "i", "DRaggedRightArrayKokkos dims()", this_array_.h_view.label().c_str());
     return dims_[i];
 }
 
@@ -7265,7 +7306,7 @@ size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dims(si
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 size_t DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_host(size_t i) const {
     // Ensure that i is within bounds
-    assert(i < (dims_[0]) && "i is greater than dims_[0] in DRaggedRightArray");
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());
     return mystrides_host_(i);
 }
 
@@ -7311,8 +7352,8 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(
     size_t start = start_index_dev_(i);
     
     // asserts
-    assert(i < dims_[0] && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
-    assert(j < stride(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, stride(i), "j", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= stride
     
     return this_array_dev_(j + start);
 } // End operator()
@@ -7328,9 +7369,9 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(
     size_t start = start_index_dev_(i);
     
     // asserts
-    assert(i < dims_[0] && "i is out of dims_[0] bounds in DRaggedRightArrayKokkos");  // die if >= dim0
-    assert(j < stride(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= dim1
-    assert(k < dims_[1] && "k is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dim2
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim0
+    MATAR_CHECK_BOUNDS(j, stride(i), "j", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(k, dims_[1], "k", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim2
     
     size_t index_1D = start + k + dims_[1]*j;
 
@@ -7348,10 +7389,10 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(
     size_t start = start_index_dev_(i);
     
     // asserts
-    assert(i < dims_[0] && "i is out of dims_[0] bounds in DRaggedRightArrayKokkos");  // die if >= dim1
-    assert(j < stride(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
-    assert(k < dims_[1] && "k is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dims_[1]
-    assert(l < dims_[2] && "l is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dims_[2]
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, stride(i), "j", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= stride
+    MATAR_CHECK_BOUNDS(k, dims_[1], "k", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dims_[1]
+    MATAR_CHECK_BOUNDS(l, dims_[2], "l", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dims_[2]
     
     size_t index_1D = start + l + dims_[2]*k + dims_[2]*dims_[1]*j;
 
@@ -7366,8 +7407,8 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::host(size_t
     size_t start = start_index_host_(i);
     
     // asserts
-    assert(i < dims_[0] && "i is out of dim1 bounds in DRaggedRightArrayKokkos");  // die if >= dim1
-    assert(j < stride_host(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, stride_host(i), "j", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= stride
     
     return this_array_host_(j + start);
 } // End operator()
@@ -7381,9 +7422,9 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::host(size_t
     size_t start = start_index_host_(i);
     
     // asserts
-    assert(i < dims_[0] && "i is out of dims_[0] bounds in DRaggedRightArrayKokkos");  // die if >= dim0
-    assert(j < stride_host(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= dim1
-    assert(k < dims_[1] && "k is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dim2
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim0
+    MATAR_CHECK_BOUNDS(j, stride_host(i), "j", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(k, dims_[1], "k", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim2
 
     size_t index_1D = start + k + dims_[1]*j;
 
@@ -7399,10 +7440,10 @@ T& DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::host(size_t
     size_t start = start_index_host_(i);
     
     // asserts
-    assert(i < dims_[0] && "i is out of dims_[0] bounds in DRaggedRightArrayKokkos");  // die if >= dim1
-    assert(j < stride_host(i) && "j is out of stride bounds in DRaggedRightArrayKokkos");  // die if >= stride
-    assert(k < dims_[1] && "k is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dims_[1]
-    assert(l < dims_[2] && "l is out of vector bounds in DRaggedRightArrayKokkos");  // die if >= dims_[2]
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, stride_host(i), "j", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= stride
+    MATAR_CHECK_BOUNDS(k, dims_[1], "k", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dims_[1]
+    MATAR_CHECK_BOUNDS(l, dims_[2], "l", "DRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dims_[2]
     
     size_t index_1D = start + l + dims_[2]*k + dims_[2]*dims_[1]*j;
     
@@ -7806,9 +7847,9 @@ DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicArrayKokkos(size_t d
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 1D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 1D!");
-    assert(i < dims_actual_size_[0] && "i is out of bounds in DynamicArrayKokkos 1D dims_actual_size!");
+    MATAR_CHECK_ORDER(1, order_, "DynamicArrayKokkos 1D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicArrayKokkos 1D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_actual_size_[0], "i", "DynamicArrayKokkos 1D", this_array_.label().c_str());
     return this_array_(i);
 }
 
@@ -7816,19 +7857,19 @@ T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) con
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "DynamicArrayKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicArrayKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicArrayKokkos 2D", this_array_.label().c_str());
     return this_array_(j + (i * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "DynamicArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicArrayKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicArrayKokkos 3D", this_array_.label().c_str());
     return this_array_(k + (j * dims_[2])
                          + (i * dims_[2] * dims_[1]));
 }
@@ -7836,11 +7877,11 @@ T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, siz
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in DynamicArrayKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "DynamicArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicArrayKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DynamicArrayKokkos 4D", this_array_.label().c_str());
     return this_array_(l + (k * dims_[3])
                          + (j * dims_[3] * dims_[2])
                          + (i * dims_[3] * dims_[2] * dims_[1]));
@@ -7850,12 +7891,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in DynamicArrayKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in DynamicArrayKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "DynamicArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DynamicArrayKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DynamicArrayKokkos 5D", this_array_.label().c_str());
     return this_array_(m + (l * dims_[4])
                          + (k * dims_[4] * dims_[3])
                          + (j * dims_[4] * dims_[3] * dims_[2])
@@ -7866,13 +7907,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in DynamicArrayKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in DynamicArrayKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in DynamicArrayKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "DynamicArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DynamicArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DynamicArrayKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DynamicArrayKokkos 6D", this_array_.label().c_str());
     return this_array_(n + (m * dims_[5])
                          + (l * dims_[5] * dims_[4])
                          + (k * dims_[5] * dims_[4] * dims_[3])
@@ -7884,14 +7925,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DynamicArrayKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicArrayKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicArrayKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicArrayKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in DynamicArrayKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in DynamicArrayKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in DynamicArrayKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in DynamicArrayKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "DynamicArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DynamicArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DynamicArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DynamicArrayKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "DynamicArrayKokkos 7D", this_array_.label().c_str());
     return this_array_(o + (n * dims_[6])
                          + (m * dims_[6] * dims_[5])
                          + (l * dims_[6] * dims_[5] * dims_[4])
@@ -7937,7 +7978,7 @@ size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i <= order_ && "DynamicArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_ + 1, "i", "DynamicArrayKokkos dims()", this_array_.label().c_str());
     assert(dims_actual_size_[i] >= 0 && "Access to DynamicArrayKokkos dims is out of bounds!");
     return dims_actual_size_[i];
 }
@@ -7945,7 +7986,7 @@ size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_max(size_t i) const {
-    assert(i <= order_ && "DynamicArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_ + 1, "i", "DynamicArrayKokkos dims_max()", this_array_.label().c_str());
     assert(dims_[i] >= 0 && "Access to DynamicArrayKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -7993,7 +8034,7 @@ const std::string DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name(
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val, int count) {
-    assert(count <= dims_[0] && "count is out of bounds in DynamicArrayKokkos set_values!");
+    MATAR_CHECK_BOUNDS(count, dims_[0] + 1, "count", "DynamicArrayKokkos", this_array_.label().c_str());
 
     if (count == -1) { // Only set values for the actual size of the array
         Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) {
@@ -8263,10 +8304,10 @@ DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicMatrixKokkos(size_t
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
-    assert(order_ == 1 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 1D!");
-    assert(i <= dims_[0] && "i is out of bounds in DynamicMatrixKokkos 1D!");
+    MATAR_CHECK_ORDER(1, order_, "DynamicMatrixKokkos 1D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_[0], "i", "DynamicMatrixKokkos 1D", this_array_.label().c_str());
     assert(i > 0 && "i cannot be 0 in DynamicMatrixKokkos 1D!");
-    assert(i <= dims_actual_size_[0] && "i is out of bounds in DynamicArrayKokkos 1D dims_actual_size!");
+    MATAR_CHECK_BOUNDS_MATRIX(i, dims_actual_size_[0], "i", "DynamicMatrixKokkos 1D", this_array_.label().c_str());
     return this_array_((i-1));
 }
 
@@ -8274,19 +8315,19 @@ T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) co
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
-    assert(order_ == 2 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 2D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 2D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 2D!");
+    MATAR_CHECK_ORDER(2, order_, "DynamicMatrixKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicMatrixKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicMatrixKokkos 2D", this_array_.label().c_str());
     return this_array_(j + (i * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
-    assert(order_ == 3 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 3D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 3D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 3D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 3D!");
+    MATAR_CHECK_ORDER(3, order_, "DynamicMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicMatrixKokkos 3D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicMatrixKokkos 3D", this_array_.label().c_str());
     return this_array_(k + (j * dims_[2])
                          + (i * dims_[2] * dims_[1]));
 }
@@ -8294,11 +8335,11 @@ T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, si
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
-    assert(order_ == 4 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 4D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 4D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 4D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 4D!");
-    assert(l < dims_[3] && "l is out of bounds in DynamicMatrixKokkos 4D!");
+    MATAR_CHECK_ORDER(4, order_, "DynamicMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicMatrixKokkos 4D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DynamicMatrixKokkos 4D", this_array_.label().c_str());
     return this_array_(l + (k * dims_[3])
                          + (j * dims_[3] * dims_[2])
                          + (i * dims_[3] * dims_[2] * dims_[1]));
@@ -8308,12 +8349,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m) const {
-    assert(order_ == 5 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 5D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 5D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 5D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 5D!");
-    assert(l < dims_[3] && "l is out of bounds in DynamicMatrixKokkos 5D!");
-    assert(m < dims_[4] && "m is out of bounds in DynamicMatrixKokkos 5D!");
+    MATAR_CHECK_ORDER(5, order_, "DynamicMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DynamicMatrixKokkos 5D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DynamicMatrixKokkos 5D", this_array_.label().c_str());
     return this_array_(m + (l * dims_[4])
                          + (k * dims_[4] * dims_[3])
                          + (j * dims_[4] * dims_[3] * dims_[2])
@@ -8324,13 +8365,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n) const {
-    assert(order_ == 6 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 6D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 6D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 6D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 6D!");
-    assert(l < dims_[3] && "l is out of bounds in DynamicMatrixKokkos 6D!");
-    assert(m < dims_[4] && "m is out of bounds in DynamicMatrixKokkos 6D!");
-    assert(n < dims_[5] && "n is out of bounds in DynamicMatrixKokkos 6D!");
+    MATAR_CHECK_ORDER(6, order_, "DynamicMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DynamicMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DynamicMatrixKokkos 6D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DynamicMatrixKokkos 6D", this_array_.label().c_str());
     return this_array_(n + (m * dims_[5])
                          + (l * dims_[5] * dims_[4])
                          + (k * dims_[5] * dims_[4] * dims_[3])
@@ -8342,14 +8383,14 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l,
                                size_t m, size_t n, size_t o) const {
-    assert(order_ == 7 && "Tensor order (rank) does not match constructor in DynamicMatrixKokkos 7D!");
-    assert(i < dims_[0] && "i is out of bounds in DynamicMatrixKokkos 7D!");
-    assert(j < dims_[1] && "j is out of bounds in DynamicMatrixKokkos 7D!");
-    assert(k < dims_[2] && "k is out of bounds in DynamicMatrixKokkos 7D!");
-    assert(l < dims_[3] && "l is out of bounds in DynamicMatrixKokkos 7D!");
-    assert(m < dims_[4] && "m is out of bounds in DynamicMatrixKokkos 7D!");
-    assert(n < dims_[5] && "n is out of bounds in DynamicMatrixKokkos 7D!");
-    assert(o < dims_[6] && "o is out of bounds in DynamicMatrixKokkos 7D!");
+    MATAR_CHECK_ORDER(7, order_, "DynamicMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(i, dims_[0], "i", "DynamicMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dims_[1], "j", "DynamicMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(k, dims_[2], "k", "DynamicMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(l, dims_[3], "l", "DynamicMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(m, dims_[4], "m", "DynamicMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(n, dims_[5], "n", "DynamicMatrixKokkos 7D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(o, dims_[6], "o", "DynamicMatrixKokkos 7D", this_array_.label().c_str());
     return this_array_(o + (n * dims_[6])
                          + (m * dims_[6] * dims_[5])
                          + (l * dims_[6] * dims_[5] * dims_[4])
@@ -8396,7 +8437,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
     i--;
-    assert(i <= order_ && "DynamicMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_ + 1, "i", "DynamicMatrixKokkos dims()", this_array_.label().c_str());
     assert(dims_actual_size_[i] >= 0 && "Access to DynamicMatrixKokkos dims is out of bounds!");
     return dims_actual_size_[i];
 }
@@ -8405,7 +8446,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::dims_max(size_t i) const {
     i--;
-    assert(i <= order_ && "DynamicMatrixKokkos order (rank) does not match constructor, dim[i] does not exist!");
+    MATAR_CHECK_BOUNDS(i, order_ + 1, "i", "DynamicMatrixKokkos dims_max()", this_array_.label().c_str());
     assert(dims_[i] >= 0 && "Access to DynamicMatrixKokkos dims is out of bounds!");
     return dims_[i];
 }
@@ -8453,7 +8494,7 @@ const std::string DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val, int count) {
-    assert(count <= dims_[0] && "count is out of bounds in DynamicArrayKokkos set_values!");
+    MATAR_CHECK_BOUNDS(count, dims_[0] + 1, "count", "DynamicArrayKokkos", this_array_.label().c_str());
 
     if (count == -1) { // Only set values for the actual size of the array
         Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) {
@@ -8490,7 +8531,7 @@ class RaggedRightArrayKokkos {
     using Strides1D = Kokkos::View<size_t *,ILayout, ExecSpace, MemoryTraits>;
     
 private:
-    TArray1D array_;
+    TArray1D this_array_;
     
     size_t dim1_;
     size_t length_;
@@ -8730,7 +8771,7 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup
     #endif
 
     //allocate view
-    array_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // A method to return the stride size
@@ -8738,7 +8779,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(size_t i) const {
     // Ensure that i is within bounds
-    assert(i < (dim1_) && "i is greater than dim1_ in RaggedRightArray");
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "RaggedRightArrayKokkos", this_array_.label().c_str());
     return mystrides_(i);
 }
 
@@ -8790,16 +8831,16 @@ T& RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(s
     size_t start = start_index_(i);
     
     // asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in RaggedRightArrayKokkos");  // die if >= dim1
-    assert(j < stride(i) && "j is out of stride bounds in RaggedRightArrayKokkos");  // die if >= stride
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "RaggedRightArrayKokkos", this_array_.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, stride(i), "j", "RaggedRightArrayKokkos", this_array_.label().c_str());  // die if >= stride
     
-    return array_(j + start);
+    return this_array_(j + start);
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 T* RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::pointer() {
-    return array_.data();
+    return this_array_.data();
 }
 
 
@@ -8867,7 +8908,7 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & RaggedRightArr
     //    });
     //Kokkos::fence();
     
-    array_ = temp.array_;
+    this_array_ = temp.this_array_;
     mystrides_ = temp.mystrides_;
 
     /*
@@ -8891,14 +8932,14 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & RaggedRightArr
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
-    return array_;
+    return this_array_;
 }
 
 //set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
     Kokkos::parallel_for("SetValues_RaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        array_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -8906,7 +8947,7 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 const std::string RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
-    return array_.label();
+    return this_array_.label();
 }
 
 // Destructor
@@ -8929,7 +8970,7 @@ class RaggedRightArrayofVectorsKokkos {
     using Strides1D = Kokkos::View<size_t *,ILayout, ExecSpace, MemoryTraits>;
     
 private:
-    TArray1D array_;
+    TArray1D this_array_;
     
     size_t dim1_, vector_dim_;
     size_t length_;
@@ -9169,7 +9210,7 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::d
     #endif
 
     //allocate view
-    array_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // A method to return the stride size
@@ -9177,7 +9218,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(size_t i) const {
     // Ensure that i is within bounds
-    assert(i < (dim1_) && "i is greater than dim1_ in RaggedRightArray");
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "RaggedRightArrayKokkos", this_array_.label().c_str());
     return mystrides_(i);
 }
 
@@ -9220,17 +9261,17 @@ T& RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::ope
     size_t start = start_index_(i);
     
     // asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in RaggedRightArrayKokkos");  // die if >= dim1
-    assert(j < stride(i) && "j is out of stride bounds in RaggedRightArrayKokkos");  // die if >= stride
-    assert(k < vector_dim_ && "k is out of vector_dim bounds in RaggedRightArrayKokkos");  // die if >= vector_dim
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "RaggedRightArrayKokkos", this_array_.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, stride(i), "j", "RaggedRightArrayKokkos", this_array_.label().c_str());  // die if >= stride
+    MATAR_CHECK_BOUNDS(k, vector_dim_, "k", "RaggedRightArrayKokkos", this_array_.label().c_str());  // die if >= vector_dim
     
-    return array_(j*vector_dim_ + start + k);
+    return this_array_(j*vector_dim_ + start + k);
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 T* RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::pointer() {
-    return array_.data();
+    return this_array_.data();
 }
 
 
@@ -9247,7 +9288,7 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & Ragge
     start_index_ = temp.start_index_;
     length_ = temp.length_;
     
-    array_ = temp.array_;
+    this_array_ = temp.this_array_;
     mystrides_ = temp.mystrides_;
   }
     
@@ -9258,14 +9299,14 @@ RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> & Ragge
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
-    return array_;
+    return this_array_;
 }
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits, ILayout>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, length_), KOKKOS_CLASS_LAMBDA(const int i){
-        array_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -9273,7 +9314,7 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits, ILayout>::
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 const std::string RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
-    return array_.label();
+    return this_array_.label();
 }
 
 // Destructor
@@ -9297,7 +9338,7 @@ class RaggedDownArrayKokkos {
     using Strides1D = Kokkos::View<size_t *, ILayout, ExecSpace, MemoryTraits>;
     
 private:
-    TArray1D array_;
+    TArray1D this_array_;
     
     size_t dim2_;
     size_t length_;
@@ -9484,7 +9525,7 @@ void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::data_setup(
     #endif
 
     //allocate view
-    array_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // A method to return the stride size
@@ -9492,7 +9533,7 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(size_t j) const {
     // Ensure that j is within bounds
-    assert(j < (dim2_) && "j is greater than dim1_ in RaggedDownArray");
+    MATAR_CHECK_BOUNDS(j, dim2_, "j", "RaggedDownArrayKokkos", this_array_.label().c_str());
 
     return mystrides_(j);
 }
@@ -9506,10 +9547,10 @@ T& RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::operator()(si
     size_t start = start_index_(j);
     
     // asserts
-    assert(i < stride(j) && "i is out of stride bounds in RaggedDownArrayKokkos");  // die if >= stride
-    assert(j < dim2_ && "j is out of dim1 bounds in RaggedDownArrayKokkos");  // die if >= dim1
+    MATAR_CHECK_BOUNDS(i, stride(j), "i", "RaggedDownArrayKokkos", this_array_.label().c_str());  // die if >= stride
+    MATAR_CHECK_BOUNDS(j, dim2_, "j", "RaggedDownArrayKokkos", this_array_.label().c_str());  // die if >= dim1
     
-    return array_(i + start);
+    return this_array_(i + start);
 } // End operator()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -9605,7 +9646,7 @@ operator= (const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> 
     Kokkos::fence();
     */
     length_ = temp.length_;
-    array_ = temp.length_;
+    this_array_ = temp.length_;
     mystrides_ = temp.mystrides_;
 
     /*
@@ -9629,14 +9670,14 @@ operator= (const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_kokkos_view() {
-    return array_;
+    return this_array_;
 }
 
 //set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(T val) {
     Kokkos::parallel_for("SetValues_RaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        array_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -9644,7 +9685,7 @@ void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 const std::string RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
-    return array_.label();
+    return this_array_.label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -9673,7 +9714,7 @@ class DynamicRaggedRightArrayKokkos {
 private:
     // THIS WILL BE A GPU POINTER!
     SArray1D stride_;
-    TArray1D array_;
+    TArray1D this_array_;
     
     size_t dim1_;
     size_t dim2_;
@@ -9772,7 +9813,7 @@ DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedRig
     #endif
 
     //allocate view
-    array_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // A method to set the stride size for row i
@@ -9795,12 +9836,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in DynamicRaggedRight");  // die if >= dim1
-    assert(j < stride_(i) && "j is out of stride bounds in DynamicRaggedRight");  // die if >= dim2
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "DynamicRaggedRightArrayKokkos", this_array_.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, stride_(i), "j", "DynamicRaggedRightArrayKokkos", this_array_.label().c_str());  // die if >= dim2
     // Cannot assert on Kokkos View
     //assert(j < stride_[i] && "j is out of stride bounds in DynamicRaggedRight");  // die if >= stride
     
-    return array_(j + i*dim2_);
+    return this_array_(j + i*dim2_);
 }
 
 //overload = operator
@@ -9815,7 +9856,7 @@ DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
         dim2_ = temp.dim2_;
         length_ = temp.length_;
         stride_ = temp.stride_;
-        array_ = temp.array_;
+        this_array_ = temp.this_array_;
         /*
         #ifdef HAVE_CLASS_LAMBDA
         Kokkos::parallel_for("StrideZeroOut", dim1_, KOKKOS_CLASS_LAMBDA(const int i) {
@@ -9835,14 +9876,14 @@ DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
-    return array_;
+    return this_array_;
 }
 
 //set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        array_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -9851,18 +9892,18 @@ void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_
     // Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim1_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
     //     const int i_i = teamMember.league_rank();
     //     Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(i_i) ), [&] ( const int (j_j) ) {
-    //         array_(dim2_*i_i+j_j) = val;    
+    //         this_array_(dim2_*i_i+j_j) = val;    
     //     });
     // });
     Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        array_(i) = val;
+        this_array_(i) = val;
     });
 }
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return array_.label();
+    return this_array_.label();
 }
 
 // Destructor
@@ -9887,7 +9928,7 @@ class DynamicRaggedDownArrayKokkos {
 
 private:
     SArray1D stride_;
-    TArray1D array_;
+    TArray1D this_array_;
     
     size_t dim1_;
     size_t dim2_;
@@ -9989,7 +10030,7 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DynamicRaggedDown
     #endif
 
     //allocate view
-    array_ = TArray1D(tag_string, length_);
+    this_array_ = TArray1D(tag_string, length_);
 }
 
 // A method to set the stride size for column j
@@ -10009,7 +10050,7 @@ size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() con
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < 3 && "DynamicRaggedDownArrayKokkos dims only supports dims(0) or dims(1)!");
+    MATAR_CHECK_BOUNDS(i, 3, "i", "DynamicRaggedDownArrayKokkos dims()", this_array_.label().c_str());
     if(i == 0) return dim1_;
     if(i == 1) return dim2_;
 }
@@ -10021,12 +10062,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
-    assert(j < dim2_ && "j is out of dim2 bounds in DynamicRaggedDownArrayKokkos");  // die if >= dim2
-    assert(i < stride(j) && "i is out of stride bounds in DynamicRaggedDownArrayKokkos");  // die if >= stride(j)
+    MATAR_CHECK_BOUNDS(j, dim2_, "j", "RaggedDownArrayKokkos", this_array_.label().c_str());  // die if >= dim2
+    MATAR_CHECK_BOUNDS(i, stride(j), "i", "RaggedDownArrayKokkos", this_array_.label().c_str());  // die if >= stride(j)
     // Can't do this assert with a Kokkos View
     //assert(i < stride_[j] && "i is out of stride bounds in DynamicRaggedDownArrayKokkos");  // die if >= stride
     
-    return array_(i + j*dim1_);
+    return this_array_(i + j*dim1_);
 }
 
 //overload = operator
@@ -10041,7 +10082,7 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
         dim2_ = temp.dim2_;
         length_ = temp.length_;
         stride_ = temp.stride_;
-        array_ = temp.array_;
+        this_array_ = temp.this_array_;
         /*
         #ifdef HAVE_CLASS_LAMBDA
         Kokkos::parallel_for("StrideZeroOut", dim2_, KOKKOS_CLASS_LAMBDA(const int j) {
@@ -10061,14 +10102,14 @@ DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_view() {
-    return array_;
+    return this_array_;
 }
 
 //set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for("SetValues_DynamicRaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        array_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -10077,18 +10118,18 @@ void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_s
     // Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim2_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
     //     const int j_j = teamMember.league_rank();
     //     Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(j_j) ), [&] ( const int (i_i) ) {
-    //         array_(dim1_*j_j+i_i) = val;    
+    //         this_array_(dim1_*j_j+i_i) = val;    
     //     });
     // });
     Kokkos::parallel_for("SetValues_DynamicRaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
-        array_(i) = val;
+        this_array_(i) = val;
     });
 }
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return array_.label();
+    return this_array_.label();
 }
 
 // Destructor
@@ -10109,7 +10150,7 @@ class CSRArrayKokkos {
   private: // What ought to be private ?
     size_t dim1_, dim2_;
     size_t nnz_;
-    TArray1D array_;
+    TArray1D this_array_;
     SArray1D column_index_;
     SArray1D start_index_;
     TArray1D miss_;
@@ -10306,7 +10347,7 @@ CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::CSRArrayKokkos(
     dim1_ = dim1;
     dim2_ = dim2;
     start_index_ = start_index.get_kokkos_view();
-    array_ = array.get_kokkos_view();
+    this_array_ = array.get_kokkos_view();
     column_index_ = colum_index.get_kokkos_view();
     nnz_ = colum_index.extent();
     miss_ = TArray1D("miss", 1);
@@ -10341,13 +10382,13 @@ CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::CSRArrayKokkos(const CArrayKok
     }
     
     column_index_ = Kokkos::View<size_t*>("column Indices", nnz_);
-    array_ = Kokkos::View<T*>("array elements", nnz_);
+    this_array_ = Kokkos::View<T*>("array elements", nnz_);
     size_t next = 0 ;
     for(size_t i = 0; i < dim1_; i++){
             for(size_t j =0 ; j < dim2_; j++){
                     if(dense(i,j) != 0){
          //               column_index_(next) = j;
-         //               array_(next) = dense(i,j);
+         //               this_array_(next) = dense(i,j);
                         next++;
                     }
             }
@@ -10384,7 +10425,7 @@ T& CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size
     size_t k;
     for(k = 0; k < row_end - row_start; k++){
         if(column_index_[row_start + k] == j){
-            return array_.data()[row_start + k];
+            return this_array_.data()[row_start + k];
         }
     }
     miss_[0] = (T) NULL;
@@ -10400,7 +10441,7 @@ T& CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::value(size_t i, size_t j)
     size_t k;
     for(k = 0; k < row_end - row_start; k++){
         if(column_index_[row_start + k] == j){
-            return array_.data()[row_start + k];
+            return this_array_.data()[row_start + k];
         }
     }
     miss_[0] = (T) NULL;
@@ -10410,7 +10451,7 @@ T& CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::value(size_t i, size_t j)
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::pointer() const{
-    return array_.data();
+    return this_array_.data();
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -10429,7 +10470,7 @@ CSRArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSRArrayKokkos<T, Layout, Exe
         
         start_index_ = temp.start_index_;
         column_index_ = temp.column_index_;
-        array_ = temp.array_;
+        this_array_ = temp.this_array_;
     }
     return *this;
 }
@@ -10447,7 +10488,7 @@ void CSRArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::to_dense(CArrayKokkos<T,
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::stride(size_t i) const {
-   assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()");
+   MATAR_CHECK_BOUNDS(i, dim1_ + 1, "i", "CSRArrayKokkos", this_array_.label().c_str());
    return start_index_.data()[i+i] - start_index_.data()[i];
 }
 
@@ -10467,29 +10508,29 @@ size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::dim1() const{
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::begin(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin()");
+    MATAR_CHECK_BOUNDS(i, dim1_ + 1, "i", "CSRArrayKokkos", this_array_.label().c_str());
     size_t row_start = start_index_.data()[i];
-    return &array_.data()[row_start];
+    return &this_array_.data()[row_start];
 }
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::end(size_t i){
-    assert(i <= dim1_ && "i is out of bounds in CSRArray.end()");
+    MATAR_CHECK_BOUNDS(i, dim1_ + 1, "i", "CSRArrayKokkos", this_array_.label().c_str());
     size_t row_start = start_index_.data()[i+1];
-    return &array_.data()[row_start];
+    return &this_array_.data()[row_start];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T, Layout, ExecSpace,MemoryTraits>::begin_index(size_t i) const{
-    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin_index()");
+    MATAR_CHECK_BOUNDS(i, dim1_ + 1, "i", "CSRArrayKokkos", this_array_.label().c_str());
     return start_index_.data()[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::end_index(size_t i) const{
-    assert(i <= dim1_ && "i is out of bounds in CSRArray.begin_index()");
+    MATAR_CHECK_BOUNDS(i, dim1_ + 1, "i", "CSRArrayKokkos", this_array_.label().c_str());
     return start_index_.data()[i+1];
 }
 
@@ -10502,28 +10543,28 @@ size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::nnz() const{
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::nnz(size_t i){
-    assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()");
+    MATAR_CHECK_BOUNDS(i, dim1_ + 1, "i", "CSRArrayKokkos", this_array_.label().c_str());
     return start_index_.data()[i+1] - start_index_.data()[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CSRArrayKokkos<T,Layout,ExecSpace, MemoryTraits>::get_val_flat(size_t k) const{
-   assert(k < nnz_ && "Index k is out of bounds in CSRArray.get_val_flat()");
-   return array_.data()[k];
+   MATAR_CHECK_BOUNDS(k, nnz_, "k", "CSRArrayKokkos", this_array_.label().c_str());
+   return this_array_.data()[k];
 }
 
 // Get the name of the view
 // template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 // KOKKOS_INLINE_FUNCTION
 // const std::string CSRArrayKokkos<T,Layout,ExecSpace, MemoryTraits>::get_name() const{
-//     return array_.label();
+//     return this_array_.label();
 // }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_col_flat(size_t k) const{
-    assert(k < nnz_ && "Index k is out of bounds in CSRArray.get_col_lat()");
+    MATAR_CHECK_BOUNDS(k, nnz_, "k", "CSRArrayKokkos", this_array_.label().c_str());
     return column_index_.data()[k];
 }
 
@@ -10582,7 +10623,7 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
         }
         int idx = nnz_cols[column_index_[i]] + col_counts[column_index_[i]];
         col_counts[column_index_[i]] += 1;
-        data(idx) = array_[i];
+        data(idx) = this_array_[i];
         row_ptrs(idx) = row - 1;
     }
     // I return an int because I thought I might need to return an error code
@@ -10594,7 +10635,7 @@ int CSRArray<T>::toCSC(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CSRArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_CLASS_LAMBDA(const int i){
-        array_[i] = val;
+        this_array_[i] = val;
     });
 }
 
@@ -10611,7 +10652,7 @@ class CSCArrayKokkos
 private: // What ought to be private ?
     size_t dim1_, dim2_;
     size_t nnz_;
-    TArray1D array_;
+    TArray1D this_array_;
     TArray1D miss_;
     SArray1D start_index_;
     SArray1D row_index_;
@@ -10797,7 +10838,7 @@ CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CSCArrayKokkos(
     dim1_ = dim1;
     dim2_ = dim2;
     start_index_ = start_index.get_kokkos_view();
-    array_ = array.get_kokkos_view();
+    this_array_ = array.get_kokkos_view();
     
     row_index_ = row_index.get_kokkos_view();
     nnz_ = row_index.extent();
@@ -10809,8 +10850,8 @@ template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j) const {
     // Check if the indices are within bounds
-    assert(i < dim1_ && "i is out of bounds in CSCArray.operator(i,j)");
-    assert(j < dim2_ && "j is out of bounds in CSCArray.operator(i,j)");
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "CSCArrayKokkos 2D", this_array_.label().c_str());
+    MATAR_CHECK_BOUNDS(j, dim2_, "j", "CSCArrayKokkos 2D", this_array_.label().c_str());
 
     size_t col_start = start_index_.data()[j];
     size_t col_end = start_index_.data()[j + 1];
@@ -10818,7 +10859,7 @@ T& CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size
 
     for(k = 0; k < col_end - col_start; k++){
         if(row_index_.data()[col_start + k] == i){
-            return array_.data()[col_start + k];
+            return this_array_.data()[col_start + k];
         }
     }
     miss_[0] = (T) NULL;
@@ -10828,7 +10869,7 @@ T& CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::pointer() const {
-    return array_.data();
+    return this_array_.data();
 }
 
 
@@ -10840,7 +10881,7 @@ T& CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::value(size_t i, size_t j) 
     size_t k;
     for(k =0; k < col_end - col_start;k++){
         if(row_index_.data()[col_start + k] == i){
-            return array_.data()[col_start + k];
+            return this_array_.data()[col_start + k];
         }
     }
     miss_[0] = (T) NULL;
@@ -10864,7 +10905,7 @@ CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSCArrayKokkos<T,Layout,ExecS
         
         start_index_ = temp.start_index_;
         row_index_ = temp.row_index_;
-        array_ = temp.array_;
+        this_array_ = temp.this_array_;
     }
     return *this;
 }
@@ -10872,7 +10913,7 @@ CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>& CSCArrayKokkos<T,Layout,ExecS
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::stride(size_t i) const{
-    assert(i < dim2_ && "i is out of bounds in CSCArray.stride()");
+    MATAR_CHECK_BOUNDS(i, dim2_, "i", "CSCArrayKokkos", this_array_.label().c_str());
     return start_index_.data()[i+1] - start_index_.data()[i];
 }
 
@@ -10892,30 +10933,30 @@ size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::dim2() const{
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::begin(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at CSCArray.begin()");
+    MATAR_CHECK_BOUNDS(i, dim2_ + 1, "i", "CSCArrayKokkos", this_array_.label().c_str());
     size_t col_start = start_index_.data()[i];
-    return &array_.data()[col_start];
+    return &this_array_.data()[col_start];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at CSCArray.endt()");
+    MATAR_CHECK_BOUNDS(i, dim2_ + 1, "i", "CSCArrayKokkos", this_array_.label().c_str());
     size_t col_start = start_index_.data()[i+1];
-    return &array_.data()[col_start];
+    return &this_array_.data()[col_start];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::begin_index(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at CSCArray.begin_index()");
+    MATAR_CHECK_BOUNDS(i, dim2_ + 1, "i", "CSCArrayKokkos", this_array_.label().c_str());
     return start_index_.data()[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end_index(size_t i){
-    assert(i <= dim2_ && "index i out of bounds at CSCArray.end_index()");
+    MATAR_CHECK_BOUNDS(i, dim2_ + 1, "i", "CSCArrayKokkos", this_array_.label().c_str());
     return start_index_.data()[i + 1];
 }
 
@@ -10934,13 +10975,13 @@ size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::nnz(size_t i){
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 T& CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_val_flat(size_t k){
-    return array_.data()[k];
+    return this_array_.data()[k];
 }
 
 // template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 // KOKKOS_INLINE_FUNCTION
 // const std::string CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::get_name() const{
-//     return array_.label();
+//     return this_array_.label();
 // }
 
 
@@ -10968,7 +11009,7 @@ int CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::flat_index(size_t i, size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CSCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
     Kokkos::parallel_for( Kokkos::RangePolicy<> ( 0, nnz_), KOKKOS_CLASS_LAMBDA(const int i){
-        array_(i) = val;
+        this_array_(i) = val;
     });
 }
 
@@ -11010,7 +11051,7 @@ int CSCArray<T>::toCSR(CArray<T> &data, CArray<size_t> &col_ptrs, CArray<size_t>
         }
         int idx = nnz_rows[row_index_[i]] + row_counts[row_index_[i]];
         row_counts[row_index_[i]] += 1;
-        data(idx) = array_[i];
+        data(idx) = this_array_[i];
         col_ptrs(idx) = col - 1;
     }
     // I return an int because I thought I might need to return an error code
@@ -11034,7 +11075,7 @@ class DDynamicRaggedRightArrayKokkos {
     
     
 private:
-    TArray1D array_;
+    TArray1D this_array_;
     typename TArray1D::t_dev array_dev_;
     typename TArray1D::t_host array_host_;
     Strides1D mystrides_;
@@ -11141,9 +11182,9 @@ DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::DDynamicRaggedR
 
     data_setup();
     //allocate view
-    array_ = TArray1D(tag_string, length_);
-    array_host_ = array_.view_host();
-    array_dev_ = array_.view_device();
+    this_array_ = TArray1D(tag_string, length_);
+    array_host_ = this_array_.view_host();
+    array_dev_ = this_array_.view_device();
 }
 
 //setup start indices
@@ -11198,8 +11239,8 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 KOKKOS_INLINE_FUNCTION
 T& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
     // Asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in DDynamicRaggedRightKokkos");  // die if >= dim1
-    assert(j < mystrides_dev_(i) && "j is out of stride bounds in DDynamicRaggedRightKokkos");  // die if >= dim2
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "DDynamicRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, mystrides_dev_(i), "j", "DDynamicRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim2
     // Cannot assert on Kokkos View
     //assert(j < stride_[i] && "j is out of stride bounds in DynamicRaggedRight");  // die if >= stride
     
@@ -11211,8 +11252,8 @@ T& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(s
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T& DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host(size_t i, size_t j) const {
     // Asserts
-    assert(i < dim1_ && "i is out of dim1 bounds in DDynamicRaggedRightKokkos");  // die if >= dim1
-    assert(j < mystrides_host_(i) && "j is out of stride bounds in DDynamicRaggedRightKokkos");  // die if >= dim2
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "DDynamicRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim1
+    MATAR_CHECK_BOUNDS(j, mystrides_host_(i), "j", "DDynamicRaggedRightArrayKokkos", this_array_.h_view.label().c_str());  // die if >= dim2
     // Cannot assert on Kokkos View
     //assert(j < stride_[i] && "j is out of stride bounds in DynamicRaggedRight");  // die if >= stride
     
@@ -11233,9 +11274,9 @@ DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
         mystrides_ = temp.mystrides_;
         mystrides_dev_ = temp.mystrides_dev_;
         mystrides_host_ = temp.mystrides_host_;
-        array_ = temp.array_;
-        array_dev_ = temp.array_dev_;
-        array_host_ = temp.array_host_;
+        this_array_ = temp.this_array_;
+        array_dev_ = temp.this_array_dev_;
+        array_host_ = temp.this_array_host_;
         /*
         #ifdef HAVE_CLASS_LAMBDA
         Kokkos::parallel_for("StrideZeroOut", dim1_, KOKKOS_CLASS_LAMBDA(const int i) {
@@ -11255,7 +11296,7 @@ DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>&
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits> DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() {
-    return array_;
+    return this_array_;
 }
 
 //set values to input
@@ -11269,15 +11310,15 @@ void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
 
-    array_.template modify<typename TArray1D::execution_space>();
-    array_.template sync<typename TArray1D::host_mirror_space>();
+    this_array_.template modify<typename TArray1D::execution_space>();
+    this_array_.template sync<typename TArray1D::host_mirror_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
-    array_.template modify<typename TArray1D::host_mirror_space>();
-    array_.template sync<typename TArray1D::execution_space>();
+    this_array_.template modify<typename TArray1D::host_mirror_space>();
+    this_array_.template sync<typename TArray1D::execution_space>();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -11299,7 +11340,7 @@ void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values
     // Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim1_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
     //     const int i_i = teamMember.league_rank();
     //     Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(i_i) ), [&] ( const int (j_j) ) {
-    //         array_(dim2_*i_i+j_j) = val;    
+    //         this_array_(dim2_*i_i+j_j) = val;    
     //     });
     // });
     Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) {
@@ -11310,7 +11351,7 @@ void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 const std::string DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return array_.view_host().label();
+    return this_array_.view_host().label();
 }
 
 // Destructor
@@ -11392,8 +11433,8 @@ InheritedArray2L<T>::InheritedArray2L(size_t some_dim1) {
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 T& InheritedArray2L<T>::operator()(size_t i, size_t dest) const {
-    assert(i < dim1_ && "i is out of bounds in InheritedArray2L 1D!");
-    assert(dest < 2 && "dest is out of bounds in InheritedArray2L 1D!");
+    MATAR_CHECK_BOUNDS(i, dim1_, "i", "InheritedArray2L 2D", "");
+    MATAR_CHECK_BOUNDS(dest, 2, "dest", "InheritedArray2L 2D", "");
     if (dest == 0)
         return h_this_array_(i);
     else
