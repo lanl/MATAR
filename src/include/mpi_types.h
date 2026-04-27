@@ -319,6 +319,26 @@ public:
     // MPI_Wait(&req);
 
     void communicate(){
+        if (!comm_plan_) {
+            return;
+        }
+        if (comm_plan_->comm_type == communication_plan_type::no_communication) {
+            return;
+        }
+
+        int mpi_initialized = 0;
+        MPI_Initialized(&mpi_initialized);
+        if (!mpi_initialized) {
+            return;
+        }
+
+        if (!comm_plan_->has_comm_world || comm_plan_->world_size <= 1) {
+            return;
+        }
+
+        if (!comm_plan_->has_comm_graph || comm_plan_->mpi_comm_graph == MPI_COMM_NULL) {
+            return;
+        }
 
         fill_send_buffer();
 
