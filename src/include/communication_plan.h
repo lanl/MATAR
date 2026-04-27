@@ -83,14 +83,22 @@ struct CommunicationPlan {
     
     // Destructor to free MPI resources
     ~CommunicationPlan() {
-        // Free graph communicator
-        if (has_comm_graph && mpi_comm_graph != MPI_COMM_NULL) {
+        int mpi_init = 0;
+        int mpi_finalized = 0;
+        MPI_Initialized(&mpi_init);
+        MPI_Finalized(&mpi_finalized);
+        if (mpi_init && !mpi_finalized && has_comm_graph && mpi_comm_graph != MPI_COMM_NULL) {
             MPI_Comm_free(&mpi_comm_graph);
         }
     }
     
     
     void initialize(MPI_Comm comm_world){
+        int mpi_init = 0;
+        MPI_Initialized(&mpi_init);
+        if (!mpi_init) {
+            return;
+        }
         this->mpi_comm_world = comm_world;
         has_comm_world = true;
         MPI_Comm_size(comm_world, &world_size);
