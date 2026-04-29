@@ -87,7 +87,7 @@ protected:
     size_t length_ = 0;
     size_t order_ = 0;  // tensor order (rank)
 
-    MPI_Comm mpi_comm_;
+    MPI_Comm mpi_comm_ = MPI_COMM_NULL;
     MPI_Status mpi_status_;
     MPI_Datatype mpi_datatype_;
     MPI_Request mpi_request_;
@@ -109,8 +109,9 @@ protected:
     DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_by_rank] Indices of items to receive from each rank
     
     
-    size_t num_owned_;            // Number of owned items (nodes/elements)
-    size_t num_ghost_;            // Number of ghost items (nodes/elements)
+    size_t num_owned_ = 0;            // Number of owned items (nodes/elements); optional override
+    size_t num_ghost_ = 0;            // Number of ghost items (nodes/elements); informational when user-set
+
 
 public:
     // Data member to access host view (initialized as pointer to this_array_.host_pointer())
@@ -357,6 +358,9 @@ public:
         this_array_.update_device();
         MATAR_FENCE();
     };
+
+    /// 1D only: local reduce over an owned prefix then @c MPI_Allreduce to one scalar per rank.
+    T all_reduce(::operation op);
 
     void set_values(const T& value){
         this_array_.set_values(value);
@@ -635,11 +639,80 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
     this_array_.update_device();
 }
 
+
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(::operation op) {
+   
+    // assert(order_ == 1 && stride_ == 1 && "MPICArrayKokkos::all_reduce requires a 1D array (stride 1).");
+    assert(!(op == ::operation::product && sizeof(T) == sizeof(bool)) &&
+           "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
+
+
+    assert(num_owned_ <= dims_[0] && "MPICArrayKokkos::all_reduce: num_owned exceeds dim0.");
+    const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
+    assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
+
+    // this_array_.update_host();
+    // MATAR_FENCE();
+
+    // const T* p = this_array_.host_pointer();
+    // T local{};
+    T local;
+
+    switch (op) {
+    case ::operation::sum:
+        local = 0;
+        T loc_sum = 0;
+        FOR_REDUCE_SUM(i, 0, owned_len,
+                    loc_sum, {
+            loc_sum += this_array_(i);
+        }, local);
+        break;
+    case ::operation::product:
+        local = T(1);
+        T loc_prod = 1;
+        FOR_REDUCE_PRODUCT(i, 0, owned_len,
+                    loc_prod, {
+            loc_prod *= this_array_(i);
+        }, local);
+        break;
+    case ::operation::max:
+        local = this_array_(0);
+        T loc_max = this_array_(0);
+        FOR_REDUCE_MAX(i, 0, owned_len,
+                    loc_max, {
+            loc_max = (this_array_(i) > loc_max) ? this_array_(i) : loc_max;
+        }, local);
+        break;
+    case ::operation::min:
+        local = this_array_(0);
+        T loc_min = this_array_(0);
+        FOR_REDUCE_MIN(i, 0, owned_len,
+                    loc_min, {
+            loc_min = (this_array_(i) < loc_min) ? this_array_(i) : loc_min;
+        }, local);
+        break;
+    default:
+        printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+        printf("Supported operations are: sum, product, max, min\n");
+        Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+        break;
+    }
+
+    T global = local;
+    MPI_Comm comm = MPI_COMM_WORLD;
+    if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
+        comm = comm_plan_->mpi_comm_world;
+    }
+    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), ::mpi_op_for(op), comm);
+    return global;
+}
+
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPICArrayKokkos() {
-
-}
+MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPICArrayKokkos() {}
 
 } // end namespace mtr
 

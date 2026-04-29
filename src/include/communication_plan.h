@@ -15,6 +15,30 @@ enum class communication_plan_type {
     all_to_all_graph
 };
 
+/// Reduction operation for @c MPICArrayKokkos::all_reduce (maps to @c MPI_Op for the MPI stage).
+enum class operation {
+    sum,
+    product,
+    max,
+    min
+};
+
+/// Map @ref operation to the corresponding @c MPI_Op (host-only; call after @c MPI_Init).
+inline MPI_Op mpi_op_for(operation op) {
+    switch (op) {
+    case operation::sum:
+        return MPI_SUM;
+    case operation::product:
+        return MPI_PROD;
+    case operation::max:
+        return MPI_MAX;
+    case operation::min:
+        return MPI_MIN;
+    default:
+        return MPI_SUM;
+    }
+}
+
 
 struct CommunicationPlan {
     
@@ -65,7 +89,6 @@ struct CommunicationPlan {
     DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
     DCArrayKokkos<int> recv_counts_; // [size: num_recv_ranks] Number of items to receive from each rank
     
-    
     DCArrayKokkos<int> send_displs_; // [size: num_send_ranks] Starting index of items to send to each rank
     DCArrayKokkos<int> recv_displs_; // [size: num_recv_ranks] Starting index of items to receive from each rank
 
@@ -91,8 +114,7 @@ struct CommunicationPlan {
             MPI_Comm_free(&mpi_comm_graph);
         }
     }
-    
-    
+
     void initialize(MPI_Comm comm_world){
         int mpi_init = 0;
         MPI_Initialized(&mpi_init);
