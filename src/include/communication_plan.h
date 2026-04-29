@@ -7,8 +7,8 @@
 
 #include <set>
 
-using namespace mtr;
-
+namespace mtr
+{
 
 enum class communication_plan_type {
     no_communication,
@@ -533,6 +533,8 @@ struct CommunicationPlan {
         }
     }
 }; // End of CommunicationPlan
+
+} // end namespace mtr
 
 #endif // end if HAVE_MPI
 #endif // end if COMMUNICATION_PLAN_H

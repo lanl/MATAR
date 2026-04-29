@@ -359,8 +359,19 @@ public:
         MATAR_FENCE();
     };
 
-    /// 1D only: local reduce over an owned prefix then @c MPI_Allreduce to one scalar per rank.
-    T all_reduce(::operation op);
+    /// Reduce over index 0 (e.g. elements); array must be rank 1.
+    T all_reduce(operation op);
+
+    /// Reduce over leading dimension only; fix one trailing index (rank-2 arrays).
+    T all_reduce(operation op, size_t j);
+
+    /// Reduce over leading dimension only; fix two trailing indices (e.g.
+    /// stress(elem,3,3) → all_reduce(op,0,1) is max of stress(e,0,1) over owned elements e).
+    T all_reduce(operation op, size_t j, size_t k);
+
+    /// Reduce over elements only; fix Gauss point and tensor indices (rank-4), e.g.
+    /// stress(elem, gauss, i, j) → all_reduce(op, g, i, j) over owned elem.
+    T all_reduce(operation op, size_t g, size_t ti, size_t tj);
 
     void set_values(const T& value){
         this_array_.set_values(value);
@@ -642,10 +653,10 @@ void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(::operation op) {
+T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) {
    
     // assert(order_ == 1 && stride_ == 1 && "MPICArrayKokkos::all_reduce requires a 1D array (stride 1).");
-    assert(!(op == ::operation::product && sizeof(T) == sizeof(bool)) &&
+    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) &&
            "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
 
 
@@ -653,51 +664,56 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(::operation op
     const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
     assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
 
-    // this_array_.update_host();
-    // MATAR_FENCE();
-
-    // const T* p = this_array_.host_pointer();
-    // T local{};
+    // Local varaible for on node reduction
     T local;
 
-    switch (op) {
-    case ::operation::sum:
-        local = 0;
-        T loc_sum = 0;
-        FOR_REDUCE_SUM(i, 0, owned_len,
-                    loc_sum, {
-            loc_sum += this_array_(i);
-        }, local);
-        break;
-    case ::operation::product:
-        local = T(1);
-        T loc_prod = 1;
-        FOR_REDUCE_PRODUCT(i, 0, owned_len,
-                    loc_prod, {
-            loc_prod *= this_array_(i);
-        }, local);
-        break;
-    case ::operation::max:
-        local = this_array_(0);
-        T loc_max = this_array_(0);
-        FOR_REDUCE_MAX(i, 0, owned_len,
-                    loc_max, {
-            loc_max = (this_array_(i) > loc_max) ? this_array_(i) : loc_max;
-        }, local);
-        break;
-    case ::operation::min:
-        local = this_array_(0);
-        T loc_min = this_array_(0);
-        FOR_REDUCE_MIN(i, 0, owned_len,
-                    loc_min, {
-            loc_min = (this_array_(i) < loc_min) ? this_array_(i) : loc_min;
-        }, local);
-        break;
-    default:
-        printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
-        printf("Supported operations are: sum, product, max, min\n");
-        Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
-        break;
+    if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
+
+        switch (op) {
+        case operation::sum: {
+            local = 0;
+            T loc_sum = 0;
+            FOR_REDUCE_SUM(i, 0, owned_len,
+                        loc_sum, {
+                loc_sum += this_array_(i);
+            }, local);
+            break;
+        }
+        case operation::product: {
+            local = T(1);
+            T loc_prod = 1;
+            FOR_REDUCE_PRODUCT(i, 0, owned_len,
+                        loc_prod, {
+                loc_prod *= this_array_(i);
+            }, local);
+            break;
+        }
+        case operation::max: {
+            local = this_array_(0);
+            T loc_max = this_array_(0);
+            FOR_REDUCE_MAX(i, 0, owned_len,
+                        loc_max, {
+                loc_max = (this_array_(i) > loc_max) ? this_array_(i) : loc_max;
+            }, local);
+            break;
+        }
+        case operation::min: {
+            local = this_array_(0);
+            T loc_min = this_array_(0);
+            FOR_REDUCE_MIN(i, 0, owned_len,
+                        loc_min, {
+                loc_min = (this_array_(i) < loc_min) ? this_array_(i) : loc_min;
+            }, local);
+            break;
+        }
+        default:
+            printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+            printf("Supported operations are: sum, product, max, min\n");
+            Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+            break;
+        }
+    } else {
+        printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
     T global = local;
@@ -705,7 +721,207 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(::operation op
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), ::mpi_op_for(op), comm);
+    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), comm);
+    return global;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, size_t j) {
+    assert(order_ == 2 && "MPICArrayKokkos::all_reduce(op,j) requires a rank-2 array.");
+    assert(j < dims_[1] && "Fixed index j is out of bounds.");
+    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) &&
+           "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
+    assert(num_owned_ <= dims_[0] && "MPICArrayKokkos::all_reduce: num_owned exceeds dim0.");
+    const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
+    assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
+
+    T local;
+    if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
+        switch (op) {
+        case operation::sum: {
+            local = 0;
+            T loc_sum = 0;
+            FOR_REDUCE_SUM(e, 0, owned_len, loc_sum, {
+                loc_sum += this_array_(e, j);
+            }, local);
+            break;
+        }
+        case operation::product: {
+            local = T(1);
+            T loc_prod = 1;
+            FOR_REDUCE_PRODUCT(e, 0, owned_len, loc_prod, {
+                loc_prod *= this_array_(e, j);
+            }, local);
+            break;
+        }
+        case operation::max: {
+            local = this_array_(0, j);
+            T loc_max = local;
+            FOR_REDUCE_MAX(e, 0, owned_len, loc_max, {
+                const T v = this_array_(e, j);
+                loc_max = (v > loc_max) ? v : loc_max;
+            }, local);
+            break;
+        }
+        case operation::min: {
+            local = this_array_(0, j);
+            T loc_min = local;
+            FOR_REDUCE_MIN(e, 0, owned_len, loc_min, {
+                const T v = this_array_(e, j);
+                loc_min = (v < loc_min) ? v : loc_min;
+            }, local);
+            break;
+        }
+        default:
+            printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+            printf("Supported operations are: sum, product, max, min\n");
+            Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+            break;
+        }
+    } else {
+        printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
+    }
+
+    T global = local;
+    MPI_Comm mpi_comm = MPI_COMM_WORLD;
+    if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
+        mpi_comm = comm_plan_->mpi_comm_world;
+    }
+    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
+    return global;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, size_t j, size_t k) {
+    assert(order_ == 3 && "MPICArrayKokkos::all_reduce(op,j,k) requires a rank-3 array.");
+    assert(j < dims_[1] && k < dims_[2] && "Fixed tensor indices (j,k) are out of bounds.");
+    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) &&
+           "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
+    assert(num_owned_ <= dims_[0] && "MPICArrayKokkos::all_reduce: num_owned exceeds dim0.");
+    const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
+    assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
+
+    T local;
+    if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
+        switch (op) {
+        case operation::sum: {
+            local = 0;
+            T loc_sum = 0;
+            FOR_REDUCE_SUM(e, 0, owned_len, loc_sum, {
+                loc_sum += this_array_(e, j, k);
+            }, local);
+            break;
+        }
+        case operation::product: {
+            local = T(1);
+            T loc_prod = 1;
+            FOR_REDUCE_PRODUCT(e, 0, owned_len, loc_prod, {
+                loc_prod *= this_array_(e, j, k);
+            }, local);
+            break;
+        }
+        case operation::max: {
+            local = this_array_(0, j, k);
+            T loc_max = local;
+            FOR_REDUCE_MAX(e, 0, owned_len, loc_max, {
+                const T v = this_array_(e, j, k);
+                loc_max = (v > loc_max) ? v : loc_max;
+            }, local);
+            break;
+        }
+        case operation::min: {
+            local = this_array_(0, j, k);
+            T loc_min = local;
+            FOR_REDUCE_MIN(e, 0, owned_len, loc_min, {
+                const T v = this_array_(e, j, k);
+                loc_min = (v < loc_min) ? v : loc_min;
+            }, local);
+            break;
+        }
+        default:
+            printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+            printf("Supported operations are: sum, product, max, min\n");
+            Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+            break;
+        }
+    } else {
+        printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
+    }
+
+    T global = local;
+    MPI_Comm mpi_comm = MPI_COMM_WORLD;
+    if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
+        mpi_comm = comm_plan_->mpi_comm_world;
+    }
+    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
+    return global;
+}
+
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
+T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, size_t g, size_t ti,
+                                                                  size_t tj) {
+    assert(order_ == 4 && "MPICArrayKokkos::all_reduce(op,g,ti,tj) requires a rank-4 array.");
+    assert(g < dims_[1] && ti < dims_[2] && tj < dims_[3] &&
+           "Fixed indices (Gauss, tensor i, j) are out of bounds.");
+    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) &&
+           "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
+    assert(num_owned_ <= dims_[0] && "MPICArrayKokkos::all_reduce: num_owned exceeds dim0.");
+    const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
+    assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
+
+    T local;
+    if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
+        switch (op) {
+        case operation::sum: {
+            local = 0;
+            T loc_sum = 0;
+            FOR_REDUCE_SUM(e, 0, owned_len, loc_sum, {
+                loc_sum += this_array_(e, g, ti, tj);
+            }, local);
+            break;
+        }
+        case operation::product: {
+            local = T(1);
+            T loc_prod = 1;
+            FOR_REDUCE_PRODUCT(e, 0, owned_len, loc_prod, {
+                loc_prod *= this_array_(e, g, ti, tj);
+            }, local);
+            break;
+        }
+        case operation::max: {
+            local = this_array_(0, g, ti, tj);
+            T loc_max = local;
+            FOR_REDUCE_MAX(e, 0, owned_len, loc_max, {
+                const T v = this_array_(e, g, ti, tj);
+                loc_max = (v > loc_max) ? v : loc_max;
+            }, local);
+            break;
+        }
+        case operation::min: {
+            local = this_array_(0, g, ti, tj);
+            T loc_min = local;
+            FOR_REDUCE_MIN(e, 0, owned_len, loc_min, {
+                const T v = this_array_(e, g, ti, tj);
+                loc_min = (v < loc_min) ? v : loc_min;
+            }, local);
+            break;
+        }
+        default:
+            printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+            printf("Supported operations are: sum, product, max, min\n");
+            Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+            break;
+        }
+    } else {
+        printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
+    }
+
+    T global = local;
+    MPI_Comm mpi_comm = MPI_COMM_WORLD;
+    if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
+        mpi_comm = comm_plan_->mpi_comm_world;
+    }
+    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
     return global;
 }
 
