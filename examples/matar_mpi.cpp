@@ -54,8 +54,8 @@ MATAR_INITIALIZE(argc, argv);
     locals.update_device();
 
     double global_sum = locals.all_reduce(operation::sum);
+    
     double expected_sum = static_cast<double>(num_values * size);
-
     if (rank == 0) {
         std::cout << "all_reduce(sum): " << global_sum << " (expect "
                   << expected_sum << ")\n";
@@ -165,6 +165,7 @@ MATAR_INITIALIZE(argc, argv);
 
     // Rank-3: reduce over e at fixed tensor component — e.g. stress(e, 0, 1).
     {
+        // Rank-3: reduce over e at fixed tensor component — e.g. stress(e, 0, 1).
         MPICArrayKokkos<double> stress(n_elem, 3, 3, "stress");
         stress.initialize_comm_plan(comm_plan);
         FOR_ALL(e, 0, n_elem, r, 0, 3, c, 0, 3, {
