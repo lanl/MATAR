@@ -2,9 +2,12 @@ cmake_minimum_required(VERSION 3.5)
 
 project (matartest)
 
-# Must run before find_package(Matar): imported target matar may list MPI::MPI_CXX in INTERFACE,
-# and MatarConfig.cmake includes MatarTargets.cmake during find_package.
-find_package(MPI COMPONENTS CXX QUIET)
+# MATAR built with MPI lists MPI::MPI_CXX on imported target `matar`; MatarConfig loads targets during
+# find_package(Matar). Only pre-find MPI for those test builds (see cmake_build_test.sh).
+option(MATAR_TEST_USE_MPI "Configure tests against MPI-enabled MATAR (requires MPI before find_package)" OFF)
+if(MATAR_TEST_USE_MPI)
+    find_package(MPI REQUIRED COMPONENTS CXX)
+endif()
 find_package(Matar REQUIRED)
 
 #-------------------------------------------

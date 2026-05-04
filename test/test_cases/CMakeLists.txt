@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-# MPI is found in parent ../CMakeLists.txt before find_package(Matar).
+# Optional MPI for matar_mpi_tests: loaded in ../CMakeLists.txt when MATAR_TEST_USE_MPI is set.
 
 # Find all test files in the current directory except test_main.cpp and MPI-only sources.
 file(GLOB TEST_SOURCES "test_*.cpp")
