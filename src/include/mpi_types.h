@@ -92,11 +92,6 @@ protected:
     MPI_Datatype mpi_datatype_;
     MPI_Request mpi_request_;
 
-    
-    // --- Ghost Communication Support ---
-    CommunicationPlan* comm_plan_ = NULL;      // Pointer to shared communication plan
-
-
     DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
     DCArrayKokkos<int> recv_counts_; // [size: num_recv_ranks] Number of items to receive from each rank
     DCArrayKokkos<int> send_displs_; // [size: num_send_ranks] Starting index of items to send to each rank
@@ -114,6 +109,10 @@ protected:
 
 
 public:
+
+    // --- Ghost Communication Support ---
+    CommunicationPlan* comm_plan_ = NULL;      // Pointer to shared communication plan
+
     // Data member to access host view (initialized as pointer to this_array_.host_pointer())
     ViewCArray <T> host;
 
