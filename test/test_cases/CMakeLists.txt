@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-# Imported `matar` may use MPI::MPI_CXX (when MATAR was built with MPI). Load MPI before any
-# target links `matar`, otherwise CMake cannot resolve the imported INTERFACE.
-find_package(MPI COMPONENTS CXX QUIET)
+# MPI is found in parent ../CMakeLists.txt before find_package(Matar).
 
 # Find all test files in the current directory except test_main.cpp and MPI-only sources.
 file(GLOB TEST_SOURCES "test_*.cpp")

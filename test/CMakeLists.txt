@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 
 project (matartest)
 
+# Must run before find_package(Matar): imported target matar may list MPI::MPI_CXX in INTERFACE,
+# and MatarConfig.cmake includes MatarTargets.cmake during find_package.
+find_package(MPI COMPONENTS CXX QUIET)
 find_package(Matar REQUIRED)
 
 #-------------------------------------------
