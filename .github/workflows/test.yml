@@ -37,11 +37,17 @@ jobs:
     - name: Checkout submodules
       run: git submodule update --init --recursive
 
-    - name: Install Open MPI (MPICArrayKokkos / matar_mpi_tests)
+    - name: Install Open MPI
       if: contains(matrix.config.kokkos_backend, 'mpi') && matrix.config.os == 'ubuntu-latest'
+      env:
+        DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo apt-get update
-        sudo apt-get install -y libopenmpi-dev openmpi-bin
+        sudo apt-get update -qq
+        sudo apt-get install -y --no-install-recommends \
+          libopenmpi-dev \
+          openmpi-bin \
+          mpi-default-bin \
+          mpi-default-dev
 
     # Build MATAR tests using the build-matar.sh script
     - name: Build MATAR Tests
