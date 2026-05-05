@@ -32,6 +32,10 @@ else
     )
 fi
 
+if [[ "${kokkos_build_type}" == *"mpi"* ]]; then
+    cmake_options+=(-D MATAR_TEST_USE_MPI=1)
+fi
+
 # Print CMake options for reference
 echo "CMake Options: ${cmake_options[@]}"
 

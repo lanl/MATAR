@@ -163,6 +163,9 @@ if (KOKKOS)
 
     include_directories(mesh_decomp)
     add_subdirectory(mesh_decomp)
+
+    add_executable(matar_mpi matar_mpi.cpp)
+    target_link_libraries(matar_mpi ${LINKING_LIBRARIES})
   endif()
 
 endif()
