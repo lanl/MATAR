@@ -26,8 +26,9 @@ if(KOKKOS AND TARGET MPI::MPI_CXX)
     target_link_libraries(matar_mpi_tests PRIVATE matar gtest Kokkos::kokkos MPI::MPI_CXX)
     target_compile_definitions(matar_mpi_tests PRIVATE HAVE_MPI=1 HAVE_KOKKOS=1)
 
+    # --oversubscribe: GitHub Actions / small VMs often expose fewer slots than ranks (Open MPI).
     add_test(
         NAME MPICArrayKokkos_mpi_suite
-        COMMAND ${MPIEXEC_EXECUTABLE} ${MPIEXEC_NUMPROC_FLAG} 4 $<TARGET_FILE:matar_mpi_tests>
+        COMMAND ${MPIEXEC_EXECUTABLE} --oversubscribe ${MPIEXEC_NUMPROC_FLAG} 4 $<TARGET_FILE:matar_mpi_tests>
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 endif()
