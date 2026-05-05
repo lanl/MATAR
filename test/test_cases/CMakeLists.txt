@@ -17,7 +17,6 @@ endif()
 
 # Add test discovery
 include(GoogleTest)
-enable_testing()
 
 gtest_discover_tests(matar_tests)
 
