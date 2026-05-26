@@ -672,7 +672,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
         case operation::sum: {
             local = 0;
             T loc_sum = 0;
-            FOR_REDUCE_SUM(i, 0, owned_len,
+            FOR_REDUCE_SUM_CLASS(i, 0, owned_len,
                         loc_sum, {
                 loc_sum += this_array_(i);
             }, local);
@@ -681,7 +681,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
         case operation::product: {
             local = T(1);
             T loc_prod = 1;
-            FOR_REDUCE_PRODUCT(i, 0, owned_len,
+            FOR_REDUCE_PRODUCT_CLASS(i, 0, owned_len,
                         loc_prod, {
                 loc_prod *= this_array_(i);
             }, local);
@@ -690,7 +690,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
         case operation::max: {
             local = this_array_(0);
             T loc_max = this_array_(0);
-            FOR_REDUCE_MAX(i, 0, owned_len,
+            FOR_REDUCE_MAX_CLASS(i, 0, owned_len,
                         loc_max, {
                 loc_max = (this_array_(i) > loc_max) ? this_array_(i) : loc_max;
             }, local);
@@ -699,7 +699,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
         case operation::min: {
             local = this_array_(0);
             T loc_min = this_array_(0);
-            FOR_REDUCE_MIN(i, 0, owned_len,
+            FOR_REDUCE_MIN_CLASS(i, 0, owned_len,
                         loc_min, {
                 loc_min = (this_array_(i) < loc_min) ? this_array_(i) : loc_min;
             }, local);
@@ -740,7 +740,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::sum: {
             local = 0;
             T loc_sum = 0;
-            FOR_REDUCE_SUM(e, 0, owned_len, loc_sum, {
+            FOR_REDUCE_SUM_CLASS(e, 0, owned_len, loc_sum, {
                 loc_sum += this_array_(e, j);
             }, local);
             break;
@@ -748,7 +748,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::product: {
             local = T(1);
             T loc_prod = 1;
-            FOR_REDUCE_PRODUCT(e, 0, owned_len, loc_prod, {
+            FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len, loc_prod, {
                 loc_prod *= this_array_(e, j);
             }, local);
             break;
@@ -756,7 +756,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::max: {
             local = this_array_(0, j);
             T loc_max = local;
-            FOR_REDUCE_MAX(e, 0, owned_len, loc_max, {
+            FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
                 const T v = this_array_(e, j);
                 loc_max = (v > loc_max) ? v : loc_max;
             }, local);
@@ -765,7 +765,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::min: {
             local = this_array_(0, j);
             T loc_min = local;
-            FOR_REDUCE_MIN(e, 0, owned_len, loc_min, {
+            FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
                 const T v = this_array_(e, j);
                 loc_min = (v < loc_min) ? v : loc_min;
             }, local);
@@ -806,7 +806,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::sum: {
             local = 0;
             T loc_sum = 0;
-            FOR_REDUCE_SUM(e, 0, owned_len, loc_sum, {
+            FOR_REDUCE_SUM_CLASS(e, 0, owned_len, loc_sum, {
                 loc_sum += this_array_(e, j, k);
             }, local);
             break;
@@ -814,7 +814,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::product: {
             local = T(1);
             T loc_prod = 1;
-            FOR_REDUCE_PRODUCT(e, 0, owned_len, loc_prod, {
+            FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len, loc_prod, {
                 loc_prod *= this_array_(e, j, k);
             }, local);
             break;
@@ -822,7 +822,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::max: {
             local = this_array_(0, j, k);
             T loc_max = local;
-            FOR_REDUCE_MAX(e, 0, owned_len, loc_max, {
+            FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
                 const T v = this_array_(e, j, k);
                 loc_max = (v > loc_max) ? v : loc_max;
             }, local);
@@ -831,7 +831,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::min: {
             local = this_array_(0, j, k);
             T loc_min = local;
-            FOR_REDUCE_MIN(e, 0, owned_len, loc_min, {
+            FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
                 const T v = this_array_(e, j, k);
                 loc_min = (v < loc_min) ? v : loc_min;
             }, local);
@@ -874,7 +874,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::sum: {
             local = 0;
             T loc_sum = 0;
-            FOR_REDUCE_SUM(e, 0, owned_len, loc_sum, {
+            FOR_REDUCE_SUM_CLASS(e, 0, owned_len, loc_sum, {
                 loc_sum += this_array_(e, g, ti, tj);
             }, local);
             break;
@@ -882,7 +882,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::product: {
             local = T(1);
             T loc_prod = 1;
-            FOR_REDUCE_PRODUCT(e, 0, owned_len, loc_prod, {
+            FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len, loc_prod, {
                 loc_prod *= this_array_(e, g, ti, tj);
             }, local);
             break;
@@ -890,7 +890,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::max: {
             local = this_array_(0, g, ti, tj);
             T loc_max = local;
-            FOR_REDUCE_MAX(e, 0, owned_len, loc_max, {
+            FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
                 const T v = this_array_(e, g, ti, tj);
                 loc_max = (v > loc_max) ? v : loc_max;
             }, local);
@@ -899,7 +899,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         case operation::min: {
             local = this_array_(0, g, ti, tj);
             T loc_min = local;
-            FOR_REDUCE_MIN(e, 0, owned_len, loc_min, {
+            FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
                 const T v = this_array_(e, g, ti, tj);
                 loc_min = (v < loc_min) ? v : loc_min;
             }, local);
