@@ -202,8 +202,6 @@
 
 
 // the REDUCE Product loop
-
-
 #define \
     RPROD1D(i, x0, x1, var, fcn, result) \
     Kokkos::parallel_reduce( \
@@ -230,6 +228,41 @@
     EXPAND(GET_MACRO(__VA_ARGS__, _13, RPROD3D, _11, _10, RPROD2D, _8, _7, RPROD1D)(__VA_ARGS__))
 
 
+
+
+// the REDUCE Product loop for a class
+#define \
+    RPRODCLASS1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+                        Kokkos::RangePolicy<> ( (x0), (x1) ),  \
+                        KOKKOS_CLASS_LAMBDA(const int (i), decltype(var) &(var)){fcn}, \
+                        Kokkos::Prod< decltype(result) > ( (result) ) )
+
+#define \
+    RPRODCLASS2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+        Kokkos::MDRangePolicy< Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+        KOKKOS_CLASS_LAMBDA( const int (i),const int (j), decltype(var) &(var) ){fcn}, \
+        Kokkos::Prod< decltype(result) > ( (result) ) )
+
+#define \
+    RPRODCLASS3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( \
+        Kokkos::MDRangePolicy< Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+        KOKKOS_CLASS_LAMBDA( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+        Kokkos::Prod< decltype(result) > ( (result) ) )
+
+#define \
+    FOR_REDUCE_PRODUCT_CLASS(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _13, RPRODCLASS3D, _11, _10, RPRODCLASS2D, _8, _7, RPRODCLASS1D)(__VA_ARGS__))
+
+
+
+
+
+
+
+
 // the DO_REDUCE_SUM loop
 #define \
     DO_RSUM1D(i, x0, x1, var, fcn, result) \
@@ -253,6 +286,8 @@
 #define \
     DO_REDUCE_SUM(...) \
     EXPAND(GET_MACRO(__VA_ARGS__, _13, DO_RSUM3D, _11, _10, DO_RSUM2D, _8, _7, DO_RSUM1D)(__VA_ARGS__))
+
+
 
 
 // the REDUCE MAX loop
