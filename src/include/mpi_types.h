@@ -100,6 +100,9 @@ class MPICArrayKokkos {
     // Dual view for managing data on both CPU and GPU
     DCArrayKokkos<T> this_array_;
 
+    // Host-resident communication buffers used for halo exchange
+    Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace> mpi_buffers_;
+
     // DCArrayKokkos<T> send_buffer_;
     // DCArrayKokkos<T> recv_buffer_;
     
