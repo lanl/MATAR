@@ -54,7 +54,7 @@ int main()
     FOR_ALL(i, 0, 10,
              j, 0, 10, {
         arr_2D(i, j) = 314;
-    });
+    }, "FOR_ALL 2D");
 
     // A 3D array example
     CArray<int> arr_3D(10, 10, 10);
@@ -62,14 +62,14 @@ int main()
              j, 0, 10,
              k, 0, 10, {
         arr_3D(i, j, k) = 314;
-    });
+    }, "FOR_ALL 3D");
 
     int loc_sum = 0;
     int result  = 0;
     FOR_REDUCE_SUM(i, 0, 10,
                loc_sum, {
         loc_sum += arr(i) * arr(i);
-               }, result);
+               }, result, "FOR_REDUCE_SUM 1D");
 
     // testing
     loc_sum = 0;
