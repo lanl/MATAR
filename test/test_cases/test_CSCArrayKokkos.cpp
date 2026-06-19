@@ -6,23 +6,31 @@ using namespace mtr;
 namespace {
 // CArrayKokkos writes must happen on device — these helpers capture literal values in kernels
 inline void init_csc_data(CArrayKokkos<double>& d) {
-    FOR_ALL(i, 0, 1, {
-        d(0) = 1.0; d(1) = 2.0; d(2) = 3.0;
-        d(3) = 4.0; d(4) = 5.0; d(5) = 6.0;
+    FOR_ALL(i, 0, d.size(), {
+        d(i) = (double)i + 1.0;
     });
     MATAR_FENCE();
 }
 
 inline void init_csc_start_index(CArrayKokkos<size_t>& si) {
-    FOR_ALL(i, 0, 1, {
-        si(0) = 0; si(1) = 2; si(2) = 3; si(3) = 4; si(4) = 6;
+    RUN({
+        si(0) = 0; 
+        si(1) = 2; 
+        si(2) = 3; 
+        si(3) = 4; 
+        si(4) = 6;
     });
     MATAR_FENCE();
 }
 
 inline void init_csc_row_index(CArrayKokkos<size_t>& ri) {
-    FOR_ALL(i, 0, 1, {
-        ri(0) = 0; ri(1) = 2; ri(2) = 1; ri(3) = 2; ri(4) = 0; ri(5) = 3;
+    RUN({
+        ri(0) = 0; 
+        ri(1) = 2; 
+        ri(2) = 1; 
+        ri(3) = 2; 
+        ri(4) = 0; 
+        ri(5) = 3;
     });
     MATAR_FENCE();
 }
@@ -30,7 +38,7 @@ inline void init_csc_row_index(CArrayKokkos<size_t>& ri) {
 // Capture csc(i,j) on device and store in a result view for host verification
 inline double csc_get(CSCArrayKokkos<double>& csc, size_t i, size_t j) {
     CArrayKokkos<double> result(1, "csc_result");
-    FOR_ALL(idx, 0, 1, {
+    RUN({
         result(0) = csc(i, j);
     });
     MATAR_FENCE();
@@ -40,7 +48,7 @@ inline double csc_get(CSCArrayKokkos<double>& csc, size_t i, size_t j) {
 
 inline size_t csc_begin_index(CSCArrayKokkos<double>& csc, size_t i) {
     CArrayKokkos<size_t> result(1, "csc_bi_result");
-    FOR_ALL(idx, 0, 1, {
+    RUN({
         result(0) = csc.begin_index(i);
     });
     MATAR_FENCE();
@@ -50,7 +58,7 @@ inline size_t csc_begin_index(CSCArrayKokkos<double>& csc, size_t i) {
 
 inline size_t csc_end_index(CSCArrayKokkos<double>& csc, size_t i) {
     CArrayKokkos<size_t> result(1, "csc_ei_result");
-    FOR_ALL(idx, 0, 1, {
+    RUN({
         result(0) = csc.end_index(i);
     });
     MATAR_FENCE();

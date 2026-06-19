@@ -8646,10 +8646,13 @@ RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArra
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::RaggedRightArrayKokkos(size_t* strides_array,  size_t some_dim1,
                                                                                         const std::string& tag_string) {
-    mystrides_.assign_data(strides_array);
     dim1_ = some_dim1;
+    mystrides_ = Strides1D("mystrides_", dim1_);
+    Kokkos::View<size_t*, Kokkos::HostSpace> host_strides(strides_array, dim1_);
+    Kokkos::deep_copy(mystrides_, host_strides);
     data_setup(tag_string);
 } // End constructor
+
 
 //setup start indices
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
