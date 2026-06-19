@@ -35,6 +35,24 @@ inline void dragged_set_init_values(DRaggedRightArrayKokkos<double>& array) {
         array(0, 1) = 2.0;
     });
 }
+
+inline void dragged_set_vector_values(DRaggedRightArrayKokkos<double>& array) {
+    RUN({
+        array(0, 0, 0) = 1.0;
+        array(0, 0, 1) = 2.0;
+        array(0, 1, 0) = 3.0;
+        array(0, 1, 1) = 4.0;
+    });
+}
+
+inline void dragged_set_tensor_values(DRaggedRightArrayKokkos<double>& array) {
+    RUN({
+        array(0, 0, 0, 0) = 1.0;
+        array(0, 0, 0, 1) = 2.0;
+        array(0, 0, 1, 0) = 3.0;
+        array(0, 0, 1, 1) = 4.0;
+    });
+}
 } // namespace
 
 // Test default constructor
@@ -158,13 +176,7 @@ TEST(DRaggedRightArrayKokkosTest, VectorConstructor) {
 
     array.set_values(0.0);
 
-    // Set values on device
-    RUN({
-        array(0, 0, 0) = 1.0;
-        array(0, 0, 1) = 2.0;
-        array(0, 1, 0) = 3.0;
-        array(0, 1, 1) = 4.0;
-    });
+    dragged_set_vector_values(array);
     array.update_host();
 
     EXPECT_DOUBLE_EQ(array.host(0, 0, 0), 1.0);
@@ -186,12 +198,7 @@ TEST(DRaggedRightArrayKokkosTest, TensorConstructor) {
 
     array.set_values(0.0);
 
-    RUN({
-        array(0, 0, 0, 0) = 1.0;
-        array(0, 0, 0, 1) = 2.0;
-        array(0, 0, 1, 0) = 3.0;
-        array(0, 0, 1, 1) = 4.0;
-    });
+    dragged_set_tensor_values(array);
     array.update_host();
 
     EXPECT_DOUBLE_EQ(array.host(0, 0, 0, 0), 1.0);
