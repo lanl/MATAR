@@ -107,6 +107,15 @@ TEST(DRaggedRightArrayKokkosTest, ArrayAccess2D) {
     EXPECT_DOUBLE_EQ(array(2, 0), 6.0);
 }
 
+namespace {
+inline void dragged_set_init_values(DRaggedRightArrayKokkos<double>& array) {
+    RUN({
+        array(0, 0) = 1.0;
+        array(0, 1) = 2.0;
+    });
+}
+} // namespace
+
 // Test host access
 TEST(DRaggedRightArrayKokkosTest, HostAccess) {
     // Create strides array
@@ -117,16 +126,13 @@ TEST(DRaggedRightArrayKokkosTest, HostAccess) {
 
     // Create array
     DRaggedRightArrayKokkos<double> array(strides);
-    
+
     // Set values
     array.set_values(0.0);
-    
+
     // Set some test values on device
-    RUN({
-        array(0, 0) = 1.0;
-        array(0, 1) = 2.0;
-    });
-    
+    dragged_set_init_values(array);
+
     // Update host
     array.update_host();
     

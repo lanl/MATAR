@@ -232,28 +232,34 @@ TEST(Test_DCArrayKokkos, operator_access)
     EXPECT_EQ(A7.host(1, 1, 1, 1, 1, 1, 1), 42.0);
 }
 
+namespace {
+inline void double_in_place(DCArrayKokkos<double>& A, int n) {
+    FOR_ALL(i, 0, n, {
+        A(i) = A(i) * 2.0;
+    });
+}
+} // namespace
+
 // Test host and device updates
 TEST(Test_DCArrayKokkos, host_device_updates)
 {
     const int size = 100;
     DCArrayKokkos<double> A(size, "test_updates");
-    
+
     // Set values on host
     for(int i = 0; i < size; i++) {
         A(i) = static_cast<double>(i);
     }
-    
+
     // Update device
     A.update_device();
-    
+
     // Modify values on device
-    FOR_ALL(i, 0, size, {
-        A(i) = A(i) * 2.0;
-    });
-    
+    double_in_place(A, size);
+
     // Update host
     A.update_host();
-    
+
     // Verify values on host
     for(int i = 0; i < size; i++) {
         EXPECT_EQ(A.host(i), static_cast<double>(i) * 2.0);

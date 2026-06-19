@@ -269,21 +269,28 @@ TEST(Test_FArrayKokkos, default_constructor)
     EXPECT_EQ(A.pointer(), nullptr);
 }
 
+namespace {
+template<typename ViewType>
+void fill_view_scalar(ViewType view, int n, double val) {
+    Kokkos::parallel_for("FillViewScalar", n, KOKKOS_LAMBDA(const int i) {
+        view(i) = val;
+    });
+}
+} // namespace
+
 // Test Kokkos view access
 TEST(Test_FArrayKokkos, kokkos_view)
 {
     const int size = 100;
     FArrayKokkos<double> A(size, "test_view");
-    
+
     // Test view access
     auto view = A.get_kokkos_view();
     EXPECT_EQ(view.size(), size);
-    
+
     // Test view modification
-    Kokkos::parallel_for("SetValues", size, KOKKOS_LAMBDA(const int i) {
-        view(i) = 42.0;
-    });
-    
+    fill_view_scalar(view, size, 42.0);
+
     // Verify values through array access
     for(int i = 0; i < size; i++) {
         EXPECT_EQ(A(i), 42.0);
