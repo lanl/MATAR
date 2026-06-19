@@ -11,7 +11,7 @@ constexpr int N = 4;
 // CPU-side index helpers
 // ---------------------------------------------------------------------------
 
-inline int carr_index_3d(int i, int j, int k)
+KOKKOS_INLINE_FUNCTION int carr_index_3d(int i, int j, int k)
 {
     return k * N * N + j * N + i;
 }
@@ -272,6 +272,8 @@ inline void hierarchical_nested_write(CArrayKokkos<int>& arr, int n)
     });
 }
 
+} // namespace
+
 // ---------------------------------------------------------------------------
 // Class-based harness for _CLASS macro variants (already at class scope —
 // KOKKOS_CLASS_LAMBDA is fine inside class methods).
@@ -351,8 +353,6 @@ public:
         RUN_CLASS({ run_flag_(0) = 99; }, "RUN_CLASS test");
     }
 };
-
-} // namespace
 
 // ---------------------------------------------------------------------------
 // Tests
