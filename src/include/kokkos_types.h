@@ -2053,7 +2053,7 @@ void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 const std::string DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_array_.view_host().label();
+    return this_array_.view_device().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2958,7 +2958,7 @@ void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 const std::string DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.view_host().label();
+    return this_matrix_.view_device().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -5299,7 +5299,7 @@ Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> DCArrayKokkos<T,Layout,Ex
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 const std::string DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_array_.view_host().label();
+    return this_array_.view_device().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -6221,7 +6221,7 @@ void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 const std::string DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return this_matrix_.view_host().label();
+    return this_matrix_.view_device().label();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -7521,7 +7521,7 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_value
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 const std::string DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
-    return this_array_.view_host().label();
+    return this_array_.view_device().label();
 }
 
 // Destructor
@@ -11298,7 +11298,7 @@ void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 const std::string DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
-    return array_.view_host().label();
+    return array_.view_device().label();
 }
 
 // Destructor

@@ -239,9 +239,9 @@ TEST(Test_DCMatrixKokkos, update_device)
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    A.update_device();
-    A.update_host();
-    // After round-trip sync, host data should be correct
+    A.update_host();   // sync device→host first
+    A.update_device(); // push host→device
+    A.update_host();   // pull back to verify round-trip
     EXPECT_EQ(A.host(1, 1), 42.0);
 }
 
