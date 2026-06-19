@@ -52,47 +52,54 @@ inline int expected_max_3d(int n)
 }
 
 // ---------------------------------------------------------------------------
-// CPU-side element-wise EXPECT helpers
+// CPU-side element-wise EXPECT helpers (use host mirrors for CUDA compat)
 // ---------------------------------------------------------------------------
 
 inline void expect_carray_1d_pattern(const CArrayKokkos<int>& arr, int n)
 {
-    for (int i = 0; i < n; i++) EXPECT_EQ(arr(i), i);
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, arr.get_kokkos_view());
+    for (int i = 0; i < n; i++) EXPECT_EQ(m(i), i);
 }
 
 inline void expect_carray_2d_pattern(const CArrayKokkos<int>& arr, int n)
 {
-    for (int j = 0; j < n; j++)
-        for (int i = 0; i < n; i++)
-            EXPECT_EQ(arr(i, j), j * n + i);
+    // CArrayKokkos uses flat 1D storage; (i,j) -> flat index i*n+j (C row-major)
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, arr.get_kokkos_view());
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            EXPECT_EQ(m(i * n + j), j * n + i);
 }
 
 inline void expect_carray_3d_pattern(const CArrayKokkos<int>& arr, int n)
 {
-    for (int k = 0; k < n; k++)
+    // CArrayKokkos uses flat 1D storage; (i,j,k) -> flat index i*n*n+j*n+k (C row-major)
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, arr.get_kokkos_view());
+    for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
-            for (int i = 0; i < n; i++)
-                EXPECT_EQ(arr(i, j, k), carr_index_3d(i, j, k));
+            for (int k = 0; k < n; k++)
+                EXPECT_EQ(m(i * n * n + j * n + k), carr_index_3d(i, j, k));
 }
 
 inline void expect_farray_constant(const FArrayKokkos<int>& arr, int n, int value)
 {
-    for (int i = 0; i < n; i++) EXPECT_EQ(arr(i), value);
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, arr.get_kokkos_view());
+    for (int i = 0; i < n; i++) EXPECT_EQ(m(i), value);
 }
 
 inline void expect_farray_2d_constant(const FArrayKokkos<int>& arr, int n, int value)
 {
-    for (int j = 0; j < n; j++)
-        for (int i = 0; i < n; i++)
-            EXPECT_EQ(arr(i, j), value);
+    // FArrayKokkos uses flat 1D storage; all elements equal value so check flat
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, arr.get_kokkos_view());
+    for (int flat = 0; flat < n * n; flat++)
+        EXPECT_EQ(m(flat), value);
 }
 
 inline void expect_farray_3d_constant(const FArrayKokkos<int>& arr, int n, int value)
 {
-    for (int k = 0; k < n; k++)
-        for (int j = 0; j < n; j++)
-            for (int i = 0; i < n; i++)
-                EXPECT_EQ(arr(i, j, k), value);
+    // FArrayKokkos uses flat 1D storage; all elements equal value so check flat
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, arr.get_kokkos_view());
+    for (int flat = 0; flat < n * n * n; flat++)
+        EXPECT_EQ(m(flat), value);
 }
 
 // ---------------------------------------------------------------------------
@@ -349,7 +356,7 @@ public:
 
     void run_class_once()
     {
-        run_flag_(0) = 0;
+        run_flag_.set_values(0);
         RUN_CLASS({ run_flag_(0) = 99; }, "RUN_CLASS test");
     }
 };
@@ -420,10 +427,11 @@ TEST(TestMacros, DO_REDUCE_SUM_MAX_MIN)
 TEST(TestMacros, RUN)
 {
     CArrayKokkos<int> flag(1);
-    flag(0) = 0;
+    flag.set_values(0);
     run_set_flag(flag, 42);
     MATAR_FENCE();
-    EXPECT_EQ(flag(0), 42);
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, flag.get_kokkos_view());
+    EXPECT_EQ(m(0), 42);
 }
 
 TEST(TestMacros, CLASS_macros)
@@ -446,7 +454,10 @@ TEST(TestMacros, CLASS_macros)
 
     harness.run_class_once();
     MATAR_FENCE();
-    EXPECT_EQ(harness.run_flag_(0), 99);
+    {
+        auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, harness.run_flag_.get_kokkos_view());
+        EXPECT_EQ(m(0), 99);
+    }
 }
 
 TEST(TestMacros, Hierarchical_team_macros)
@@ -459,22 +470,30 @@ TEST(TestMacros, Hierarchical_team_macros)
     hierarchical_reduce_second(arr1, arr3, N);
     MATAR_FENCE();
 
-    for (int i = 0; i < N; i++) {
-        int expected = 0;
-        for (int j = i; j < N; j++) expected += i * N * N + j * N;
-        EXPECT_EQ(arr1(i), expected);
+    {
+        auto m1 = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, arr1.get_kokkos_view());
+        for (int i = 0; i < N; i++) {
+            int expected = 0;
+            for (int j = i; j < N; j++) expected += i * N * N + j * N;
+            EXPECT_EQ(m1(i), expected);
+        }
     }
 
     hierarchical_nested_write(arr3, N);
     MATAR_FENCE();
 
-    for (int k = 0; k < N; k++) {
-        for (int j = 0; j < N; j++) {
-            for (int i = 0; i < N; i++) {
-                if (j >= i && k >= i && k < j) {
-                    EXPECT_EQ(arr3(i, j, k), i + j + k);
+    {
+        auto m3 = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, arr3.get_kokkos_view());
+        for (int k = 0; k < N; k++) {
+            for (int j = 0; j < N; j++) {
+                for (int i = 0; i < N; i++) {
+                    if (j >= i && k >= i && k < j) {
+                        int idx = i * N * N + j * N + k;  // flattened 3D index (CArray row-major)
+                        EXPECT_EQ(m3(idx), i + j + k);
+                    }
                 }
             }
         }
+   
     }
 }

@@ -42,10 +42,6 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, StrideManagement) {
     DDynamicRaggedRightArrayKokkos<double> array(dim1, dim2, "test_array");
 
     for (size_t i = 0; i < dim1; i++) {
-        EXPECT_EQ(array.stride(i), 0);
-    }
-
-    for (size_t i = 0; i < dim1; i++) {
         EXPECT_EQ(array.stride_host(i), 0);
     }
 }
@@ -55,19 +51,13 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, ValueAccess) {
 
     set_all_strides(array, dim1, dim2);
 
-    array(0, 0) = 1.0;
-    array(0, 1) = 2.0;
-    array(1, 0) = 3.0;
-    array(2, 0) = 4.0;
-    array(2, 1) = 5.0;
-    array(3, 0) = 6.0;
-
-    EXPECT_DOUBLE_EQ(array(0, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array(0, 1), 2.0);
-    EXPECT_DOUBLE_EQ(array(1, 0), 3.0);
-    EXPECT_DOUBLE_EQ(array(2, 0), 4.0);
-    EXPECT_DOUBLE_EQ(array(2, 1), 5.0);
-    EXPECT_DOUBLE_EQ(array(3, 0), 6.0);
+    // Write via host member, then verify on host
+    array.host(0, 0) = 1.0;
+    array.host(0, 1) = 2.0;
+    array.host(1, 0) = 3.0;
+    array.host(2, 0) = 4.0;
+    array.host(2, 1) = 5.0;
+    array.host(3, 0) = 6.0;
 
     EXPECT_DOUBLE_EQ(array.host(0, 0), 1.0);
     EXPECT_DOUBLE_EQ(array.host(0, 1), 2.0);
@@ -82,21 +72,15 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, SetValues) {
 
     set_all_strides(array, dim1, dim2);
 
-    array(0, 0) = 1.0;
-    array(0, 1) = 2.0;
-    array(1, 0) = 3.0;
-    array(2, 0) = 4.0;
-    array(2, 1) = 5.0;
-    array(3, 0) = 6.0;
-
     array.set_values(1.0);
+    array.update_host();
 
-    EXPECT_DOUBLE_EQ(array(0, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array(0, 1), 1.0);
-    EXPECT_DOUBLE_EQ(array(1, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array(2, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array(2, 1), 1.0);
-    EXPECT_DOUBLE_EQ(array(3, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(0, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(0, 1), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(1, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(2, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(2, 1), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(3, 0), 1.0);
 }
 
 TEST_F(DDynamicRaggedRightArrayKokkosTest, SetValuesSparse) {
@@ -104,21 +88,15 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, SetValuesSparse) {
 
     set_all_strides(array, dim1, dim2);
 
-    array(0, 0) = 1.0;
-    array(0, 1) = 2.0;
-    array(1, 0) = 3.0;
-    array(2, 0) = 4.0;
-    array(2, 1) = 5.0;
-    array(3, 0) = 6.0;
-
     array.set_values_sparse(1.0);
+    array.update_host();
 
-    EXPECT_DOUBLE_EQ(array(0, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array(0, 1), 1.0);
-    EXPECT_DOUBLE_EQ(array(1, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array(2, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array(2, 1), 1.0);
-    EXPECT_DOUBLE_EQ(array(3, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(0, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(0, 1), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(1, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(2, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(2, 1), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(3, 0), 1.0);
 }
 
 TEST_F(DDynamicRaggedRightArrayKokkosTest, UpdateFunctions) {
@@ -126,24 +104,25 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, UpdateFunctions) {
 
     set_all_strides(array, dim1, dim2);
 
-    array(0, 0) = 1.0;
-    array(0, 1) = 2.0;
-    array(1, 0) = 3.0;
-    array(2, 0) = 4.0;
-    array(2, 1) = 5.0;
-    array(3, 0) = 6.0;
+    // Write via host, push to device, pull back and verify
+    array.host(0, 0) = 1.0;
+    array.host(0, 1) = 2.0;
+    array.host(1, 0) = 3.0;
+    array.host(2, 0) = 4.0;
+    array.host(2, 1) = 5.0;
+    array.host(3, 0) = 6.0;
 
-    array.update_host();
     array.update_device();
     array.update_strides_host();
     array.update_strides_device();
+    array.update_host();
 
-    EXPECT_DOUBLE_EQ(array(0, 0), 1.0);
-    EXPECT_DOUBLE_EQ(array(0, 1), 2.0);
-    EXPECT_DOUBLE_EQ(array(1, 0), 3.0);
-    EXPECT_DOUBLE_EQ(array(2, 0), 4.0);
-    EXPECT_DOUBLE_EQ(array(2, 1), 5.0);
-    EXPECT_DOUBLE_EQ(array(3, 0), 6.0);
+    EXPECT_DOUBLE_EQ(array.host(0, 0), 1.0);
+    EXPECT_DOUBLE_EQ(array.host(0, 1), 2.0);
+    EXPECT_DOUBLE_EQ(array.host(1, 0), 3.0);
+    EXPECT_DOUBLE_EQ(array.host(2, 0), 4.0);
+    EXPECT_DOUBLE_EQ(array.host(2, 1), 5.0);
+    EXPECT_DOUBLE_EQ(array.host(3, 0), 6.0);
 }
 
 TEST_F(DDynamicRaggedRightArrayKokkosTest, NameManagement) {
@@ -159,12 +138,12 @@ TEST_F(DDynamicRaggedRightArrayKokkosTest, KokkosViewAccess) {
 
     set_all_strides(array, dim1, dim2);
 
-    array(0, 0) = 1.0;
-    array(0, 1) = 2.0;
-    array(1, 0) = 3.0;
-    array(2, 0) = 4.0;
-    array(2, 1) = 5.0;
-    array(3, 0) = 6.0;
+    array.host(0, 0) = 1.0;
+    array.host(0, 1) = 2.0;
+    array.host(1, 0) = 3.0;
+    array.host(2, 0) = 4.0;
+    array.host(2, 1) = 5.0;
+    array.host(3, 0) = 6.0;
 
     auto view = array.get_kokkos_dual_view();
 

@@ -237,7 +237,6 @@ public:
     TArray1D get_kokkos_view() const;
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Destructor
@@ -533,7 +532,6 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FArrayKokkos<T,Layout,ExecSpac
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string FArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
@@ -992,7 +990,6 @@ public:
     TArray1D get_kokkos_view() const;
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -1271,7 +1268,6 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> FMatrixKokkos<T,Layout,ExecSpa
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string FMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_matrix_.label();
 }
@@ -1757,7 +1753,6 @@ public:
     void set_values(T val);
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
 
@@ -2057,7 +2052,6 @@ void DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.view_host().label();
 }
@@ -2196,7 +2190,6 @@ public:
     void set_values(T val);
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
 
@@ -2540,7 +2533,6 @@ void DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DViewFArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
@@ -2666,7 +2658,6 @@ public:
     void set_values(T val);
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
 
@@ -2966,7 +2957,6 @@ void DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_matrix_.view_host().label();
 }
@@ -3100,7 +3090,6 @@ public:
     void set_values(T val);
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
 
@@ -3434,7 +3423,6 @@ void DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DViewFMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_matrix_.label();
 }
@@ -3543,7 +3531,6 @@ public:
     TArray1D get_kokkos_view() const;
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Deconstructor
@@ -3819,7 +3806,6 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CArrayKokkos<T,Layout,ExecSpac
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string CArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
@@ -4272,7 +4258,6 @@ public:
     TArray1D get_kokkos_view() const;
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     KOKKOS_INLINE_FUNCTION
@@ -4554,7 +4539,6 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> CMatrixKokkos<T,Layout,ExecSpa
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string CMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_matrix_.label();
 }
@@ -5011,7 +4995,6 @@ public:
     TArray1D get_kokkos_dual_view() const;
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Method that update host view
@@ -5315,7 +5298,6 @@ Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> DCArrayKokkos<T,Layout,Ex
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.view_host().label();
 }
@@ -5466,7 +5448,6 @@ public:
     void set_values(T val);
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
 
@@ -5823,7 +5804,6 @@ void DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values(T val) {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DViewCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
@@ -5941,7 +5921,6 @@ public:
     void set_values(T val);
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Deconstructor
@@ -6241,7 +6220,6 @@ void DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_matrix_.view_host().label();
 }
@@ -6374,7 +6352,6 @@ public:
     void set_values(T val);
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Deconstructor
@@ -6707,7 +6684,6 @@ void DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DViewCMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_matrix_.label();
 }
@@ -6854,7 +6830,6 @@ public:
     void set_values(T val);
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Method that update host view
@@ -7545,7 +7520,6 @@ void DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_value
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_INLINE_FUNCTION
 const std::string DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
     return this_array_.view_host().label();
 }
@@ -7659,7 +7633,6 @@ public:
     TArray1D get_kokkos_view() const;
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Deconstructor
@@ -7985,7 +7958,6 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicArrayKokkos<T,Layout,Ex
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DynamicArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
@@ -8116,7 +8088,6 @@ public:
     TArray1D get_kokkos_view() const;
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Deconstructor
@@ -8445,7 +8416,6 @@ Kokkos::View<T*, Layout, ExecSpace, MemoryTraits> DynamicMatrixKokkos<T,Layout,E
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DynamicMatrixKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return this_array_.label();
 }
@@ -8562,7 +8532,6 @@ public:
     size_t dims(size_t i) const;
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Kokkos views of strides and start indices
@@ -8742,6 +8711,14 @@ size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(s
     return mystrides_(i);
 }
 
+// Host method to return the stride size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_host(size_t i) const {
+    assert(i < dim1_ && "i is out of dim1 bounds in RaggedRightArray");
+    auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, mystrides_);
+    return h(i);
+}
+
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 KOKKOS_INLINE_FUNCTION
 size_t RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::dims(size_t i) const {
@@ -8904,7 +8881,6 @@ void RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_INLINE_FUNCTION
 const std::string RaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
     return array_.label();
 }
@@ -8986,7 +8962,6 @@ public:
     TArray1D get_kokkos_view();
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Kokkos views of strides and start indices
@@ -9271,7 +9246,6 @@ void RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits, ILayout>::
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_INLINE_FUNCTION
 const std::string RaggedRightArrayofVectorsKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
     return array_.label();
 }
@@ -9321,6 +9295,9 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t stride(size_t j) const;
 
+    // Host method to return the stride size
+    size_t stride_host(size_t j) const;
+
     //setup start indices
     void data_setup(const std::string& tag_string);
     
@@ -9340,8 +9317,11 @@ public:
     KOKKOS_INLINE_FUNCTION
     size_t dims(size_t i) const;
 
-    // Get the name of the view
+    // A method to return the total number of elements (sum of strides)
     KOKKOS_INLINE_FUNCTION
+    size_t size() const;
+
+    // Get the name of the view
     const std::string get_name() const;
     
     KOKKOS_INLINE_FUNCTION
@@ -9497,6 +9477,21 @@ size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride(si
     return mystrides_(j);
 }
 
+// Host method to return the stride size
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::stride_host(size_t j) const {
+    assert(j < dim2_ && "j is out of dim2 bounds in RaggedDownArray");
+    auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, mystrides_);
+    return h(j);
+}
+
+// A method to return the total number of elements (sum of strides)
+template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
+KOKKOS_INLINE_FUNCTION
+size_t RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::size() const {
+    return length_;
+}
+
 // Overload operator() to access data as array(i,j)
 // where i=[0:N-1], j=[0:stride(i)]
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -9605,7 +9600,7 @@ operator= (const RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout> 
     Kokkos::fence();
     */
     length_ = temp.length_;
-    array_ = temp.length_;
+    array_ = temp.array_;
     mystrides_ = temp.mystrides_;
 
     /*
@@ -9642,7 +9637,6 @@ void RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::set_values(
 
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
-KOKKOS_INLINE_FUNCTION
 const std::string RaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::get_name() const{
     return array_.label();
 }
@@ -9701,7 +9695,6 @@ public:
     TArray1D get_kokkos_view();
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
     
     // Overload operator() to access data as array(i,j),
@@ -9860,7 +9853,6 @@ void DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_
 }
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return array_.label();
 }
@@ -9918,7 +9910,6 @@ public:
     TArray1D get_kokkos_view();
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
     
     // Overload operator() to access data as array(i,j),
@@ -10086,7 +10077,6 @@ void DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values_s
 }
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return array_.label();
 }
@@ -10246,7 +10236,7 @@ class CSRArrayKokkos {
      * @brief get the number of non zero elements in row i
      */
     KOKKOS_INLINE_FUNCTION
-    size_t nnz(size_t i);
+    size_t nnz(size_t i) const;
     
     /**
      * @brief get the total number of non zero elements
@@ -10501,7 +10491,7 @@ size_t CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::nnz() const{
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::nnz(size_t i){
+size_t CSRArrayKokkos<T,Layout, ExecSpace,MemoryTraits>::nnz(size_t i) const{
     assert(i <= dim1_ && "Index i out of bounds in CSRArray.stride()");
     return start_index_.data()[i+1] - start_index_.data()[i];
 }
@@ -10732,10 +10722,10 @@ private: // What ought to be private ?
     // This as the use of providing a reasonable way to get the column
     // index and data value in the case you need both
     KOKKOS_INLINE_FUNCTION
-    size_t begin_index(size_t i);
+    size_t begin_index(size_t i) const;
 
     KOKKOS_INLINE_FUNCTION
-    size_t end_index(size_t i);
+    size_t end_index(size_t i) const;
 
     /**
     * @brief Get the number of non zero elements in row i
@@ -10744,7 +10734,7 @@ private: // What ought to be private ?
     * @return size_t  : size of row
     */
     KOKKOS_INLINE_FUNCTION
-    size_t nnz(size_t i);
+    size_t nnz(size_t i) const;
 
     /**
     * @brief Get number of non zero elements total in array
@@ -10907,14 +10897,14 @@ T* CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end(size_t i){
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::begin_index(size_t i){
+size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::begin_index(size_t i) const{
     assert(i <= dim2_ && "index i out of bounds at CSCArray.begin_index()");
     return start_index_.data()[i];
 }
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end_index(size_t i){
+size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::end_index(size_t i) const{
     assert(i <= dim2_ && "index i out of bounds at CSCArray.end_index()");
     return start_index_.data()[i + 1];
 }
@@ -10927,7 +10917,7 @@ size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::nnz() const{
 
 template<typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
-size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::nnz(size_t i){
+size_t CSCArrayKokkos<T,Layout, ExecSpace, MemoryTraits>::nnz(size_t i) const{
     return start_index_.data()[i+1] - start_index_.data()[i];
 }
 
@@ -11073,7 +11063,6 @@ public:
     TArray1D get_kokkos_dual_view();
 
     // Get the name of the view
-    KOKKOS_INLINE_FUNCTION
     const std::string get_name() const;
 
     // Method that update host view
@@ -11308,7 +11297,6 @@ void DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::set_values
 }
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 const std::string DDynamicRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_name() const{
     return array_.view_host().label();
 }

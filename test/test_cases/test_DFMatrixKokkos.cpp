@@ -106,17 +106,18 @@ TEST(Test_DFMatrixKokkos, eq_overload)
     const int size = 100;
     DFMatrixKokkos<double> A(size, size);
     DFMatrixKokkos<double> B(size, size);
-    
-    // Set values in A
+
+    // Set values in A and sync to host before assignment
     A.set_values(42.0);
-    
+    A.update_host();
+
     // Assign A to B
     B = A;
-    
-    // Check values in B
+
+    // Check values in B via host accessor
     for(int i = 1; i <= size; i++) {
         for(int j = 1; j <= size; j++) {
-            EXPECT_EQ(42.0, B(i,j));
+            EXPECT_EQ(42.0, B.host(i,j));
         }
     }
 }
@@ -126,11 +127,12 @@ TEST(Test_DFMatrixKokkos, set_values)
 {
     const int size = 100;
     DFMatrixKokkos<double> A(size, size);
-    
+
     A.set_values(42.0);
+    A.update_host();
     for(int i = 1; i <= size; i++) {
         for(int j = 1; j <= size; j++) {
-            EXPECT_EQ(42.0, A(i,j));
+            EXPECT_EQ(42.0, A.host(i,j));
         }
     }
 }
@@ -140,20 +142,20 @@ TEST(Test_DFMatrixKokkos, operator_access)
 {
     const int size = 10;
     DFMatrixKokkos<double> A(size, size, size);
-    
-    // Test 3D access
+
+    // Test 3D access via host member
     for(int i = 1; i <= size; i++) {
         for(int j = 1; j <= size; j++) {
             for(int k = 1; k <= size; k++) {
-                A(i,j,k) = i*100 + j*10 + k;
+                A.host(i,j,k) = i*100 + j*10 + k;
             }
         }
     }
-    
+
     for(int i = 1; i <= size; i++) {
         for(int j = 1; j <= size; j++) {
             for(int k = 1; k <= size; k++) {
-                EXPECT_EQ(i*100 + j*10 + k, A(i,j,k));
+                EXPECT_EQ(i*100 + j*10 + k, A.host(i,j,k));
             }
         }
     }
@@ -166,12 +168,12 @@ TEST(Test_DFMatrixKokkos, bounds_checking)
     const int size = 10;
     DFMatrixKokkos<double> A(size, size);
     
-    // Test valid access
-    A(5,5) = 42.0;
-    EXPECT_EQ(42.0, A(5,5));
-    
+    // Test valid access via host member
+    A.host(5,5) = 42.0;
+    EXPECT_EQ(42.0, A.host(5,5));
+
     // Test invalid access - should throw
-    EXPECT_DEATH(A(size+1,size+1), ".*"); // Matrix indices go from 1 to size
+    EXPECT_DEATH(A.host(size+1,size+1), ".*"); // Matrix indices go from 1 to size
 }
 #endif
 
@@ -179,21 +181,24 @@ TEST(Test_DFMatrixKokkos, bounds_checking)
 TEST(Test_DFMatrixKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test int
     DFMatrixKokkos<int> A(size, size);
     A.set_values(42);
-    EXPECT_EQ(42, A(5,5));
-    
+    A.update_host();
+    EXPECT_EQ(42, A.host(5,5));
+
     // Test float
     DFMatrixKokkos<float> B(size, size);
     B.set_values(42.0f);
-    EXPECT_EQ(42.0f, B(5,5));
-    
+    B.update_host();
+    EXPECT_EQ(42.0f, B.host(5,5));
+
     // Test bool
     DFMatrixKokkos<bool> C(size, size);
     C.set_values(true);
-    EXPECT_EQ(true, C(5,5));
+    C.update_host();
+    EXPECT_EQ(true, C.host(5,5));
 }
 
 // Test host-device synchronization
@@ -207,11 +212,11 @@ TEST(Test_DFMatrixKokkos, host_device_sync)
     
     // Update host
     A.update_host();
-    
+
     // Check values on host
     for(int i = 1; i <= size; i++) {
         for(int j = 1; j <= size; j++) {
-            EXPECT_EQ(42.0, A(i,j));
+            EXPECT_EQ(42.0, A.host(i,j));
         }
     }
 }

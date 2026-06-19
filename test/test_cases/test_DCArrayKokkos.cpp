@@ -248,7 +248,7 @@ TEST(Test_DCArrayKokkos, host_device_updates)
 
     // Set values on host
     for(int i = 0; i < size; i++) {
-        A(i) = static_cast<double>(i);
+        A.host(i) = static_cast<double>(i);
     }
 
     // Update device

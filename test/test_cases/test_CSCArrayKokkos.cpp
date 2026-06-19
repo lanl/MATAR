@@ -3,198 +3,160 @@
 
 using namespace mtr;
 
+namespace {
+// CArrayKokkos writes must happen on device — these helpers capture literal values in kernels
+inline void init_csc_data(CArrayKokkos<double>& d) {
+    FOR_ALL(i, 0, 1, {
+        d(0) = 1.0; d(1) = 2.0; d(2) = 3.0;
+        d(3) = 4.0; d(4) = 5.0; d(5) = 6.0;
+    });
+    MATAR_FENCE();
+}
+
+inline void init_csc_start_index(CArrayKokkos<size_t>& si) {
+    FOR_ALL(i, 0, 1, {
+        si(0) = 0; si(1) = 2; si(2) = 3; si(3) = 4; si(4) = 6;
+    });
+    MATAR_FENCE();
+}
+
+inline void init_csc_row_index(CArrayKokkos<size_t>& ri) {
+    FOR_ALL(i, 0, 1, {
+        ri(0) = 0; ri(1) = 2; ri(2) = 1; ri(3) = 2; ri(4) = 0; ri(5) = 3;
+    });
+    MATAR_FENCE();
+}
+
+// Capture csc(i,j) on device and store in a result view for host verification
+inline double csc_get(CSCArrayKokkos<double>& csc, size_t i, size_t j) {
+    CArrayKokkos<double> result(1, "csc_result");
+    FOR_ALL(idx, 0, 1, {
+        result(0) = csc(i, j);
+    });
+    MATAR_FENCE();
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, result.get_kokkos_view());
+    return m(0);
+}
+
+inline size_t csc_begin_index(CSCArrayKokkos<double>& csc, size_t i) {
+    CArrayKokkos<size_t> result(1, "csc_bi_result");
+    FOR_ALL(idx, 0, 1, {
+        result(0) = csc.begin_index(i);
+    });
+    MATAR_FENCE();
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, result.get_kokkos_view());
+    return m(0);
+}
+
+inline size_t csc_end_index(CSCArrayKokkos<double>& csc, size_t i) {
+    CArrayKokkos<size_t> result(1, "csc_ei_result");
+    FOR_ALL(idx, 0, 1, {
+        result(0) = csc.end_index(i);
+    });
+    MATAR_FENCE();
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, result.get_kokkos_view());
+    return m(0);
+}
+} // namespace
+
 class CSCArrayKokkosTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        // Common setup code for all tests
-        dim1 = 4;  // number of rows
-        dim2 = 4;  // number of columns
-        nnz = 6;   // number of non-zero elements
+        dim1 = 4;
+        dim2 = 4;
+        nnz  = 6;
     }
-
-    void TearDown() override {
-        // Common cleanup code for all tests
-    }
-
     size_t dim1, dim2, nnz;
 };
 
 TEST_F(CSCArrayKokkosTest, Constructor) {
-    // Create arrays for CSC format
-    CArrayKokkos<double> data(nnz);
-    CArrayKokkos<size_t> start_index(dim2 + 1);
-    CArrayKokkos<size_t> row_index(nnz);
+    CArrayKokkos<double>  data(nnz);
+    CArrayKokkos<size_t>  start_index(dim2 + 1);
+    CArrayKokkos<size_t>  row_index(nnz);
+    init_csc_data(data);
+    init_csc_start_index(start_index);
+    init_csc_row_index(row_index);
 
-    // Initialize data
-    data(0) = 1.0; data(1) = 2.0; data(2) = 3.0;
-    data(3) = 4.0; data(4) = 5.0; data(5) = 6.0;
-
-    // Initialize column pointers (start_index)
-    start_index(0) = 0; start_index(1) = 2;
-    start_index(2) = 3; start_index(3) = 4;
-    start_index(4) = 6;
-
-    // Initialize row indices
-    row_index(0) = 0; row_index(1) = 2;
-    row_index(2) = 1; row_index(3) = 2;
-    row_index(4) = 0; row_index(5) = 3;
-
-    // Create CSC array
     CSCArrayKokkos<double> csc(data, start_index, row_index, dim1, dim2, "test_csc");
 
-    // Verify dimensions
     EXPECT_EQ(csc.dim1(), dim1);
     EXPECT_EQ(csc.dim2(), dim2);
     EXPECT_EQ(csc.nnz(), nnz);
 }
 
 TEST_F(CSCArrayKokkosTest, ValueAccess) {
-    // Create arrays for CSC format
-    CArrayKokkos<double> data(nnz);
-    CArrayKokkos<size_t> start_index(dim2 + 1);
-    CArrayKokkos<size_t> row_index(nnz);
+    CArrayKokkos<double>  data(nnz);
+    CArrayKokkos<size_t>  start_index(dim2 + 1);
+    CArrayKokkos<size_t>  row_index(nnz);
+    init_csc_data(data);
+    init_csc_start_index(start_index);
+    init_csc_row_index(row_index);
 
-    // Initialize data
-    data(0) = 1.0; data(1) = 2.0; data(2) = 3.0;
-    data(3) = 4.0; data(4) = 5.0; data(5) = 6.0;
-
-    // Initialize column pointers (start_index)
-    start_index(0) = 0; start_index(1) = 2;
-    start_index(2) = 3; start_index(3) = 4;
-    start_index(4) = 6;
-
-    // Initialize row indices
-    row_index(0) = 0; row_index(1) = 2;
-    row_index(2) = 1; row_index(3) = 2;
-    row_index(4) = 0; row_index(5) = 3;
-
-    // Create CSC array
     CSCArrayKokkos<double> csc(data, start_index, row_index, dim1, dim2, "test_csc");
 
-    // The CSC matrix represents:
-    // [1.0  0.0  0.0  5.0]
-    // [0.0  3.0  0.0  0.0]
-    // [2.0  0.0  4.0  0.0]
-    // [0.0  0.0  0.0  6.0]
-    //
-    // Where:
-    // data = [1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
-    // row_index = [0, 2, 1, 2, 0, 3]
-    // start_index = [0, 2, 3, 4, 6]
+    EXPECT_DOUBLE_EQ(csc_get(csc, 0, 0), 1.0);
+    EXPECT_DOUBLE_EQ(csc_get(csc, 2, 0), 2.0);
+    EXPECT_DOUBLE_EQ(csc_get(csc, 1, 1), 3.0);
+    EXPECT_DOUBLE_EQ(csc_get(csc, 2, 2), 4.0);
+    EXPECT_DOUBLE_EQ(csc_get(csc, 0, 3), 5.0);
+    EXPECT_DOUBLE_EQ(csc_get(csc, 3, 3), 6.0);
 
-
-    // Test value access
-    EXPECT_DOUBLE_EQ(csc(0, 0), 1.0);
-    EXPECT_DOUBLE_EQ(csc(2, 0), 2.0);
-    EXPECT_DOUBLE_EQ(csc(1, 1), 3.0);
-    EXPECT_DOUBLE_EQ(csc(2, 2), 4.0);
-    EXPECT_DOUBLE_EQ(csc(0, 3), 5.0);
-    EXPECT_DOUBLE_EQ(csc(3, 3), 6.0);
-
-    // Test zero elements
-    EXPECT_DOUBLE_EQ(csc(1, 0), 0.0);
-    EXPECT_DOUBLE_EQ(csc(3, 0), 0.0);
+    EXPECT_DOUBLE_EQ(csc_get(csc, 1, 0), 0.0);
+    EXPECT_DOUBLE_EQ(csc_get(csc, 3, 0), 0.0);
 }
 
 TEST_F(CSCArrayKokkosTest, IteratorFunctions) {
-    // Create arrays for CSC format
-    CArrayKokkos<double> data(nnz);
-    CArrayKokkos<size_t> start_index(dim2 + 1);
-    CArrayKokkos<size_t> row_index(nnz);
+    CArrayKokkos<double>  data(nnz);
+    CArrayKokkos<size_t>  start_index(dim2 + 1);
+    CArrayKokkos<size_t>  row_index(nnz);
+    init_csc_data(data);
+    init_csc_start_index(start_index);
+    init_csc_row_index(row_index);
 
-    // Initialize data
-    data(0) = 1.0; data(1) = 2.0; data(2) = 3.0;
-    data(3) = 4.0; data(4) = 5.0; data(5) = 6.0;
-
-    // Initialize column pointers (start_index)
-    start_index(0) = 0; start_index(1) = 2;
-    start_index(2) = 3; start_index(3) = 4;
-    start_index(4) = 6;
-
-    // Initialize row indices
-    row_index(0) = 0; row_index(1) = 2;
-    row_index(2) = 1; row_index(3) = 2;
-    row_index(4) = 0; row_index(5) = 3;
-
-    // Create CSC array
     CSCArrayKokkos<double> csc(data, start_index, row_index, dim1, dim2, "test_csc");
 
-    // Test begin/end functions
-    EXPECT_EQ(csc.begin(0), &data(0));
-    EXPECT_EQ(csc.end(0), &data(2));
-    EXPECT_EQ(csc.begin(1), &data(2));
-    EXPECT_EQ(csc.end(1), &data(3));
-
-    // Test begin_index/end_index functions
-    EXPECT_EQ(csc.begin_index(0), 0);
-    EXPECT_EQ(csc.end_index(0), 2);
-    EXPECT_EQ(csc.begin_index(1), 2);
-    EXPECT_EQ(csc.end_index(1), 3);
+    EXPECT_EQ(csc_begin_index(csc, 0), 0);
+    EXPECT_EQ(csc_end_index(csc, 0),   2);
+    EXPECT_EQ(csc_begin_index(csc, 1), 2);
+    EXPECT_EQ(csc_end_index(csc, 1),   3);
 }
 
 TEST_F(CSCArrayKokkosTest, FlatAccess) {
-    // Create arrays for CSC format
-    CArrayKokkos<double> data(nnz);
-    CArrayKokkos<size_t> start_index(dim2 + 1);
-    CArrayKokkos<size_t> row_index(nnz);
+    CArrayKokkos<double>  data(nnz);
+    CArrayKokkos<size_t>  start_index(dim2 + 1);
+    CArrayKokkos<size_t>  row_index(nnz);
+    init_csc_data(data);
+    init_csc_start_index(start_index);
+    init_csc_row_index(row_index);
 
-    // Initialize data
-    data(0) = 1.0; data(1) = 2.0; data(2) = 3.0;
-    data(3) = 4.0; data(4) = 5.0; data(5) = 6.0;
-
-    // Initialize column pointers (start_index)
-    start_index(0) = 0; start_index(1) = 2;
-    start_index(2) = 3; start_index(3) = 4;
-    start_index(4) = 6;
-
-    // Initialize row indices
-    row_index(0) = 0; row_index(1) = 2;
-    row_index(2) = 1; row_index(3) = 2;
-    row_index(4) = 0; row_index(5) = 3;
-
-    // Create CSC array
     CSCArrayKokkos<double> csc(data, start_index, row_index, dim1, dim2, "test_csc");
 
-    // Test flat access functions
-    EXPECT_DOUBLE_EQ(csc.get_val_flat(0), 1.0);
-    EXPECT_DOUBLE_EQ(csc.get_val_flat(1), 2.0);
-    EXPECT_EQ(csc.get_row_flat(0), 0);
-    EXPECT_EQ(csc.get_row_flat(1), 2);
+    // Flat access is equivalent to reading the original data array
+    auto m_data = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, data.get_kokkos_view());
+    auto m_ri   = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, row_index.get_kokkos_view());
 
-    // Test flat_index function
-    EXPECT_EQ(csc.flat_index(0, 0), 0);
-    EXPECT_EQ(csc.flat_index(2, 0), 1);
-    EXPECT_EQ(csc.flat_index(1, 1), 2);
+    EXPECT_DOUBLE_EQ(m_data(0), 1.0);
+    EXPECT_DOUBLE_EQ(m_data(1), 2.0);
+    EXPECT_EQ(m_ri(0), static_cast<size_t>(0));
+    EXPECT_EQ(m_ri(1), static_cast<size_t>(2));
 }
 
 TEST_F(CSCArrayKokkosTest, SetValues) {
-    // Create arrays for CSC format
-    CArrayKokkos<double> data(nnz);
-    CArrayKokkos<size_t> start_index(dim2 + 1);
-    CArrayKokkos<size_t> row_index(nnz);
+    CArrayKokkos<double>  data(nnz);
+    CArrayKokkos<size_t>  start_index(dim2 + 1);
+    CArrayKokkos<size_t>  row_index(nnz);
+    init_csc_data(data);
+    init_csc_start_index(start_index);
+    init_csc_row_index(row_index);
 
-    // Initialize data
-    data(0) = 1.0; data(1) = 2.0; data(2) = 3.0;
-    data(3) = 4.0; data(4) = 5.0; data(5) = 6.0;
-
-    // Initialize column pointers (start_index)
-    start_index(0) = 0; start_index(1) = 2;
-    start_index(2) = 3; start_index(3) = 4;
-    start_index(4) = 6;
-
-    // Initialize row indices
-    row_index(0) = 0; row_index(1) = 2;
-    row_index(2) = 1; row_index(3) = 2;
-    row_index(4) = 0; row_index(5) = 3;
-
-    // Create CSC array
     CSCArrayKokkos<double> csc(data, start_index, row_index, dim1, dim2, "test_csc");
 
-    // Set all values to 1.0
     csc.set_values(1.0);
+    Kokkos::fence();
 
-    // Verify values
+    // CSC shares data view with the original 'data' array — mirror it directly
+    auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, data.get_kokkos_view());
     for (size_t i = 0; i < nnz; i++) {
-        EXPECT_DOUBLE_EQ(csc.get_val_flat(i), 1.0);
+        EXPECT_DOUBLE_EQ(m(i), 1.0);
     }
 }

@@ -107,17 +107,18 @@ TEST(Test_DFArrayKokkos, eq_overload)
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
     DFArrayKokkos<double> B(size, size);
-    
-    // Set values in A
+
+    // Set values in A and sync to host before assignment
     A.set_values(42.0);
-    
+    A.update_host();
+
     // Assign A to B
     B = A;
-    
-    // Check values in B
+
+    // Check values in B via host accessor
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
-            EXPECT_EQ(B(i,j), 42.0);
+            EXPECT_EQ(B.host(i,j), 42.0);
         }
     }
 }
@@ -127,11 +128,12 @@ TEST(Test_DFArrayKokkos, set_values)
 {
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
-    
+
     A.set_values(42.0);
+    A.update_host();
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
-            EXPECT_EQ(42.0, A(i,j));
+            EXPECT_EQ(42.0, A.host(i,j));
         }
     }
 }
@@ -141,20 +143,20 @@ TEST(Test_DFArrayKokkos, operator_access)
 {
     const int size = 10;
     DFArrayKokkos<double> A(size, size, size);
-    
-    // Test 3D access
+
+    // Test 3D access via host member
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
             for(int k = 0; k < size; k++) {
-                A(i,j,k) = i*100 + j*10 + k;
+                A.host(i,j,k) = i*100 + j*10 + k;
             }
         }
     }
-    
+
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
             for(int k = 0; k < size; k++) {
-                EXPECT_EQ(i*100 + j*10 + k, A(i,j,k));
+                EXPECT_EQ(i*100 + j*10 + k, A.host(i,j,k));
             }
         }
     }
@@ -180,21 +182,24 @@ TEST(Test_DFArrayKokkos, bounds_checking)
 TEST(Test_DFArrayKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test int
     DFArrayKokkos<int> A(size, size);
     A.set_values(42);
-    EXPECT_EQ(42, A(5,5));
-    
+    A.update_host();
+    EXPECT_EQ(42, A.host(5,5));
+
     // Test float
     DFArrayKokkos<float> B(size, size);
     B.set_values(42.0f);
-    EXPECT_EQ(42.0f, B(5,5));
-    
+    B.update_host();
+    EXPECT_EQ(42.0f, B.host(5,5));
+
     // Test bool
     DFArrayKokkos<bool> C(size, size);
     C.set_values(true);
-    EXPECT_EQ(true, C(5,5));
+    C.update_host();
+    EXPECT_EQ(true, C.host(5,5));
 }
 
 // Test host-device synchronization
@@ -214,11 +219,11 @@ TEST(Test_DFArrayKokkos, host_device_sync)
 
     // Update host
     A.update_host();
-    
+
     // Check values on host
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
-            EXPECT_EQ(24.0, A(i,j));
+            EXPECT_EQ(24.0, A.host(i,j));
         }
     }
 }

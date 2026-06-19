@@ -104,11 +104,12 @@ TEST(Test_DViewFArrayKokkos, set_values)
     const int size = 100;
     double* data = new double[size*size];
     DViewFArrayKokkos<double> A(data, size, size);
-    
+
     A.set_values(42.0);
+    A.update_host();
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
-            EXPECT_EQ(42.0, A(i,j));
+            EXPECT_EQ(42.0, A.host(i,j));
         }
     }
     delete[] data;
@@ -120,20 +121,20 @@ TEST(Test_DViewFArrayKokkos, operator_access)
     const int size = 10;
     double* data = new double[size*size*size];
     DViewFArrayKokkos<double> A(data, size, size, size);
-    
-    // Test 3D access
+
+    // Test 3D access via host member
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
             for(int k = 0; k < size; k++) {
-                A(i,j,k) = i*100 + j*10 + k;
+                A.host(i,j,k) = i*100 + j*10 + k;
             }
         }
     }
-    
+
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
             for(int k = 0; k < size; k++) {
-                EXPECT_EQ(i*100 + j*10 + k, A(i,j,k));
+                EXPECT_EQ(i*100 + j*10 + k, A.host(i,j,k));
             }
         }
     }
@@ -147,11 +148,11 @@ TEST(Test_DViewFArrayKokkos, bounds_checking)
     const int size = 10;
     double* data = new double[size*size];
     DViewFArrayKokkos<double> A(data, size, size);
-    
-    // Test valid access
-    A(5,5) = 42.0;
-    EXPECT_EQ(42.0, A(5,5));
-    
+
+    // Test valid access via host member
+    A.host(5,5) = 42.0;
+    EXPECT_EQ(42.0, A.host(5,5));
+
     // Test invalid access - should throw
     EXPECT_DEATH(A(size,size), ".*");
     delete[] data;
@@ -162,26 +163,29 @@ TEST(Test_DViewFArrayKokkos, bounds_checking)
 TEST(Test_DViewFArrayKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test int
     int* int_data = new int[size*size];
     DViewFArrayKokkos<int> A(int_data, size, size);
     A.set_values(42);
-    EXPECT_EQ(42, A(5,5));
+    A.update_host();
+    EXPECT_EQ(42, A.host(5,5));
     delete[] int_data;
-    
+
     // Test float
     float* float_data = new float[size*size];
     DViewFArrayKokkos<float> B(float_data, size, size);
     B.set_values(42.0f);
-    EXPECT_EQ(42.0f, B(5,5));
+    B.update_host();
+    EXPECT_EQ(42.0f, B.host(5,5));
     delete[] float_data;
-    
+
     // Test bool
     bool* bool_data = new bool[size*size];
     DViewFArrayKokkos<bool> C(bool_data, size, size);
     C.set_values(true);
-    EXPECT_EQ(true, C(5,5));
+    C.update_host();
+    EXPECT_EQ(true, C.host(5,5));
     delete[] bool_data;
 }
 
