@@ -5336,7 +5336,6 @@ void DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::unlock_update() {
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 DCArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~DCArrayKokkos() {}
 // End DCArrayKokkos
 
