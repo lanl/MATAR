@@ -401,7 +401,6 @@ public:
     };
 
     // Deconstructor
-    virtual KOKKOS_INLINE_FUNCTION
     ~MPICArrayKokkos ();
 }; // End of MPIDArrayKokkos
 
@@ -979,7 +978,6 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
 MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPICArrayKokkos() {}
 
 } // end namespace mtr
