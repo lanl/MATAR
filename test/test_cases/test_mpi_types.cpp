@@ -75,7 +75,6 @@ TEST(MPICArrayKokkos, AllReduce_Sum_1D) {
     MPICArrayKokkos<double> locals(num_values, "ut_values");
     locals.initialize_comm_plan(comm_plan);
     locals.set_values(1.0);
-    locals.update_device();
 
     const double global_sum = locals.all_reduce(operation::sum);
     const double expected = static_cast<double>(num_values * size);
@@ -94,7 +93,6 @@ TEST(MPICArrayKokkos, AllReduce_Sum_VariableLengthPerRank) {
     MPICArrayKokkos<double> rank_locals(num_values_per_rank, "ut_varlen");
     rank_locals.initialize_comm_plan(comm_plan);
     rank_locals.set_values(1.0);
-    rank_locals.update_device();
 
     const double global_sum = rank_locals.all_reduce(operation::sum);
     const double expected =
@@ -115,7 +113,6 @@ TEST(MPICArrayKokkos, AllReduce_MinMax_1D) {
     vals.initialize_comm_plan(comm_plan);
 
     fill_minmax_1d(vals, rank, num_values_per_rank);
-    vals.update_device();
 
     const float global_min = vals.all_reduce(operation::min);
     const float global_max = vals.all_reduce(operation::max);
@@ -136,7 +133,6 @@ TEST(MPICArrayKokkos, AllReduce_Product) {
     MPICArrayKokkos<double> prod_locals(4, "ut_prod");
     prod_locals.initialize_comm_plan(comm_plan);
     prod_locals.set_values(2.0);
-    prod_locals.update_device();
 
     const double global_product = prod_locals.all_reduce(operation::product);
     const double expected = std::pow(2.0, 4 * size);
@@ -158,7 +154,6 @@ TEST(MPICArrayKokkos, AllReduce_Rank2_CentroidXYZ) {
                                            "ut_centroids");
     elem_centroids.initialize_comm_plan(comm_plan);
     fill_centroids_rank2(elem_centroids, rank, static_cast<int>(n_elem), num_coords);
-    elem_centroids.update_device();
 
     const double max_x = elem_centroids.all_reduce(operation::max, 0U);
     const double max_y = elem_centroids.all_reduce(operation::max, 1U);
@@ -183,7 +178,6 @@ TEST(MPICArrayKokkos, AllReduce_Rank3_StressComponent) {
     MPICArrayKokkos<double> stress(n_elem, 3, 3, "ut_stress");
     stress.initialize_comm_plan(comm_plan);
     fill_stress_rank3(stress, rank, static_cast<int>(n_elem));
-    stress.update_device();
 
     const double max_comp =
         stress.all_reduce(operation::max, static_cast<size_t>(0),
