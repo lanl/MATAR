@@ -72,10 +72,6 @@ struct mpi_type_map<bool> {
 
 template <typename T>
 struct MPICArrayCommBuffers {
-    // MPI_Comm mpi_comm_ = MPI_COMM_NULL;
-    // MPI_Status mpi_status_;
-    // MPI_Datatype mpi_datatype_;
-    // MPI_Request mpi_request_;
 
     DCArrayKokkos<T> send_buffer_;
     DCArrayKokkos<T> recv_buffer_;
@@ -114,23 +110,6 @@ protected:
 
     size_t num_owned_ = 0;            // Number of owned items (nodes/elements); optional override
     size_t num_ghost_ = 0;            // Number of ghost items (nodes/elements); informational when user-set
-
-
-    // MPI_Comm mpi_comm_ = MPI_COMM_NULL;
-    // MPI_Status mpi_status_;
-    // MPI_Datatype mpi_datatype_;
-    // MPI_Request mpi_request_;
-
-    // DCArrayKokkos<int> send_counts_; 
-    // DCArrayKokkos<int> recv_counts_; 
-    // DCArrayKokkos<int> send_displs_; 
-    // DCArrayKokkos<int> recv_displs_; 
-
-    // DRaggedRightArrayKokkos<int> send_indices_;
-    // DRaggedRightArrayKokkos<int> recv_indices_; 
-    
-    
-    
 
 public:
 
@@ -314,19 +293,19 @@ public:
 
 
     // Note: This "may" be needed, im not sure.  Currently, it works....
-        // Use nullptr for empty arrays to avoid accessing element 0 of 0-sized array (undefined behavior)
-        // T* send_buf_ptr = (send_buffer_.size() > 0) ? &send_buffer_.host(0) : nullptr;
-        // T* recv_buf_ptr = (recv_buffer_.size() > 0) ? &recv_buffer_.host(0) : nullptr;
-        // int* send_cnt_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_counts_.host(0) : nullptr;
-        // int* send_dsp_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_displs_.host(0) : nullptr;
-        // int* recv_cnt_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_counts_.host(0) : nullptr;
-        // int* recv_dsp_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_displs_.host(0) : nullptr;
+    // Use nullptr for empty arrays to avoid accessing element 0 of 0-sized array (undefined behavior)
+    // T* send_buf_ptr = (send_buffer_.size() > 0) ? &send_buffer_.host(0) : nullptr;
+    // T* recv_buf_ptr = (recv_buffer_.size() > 0) ? &recv_buffer_.host(0) : nullptr;
+    // int* send_cnt_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_counts_.host(0) : nullptr;
+    // int* send_dsp_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_displs_.host(0) : nullptr;
+    // int* recv_cnt_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_counts_.host(0) : nullptr;
+    // int* recv_dsp_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_displs_.host(0) : nullptr;
 
     // Method that communicates the data between the ranks
     // NOTE: This is a blocking communication operation, 
     // if you want to use non-blocking communication, you can use the following: MPI_Ineighbor_alltoallv
     
-    // TODO: Replace this with persistent communicator:
+    // TODO: Consider replacing this with persistent communicator:
     // MPI_Request req;
 
     // // Create persistent operation ONCE
@@ -611,10 +590,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecS
         this_array_ = temp.this_array_;
         mpi_buffers_ = temp.mpi_buffers_;
 
-
-        // send_buffer_ = temp.send_buffer_;
-        // recv_buffer_ = temp.recv_buffer_;
-
         length_ = temp.length_;
 
         for (int iter = 0; iter < temp.order_; iter++){
@@ -624,20 +599,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecS
         order_ = temp.order_;
         comm_plan_ = temp.comm_plan_;
         comm_plan_ = temp.comm_plan_;
-
-        // mpi_status_ = temp.mpi_status_;
-        // mpi_datatype_ = temp.mpi_datatype_;
-        // mpi_request_ = temp.mpi_request_;
-        // 
-
-        // send_counts_ = temp.send_counts_;
-        // recv_counts_ = temp.recv_counts_;
-        // send_displs_ = temp.send_displs_;
-        // recv_displs_ = temp.recv_displs_;
-        // stride_ = temp.stride_;
-
-        // send_indices_ = temp.send_indices_;
-        // recv_indices_ = temp.recv_indices_;
 
         num_owned_ = temp.num_owned_;
         num_ghost_ = temp.num_ghost_;
