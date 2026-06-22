@@ -72,10 +72,10 @@ struct mpi_type_map<bool> {
 
 template <typename T>
 struct MPICArrayCommBuffers {
-    MPI_Comm mpi_comm_ = MPI_COMM_NULL;
-    MPI_Status mpi_status_;
-    MPI_Datatype mpi_datatype_;
-    MPI_Request mpi_request_;
+    // MPI_Comm mpi_comm_ = MPI_COMM_NULL;
+    // MPI_Status mpi_status_;
+    // MPI_Datatype mpi_datatype_;
+    // MPI_Request mpi_request_;
 
     DCArrayKokkos<T> send_buffer_;
     DCArrayKokkos<T> recv_buffer_;
