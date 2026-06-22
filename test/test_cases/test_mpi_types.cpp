@@ -41,8 +41,9 @@ inline void fill_minmax_1d(MPICArrayKokkos<float>& vals,
 }
 
 inline void fill_centroids_rank2(MPICArrayKokkos<double>& elem_centroids,
-                                 int rank, size_t n_elem, int num_coords) {
-    FOR_ALL(elem_id, 0, n_elem, elem_position, 0, num_coords, {
+                                 int rank, int n_elem, int num_coords) {
+    FOR_ALL(elem_id, 0, n_elem, 
+            elem_position, 0, num_coords, {
         const double base = 1000.0 * rank + 100.0 * elem_id;
         elem_centroids(elem_id, elem_position) =
             base + 10.0 * static_cast<double>(elem_position);
@@ -51,8 +52,10 @@ inline void fill_centroids_rank2(MPICArrayKokkos<double>& elem_centroids,
 }
 
 inline void fill_stress_rank3(MPICArrayKokkos<double>& stress,
-                              int rank, size_t n_elem) {
-    FOR_ALL(e, 0, n_elem, r, 0, 3, c, 0, 3, {
+                              int rank, int n_elem) {
+    FOR_ALL(e, 0, n_elem, 
+            r, 0, 3, 
+            c, 0, 3, {
         stress(e, r, c) = 10000.0 * rank + 1000.0 * e + 100.0 * r + c;
     });
     MATAR_FENCE();
@@ -154,7 +157,7 @@ TEST(MPICArrayKokkos, AllReduce_Rank2_CentroidXYZ) {
     MPICArrayKokkos<double> elem_centroids(n_elem, static_cast<size_t>(num_coords),
                                            "ut_centroids");
     elem_centroids.initialize_comm_plan(comm_plan);
-    fill_centroids_rank2(elem_centroids, rank, n_elem, num_coords);
+    fill_centroids_rank2(elem_centroids, rank, static_cast<int>(n_elem), num_coords);
     elem_centroids.update_device();
 
     const double max_x = elem_centroids.all_reduce(operation::max, 0U);
@@ -179,7 +182,7 @@ TEST(MPICArrayKokkos, AllReduce_Rank3_StressComponent) {
     const size_t n_elem = 3;
     MPICArrayKokkos<double> stress(n_elem, 3, 3, "ut_stress");
     stress.initialize_comm_plan(comm_plan);
-    fill_stress_rank3(stress, rank, n_elem);
+    fill_stress_rank3(stress, rank, static_cast<int>(n_elem));
     stress.update_device();
 
     const double max_comp =
