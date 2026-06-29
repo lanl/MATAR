@@ -92,16 +92,15 @@ TEST(Test_ViewFMatrixKokkos, pointer)
 TEST(Test_ViewFMatrixKokkos, set_values)
 {
     const int size = 100;
-    double* data = new double[size*size];
-    ViewFMatrixKokkos<double> A(data, size, size);
-    
+    Kokkos::View<double*> dev_data("dev_data", size * size);
+    ViewFMatrixKokkos<double> A(dev_data.data(), size, size);
+
     A.set_values(42.0);
-    for(int i = 1; i <= size; i++){
-        for(int j = 1; j <= size; j++){
-            EXPECT_EQ(42.0, A(i,j));
-        }
+    Kokkos::fence();
+    auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
+    for(int i = 0; i < size * size; i++){
+        EXPECT_EQ(42.0, h(i));
     }
-    delete[] data;
 }
 
 // Test operator access
@@ -153,43 +152,51 @@ TEST(Test_ViewFMatrixKokkos, bounds_checking)
 TEST(Test_ViewFMatrixKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test int
-    int* int_data = new int[size*size];
-    ViewFMatrixKokkos<int> A(int_data, size, size);
-    A.set_values(42);
-    EXPECT_EQ(42, A(5,5));
-    delete[] int_data;
-    
+    {
+        Kokkos::View<int*> dev_data("int_data", size * size);
+        ViewFMatrixKokkos<int> A(dev_data.data(), size, size);
+        A.set_values(42);
+        Kokkos::fence();
+        auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
+        EXPECT_EQ(42, h(0));
+    }
+
     // Test float
-    float* float_data = new float[size*size];
-    ViewFMatrixKokkos<float> B(float_data, size, size);
-    B.set_values(42.0f);
-    EXPECT_EQ(42.0f, B(5,5));
-    delete[] float_data;
-    
+    {
+        Kokkos::View<float*> dev_data("float_data", size * size);
+        ViewFMatrixKokkos<float> B(dev_data.data(), size, size);
+        B.set_values(42.0f);
+        Kokkos::fence();
+        auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
+        EXPECT_EQ(42.0f, h(0));
+    }
+
     // Test bool
-    bool* bool_data = new bool[size*size];
-    ViewFMatrixKokkos<bool> C(bool_data, size, size);
-    C.set_values(true);
-    EXPECT_EQ(true, C(5,5));
-    delete[] bool_data;
+    {
+        Kokkos::View<bool*> dev_data("bool_data", size * size);
+        ViewFMatrixKokkos<bool> C(dev_data.data(), size, size);
+        C.set_values(true);
+        Kokkos::fence();
+        auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
+        EXPECT_EQ(true, h(0));
+    }
 }
 
 // Test RAII behavior
 TEST(Test_ViewFMatrixKokkos, raii)
 {
-    double* data = new double[100*100];
+    Kokkos::View<double*> dev_data("dev_data", 100 * 100);
     {
-        ViewFMatrixKokkos<double> A(data, 100, 100);
+        ViewFMatrixKokkos<double> A(dev_data.data(), 100, 100);
         A.set_values(42.0);
         EXPECT_EQ(A.size(), 10000);
         // A should be destroyed at end of scope
     }
-    
-    // Create new matrix to verify memory was freed
-    ViewFMatrixKokkos<double> B(data, 100, 100);
+
+    // Create new matrix using same backing memory
+    ViewFMatrixKokkos<double> B(dev_data.data(), 100, 100);
     B.set_values(0.0);
     EXPECT_EQ(B.size(), 10000);
-    delete[] data;
 }

@@ -96,11 +96,11 @@ TEST(Test_DViewCMatrixKokkos, set_values)
     double* data = new double[size * size];
     DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
     A.set_values(42.0);
-    
-    // Check if all values are set correctly
+    A.update_host();
+
     for(int i = 1; i <= size; i++) {
         for(int j = 1; j <= size; j++) {
-            EXPECT_EQ(A(i, j), 42.0);
+            EXPECT_EQ(A.host(i, j), 42.0);
         }
     }
     delete[] data;
@@ -120,9 +120,9 @@ TEST(Test_DViewCMatrixKokkos, operator_access)
     // Test 2D access
     EXPECT_DEATH(A(1, 1), ".*");
     
-    // Test 3D access
-    A(1, 1, 1) = 3.0;
-    EXPECT_EQ(A(1, 1, 1), 3.0);
+    // Test 3D access via host
+    A.host(1, 1, 1) = 3.0;
+    EXPECT_EQ(A.host(1, 1, 1), 3.0);
     
     // Test 5D access
     EXPECT_DEATH(A(1, 1, 1, 1, 1), ".*");
@@ -152,26 +152,29 @@ TEST(Test_DViewCMatrixKokkos, bounds_checking)
 TEST(Test_DViewCMatrixKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test with int
     int* data_int = new int[size * size];
     DViewCMatrixKokkos<int> A(data_int, size, size, "test_matrix");
     A.set_values(42);
-    EXPECT_EQ(A(1, 1), 42);
+    A.update_host();
+    EXPECT_EQ(A.host(1, 1), 42);
     delete[] data_int;
-    
+
     // Test with float
     float* data_float = new float[size * size];
     DViewCMatrixKokkos<float> B(data_float, size, size, "test_matrix");
     B.set_values(42.0f);
-    EXPECT_FLOAT_EQ(B(1, 1), 42.0f);
+    B.update_host();
+    EXPECT_FLOAT_EQ(B.host(1, 1), 42.0f);
     delete[] data_float;
-    
+
     // Test with bool
     bool* data_bool = new bool[size * size];
     DViewCMatrixKokkos<bool> C(data_bool, size, size, "test_matrix");
     C.set_values(true);
-    EXPECT_EQ(C(1, 1), true);
+    C.update_host();
+    EXPECT_EQ(C.host(1, 1), true);
     delete[] data_bool;
 }
 
@@ -183,7 +186,8 @@ TEST(Test_DViewCMatrixKokkos, raii)
     {
         DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
         A.set_values(42.0);
-        EXPECT_EQ(A(1, 1), 42.0);
+        A.update_host();
+        EXPECT_EQ(A.host(1, 1), 42.0);
     } // A goes out of scope here
     delete[] data;
 }
@@ -195,13 +199,14 @@ TEST(Test_DViewCMatrixKokkos, copy_constructor)
     double* data = new double[size * size];
     DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
     A.set_values(42.0);
-    
+    A.update_host();
+
     DViewCMatrixKokkos<double> B(A);
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(1, 1), A(1, 1));
-    
+    EXPECT_EQ(B.host(1, 1), A.host(1, 1));
+
     delete[] data;
 }
 
@@ -212,15 +217,16 @@ TEST(Test_DViewCMatrixKokkos, assignment_operator)
     double* data = new double[size * size];
     DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
     A.set_values(42.0);
-    
+    A.update_host();
+
     double* data2 = new double[size * size];
     DViewCMatrixKokkos<double> B(data2, size, size, "test_matrix");
     B = A;
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(1, 1), A(1, 1));
-    
+    EXPECT_EQ(B.host(1, 1), A.host(1, 1));
+
     delete[] data;
     delete[] data2;
 }
@@ -234,7 +240,7 @@ TEST(Test_DViewCMatrixKokkos, update_host)
     A.set_values(42.0);
     A.update_host();
     // After update_host, host data should be synchronized
-    EXPECT_EQ(A(1, 1), 42.0);
+    EXPECT_EQ(A.host(1, 1), 42.0);
     delete[] data;
 }
 
@@ -244,10 +250,11 @@ TEST(Test_DViewCMatrixKokkos, update_device)
     const int size = 10;
     double* data = new double[size * size];
     DViewCMatrixKokkos<double> A(data, size, size, "test_matrix");
-    A.set_values(42.0);
+    // Write to host side, push to device, verify via round-trip
+    A.host(1, 1) = 42.0;
     A.update_device();
-    // After update_device, device data should be synchronized
-    EXPECT_EQ(A(1, 1), 42.0);
+    A.update_host();
+    EXPECT_EQ(A.host(1, 1), 42.0);
     delete[] data;
 }
 

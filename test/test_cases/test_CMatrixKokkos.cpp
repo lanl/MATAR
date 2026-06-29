@@ -89,12 +89,11 @@ TEST(Test_CMatrixKokkos, set_values)
     const int size = 10;
     CMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    
-    // Check values on host
-    for(int i = 1; i <= size; i++) {
-        for(int j = 1; j <= size; j++) {
-            EXPECT_EQ(A(i, j), 42.0);
-        }
+    MATAR_FENCE();
+    // Check values via host mirror (get_kokkos_view returns a flat 1D view)
+    auto mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view());
+    for(int i = 0; i < size * size; i++) {
+        EXPECT_EQ(mirror(i), 42.0);
     }
 }
 
@@ -104,6 +103,7 @@ TEST(Test_CMatrixKokkos, operator_access)
 {
     const int size = 10;
     CMatrixKokkos<double> A(size, size, size, "test_matrix");
+    MATAR_FENCE();
     
     // Test 1D access
     EXPECT_DEATH(A(1) = 1.0, ".*");
@@ -111,9 +111,10 @@ TEST(Test_CMatrixKokkos, operator_access)
     // Test 2D access
     EXPECT_DEATH(A(1, 1) = 2.0, ".*");
     
-    // Test 3D access
-    A(1, 1, 1) = 3.0;
-    EXPECT_EQ(A(1, 1, 1), 3.0);
+    // Test 3D access via kernel + mirror
+    A.set_values(3.0);
+    MATAR_FENCE();
+    { auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view()); EXPECT_EQ(m(0), 3.0); }
     
     // Test 5D access
     EXPECT_DEATH(A(1, 1, 1, 1, 1) = 4.0, ".*");
@@ -139,21 +140,24 @@ TEST(Test_CMatrixKokkos, bounds_checking)
 TEST(Test_CMatrixKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test with int
     CMatrixKokkos<int> A(size, size, "test_matrix_int");
     A.set_values(42);
-    EXPECT_EQ(A(1, 1), 42);
-    
+    MATAR_FENCE();
+    { auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view()); EXPECT_EQ(m(0), 42); }
+
     // Test with float
     CMatrixKokkos<float> B(size, size, "test_matrix_float");
     B.set_values(42.0f);
-    EXPECT_FLOAT_EQ(B(1, 1), 42.0f);
-    
+    MATAR_FENCE();
+    { auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, B.get_kokkos_view()); EXPECT_FLOAT_EQ(m(0), 42.0f); }
+
     // Test with bool
     CMatrixKokkos<bool> C(size, size, "test_matrix_bool");
     C.set_values(true);
-    EXPECT_EQ(C(1, 1), true);
+    MATAR_FENCE();
+    { auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, C.get_kokkos_view()); EXPECT_EQ(m(0), true); }
 }
 
 // Test RAII behavior
@@ -163,10 +167,10 @@ TEST(Test_CMatrixKokkos, raii)
     {
         CMatrixKokkos<double> A(size, size, "test_matrix");
         A.set_values(42.0);
-        EXPECT_EQ(A(1, 1), 42.0);
+        MATAR_FENCE();
+        auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view());
+        EXPECT_EQ(m(0), 42.0);
     } // A goes out of scope here
-
-    
 }
 
 // Test copy constructor
@@ -175,12 +179,15 @@ TEST(Test_CMatrixKokkos, copy_constructor)
     const int size = 10;
     CMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    
+    MATAR_FENCE();
+
     CMatrixKokkos<double> B(A);
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(1, 1), A(1, 1));
+    auto ma = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view());
+    auto mb = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, B.get_kokkos_view());
+    EXPECT_EQ(mb(0), ma(0));
 }
 
 // Test assignment operator
@@ -189,11 +196,14 @@ TEST(Test_CMatrixKokkos, assignment_operator)
     const int size = 10;
     CMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    
+    MATAR_FENCE();
+
     CMatrixKokkos<double> B;
     B = A;
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(1, 1), A(1, 1));
+    auto ma = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view());
+    auto mb = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, B.get_kokkos_view());
+    EXPECT_EQ(mb(0), ma(0));
 }

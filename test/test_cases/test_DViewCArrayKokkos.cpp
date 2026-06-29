@@ -97,6 +97,7 @@ TEST(Test_DViewCArrayKokkos, set_values)
     double* data = new double[size * size];
     DViewCArrayKokkos<double> A(data, size, size, "test_array");
     A.set_values(42.0);
+    A.update_host();
     for(int i = 0; i < size * size; i++) {
         EXPECT_EQ(data[i], 42.0);
     }
@@ -117,9 +118,9 @@ TEST(Test_DViewCArrayKokkos, operator_access)
     // Test 2D access
     EXPECT_DEATH(A(1, 1), ".*");
     
-    // Test 3D access
-    data[size * size + size + 1] = 3.0;
-    EXPECT_EQ(A(1, 1, 1), 3.0);
+    // Test 3D access via host
+    A.host(1, 1, 1) = 3.0;
+    EXPECT_EQ(A.host(1, 1, 1), 3.0);
     
     // Test 5D access
     EXPECT_DEATH(A(1, 1, 1, 1, 1), ".*");
@@ -149,25 +150,28 @@ TEST(Test_DViewCArrayKokkos, bounds_checking)
 TEST(Test_DViewCArrayKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test with int
     int* int_data = new int[size * size];
     DViewCArrayKokkos<int> A(int_data, size, size, "test_array");
     A.set_values(42);
+    A.update_host();
     EXPECT_EQ(int_data[0], 42);
     delete[] int_data;
-    
+
     // Test with float
     float* float_data = new float[size * size];
     DViewCArrayKokkos<float> B(float_data, size, size, "test_array");
     B.set_values(42.0f);
+    B.update_host();
     EXPECT_FLOAT_EQ(float_data[0], 42.0f);
     delete[] float_data;
-    
+
     // Test with bool
     bool* bool_data = new bool[size * size];
     DViewCArrayKokkos<bool> C(bool_data, size, size, "test_array");
     C.set_values(true);
+    C.update_host();
     EXPECT_EQ(bool_data[0], true);
     delete[] bool_data;
 }
@@ -180,6 +184,7 @@ TEST(Test_DViewCArrayKokkos, raii)
     {
         DViewCArrayKokkos<double> A(data, size, size, "test_array");
         A.set_values(42.0);
+        A.update_host();
     } // A goes out of scope here
     // Data should still be accessible and unchanged
     EXPECT_EQ(data[0], 42.0);
@@ -193,13 +198,14 @@ TEST(Test_DViewCArrayKokkos, copy_constructor)
     double* data = new double[size * size];
     DViewCArrayKokkos<double> A(data, size, size, "test_array");
     A.set_values(42.0);
-    
+    A.update_host();
+
     DViewCArrayKokkos<double> B(A);
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(0, 0), A(0, 0));
-    
+    EXPECT_EQ(B.host(0, 0), A.host(0, 0));
+
     delete[] data;
 }
 
@@ -210,14 +216,15 @@ TEST(Test_DViewCArrayKokkos, assignment_operator)
     double* data = new double[size * size];
     DViewCArrayKokkos<double> A(data, size, size, "test_array");
     A.set_values(42.0);
-    
+    A.update_host();
+
     DViewCArrayKokkos<double> B;
     B = A;
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(0, 0), A(0, 0));
-    
+    EXPECT_EQ(B.host(0, 0), A.host(0, 0));
+
     delete[] data;
 }
 
@@ -240,10 +247,11 @@ TEST(Test_DViewCArrayKokkos, update_device)
     const int size = 10;
     double* data = new double[size * size];
     DViewCArrayKokkos<double> A(data, size, size, "test_array");
-    A.set_values(42.0);
+    // Write to host side, push to device, then verify via round-trip
+    A.host(0, 0) = 42.0;
     A.update_device();
-    // After update_device, device data should be synchronized
-    EXPECT_EQ(A(0, 0), 42.0);
+    A.update_host();
+    EXPECT_EQ(data[0], 42.0);
     delete[] data;
 }
 

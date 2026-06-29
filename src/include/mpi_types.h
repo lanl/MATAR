@@ -70,6 +70,23 @@ struct mpi_type_map<bool> {
 };
 
 
+template <typename T>
+struct MPICArrayCommBuffers {
+
+    DCArrayKokkos<T> send_buffer_;
+    DCArrayKokkos<T> recv_buffer_;
+    
+    DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
+    DCArrayKokkos<int> recv_counts_; // [size: num_recv_ranks] Number of items to receive from each rank
+    DCArrayKokkos<int> send_displs_; // [size: num_send_ranks] Starting index of items to send to each rank
+    DCArrayKokkos<int> recv_displs_; // [size: num_recv_ranks] Starting index of items to receive from each rank
+
+    DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_by_rank] Indices of items to send to each rank
+    DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_by_rank] Indices of items to receive from each rank
+};
+
+
+
 /////////////////////////
 // MPICArrayKokkos:  Type for managing distributed data on both CPU and GPU.
 /////////////////////////
@@ -79,34 +96,20 @@ class MPICArrayKokkos {
     // Dual view for managing data on both CPU and GPU
     DCArrayKokkos<T> this_array_;
 
-    DCArrayKokkos<T> send_buffer_;
-    DCArrayKokkos<T> recv_buffer_;
+    // Host-resident communication buffers used for halo exchange
+    Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace> mpi_buffers_;
+
+    // DCArrayKokkos<T> send_buffer_;
+    // DCArrayKokkos<T> recv_buffer_;
     
 protected:
     size_t dims_[7] = {0,0,0,0,0,0,0};
     size_t length_ = 0;
     size_t order_ = 0;  // tensor order (rank)
+    size_t stride_ = 1; // [size: num_dims] Number of contiguous values per first index element
 
-    MPI_Comm mpi_comm_ = MPI_COMM_NULL;
-    MPI_Status mpi_status_;
-    MPI_Datatype mpi_datatype_;
-    MPI_Request mpi_request_;
-
-    DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
-    DCArrayKokkos<int> recv_counts_; // [size: num_recv_ranks] Number of items to receive from each rank
-    DCArrayKokkos<int> send_displs_; // [size: num_send_ranks] Starting index of items to send to each rank
-    DCArrayKokkos<int> recv_displs_; // [size: num_recv_ranks] Starting index of items to receive from each rank
-
-    size_t stride_; // [size: num_dims] Number of contiguous values per first index element
-
-
-    DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_by_rank] Indices of items to send to each rank
-    DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_by_rank] Indices of items to receive from each rank
-    
-    
     size_t num_owned_ = 0;            // Number of owned items (nodes/elements); optional override
     size_t num_ghost_ = 0;            // Number of ghost items (nodes/elements); informational when user-set
-
 
 public:
 
@@ -182,34 +185,34 @@ public:
         size_t recv_size = comm_plan_->total_recv_count * stride_;
         
         if (send_size > 0) {
-            send_buffer_ = DCArrayKokkos<T>(send_size, "send_buffer");
+            mpi_buffers_(0).send_buffer_ = DCArrayKokkos<T>(send_size, "send_buffer");
         }
         if (recv_size > 0) {
-            recv_buffer_ = DCArrayKokkos<T>(recv_size, "recv_buffer");
+            mpi_buffers_(0).recv_buffer_ = DCArrayKokkos<T>(recv_size, "recv_buffer");
         }
 
         if (comm_plan_->num_send_ranks > 0) {
-            send_counts_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_counts");
-            send_displs_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_displs");
+            mpi_buffers_(0).send_counts_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_counts");
+            mpi_buffers_(0).send_displs_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_displs");
             
             for(int i = 0; i < comm_plan_->num_send_ranks; i++){
-                send_counts_.host(i) = comm_plan_->send_counts_.host(i) * stride_;
-                send_displs_.host(i) = comm_plan_->send_displs_.host(i) * stride_;
+                mpi_buffers_(0).send_counts_.host(i) = comm_plan_->send_counts_.host(i) * stride_;
+                mpi_buffers_(0).send_displs_.host(i) = comm_plan_->send_displs_.host(i) * stride_;
             }
-            send_counts_.update_device();
-            send_displs_.update_device();
+            mpi_buffers_(0).send_counts_.update_device();
+            mpi_buffers_(0).send_displs_.update_device();
         }
         
         if (comm_plan_->num_recv_ranks > 0) {
-            recv_counts_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_counts");
-            recv_displs_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_displs");
+            mpi_buffers_(0).recv_counts_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_counts");
+            mpi_buffers_(0).recv_displs_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_displs");
             
             for(int i = 0; i < comm_plan_->num_recv_ranks; i++){
-                recv_counts_.host(i) = comm_plan_->recv_counts_.host(i) * stride_;
-                recv_displs_.host(i) = comm_plan_->recv_displs_.host(i) * stride_;
+                mpi_buffers_(0).recv_counts_.host(i) = comm_plan_->recv_counts_.host(i) * stride_;
+                mpi_buffers_(0).recv_displs_.host(i) = comm_plan_->recv_displs_.host(i) * stride_;
             }
-            recv_counts_.update_device();
-            recv_displs_.update_device();
+            mpi_buffers_(0).recv_counts_.update_device();
+            mpi_buffers_(0).recv_displs_.update_device();
         }
     };
 
@@ -263,7 +266,7 @@ public:
                 
                 // Copy all values associated with this element (handles multi-dimensional arrays)
                 for(size_t k = 0; k < stride_; k++){
-                    send_buffer_.host(send_idx + k) = this_array_.host_pointer()[src_idx * stride_ + k];
+                    mpi_buffers_(0).send_buffer_.host(send_idx + k) = this_array_.host_pointer()[src_idx * stride_ + k];
                 }
                 send_idx += stride_;
             }
@@ -280,7 +283,7 @@ public:
                 
                 // Copy all values associated with this element (handles multi-dimensional arrays)
                 for(size_t k = 0; k < stride_; k++){
-                    this_array_.host_pointer()[dest_idx * stride_ + k] = recv_buffer_.host(recv_idx + k);
+                    this_array_.host_pointer()[dest_idx * stride_ + k] = mpi_buffers_(0).recv_buffer_.host(recv_idx + k);
                 }
                 
                 recv_idx += stride_;
@@ -290,19 +293,19 @@ public:
 
 
     // Note: This "may" be needed, im not sure.  Currently, it works....
-        // Use nullptr for empty arrays to avoid accessing element 0 of 0-sized array (undefined behavior)
-        // T* send_buf_ptr = (send_buffer_.size() > 0) ? &send_buffer_.host(0) : nullptr;
-        // T* recv_buf_ptr = (recv_buffer_.size() > 0) ? &recv_buffer_.host(0) : nullptr;
-        // int* send_cnt_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_counts_.host(0) : nullptr;
-        // int* send_dsp_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_displs_.host(0) : nullptr;
-        // int* recv_cnt_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_counts_.host(0) : nullptr;
-        // int* recv_dsp_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_displs_.host(0) : nullptr;
+    // Use nullptr for empty arrays to avoid accessing element 0 of 0-sized array (undefined behavior)
+    // T* send_buf_ptr = (send_buffer_.size() > 0) ? &send_buffer_.host(0) : nullptr;
+    // T* recv_buf_ptr = (recv_buffer_.size() > 0) ? &recv_buffer_.host(0) : nullptr;
+    // int* send_cnt_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_counts_.host(0) : nullptr;
+    // int* send_dsp_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_displs_.host(0) : nullptr;
+    // int* recv_cnt_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_counts_.host(0) : nullptr;
+    // int* recv_dsp_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_displs_.host(0) : nullptr;
 
     // Method that communicates the data between the ranks
     // NOTE: This is a blocking communication operation, 
     // if you want to use non-blocking communication, you can use the following: MPI_Ineighbor_alltoallv
     
-    // TODO: Replace this with persistent communicator:
+    // TODO: Consider replacing this with persistent communicator:
     // MPI_Request req;
 
     // // Create persistent operation ONCE
@@ -343,14 +346,14 @@ public:
         fill_send_buffer();
 
         MPI_Neighbor_alltoallv(
-            send_buffer_.host_pointer(),
-            send_counts_.host_pointer(),
-            send_displs_.host_pointer(),
-            mpi_type_map<T>::value(),  // MPI_TYPE
-            recv_buffer_.host_pointer(),
-            recv_counts_.host_pointer(),
-            recv_displs_.host_pointer(), 
-            mpi_type_map<T>::value(),  // MPI_TYPE
+            mpi_buffers_(0).send_buffer_.host_pointer(),
+            mpi_buffers_(0).send_counts_.host_pointer(),
+            mpi_buffers_(0).send_displs_.host_pointer(),
+            mpi_type_map<T>::value(),  
+            mpi_buffers_(0).recv_buffer_.host_pointer(),
+            mpi_buffers_(0).recv_counts_.host_pointer(),
+            mpi_buffers_(0).recv_displs_.host_pointer(), 
+            mpi_type_map<T>::value(),  
             comm_plan_->mpi_comm_graph);
         
         copy_recv_buffer();
@@ -377,7 +380,7 @@ public:
     };
 
     // Deconstructor
-    virtual KOKKOS_INLINE_FUNCTION
+    KOKKOS_INLINE_FUNCTION
     ~MPICArrayKokkos ();
 }; // End of MPIDArrayKokkos
 
@@ -388,6 +391,9 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos()
         for (int i = 0; i < 7; i++) {
             dims_[i] = 0;
         }
+
+        // Allocate the communication buffers
+        mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 1D constructor
@@ -397,6 +403,9 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, c
     dims_[0] = dim0;
     this_array_ = DCArrayKokkos<T>(dim0, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0);
+
+    // Allocate the communication buffers
+    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 2D constructor
@@ -408,6 +417,9 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
 
     this_array_ = DCArrayKokkos<T>(dim0, dim1, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1);
+
+    // Allocate the communication buffers
+    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 3D constructor
@@ -419,6 +431,9 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[2] = dim2;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2);
+
+    // Allocate the communication buffers
+    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 4D constructor
@@ -431,6 +446,9 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[3] = dim3;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3);
+
+    // Allocate the communication buffers
+    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 5D constructor
@@ -444,6 +462,9 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[4] = dim4;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4);
+
+    // Allocate the communication buffers
+    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 6D constructor
@@ -458,6 +479,9 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[5] = dim5;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5);
+
+    // Allocate the communication buffers
+    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 7D constructor
@@ -473,6 +497,9 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[6] = dim6;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+
+    // Allocate the communication buffers
+    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 
@@ -561,8 +588,7 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecS
     if (this != &temp) {
 
         this_array_ = temp.this_array_;
-        send_buffer_ = temp.send_buffer_;
-        recv_buffer_ = temp.recv_buffer_;
+        mpi_buffers_ = temp.mpi_buffers_;
 
         length_ = temp.length_;
 
@@ -571,20 +597,8 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecS
         } // end for
 
         order_ = temp.order_;
-
-        mpi_status_ = temp.mpi_status_;
-        mpi_datatype_ = temp.mpi_datatype_;
-        mpi_request_ = temp.mpi_request_;
         comm_plan_ = temp.comm_plan_;
-
-        send_counts_ = temp.send_counts_;
-        recv_counts_ = temp.recv_counts_;
-        send_displs_ = temp.send_displs_;
-        recv_displs_ = temp.recv_displs_;
-        stride_ = temp.stride_;
-
-        send_indices_ = temp.send_indices_;
-        recv_indices_ = temp.recv_indices_;
+        comm_plan_ = temp.comm_plan_;
 
         num_owned_ = temp.num_owned_;
         num_ghost_ = temp.num_ghost_;
@@ -688,8 +702,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
             break;
         }
         case operation::max: {
-            local = this_array_(0);
-            T loc_max = this_array_(0);
+            T loc_max;
             FOR_REDUCE_MAX_CLASS(i, 0, owned_len,
                         loc_max, {
                 loc_max = (this_array_(i) > loc_max) ? this_array_(i) : loc_max;
@@ -697,8 +710,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
             break;
         }
         case operation::min: {
-            local = this_array_(0);
-            T loc_min = this_array_(0);
+            T loc_min;
             FOR_REDUCE_MIN_CLASS(i, 0, owned_len,
                         loc_min, {
                 loc_min = (this_array_(i) < loc_min) ? this_array_(i) : loc_min;
@@ -754,8 +766,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
             break;
         }
         case operation::max: {
-            local = this_array_(0, j);
-            T loc_max = local;
+            T loc_max;
             FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
                 const T v = this_array_(e, j);
                 loc_max = (v > loc_max) ? v : loc_max;
@@ -763,8 +774,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
             break;
         }
         case operation::min: {
-            local = this_array_(0, j);
-            T loc_min = local;
+            T loc_min;
             FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
                 const T v = this_array_(e, j);
                 loc_min = (v < loc_min) ? v : loc_min;
@@ -820,8 +830,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
             break;
         }
         case operation::max: {
-            local = this_array_(0, j, k);
-            T loc_max = local;
+            T loc_max;
             FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
                 const T v = this_array_(e, j, k);
                 loc_max = (v > loc_max) ? v : loc_max;
@@ -829,8 +838,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
             break;
         }
         case operation::min: {
-            local = this_array_(0, j, k);
-            T loc_min = local;
+            T loc_min;
             FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
                 const T v = this_array_(e, j, k);
                 loc_min = (v < loc_min) ? v : loc_min;
@@ -888,8 +896,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
             break;
         }
         case operation::max: {
-            local = this_array_(0, g, ti, tj);
-            T loc_max = local;
+            T loc_max;
             FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
                 const T v = this_array_(e, g, ti, tj);
                 loc_max = (v > loc_max) ? v : loc_max;
@@ -897,8 +904,7 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
             break;
         }
         case operation::min: {
-            local = this_array_(0, g, ti, tj);
-            T loc_min = local;
+            T loc_min;
             FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
                 const T v = this_array_(e, g, ti, tj);
                 loc_min = (v < loc_min) ? v : loc_min;

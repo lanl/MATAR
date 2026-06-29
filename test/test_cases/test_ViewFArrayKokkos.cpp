@@ -122,14 +122,15 @@ TEST(Test_ViewFArrayKokkos, pointer)
 TEST(Test_ViewFArrayKokkos, set_values)
 {
     const int size = 100;
-    double* data = new double[size];
-    ViewFArrayKokkos<double> A(data, size);
-    
+    Kokkos::View<double*> dev_data("dev_data", size);
+    ViewFArrayKokkos<double> A(dev_data.data(), size);
+
     A.set_values(42.0);
+    Kokkos::fence();
+    auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     for(int i = 0; i < size; i++){
-        EXPECT_EQ(42.0, data[i]);
+        EXPECT_EQ(42.0, h(i));
     }
-    delete[] data;
 }
 
 // Test operator access
@@ -181,25 +182,34 @@ TEST(Test_ViewFArrayKokkos, bounds_checking)
 TEST(Test_ViewFArrayKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test int
-    int* int_data = new int[size];
-    ViewFArrayKokkos<int> A(int_data, size);
-    A.set_values(42);
-    EXPECT_EQ(42, A(5));
-    delete[] int_data;
-    
+    {
+        Kokkos::View<int*> dev_data("int_data", size);
+        ViewFArrayKokkos<int> A(dev_data.data(), size);
+        A.set_values(42);
+        Kokkos::fence();
+        auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
+        EXPECT_EQ(42, h(5));
+    }
+
     // Test float
-    float* float_data = new float[size];
-    ViewFArrayKokkos<float> B(float_data, size);
-    B.set_values(42.0f);
-    EXPECT_EQ(42.0f, B(5));
-    delete[] float_data;
-    
+    {
+        Kokkos::View<float*> dev_data("float_data", size);
+        ViewFArrayKokkos<float> B(dev_data.data(), size);
+        B.set_values(42.0f);
+        Kokkos::fence();
+        auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
+        EXPECT_EQ(42.0f, h(5));
+    }
+
     // Test bool
-    bool* bool_data = new bool[size];
-    ViewFArrayKokkos<bool> C(bool_data, size);
-    C.set_values(true);
-    EXPECT_EQ(true, C(5));
-    delete[] bool_data;
+    {
+        Kokkos::View<bool*> dev_data("bool_data", size);
+        ViewFArrayKokkos<bool> C(dev_data.data(), size);
+        C.set_values(true);
+        Kokkos::fence();
+        auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
+        EXPECT_EQ(true, h(5));
+    }
 }

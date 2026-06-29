@@ -87,11 +87,12 @@ TEST(Test_DCMatrixKokkos, set_values)
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    
+    A.update_host();
+
     // Check if all values are set correctly
     for(int i = 1; i <= size; i++) {
         for(int j = 1; j <= size; j++) {
-            EXPECT_EQ(A(i, j), 42.0);
+            EXPECT_EQ(A.host(i, j), 42.0);
         }
     }
 }
@@ -110,8 +111,8 @@ TEST(Test_DCMatrixKokkos, operator_access)
     EXPECT_DEATH(A(1, 1) = 2.0, "");
     
     // Test 3D access
-    A(1, 1, 1) = 3.0;
-    EXPECT_EQ(A(1, 1, 1), 3.0);
+    A.host(1, 1, 1) = 3.0;
+    EXPECT_EQ(A.host(1, 1, 1), 3.0);
     
     // Test 5D access
     EXPECT_DEATH(A(1, 1, 1, 1, 1) = 4.0, "");
@@ -158,21 +159,24 @@ TEST(Test_DCMatrixKokkos, lock_unlock_update)
 TEST(Test_DCMatrixKokkos, different_types)
 {
     const int size = 10;
-    
+
     // Test with int
     DCMatrixKokkos<int> A(size, size, "test_matrix");
     A.set_values(42);
-    EXPECT_EQ(A(1, 1), 42);
-    
+    A.update_host();
+    EXPECT_EQ(A.host(1, 1), 42);
+
     // Test with float
     DCMatrixKokkos<float> B(size, size, "test_matrix");
     B.set_values(42.0f);
-    EXPECT_FLOAT_EQ(B(1, 1), 42.0f);
-    
+    B.update_host();
+    EXPECT_FLOAT_EQ(B.host(1, 1), 42.0f);
+
     // Test with bool
     DCMatrixKokkos<bool> C(size, size, "test_matrix");
     C.set_values(true);
-    EXPECT_EQ(C(size, size), true);
+    C.update_host();
+    EXPECT_EQ(C.host(size, size), true);
 }
 
 // Test RAII behavior
@@ -182,7 +186,8 @@ TEST(Test_DCMatrixKokkos, raii)
     {
         DCMatrixKokkos<double> A(size, size, "test_matrix");
         A.set_values(42.0);
-        EXPECT_EQ(A(1, 1), 42.0);
+        A.update_host();
+        EXPECT_EQ(A.host(1, 1), 42.0);
     } // A goes out of scope here
 }
 
@@ -192,12 +197,13 @@ TEST(Test_DCMatrixKokkos, copy_constructor)
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    
+    A.update_host();
+
     DCMatrixKokkos<double> B(A);
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(1, 1), A(1, 1));
+    EXPECT_EQ(B.host(1, 1), A.host(1, 1));
 }
 
 // Test assignment operator
@@ -206,13 +212,14 @@ TEST(Test_DCMatrixKokkos, assignment_operator)
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    
+    A.update_host();
+
     DCMatrixKokkos<double> B;
     B = A;
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
-    EXPECT_EQ(B(1, 1), A(1, 1));
+    EXPECT_EQ(B.host(1, 1), A.host(1, 1));
 }
 
 // Test update_host method
@@ -223,7 +230,7 @@ TEST(Test_DCMatrixKokkos, update_host)
     A.set_values(42.0);
     A.update_host();
     // After update_host, host data should be synchronized
-    EXPECT_EQ(A(1, 1), 42.0);
+    EXPECT_EQ(A.host(1, 1), 42.0);
 }
 
 // Test update_device method
@@ -232,8 +239,9 @@ TEST(Test_DCMatrixKokkos, update_device)
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    A.update_device();
-    // After update_device, device data should be synchronized
-    EXPECT_EQ(A(1, 1), 42.0);
+    A.update_host();   // sync device→host first
+    A.update_device(); // push host→device
+    A.update_host();   // pull back to verify round-trip
+    EXPECT_EQ(A.host(1, 1), 42.0);
 }
 
