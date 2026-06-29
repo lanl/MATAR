@@ -83,6 +83,12 @@ struct MPICArrayCommBuffers {
 
     DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_by_rank] Indices of items to send to each rank
     DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_by_rank] Indices of items to receive from each rank
+
+    // Host-only constructor: the member arrays have host-only default
+    // constructors, so an explicit host-only ctor prevents nvcc from
+    // synthesizing a __host__ __device__ one (CUDA warning #20011-D).
+    // These buffers only ever live in Kokkos::HostSpace.
+    MPICArrayCommBuffers() {}
 };
 
 
