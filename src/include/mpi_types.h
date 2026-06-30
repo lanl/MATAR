@@ -83,12 +83,6 @@ struct MPICArrayCommBuffers {
 
     DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_by_rank] Indices of items to send to each rank
     DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_by_rank] Indices of items to receive from each rank
-
-    // Host-only constructor: the member arrays have host-only default
-    // constructors, so an explicit host-only ctor prevents nvcc from
-    // synthesizing a __host__ __device__ one (CUDA warning #20011-D).
-    // These buffers only ever live in Kokkos::HostSpace.
-    MPICArrayCommBuffers() {}
 };
 
 
@@ -102,8 +96,14 @@ class MPICArrayKokkos {
     // Dual view for managing data on both CPU and GPU
     DCArrayKokkos<T> this_array_;
 
-    // Host-resident communication buffers used for halo exchange
-    Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace> mpi_buffers_;
+    // Host-resident communication buffers used for halo exchange.
+    // Stored by value (rather than a HostSpace Kokkos::View) so the host-only
+    // DCArrayKokkos members are only ever default-constructed inside the
+    // host-only MPICArrayKokkos constructors; a Kokkos::View would generate a
+    // __host__ __device__ value-construction functor over those host-only
+    // members (CUDA warnings #20011-D / #20014-D). The members are themselves
+    // reference-counted Kokkos handles, so this stays cheap and device-copyable.
+    MPICArrayCommBuffers<T> mpi_buffers_;
 
     // DCArrayKokkos<T> send_buffer_;
     // DCArrayKokkos<T> recv_buffer_;
@@ -191,34 +191,34 @@ public:
         size_t recv_size = comm_plan_->total_recv_count * stride_;
         
         if (send_size > 0) {
-            mpi_buffers_(0).send_buffer_ = DCArrayKokkos<T>(send_size, "send_buffer");
+            mpi_buffers_.send_buffer_ = DCArrayKokkos<T>(send_size, "send_buffer");
         }
         if (recv_size > 0) {
-            mpi_buffers_(0).recv_buffer_ = DCArrayKokkos<T>(recv_size, "recv_buffer");
+            mpi_buffers_.recv_buffer_ = DCArrayKokkos<T>(recv_size, "recv_buffer");
         }
 
         if (comm_plan_->num_send_ranks > 0) {
-            mpi_buffers_(0).send_counts_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_counts");
-            mpi_buffers_(0).send_displs_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_displs");
+            mpi_buffers_.send_counts_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_counts");
+            mpi_buffers_.send_displs_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_displs");
             
             for(int i = 0; i < comm_plan_->num_send_ranks; i++){
-                mpi_buffers_(0).send_counts_.host(i) = comm_plan_->send_counts_.host(i) * stride_;
-                mpi_buffers_(0).send_displs_.host(i) = comm_plan_->send_displs_.host(i) * stride_;
+                mpi_buffers_.send_counts_.host(i) = comm_plan_->send_counts_.host(i) * stride_;
+                mpi_buffers_.send_displs_.host(i) = comm_plan_->send_displs_.host(i) * stride_;
             }
-            mpi_buffers_(0).send_counts_.update_device();
-            mpi_buffers_(0).send_displs_.update_device();
+            mpi_buffers_.send_counts_.update_device();
+            mpi_buffers_.send_displs_.update_device();
         }
         
         if (comm_plan_->num_recv_ranks > 0) {
-            mpi_buffers_(0).recv_counts_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_counts");
-            mpi_buffers_(0).recv_displs_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_displs");
+            mpi_buffers_.recv_counts_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_counts");
+            mpi_buffers_.recv_displs_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_displs");
             
             for(int i = 0; i < comm_plan_->num_recv_ranks; i++){
-                mpi_buffers_(0).recv_counts_.host(i) = comm_plan_->recv_counts_.host(i) * stride_;
-                mpi_buffers_(0).recv_displs_.host(i) = comm_plan_->recv_displs_.host(i) * stride_;
+                mpi_buffers_.recv_counts_.host(i) = comm_plan_->recv_counts_.host(i) * stride_;
+                mpi_buffers_.recv_displs_.host(i) = comm_plan_->recv_displs_.host(i) * stride_;
             }
-            mpi_buffers_(0).recv_counts_.update_device();
-            mpi_buffers_(0).recv_displs_.update_device();
+            mpi_buffers_.recv_counts_.update_device();
+            mpi_buffers_.recv_displs_.update_device();
         }
     };
 
@@ -272,7 +272,7 @@ public:
                 
                 // Copy all values associated with this element (handles multi-dimensional arrays)
                 for(size_t k = 0; k < stride_; k++){
-                    mpi_buffers_(0).send_buffer_.host(send_idx + k) = this_array_.host_pointer()[src_idx * stride_ + k];
+                    mpi_buffers_.send_buffer_.host(send_idx + k) = this_array_.host_pointer()[src_idx * stride_ + k];
                 }
                 send_idx += stride_;
             }
@@ -289,7 +289,7 @@ public:
                 
                 // Copy all values associated with this element (handles multi-dimensional arrays)
                 for(size_t k = 0; k < stride_; k++){
-                    this_array_.host_pointer()[dest_idx * stride_ + k] = mpi_buffers_(0).recv_buffer_.host(recv_idx + k);
+                    this_array_.host_pointer()[dest_idx * stride_ + k] = mpi_buffers_.recv_buffer_.host(recv_idx + k);
                 }
                 
                 recv_idx += stride_;
@@ -352,13 +352,13 @@ public:
         fill_send_buffer();
 
         MPI_Neighbor_alltoallv(
-            mpi_buffers_(0).send_buffer_.host_pointer(),
-            mpi_buffers_(0).send_counts_.host_pointer(),
-            mpi_buffers_(0).send_displs_.host_pointer(),
+            mpi_buffers_.send_buffer_.host_pointer(),
+            mpi_buffers_.send_counts_.host_pointer(),
+            mpi_buffers_.send_displs_.host_pointer(),
             mpi_type_map<T>::value(),  
-            mpi_buffers_(0).recv_buffer_.host_pointer(),
-            mpi_buffers_(0).recv_counts_.host_pointer(),
-            mpi_buffers_(0).recv_displs_.host_pointer(), 
+            mpi_buffers_.recv_buffer_.host_pointer(),
+            mpi_buffers_.recv_counts_.host_pointer(),
+            mpi_buffers_.recv_displs_.host_pointer(), 
             mpi_type_map<T>::value(),  
             comm_plan_->mpi_comm_graph);
         
@@ -397,9 +397,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos()
         for (int i = 0; i < 7; i++) {
             dims_[i] = 0;
         }
-
-        // Allocate the communication buffers
-        mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 1D constructor
@@ -409,9 +406,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, c
     dims_[0] = dim0;
     this_array_ = DCArrayKokkos<T>(dim0, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0);
-
-    // Allocate the communication buffers
-    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 2D constructor
@@ -423,9 +417,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
 
     this_array_ = DCArrayKokkos<T>(dim0, dim1, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1);
-
-    // Allocate the communication buffers
-    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 3D constructor
@@ -437,9 +428,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[2] = dim2;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2);
-
-    // Allocate the communication buffers
-    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 4D constructor
@@ -452,9 +440,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[3] = dim3;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3);
-
-    // Allocate the communication buffers
-    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 5D constructor
@@ -468,9 +453,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[4] = dim4;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4);
-
-    // Allocate the communication buffers
-    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 6D constructor
@@ -485,9 +467,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[5] = dim5;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5);
-
-    // Allocate the communication buffers
-    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 // Overloaded 7D constructor
@@ -503,9 +482,6 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, s
     dims_[6] = dim6;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
     host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
-
-    // Allocate the communication buffers
-    mpi_buffers_ = Kokkos::View<MPICArrayCommBuffers<T>*, Kokkos::HostSpace>("mpi_buffers", 1);
 }
 
 
