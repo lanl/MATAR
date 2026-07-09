@@ -64,15 +64,14 @@ void multiply_matrices(const TestArray& A, const TestArray& B, const TestArray& 
 KOKKOS_INLINE_FUNCTION
 bool is_identity(const TestArray& A, size_t n, double tol = 1e-10) {
 
-    DCArrayKokkos <bool> result(1);
-    result.set_values(true);
+    bool result=true;
 
     for(size_t i=0; i<n;i++) 
     for(size_t j=0; j<n;j++) {
             
         double expected = (i == j) ? 1.0 : 0.0;
         if (fabs(A(i, j) - expected) > tol) {
-            result(0) = false;
+            result = false;
         } // end if
     }
 
