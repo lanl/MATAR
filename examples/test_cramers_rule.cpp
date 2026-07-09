@@ -71,7 +71,7 @@ bool is_identity(const TestArray& A, size_t n, double tol = 1e-10) {
             
         double expected = (i == j) ? 1.0 : 0.0;
         if (fabs(A(i, j) - expected) > tol) {
-            result(0) = false;
+            result = false;
         } // end if
     }
 
