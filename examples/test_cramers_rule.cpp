@@ -75,7 +75,7 @@ bool is_identity(const TestArray& A, size_t n, double tol = 1e-10) {
         } // end if
     }
 
-    return true;
+    return result;
 } // end function
 
 // Helper to compare two values
