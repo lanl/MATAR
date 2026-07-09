@@ -128,6 +128,9 @@ if (KOKKOS)
   add_executable(qr_test test_qr_solve.cpp)
   target_link_libraries(qr_test ${LINKING_LIBRARIES})
 
+  add_executable(cramers_rule_test test_cramers_rule.cpp)
+  target_link_libraries(cramers_rule_test ${LINKING_LIBRARIES})
+
   include_directories(pointcloud)
   add_subdirectory(pointcloud)
 

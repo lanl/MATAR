@@ -37,14 +37,215 @@
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  **********************************************************************************************/
 
- #include "matar.h"
+#include "matar.h"
 using namespace mtr; 
 
- // Compute inverse of 3x3 matrix using Cramer's rule
-KOKKOS_FUNCTION
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn det_2x2
+///
+/// \brief Calculates the determinate of a 2D MATAR device array
+///
+/// \param array The input array
+///
+/////////////////////////////////////////////////////////////////////////////
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+double det_2x2(const T &A){
+    return A(0, 0)*A(1, 1) - A(0, 1)*A(1, 0);
+} // end of det_2d function
+
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn det_2x2
+///
+/// \brief Calculates the determinate of a 2D MATAR device array
+///
+/// \param a00 The 00 component of the array
+/// \param a01 The 01 component of the array
+/// ....
+/// \param a11 The 11 component of the array
+///
+/////////////////////////////////////////////////////////////////////////////
+KOKKOS_INLINE_FUNCTION
+double det_2x2(
+    const double a00, const double a01,
+    const double a10, const double a11) {
+    
+    const double det = (a00 * a11 - a01 * a10);
+    return det;
+} // end function
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn det_3x3
+///
+/// \brief Calculates the determinate of a 3D MATAR device array
+///
+/// \param array The input array
+///
+/////////////////////////////////////////////////////////////////////////////
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+double det_3x3(const T &A){
+
+    const double det = A(0, 0) * (A(1, 1)*A(2, 2) - A(2, 1)*A(1, 2))  
+                     - A(0, 1) * (A(1, 0)*A(2, 2) - A(2, 0)*A(1, 2))  
+                     + A(0, 2) * (A(1, 0)*A(2, 1) - A(2, 0)*A(1, 1));
+    
+    return det;
+} // end of det_3d function
+
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn det_3x3
+///
+/// \brief Calculates the determinate of a 3D MATAR device array
+///
+/// \param a00 The 00 component of the array
+/// \param a01 The 01 component of the array
+/// ....
+/// \param a22 The 22 component of the array
+///
+/////////////////////////////////////////////////////////////////////////////
+KOKKOS_INLINE_FUNCTION
+double det_3x3(
+    const double a00, const double a01, const double a02,
+    const double a10, const double a11, const double a12,
+    const double a20, const double a21, const double a22) {
+    
+    const double det = a00 * (a11 * a22 - a12 * a21)
+                     - a01 * (a10 * a22 - a12 * a20)
+                     + a02 * (a10 * a21 - a11 * a20);
+
+    return det;
+} // end function
+
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn det_4x4
+///
+/// \brief Calculates the determinate of a 4D MATAR device array
+///
+/// \param array The input routine
+///
+/////////////////////////////////////////////////////////////////////////////
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+double det_4x4(const T &A){
+    
+    const double det = A(0, 3) * A(1, 2) * A(2, 1) * A(3, 0) 
+                     - A(0, 2) * A(1, 3) * A(2, 1) * A(3, 0) 
+                     - A(0, 3) * A(1, 1) * A(2, 2) * A(3, 0) 
+                     + A(0, 1) * A(1, 3) * A(2, 2) * A(3, 0) 
+                     + A(0, 2) * A(1, 1) * A(2, 3) * A(3, 0) 
+                     - A(0, 1) * A(1, 2) * A(2, 3) * A(3, 0) 
+                     - A(0, 3) * A(1, 2) * A(2, 0) * A(3, 1) 
+                     + A(0, 2) * A(1, 3) * A(2, 0) * A(3, 1) 
+                     + A(0, 3) * A(1, 0) * A(2, 2) * A(3, 1) 
+                     - A(0, 0) * A(1, 3) * A(2, 2) * A(3, 1) 
+                     - A(0, 2) * A(1, 0) * A(2, 3) * A(3, 1) 
+                     + A(0, 0) * A(1, 2) * A(2, 3) * A(3, 1) 
+                     + A(0, 3) * A(1, 1) * A(2, 0) * A(3, 2) 
+                     - A(0, 1) * A(1, 3) * A(2, 0) * A(3, 2) 
+                     - A(0, 3) * A(1, 0) * A(2, 1) * A(3, 2) 
+                     + A(0, 0) * A(1, 3) * A(2, 1) * A(3, 2) 
+                     + A(0, 1) * A(1, 0) * A(2, 3) * A(3, 2) 
+                     - A(0, 0) * A(1, 1) * A(2, 3) * A(3, 2) 
+                     - A(0, 2) * A(1, 1) * A(2, 0) * A(3, 3) 
+                     + A(0, 1) * A(1, 2) * A(2, 0) * A(3, 3) 
+                     + A(0, 2) * A(1, 0) * A(2, 1) * A(3, 3) 
+                     - A(0, 0) * A(1, 2) * A(2, 1) * A(3, 3) 
+                     - A(0, 1) * A(1, 0) * A(2, 2) * A(3, 3) 
+                     + A(0, 0) * A(1, 1) * A(2, 2) * A(3, 3);
+          
+    return det;
+} // end of det_4x4 function
+
+
+// ============================================ 
+// Array Inversion routines using Cramers Rule
+// ============================================
+
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn invert_2x2
+///
+/// \brief Inverts a 2x2 MATAR device array using Cramer's rule
+///
+/// \param A The array to be inverted
+/// \param inv The inverse of the passed inarray
+/// \param det The determate of the array to be inverted
+///
+/////////////////////////////////////////////////////////////////////////////
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+void invert_2x2(
+    const T &A,
+    const T &inv, 
+    const double det){
+
+    inv(0, 0) =  A(1, 1)/(det+1.e-16);
+    inv(0, 1) = -A(0, 1)/(det+1.e-16);
+    inv(1, 0) = -A(1, 0)/(det+1.e-16);
+    inv(1, 1) =  A(0, 0)/(det+1.e-16);
+} // end of 2D jacobin inverse
+
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn invert_3x3
+///
+/// \brief Inverts a 3x3 MATAR device array using Cramer's rule
+///
+/// \param A The array to be inverted
+/// \param inv The inverse of the passed inarray
+/// \param det The determate of the array to be inverted
+///
+/////////////////////////////////////////////////////////////////////////////
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+void invert_3x3(
+    const T &A,
+    const T &inv,
+    const double det){
+
+    inv(0,0) = +(A(1,1)*A(2,2) - A(1,2)*A(2,1)) / (det+1e-16);
+    inv(0,1) = -(A(0,1)*A(2,2) - A(0,2)*A(2,1)) / (det+1e-16);
+    inv(0,2) = +(A(0,1)*A(1,2) - A(0,2)*A(1,1)) / (det+1e-16);
+
+    inv(1,0) = -(A(1,0)*A(2,2) - A(1,2)*A(2,0)) / (det+1e-16);
+    inv(1,1) = +(A(0,0)*A(2,2) - A(0,2)*A(2,0)) / (det+1e-16);
+    inv(1,2) = -(A(0,0)*A(1,2) - A(0,2)*A(1,0)) / (det+1e-16);
+
+    inv(2,0) = +(A(1,0)*A(2,1) - A(1,1)*A(2,0)) / (det+1e-16);
+    inv(2,1) = -(A(0,0)*A(2,1) - A(0,1)*A(2,0)) / (det+1e-16);
+    inv(2,2) = +(A(0,0)*A(1,1) - A(0,1)*A(1,0)) / (det+1e-16);
+
+    return;
+} // end of inverse matrix 
+
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn invert_3x3
+///
+/// \brief Inverts a 3x3 MATAR device array using Cramer's rule and returns
+///        the determinate of the array
+///
+/// \param A   The array to be inverted
+/// \param inv The inverse of the passed in array
+///
+/////////////////////////////////////////////////////////////////////////////
+template <typename T>
+KOKKOS_INLINE_FUNCTION 
 double invert_3x3(
-    const DCArrayKokkos <double> &A,
-    const DCArrayKokkos <double> &inv){
+    const T &A,
+    const T &inv){
 
     double  det = 
         A(0,0)*(A(1,1)*A(2,2) - A(1,2)*A(2,1)) -
@@ -69,23 +270,21 @@ double invert_3x3(
 } // end of inverse matrix 
 
 
-
-// Helper to compute 3x3 determinant for submatrices
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn invert_4x4
+///
+/// \brief Inverts a 4x4 MATAR device array using Cramer's rule and returns
+///        the determinate of the array
+///
+/// \param A   The array to be inverted
+/// \param inv The inverse of the passed in array
+///
+/////////////////////////////////////////////////////////////////////////////
+template <typename T>
 KOKKOS_INLINE_FUNCTION
-double det3x3(
-    double a00, double a01, double a02,
-    double a10, double a11, double a12,
-    double a20, double a21, double a22) {
-    
-    return a00 * (a11 * a22 - a12 * a21)
-         - a01 * (a10 * a22 - a12 * a20)
-         + a02 * (a10 * a21 - a11 * a20);
-} // end function
-
-// Compute inverse of 4x4 matrix using Cramer's rule
-KOKKOS_FUNCTION
-double invert_4x4(const DCArrayKokkos <double> &A,  
-                  const DCArrayKokkos <double> &inv) {
+double invert_4x4(const T &A,  
+                  const T &inv) {
     
     // helper array
     double cof[4][4];
@@ -107,7 +306,7 @@ double invert_4x4(const DCArrayKokkos <double> &A,
                 ++mi;
             } // end ii
 
-            cof[i][j] = ((i + j) % 2 == 0 ? 1 : -1) * det3x3(
+            cof[i][j] = ((i + j) % 2 == 0 ? 1 : -1) * det_3x3(
                 minor[0][0], minor[0][1], minor[0][2],
                 minor[1][0], minor[1][1], minor[1][2],
                 minor[2][0], minor[2][1], minor[2][2]
@@ -122,10 +321,6 @@ double invert_4x4(const DCArrayKokkos <double> &A,
         det += A(0,j) * cof[0][j];
     } // end for j
 
-    // if (std::fabs(det) < 1e-12) {
-    //     std::cerr << "Matrix is singular or nearly singular.\n";
-    //     return false;
-    // }
 
     // Transpose cofactors to get adjugate, then divide by determinant
     for (size_t i = 0; i < 4; ++i){
@@ -135,6 +330,63 @@ double invert_4x4(const DCArrayKokkos <double> &A,
     } // end i
 
     return det;
+} // end function
+
+
+/////////////////////////////////////////////////////////////////////////////
+///
+/// \fn invert_4x4
+///
+/// \brief Inverts a 4x4 MATAR device array using Cramer's rule
+///
+/// \param A   The array to be inverted
+/// \param inv The inverse of the passed in array
+/// \param det The determate of the array to be inverted
+///
+/////////////////////////////////////////////////////////////////////////////
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+void invert_4x4(const T &A,  
+                const T &inv,
+                const double det) {
+    
+    // helper array
+    double cof[4][4];
+
+    // Compute cofactor matrix
+    for (size_t i = 0; i < 4; ++i) {
+        for (size_t j = 0; j < 4; ++j) {
+            // Build 3x3 minor matrix excluding row i and column j
+            double minor[3][3];
+            size_t mi = 0;
+            for (size_t ii = 0; ii < 4; ++ii) {
+                if (ii == i) continue;
+                size_t mj = 0;
+                for (size_t jj = 0; jj < 4; ++jj) {
+                    if (jj == j) continue;
+                    minor[mi][mj] = A(ii,jj);
+                    ++mj;
+                } // end jj
+                ++mi;
+            } // end ii
+
+            cof[i][j] = ((i + j) % 2 == 0 ? 1 : -1) * det_3x3(
+                minor[0][0], minor[0][1], minor[0][2],
+                minor[1][0], minor[1][1], minor[1][2],
+                minor[2][0], minor[2][1], minor[2][2]
+            ); // function
+
+        } // end j
+    }// end i
+
+    // Transpose cofactors to get adjugate, then divide by determinant
+    for (size_t i = 0; i < 4; ++i){
+        for (size_t j = 0; j < 4; ++j){
+            inv(i,j) = cof[j][i] / (det+1.e-16);
+        } // end j
+    } // end i
+
+    return;
 } // end function
 
 #endif // CRAMERS
