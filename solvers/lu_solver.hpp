@@ -56,12 +56,12 @@ const double TINY = 1e-15;
 template <typename T1, typename T2, typename T3>
 KOKKOS_FUNCTION
 int LU_decompose(
-    const T1 &A,     // matrix A passed in and is sent out in LU decomp format
-    const T2 &perm,  // permutations (array <size_t>)
-    const T3 &vv,
-    int &parity) {                 // parity (+1 or -1)
+    const T1 &A,     // device array A (e.g., DCArrayKokkos <double>) passed in and is sent out in LU decomp format
+    const T2 &perm,  // permutations (e.g., DCArrayKokkos <size_t>)
+    const T3 &vv,    // helper array (e.g., CArrayKokkos <double>) 
+    int &parity) {   // parity (+1 or -1)
                           
-    const int n = A.dims(0);  // size of matrix 
+    const int n = A.dims(0);  // size of array 
 
     parity = 1;
 
@@ -69,7 +69,7 @@ int LU_decompose(
     double temp;
     
     // search for the largest element in each row; save the scaling in the 
-    // temporary array vv and return zero if the matrix is singular 
+    // temporary array vv and return zero if the array is singular 
     for(size_t i = 0; i < n; i++) {
         
         double big = 0.;
@@ -137,7 +137,7 @@ int LU_decompose(
         
         // store the index
         perm(j) = imax;
-        // if the pivot element is zero, the matrix is singular but for some 
+        // if the pivot element is zero, the array is singular but for some 
         // applications a tiny number is desirable instead 
         
         if(A(j,j) == 0.0){
@@ -168,11 +168,11 @@ int LU_decompose(
 template <typename T1, typename T2, typename T3>
 KOKKOS_FUNCTION
 void LU_backsub(
-    const T1 &A,     // input matrix A in LU decomp format
-    const T2 &perm,  // permutations (array <size_t>)
-    const T3 &b){    // RHS and is answer x to Ax=B
+    const T1 &A,     // input array A (e.g., DCArrayKokkos <double>) in LU decomp format
+    const T2 &perm,  // permutations (e.g., DCArrayKokkos <size_t>)
+    const T3 &b){    // RHS and is answer x to Ax=B (e.g., DCArrayKokkos <double>)
 
-        const int n = A.dims(0);    // size of matrix
+        const int n = A.dims(0);    // size of array
 
         int ii = -1;
 
@@ -220,12 +220,12 @@ void LU_backsub(
 template <typename T1, typename T2, typename T3, typename T4>
 KOKKOS_INLINE_FUNCTION
 void LU_invert(
-    T1 &A,       // input matrix
-    T2 &perm,    // permutations
-    T3 &inv_mat, // inverse matrix
-    T4 &col) {   // tmp array
+    T1 &A,       // input array, e.g., DCArrayKokkos <double>
+    T2 &perm,    // permutations, e.g., DCArrayKokkos <size_t>
+    T3 &inv_mat, // inverse array, e.g., DCArrayKokkos <double>
+    T4 &col) {   // tmp array, e.g., DCArrayKokkos <double>
 
-    const size_t n = A.dims(0);    // size of matrix
+    const size_t n = A.dims(0);    // size of array
 
 
     for(size_t j = 0; j < n; j++){
@@ -250,15 +250,15 @@ void LU_invert(
 // -----------------------
 // LU determinant function 
 //  Input:  A filled in LUPDecompose; N - dimension.
-//  Output: determinate of original A matrix
+//  Output: determinate of original A array
 // ----------------------- 
 template <typename T>
 KOKKOS_INLINE_FUNCTION
 double LU_determinant(
-    T &A,               // input matrix
+    T &A,               // input array, e.g., DCArrayKokkos <double>
     const int parity){  // parity (+1 0r -1)
 
-    const int n = A.dims(0);    // size of matrix
+    const int n = A.dims(0);    // size of array
 
     double res = (double)(parity);
     
@@ -283,12 +283,12 @@ double LU_determinant(
 // inside this function are run on the GPU
 template <typename T1, typename T2, typename T3>
 int LU_decompose_host(
-    T1 &A,     // matrix A passed in and is sent out in LU decomp format
-    T2 &perm,  // permutations (array <size_t>)
-    T3 &vv,    // helper array 
+    T1 &A,     // device array A (e.g., DCArrayKokkos <double>) passed in and is sent out in LU decomp format
+    T2 &perm,  // permutations (e.g., DCArrayKokkos <size_t>)
+    T3 &vv,    // helper array (e.g., CArrayKokkos <double>) 
     int &parity) {                 // parity (+1 or -1)
                           
-    const int n = A.dims(0);  // size of matrix 
+    const int n = A.dims(0);  // size of array 
 
     CArrayKokkos <double> temp_scalar(1); // persistant scalar on device
 
@@ -296,7 +296,7 @@ int LU_decompose_host(
     
     // STEP 1:
     // search for the largest element in each row; save the scaling in the 
-    // temporary array vv and return zero if the matrix is singular
+    // temporary array vv and return zero if the array is singular
     FOR_FIRST(i, 0, n, {
         
         double max_val = 0.0;
@@ -322,7 +322,7 @@ int LU_decompose_host(
         min_val_lcl = fmin(vv(i), min_val_lcl);
 
     }, min_val);
-    if(min_val < TINY) return(0); // singular matrix as all row values are 0
+    if(min_val < TINY) return(0); // singular array as all row values are 0
 
 
     // STEP 2:
@@ -422,7 +422,7 @@ int LU_decompose_host(
         });
 
 
-        // if the pivot element is zero, the matrix is singular but for some 
+        // if the pivot element is zero, the array is singular but for some 
         // applications a tiny number is desirable instead 
         RUN({
             if(A(j,j) == 0.0){
@@ -457,11 +457,11 @@ int LU_decompose_host(
 // inside this function are run on the GPU
 template <typename T1, typename T2, typename T3>
 void LU_backsub_host(
-    const T1 &A,     // input matrix A in LU decomp format
-    const T2 &perm,  // permutations (array <size_t>)
-    T3 &b){          // RHS and is answer x to Ax=B
+    const T1 &A,     // input array A (e.g., DCArrayKokkos <double>) in LU decomp format
+    const T2 &perm,  // permutations (e.g., DCArrayKokkos <size_t>)
+    T3 &b){          // RHS and is answer x to Ax=B (e.g., DCArrayKokkos <double>)
 
-    const int n = A.dims(0);    // size of matrix
+    const int n = A.dims(0);    // size of array
 
     CArrayKokkos <double> val(1); // a helper variable that carries a scalar
 
@@ -524,14 +524,14 @@ void LU_backsub_host(
 // -----------------------
 // LU determinant function 
 //  Input:  A filled in LUPDecompose; N - dimension.
-//  Output: determinate of original A matrix
+//  Output: determinate of original A array
 // ----------------------- 
 template <typename T>
 double LU_determinant_host(
-    T &A,               // input matrix
+    T &A,               // input array (e.g., DCArrayKokkos <double>)
     const int parity){  // parity (+1 0r -1)
 
-    const int n = A.dims(0);    // size of matrix
+    const int n = A.dims(0);    // size of array
 
     double res = (double)(parity);
     double prod_tally;
@@ -554,12 +554,12 @@ double LU_determinant_host(
 // ------------------ 
 template <typename T1, typename T2, typename T3, typename T4>
 void LU_invert_host(
-    T1 &A,       // input matrix
-    T2 &perm,    // permutations (array<size_t>)
-    T3 &inv_mat, // inverse matrix
-    T4 &col) {   // tmp array
+    T1 &A,       // input array (e.g., DCArrayKokkos <double>)
+    T2 &perm,    // permutations (e.g., DCArrayKokkos <size_t> )
+    T3 &inv_mat, // inverse array (e.g., DCArrayKokkos <double>)
+    T4 &col) {   // tmp array (e.g., DCArrayKokkos <double>)
 
-    const size_t n = A.dims(0);    // size of matrix
+    const size_t n = A.dims(0);    // size of array
 
 
     for(size_t j = 0; j < n; j++){
@@ -588,19 +588,19 @@ void LU_invert_host(
 // A[n,n]
 // b[n], note answer, x, is returned in b
 template <typename T1, typename T2, typename T3, typename T4>
-int LU_solver_host(T1 &A, 
-                   T2 &b,
-                   T3 &perm,  // permutations (array <size_t>)
-                   T4 &vv,
+int LU_solver_host(T1 &A,     // e.g., DCArrayKokkos <double> 
+                   T2 &b,     // e.g., DCArrayKokkos <double>
+                   T3 &perm,  // permutations (e.g., DCArrayKokkos <size_t>)
+                   T4 &vv,    // e.g., CArrayKokkos <double>
                    int &parity) {
 
 
     int singular = 0; 
     parity = 0;
-    singular = LU_decompose_host(A, perm, vv, parity);  // A is returned as the LU matrix  
+    singular = LU_decompose_host(A, perm, vv, parity);  // A is returned as the LU array  
     
     if(singular==0){
-        printf("ERROR: matrix is singluar \n");
+        printf("ERROR: array is singluar \n");
         return 0;
     }
 
