@@ -49,8 +49,9 @@ using namespace mtr;
 
 
 // Transpose matrix
-void transpose_host(const DCArrayKokkos <double> &A,
-                    DCArrayKokkos <double> &At) {
+template <typename T1, typename T2>
+void transpose_host(const T1 &A,  // e.g., DCArrayKokkos <double>
+                    T2 &At) {     // e.g., DCArrayKokkos <double>
 
     size_t m = A.dims(0);
     size_t n = A.dims(1);
@@ -66,9 +67,10 @@ void transpose_host(const DCArrayKokkos <double> &A,
 
 
 // Back substitution to solve Rx = y
-void QR_backsub_host(const DCArrayKokkos <double> &R, 
-                     const DCArrayKokkos <double> &y,
-                     DCArrayKokkos <double> &x) {
+template <typename T1, typename T2, typename T3>
+void QR_backsub_host(const T1 &R, // e.g., DCArrayKokkos <double>
+                     const T2 &y, // e.g., DCArrayKokkos <double>
+                     T3 &x) {     // e.g., DCArrayKokkos <double>
     
     size_t n = R.dims(0);
     
@@ -98,9 +100,10 @@ void QR_backsub_host(const DCArrayKokkos <double> &R,
 } // end function
 
 // QR Decomposition using Modified Gram-Schmidt
-void QR_decompose_host(const DCArrayKokkos <double> &A, 
-                       DFArrayKokkos <double> &Q, 
-                       DCArrayKokkos <double> &R) {
+template <typename T1, typename T2, typename T3>
+void QR_decompose_host(const T1 &A,  // e.g., DCArrayKokkos <double> 
+                       T2 &Q,        // e.g., DFArrayKokkos <double>
+                       T3 &R) {      // e.g., DCArrayKokkos <double>
 
 
     const size_t m = A.dims(0);
@@ -195,9 +198,9 @@ void QR_decompose_host(const DCArrayKokkos <double> &A,
 
 } // end function
 
-
-double QR_determinant_host(const DFArrayKokkos <double> &Q,
-                           const DCArrayKokkos <double> &R)
+template <typename T1, typename T2>
+double QR_determinant_host(const T1 &Q, // e.g., DFArrayKokkos <double> 
+                           const T2 &R) // e.g., DCArrayKokkos <double> 
 {
     //const size_t m = Q.dims(0);
     const size_t n = Q.dims(1);
@@ -259,9 +262,10 @@ double QR_determinant_host(const DFArrayKokkos <double> &Q,
 // A[m,n]
 // x[n]
 // b[m]
-void QR_solver_host(const DCArrayKokkos <double> &A, 
-                    const DCArrayKokkos <double> &b,
-                    DCArrayKokkos <double> &x) {
+template <typename T1, typename T2, typename T3>
+void QR_solver_host(const T1 &A, // e.g., DCArrayKokkos <double> 
+                    const T2 &b, // e.g., DCArrayKokkos <double>
+                    T3 &x) {     // e.g., DCArrayKokkos <double>
     
     const size_t m = A.dims(0);
     const size_t n = A.dims(1);
@@ -298,10 +302,11 @@ void QR_solver_host(const DCArrayKokkos <double> &A,
 //   QR_decompose_host(Q, R);
 // dimensions: Q(m,n,"Q");
 // dimenions: R(n,n,"R");
-void QR_solver_host(const DFArrayKokkos <double> &Q,
-                    const DCArrayKokkos <double> &R,
-                    const DCArrayKokkos <double> &b,
-                    DCArrayKokkos <double> &x) {
+template <typename T1, typename T2, typename T3, typename T4>
+void QR_solver_host(const T1 &Q,  // e.g., DFArrayKokkos <double> 
+                    const T2 &R,  // e.g., DCArrayKokkos <double>
+                    const T3 &b,  // e.g., DCArrayKokkos <double>
+                    T4 &x) {      // e.g., DCArrayKokkos <double>
     
     const size_t m = Q.dims(0);
     const size_t n = Q.dims(1);
