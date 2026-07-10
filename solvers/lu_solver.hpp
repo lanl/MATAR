@@ -53,11 +53,12 @@ const double TINY = 1e-15;
 
 
 // the function is run on the GPU
+template <typename T1, typename T2, typename T3>
 KOKKOS_FUNCTION
 int LU_decompose(
-    const DCArrayKokkos <double> &A, // matrix A passed in and is sent out in LU decomp format
-    const DCArrayKokkos <size_t> &perm,  // permutations
-    const CArrayKokkos <double> &vv,
+    const T1 &A,     // matrix A passed in and is sent out in LU decomp format
+    const T2 &perm,  // permutations (array <size_t>)
+    const T3 &vv,
     int &parity) {                 // parity (+1 or -1)
                           
     const int n = A.dims(0);  // size of matrix 
@@ -165,10 +166,11 @@ int LU_decompose(
 
 // this function is run on the GPU
 KOKKOS_FUNCTION
+template <typename T1, typename T2, typename T3>
 void LU_backsub(
-    const DCArrayKokkos <double> &A,     // input matrix A in LU decomp format
-    const DCArrayKokkos <size_t> &perm,  // permutations
-    const DCArrayKokkos <double> &b){          // RHS and is answer x to Ax=B
+    const T1 &A,     // input matrix A in LU decomp format
+    const T2 &perm,  // permutations (array <size_t>)
+    const T3 &b){    // RHS and is answer x to Ax=B
 
         const int n = A.dims(0);    // size of matrix
 
@@ -215,12 +217,13 @@ void LU_backsub(
 // ------------------ 
 // LU invert function 
 // ------------------ 
+template <typename T1, typename T2, typename T3, typename T4>
 KOKKOS_INLINE_FUNCTION
 void LU_invert(
-    DCArrayKokkos <double> &A,       // input matrix
-    DCArrayKokkos <size_t> &perm,    // permutations
-    DCArrayKokkos <double> &inv_mat, // inverse matrix
-    DCArrayKokkos <double> &col) {   // tmp array
+    T1 &A,       // input matrix
+    T2 &perm,    // permutations
+    T3 &inv_mat, // inverse matrix
+    T4 &col) {   // tmp array
 
     const size_t n = A.dims(0);    // size of matrix
 
@@ -249,10 +252,11 @@ void LU_invert(
 //  Input:  A filled in LUPDecompose; N - dimension.
 //  Output: determinate of original A matrix
 // ----------------------- 
+template <typename T>
 KOKKOS_INLINE_FUNCTION
 double LU_determinant(
-    DCArrayKokkos <double> &A,  // input matrix
-    const int parity){          // parity (+1 0r -1)
+    T &A,               // input matrix
+    const int parity){  // parity (+1 0r -1)
 
     const int n = A.dims(0);    // size of matrix
 
@@ -266,225 +270,6 @@ double LU_determinant(
 
 } // end function
 
-
-
-
-/////////// ViewKokkos Versions //////////
-
-
-// the function is run on the GPU
-KOKKOS_FUNCTION
-int LU_decompose(
-    const ViewCArrayKokkos <double> &A, // matrix A passed in and is sent out in LU decomp format
-    const ViewCArrayKokkos <size_t> &perm,  // permutations
-    const ViewCArrayKokkos <double> &vv,
-    int &parity) {                 // parity (+1 or -1)
-                          
-    const int n = A.dims(0);  // size of matrix 
-
-    parity = 1;
-
-    // helper variables
-    double temp;
-    
-    // search for the largest element in each row; save the scaling in the 
-    // temporary array vv and return zero if the matrix is singular 
-    for(size_t i = 0; i < n; i++) {
-        
-        double big = 0.;
-        for(size_t j = 0; j < n; j++){
-            if((temp=fabs(A(i,j))) > big){
-                big=temp;
-            }
-        }
-        
-        if(big == 0.0) return(0);
-        
-        vv(i) = big;
-    }
-
-    // the main loop for the Crout's algorithm
-    for(size_t j = 0; j < n; j++) {
-        
-        // this is the part a) of the algorithm except for i==j 
-        for(size_t i=0;i<j;i++) {
-            
-            double sum=A(i,j);
-            
-            for(size_t k=0;k<i;k++){
-                sum -= A(i,k)*A(k,j);
-            }
-
-            A(i,j) = sum;
-        }
-    
-        // initialize for the search for the largest pivot element
-        double big = 0.;
-        size_t imax = j;
-        
-        
-        // this is the part a) for i==j and part b) for i>j + pivot search 
-        for(size_t i = j; i < n; i++) {
-            
-            double sum = A(i,j);
-            
-            for(size_t k=0; k<j; k++){
-                sum -= A(i,k)*A(k,j);
-            }
-            
-            A(i,j) = sum;
-            
-            // is the figure of merit for the pivot better than the best so far?
-            if((temp = vv(i)*fabs(sum)) >= big){
-                big = temp; 
-                imax = i;
-            }
-        } // end for i
-
-        // interchange rows, if needed, change parity and the scale factor
-        if(imax != j) {
-            
-            for(size_t k = 0; k < n; k++){
-                temp = A(imax,k);
-                A(imax,k) = A(j,k);
-                A(j,k) = temp;
-            }
-            
-            parity = -(parity);
-            vv(imax) = vv(j);
-        }
-        
-        // store the index
-        perm(j) = imax;
-        // if the pivot element is zero, the matrix is singular but for some 
-        // applications a tiny number is desirable instead 
-        
-        if(A(j,j) == 0.0){
-            A(j,j) = TINY;
-        }
-        // finally, divide by the pivot element
-        
-        if(j<n-1) {
-            
-            temp=1./A(j,j);
-            for(size_t i = j+1; i < n; i++){
-                A(i,j)*=temp;
-            } // end for i
-        } // end if j
-
-    } // end for j
-    
-    return(1);
-} // end function
-
-
-
-// -------------------------------
-// LU back substitution functions 
-// -------------------------------
-
-// this function is run on the GPU
-KOKKOS_FUNCTION
-void LU_backsub(
-    const ViewCArrayKokkos <double> &A,     // input matrix A in LU decomp format
-    const ViewCArrayKokkos <size_t> &perm,  // permutations
-    const ViewCArrayKokkos <double> &b){          // RHS and is answer x to Ax=B
-
-        const int n = A.dims(0);    // size of matrix
-
-        int ii = -1;
-
-
-        // First step of backsubstitution; the only wrinkle is to unscramble 
-        // the permutation order. Note: the algorithm is optimized for a 
-        // possibility of large amount of zeroes in b
-        
-        for(size_t i = 0; i < n; i++) {
-           
-            size_t ip = perm(i);
-
-            double sum = b(ip);
-            b(ip) = b(i);
-         
-            if(ii >= 0){
-                for(size_t j = ii; j<i; j++){
-                    sum -= A(i,j)*b(j);
-                }
-            }
-            else if(sum>0){
-                ii=i;  // a nonzero element encounted
-            }
-          
-            b(i) = sum;
-        } // end loop i
-        
-        // the second step
-        for(int i=n-1; i>=0; i--) {
-            
-            double sum = b(i);
-            for(size_t j=i+1; j<n; j++){
-                sum-=A(i,j)*b(j);
-            } // end j
-       
-            b(i)=sum/A(i,i);
-        } // end loop i
-
-} // end if
-
-
-// ------------------ 
-// LU invert function 
-// ------------------ 
-KOKKOS_INLINE_FUNCTION
-void LU_invert(
-    ViewCArrayKokkos <double> &A,       // input matrix
-    ViewCArrayKokkos <size_t> &perm,    // permutations
-    ViewCArrayKokkos <double> &inv_mat, // inverse matrix
-    ViewCArrayKokkos <double> &col) {   // tmp array
-
-    const size_t n = A.dims(0);    // size of matrix
-
-
-    for(size_t j = 0; j < n; j++){
-
-        for(size_t i = 0; i < n; i++){
-            col(i) = 0.0;
-        } // end for i
-        
-        col(j) = 1.0;
-        LU_backsub(A, perm, col);
-        
-        for(size_t i = 0; i < n; i++){
-            inv_mat(i,j) = col(i);
-        } // end for i
-
-    } // end for j
-
-    return;
-
-} // end function
-
-// -----------------------
-// LU determinant function 
-//  Input:  A filled in LUPDecompose; N - dimension.
-//  Output: determinate of original A matrix
-// ----------------------- 
-KOKKOS_INLINE_FUNCTION
-double LU_determinant(
-    ViewCArrayKokkos <double> &A,  // input matrix
-    const int parity){          // parity (+1 0r -1)
-
-    const int n = A.dims(0);    // size of matrix
-
-    double res = (double)(parity);
-    
-    for(size_t j=0; j<n; j++){
-        res *= A(j,j);
-    } // end j
-
-    return(res);
-
-} // end function
 
 
 
@@ -496,10 +281,11 @@ double LU_determinant(
 
 // the function is run from the host, and kernals
 // inside this function are run on the GPU
+template <typename T1, typename T2, typename T3>
 int LU_decompose_host(
-    DCArrayKokkos <double> &A, // matrix A passed in and is sent out in LU decomp format
-    DCArrayKokkos <size_t> &perm,  // permutations
-    CArrayKokkos <double> &vv,
+    T1 &A,     // matrix A passed in and is sent out in LU decomp format
+    T2 &perm,  // permutations (array <size_t>)
+    T3 &vv,    // helper array 
     int &parity) {                 // parity (+1 or -1)
                           
     const int n = A.dims(0);  // size of matrix 
@@ -669,10 +455,11 @@ int LU_decompose_host(
 
 // the function is run from the host, and kernals
 // inside this function are run on the GPU
+template <typename T1, typename T2, typename T3>
 void LU_backsub_host(
-    const DCArrayKokkos <double> &A,     // input matrix A in LU decomp format
-    const DCArrayKokkos <size_t> &perm,  // permutations
-    DCArrayKokkos <double> &b){          // RHS and is answer x to Ax=B
+    T1 &A,     // input matrix A in LU decomp format
+    T2 &perm,  // permutations (array <size_t>)
+    T3 &b){          // RHS and is answer x to Ax=B
 
     const int n = A.dims(0);    // size of matrix
 
@@ -739,9 +526,10 @@ void LU_backsub_host(
 //  Input:  A filled in LUPDecompose; N - dimension.
 //  Output: determinate of original A matrix
 // ----------------------- 
+template <typename T>
 double LU_determinant_host(
-    DCArrayKokkos <double> &A,  // input matrix
-    const int parity){          // parity (+1 0r -1)
+    T &A,               // input matrix
+    const int parity){  // parity (+1 0r -1)
 
     const int n = A.dims(0);    // size of matrix
 
@@ -761,17 +549,15 @@ double LU_determinant_host(
 } // end function
 
 
-
-
-
 // ------------------ 
 // LU invert function 
 // ------------------ 
+template <typename T1, typename T2, typename T3, typename T4>
 void LU_invert_host(
-    DCArrayKokkos <double> &A,       // input matrix
-    DCArrayKokkos <size_t> &perm,    // permutations
-    DCArrayKokkos <double> &inv_mat, // inverse matrix
-    DCArrayKokkos <double> &col) {   // tmp array
+    T1 &A,       // input matrix
+    T2 &perm,    // permutations (array<size_t>)
+    T3 &inv_mat, // inverse matrix
+    T4 &col) {   // tmp array
 
     const size_t n = A.dims(0);    // size of matrix
 
@@ -801,10 +587,11 @@ void LU_invert_host(
 // Solve for x in Ax = b using LU
 // A[n,n]
 // b[n], note answer, x, is returned in b
-int LU_solver_host(DCArrayKokkos <double> &A, 
-                   DCArrayKokkos <double> &b,
-                   DCArrayKokkos <size_t> &perm,  // permutations
-                   CArrayKokkos <double> &vv,
+template <typename T1, typename T2, typename T3, typename T4>
+int LU_solver_host(T1 &A, 
+                   T2 &b,
+                   T3 &perm,  // permutations (array <size_t>)
+                   T4 &vv,
                    int &parity) {
 
 
