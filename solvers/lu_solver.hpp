@@ -165,8 +165,8 @@ int LU_decompose(
 // -------------------------------
 
 // this function is run on the GPU
-KOKKOS_FUNCTION
 template <typename T1, typename T2, typename T3>
+KOKKOS_FUNCTION
 void LU_backsub(
     const T1 &A,     // input matrix A in LU decomp format
     const T2 &perm,  // permutations (array <size_t>)
