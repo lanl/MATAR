@@ -457,8 +457,8 @@ int LU_decompose_host(
 // inside this function are run on the GPU
 template <typename T1, typename T2, typename T3>
 void LU_backsub_host(
-    T1 &A,     // input matrix A in LU decomp format
-    T2 &perm,  // permutations (array <size_t>)
+    const T1 &A,     // input matrix A in LU decomp format
+    const T2 &perm,  // permutations (array <size_t>)
     T3 &b){          // RHS and is answer x to Ax=B
 
     const int n = A.dims(0);    // size of matrix

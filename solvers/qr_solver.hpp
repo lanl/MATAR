@@ -49,8 +49,9 @@ using namespace mtr;
 
 
 // Transpose matrix
-void transpose_host(const DCArrayKokkos <double> &A,
-                    DCArrayKokkos <double> &At) {
+template <typename T1, typename T2>
+void transpose_host(const T1 &A,
+                    T2 &At) {
 
     size_t m = A.dims(0);
     size_t n = A.dims(1);
