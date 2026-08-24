@@ -581,7 +581,7 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecS
         order_ = temp.order_;
         comm_plan_ = temp.comm_plan_;
         comm_plan_ = temp.comm_plan_;
-
+        stride_ = temp.stride_;
         num_owned_ = temp.num_owned_;
         num_ghost_ = temp.num_ghost_;
 
