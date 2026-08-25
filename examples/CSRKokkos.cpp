@@ -36,17 +36,17 @@
 #include <matar.h>
 #include <limits.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(); {
+int main(int argc, char* argv[]) {
+    Kokkos::initialize();
+    {
         size_t nnz  = 6;
         size_t dim1 = 3;
         size_t dim2 = 10;
         CArrayKokkos<size_t> starts(dim1 + 1);
         CArrayKokkos<size_t> columns(nnz);
-        CArrayKokkos<int>    array(nnz);
+        CArrayKokkos<int> array(nnz);
         RUN({
             for (int i = 0; i < 4; i++) {
                 starts(i) = 2 * i;
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
             }
         });
 
-        int column_arr[] = { 0, 2, 2, 0, 1, 2 };
+        int column_arr[] = {0, 2, 2, 0, 1, 2};
         CArrayKokkos<double> data(6);
         CArrayKokkos<size_t> row(4);
         CArrayKokkos<size_t> column(6);
@@ -116,6 +116,7 @@ int main(int argc, char* argv[])
         printf("Sum of nnz in array notation %d\n", total);
         auto ss = A.begin(0);
         */
-    } Kokkos::finalize();
+    }
+    Kokkos::finalize();
     return 0;
 }

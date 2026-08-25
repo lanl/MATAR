@@ -36,8 +36,8 @@
 
 #include <Kokkos_Core.hpp>
 
-const int    width  = 1000;
-const int    height = 1000;
+const int width             = 1000;
+const int height            = 1000;
 const double temp_tolerance = 0.01;
 
 using view_type = Kokkos::View<double**>;
@@ -45,15 +45,14 @@ using view_type = Kokkos::View<double**>;
 void initialize(view_type temperature_previous);
 void track_progress(int iteration, view_type temperature);
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     Kokkos::initialize(argc, argv);
-    {     // kokkos scope
+    {  // kokkos scope
         view_type temperature("T", height + 2, width + 2);
         view_type temperature_previous("T_prev", height + 2, width + 2);
 
-        int    iteration = 1;
-        double worst_dt  = 100;
+        int iteration   = 1;
+        double worst_dt = 100;
         double max_value;
 
         // Start measuring time
@@ -65,31 +64,28 @@ int main(int argc, char* argv[])
         while (worst_dt > temp_tolerance) {
             // finite difference
             Kokkos::parallel_for(
-                        Kokkos::MDRangePolicy<Kokkos::Rank<2>>({ 1, 1 }, { height + 1, width + 1 }),
-                        KOKKOS_LAMBDA(const int i, const int j) {
-                                temperature(i, j) = 0.25 * (temperature_previous(i + 1, j)
-                                                            + temperature_previous(i - 1, j)
-                                                            + temperature_previous(i, j + 1)
-                                                            + temperature_previous(i, j - 1));
+                Kokkos::MDRangePolicy<Kokkos::Rank<2>>({1, 1}, {height + 1, width + 1}),
+                KOKKOS_LAMBDA(const int i, const int j) {
+                    temperature(i, j) = 0.25 * (temperature_previous(i + 1, j) + temperature_previous(i - 1, j) + temperature_previous(i, j + 1) +
+                                                temperature_previous(i, j - 1));
                 });
 
             // calculate max difference between temperature and temperature_previous
             Kokkos::parallel_reduce(
-                Kokkos::MDRangePolicy<Kokkos::Rank<2>>({ 1, 1 }, { height + 1, width + 1 }),
+                Kokkos::MDRangePolicy<Kokkos::Rank<2>>({1, 1}, {height + 1, width + 1}),
                 KOKKOS_LAMBDA(const int i, const int j, double& loc_max_value) {
-                double value = fabs(temperature(i, j) - temperature_previous(i, j));
+                    double value = fabs(temperature(i, j) - temperature_previous(i, j));
                     if (value > loc_max_value) {
                         loc_max_value = value;
                     }
-                },Kokkos::Max<double>(max_value));
-                worst_dt = max_value;
+                },
+                Kokkos::Max<double>(max_value));
+            worst_dt = max_value;
 
-                // update temperature_previous
-                Kokkos::parallel_for(
-                    Kokkos::MDRangePolicy<Kokkos::Rank<2>>({ 1, 1 }, { height + 1, width + 1 }),
-                    KOKKOS_LAMBDA(const int i, const int j) {
-                        temperature_previous(i, j) = temperature(i, j);
-                });
+            // update temperature_previous
+            Kokkos::parallel_for(
+                Kokkos::MDRangePolicy<Kokkos::Rank<2>>({1, 1}, {height + 1, width + 1}),
+                KOKKOS_LAMBDA(const int i, const int j) { temperature_previous(i, j) = temperature(i, j); });
 
             // track progress
             if (iteration % 100 == 0) {
@@ -105,43 +101,39 @@ int main(int argc, char* argv[])
 
         printf("Total time was %f seconds.\n", elapsed.count() * 1e-9);
         printf("\nMax error at iteration %d was %f\n", iteration - 1, worst_dt);
-    }     // end kokkos scope
-    
+    }  // end kokkos scope
+
     Kokkos::finalize();
 
     return 0;
 }
 
-void initialize(view_type temperature_previous)
-{
+void initialize(view_type temperature_previous) {
     // int i, j;
 
     // initialize temperature_previous to 0.0
     Kokkos::parallel_for(
-    Kokkos::MDRangePolicy<Kokkos::Rank<2>>({ 0, 0 }, { height + 2, width + 2 }),
-    KOKKOS_LAMBDA(const int i, const int j) {
-        temperature_previous(i, j) = 0.0;
-    });
+        Kokkos::MDRangePolicy<Kokkos::Rank<2>>({0, 0}, {height + 2, width + 2}),
+        KOKKOS_LAMBDA(const int i, const int j) { temperature_previous(i, j) = 0.0; });
 
     // setting the left and right boundary conditions
     Kokkos::parallel_for(
-    Kokkos::RangePolicy<>(0, height + 2),
-    KOKKOS_LAMBDA(const int i) {
-        temperature_previous(i, 0) = 0.0;
-        temperature_previous(i, width + 1) = (100.0 / height) * i;
-    });
+        Kokkos::RangePolicy<>(0, height + 2),
+        KOKKOS_LAMBDA(const int i) {
+            temperature_previous(i, 0)         = 0.0;
+            temperature_previous(i, width + 1) = (100.0 / height) * i;
+        });
 
     // setting the top and bottom boundary condition
     Kokkos::parallel_for(
-    Kokkos::RangePolicy<>(0, width + 2),
-    KOKKOS_LAMBDA(const int j) {
-        temperature_previous(0, j) = 0.0;
-        temperature_previous(height + 1, j) = (100.0 / width) * j;
-    });
+        Kokkos::RangePolicy<>(0, width + 2),
+        KOKKOS_LAMBDA(const int j) {
+            temperature_previous(0, j)          = 0.0;
+            temperature_previous(height + 1, j) = (100.0 / width) * j;
+        });
 }
 
-void track_progress(int iteration, view_type temperature)
-{
+void track_progress(int iteration, view_type temperature) {
     int i;
 
     // make a deep copy of temperature from device to host

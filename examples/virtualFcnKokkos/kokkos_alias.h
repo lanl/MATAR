@@ -69,7 +69,7 @@ using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
 */
 
-using TeamPolicy = Kokkos::TeamPolicy<DefaultExecSpace>;
+using TeamPolicy      = Kokkos::TeamPolicy<DefaultExecSpace>;
 using mdrange_policy2 = Kokkos::MDRangePolicy<Kokkos::Rank<2>>;
 using mdrange_policy3 = Kokkos::MDRangePolicy<Kokkos::Rank<3>>;
 
@@ -83,12 +83,12 @@ using IMatrix2D = Kokkos::View<int**, DefaultLayout, DefaultExecSpace>;
 using IMatrix3D = Kokkos::View<int***, DefaultLayout, DefaultExecSpace>;
 using IMatrix4D = Kokkos::View<int****, DefaultLayout, DefaultExecSpace>;
 using IMatrix5D = Kokkos::View<int*****, DefaultLayout, DefaultExecSpace>;
-using SVar     = Kokkos::View<size_t, DefaultLayout, DefaultExecSpace>;
-using SArray1D = Kokkos::View<size_t*, DefaultLayout, DefaultExecSpace>;
-using SArray2D = Kokkos::View<size_t**, DefaultLayout, DefaultExecSpace>;
-using SArray3D = Kokkos::View<size_t***, DefaultLayout, DefaultExecSpace>;
-using SArray4D = Kokkos::View<size_t****, DefaultLayout, DefaultExecSpace>;
-using SArray5D = Kokkos::View<size_t*****, DefaultLayout, DefaultExecSpace>;
+using SVar      = Kokkos::View<size_t, DefaultLayout, DefaultExecSpace>;
+using SArray1D  = Kokkos::View<size_t*, DefaultLayout, DefaultExecSpace>;
+using SArray2D  = Kokkos::View<size_t**, DefaultLayout, DefaultExecSpace>;
+using SArray3D  = Kokkos::View<size_t***, DefaultLayout, DefaultExecSpace>;
+using SArray4D  = Kokkos::View<size_t****, DefaultLayout, DefaultExecSpace>;
+using SArray5D  = Kokkos::View<size_t*****, DefaultLayout, DefaultExecSpace>;
 
 using SHArray1D = Kokkos::View<size_t*, DefaultLayout, Kokkos::HostSpace>;
 

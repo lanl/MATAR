@@ -35,8 +35,7 @@
 
 #include "fourier_space.h"
 
-FourierSpace::FourierSpace(int* nn, double* delta)
-{
+FourierSpace::FourierSpace(int* nn, double* delta) {
     // initialize class data
     nn_    = nn;
     nx_    = nn[0];
@@ -61,8 +60,7 @@ FourierSpace::FourierSpace(int* nn, double* delta)
     set_kx_ky_kz_();
 }
 
-void FourierSpace::set_kx_ky_kz_()
-{
+void FourierSpace::set_kx_ky_kz_() {
     // calculate kx_
     FOR_ALL_CLASS(i, 0, nx_, {
         int ti;
@@ -102,17 +100,8 @@ void FourierSpace::set_kx_ky_kz_()
 #endif
 }
 
-CArrayKokkos<double>& FourierSpace::get_kx()
-{
-    return kx_;
-}
+CArrayKokkos<double>& FourierSpace::get_kx() { return kx_; }
 
-CArrayKokkos<double>& FourierSpace::get_ky()
-{
-    return ky_;
-}
+CArrayKokkos<double>& FourierSpace::get_ky() { return ky_; }
 
-CArrayKokkos<double>& FourierSpace::get_kz()
-{
-    return kz_;
-}
+CArrayKokkos<double>& FourierSpace::get_kz() { return kz_; }

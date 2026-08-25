@@ -44,15 +44,13 @@
 using namespace mtr;
 
 // Pointer wrapper, because kokkos does not like pointers as template args
-struct ShapePtr
-{
+struct ShapePtr {
     Shape* shape;
 };
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     Kokkos::initialize(argc, argv);
-    { // kokkos scope
+    {  // kokkos scope
         const size_t num_shapes = 4;
         DCArrayKokkos<ShapePtr> shape_array(num_shapes);
 
@@ -60,8 +58,7 @@ int main(int argc, char* argv[])
         for (size_t i = 0; i < num_shapes; i++) {
             if (i % 2 == 0) {
                 shape_array.host(i).shape = (Circle*)Kokkos::kokkos_malloc(sizeof(Circle));
-            }
-            else {
+            } else {
                 shape_array.host(i).shape = (Square*)Kokkos::kokkos_malloc(sizeof(Square));
             }
         }
@@ -72,8 +69,7 @@ int main(int argc, char* argv[])
         FOR_ALL(i, 0, num_shapes, {
             if (i % 2 == 0) {
                 new ((Circle*)shape_array(i).shape) Circle(i);
-            }
-            else {
+            } else {
                 new ((Square*)shape_array(i).shape) Square(i);
             }
         });
@@ -95,8 +91,7 @@ int main(int argc, char* argv[])
                 if (area != area_array.host(i)) {
                     printf("Circle radius=%.3zu, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
                 }
-            }
-            else {
+            } else {
                 area = (double)i * (double)i;
                 if (area != area_array.host(i)) {
                     printf("Square length=%.3zu, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
@@ -120,7 +115,7 @@ int main(int argc, char* argv[])
         }
 
         printf("COMPLETED SUCCESSFULLY!!!\n");
-    } // end kokkos scope
+    }  // end kokkos scope
     Kokkos::finalize();
 
     return 0;

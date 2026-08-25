@@ -18,29 +18,28 @@
 #include <iostream>
 #include <matar.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 // set up constant parameters
-const int    max_age      = 1000;
+const int max_age         = 1000;
 const double mantle_temp  = 1350.0;
 const double thermal_diff = 0.000001;
 
-int main()
-{
+int main() {
     Kokkos::initialize();
     {
         // depth will need to be adjusted for larger max ages
         // age 2000 Ma, depth 250
         // age 3000 Ma, depth 280
         // age 4000 Ma, depth 320
-        int  depth = 200;
-        auto begin = std::chrono::high_resolution_clock::now(); // start clock
+        int depth  = 200;
+        auto begin = std::chrono::high_resolution_clock::now();  // start clock
 
-        DynamicRaggedDownArrayKokkos<double> dyn_ragged_down(max_age + 1, depth + 1); // create array
+        DynamicRaggedDownArrayKokkos<double> dyn_ragged_down(max_age + 1, depth + 1);  // create array
 
         DO_ALL(i, 0, max_age, {
             for (int j = 0; j <= depth; j++) {
-                if (i == 0 && j == 0) { // when depth and age are 0, give mantle_temp
+                if (i == 0 && j == 0) {  // when depth and age are 0, give mantle_temp
                     dyn_ragged_down.stride(j)++;
                     dyn_ragged_down(i, j) = mantle_temp;
                 }
