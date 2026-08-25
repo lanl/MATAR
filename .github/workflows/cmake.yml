@@ -6,82 +6,107 @@ on:
   pull_request:
     branches: [ "main" ]
 
-#env:
-#  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-#  BUILD_TYPE: Debug
-
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    #
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-        - {name: "Ubuntu_Latest_GCC_SERIAL", os: ubuntu-latest, build_type: "Debug", cc: "gcc", cxx: "g++", matar_config_args: "", kokkos_config_args: ""}
-        - {name: "Ubuntu_Latest_GCC_KOKKOS_SERIAL", os: ubuntu-latest, build_type: "Debug", cc: "gcc", cxx: "g++", matar_config_args: "-DKOKKOS=ON", kokkos_config_args: "-DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_STANDARD=17 -DKokkos_ENABLE_SERIAL=ON -DKokkos_ENABLE_TESTS=OFF -DBUILD_TESTING=OFF"}
-
+  # MATAR without Kokkos: host-only header library.
+  build-no-kokkos:
+    name: Ubuntu_GCC_NO_KOKKOS
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      
+    - uses: actions/checkout@v3
+
+    - name: Configure
+      run: |
+        cmake -B build/no-kokkos \
+          -DCMAKE_BUILD_TYPE=Debug \
+          -DMATAR_ENABLE_KOKKOS=OFF \
+          -DMATAR_BUILD_TESTS=ON \
+          -DMATAR_BUILD_EXAMPLES=ON
+
+    - name: Build
+      run: cmake --build build/no-kokkos -j2
+
+    - name: Test
+      run: ctest --test-dir build/no-kokkos --output-on-failure
+
+  # Bundled Kokkos submodule (the default path), plus an install round-trip
+  # verifying a downstream find_package(Matar) consumer.
+  build-bundled-kokkos:
+    name: Ubuntu_GCC_BUNDLED_KOKKOS
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
     - name: Checkout submodules
       run: git submodule update --init --recursive
-  
-    # Kokkos configure, build, and install------------------------------------------
-    - if: contains(matrix.config.name, 'KOKKOS')
-      name: Configure Kokkos CMake
-      shell: bash
-      run: |
-        cmake \
-          -S ${{ github.workspace }}/src/Kokkos/kokkos \
-          -B ${{ github.workspace }}/build-kokkos-serial/kokkos \
-          -D CMAKE_INSTALL_PREFIX=${{ github.workspace }}/build-kokkos-serial/kokkos \
-          ${{ matrix.config.kokkos_config_args }}
-          
-    - if: contains(matrix.config.name, 'KOKKOS')
-      name: Build Kokkos
-      shell: bash
-      run: cmake --build ${{ github.workspace }}/build-kokkos-serial/kokkos
-      
-    - if: contains(matrix.config.name, 'KOKKOS')
-      name: Install Kokkos
-      shell: bash
-      run: cmake --install ${{ github.workspace }}/build-kokkos-serial/kokkos
-      
-    # End Kokkos configure, build, and install------------------------------------------
-  
-  
-    # MATAR configure and build------------------------------------------
-    - if: false == contains(matrix.config.name, 'KOKKOS')
-      name: Configure MATAR CMake Without Kokkos
-      shell: bash
-      run: |
-        cmake \
-          -B ${{ github.workspace }}/build-kokkos-serial/matar \
-          -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
-          ${{ matrix.config.matar_config_args }}
-          
-    - if: contains(matrix.config.name, 'KOKKOS')
-      name: Configure MATAR CMake With Kokkos
-      shell: bash
-      run: |
-        cmake \
-          -B ${{ github.workspace }}/build-kokkos-serial/matar \
-          -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }} \
-          ${{ matrix.config.matar_config_args }} \
-          -DKokkos_DIR=${{ github.workspace }}/build-kokkos-serial/kokkos/lib/cmake/Kokkos
-            
-    - name: Build MATAR
-      shell: bash
-      run: cmake --build ${{github.workspace}}/build-kokkos-serial/matar
-    # End MATAR configure and build------------------------------------------
 
-    #- name: Test
-    #  working-directory: ${{github.workspace}}/build
-    #  # Execute tests defined by the CMake configuration.  
-    #  # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
-    #  run: ctest -C ${{env.BUILD_TYPE}}
-      
+    - name: Configure
+      run: cmake --preset serial
+
+    - name: Build
+      run: cmake --build --preset serial -j2
+
+    - name: Test
+      run: ctest --preset serial
+
+    - name: Install
+      run: cmake --install build/serial --prefix ${{ github.workspace }}/install
+
+    - name: Downstream find_package(Matar) smoke test
+      run: |
+        mkdir -p consumer
+        cat > consumer/main.cpp << 'EOF'
+        #include <matar.h>
+        int main(int argc, char* argv[]) {
+            MATAR_INITIALIZE(argc, argv);
+            { mtr::CArrayDevice<double> a(3, 3); }
+            MATAR_FINALIZE();
+            return 0;
+        }
+        EOF
+        cat > consumer/CMakeLists.txt << 'EOF'
+        cmake_minimum_required(VERSION 3.21)
+        project(MatarConsumer LANGUAGES CXX)
+        find_package(Matar REQUIRED)
+        add_executable(consumer main.cpp)
+        target_link_libraries(consumer matar::matar)
+        EOF
+        cmake -S consumer -B consumer/build -DCMAKE_PREFIX_PATH=${{ github.workspace }}/install
+        cmake --build consumer/build -j2
+        ./consumer/build/consumer
+
+  # External (pre-installed) Kokkos via MATAR_USE_EXTERNAL_KOKKOS.
+  build-external-kokkos:
+    name: Ubuntu_GCC_EXTERNAL_KOKKOS
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Checkout submodules
+      run: git submodule update --init --recursive
+
+    - name: Install Kokkos standalone
+      run: |
+        cmake -S src/Kokkos/kokkos -B build/kokkos \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_CXX_STANDARD=17 \
+          -DKokkos_ENABLE_SERIAL=ON \
+          -DKokkos_ENABLE_TESTS=OFF \
+          -DBUILD_TESTING=OFF \
+          -DCMAKE_INSTALL_PREFIX=${{ github.workspace }}/kokkos-install
+        cmake --build build/kokkos -j2
+        cmake --install build/kokkos
+
+    - name: Configure MATAR against external Kokkos
+      run: |
+        cmake -B build/external \
+          -DCMAKE_BUILD_TYPE=Debug \
+          -DMATAR_USE_EXTERNAL_KOKKOS=ON \
+          -DKokkos_ROOT=${{ github.workspace }}/kokkos-install \
+          -DMATAR_BUILD_TESTS=ON \
+          -DMATAR_BUILD_EXAMPLES=ON
+
+    - name: Build
+      run: cmake --build build/external -j2
+
+    - name: Test
+      run: ctest --test-dir build/external --output-on-failure

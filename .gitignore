@@ -1,3 +1,5 @@
+build/
+CMakeUserPresets.json
 install-*
 benchmark/benchmark*
 build-matar-*
@@ -8,3 +10,4 @@ docs_sphinx/
 tutorial/getting_started/Example0/build_*
 tutorial/getting_started/Example0/install*
 examples/mesh_decomp/lib/*
+test/googletest/
