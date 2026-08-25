@@ -125,13 +125,15 @@ MATAR_INITIALIZE(argc, argv);
     // -------------------------------------------------------------------------
     // all_reduce with fixed trailing indices (multi-dimensional arrays).
     // -------------------------------------------------------------------------
-    const size_t n_elem = size * 10;
+    // Signed: FOR_ALL's multi-dim forms brace-initialize a signed MDRangePolicy,
+    // so unsigned bounds trigger -Wnarrowing.
+    const int n_elem = size * 10;
 
     // Rank-2: element centroid coordinates — elem_centroids(elem_id, elem_position)
     // with elem_position ∈ {0,1,2} as x, y, z. Reduce over elem_id for each axis.
     {
-        size_t n_elem = 3;
-        size_t num_coords = 3;
+        int n_elem = 3;
+        int num_coords = 3;
         MPICArrayKokkos<double> elem_centroids(n_elem, num_coords,"elem_centroids");
         elem_centroids.initialize_comm_plan(comm_plan);
         FOR_ALL(elem_id, 0, n_elem,
