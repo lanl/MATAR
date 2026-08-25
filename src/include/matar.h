@@ -81,6 +81,9 @@
 #include "host_types.h"
 #include "kokkos_types.h"
 #include "aliases.h"
+
+#ifdef HAVE_MPI
 #include "mpi_types.h"
+#endif
 
 #endif // MATAR_H
