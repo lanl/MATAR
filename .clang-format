@@ -3,8 +3,11 @@ BasedOnStyle: Google
 
 # --- deviations from stock Google, matching existing MATAR code ---
 IndentWidth: 4
-ColumnLimit: 100
+ColumnLimit: 150
 AccessModifierOffset: -4
+
+# Never reorder #includes: preserves author-intended ordering
+SortIncludes: Never
 
 # --- MATAR / Kokkos macro handling ---
 # Complete-statement macros: prevents mis-indentation of following lines

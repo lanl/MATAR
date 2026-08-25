@@ -50,19 +50,22 @@
  1.  The syntax to use the FOR_ALL MACRO is as follows:
 
  // parallelization over a single loop
- FOR_ALL(k, 0, 10,
-        { loop contents is here });
+ FOR_ALL(k, 0, 10, {
+     loop contents is here
+ });
 
  // parallellization over two loops
  FOR_ALL(m, 0, 3,
-         n, 0, 3,
-        { loop contents is here });
+         n, 0, 3, {
+     loop contents is here
+ });
 
  // parallellization over three loops
  FOR_ALL(i, 0, 3,
          j, 0, 3,
-         k, 0, 3,
-        { loop contents is here });
+         k, 0, 3, {
+     loop contents is here
+ });
 
  // optional kernel name for Kokkos profiling (trailing string literal)
  FOR_ALL(i, 0, 10,
