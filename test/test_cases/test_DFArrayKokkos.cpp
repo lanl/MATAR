@@ -2,13 +2,11 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
-
+using namespace mtr;  // matar namespace
 
 // Helper function to create arrays of different dimensions
-DFArrayKokkos<double> return_DFArrayKokkos(int dims, std::vector<int> sizes)
-{
-    switch(dims) {
+DFArrayKokkos<double> return_DFArrayKokkos(int dims, std::vector<int> sizes) {
+    switch (dims) {
         case 1:
             return DFArrayKokkos<double>(sizes[0]);
         case 2:
@@ -29,8 +27,7 @@ DFArrayKokkos<double> return_DFArrayKokkos(int dims, std::vector<int> sizes)
 }
 
 // Test default constructor
-TEST(Test_DFArrayKokkos, default_constructor)
-{
+TEST(Test_DFArrayKokkos, default_constructor) {
     DFArrayKokkos<double> A;
     EXPECT_EQ(A.size(), 0);
     EXPECT_EQ(A.order(), 0);
@@ -38,24 +35,21 @@ TEST(Test_DFArrayKokkos, default_constructor)
 }
 
 // Test size function
-TEST(Test_DFArrayKokkos, size)
-{
+TEST(Test_DFArrayKokkos, size) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
-    EXPECT_EQ(size*size, A.size());
+    EXPECT_EQ(size * size, A.size());
 }
 
 // Test extent function
-TEST(Test_DFArrayKokkos, extent)
-{
+TEST(Test_DFArrayKokkos, extent) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
-    EXPECT_EQ(size*size, A.extent());
+    EXPECT_EQ(size * size, A.extent());
 }
 
 // Test dims function
-TEST(Test_DFArrayKokkos, dims)
-{
+TEST(Test_DFArrayKokkos, dims) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size, size);
     EXPECT_EQ(size, A.dims(0));
@@ -64,46 +58,41 @@ TEST(Test_DFArrayKokkos, dims)
 }
 
 // Test order function
-TEST(Test_DFArrayKokkos, order)
-{
+TEST(Test_DFArrayKokkos, order) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size, size);
     EXPECT_EQ(3, A.order());
 }
 
 // Test pointer function
-TEST(Test_DFArrayKokkos, pointer)
-{
+TEST(Test_DFArrayKokkos, pointer) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
     EXPECT_NE(A.host_pointer(), nullptr);
 }
 
 // Test get_name function
-TEST(Test_DFArrayKokkos, get_name)
-{
+TEST(Test_DFArrayKokkos, get_name) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size, "test_array");
     EXPECT_EQ(A.get_name(), "test_array");
 }
 
 // Test late initialization
-TEST(Test_DFArrayKokkos, late_init)
-{
+TEST(Test_DFArrayKokkos, late_init) {
     DFArrayKokkos<double> A;
     const int size = 100;
-    
+
     // Initialize after construction
     A = DFArrayKokkos<double>(size, size);
-    EXPECT_EQ(A.size(), size*size);
+    EXPECT_EQ(A.size(), size * size);
     EXPECT_EQ(A.order(), 2);
     EXPECT_EQ(A.dims(0), size);
     EXPECT_EQ(A.dims(1), size);
 }
 
 // Test assignment operator
-TEST(Test_DFArrayKokkos, eq_overload)
-{
+TEST(Test_DFArrayKokkos, eq_overload) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
     DFArrayKokkos<double> B(size, size);
@@ -116,47 +105,45 @@ TEST(Test_DFArrayKokkos, eq_overload)
     B = A;
 
     // Check values in B via host accessor
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            EXPECT_EQ(B.host(i,j), 42.0);
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            EXPECT_EQ(B.host(i, j), 42.0);
         }
     }
 }
 
 // Test set_values function
-TEST(Test_DFArrayKokkos, set_values)
-{
+TEST(Test_DFArrayKokkos, set_values) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
 
     A.set_values(42.0);
     A.update_host();
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            EXPECT_EQ(42.0, A.host(i,j));
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            EXPECT_EQ(42.0, A.host(i, j));
         }
     }
 }
 
 // Test operator access
-TEST(Test_DFArrayKokkos, operator_access)
-{
+TEST(Test_DFArrayKokkos, operator_access) {
     const int size = 10;
     DFArrayKokkos<double> A(size, size, size);
 
     // Test 3D access via host member
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            for(int k = 0; k < size; k++) {
-                A.host(i,j,k) = i*100 + j*10 + k;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            for (int k = 0; k < size; k++) {
+                A.host(i, j, k) = i * 100 + j * 10 + k;
             }
         }
     }
 
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            for(int k = 0; k < size; k++) {
-                EXPECT_EQ(i*100 + j*10 + k, A.host(i,j,k));
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            for (int k = 0; k < size; k++) {
+                EXPECT_EQ(i * 100 + j * 10 + k, A.host(i, j, k));
             }
         }
     }
@@ -164,56 +151,53 @@ TEST(Test_DFArrayKokkos, operator_access)
 
 #ifndef NDEBUG
 // Test bounds checking
-TEST(Test_DFArrayKokkos, bounds_checking)
-{
+TEST(Test_DFArrayKokkos, bounds_checking) {
     const int size = 10;
     DFArrayKokkos<double> A(size, size);
-    
+
     // Test valid access
-    A(5,5) = 42.0;
-    EXPECT_EQ(42.0, A(5,5));
-    
+    A(5, 5) = 42.0;
+    EXPECT_EQ(42.0, A(5, 5));
+
     // Test invalid access - should throw
-    EXPECT_DEATH(A(size,size), ".*");
+    EXPECT_DEATH(A(size, size), ".*");
 }
 #endif
 
 // Test different types
-TEST(Test_DFArrayKokkos, different_types)
-{
+TEST(Test_DFArrayKokkos, different_types) {
     const int size = 10;
 
     // Test int
     DFArrayKokkos<int> A(size, size);
     A.set_values(42);
     A.update_host();
-    EXPECT_EQ(42, A.host(5,5));
+    EXPECT_EQ(42, A.host(5, 5));
 
     // Test float
     DFArrayKokkos<float> B(size, size);
     B.set_values(42.0f);
     B.update_host();
-    EXPECT_EQ(42.0f, B.host(5,5));
+    EXPECT_EQ(42.0f, B.host(5, 5));
 
     // Test bool
     DFArrayKokkos<bool> C(size, size);
     C.set_values(true);
     C.update_host();
-    EXPECT_EQ(true, C.host(5,5));
+    EXPECT_EQ(true, C.host(5, 5));
 }
 
 // Test host-device synchronization
-TEST(Test_DFArrayKokkos, host_device_sync)
-{
+TEST(Test_DFArrayKokkos, host_device_sync) {
     const int size = 100;
     DFArrayKokkos<double> A(size, size);
-    
+
     // Set values on host
     A.set_values(42.0);
-    
+
     // Update device
     A.update_device();
-    
+
     // Modify on device
     A.set_values(24.0);
 
@@ -221,23 +205,22 @@ TEST(Test_DFArrayKokkos, host_device_sync)
     A.update_host();
 
     // Check values on host
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            EXPECT_EQ(24.0, A.host(i,j));
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            EXPECT_EQ(24.0, A.host(i, j));
         }
     }
 }
 
 // Test RAII behavior
-TEST(Test_DFArrayKokkos, raii)
-{
+TEST(Test_DFArrayKokkos, raii) {
     {
         DFArrayKokkos<double> A(100, 100);
         A.set_values(42.0);
         EXPECT_EQ(A.size(), 10000);
         // A should be destroyed at end of scope
     }
-    
+
     // Create new array to verify memory was freed
     DFArrayKokkos<double> B(100, 100);
     B.set_values(0.0);

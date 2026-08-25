@@ -2,12 +2,11 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 // Helper function to create arrays of different dimensions
-DViewFArrayKokkos<double> return_DViewFArrayKokkos(int dims, std::vector<int> sizes, double* data)
-{
-    switch(dims) {
+DViewFArrayKokkos<double> return_DViewFArrayKokkos(int dims, std::vector<int> sizes, double* data) {
+    switch (dims) {
         case 1:
             return DViewFArrayKokkos<double>(data, sizes[0]);
         case 2:
@@ -28,8 +27,7 @@ DViewFArrayKokkos<double> return_DViewFArrayKokkos(int dims, std::vector<int> si
 }
 
 // Test default constructor
-TEST(Test_DViewFArrayKokkos, default_constructor)
-{
+TEST(Test_DViewFArrayKokkos, default_constructor) {
     DViewFArrayKokkos<double> A;
     EXPECT_EQ(A.size(), 0);
     EXPECT_EQ(A.order(), 0);
@@ -37,30 +35,27 @@ TEST(Test_DViewFArrayKokkos, default_constructor)
 }
 
 // Test size function
-TEST(Test_DViewFArrayKokkos, size)
-{
+TEST(Test_DViewFArrayKokkos, size) {
     const int size = 100;
-    double* data = new double[size*size];
+    double* data   = new double[size * size];
     DViewFArrayKokkos<double> A(data, size, size);
-    EXPECT_EQ(size*size, A.size());
+    EXPECT_EQ(size * size, A.size());
     delete[] data;
 }
 
 // Test extent function
-TEST(Test_DViewFArrayKokkos, extent)
-{
+TEST(Test_DViewFArrayKokkos, extent) {
     const int size = 100;
-    double* data = new double[size*size];
+    double* data   = new double[size * size];
     DViewFArrayKokkos<double> A(data, size, size);
-    EXPECT_EQ(size*size, A.extent());
+    EXPECT_EQ(size * size, A.extent());
     delete[] data;
 }
 
 // Test dims function
-TEST(Test_DViewFArrayKokkos, dims)
-{
+TEST(Test_DViewFArrayKokkos, dims) {
     const int size = 100;
-    double* data = new double[size*size*size];
+    double* data   = new double[size * size * size];
     DViewFArrayKokkos<double> A(data, size, size, size);
     EXPECT_EQ(size, A.dims(0));
     EXPECT_EQ(size, A.dims(1));
@@ -69,20 +64,18 @@ TEST(Test_DViewFArrayKokkos, dims)
 }
 
 // Test order function
-TEST(Test_DViewFArrayKokkos, order)
-{
+TEST(Test_DViewFArrayKokkos, order) {
     const int size = 100;
-    double* data = new double[size*size*size];
+    double* data   = new double[size * size * size];
     DViewFArrayKokkos<double> A(data, size, size, size);
     EXPECT_EQ(3, A.order());
     delete[] data;
 }
 
 // Test pointer function
-TEST(Test_DViewFArrayKokkos, pointer)
-{
+TEST(Test_DViewFArrayKokkos, pointer) {
     const int size = 100;
-    double* data = new double[size*size];
+    double* data   = new double[size * size];
     DViewFArrayKokkos<double> A(data, size, size);
     EXPECT_NE(A.host_pointer(), nullptr);
     delete[] data;
@@ -99,42 +92,40 @@ TEST(Test_DViewFArrayKokkos, pointer)
 // }
 
 // Test set_values function
-TEST(Test_DViewFArrayKokkos, set_values)
-{
+TEST(Test_DViewFArrayKokkos, set_values) {
     const int size = 100;
-    double* data = new double[size*size];
+    double* data   = new double[size * size];
     DViewFArrayKokkos<double> A(data, size, size);
 
     A.set_values(42.0);
     A.update_host();
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            EXPECT_EQ(42.0, A.host(i,j));
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            EXPECT_EQ(42.0, A.host(i, j));
         }
     }
     delete[] data;
 }
 
 // Test operator access
-TEST(Test_DViewFArrayKokkos, operator_access)
-{
+TEST(Test_DViewFArrayKokkos, operator_access) {
     const int size = 10;
-    double* data = new double[size*size*size];
+    double* data   = new double[size * size * size];
     DViewFArrayKokkos<double> A(data, size, size, size);
 
     // Test 3D access via host member
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            for(int k = 0; k < size; k++) {
-                A.host(i,j,k) = i*100 + j*10 + k;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            for (int k = 0; k < size; k++) {
+                A.host(i, j, k) = i * 100 + j * 10 + k;
             }
         }
     }
 
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            for(int k = 0; k < size; k++) {
-                EXPECT_EQ(i*100 + j*10 + k, A.host(i,j,k));
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            for (int k = 0; k < size; k++) {
+                EXPECT_EQ(i * 100 + j * 10 + k, A.host(i, j, k));
             }
         }
     }
@@ -143,86 +134,81 @@ TEST(Test_DViewFArrayKokkos, operator_access)
 
 #ifndef NDEBUG
 // Test bounds checking
-TEST(Test_DViewFArrayKokkos, bounds_checking)
-{
+TEST(Test_DViewFArrayKokkos, bounds_checking) {
     const int size = 10;
-    double* data = new double[size*size];
+    double* data   = new double[size * size];
     DViewFArrayKokkos<double> A(data, size, size);
 
     // Test valid access via host member
-    A.host(5,5) = 42.0;
-    EXPECT_EQ(42.0, A.host(5,5));
+    A.host(5, 5) = 42.0;
+    EXPECT_EQ(42.0, A.host(5, 5));
 
     // Test invalid access - should throw
-    EXPECT_DEATH(A(size,size), ".*");
+    EXPECT_DEATH(A(size, size), ".*");
     delete[] data;
 }
 #endif
 
 // Test different types
-TEST(Test_DViewFArrayKokkos, different_types)
-{
+TEST(Test_DViewFArrayKokkos, different_types) {
     const int size = 10;
 
     // Test int
-    int* int_data = new int[size*size];
+    int* int_data = new int[size * size];
     DViewFArrayKokkos<int> A(int_data, size, size);
     A.set_values(42);
     A.update_host();
-    EXPECT_EQ(42, A.host(5,5));
+    EXPECT_EQ(42, A.host(5, 5));
     delete[] int_data;
 
     // Test float
-    float* float_data = new float[size*size];
+    float* float_data = new float[size * size];
     DViewFArrayKokkos<float> B(float_data, size, size);
     B.set_values(42.0f);
     B.update_host();
-    EXPECT_EQ(42.0f, B.host(5,5));
+    EXPECT_EQ(42.0f, B.host(5, 5));
     delete[] float_data;
 
     // Test bool
-    bool* bool_data = new bool[size*size];
+    bool* bool_data = new bool[size * size];
     DViewFArrayKokkos<bool> C(bool_data, size, size);
     C.set_values(true);
     C.update_host();
-    EXPECT_EQ(true, C.host(5,5));
+    EXPECT_EQ(true, C.host(5, 5));
     delete[] bool_data;
 }
 
 // Test host-device synchronization
-TEST(Test_DViewFArrayKokkos, host_device_sync)
-{
+TEST(Test_DViewFArrayKokkos, host_device_sync) {
     const int size = 100;
-    double* data = new double[size*size];
+    double* data   = new double[size * size];
     DViewFArrayKokkos<double> A(data, size, size);
-    
+
     // Set values on host
     A.set_values(42.0);
-    
+
     // Update host
     A.update_host();
-    
+
     // Check values on host
-    for(int i = 0; i < size; i++) {
-        for(int j = 0; j < size; j++) {
-            EXPECT_EQ(42.0, A.host(i,j));
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            EXPECT_EQ(42.0, A.host(i, j));
         }
     }
     delete[] data;
 }
 
-
 // Test RAII behavior
-TEST(Test_DViewFArrayKokkos, raii)
-{
-    double* data = new double[100*100];
+TEST(Test_DViewFArrayKokkos, raii) {
+    double* data = new double[100 * 100];
     {
         DViewFArrayKokkos<double> A(data, 100, 100);
         A.set_values(42.0);
         EXPECT_EQ(A.size(), 10000);
         // A should be destroyed at end of scope
     }
-    
+
     // Create new array to verify memory was freed
     DViewFArrayKokkos<double> B(data, 100, 100);
     B.set_values(0.0);

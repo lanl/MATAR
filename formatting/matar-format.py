@@ -137,12 +137,18 @@ def reindent_body(body_inner, target):
     if len(lines) == 1:
         stmt = lines[0].strip()
         return "\n" + target + INDENT + stmt + "\n" + target if stmt else ""
-    content = [ln for ln in lines[1:] if ln.strip()]
-    if not content:
+    # First line may carry content (e.g. a nested macro the recursion just
+    # expanded out of a single packed line) — it must not be dropped.
+    head = lines[0].strip()
+    rest = lines[1:]
+    content = [ln for ln in rest if ln.strip()]
+    if not content and not head:
         return "\n" + target
-    current = min(len(ln) - len(ln.lstrip()) for ln in content)
+    current = min(len(ln) - len(ln.lstrip()) for ln in content) if content else 0
     shifted = []
-    for ln in lines[1:]:
+    if head:
+        shifted.append(target + INDENT + head)
+    for ln in rest:
         shifted.append(target + INDENT + ln[current:] if ln.strip() else "")
     while shifted and not shifted[-1]:
         shifted.pop()
@@ -195,7 +201,16 @@ def main():
         # in old copyright headers) unchanged instead of erroring
         with open(path, encoding="utf-8", errors="surrogateescape") as f:
             original = f.read()
-        formatted = reflow(original)
+        # Iterate to a fixed point: deeply nested macros settle one level per
+        # pass (nested regeneration recomputes its alignment from the previous
+        # pass's placement).
+        formatted = original
+        for _ in range(10):
+            again = reflow(formatted)
+            if again == formatted:
+                break
+            formatted = again
+        formatted = re.sub(r"[ \t]+\n", "\n", formatted)
         if formatted != original:
             with open(path, "w", encoding="utf-8", errors="surrogateescape") as f:
                 f.write(formatted)
