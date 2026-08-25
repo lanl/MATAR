@@ -10002,9 +10002,9 @@ size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() con
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 KOKKOS_INLINE_FUNCTION
 size_t DynamicRaggedDownArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
-    assert(i < 3 && "DynamicRaggedDownArrayKokkos dims only supports dims(0) or dims(1)!");
+    assert(i < 2 && "DynamicRaggedDownArrayKokkos dims only supports dims(0) or dims(1)!");
     if(i == 0) return dim1_;
-    if(i == 1) return dim2_;
+    return dim2_;
 }
 
 // overload operator () to access data as an array(i,j)
