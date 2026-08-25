@@ -83,9 +83,4 @@
 #include "aliases.h"
 #include "mpi_types.h"
 
-#ifdef TRILINOS_INTERFACE
-#include "mapped_mpi_types.h"
-#include "tpetra_wrapper_types.h"
-#endif
-
 #endif // MATAR_H
