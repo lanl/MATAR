@@ -1,0 +1,38 @@
+# MATAR style: Google base with adjustments for MATAR/Kokkos idioms
+BasedOnStyle: Google
+
+# --- deviations from stock Google, matching existing MATAR code ---
+IndentWidth: 4
+ColumnLimit: 100
+AccessModifierOffset: -4
+
+# --- MATAR / Kokkos macro handling ---
+# Complete-statement macros: prevents mis-indentation of following lines
+StatementMacros:
+  - MATAR_INITIALIZE
+  - MATAR_FINALIZE
+  - MATAR_FENCE
+  - MATAR_MPI_INIT
+  - MATAR_MPI_FINALIZE
+  - MATAR_MPI_BARRIER
+
+# Declaration decorators
+AttributeMacros:
+  - KOKKOS_INLINE_FUNCTION
+  - KOKKOS_FUNCTION
+  - KOKKOS_LAMBDA
+  - KOKKOS_CLASS_LAMBDA
+
+# Keep the braced loop-body argument of parallel macros formatted as a block:
+# penalize packing so each index triple stays on its own line in multi-dim loops
+AlignAfterOpenBracket: Align
+AllowAllArgumentsOnNextLine: false
+BinPackArguments: false
+
+# Don't let clang-format merge short loop bodies onto one line inside macros
+AllowShortBlocksOnASingleLine: Never
+AllowShortLambdasOnASingleLine: None
+
+
+# MATAR convention: aligned consecutive assignments (deviation from Google)
+AlignConsecutiveAssignments: Consecutive
