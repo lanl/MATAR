@@ -1244,7 +1244,7 @@ void reduce_max (int i_start, int i_end,
 
 
 
-// MIN
+// PRODUCT
 template <typename T, typename F>
 void reduce_prod (int i_start, int i_end,
                   T var,
@@ -1252,6 +1252,39 @@ void reduce_prod (int i_start, int i_end,
     var = 1.0;
     for (int i=i_start; i<i_end; i++){
         lambda_fcn(i, var);
+    }
+    result = var;
+};  // end for_reduce
+
+
+template <typename T, typename F>
+void reduce_prod (int i_start, int i_end,
+                  int j_start, int j_end,
+                  T var,
+                  const F &lambda_fcn, T &result){
+    var = 1.0;
+    for (int i=i_start; i<i_end; i++){
+        for (int j=j_start; j<j_end; j++){
+            lambda_fcn(i, j, var);
+        }
+    }
+    result = var;
+};  // end for_reduce
+
+
+template <typename T, typename F>
+void reduce_prod (int i_start, int i_end,
+                  int j_start, int j_end,
+                  int k_start, int k_end,
+                  T var,
+                  const F &lambda_fcn, T &result){
+    var = 1.0;
+    for (int i=i_start; i<i_end; i++){
+        for (int j=j_start; j<j_end; j++){
+            for (int k=k_start; k<k_end; k++){
+                lambda_fcn(i, j, k, var);
+            }
+        }
     }
     result = var;
 };  // end for_reduce
@@ -1269,9 +1302,11 @@ void reduce_prod (int i_start, int i_end,
 
 // replace the CLASS loops to be the nominal loops
 #define FOR_ALL_CLASS FOR_ALL
-#define REDUCE_SUM_CLASS REDUCE_SUM
-#define REDUCE_MAX_CLASS REDUCE_MAX
-#define REDUCE_MIN_CLASS REDUCE_MIN
+#define FOR_REDUCE_SUM_CLASS FOR_REDUCE_SUM
+#define FOR_REDUCE_MAX_CLASS FOR_REDUCE_MAX
+#define FOR_REDUCE_MIN_CLASS FOR_REDUCE_MIN
+#define FOR_REDUCE_PRODUCT_CLASS FOR_REDUCE_PRODUCT
+#define RUN_CLASS RUN
 
 // the FOR_ALL loop is chosen based on the number of inputs
 
@@ -1475,6 +1510,40 @@ void reduce_prod (int i_start, int i_end,
 #define \
     DO_REDUCE_MIN(...) \
     EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, DO_RMIN3D_N, DO_RMIN3D, _13, DO_RMIN2D_N, DO_RMIN2D, _12, DO_RMIN1D_N, DO_RMIN1D, _11, _10)(__VA_ARGS__))
+
+
+// FOR_REDUCE_PRODUCT
+#define \
+    RPROD1D(i, x0, x1, var, fcn, result) \
+    reduce_prod( (x0), (x1), (var),  \
+                 [=]( const int (i), decltype(var) &(var) ){fcn}, \
+                 (result) )
+#define RPROD1D_N(i, x0, x1, var, fcn, result, name) RPROD1D(i, x0, x1, var, fcn, result)
+#define \
+    RPROD2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    reduce_prod( (x0), (x1), (y0), (y1), (var),  \
+                 [=]( const int (i), const int (j), decltype(var) &(var) ){fcn}, \
+                 (result) )
+#define RPROD2D_N(i, x0, x1, j, y0, y1, var, fcn, result, name) RPROD2D(i, x0, x1, j, y0, y1, var, fcn, result)
+#define \
+    RPROD3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    reduce_prod( (x0), (x1), (y0), (y1), (z0), (z1), (var),  \
+                 [=]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, \
+                 (result) )
+#define RPROD3D_N(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result, name) RPROD3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result)
+
+#define \
+    FOR_REDUCE_PRODUCT(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, RPROD3D_N, RPROD3D, _13, RPROD2D_N, RPROD2D, _12, RPROD1D_N, RPROD1D, _11, _10)(__VA_ARGS__))
+
+
+// run the code block once (serial equivalent of the device RUN macro)
+#define RUN1(fcn) do {fcn} while (false)
+#define RUN1_N(fcn, name) RUN1(fcn)
+
+#define \
+    RUN(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, _13, _12, _11, _10, _9, _8, _7, _6, _5, _4, _3, RUN1_N, RUN1)(__VA_ARGS__))
 
 
 #endif  // if not kokkos
