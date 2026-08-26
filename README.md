@@ -103,7 +103,7 @@ git clone --recursive https://github.com/lanl/MATAR.git
 ```
 
 ## Building MATAR
-MATAR is built entirely with CMake. Kokkos is bundled as a git submodule (`src/Kokkos/kokkos`) and is built automatically with the backend you select, so no separate Kokkos install is needed.
+MATAR is built entirely with CMake. Kokkos is bundled as a git submodule (`src/Kokkos/kokkos`), pinned to the Kokkos **5.2.1** release, and is built automatically with the backend you select, so no separate Kokkos install is needed. Kokkos 5 requires **C++20** and CMake >= 3.22 (CUDA builds additionally need CMake >= 3.25.2 for C++20 in the CUDA language), so `matar::matar` requests `cxx_std_20`.
 
 The provided CMake presets configure, build, and test MATAR with a given Kokkos backend:
 ```
