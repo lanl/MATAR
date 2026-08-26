@@ -76,7 +76,20 @@
         { "name": "openmp-debug",     "inherits": ["debug", "openmp"] },
         { "name": "cuda-debug",       "inherits": ["debug", "cuda"] },
         { "name": "hip-debug",        "inherits": ["debug", "hip"] },
-        { "name": "serial-mpi-debug", "inherits": ["debug", "serial-mpi"] }
+        { "name": "serial-mpi-debug", "inherits": ["debug", "serial-mpi"] },
+
+        {
+            "name": "serial-fp32",
+            "displayName": "Kokkos serial backend, real_t = float",
+            "inherits": "serial",
+            "cacheVariables": { "MATAR_REAL": "float" }
+        },
+        {
+            "name": "serial-fp16",
+            "displayName": "Kokkos serial backend, real_t = half (float-emulated on CPU)",
+            "inherits": "serial",
+            "cacheVariables": { "MATAR_REAL": "half" }
+        }
     ],
     "buildPresets": [
         { "name": "serial",           "configurePreset": "serial" },
@@ -92,7 +105,9 @@
         { "name": "openmp-debug",     "configurePreset": "openmp-debug" },
         { "name": "cuda-debug",       "configurePreset": "cuda-debug" },
         { "name": "hip-debug",        "configurePreset": "hip-debug" },
-        { "name": "serial-mpi-debug", "configurePreset": "serial-mpi-debug" }
+        { "name": "serial-mpi-debug", "configurePreset": "serial-mpi-debug" },
+        { "name": "serial-fp32",      "configurePreset": "serial-fp32" },
+        { "name": "serial-fp16",      "configurePreset": "serial-fp16" }
     ],
     "testPresets": [
         { "name": "serial",           "configurePreset": "serial",           "output": { "outputOnFailure": true } },
@@ -106,6 +121,8 @@
         { "name": "hip-mpi",          "configurePreset": "hip-mpi",          "output": { "outputOnFailure": true } },
         { "name": "serial-debug",     "configurePreset": "serial-debug",     "output": { "outputOnFailure": true } },
         { "name": "openmp-debug",     "configurePreset": "openmp-debug",     "output": { "outputOnFailure": true } },
-        { "name": "serial-mpi-debug", "configurePreset": "serial-mpi-debug", "output": { "outputOnFailure": true } }
+        { "name": "serial-mpi-debug", "configurePreset": "serial-mpi-debug", "output": { "outputOnFailure": true } },
+        { "name": "serial-fp32",      "configurePreset": "serial-fp32",      "output": { "outputOnFailure": true } },
+        { "name": "serial-fp16",      "configurePreset": "serial-fp16",      "output": { "outputOnFailure": true } }
     ]
 }

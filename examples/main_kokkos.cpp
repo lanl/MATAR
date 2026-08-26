@@ -52,9 +52,9 @@ overloaded(Ts...) -> overloaded<Ts...>;
 // A notional class
 class Data {
 private:
-    u_int nx_;
-    u_int ny_;
-    u_int nz_;
+    size_t nx_;
+    size_t ny_;
+    size_t nz_;
 
     CArrayKokkos<int> arr3D_;
 
@@ -63,14 +63,14 @@ public:
     Data();
 
     // overload constructor to set dimensions
-    Data(u_int nx, u_int ny, u_int nz);
+    Data(size_t nx, size_t ny, size_t nz);
 
     void some_fcn();
 };  // end class Data
 
 Data::Data() {};
 
-Data::Data(u_int nx, u_int ny, u_int nz) {
+Data::Data(size_t nx, size_t ny, size_t nz) {
     nx_ = nx;
     ny_ = ny;
     nz_ = nz;
@@ -316,7 +316,7 @@ int main(int argc, char* argv[]) {
         // -----------------------
         // parameters for examples
         // -----------------------
-        u_int size_i, size_j, size_k, size_l;
+        size_t size_i, size_j, size_k, size_l;
         size_i = 3;
         size_j = 4;
         size_k = 5;
@@ -991,7 +991,7 @@ FMatrixKokkos<int> return_by_val() {
     // -----------------------
     // parameters for examples
     // -----------------------
-    u_int size_i, size_j, size_k, size_l;
+    size_t size_i, size_j, size_k, size_l;
     size_i = 3;
     size_j = 4;
     size_k = 5;

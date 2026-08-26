@@ -40,8 +40,6 @@
 #include "host_types.h"
 #include "kokkos_types.h"
 
-using real_t = double;
-using u_int  = unsigned int;
 
 // simple data type names
 namespace mtr {

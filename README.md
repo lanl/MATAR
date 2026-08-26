@@ -131,6 +131,27 @@ The CMake options are:
 | `MATAR_BUILD_EXAMPLES` | OFF | Build the example programs |
 | `MATAR_BUILD_TESTS` | OFF | Build the unit tests (`ctest` to run) |
 | `MATAR_BUILD_BENCHMARKS` | OFF | Build the benchmarks |
+| `MATAR_REAL` | double | Precision of the `real_t` tier: `double`, `float`, `half`, `bfloat16`, `quad` |
+| `MATAR_HIGH_REAL` | double | Precision of the `high_real_t` tier: `double`, `float`, `quad` |
+| `MATAR_LOW_REAL` | double | Precision of the `low_real_t` tier: `double`, `float`, `half`, `bfloat16` |
+
+## Precision tiers
+
+MATAR provides three floating-point type names whose meaning is fixed at configure time — code just uses the names, and the CMake flags decide what they are per build/architecture:
+
+* `real_t` — the default working precision for field data
+* `high_real_t` — fields that must stay accurate (coordinates, conserved-quantity sums)
+* `low_real_t` — tolerant or bulk-storage fields (history buffers, gradients, output)
+
+```
+cmake --preset serial-fp32                 # real_t = float
+cmake -B build -DMATAR_REAL=half           # real_t = Kokkos half_t (native on GPU backends)
+cmake -B build -DMATAR_REAL=float -DMATAR_HIGH_REAL=double   # mixed
+```
+
+Notes:
+* `half`/`bfloat16` map to the native 16-bit types on CUDA/HIP/SYCL and are transparently float-backed on CPU backends (the macros `MATAR_FP16_IS_EMULATED`/`MATAR_BF16_IS_EMULATED` report which at compile time). `quad` is `__float128`, host backends only. Non-Kokkos builds support only `double` and `float`; anything else fails at configure.
+* User code only ever writes the three tier names — declare fields as `CArrayDevice<real_t>` (or `high_real_t`/`low_real_t`) and write constants as `real_t(0.5)`; the build flags decide what those names mean. The solvers in `solvers/` compute in `real_t`, so they run at whatever working precision the build selects.
 
 The Kokkos backend is selected with the standard Kokkos CMake variables (`Kokkos_ENABLE_OPENMP`, `Kokkos_ENABLE_CUDA`, `Kokkos_ENABLE_HIP`, `Kokkos_ARCH_*`, ...), which are passed through to the bundled Kokkos build. With `MATAR_ENABLE_KOKKOS=OFF`, MATAR is a dependency-free serial header-only library.
 

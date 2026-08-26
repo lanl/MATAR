@@ -1177,9 +1177,40 @@ FOR_ALL(i, 0, num_nodes, {
 ### Global Type Aliases
 
 ```cpp
-using real_t = double;
-using u_int  = unsigned int;
+// precision.h — meaning fixed at configure time by CMake flags (see below)
+using real_t      = mtr::real_t;       // default working tier   (MATAR_REAL,      default double)
+using high_real_t = mtr::high_real_t;  // must-stay-accurate tier (MATAR_HIGH_REAL, default double)
+using low_real_t  = mtr::low_real_t;   // tolerant/bulk tier      (MATAR_LOW_REAL,  default double)
+using u_int       = unsigned int;
 ```
+
+### Precision System (precision.h)
+
+Three compile-time-swappable tiers selected per build with CMake flags; user
+code only ever writes the tier names.
+
+| CMake flag | Values | Tier |
+|---|---|---|
+| `MATAR_REAL` | `double float half bfloat16 quad` | `real_t` |
+| `MATAR_HIGH_REAL` | `double float quad` | `high_real_t` |
+| `MATAR_LOW_REAL` | `double float half bfloat16` | `low_real_t` |
+
+Rules (hard rules for generated code):
+
+- **User-facing code uses ONLY the three tier names** `real_t` /
+  `high_real_t` / `low_real_t` — no other precision types, traits, or helper
+  functions exist in the public API. Declare fields with a tier
+  (`CArrayDevice<real_t>`), write constants by constructing the tier type
+  (`real_t(0.5)`, `real_t(0)`), and let the CMake flags fix the meaning.
+- `half`/`bfloat16` are native 16-bit on CUDA/HIP/SYCL and float-backed on
+  CPU backends (`MATAR_FP16_IS_EMULATED`/`MATAR_BF16_IS_EMULATED` report
+  which at compile time). `quad` = `__float128`, host-only. Non-Kokkos
+  builds allow only `double`/`float` (configure error otherwise).
+- Solver internals (and any MATAR-internal math) compute in `real_t`;
+  storage arrays of other tiers convert implicitly on read/write.
+- Reductions (`FOR_REDUCE_*`) work at every tier: precision.h supplies the
+  `Kokkos::reduction_identity` specializations Kokkos lacks (half types on
+  Kokkos < 5.2, `__float128` everywhere).
 
 ### Choosing the Right Type
 

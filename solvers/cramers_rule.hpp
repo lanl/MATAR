@@ -50,8 +50,8 @@ using namespace mtr;
 ///
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
-KOKKOS_INLINE_FUNCTION double det_2x2(const T& A) {
-    return A(0, 0) * A(1, 1) - A(0, 1) * A(1, 0);
+KOKKOS_INLINE_FUNCTION real_t det_2x2(const T& A) {
+    return real_t(A(0, 0)) * real_t(A(1, 1)) - real_t(A(0, 1)) * real_t(A(1, 0));
 }  // end of det_2d function
 
 /////////////////////////////////////////////////////////////////////////////
@@ -81,8 +81,8 @@ KOKKOS_INLINE_FUNCTION double det_2x2(const double a00, const double a01, const 
 ///
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
-KOKKOS_INLINE_FUNCTION double det_3x3(const T& A) {
-    const double det = A(0, 0) * (A(1, 1) * A(2, 2) - A(2, 1) * A(1, 2)) - A(0, 1) * (A(1, 0) * A(2, 2) - A(2, 0) * A(1, 2)) +
+KOKKOS_INLINE_FUNCTION real_t det_3x3(const T& A) {
+    const real_t det = A(0, 0) * (A(1, 1) * A(2, 2) - A(2, 1) * A(1, 2)) - A(0, 1) * (A(1, 0) * A(2, 2) - A(2, 0) * A(1, 2)) +
                        A(0, 2) * (A(1, 0) * A(2, 1) - A(2, 0) * A(1, 1));
 
     return det;
@@ -117,8 +117,8 @@ KOKKOS_INLINE_FUNCTION double det_3x3(const double a00, const double a01, const 
 ///
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
-KOKKOS_INLINE_FUNCTION double det_4x4(const T& A) {
-    const double det = A(0, 3) * A(1, 2) * A(2, 1) * A(3, 0) - A(0, 2) * A(1, 3) * A(2, 1) * A(3, 0) - A(0, 3) * A(1, 1) * A(2, 2) * A(3, 0) +
+KOKKOS_INLINE_FUNCTION real_t det_4x4(const T& A) {
+    const real_t det = A(0, 3) * A(1, 2) * A(2, 1) * A(3, 0) - A(0, 2) * A(1, 3) * A(2, 1) * A(3, 0) - A(0, 3) * A(1, 1) * A(2, 2) * A(3, 0) +
                        A(0, 1) * A(1, 3) * A(2, 2) * A(3, 0) + A(0, 2) * A(1, 1) * A(2, 3) * A(3, 0) - A(0, 1) * A(1, 2) * A(2, 3) * A(3, 0) -
                        A(0, 3) * A(1, 2) * A(2, 0) * A(3, 1) + A(0, 2) * A(1, 3) * A(2, 0) * A(3, 1) + A(0, 3) * A(1, 0) * A(2, 2) * A(3, 1) -
                        A(0, 0) * A(1, 3) * A(2, 2) * A(3, 1) - A(0, 2) * A(1, 0) * A(2, 3) * A(3, 1) + A(0, 0) * A(1, 2) * A(2, 3) * A(3, 1) +
@@ -146,7 +146,7 @@ KOKKOS_INLINE_FUNCTION double det_4x4(const T& A) {
 ///
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
-KOKKOS_INLINE_FUNCTION void invert_2x2(const T& A, const T& inv, const double det) {
+KOKKOS_INLINE_FUNCTION void invert_2x2(const T& A, const T& inv, const real_t det) {
     inv(0, 0) = A(1, 1) / (det + 1.e-16);
     inv(0, 1) = -A(0, 1) / (det + 1.e-16);
     inv(1, 0) = -A(1, 0) / (det + 1.e-16);
@@ -165,7 +165,7 @@ KOKKOS_INLINE_FUNCTION void invert_2x2(const T& A, const T& inv, const double de
 ///
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
-KOKKOS_INLINE_FUNCTION void invert_3x3(const T& A, const T& inv, const double det) {
+KOKKOS_INLINE_FUNCTION void invert_3x3(const T& A, const T& inv, const real_t det) {
     inv(0, 0) = +(A(1, 1) * A(2, 2) - A(1, 2) * A(2, 1)) / (det + 1e-16);
     inv(0, 1) = -(A(0, 1) * A(2, 2) - A(0, 2) * A(2, 1)) / (det + 1e-16);
     inv(0, 2) = +(A(0, 1) * A(1, 2) - A(0, 2) * A(1, 1)) / (det + 1e-16);
@@ -193,8 +193,8 @@ KOKKOS_INLINE_FUNCTION void invert_3x3(const T& A, const T& inv, const double de
 ///
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
-KOKKOS_INLINE_FUNCTION double invert_3x3(const T& A, const T& inv) {
-    double det = A(0, 0) * (A(1, 1) * A(2, 2) - A(1, 2) * A(2, 1)) - A(0, 1) * (A(1, 0) * A(2, 2) - A(1, 2) * A(2, 0)) +
+KOKKOS_INLINE_FUNCTION real_t invert_3x3(const T& A, const T& inv) {
+    real_t det = A(0, 0) * (A(1, 1) * A(2, 2) - A(1, 2) * A(2, 1)) - A(0, 1) * (A(1, 0) * A(2, 2) - A(1, 2) * A(2, 0)) +
                  A(0, 2) * (A(1, 0) * A(2, 1) - A(1, 1) * A(2, 0));
 
     inv(0, 0) = +(A(1, 1) * A(2, 2) - A(1, 2) * A(2, 1)) / (det + 1e-16);
@@ -225,15 +225,15 @@ KOKKOS_INLINE_FUNCTION double invert_3x3(const T& A, const T& inv) {
 ///
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
-KOKKOS_INLINE_FUNCTION double invert_4x4(const T& A, const T& inv) {
+KOKKOS_INLINE_FUNCTION real_t invert_4x4(const T& A, const T& inv) {
     // helper array
-    double cof[4][4];
+    real_t cof[4][4];
 
     // Compute cofactor matrix
     for (size_t i = 0; i < 4; ++i) {
         for (size_t j = 0; j < 4; ++j) {
             // Build 3x3 minor matrix excluding row i and column j
-            double minor[3][3];
+            real_t minor[3][3];
             size_t mi = 0;
             for (size_t ii = 0; ii < 4; ++ii) {
                 if (ii == i) continue;
@@ -260,7 +260,7 @@ KOKKOS_INLINE_FUNCTION double invert_4x4(const T& A, const T& inv) {
     }  // end i
 
     // Compute determinant from first row and cofactors
-    double det = 0.0;
+    real_t det = real_t(0);
     for (size_t j = 0; j < 4; ++j) {
         det += A(0, j) * cof[0][j];
     }  // end for j
@@ -287,15 +287,15 @@ KOKKOS_INLINE_FUNCTION double invert_4x4(const T& A, const T& inv) {
 ///
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
-KOKKOS_INLINE_FUNCTION void invert_4x4(const T& A, const T& inv, const double det) {
+KOKKOS_INLINE_FUNCTION void invert_4x4(const T& A, const T& inv, const real_t det) {
     // helper array
-    double cof[4][4];
+    real_t cof[4][4];
 
     // Compute cofactor matrix
     for (size_t i = 0; i < 4; ++i) {
         for (size_t j = 0; j < 4; ++j) {
             // Build 3x3 minor matrix excluding row i and column j
-            double minor[3][3];
+            real_t minor[3][3];
             size_t mi = 0;
             for (size_t ii = 0; ii < 4; ++ii) {
                 if (ii == i) continue;

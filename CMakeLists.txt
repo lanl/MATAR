@@ -76,6 +76,80 @@ target_include_directories(matar INTERFACE
 )
 
 # -----------------------------------------------------------------------------
+# Floating-point precision tiers
+#
+# Three independently swappable tiers, fixed at configure time:
+#   real_t       default working precision      (MATAR_REAL)
+#   high_real_t  must-stay-accurate fields      (MATAR_HIGH_REAL)
+#   low_real_t   tolerant / bulk-storage fields (MATAR_LOW_REAL)
+# Values: double (default) | float | half | bfloat16 | quad.
+# No-Kokkos builds support only double and float. quad (__float128) is
+# host-backend-only and needs Kokkos_ENABLE_LIBQUADMATH.
+# -----------------------------------------------------------------------------
+set(MATAR_REAL      "double" CACHE STRING "Precision of the real_t tier")
+set(MATAR_HIGH_REAL "double" CACHE STRING "Precision of the high_real_t tier")
+set(MATAR_LOW_REAL  "double" CACHE STRING "Precision of the low_real_t tier")
+set_property(CACHE MATAR_REAL      PROPERTY STRINGS double float half bfloat16 quad)
+set_property(CACHE MATAR_HIGH_REAL PROPERTY STRINGS double float quad)
+set_property(CACHE MATAR_LOW_REAL  PROPERTY STRINGS double float half bfloat16)
+
+function(matar_precision_token tier value out_token)
+    string(TOLOWER "${value}" v)
+    set(map_double MATAR_FP64)
+    set(map_float  MATAR_FP32)
+    set(map_half   MATAR_FP16)
+    set(map_bfloat16 MATAR_BF16)
+    set(map_quad   MATAR_FP128)
+    if(NOT DEFINED map_${v})
+        message(FATAL_ERROR "MATAR_${tier}=${value} is not a recognized precision "
+                            "(valid values: double, float, half, bfloat16, quad)")
+    endif()
+    if(NOT v MATCHES "^(double|float)$" AND NOT MATAR_ENABLE_KOKKOS)
+        message(FATAL_ERROR "MATAR_${tier}=${value} requires a Kokkos build; "
+                            "no-Kokkos builds support only double and float")
+    endif()
+    if(tier STREQUAL "HIGH_REAL" AND v MATCHES "^(half|bfloat16)$")
+        message(FATAL_ERROR "MATAR_HIGH_REAL=${value}: the high-precision tier "
+                            "must be double, float, or quad")
+    endif()
+    if(v STREQUAL "quad" AND (Kokkos_ENABLE_CUDA OR Kokkos_ENABLE_HIP OR Kokkos_ENABLE_SYCL))
+        message(FATAL_ERROR "MATAR_${tier}=quad: __float128 is host-only and "
+                            "cannot be combined with a GPU backend")
+    endif()
+    if(v STREQUAL "bfloat16" AND Kokkos_ENABLE_HIP)
+        message(WARNING "MATAR_${tier}=bfloat16 with the HIP backend may be "
+                        "float-emulated depending on the Kokkos version "
+                        "(check MATAR_BF16_IS_EMULATED at compile time)")
+    endif()
+    set(${out_token} ${map_${v}} PARENT_SCOPE)
+endfunction()
+
+matar_precision_token(REAL      "${MATAR_REAL}"      MATAR_REAL_TOKEN)
+matar_precision_token(HIGH_REAL "${MATAR_HIGH_REAL}" MATAR_HIGH_REAL_TOKEN)
+matar_precision_token(LOW_REAL  "${MATAR_LOW_REAL}"  MATAR_LOW_REAL_TOKEN)
+
+# Emit definitions only for non-default tiers (existing consumers see
+# unchanged command lines; precision.h defaults undefined tiers to double).
+if(NOT MATAR_REAL STREQUAL "double")
+    target_compile_definitions(matar INTERFACE MATAR_REAL_TYPE=${MATAR_REAL_TOKEN})
+endif()
+if(NOT MATAR_HIGH_REAL STREQUAL "double")
+    target_compile_definitions(matar INTERFACE MATAR_HIGH_REAL_TYPE=${MATAR_HIGH_REAL_TOKEN})
+endif()
+if(NOT MATAR_LOW_REAL STREQUAL "double")
+    target_compile_definitions(matar INTERFACE MATAR_LOW_REAL_TYPE=${MATAR_LOW_REAL_TOKEN})
+endif()
+
+if(MATAR_REAL STREQUAL "quad" OR MATAR_HIGH_REAL STREQUAL "quad" OR MATAR_LOW_REAL STREQUAL "quad")
+    set(MATAR_ANY_QUAD ON)
+    # Must be in the cache before add_subdirectory(src/Kokkos/kokkos) below
+    set(Kokkos_ENABLE_LIBQUADMATH ON CACHE BOOL "Required for MATAR quad-precision tiers" FORCE)
+    if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+        target_link_libraries(matar INTERFACE quadmath)
+    endif()
+endif()
+
+# -----------------------------------------------------------------------------
 # Kokkos
 #
 # Backend selection is done with the standard Kokkos cache variables
@@ -115,6 +189,14 @@ if(MATAR_ENABLE_KOKKOS)
         target_compile_definitions(matar INTERFACE HAVE_OPENMP=1)
     elseif(Kokkos_ENABLE_THREADS)
         target_compile_definitions(matar INTERFACE HAVE_THREADS=1)
+    endif()
+
+    # quad tiers force LIBQUADMATH on for the bundled build; an external or
+    # parent-provided Kokkos must already have it.
+    if(MATAR_ANY_QUAD AND NOT MATAR_KOKKOS_PROVIDER STREQUAL "bundled" AND NOT Kokkos_ENABLE_LIBQUADMATH)
+        message(FATAL_ERROR
+            "A MATAR quad-precision tier requires Kokkos built with "
+            "Kokkos_ENABLE_LIBQUADMATH=ON; the ${MATAR_KOKKOS_PROVIDER} Kokkos lacks it")
     endif()
 endif()
 

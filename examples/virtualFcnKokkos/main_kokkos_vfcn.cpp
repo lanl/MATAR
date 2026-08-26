@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -57,14 +57,14 @@ int main() {
         InitChildModels(parent, 1, baby1{1.4, 1.0});  // Kokkos Function to create new instances of the baby1 models on the GPU
 
         // Model test, also shows a Kokkos reduction
-        double value_1;
+        real_t value_1;
         Kokkos::parallel_reduce(
             "CheckValues",
             num_parent,
             KOKKOS_LAMBDA(const int idx, real_t& lsum) { lsum += parent(idx).child->math(2.0, 4.0); },
             value_1);
 
-        printf("value %f\n", value_1);
+        printf("value %f\n", static_cast<double>(value_1));
 
         ClearDeviceModels(parent);  // Kokkos Function to call deconstructors of objects on the GPU
 

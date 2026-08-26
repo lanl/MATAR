@@ -44,7 +44,12 @@
 #include "matar.h"
 using namespace mtr;
 
-const double TINY = 1e-15;
+// Precision-scaled singularity guard: a few ulps above zero at the working
+// precision (a fixed 1e-15 is meaningless below double precision).
+template <typename T>
+KOKKOS_INLINE_FUNCTION T lu_tiny() {
+    return mtr::impl::epsilon<T>() * T(10);
+}
 
 // ---------------------------
 // LU decomposition functions
@@ -63,19 +68,19 @@ KOKKOS_FUNCTION int LU_decompose(const T1& A,     // device array A (e.g., DCArr
     parity = 1;
 
     // helper variables
-    double temp;
+    real_t temp;
 
     // search for the largest element in each row; save the scaling in the
     // temporary array vv and return zero if the array is singular
     for (size_t i = 0; i < n; i++) {
-        double big = 0.;
+        real_t big = real_t(0);
         for (size_t j = 0; j < n; j++) {
-            if ((temp = fabs(A(i, j))) > big) {
+            if ((temp = mtr::impl::fabs(A(i, j))) > big) {
                 big = temp;
             }
         }
 
-        if (big == 0.0) return (0);
+        if (big == real_t(0)) return (0);
 
         vv(i) = big;
     }
@@ -84,7 +89,7 @@ KOKKOS_FUNCTION int LU_decompose(const T1& A,     // device array A (e.g., DCArr
     for (size_t j = 0; j < n; j++) {
         // this is the part a) of the algorithm except for i==j
         for (size_t i = 0; i < j; i++) {
-            double sum = A(i, j);
+            real_t sum = A(i, j);
 
             for (size_t k = 0; k < i; k++) {
                 sum -= A(i, k) * A(k, j);
@@ -94,12 +99,12 @@ KOKKOS_FUNCTION int LU_decompose(const T1& A,     // device array A (e.g., DCArr
         }
 
         // initialize for the search for the largest pivot element
-        double big  = 0.;
+        real_t big  = real_t(0);
         size_t imax = j;
 
         // this is the part a) for i==j and part b) for i>j + pivot search
         for (size_t i = j; i < n; i++) {
-            double sum = A(i, j);
+            real_t sum = A(i, j);
 
             for (size_t k = 0; k < j; k++) {
                 sum -= A(i, k) * A(k, j);
@@ -108,7 +113,7 @@ KOKKOS_FUNCTION int LU_decompose(const T1& A,     // device array A (e.g., DCArr
             A(i, j) = sum;
 
             // is the figure of merit for the pivot better than the best so far?
-            if ((temp = vv(i) * fabs(sum)) >= big) {
+            if ((temp = vv(i) * mtr::impl::fabs(sum)) >= big) {
                 big  = temp;
                 imax = i;
             }
@@ -131,13 +136,13 @@ KOKKOS_FUNCTION int LU_decompose(const T1& A,     // device array A (e.g., DCArr
         // if the pivot element is zero, the array is singular but for some
         // applications a tiny number is desirable instead
 
-        if (A(j, j) == 0.0) {
-            A(j, j) = TINY;
+        if (A(j, j) == real_t(0)) {
+            A(j, j) = lu_tiny<real_t>();
         }
         // finally, divide by the pivot element
 
         if (j < n - 1) {
-            temp = 1. / A(j, j);
+            temp = real_t(1) / real_t(A(j, j));
             for (size_t i = j + 1; i < n; i++) {
                 A(i, j) *= temp;
             }  // end for i
@@ -169,14 +174,14 @@ KOKKOS_FUNCTION void LU_backsub(const T1& A,     // input array A (e.g., DCArray
     for (size_t i = 0; i < n; i++) {
         size_t ip = perm(i);
 
-        double sum = b(ip);
+        real_t sum = b(ip);
         b(ip)      = b(i);
 
         if (ii >= 0) {
             for (size_t j = ii; j < i; j++) {
                 sum -= A(i, j) * b(j);
             }
-        } else if (sum > 0) {
+        } else if (sum > real_t(0)) {
             ii = i;  // a nonzero element encounted
         }
 
@@ -185,12 +190,12 @@ KOKKOS_FUNCTION void LU_backsub(const T1& A,     // input array A (e.g., DCArray
 
     // the second step
     for (int i = n - 1; i >= 0; i--) {
-        double sum = b(i);
+        real_t sum = b(i);
         for (size_t j = i + 1; j < n; j++) {
             sum -= A(i, j) * b(j);
         }  // end j
 
-        b(i) = sum / A(i, i);
+        b(i) = sum / real_t(A(i, i));
     }  // end loop i
 
 }  // end if
@@ -230,12 +235,12 @@ KOKKOS_INLINE_FUNCTION void LU_invert(T1& A,        // input array, e.g., DCArra
 //  Output: determinate of original A array
 // -----------------------
 template <typename T>
-KOKKOS_INLINE_FUNCTION double LU_determinant(T& A,                // input array, e.g., DCArrayKokkos <double>
+KOKKOS_INLINE_FUNCTION real_t LU_determinant(T& A,                // input array, e.g., DCArrayKokkos <double>
                                              const int parity) {  // parity (+1 0r -1)
 
     const int n = A.dims(0);  // size of array
 
-    double res = (double)(parity);
+    real_t res = real_t(parity);
 
     for (size_t j = 0; j < n; j++) {
         res *= A(j, j);
@@ -260,7 +265,7 @@ int LU_decompose_host(T1& A,          // device array A (e.g., DCArrayKokkos <do
 
     const int n = A.dims(0);  // size of array
 
-    CArrayKokkos<double> temp_scalar(1);  // persistant scalar on device
+    CArrayKokkos<real_t> temp_scalar(1);  // persistant scalar on device
 
     parity = 1;
 
@@ -268,31 +273,33 @@ int LU_decompose_host(T1& A,          // device array A (e.g., DCArrayKokkos <do
     // search for the largest element in each row; save the scaling in the
     // temporary array vv and return zero if the array is singular
     FOR_FIRST(i, 0, n, {
-        double max_val     = 0.0;
-        double max_val_lcl = 0.0;
+        real_t max_val     = real_t(0);
+        real_t max_val_lcl = real_t(0);
 
-        FOR_REDUCE_MAX_SECOND(j, 0, n, max_val_lcl, { max_val_lcl = fmax(max_val_lcl, fabs(A(i, j))); },
-                              max_val);  // end parallel j
+        FOR_REDUCE_MAX_SECOND(j, 0, n,
+                              max_val_lcl, {
+            max_val_lcl = mtr::impl::fmax(max_val_lcl, real_t(mtr::impl::fabs(A(i, j))));
+        }, max_val);  // end parallel j
 
         vv(i) = max_val;
     });  // end for
 
     // if the largest value in the array row is 0, then exit
-    double min_val     = 0.0;
-    double min_val_lcl = 0.0;
+    real_t min_val     = real_t(0);
+    real_t min_val_lcl = real_t(0);
     FOR_REDUCE_MIN(i, 0, n,
                    min_val_lcl, {
-        min_val_lcl = fmin(vv(i), min_val_lcl);
+        min_val_lcl = mtr::impl::fmin(real_t(vv(i)), min_val_lcl);
     }, min_val);
-    if (min_val < TINY) return (0);  // singular array as all row values are 0
+    if (min_val < lu_tiny<real_t>()) return (0);  // singular array as all row values are 0
 
     // STEP 2:
     // the main loop for the Crout's algorithm
     for (size_t j = 0; j < n; j++) {
         // this is the part a) of the algorithm except for i==j
         for (size_t i = 0; i < j; i++) {
-            double sum     = 0.0;
-            double sum_lcl = 0.0;
+            real_t sum     = real_t(0);
+            real_t sum_lcl = real_t(0);
 
             FOR_REDUCE_SUM(k, 0, i,
                            sum_lcl, {
@@ -306,8 +313,8 @@ int LU_decompose_host(T1& A,          // device array A (e.g., DCArrayKokkos <do
         // this is the part a) for i==j and part b) for i>j
         // loop is from i=j to i<n
         for (size_t i = j; i < n; i++) {
-            double sum     = 0.0;
-            double sum_lcl = 0.0;
+            real_t sum     = real_t(0);
+            real_t sum_lcl = real_t(0);
 
             FOR_REDUCE_SUM(k, 0, j,
                            sum_lcl, {
@@ -319,14 +326,14 @@ int LU_decompose_host(T1& A,          // device array A (e.g., DCArrayKokkos <do
 
         // initialize the search for the largest pivot element
 
-        double max_val     = 0.0;
-        double max_val_lcl = 0.0;
+        real_t max_val     = real_t(0);
+        real_t max_val_lcl = real_t(0);
         // loop is from i=j to i<n
         FOR_REDUCE_MAX(i, j, n,
                        max_val_lcl, {
             // is the figure of merit for the pivot better than the best so far?
-            if (vv(i) * fabs(A(i, j)) >= max_val_lcl) {
-                max_val_lcl = vv(i) * fabs(A(i, j));
+            if (vv(i) * mtr::impl::fabs(A(i, j)) >= max_val_lcl) {
+                max_val_lcl = vv(i) * mtr::impl::fabs(A(i, j));
             }  // end if
         }, max_val);  // end for i
         Kokkos::fence();
@@ -337,7 +344,7 @@ int LU_decompose_host(T1& A,          // device array A (e.g., DCArrayKokkos <do
         FOR_REDUCE_MAX(i, j, n,
                        imax_lcl, {
             // is the figure of merit for the pivot better than the best so far?
-            if (vv(i) * fabs(A(i, j)) >= max_val) {
+            if (vv(i) * mtr::impl::fabs(A(i, j)) >= max_val) {
                 imax_lcl = i;
             }  // end if
         }, imax);  // end for i
@@ -346,7 +353,7 @@ int LU_decompose_host(T1& A,          // device array A (e.g., DCArrayKokkos <do
         // interchange rows, if needed, change parity and the scale factor
         if (imax != j) {
             FOR_ALL(k, 0, n, {
-                double temp = A(imax, k);
+                real_t temp = A(imax, k);
                 A(imax, k)  = A(j, k);
                 A(j, k)     = temp;
             });
@@ -362,14 +369,14 @@ int LU_decompose_host(T1& A,          // device array A (e.g., DCArrayKokkos <do
         // if the pivot element is zero, the array is singular but for some
         // applications a tiny number is desirable instead
         RUN({
-            if (A(j, j) == 0.0) {
-                A(j, j) = TINY;
+            if (A(j, j) == real_t(0)) {
+                A(j, j) = lu_tiny<real_t>();
             }
         });
 
         // finally, divide by the pivot element
         if (j < n - 1) {
-            RUN({ temp_scalar(0) = 1.0 / A(j, j); });
+            RUN({ temp_scalar(0) = real_t(1) / real_t(A(j, j)); });
 
             // loop is from i=j+1 to i<n
             FOR_ALL(i, j + 1, n, {
@@ -395,7 +402,7 @@ void LU_backsub_host(const T1& A,     // input array A (e.g., DCArrayKokkos <dou
 
     const int n = A.dims(0);  // size of array
 
-    CArrayKokkos<double> val(1);  // a helper variable that carries a scalar
+    CArrayKokkos<real_t> val(1);  // a helper variable that carries a scalar
 
     // First step of backsubstitution; the only wrinkle is to unscramble
     // the permutation order. Note, the algorithm is optimized for a
@@ -410,8 +417,8 @@ void LU_backsub_host(const T1& A,     // input array A (e.g., DCArrayKokkos <dou
             b(ip)  = b(i);
         });
 
-        double sum     = 0.0;
-        double sum_lcl = 0.0;
+        real_t sum     = real_t(0);
+        real_t sum_lcl = real_t(0);
 
         // j=0 to j<i
         FOR_REDUCE_SUM(j, 0, i,
@@ -427,8 +434,8 @@ void LU_backsub_host(const T1& A,     // input array A (e.g., DCArrayKokkos <dou
     // the second step
     // Backward substitution: solve U b = x
     for (int i = n - 1; i >= 0; i--) {
-        double sum     = 0.0;
-        double sum_lcl = 0.0;
+        real_t sum     = real_t(0);
+        real_t sum_lcl = real_t(0);
 
         // for j=i+1 to j<N
         FOR_REDUCE_SUM(j, i + 1, n,
@@ -437,7 +444,7 @@ void LU_backsub_host(const T1& A,     // input array A (e.g., DCArrayKokkos <dou
         }, sum);
         Kokkos::fence();
 
-        RUN({ b(i) = (sum + b(i)) / A(i, i); });
+        RUN({ b(i) = (sum + b(i)) / real_t(A(i, i)); });
 
     }  // end for i
 
@@ -449,14 +456,14 @@ void LU_backsub_host(const T1& A,     // input array A (e.g., DCArrayKokkos <dou
 //  Output: determinate of original A array
 // -----------------------
 template <typename T>
-double LU_determinant_host(T& A,                // input array (e.g., DCArrayKokkos <double>)
+real_t LU_determinant_host(T& A,                // input array (e.g., DCArrayKokkos <double>)
                            const int parity) {  // parity (+1 0r -1)
 
     const int n = A.dims(0);  // size of array
 
-    double res = (double)(parity);
-    double prod_tally;
-    double prod_lcl = 1.0;
+    real_t res = real_t(parity);
+    real_t prod_tally;
+    real_t prod_lcl = real_t(1);
 
     FOR_REDUCE_PRODUCT(j, 0, n,
                        prod_lcl, {

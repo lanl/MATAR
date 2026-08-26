@@ -75,6 +75,7 @@
 //   31. DViewFArrayKokkos
 //   32. DViewFMatrixKokkos
 
+#include "precision.h"
 #include "aliases.h"
 #include "host_types.h"
 #include "kokkos_types.h"

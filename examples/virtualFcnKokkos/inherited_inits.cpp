@@ -33,7 +33,7 @@
  **********************************************************************************************/
 #include "inherited_inits.hpp"
 
-void AllocateHost(ParentHost1D h_parent, u_int idx, size_t size) { h_parent(idx).child = (child_models*)kmalloc(size); }
+void AllocateHost(ParentHost1D h_parent, size_t idx, size_t size) { h_parent(idx).child = (child_models*)kmalloc(size); }
 
 void FreeHost(ParentHost1D h_parent) {
     for (int mem = 0; mem < h_parent.extent(0); mem++) {
@@ -41,7 +41,7 @@ void FreeHost(ParentHost1D h_parent) {
     }
 }
 
-void InitChildModels(Parent1D parent, u_int idx, baby2 baby2_inp) {
+void InitChildModels(Parent1D parent, size_t idx, baby2 baby2_inp) {
     Kokkos::parallel_for(
         "CreateObjects",
         1,
@@ -51,7 +51,7 @@ void InitChildModels(Parent1D parent, u_int idx, baby2 baby2_inp) {
         });
 }
 
-void InitChildModels(Parent1D parent, u_int idx, baby1 baby1_inp) {
+void InitChildModels(Parent1D parent, size_t idx, baby1 baby1_inp) {
     Kokkos::parallel_for(
         "CreateObjects",
         1,

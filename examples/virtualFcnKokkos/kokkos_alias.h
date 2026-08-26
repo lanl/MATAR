@@ -1,5 +1,5 @@
 /**********************************************************************************************
- © 2020. Triad National Security, LLC. All rights reserved.
+ ï¿½ 2020. Triad National Security, LLC. All rights reserved.
  This program was produced under U.S. Government contract 89233218CNA000001 for Los Alamos
  National Laboratory (LANL), which is operated by Triad National Security, LLC for the U.S.
  Department of Energy/National Nuclear Security Administration. All rights in the program are
@@ -45,8 +45,8 @@
 // #define ProfileRegionStart  ( Kokkos::Profiling::pushRegion )
 // #define ProfileRegionEnd  ( Kokkos::Profiling::popRegion )
 
-using real_t = double;
-using u_int  = unsigned int;
+// real_t, TeamPolicy, RMatrix*/IMatrix*/SVar/SArray2D-5D/SHArray1D
+// all come from matar.h (precision.h + kokkos_types.h)
 
 /*
 #ifdef HAVE_CUDA
@@ -69,28 +69,10 @@ using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
 */
 
-using TeamPolicy      = Kokkos::TeamPolicy<DefaultExecSpace>;
 using mdrange_policy2 = Kokkos::MDRangePolicy<Kokkos::Rank<2>>;
 using mdrange_policy3 = Kokkos::MDRangePolicy<Kokkos::Rank<3>>;
 
-using RMatrix1D = Kokkos::View<real_t*, DefaultLayout, DefaultExecSpace>;
-using RMatrix2D = Kokkos::View<real_t**, DefaultLayout, DefaultExecSpace>;
-using RMatrix3D = Kokkos::View<real_t***, DefaultLayout, DefaultExecSpace>;
-using RMatrix4D = Kokkos::View<real_t****, DefaultLayout, DefaultExecSpace>;
-using RMatrix5D = Kokkos::View<real_t*****, DefaultLayout, DefaultExecSpace>;
-using IMatrix1D = Kokkos::View<int*, DefaultLayout, DefaultExecSpace>;
-using IMatrix2D = Kokkos::View<int**, DefaultLayout, DefaultExecSpace>;
-using IMatrix3D = Kokkos::View<int***, DefaultLayout, DefaultExecSpace>;
-using IMatrix4D = Kokkos::View<int****, DefaultLayout, DefaultExecSpace>;
-using IMatrix5D = Kokkos::View<int*****, DefaultLayout, DefaultExecSpace>;
-using SVar      = Kokkos::View<size_t, DefaultLayout, DefaultExecSpace>;
-using SArray1D  = Kokkos::View<size_t*, DefaultLayout, DefaultExecSpace>;
-using SArray2D  = Kokkos::View<size_t**, DefaultLayout, DefaultExecSpace>;
-using SArray3D  = Kokkos::View<size_t***, DefaultLayout, DefaultExecSpace>;
-using SArray4D  = Kokkos::View<size_t****, DefaultLayout, DefaultExecSpace>;
-using SArray5D  = Kokkos::View<size_t*****, DefaultLayout, DefaultExecSpace>;
-
-using SHArray1D = Kokkos::View<size_t*, DefaultLayout, Kokkos::HostSpace>;
+using SArray1D = Kokkos::View<size_t*, DefaultLayout, DefaultExecSpace>;
 
 using Parent1D     = Kokkos::View<parent_models*, DefaultLayout, DefaultExecSpace>;
 using ParentHost1D = Kokkos::View<parent_models*, DefaultLayout, Kokkos::HostSpace>;

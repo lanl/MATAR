@@ -26,6 +26,7 @@ jobs:
         - {name: "TEST_UBUNTU_OPENMP_RELEASE",   os: ubuntu-latest, preset: "openmp"}
         # Kokkos + MPI: registers MPICArrayKokkos_mpi_suite (mpirun from CTest).
         - {name: "TEST_UBUNTU_SERIAL_MPI_DEBUG", os: ubuntu-latest, preset: "serial-mpi-debug"}
+        - {name: "TEST_UBUNTU_SERIAL_FP32",      os: ubuntu-latest, preset: "serial-fp32"}
         - {name: "TEST_MAC_SERIAL_DEBUG",        os: macos-14,      preset: "serial-debug"}
         - {name: "TEST_MAC_SERIAL_RELEASE",      os: macos-14,      preset: "serial"}
 

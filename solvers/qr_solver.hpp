@@ -75,8 +75,8 @@ void QR_backsub_host(const T1& R,  // e.g., DCArrayKokkos <double>
     for (int i = n - 1; i >= 0; --i) {
         RUN({ x(i) = y(i); });
 
-        double sum     = 0.0;
-        double sum_lcl = 0.0;
+        real_t sum     = real_t(0);
+        real_t sum_lcl = real_t(0);
 
         FOR_REDUCE_SUM(j, i + 1, n,
                        sum_lcl, {
@@ -106,7 +106,8 @@ void QR_decompose_host(const T1& A,  // e.g., DCArrayKokkos <double>
     Q.set_values(0.0);
     R.set_values(0.0);
 
-    DCArrayKokkos<double> v(n, m, "v");
+    // Gram-Schmidt intermediates carry the accumulator precision
+    DCArrayKokkos<real_t> v(n, m, "v");
 
     // Copy columns of A to v, and taking transpose
     FOR_ALL(i, 0, m,
@@ -117,8 +118,8 @@ void QR_decompose_host(const T1& A,  // e.g., DCArrayKokkos <double>
 
     for (size_t i = 0; i < n; ++i) {
         // find the norm of a column in matrix v for row i
-        double tally     = 0.0;
-        double tally_lcl = 0.0;
+        real_t tally     = real_t(0);
+        real_t tally_lcl = real_t(0);
 
         FOR_REDUCE_SUM(j, 0, m,
                        tally_lcl, {
@@ -128,7 +129,7 @@ void QR_decompose_host(const T1& A,  // e.g., DCArrayKokkos <double>
         Kokkos::fence();
 
         RUN({
-            R(i, i) = sqrt(tally);  // row i norm
+            R(i, i) = mtr::impl::sqrt(tally);  // row i norm
         });
         // done with norm calc
 
@@ -161,15 +162,20 @@ void QR_decompose_host(const T1& A,  // e.g., DCArrayKokkos <double>
         FOR_FIRST(jj, i + 1, n, {
             R(i, jj) = 0.0;
 
-            double sum     = 0;
-            double sum_lcl = 0;
+            real_t sum     = real_t(0);
+            real_t sum_lcl = real_t(0);
 
-            FOR_REDUCE_SUM_SECOND(k, 0, m, sum_lcl, { sum_lcl += Q(k, i) * A(k, jj); }, sum);
+            FOR_REDUCE_SUM_SECOND(k, 0, m,
+                                  sum_lcl, {
+                sum_lcl += Q(k, i) * A(k, jj);
+            }, sum);
             R(i, jj) = sum;
 
             teamMember.team_barrier();
 
-            FOR_SECOND(k, 0, m, { v(jj, k) -= sum * Q(k, i); });
+            FOR_SECOND(k, 0, m, {
+                v(jj, k) -= sum * Q(k, i);
+            });
 
             teamMember.team_barrier();
         });  // end parallel j
@@ -181,7 +187,7 @@ void QR_decompose_host(const T1& A,  // e.g., DCArrayKokkos <double>
 }  // end function
 
 template <typename T1, typename T2>
-double QR_determinant_host(const T1& Q,  // e.g., DFArrayKokkos <double>
+real_t QR_determinant_host(const T1& Q,  // e.g., DFArrayKokkos <double>
                            const T2& R)  // e.g., DCArrayKokkos <double>
 {
     // const size_t m = Q.dims(0);
@@ -189,7 +195,7 @@ double QR_determinant_host(const T1& Q,  // e.g., DFArrayKokkos <double>
     // Q(m,n,"Q");
     // R(n,n,"R");
 
-    double detR = 1.0;
+    real_t detR = real_t(1);
     int signQ   = 1;
 
     // Accumulate det(R) and track sign adjustments
@@ -202,11 +208,11 @@ double QR_determinant_host(const T1& Q,  // e.g., DFArrayKokkos <double>
     //     }
     // }
 
-    double prod_tally;
-    double prod_lcl = 1.0;
+    real_t prod_tally;
+    real_t prod_lcl = real_t(1);
     FOR_REDUCE_PRODUCT(i, 0, n,
                        prod_lcl, {
-        if (R(i, i) < 0.0) {
+        if (R(i, i) < real_t(0)) {
             prod_lcl *= -R(i, i);  // store magnitude in detR
         } else {
             prod_lcl *= R(i, i);
@@ -216,26 +222,21 @@ double QR_determinant_host(const T1& Q,  // e.g., DFArrayKokkos <double>
 
     detR = prod_tally;
 
-    prod_lcl = 1.0;
-    FOR_REDUCE_PRODUCT(
-        i,
-        0,
-        n,
-        prod_lcl,
-        {
-            if (R(i, i) < 0.0) {
-                prod_lcl *= -1;  // negative diagonal flips Q's sign
-            }
-        },
-        prod_tally);  // end j
+    prod_lcl = real_t(1);
+    FOR_REDUCE_PRODUCT(i, 0, n,
+                       prod_lcl, {
+        if (R(i, i) < real_t(0)) {
+            prod_lcl *= real_t(-1);  // negative diagonal flips Q's sign
+        }
+    }, prod_tally);  // end j
 
-    signQ = prod_tally;
+    signQ = int(prod_tally);
 
     Kokkos::fence();
 
     // Compute sign of det(Q) directly from Q if needed
     // Here we infer sign from R adjustments only.
-    double detA = signQ * detR;
+    real_t detA = real_t(signQ) * detR;
     return detA;
 }
 
@@ -251,19 +252,22 @@ void QR_solver_host(const T1& A,  // e.g., DCArrayKokkos <double>
     const size_t m = A.dims(0);
     const size_t n = A.dims(1);
 
-    DFArrayKokkos<double> Q(m, n, "Q");
-    DCArrayKokkos<double> R(n, n, "R");
-    DCArrayKokkos<double> y(n, "y");
+    DFArrayKokkos<real_t> Q(m, n, "Q");
+    DCArrayKokkos<real_t> R(n, n, "R");
+    DCArrayKokkos<real_t> y(n, "y");
 
     QR_decompose_host(A, Q, R);
 
     // Compute Q^t * b
     FOR_FIRST(i, 0, n, {
-        double sum     = 0.0;
-        double sum_lcl = 0.0;
+        real_t sum     = real_t(0);
+        real_t sum_lcl = real_t(0);
 
         // Q[m,n] so Q^t[n,m] b[m]
-        FOR_REDUCE_SUM_SECOND(j, 0, m, sum_lcl, { sum_lcl += Q(j, i) * b(j); }, sum);
+        FOR_REDUCE_SUM_SECOND(j, 0, m,
+                              sum_lcl, {
+            sum_lcl += Q(j, i) * b(j);
+        }, sum);
         y(i) = sum;
     });  // end parallel i
 
@@ -286,15 +290,18 @@ void QR_solver_host(const T1& Q,  // e.g., DFArrayKokkos <double>
     const size_t m = Q.dims(0);
     const size_t n = Q.dims(1);
 
-    DCArrayKokkos<double> y(n, "y");
+    DCArrayKokkos<real_t> y(n, "y");
 
     // Compute Q^t * b
     FOR_FIRST(i, 0, n, {
-        double sum     = 0.0;
-        double sum_lcl = 0.0;
+        real_t sum     = real_t(0);
+        real_t sum_lcl = real_t(0);
 
         // Q[m,n] so Q^t[n,m] b[m]
-        FOR_REDUCE_SUM_SECOND(j, 0, m, sum_lcl, { sum_lcl += Q(j, i) * b(j); }, sum);
+        FOR_REDUCE_SUM_SECOND(j, 0, m,
+                              sum_lcl, {
+            sum_lcl += Q(j, i) * b(j);
+        }, sum);
         y(i) = sum;
     });  // end parallel i
 
