@@ -26,7 +26,13 @@ jobs:
         - {name: "TEST_UBUNTU_OPENMP_RELEASE",   os: ubuntu-latest, preset: "openmp"}
         # Kokkos + MPI: registers MPICArrayKokkos_mpi_suite (mpirun from CTest).
         - {name: "TEST_UBUNTU_SERIAL_MPI_DEBUG", os: ubuntu-latest, preset: "serial-mpi-debug"}
+        # Precision-tier matrix: every real_t definition testable without a GPU
+        # (half/bfloat16 run float-emulated on CPU backends)
         - {name: "TEST_UBUNTU_SERIAL_FP32",      os: ubuntu-latest, preset: "serial-fp32"}
+        - {name: "TEST_UBUNTU_SERIAL_FP16",      os: ubuntu-latest, preset: "serial-fp16"}
+        - {name: "TEST_UBUNTU_SERIAL_BF16",      os: ubuntu-latest, preset: "serial-bf16"}
+        - {name: "TEST_UBUNTU_SERIAL_QUAD",      os: ubuntu-latest, preset: "serial-quad"}
+        - {name: "TEST_UBUNTU_SERIAL_MIXED",     os: ubuntu-latest, preset: "serial-mixed"}
         - {name: "TEST_MAC_SERIAL_DEBUG",        os: macos-14,      preset: "serial-debug"}
         - {name: "TEST_MAC_SERIAL_RELEASE",      os: macos-14,      preset: "serial"}
 

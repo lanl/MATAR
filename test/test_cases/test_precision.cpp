@@ -12,8 +12,10 @@ using namespace mtr;
 
 #if MATAR_REAL_TYPE == MATAR_FP64
 static_assert(std::is_same_v<real_t, double>);
+static_assert(sizeof(real_t) == 8);
 #elif MATAR_REAL_TYPE == MATAR_FP32
 static_assert(std::is_same_v<real_t, float>);
+static_assert(sizeof(real_t) == 4);
 #elif MATAR_REAL_TYPE == MATAR_FP16
 static_assert(std::is_same_v<real_t, Kokkos::Experimental::half_t>);
 static_assert(sizeof(real_t) == (MATAR_FP16_IS_EMULATED ? 4 : 2));
@@ -28,6 +30,20 @@ static_assert(sizeof(real_t) == 16);
 static_assert(std::is_same_v<high_real_t, double>);
 #elif MATAR_HIGH_REAL_TYPE == MATAR_FP32
 static_assert(std::is_same_v<high_real_t, float>);
+#elif MATAR_HIGH_REAL_TYPE == MATAR_FP128
+static_assert(sizeof(high_real_t) == 16);
+#endif
+
+#if MATAR_LOW_REAL_TYPE == MATAR_FP64
+static_assert(std::is_same_v<low_real_t, double>);
+#elif MATAR_LOW_REAL_TYPE == MATAR_FP32
+static_assert(std::is_same_v<low_real_t, float>);
+#elif MATAR_LOW_REAL_TYPE == MATAR_FP16
+static_assert(std::is_same_v<low_real_t, Kokkos::Experimental::half_t>);
+static_assert(sizeof(low_real_t) == (MATAR_FP16_IS_EMULATED ? 4 : 2));
+#elif MATAR_LOW_REAL_TYPE == MATAR_BF16
+static_assert(std::is_same_v<low_real_t, Kokkos::Experimental::bhalf_t>);
+static_assert(sizeof(low_real_t) == (MATAR_BF16_IS_EMULATED ? 4 : 2));
 #endif
 
 static_assert(std::is_same_v<real_t, mtr::real_t>);
@@ -38,22 +54,66 @@ static_assert(std::is_same_v<low_real_t, mtr::low_real_t>);
 static_assert(MATAR_HAS_FP64 == 1);
 static_assert(MATAR_HAS_FP32 == 1);
 static_assert(MATAR_HAS_FP8 == 0);
+#ifdef HAVE_KOKKOS
+static_assert(MATAR_HAS_FP16 == 1);
+static_assert(MATAR_HAS_BF16 == 1);
+#else
+static_assert(MATAR_HAS_FP16 == 0);
+static_assert(MATAR_HAS_BF16 == 0);
+#endif
 
 // ---------------------------------------------------------------------------
-// Runtime checks at the active tiers
+// Runtime checks. All values below are exactly representable at every tier
+// down to bfloat16 (8-bit mantissa: integers <= 256 and halves <= 128 are
+// exact), so the checks stay tight regardless of the build's precision.
 // ---------------------------------------------------------------------------
 
 TEST(Precision, TierArithmetic) {
-    const real_t half_val = real_t(0.5);
-    EXPECT_DOUBLE_EQ(static_cast<double>(half_val), 0.5);
+    EXPECT_DOUBLE_EQ(static_cast<double>(real_t(0.5)), 0.5);
     EXPECT_DOUBLE_EQ(static_cast<double>(real_t(2) + real_t(3)), 5.0);
+    EXPECT_DOUBLE_EQ(static_cast<double>(real_t(6) * real_t(0.5)), 3.0);
+    EXPECT_DOUBLE_EQ(static_cast<double>(real_t(10) / real_t(4)), 2.5);
+    EXPECT_DOUBLE_EQ(static_cast<double>(real_t(2) - real_t(8)), -6.0);
+    EXPECT_TRUE(real_t(2) < real_t(3));
+    EXPECT_TRUE(real_t(-1) < real_t(0));
+}
+
+TEST(Precision, HighTierArithmetic) {
     EXPECT_DOUBLE_EQ(static_cast<double>(high_real_t(0.25)), 0.25);
+    EXPECT_DOUBLE_EQ(static_cast<double>(high_real_t(3) * high_real_t(4)), 12.0);
+}
+
+TEST(Precision, LowTierArithmetic) {
     EXPECT_DOUBLE_EQ(static_cast<double>(low_real_t(1.5)), 1.5);
+    EXPECT_DOUBLE_EQ(static_cast<double>(low_real_t(2) + low_real_t(2.5)), 4.5);
+}
+
+TEST(Precision, CrossTierConversion) {
+    // exactly representable at every tier: conversions must round-trip
+    const high_real_t h = high_real_t(42.5);
+    const real_t r      = real_t(h);
+    const low_real_t l  = low_real_t(r);
+    EXPECT_DOUBLE_EQ(static_cast<double>(r), 42.5);
+    EXPECT_DOUBLE_EQ(static_cast<double>(l), 42.5);
+    EXPECT_DOUBLE_EQ(static_cast<double>(high_real_t(l)), 42.5);
+}
+
+TEST(Precision, HostTypesAtTier) {
+    const int n = 16;
+    CArrayHost<real_t> a(n);
+    CArrayHost<low_real_t> b(n);
+    for (int i = 0; i < n; i++) {
+        a(i) = real_t(i);
+        b(i) = low_real_t(a(i)) + low_real_t(1);
+    }
+    EXPECT_DOUBLE_EQ(static_cast<double>(a(7)), 7.0);
+    EXPECT_DOUBLE_EQ(static_cast<double>(b(7)), 8.0);
 }
 
 #ifdef HAVE_KOKKOS
 TEST(Precision, TierReductionSum) {
-    // 100 * 0.5: representable exactly at every tier down to half
+    // 100 * 0.5 = 50: every partial sum is a multiple of 0.5 <= 50, exact
+    // even at bfloat16
     const int n = 100;
     CArrayDevice<real_t> a(n, "precision_sum");
     a.set_values(real_t(0.5));
@@ -69,6 +129,93 @@ TEST(Precision, TierReductionSum) {
     EXPECT_NEAR(static_cast<double>(result), 50.0, 0.5);
 }
 
+TEST(Precision, TierReductionMaxMin) {
+    // integers 0..99: exact at every tier
+    const int n = 100;
+    CArrayDevice<real_t> a(n, "precision_maxmin");
+    FOR_ALL(i, 0, n, {
+        a(i) = real_t(i);
+    });
+    MATAR_FENCE();
+
+    real_t max_val = real_t(0);
+    real_t max_lcl = real_t(0);
+    FOR_REDUCE_MAX(i, 0, n,
+                   max_lcl, {
+        if (a(i) > max_lcl) {
+            max_lcl = a(i);
+        }
+    }, max_val);
+    EXPECT_DOUBLE_EQ(static_cast<double>(max_val), 99.0);
+
+    real_t min_val = real_t(n);
+    real_t min_lcl = real_t(n);
+    FOR_REDUCE_MIN(i, 0, n,
+                   min_lcl, {
+        if (a(i) < min_lcl) {
+            min_lcl = a(i);
+        }
+    }, min_val);
+    EXPECT_DOUBLE_EQ(static_cast<double>(min_val), 0.0);
+}
+
+TEST(Precision, TierReductionProduct) {
+    // three 2s among 1s: product = 8, exact everywhere
+    const int n = 20;
+    CArrayDevice<real_t> a(n, "precision_prod");
+    FOR_ALL(i, 0, n, {
+        a(i) = (i % 7 == 0) ? real_t(2) : real_t(1);
+    });
+    MATAR_FENCE();
+
+    real_t prod     = real_t(1);
+    real_t prod_lcl = real_t(1);
+    FOR_REDUCE_PRODUCT(i, 0, n,
+                       prod_lcl, {
+        prod_lcl *= a(i);
+    }, prod);
+    EXPECT_DOUBLE_EQ(static_cast<double>(prod), 8.0);
+}
+
+TEST(Precision, DualTypeRoundTrip) {
+    // device write -> update_host -> host read/write -> update_device -> device check
+    const int n = 10;
+    CArrayDual<real_t> field(n, "precision_dual");
+    field.set_values(real_t(1.5));
+
+    FOR_ALL(i, 0, n, {
+        field(i) = real_t(2) * field(i);
+    });
+    MATAR_FENCE();
+    field.update_host();
+
+    EXPECT_DOUBLE_EQ(static_cast<double>(field.host(3)), 3.0);
+
+    field.host(3) = real_t(7);
+    field.update_device();
+
+    real_t sum     = real_t(0);
+    real_t sum_lcl = real_t(0);
+    FOR_REDUCE_SUM(i, 0, n,
+                   sum_lcl, {
+        sum_lcl += field(i);
+    }, sum);
+    // 9 * 3.0 + 7.0 = 34
+    EXPECT_NEAR(static_cast<double>(sum), 34.0, 0.5);
+}
+
+TEST(Precision, DualTypeLowTier) {
+    const int n = 8;
+    CArrayDual<low_real_t> field(n, "precision_dual_low");
+    field.set_values(low_real_t(0.25));
+    FOR_ALL(i, 0, n, {
+        field(i) = field(i) + low_real_t(1);
+    });
+    MATAR_FENCE();
+    field.update_host();
+    EXPECT_DOUBLE_EQ(static_cast<double>(field.host(5)), 1.25);
+}
+
 TEST(Precision, MixedTierFields) {
     // high_real_t and real_t fields coexist; conversions happen on access
     const int n = 10;
@@ -76,7 +223,7 @@ TEST(Precision, MixedTierFields) {
     CArrayDevice<real_t> state(n, "precision_state");
 
     FOR_ALL(i, 0, n, {
-        coords(i) = high_real_t(i) / high_real_t(n);
+        coords(i) = high_real_t(i) / high_real_t(4);  // multiples of 0.25: exact
         state(i)  = real_t(coords(i));
     });
     MATAR_FENCE();
@@ -88,7 +235,7 @@ TEST(Precision, MixedTierFields) {
         loc += state(i);
     }, result);
 
-    // sum of i/n for i=0..9 = 4.5
-    EXPECT_NEAR(static_cast<double>(result), 4.5, 0.1);
+    // sum of i/4 for i=0..9 = 11.25
+    EXPECT_NEAR(static_cast<double>(result), 11.25, 0.1);
 }
 #endif  // HAVE_KOKKOS

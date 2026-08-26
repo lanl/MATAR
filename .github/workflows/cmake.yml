@@ -12,10 +12,15 @@ env:
   KOKKOS_VERSION: "5.2.1"
 
 jobs:
-  # MATAR without Kokkos: host-only header library.
+  # MATAR without Kokkos: host-only header library (double and float are the
+  # only precisions supported there).
   build-no-kokkos:
-    name: Ubuntu_GCC_NO_KOKKOS
+    name: Ubuntu_GCC_NO_KOKKOS_${{ matrix.real }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        real: [double, float]
     steps:
     - uses: actions/checkout@v3
 
@@ -24,6 +29,7 @@ jobs:
         cmake -B build/no-kokkos \
           -DCMAKE_BUILD_TYPE=Debug \
           -DMATAR_ENABLE_KOKKOS=OFF \
+          -DMATAR_REAL=${{ matrix.real }} \
           -DMATAR_BUILD_TESTS=ON \
           -DMATAR_BUILD_EXAMPLES=ON
 
