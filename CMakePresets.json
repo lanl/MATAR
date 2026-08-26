@@ -123,6 +123,30 @@
             "displayName": "Kokkos serial backend + MPI, real_t = quad (custom MPI datatype/op)",
             "inherits": "serial-mpi",
             "cacheVariables": { "MATAR_REAL": "quad" }
+        },
+        {
+            "name": "hostomp",
+            "displayName": "OpenMP host + device backends via the MATAR_*_BACKEND front door",
+            "inherits": "base",
+            "cacheVariables": {
+                "MATAR_ENABLE_KOKKOS": "ON",
+                "Kokkos_ARCH_NATIVE": "ON",
+                "MATAR_HOST_BACKEND": "openmp",
+                "MATAR_DEVICE_BACKEND": "openmp"
+            }
+        },
+        {
+            "name": "cuda-hostomp",
+            "displayName": "CUDA device + OpenMP host: concurrent host/device execution",
+            "inherits": "base",
+            "cacheVariables": {
+                "MATAR_ENABLE_KOKKOS": "ON",
+                "Kokkos_ARCH_NATIVE": "ON",
+                "MATAR_HOST_BACKEND": "openmp",
+                "MATAR_DEVICE_BACKEND": "cuda",
+                "Kokkos_ENABLE_CUDA_CONSTEXPR": "ON",
+                "Kokkos_ENABLE_CUDA_RELOCATABLE_DEVICE_CODE": "ON"
+            }
         }
     ],
     "buildPresets": [
@@ -146,7 +170,9 @@
         { "name": "serial-quad",      "configurePreset": "serial-quad" },
         { "name": "serial-mixed",     "configurePreset": "serial-mixed" },
         { "name": "serial-mpi-fp16",  "configurePreset": "serial-mpi-fp16" },
-        { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad" }
+        { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad" },
+        { "name": "hostomp",          "configurePreset": "hostomp" },
+        { "name": "cuda-hostomp",     "configurePreset": "cuda-hostomp" }
     ],
     "testPresets": [
         { "name": "serial",           "configurePreset": "serial",           "output": { "outputOnFailure": true } },
@@ -167,6 +193,7 @@
         { "name": "serial-quad",      "configurePreset": "serial-quad",      "output": { "outputOnFailure": true } },
         { "name": "serial-mixed",     "configurePreset": "serial-mixed",     "output": { "outputOnFailure": true } },
         { "name": "serial-mpi-fp16",  "configurePreset": "serial-mpi-fp16",  "output": { "outputOnFailure": true } },
-        { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad",  "output": { "outputOnFailure": true } }
+        { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad",  "output": { "outputOnFailure": true } },
+        { "name": "hostomp",          "configurePreset": "hostomp",          "output": { "outputOnFailure": true } }
     ]
 }

@@ -135,6 +135,38 @@ The CMake options are:
 | `MATAR_HIGH_REAL` | double | Precision of the `high_real_t` tier: `double`, `float`, `quad` |
 | `MATAR_LOW_REAL` | double | Precision of the `low_real_t` tier: `double`, `float`, `half`, `bfloat16` |
 
+## Host-side parallelism
+
+Every MATAR macro (`FOR_ALL`, `DO_ALL`, `FOR_REDUCE_*`, ...) has a `_HOST` twin that runs in the **host** execution space instead of the device space. Because device kernels are asynchronous and host kernels only block the calling thread, CPU work can proceed while the GPU is still busy — useful for file I/O and for algorithms that are simply faster on a CPU:
+
+```c++
+FOR_ALL(i, 0, n, { device_field(i) = compute(i); });   // GPU, returns immediately
+
+FOR_ALL_HOST(i, 0, n, {                                 // CPU, runs concurrently
+    out_lines[i] = format_record(host_field(i));
+});
+MATAR_FENCE_HOST();                                     // wait for the host work
+MATAR_FENCE_DEVICE();                                   // wait for the GPU work
+```
+
+The `_HOST` macros differ from their device counterparts in two ways: the loop body captures **by reference**, so `std::` containers, file streams, and other non-device-copyable objects can be used directly; and no `_CLASS` variants are needed (`_CLASS` spellings exist as aliases).
+
+**A host kernel may only touch host-accessible data** — the `*Host` types, the `.host()` side of a Dual type, or plain `std::` data. Passing a device array compiles but aborts at run time with `attempt to access inaccessible memory space`.
+
+Select the two backends independently:
+
+| Option | Values | Description |
+|---|---|---|
+| `MATAR_DEVICE_BACKEND` | `serial`, `openmp`, `pthreads`, `cuda`, `hip`, `sycl` | Backend for `FOR_ALL` and friends |
+| `MATAR_HOST_BACKEND` | `serial`, `openmp`, `pthreads` | Backend for the `_HOST` macros |
+
+```
+cmake --preset cuda-hostomp     # CUDA device + OpenMP host: genuinely concurrent
+cmake -B build -DMATAR_DEVICE_BACKEND=cuda -DMATAR_HOST_BACKEND=openmp
+```
+
+Both options are optional; leaving them unset keeps the historical behavior of setting `Kokkos_ENABLE_*` directly. Note that Kokkos permits only one host-parallel backend per build, so `openmp` and `pthreads` cannot be paired with each other, and selecting the same backend on both sides is valid but gives no concurrency (the two macro families then share one execution space — MATAR warns at configure time).
+
 ## Precision tiers
 
 MATAR provides three floating-point type names whose meaning is fixed at configure time — code just uses the names, and the CMake flags decide what they are per build/architecture:

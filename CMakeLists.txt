@@ -150,6 +150,82 @@ if(MATAR_REAL STREQUAL "quad" OR MATAR_HIGH_REAL STREQUAL "quad" OR MATAR_LOW_RE
 endif()
 
 # -----------------------------------------------------------------------------
+# Host / device backend selection
+#
+# The device backend runs the standard macros (FOR_ALL, DO_ALL, ...); the host
+# backend runs the _HOST twins (FOR_ALL_HOST, ...). Choosing different
+# backends for the two lets CPU work overlap in-flight GPU kernels.
+#
+# These are a convenience front door: leaving them empty keeps the historical
+# behavior of setting Kokkos_ENABLE_* directly, which existing presets and
+# downstream projects (ELEMENTS, Fierro) rely on.
+# -----------------------------------------------------------------------------
+set(MATAR_HOST_BACKEND   "" CACHE STRING "Host-side parallel backend: serial|openmp|pthreads")
+set(MATAR_DEVICE_BACKEND "" CACHE STRING "Device-side parallel backend: serial|openmp|pthreads|cuda|hip|sycl")
+set_property(CACHE MATAR_HOST_BACKEND   PROPERTY STRINGS serial openmp pthreads)
+set_property(CACHE MATAR_DEVICE_BACKEND PROPERTY STRINGS serial openmp pthreads cuda hip sycl)
+
+function(matar_backend_kokkos_var role value out_var)
+    string(TOLOWER "${value}" v)
+    set(map_serial   Kokkos_ENABLE_SERIAL)
+    set(map_openmp   Kokkos_ENABLE_OPENMP)
+    set(map_pthreads Kokkos_ENABLE_THREADS)
+    set(map_cuda     Kokkos_ENABLE_CUDA)
+    set(map_hip      Kokkos_ENABLE_HIP)
+    set(map_sycl     Kokkos_ENABLE_SYCL)
+    if(NOT DEFINED map_${v})
+        message(FATAL_ERROR "MATAR_${role}_BACKEND=${value} is not a recognized backend "
+                            "(valid values: serial, openmp, pthreads"
+                            "${ARGN})")
+    endif()
+    if(role STREQUAL "HOST" AND v MATCHES "^(cuda|hip|sycl)$")
+        message(FATAL_ERROR "MATAR_HOST_BACKEND=${value} is a device backend; the host "
+                            "backend must be serial, openmp, or pthreads")
+    endif()
+    if(NOT MATAR_ENABLE_KOKKOS AND NOT v STREQUAL "serial")
+        message(FATAL_ERROR "MATAR_${role}_BACKEND=${value} requires a Kokkos build "
+                            "(-DMATAR_ENABLE_KOKKOS=ON)")
+    endif()
+    set(${out_var} ${map_${v}} PARENT_SCOPE)
+endfunction()
+
+if(MATAR_HOST_BACKEND OR MATAR_DEVICE_BACKEND)
+    string(TOLOWER "${MATAR_HOST_BACKEND}" _matar_host)
+    string(TOLOWER "${MATAR_DEVICE_BACKEND}" _matar_dev)
+
+    # Kokkos permits only one non-Serial HOST-parallel space per build, so a
+    # host/device pair drawn from {openmp, pthreads} cannot coexist. Catch it
+    # here with an explanation rather than letting Kokkos error out later.
+    if(_matar_host AND _matar_dev AND NOT _matar_host STREQUAL _matar_dev
+       AND _matar_host MATCHES "^(openmp|pthreads)$" AND _matar_dev MATCHES "^(openmp|pthreads)$")
+        message(FATAL_ERROR
+            "MATAR_HOST_BACKEND=${_matar_host} with MATAR_DEVICE_BACKEND=${_matar_dev}: Kokkos "
+            "allows only one host-parallel execution space per build, so openmp and pthreads "
+            "cannot both be enabled. Pair a host backend with a GPU device backend "
+            "(cuda/hip/sycl), or use the same backend for both.")
+    endif()
+
+    if(_matar_host)
+        matar_backend_kokkos_var(HOST "${_matar_host}" _matar_host_var)
+        set(${_matar_host_var} ON CACHE BOOL "Enabled by MATAR_HOST_BACKEND" FORCE)
+    endif()
+    if(_matar_dev)
+        matar_backend_kokkos_var(DEVICE "${_matar_dev}" _matar_dev_var ", cuda, hip, sycl")
+        set(${_matar_dev_var} ON CACHE BOOL "Enabled by MATAR_DEVICE_BACKEND" FORCE)
+    endif()
+
+    # Same space on both sides is valid and correct, but the _HOST macros then
+    # contend with device work instead of overlapping it.
+    if(_matar_host AND _matar_dev AND _matar_host STREQUAL _matar_dev)
+        message(WARNING
+            "MATAR_HOST_BACKEND and MATAR_DEVICE_BACKEND are both '${_matar_host}': the _HOST "
+            "macros will run correctly but share one execution space with the device macros, "
+            "so there is no host/device concurrency. Pair a host backend (openmp/pthreads) "
+            "with a GPU device backend (cuda/hip/sycl) to overlap them.")
+    endif()
+endif()
+
+# -----------------------------------------------------------------------------
 # Kokkos
 #
 # Backend selection is done with the standard Kokkos cache variables
@@ -181,14 +257,28 @@ if(MATAR_ENABLE_KOKKOS)
     target_link_libraries(matar INTERFACE Kokkos::kokkos)
     target_compile_definitions(matar INTERFACE HAVE_KOKKOS=1)
 
+    # Device space: exactly one HAVE_* here, since kokkos_types.h selects
+    # DefaultExecSpace from this chain.
     if(Kokkos_ENABLE_CUDA)
         target_compile_definitions(matar INTERFACE HAVE_CUDA=1)
     elseif(Kokkos_ENABLE_HIP)
         target_compile_definitions(matar INTERFACE HAVE_HIP=1)
+    elseif(Kokkos_ENABLE_SYCL)
+        target_compile_definitions(matar INTERFACE HAVE_SYCL=1)
     elseif(Kokkos_ENABLE_OPENMP)
         target_compile_definitions(matar INTERFACE HAVE_OPENMP=1)
     elseif(Kokkos_ENABLE_THREADS)
         target_compile_definitions(matar INTERFACE HAVE_THREADS=1)
+    endif()
+
+    # Host space, independent of the device chain above: on a GPU build this
+    # is what the _HOST macros run in. The macros themselves resolve
+    # Kokkos::DefaultHostExecutionSpace; these defines are for introspection
+    # and tests.
+    if(Kokkos_ENABLE_OPENMP)
+        target_compile_definitions(matar INTERFACE HAVE_HOST_OPENMP=1)
+    elseif(Kokkos_ENABLE_THREADS)
+        target_compile_definitions(matar INTERFACE HAVE_HOST_THREADS=1)
     endif()
 
     # quad tiers force LIBQUADMATH on for the bundled build; an external or

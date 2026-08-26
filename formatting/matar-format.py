@@ -25,6 +25,16 @@ import sys
 # Longer names must precede their prefixes (regex alternation is first-match):
 # e.g. FOR_REDUCE_SUM_SECOND before FOR_REDUCE_SUM.
 MACROS = (
+    # host-side twins first: they are longer names sharing a prefix with the
+    # device macros below
+    "FOR_ALL_HOST_CLASS", "DO_ALL_HOST_CLASS",
+    "FOR_ALL_HOST", "DO_ALL_HOST",
+    "FOR_REDUCE_SUM_HOST_CLASS", "FOR_REDUCE_MAX_HOST_CLASS",
+    "FOR_REDUCE_MIN_HOST_CLASS", "FOR_REDUCE_PRODUCT_HOST_CLASS",
+    "FOR_REDUCE_SUM_HOST", "FOR_REDUCE_MAX_HOST",
+    "FOR_REDUCE_MIN_HOST", "FOR_REDUCE_PRODUCT_HOST",
+    "DO_REDUCE_SUM_HOST", "DO_REDUCE_MAX_HOST", "DO_REDUCE_MIN_HOST",
+    "RUN_HOST_CLASS", "RUN_HOST",
     "FOR_ALL_CLASS", "DO_ALL_CLASS",
     "FOR_ALL", "DO_ALL",
     "FOR_REDUCE_SUM_CLASS", "FOR_REDUCE_MAX_CLASS", "FOR_REDUCE_MIN_CLASS",
@@ -43,8 +53,14 @@ INDENT = "    "
 
 
 def build_mask(text):
-    """mask[i] is True when text[i] is inside a comment or string literal."""
+    """mask[i]: inside a comment or string. cmask[i]: inside a comment only.
+
+    The two differ where it matters: a trailing kernel-name argument is a
+    string literal, so the scan that skips past whitespace/commas/comments
+    between the body and the next argument must not skip strings.
+    """
     mask = [False] * len(text)
+    cmask = [False] * len(text)
     i, n = 0, len(text)
     while i < n:
         c = text[i]
@@ -53,12 +69,14 @@ def build_mask(text):
             j = n if j < 0 else j
             for k in range(i, j):
                 mask[k] = True
+                cmask[k] = True
             i = j
         elif c == "/" and i + 1 < n and text[i + 1] == "*":
             j = text.find("*/", i + 2)
             j = n if j < 0 else j + 2
             for k in range(i, j):
                 mask[k] = True
+                cmask[k] = True
             i = j
         elif c in "\"'":
             quote, j = c, i + 1
@@ -70,7 +88,7 @@ def build_mask(text):
             i = j
         else:
             i += 1
-    return mask
+    return mask, cmask
 
 
 def split_top_level(text, mask, offset):
@@ -156,7 +174,7 @@ def reindent_body(body_inner, target):
 
 
 def reflow(source):
-    mask = build_mask(source)
+    mask, cmask = build_mask(source)
     out, pos = [], 0
     for m in MACRO_RE.finditer(source):
         if m.start() < pos or mask[m.start()]:
@@ -173,7 +191,7 @@ def reflow(source):
         header_text = source[open_paren + 1:body_open].rstrip().rstrip(",")
         header_args = split_top_level(header_text, mask, open_paren + 1)
         t = body_close + 1
-        while t < call_close and (source[t] in " \t\n," or mask[t]):
+        while t < call_close and (source[t] in " \t\n," or cmask[t]):
             t += 1
         trailing_args = split_top_level(source[t:call_close], mask, t)
         # recurse: nested parallel macros (hierarchical FOR_SECOND / REDUCE_*_SECOND
@@ -186,10 +204,13 @@ def reflow(source):
         header_lines = [", ".join(header_args[t * 3:t * 3 + 3]) for t in range(n_triples)]
         header_lines.extend(header_args[n_triples * 3:])
         header = (",\n" + align).join(header_lines)
+        # RUN_HOST and friends take only a body: no leading argument list, so
+        # no separating comma before the brace.
+        header_prefix = header + ", " if header_lines else ""
 
         tail = "".join(", " + a for a in trailing_args)
         out.append(source[pos:m.start()])
-        out.append(m.group(1) + "(" + header + ", {" + body + "}" + tail + ")")
+        out.append(m.group(1) + "(" + header_prefix + "{" + body + "}" + tail + ")")
         pos = call_close + 1
     out.append(source[pos:])
     return "".join(out)

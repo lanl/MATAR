@@ -1636,6 +1636,19 @@ Use these constraints as hard rules when generating MATAR code:
   - **Class-member variants** (use `KOKKOS_CLASS_LAMBDA`): `FOR_ALL_CLASS`, `RUN_CLASS`, `FOR_REDUCE_SUM_CLASS`, `FOR_REDUCE_MAX_CLASS`, `FOR_REDUCE_MIN_CLASS`
   - **Hierarchical (team/thread/vector):** `FOR_FIRST`, `FOR_SECOND`, `FOR_THIRD`, `DO_FIRST`, `DO_SECOND`, `DO_THIRD`
   - **Hierarchical reductions:** `FOR_REDUCE_SUM_SECOND`, `FOR_REDUCE_SUM_THIRD`, `DO_REDUCE_SUM_SECOND`, `DO_REDUCE_SUM_THIRD`, `FOR_REDUCE_MAX_SECOND`, `DO_REDUCE_MAX_THIRD`, `FOR_REDUCE_MIN_SECOND`, `DO_REDUCE_MIN_THIRD`
+1b. **Host-side twins: `FOR_ALL_HOST`, `DO_ALL_HOST`, `RUN_HOST`,
+   `FOR_REDUCE_{SUM,MAX,MIN,PRODUCT}_HOST`, `DO_REDUCE_{SUM,MAX,MIN}_HOST`**
+   (same argument forms, including the optional trailing kernel-name string).
+   These run in the host execution space so CPU work overlaps in-flight
+   device kernels. Two hard rules:
+   - They capture **by reference**, so `std::` containers/streams are allowed
+     inside them (that is their purpose: file I/O and CPU-faster algorithms).
+   - They may **only** touch host-accessible data — `*Host` types, the
+     `.host()` side of a Dual type, or plain `std::` data. Never a device
+     array: that compiles but aborts at run time.
+   Fence one side without stalling the other via `MATAR_FENCE_HOST()` /
+   `MATAR_FENCE_DEVICE()`. There are no hierarchical `_HOST` variants.
+
 2. `**FOR_ALL` and `DO_ALL` parallelize all listed dimensions.**
   - If a dimension must remain sequential, keep it as a plain inner `for` loop inside the macro body, or use hierarchical macros where appropriate.
 3. **Indexing is always `()` for MATAR arrays.**
