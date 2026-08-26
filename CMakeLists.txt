@@ -1,4 +1,6 @@
-cmake_minimum_required(VERSION 3.21)
+# 3.22 is the minimum required by the bundled Kokkos 5.x.
+# (CUDA builds additionally need CMake >= 3.25.2 for C++20 in the CUDA language.)
+cmake_minimum_required(VERSION 3.22)
 
 project(Matar VERSION 1.0.0 LANGUAGES CXX)
 
@@ -66,7 +68,8 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} ${VECTOR_CXX_FLAGS}")
 add_library(matar INTERFACE)
 add_library(matar::matar ALIAS matar)
 
-target_compile_features(matar INTERFACE cxx_std_17)
+# Kokkos 5 requires C++20; MATAR itself is C++17-clean but must match.
+target_compile_features(matar INTERFACE cxx_std_20)
 target_include_directories(matar INTERFACE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/include>
     $<INSTALL_INTERFACE:include>
