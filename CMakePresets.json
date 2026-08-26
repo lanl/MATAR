@@ -72,11 +72,11 @@
         { "name": "cuda-mpi",   "displayName": "Kokkos CUDA backend + MPI",   "inherits": ["cuda", "mpi"] },
         { "name": "hip-mpi",    "displayName": "Kokkos HIP backend + MPI",    "inherits": ["hip", "mpi"] },
 
-        { "name": "serial-debug",     "inherits": ["serial", "debug"] },
-        { "name": "openmp-debug",     "inherits": ["openmp", "debug"] },
-        { "name": "cuda-debug",       "inherits": ["cuda", "debug"] },
-        { "name": "hip-debug",        "inherits": ["hip", "debug"] },
-        { "name": "serial-mpi-debug", "inherits": ["serial-mpi", "debug"] }
+        { "name": "serial-debug",     "inherits": ["debug", "serial"] },
+        { "name": "openmp-debug",     "inherits": ["debug", "openmp"] },
+        { "name": "cuda-debug",       "inherits": ["debug", "cuda"] },
+        { "name": "hip-debug",        "inherits": ["debug", "hip"] },
+        { "name": "serial-mpi-debug", "inherits": ["debug", "serial-mpi"] }
     ],
     "buildPresets": [
         { "name": "serial",           "configurePreset": "serial" },

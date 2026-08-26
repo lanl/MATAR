@@ -7,6 +7,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# The Kokkos release the bundled submodule is pinned to. Bump here and in the
+# submodule together; the verify step below fails the build if they disagree.
+env:
+  KOKKOS_VERSION: "5.2.1"
+
 jobs:
   build:
     name: ${{ matrix.config.name }}
@@ -30,6 +35,17 @@ jobs:
 
     - name: Checkout submodules
       run: git submodule update --init --recursive
+
+    - name: Verify bundled Kokkos version
+      run: |
+        ver=$(awk '/^set\(Kokkos_VERSION_MAJOR/{m=$2} /^set\(Kokkos_VERSION_MINOR/{n=$2} /^set\(Kokkos_VERSION_PATCH/{p=$2} \
+                   END{gsub(/\)/,"",m);gsub(/\)/,"",n);gsub(/\)/,"",p);print m"."n"."p}' \
+                  src/Kokkos/kokkos/CMakeLists.txt)
+        echo "Bundled Kokkos version: $ver (expected ${KOKKOS_VERSION})"
+        test "$ver" = "${KOKKOS_VERSION}" || {
+          echo "::error::Submodule is Kokkos $ver but ${KOKKOS_VERSION} is required; run 'git submodule update --init --recursive'"
+          exit 1
+        }
 
     - name: Install Open MPI
       if: contains(matrix.config.preset, 'mpi') && matrix.config.os == 'ubuntu-latest'

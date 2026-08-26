@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# The Kokkos release the bundled submodule is pinned to. Bump here and in the
+# submodule together; the verify step below fails the build if they disagree.
+env:
+  KOKKOS_VERSION: "5.2.1"
+
 jobs:
   # MATAR without Kokkos: host-only header library.
   build-no-kokkos:
@@ -39,6 +44,17 @@ jobs:
     - name: Checkout submodules
       run: git submodule update --init --recursive
 
+    - name: Verify bundled Kokkos version
+      run: |
+        ver=$(awk '/^set\(Kokkos_VERSION_MAJOR/{m=$2} /^set\(Kokkos_VERSION_MINOR/{n=$2} /^set\(Kokkos_VERSION_PATCH/{p=$2} \
+                   END{gsub(/\)/,"",m);gsub(/\)/,"",n);gsub(/\)/,"",p);print m"."n"."p}' \
+                  src/Kokkos/kokkos/CMakeLists.txt)
+        echo "Bundled Kokkos version: $ver (expected ${KOKKOS_VERSION})"
+        test "$ver" = "${KOKKOS_VERSION}" || {
+          echo "::error::Submodule is Kokkos $ver but ${KOKKOS_VERSION} is required; run 'git submodule update --init --recursive'"
+          exit 1
+        }
+
     - name: Configure
       run: cmake --preset serial
 
@@ -64,7 +80,7 @@ jobs:
         }
         EOF
         cat > consumer/CMakeLists.txt << 'EOF'
-        cmake_minimum_required(VERSION 3.21)
+        cmake_minimum_required(VERSION 3.22)
         project(MatarConsumer LANGUAGES CXX)
         find_package(Matar REQUIRED)
         add_executable(consumer main.cpp)
@@ -84,11 +100,22 @@ jobs:
     - name: Checkout submodules
       run: git submodule update --init --recursive
 
+    - name: Verify bundled Kokkos version
+      run: |
+        ver=$(awk '/^set\(Kokkos_VERSION_MAJOR/{m=$2} /^set\(Kokkos_VERSION_MINOR/{n=$2} /^set\(Kokkos_VERSION_PATCH/{p=$2} \
+                   END{gsub(/\)/,"",m);gsub(/\)/,"",n);gsub(/\)/,"",p);print m"."n"."p}' \
+                  src/Kokkos/kokkos/CMakeLists.txt)
+        echo "Bundled Kokkos version: $ver (expected ${KOKKOS_VERSION})"
+        test "$ver" = "${KOKKOS_VERSION}" || {
+          echo "::error::Submodule is Kokkos $ver but ${KOKKOS_VERSION} is required; run 'git submodule update --init --recursive'"
+          exit 1
+        }
+
     - name: Install Kokkos standalone
       run: |
         cmake -S src/Kokkos/kokkos -B build/kokkos \
           -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_CXX_STANDARD=17 \
+          -DCMAKE_CXX_STANDARD=20 \
           -DKokkos_ENABLE_SERIAL=ON \
           -DKokkos_ENABLE_TESTS=OFF \
           -DBUILD_TESTING=OFF \

@@ -174,8 +174,10 @@ TEST(CSRArray, toCSCArray) {
     size_t elements_row = B.nnz(1);
     size_t nnz          = B.nnz();
     CArray<int> out_data(nnz);
-    CArray<size_t> out_cols(6);
-    CArray<size_t> out_rows(nnz);  // change this
+    // CSC column pointers need one entry per column plus a trailing total,
+    // matching the ncols+1 convention toCSC() writes (and CSR's rows(nrows+1)).
+    CArray<size_t> out_cols(7);
+    CArray<size_t> out_rows(nnz);
     B.toCSC(out_data, out_cols, out_rows);
     int expected_data[] = {1, 2, 3, 5, 4, 6, 7, 8};
     for (i = 0; i < 8; i++) {
