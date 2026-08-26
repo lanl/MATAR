@@ -245,4 +245,52 @@ TEST(TestMacrosHost, ConcurrentHostAndDeviceWork) {
 
     EXPECT_EQ(sum, (n - 1) * n);
 }
+
+// ---------------------------------------------------------------------------
+// View set_values: a View wraps a caller-supplied pointer, so filling it is a
+// serial loop that works wherever the pointer is valid -- including from
+// inside a kernel, which is the View types' main use case (issue #146).
+// ---------------------------------------------------------------------------
+
+TEST(TestMacrosHost, ViewSetValuesInsideKernel) {
+    const int n_elem = 4;
+    CArrayDevice<double> A(n_elem, 3, 3, "view_sv_A");
+    A.set_values(-1.0);
+    MATAR_FENCE();
+
+    // slice each element's 3x3 block inside the kernel and fill it there
+    FOR_ALL(e, 0, n_elem, {
+        ViewCArrayKokkos<double> slice(&A(e, 0, 0), 3, 3);
+        slice.set_values(static_cast<double>(e));
+    });
+    MATAR_FENCE();
+
+    double sum     = 0.0;
+    double loc_sum = 0.0;
+    FOR_REDUCE_SUM(e, 0, n_elem,
+                   i, 0, 3,
+                   j, 0, 3,
+                   loc_sum, {
+        loc_sum += A(e, i, j);
+    }, sum);
+    MATAR_FENCE();
+
+    // each 3x3 block holds its element index: 9 * (0+1+2+3)
+    EXPECT_DOUBLE_EQ(sum, 9.0 * (0 + 1 + 2 + 3));
+}
+
+TEST(TestMacrosHost, ViewSetValuesOnHostMemory) {
+    CArrayHost<double> backing(4, 4);
+    ViewCArrayKokkos<double> view(&backing(0, 0), 4, 4);
+    view.set_values(2.5);
+
+    EXPECT_DOUBLE_EQ(backing(0, 0), 2.5);
+    EXPECT_DOUBLE_EQ(backing(3, 3), 2.5);
+
+    // a View over a sub-block writes only that block
+    ViewCArrayKokkos<double> row(&backing(1, 0), 4);
+    row.set_values(9.0);
+    EXPECT_DOUBLE_EQ(backing(1, 2), 9.0);
+    EXPECT_DOUBLE_EQ(backing(2, 2), 2.5);
+}
 #endif  // HAVE_KOKKOS
