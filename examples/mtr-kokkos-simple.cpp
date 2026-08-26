@@ -151,10 +151,12 @@ int main(int argc, char* argv[]) {
 
         int result;
         int loc_max;
-        DO_REDUCE_MAX(k, 0, 10,
-                      j, 0, 10,
-                      i, 0, 10,
-                      loc_max, {
+        // arr3D is an Array type, so its indices run [0, 10) -- use the FOR_
+        // form. DO_REDUCE_MAX takes an inclusive range and would index arr3D(10).
+        FOR_REDUCE_MAX(k, 0, 10,
+                       j, 0, 10,
+                       i, 0, 10,
+                       loc_max, {
             if (loc_max < arr3D(i, j, k)) {
                 loc_max = arr3D(i, j, k);
             }  // end if

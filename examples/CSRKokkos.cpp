@@ -48,9 +48,13 @@ int main(int argc, char* argv[]) {
         CArrayKokkos<size_t> columns(nnz);
         CArrayKokkos<int> array(nnz);
         RUN({
-            for (int i = 0; i < 4; i++) {
+            // starts has dim1+1 entries (the trailing one is the total nnz),
+            // while columns/array hold exactly nnz = 2 entries per row.
+            for (size_t i = 0; i <= dim1; i++) {
                 starts(i) = 2 * i;
-                for (int j = 0; j < 2; j++) {
+            }
+            for (size_t i = 0; i < dim1; i++) {
+                for (size_t j = 0; j < 2; j++) {
                     columns(2 * i + j) = i + j;
                     array(2 * i + j)   = 2 * i + j;
                 }

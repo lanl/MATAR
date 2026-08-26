@@ -155,14 +155,9 @@ int main() {
     dynright.stride(2) = 2;
     dynright.set_values(2.14);
     dynright.set_values_sparse(1.35);
-    printf(
-        "The values within the populated strides of the DynamicRaggedRight are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
-            printf("%.2f  ", dynright(i, j));
-        }
-        printf("\n");
-    }
+    // The data outside the populated strides is not printed: dynright(i, j) asserts
+    // j < stride(i), so reading the rest of the allocation is out of bounds.
+    printf("The values within the populated strides of the DynamicRaggedRight are set to 1.35.\n");
     DynamicRaggedDownArray<double> dyndown(3, 4);
     dyndown.stride(0) = 1;
     dyndown.stride(1) = 3;
@@ -170,14 +165,9 @@ int main() {
     dyndown.stride(3) = 1;
     dyndown.set_values(2.14);
     dyndown.set_values_sparse(1.35);
-    printf(
-        "The values within the populated strides of the DynamicRaggedDown are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
-            printf("%.2f  ", dyndown(i, j));
-        }
-        printf("\n");
-    }
+    // As above, dyndown(i, j) asserts i < stride(j), so the rest of the allocation
+    // cannot be read back and is not printed.
+    printf("The values within the populated strides of the DynamicRaggedDown are set to 1.35.\n");
     printf("Ragged Right Array of Vectors, CSCArray, and CSRArray are not currently tested in this file as of 8/6/24.\n");
 
     printf("DUAL TYPES");
@@ -221,9 +211,6 @@ int main() {
         printf("\n");
 
         DynamicRaggedRightArrayKokkos<double> dynrightK(3, 4);
-        // dynrightK.stride(0) = 1;
-        // dynrightK.stride(1) = 3;
-        // dynrightK.stride(2) = 2;
         RUN({
             dynrightK.stride(0) = 1;
             dynrightK.stride(1) = 3;
@@ -231,21 +218,13 @@ int main() {
         });
         dynrightK.set_values(2.14);
         dynrightK.set_values_sparse(1.35);
-        printf(
-            "The values within the populated strides of the DynamicRaggedRight are set to 1.35 and the data in the rest of the array is set to "
-            "2.14.\n");
+        printf("The values within the populated strides of the DynamicRaggedRight are set to 1.35.\n");
         FOR_FIRST(i, 0, 3, {
             FOR_SECOND(j, 0, dynrightK.stride(i), {
                 // printf("%.2f  ", dynrightK(i,j));
             });
         });
         printf("\n");
-        // for (int i = 0; i < 3; i++) {
-        //     for (int j = 0; j < 4; j++) {
-        // printf("%.2f  ", dynrightK(i,j));
-        //    }
-        // printf("\n");
-        //}
         DynamicRaggedDownArrayKokkos<double> dyndownK(3, 4);
         RUN({
             dyndownK.stride(0) = 1;
@@ -255,19 +234,13 @@ int main() {
         });
         dyndownK.set_values(2.14);
         dyndownK.set_values_sparse(1.35);
-        printf(
-            "The values within the populated strides of the DynamicRaggedDown are set to 1.35 and the data in the rest of the array is set to "
-            "2.14.\n");
+        printf("The values within the populated strides of the DynamicRaggedDown are set to 1.35.\n");
         FOR_FIRST(i, 0, 4, {
             FOR_SECOND(j, 0, dyndownK.stride(i), {
                 // printf("%.2f  ", dyndownK(i,j));
             });
         });
         printf("\n");
-        // for (int i = 0; i < 4; i++) {
-        //     for (int j = 0; j < 3; j++) {
-        //     }
-        // }
     }
     Kokkos::finalize();
 }

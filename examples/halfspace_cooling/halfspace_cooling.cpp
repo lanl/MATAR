@@ -39,12 +39,19 @@ int main() {
 
         DO_ALL(i, 0, max_age, {
             for (int j = 0; j <= depth; j++) {
+                // stride(j) is the number of rows column j holds, so row i can only
+                // be indexed once that column is at least i+1 tall. Bumping the
+                // stride once per write mis-counts as soon as the loop below breaks
+                // early: columns past the break are never grown for that age, and a
+                // later age then indexes past the end of the column.
+                if (dyn_ragged_down.stride(j) < static_cast<size_t>(i) + 1) {
+                    dyn_ragged_down.stride(j) = static_cast<size_t>(i) + 1;
+                }
+
                 if (i == 0 && j == 0) {  // when depth and age are 0, give mantle_temp
-                    dyn_ragged_down.stride(j)++;
                     dyn_ragged_down(i, j) = mantle_temp;
                 }
                 double temp = mantle_temp * erf(j / (2.0 * sqrt(thermal_diff * (i * 1e6))));
-                dyn_ragged_down.stride(j)++;
                 dyn_ragged_down(i, j) = temp;
 
                 // check if we have reached the mantle, if yes, move on to next age

@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
 
     Kokkos::finalize();
 
-    return 1;
+    return 0;
 
 }  // end function
 
