@@ -152,6 +152,7 @@ cmake -B build -DMATAR_REAL=float -DMATAR_HIGH_REAL=double   # mixed
 Notes:
 * `half`/`bfloat16` map to the native 16-bit types on CUDA/HIP/SYCL and are transparently float-backed on CPU backends (the macros `MATAR_FP16_IS_EMULATED`/`MATAR_BF16_IS_EMULATED` report which at compile time). `quad` is `__float128`, host backends only. Non-Kokkos builds support only `double` and `float`; anything else fails at configure.
 * User code only ever writes the three tier names — declare fields as `CArrayDevice<real_t>` (or `high_real_t`/`low_real_t`) and write constants as `real_t(0.5)`; the build flags decide what those names mean. The solvers in `solvers/` compute in `real_t`, so they run at whatever working precision the build selects.
+* The MPI-aware types work at every tier: `MPICArrayKokkos<real_t>` halo exchange and `all_reduce` need nothing extra from the user. Internally, native 16-bit types travel as bytes and reduce by promoting to double on the wire (exact), and quad uses a custom MPI datatype and reduction op.
 
 The Kokkos backend is selected with the standard Kokkos CMake variables (`Kokkos_ENABLE_OPENMP`, `Kokkos_ENABLE_CUDA`, `Kokkos_ENABLE_HIP`, `Kokkos_ARCH_*`, ...), which are passed through to the bundled Kokkos build. With `MATAR_ENABLE_KOKKOS=OFF`, MATAR is a dependency-free serial header-only library.
 

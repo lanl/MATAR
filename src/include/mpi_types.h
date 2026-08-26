@@ -69,6 +69,196 @@ struct mpi_type_map<bool> {
     static MPI_Datatype value() { return MPI_C_BOOL; }
 };
 
+// ---------------------------------------------------------------------------
+// Precision-tier support (internal — users only ever write MPICArrayKokkos
+// with a tier name such as real_t).
+//
+// Types with no predefined MPI datatype (native 16-bit half/bfloat16 on GPU
+// backends, __float128 on host) get a lazily created contiguous byte
+// datatype: for pure data movement (communicate()'s MPI_Neighbor_alltoallv)
+// bytes are bytes, so this is sufficient. The datatype is created on first
+// use — necessarily after MPI_Init, same precondition as the call sites —
+// and lives until MPI_Finalize (one committed type per process, by design).
+//
+// On CPU backends the 16-bit types are float aliases and resolve through
+// mpi_type_map<float>; these specializations compile away.
+// ---------------------------------------------------------------------------
+namespace impl {
+template <typename U>
+inline MPI_Datatype byte_datatype() {
+    static MPI_Datatype t = [] {
+        MPI_Datatype d;
+        MPI_Type_contiguous(sizeof(U), MPI_BYTE, &d);
+        MPI_Type_commit(&d);
+        return d;
+    }();
+    return t;
+}
+}  // namespace impl
+
+#if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED
+template <>
+struct mpi_type_map<Kokkos::Experimental::half_t> {
+    static MPI_Datatype value() { return impl::byte_datatype<Kokkos::Experimental::half_t>(); }
+};
+#endif
+
+#if MATAR_HAS_BF16 && !MATAR_BF16_IS_EMULATED
+template <>
+struct mpi_type_map<Kokkos::Experimental::bhalf_t> {
+    static MPI_Datatype value() { return impl::byte_datatype<Kokkos::Experimental::bhalf_t>(); }
+};
+#endif
+
+#if MATAR_HAS_FP128
+template <>
+struct mpi_type_map<__float128> {
+    static MPI_Datatype value() { return impl::byte_datatype<__float128>(); }
+};
+#endif
+
+namespace impl {
+
+// The types the MPI standard provides datatypes AND built-in reduction ops
+// for; anything else needs special handling in mpi_allreduce_scalar below.
+template <typename U>
+struct has_builtin_mpi_type : std::false_type {};
+template <>
+struct has_builtin_mpi_type<int> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<long> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<long long> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<unsigned int> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<unsigned long> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<float> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<double> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<char> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<unsigned char> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<bool> : std::true_type {};
+
+#if MATAR_HAS_FP128
+// __float128 reductions need a custom MPI_Op (built-in ops reject derived
+// datatypes, and no wider standard type exists to promote through). quad is
+// host-only per precision.h and all MATAR MPI buffers are host-resident, so
+// a host-side op function is always safe.
+inline void quad_op_sum(void* in, void* inout, int* len, MPI_Datatype*) {
+    auto* a = static_cast<__float128*>(in);
+    auto* b = static_cast<__float128*>(inout);
+    for (int i = 0; i < *len; i++) {
+        b[i] += a[i];
+    }
+}
+inline void quad_op_prod(void* in, void* inout, int* len, MPI_Datatype*) {
+    auto* a = static_cast<__float128*>(in);
+    auto* b = static_cast<__float128*>(inout);
+    for (int i = 0; i < *len; i++) {
+        b[i] *= a[i];
+    }
+}
+inline void quad_op_max(void* in, void* inout, int* len, MPI_Datatype*) {
+    auto* a = static_cast<__float128*>(in);
+    auto* b = static_cast<__float128*>(inout);
+    for (int i = 0; i < *len; i++) {
+        b[i] = (a[i] > b[i]) ? a[i] : b[i];
+    }
+}
+inline void quad_op_min(void* in, void* inout, int* len, MPI_Datatype*) {
+    auto* a = static_cast<__float128*>(in);
+    auto* b = static_cast<__float128*>(inout);
+    for (int i = 0; i < *len; i++) {
+        b[i] = (a[i] < b[i]) ? a[i] : b[i];
+    }
+}
+
+inline MPI_Op quad_mpi_op(operation op) {
+    static MPI_Op op_sum = [] {
+        MPI_Op o;
+        MPI_Op_create(quad_op_sum, 1, &o);
+        return o;
+    }();
+    static MPI_Op op_prod = [] {
+        MPI_Op o;
+        MPI_Op_create(quad_op_prod, 1, &o);
+        return o;
+    }();
+    static MPI_Op op_max = [] {
+        MPI_Op o;
+        MPI_Op_create(quad_op_max, 1, &o);
+        return o;
+    }();
+    static MPI_Op op_min = [] {
+        MPI_Op o;
+        MPI_Op_create(quad_op_min, 1, &o);
+        return o;
+    }();
+    switch (op) {
+        case operation::sum:
+            return op_sum;
+        case operation::product:
+            return op_prod;
+        case operation::max:
+            return op_max;
+        case operation::min:
+            return op_min;
+        default:
+            return op_sum;
+    }
+}
+#endif  // MATAR_HAS_FP128
+
+// Scalar allreduce at any precision tier:
+//   builtin types        -> MPI_Allreduce with the predefined datatype/op
+//   native half/bfloat16 -> promote to double on the wire (exact: every
+//                           16-bit value is representable in double; one
+//                           rounding on return, better than chained 16-bit
+//                           rounding per rank)
+//   __float128           -> custom MPI_Op over the 16-byte datatype
+template <typename U>
+inline U mpi_allreduce_scalar(U local, operation op, MPI_Comm comm) {
+    if constexpr (has_builtin_mpi_type<U>::value) {
+        U global;
+        MPI_Allreduce(&local, &global, 1, mpi_type_map<U>::value(), mpi_op_for(op), comm);
+        return global;
+    }
+#if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED
+    else if constexpr (std::is_same_v<U, Kokkos::Experimental::half_t>) {
+        double l = static_cast<double>(local);
+        double g;
+        MPI_Allreduce(&l, &g, 1, MPI_DOUBLE, mpi_op_for(op), comm);
+        return static_cast<U>(g);
+    }
+#endif
+#if MATAR_HAS_BF16 && !MATAR_BF16_IS_EMULATED
+    else if constexpr (std::is_same_v<U, Kokkos::Experimental::bhalf_t>) {
+        double l = static_cast<double>(local);
+        double g;
+        MPI_Allreduce(&l, &g, 1, MPI_DOUBLE, mpi_op_for(op), comm);
+        return static_cast<U>(g);
+    }
+#endif
+#if MATAR_HAS_FP128
+    else if constexpr (std::is_same_v<U, __float128>) {
+        __float128 global;
+        MPI_Allreduce(&local, &global, 1, mpi_type_map<__float128>::value(), quad_mpi_op(op), comm);
+        return global;
+    }
+#endif
+    else {
+        static_assert(has_builtin_mpi_type<U>::value, "Unsupported type for MPI reduction");
+        return local;
+    }
+}
+
+}  // namespace impl
+
 template <typename T>
 struct MPICArrayCommBuffers {
     DCArrayKokkos<T> send_buffer_;
@@ -660,13 +850,11 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
         printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
-    T global      = local;
     MPI_Comm comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), comm);
-    return global;
+    return impl::mpi_allreduce_scalar(local, op, comm);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -727,13 +915,11 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
-    T global          = local;
     MPI_Comm mpi_comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
-    return global;
+    return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -794,13 +980,11 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
-    T global          = local;
     MPI_Comm mpi_comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
-    return global;
+    return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -861,13 +1045,11 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
         printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
-    T global          = local;
     MPI_Comm mpi_comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
-    return global;
+    return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

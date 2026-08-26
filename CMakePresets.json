@@ -111,6 +111,18 @@
                 "MATAR_HIGH_REAL": "double",
                 "MATAR_LOW_REAL": "half"
             }
+        },
+        {
+            "name": "serial-mpi-fp16",
+            "displayName": "Kokkos serial backend + MPI, real_t = half (float-emulated on CPU)",
+            "inherits": "serial-mpi",
+            "cacheVariables": { "MATAR_REAL": "half" }
+        },
+        {
+            "name": "serial-mpi-quad",
+            "displayName": "Kokkos serial backend + MPI, real_t = quad (custom MPI datatype/op)",
+            "inherits": "serial-mpi",
+            "cacheVariables": { "MATAR_REAL": "quad" }
         }
     ],
     "buildPresets": [
@@ -132,7 +144,9 @@
         { "name": "serial-fp16",      "configurePreset": "serial-fp16" },
         { "name": "serial-bf16",      "configurePreset": "serial-bf16" },
         { "name": "serial-quad",      "configurePreset": "serial-quad" },
-        { "name": "serial-mixed",     "configurePreset": "serial-mixed" }
+        { "name": "serial-mixed",     "configurePreset": "serial-mixed" },
+        { "name": "serial-mpi-fp16",  "configurePreset": "serial-mpi-fp16" },
+        { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad" }
     ],
     "testPresets": [
         { "name": "serial",           "configurePreset": "serial",           "output": { "outputOnFailure": true } },
@@ -151,6 +165,8 @@
         { "name": "serial-fp16",      "configurePreset": "serial-fp16",      "output": { "outputOnFailure": true } },
         { "name": "serial-bf16",      "configurePreset": "serial-bf16",      "output": { "outputOnFailure": true } },
         { "name": "serial-quad",      "configurePreset": "serial-quad",      "output": { "outputOnFailure": true } },
-        { "name": "serial-mixed",     "configurePreset": "serial-mixed",     "output": { "outputOnFailure": true } }
+        { "name": "serial-mixed",     "configurePreset": "serial-mixed",     "output": { "outputOnFailure": true } },
+        { "name": "serial-mpi-fp16",  "configurePreset": "serial-mpi-fp16",  "output": { "outputOnFailure": true } },
+        { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad",  "output": { "outputOnFailure": true } }
     ]
 }

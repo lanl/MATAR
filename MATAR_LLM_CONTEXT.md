@@ -1211,6 +1211,12 @@ Rules (hard rules for generated code):
 - Reductions (`FOR_REDUCE_*`) work at every tier: precision.h supplies the
   `Kokkos::reduction_identity` specializations Kokkos lacks (half types on
   Kokkos < 5.2, `__float128` everywhere).
+- MPI types work at every tier with no user-visible machinery:
+  `MPICArrayKokkos<real_t>` communicate()/all_reduce() just work. Internally
+  (mpi_types.h): native 16-bit types get a contiguous-byte MPI datatype and
+  reduce by promoting to double on the wire; `__float128` gets a 16-byte
+  datatype plus custom MPI_Ops. Native-16-bit MPI paths compile on GPU builds
+  but CI verifies them only in float-emulated form (no GPU runners).
 
 ### Choosing the Right Type
 
