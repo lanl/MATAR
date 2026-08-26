@@ -134,29 +134,85 @@ The CMake options are:
 
 The Kokkos backend is selected with the standard Kokkos CMake variables (`Kokkos_ENABLE_OPENMP`, `Kokkos_ENABLE_CUDA`, `Kokkos_ENABLE_HIP`, `Kokkos_ARCH_*`, ...), which are passed through to the bundled Kokkos build. With `MATAR_ENABLE_KOKKOS=OFF`, MATAR is a dependency-free serial header-only library.
 
-## Using MATAR in your CMake project
-MATAR and Kokkos can be pulled into another CMake project with FetchContent:
+## Using MATAR as a third-party library
+MATAR is header-only and exports a single CMake target, **`matar::matar`**. Linking it propagates everything a consumer needs: the include paths, the C++20 requirement, the `HAVE_KOKKOS`/`HAVE_CUDA`/`HAVE_HIP`/`HAVE_OPENMP`/`HAVE_THREADS`/`HAVE_MPI` compile definitions, and the Kokkos/MPI link dependencies. There is nothing to link manually and no MATAR library to build.
+
+Consumers need **CMake >= 3.22** and a **C++20** compiler; both come from Kokkos 5. Whichever method you choose, set the Kokkos backend variables *before* MATAR is added, because the bundled Kokkos is configured as part of that step.
+
+### Option 1: FetchContent
+CMake downloads MATAR at configure time. Nothing needs to be vendored into your repository.
+
 ```cmake
+cmake_minimum_required(VERSION 3.22)
+project(myapp LANGUAGES CXX)
+
+# Pick the Kokkos backend BEFORE MATAR is made available.
+set(Kokkos_ENABLE_OPENMP ON CACHE BOOL "" FORCE)
+
 include(FetchContent)
 FetchContent_Declare(
     matar
-    GIT_REPOSITORY https://github.com/lanl/MATAR
-    GIT_TAG        <tag-or-branch>
+    GIT_REPOSITORY https://github.com/lanl/MATAR.git
+    GIT_TAG        <tag-or-commit>   # pin a release; avoid tracking a branch
 )
-FetchContent_MakeAvailable(matar)   # builds bundled Kokkos with your Kokkos_ENABLE_* settings
+FetchContent_MakeAvailable(matar)    # also configures the bundled Kokkos
+
+add_executable(myapp main.cpp)
 target_link_libraries(myapp PRIVATE matar::matar)
 ```
-or by adding the repository as a git submodule:
+
+MATAR carries Kokkos as its own submodule, and FetchContent updates submodules recursively by default, so the bundled Kokkos is fetched and built automatically. No extra steps are needed.
+
+### Option 2: git submodule
+Vendors MATAR into your repository, which pins the exact commit and allows offline builds.
+
+```bash
+git submodule add https://github.com/lanl/MATAR.git external/MATAR
+git submodule update --init --recursive
+```
+
+`--recursive` is required: MATAR contains Kokkos as a nested submodule, and without it `external/MATAR/src/Kokkos/kokkos` is left empty and the MATAR build stops with an error telling you to re-run the command. Anyone cloning your project afterwards needs `git clone --recursive`, or the same `git submodule update --init --recursive` after cloning.
+
 ```cmake
-add_subdirectory(path/to/MATAR)
+cmake_minimum_required(VERSION 3.22)
+project(myapp LANGUAGES CXX)
+
+set(Kokkos_ENABLE_OPENMP ON CACHE BOOL "" FORCE)
+add_subdirectory(external/MATAR)
+
+add_executable(myapp main.cpp)
 target_link_libraries(myapp PRIVATE matar::matar)
 ```
-or against an installed MATAR (`cmake --install build/<preset> --prefix <prefix>`):
+
+### Option 3: an installed MATAR
+Against a MATAR installed with `cmake --install build/<preset> --prefix <prefix>`:
+
 ```cmake
-find_package(Matar REQUIRED)        # -DCMAKE_PREFIX_PATH=<prefix>
+find_package(Matar REQUIRED)         # configure with -DCMAKE_PREFIX_PATH=<prefix>
 target_link_libraries(myapp PRIVATE matar::matar)
 ```
-Linking `matar::matar` carries the include paths, `HAVE_KOKKOS`/`HAVE_MPI` definitions, and the Kokkos/MPI link dependencies automatically. If your project provides its own Kokkos (via `add_subdirectory` or `find_package` before MATAR), MATAR uses that Kokkos rather than the submodule.
+
+When the bundled Kokkos was used, it is installed into the same prefix and `MatarConfig.cmake` resolves it through `find_dependency(Kokkos)`.
+
+### Selecting a backend, and reusing your own Kokkos
+The backend is chosen with the standard Kokkos cache variables (`Kokkos_ENABLE_SERIAL`, `Kokkos_ENABLE_OPENMP`, `Kokkos_ENABLE_CUDA`, `Kokkos_ENABLE_HIP`, `Kokkos_ARCH_*`, ...), which are passed straight through to the bundled Kokkos build. Set them from your own `CMakeLists.txt` as shown above, or on the command line with `-DKokkos_ENABLE_CUDA=ON`.
+
+If your project already provides Kokkos — through `find_package(Kokkos)` or an `add_subdirectory` of its own Kokkos copy — do that **before** adding MATAR. MATAR detects the existing `Kokkos::kokkos` target and links against it instead of building its bundled submodule, so only one Kokkos ends up in the build:
+
+```cmake
+find_package(Kokkos REQUIRED)        # your Kokkos wins
+FetchContent_MakeAvailable(matar)    # MATAR reuses it
+```
+
+Other options worth knowing when embedding MATAR:
+
+| Option | Effect |
+|---|---|
+| `MATAR_ENABLE_KOKKOS=OFF` | Host-only types; MATAR becomes a dependency-free header library and the parallel macros compile to plain serial loops |
+| `MATAR_ENABLE_MPI=ON` | Adds `MPICArrayKokkos` and `CommunicationPlan` (requires MPI) |
+| `MATAR_INSTALL` | Defaults to off when MATAR is embedded in another project, so it contributes no install rules to your package |
+
+Note that while an embedded MATAR installs nothing, the *bundled Kokkos* still adds its own install rules, so `cmake --install` on your project will also deposit the Kokkos headers and CMake package files into your prefix. Use an external or parent-provided Kokkos if you need to keep it out of your install tree.
 
 ## Running codes in parallel
 The openMP and pthread Kokkos backends require the user to specify the number of threads used to run the code in parallel. 
