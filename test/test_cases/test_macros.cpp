@@ -79,7 +79,7 @@ inline void run_for_all_fill(CArrayKokkos<int>& arr1, CArrayKokkos<int>& arr2, C
     });
     FOR_ALL(i, 0, N0, {
         arr1(i) = i;
-    });
+    }, "FOR_ALL 1D");
     FOR_ALL(i, 0, N0,
             j, 0, N1, {
         arr2(i, j) = i * N1 + j;
@@ -87,7 +87,7 @@ inline void run_for_all_fill(CArrayKokkos<int>& arr1, CArrayKokkos<int>& arr2, C
     FOR_ALL(i, 0, N0,
             j, 0, N1, {
         arr2(i, j) = i * N1 + j;
-    });
+    }, "FOR_ALL 2D");
     FOR_ALL(i, 0, N0,
             j, 0, N1,
             k, 0, N2, {
@@ -97,7 +97,7 @@ inline void run_for_all_fill(CArrayKokkos<int>& arr1, CArrayKokkos<int>& arr2, C
             j, 0, N1,
             k, 0, N2, {
         arr3(i, j, k) = i * N1 * N2 + j * N2 + k;
-    });
+    }, "FOR_ALL 3D");
 }
 
 // DO_ALL uses inclusive ranges: DO_ALL(i, 0, N0-1) loops i = 0 .. N0-1
@@ -107,7 +107,7 @@ inline void run_do_all_fill(FArrayKokkos<int>& arr1, FArrayKokkos<int>& arr2, FA
     });
     DO_ALL(i, 0, N0 - 1, {
         arr1(i) = i;
-    });
+    }, "DO_ALL 1D");
     DO_ALL(i, 0, N0 - 1,
            j, 0, N1 - 1, {
         arr2(i, j) = i + j * N0;
@@ -115,7 +115,7 @@ inline void run_do_all_fill(FArrayKokkos<int>& arr1, FArrayKokkos<int>& arr2, FA
     DO_ALL(i, 0, N0 - 1,
            j, 0, N1 - 1, {
         arr2(i, j) = i + j * N0;
-    });
+    }, "DO_ALL 2D");
     DO_ALL(i, 0, N0 - 1,
            j, 0, N1 - 1,
            k, 0, N2 - 1, {
@@ -125,7 +125,7 @@ inline void run_do_all_fill(FArrayKokkos<int>& arr1, FArrayKokkos<int>& arr2, FA
            j, 0, N1 - 1,
            k, 0, N2 - 1, {
         arr3(i, j, k) = i + j * N0 + k * N0 * N1;
-    });
+    }, "DO_ALL 3D");
 }
 
 inline int reduce_sum_1d(CArrayKokkos<int>& arr) {
@@ -297,7 +297,7 @@ public:
                       j, 0, N1,
                       k, 0, N2, {
             arr3_(i, j, k) = i * N1 * N2 + j * N2 + k;
-        });
+        }, "FOR_ALL_CLASS 3D");
     }
 
     int reduce_sum_class_1d() const {

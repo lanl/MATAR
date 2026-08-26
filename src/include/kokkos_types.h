@@ -63,11 +63,22 @@ using DefaultLayout    = Kokkos::LayoutLeft;
 using DefaultMemSpace  = Kokkos::HIPSpace;
 using DefaultExecSpace = Kokkos::HIP;
 using DefaultLayout    = Kokkos::LayoutLeft;
+#elif HAVE_SYCL
+using DefaultMemSpace  = Kokkos::SYCLDeviceUSMSpace;
+using DefaultExecSpace = Kokkos::SYCL;
+using DefaultLayout    = Kokkos::LayoutLeft;
 #else
 using DefaultExecSpace = Kokkos::DefaultExecutionSpace;
 using DefaultMemSpace  = Kokkos::DefaultExecutionSpace::memory_space;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #endif
+
+// Host-side execution space, always available (OpenMP / Threads / Serial per
+// build). This is what the _HOST parallel macros run in; it is distinct from
+// DefaultExecSpace above whenever a GPU backend is selected, which is what
+// makes concurrent host+device work possible.
+using DefaultHostExecSpace = Kokkos::DefaultHostExecutionSpace;
+using DefaultHostMemSpace  = Kokkos::HostSpace;
 
 // MACROS to make the code less scary
 #define kmalloc(size) (Kokkos::kokkos_malloc<DefaultMemSpace>(size))

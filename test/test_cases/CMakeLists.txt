@@ -14,8 +14,10 @@ if(MATAR_ENABLE_KOKKOS)
 else()
     # Without Kokkos, only the host-type tests apply (the other test
     # sources, including test_macros.cpp, use Kokkos types/APIs directly).
-    # test_precision.cpp guards its Kokkos-only parts with HAVE_KOKKOS.
-    add_executable(matar_tests test_nonkokkos_types.cpp test_precision.cpp)
+    # test_precision.cpp and test_macros_host.cpp guard their Kokkos-only
+    # parts with HAVE_KOKKOS; the _HOST macros themselves alias to the serial
+    # macros in a no-Kokkos build, so they must keep working here.
+    add_executable(matar_tests test_nonkokkos_types.cpp test_precision.cpp test_macros_host.cpp)
     target_link_libraries(matar_tests matar::matar gtest_main)
     gtest_discover_tests(matar_tests DISCOVERY_MODE PRE_TEST)
 endif()

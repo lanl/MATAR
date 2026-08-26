@@ -40,7 +40,6 @@
 #include "host_types.h"
 #include "kokkos_types.h"
 
-
 // simple data type names
 namespace mtr {
 // dense host (only cpu) types
@@ -168,10 +167,16 @@ using ViewFMatrixDual = DViewFMatrixKokkos<T>;
 
 #ifdef HAVE_KOKKOS
 #define MATAR_FENCE() Kokkos::fence()
+// Per-space fences: wait on one side without stalling the other, so host
+// work (FOR_ALL_HOST and friends) can overlap in-flight device kernels.
+#define MATAR_FENCE_HOST() Kokkos::DefaultHostExecutionSpace().fence()
+#define MATAR_FENCE_DEVICE() Kokkos::DefaultExecutionSpace().fence()
 #define MATAR_INITIALIZE(...) Kokkos::initialize(__VA_ARGS__)
 #define MATAR_FINALIZE() Kokkos::finalize();
 #else
 #define MATAR_FENCE()
+#define MATAR_FENCE_HOST()
+#define MATAR_FENCE_DEVICE()
 #define MATAR_INITIALIZE(...)
 #define MATAR_FINALIZE()
 #endif

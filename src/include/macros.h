@@ -13,14 +13,14 @@
  This program is open source under the BSD-3 License.
  Redistribution and use in source and binary forms, with or without modification, are permitted
  provided that the following conditions are met:
- 
+
  1.  Redistributions of source code must retain the above copyright notice, this list of
  conditions and the following disclaimer.
- 
+
  2.  Redistributions in binary form must reproduce the above copyright notice, this list of
  conditions and the following disclaimer in the documentation and/or other materials
  provided with the distribution.
- 
+
  3.  Neither the name of the copyright holder nor the names of its contributors may be used
  to endorse or promote products derived from this software without specific prior
  written permission.
@@ -46,7 +46,7 @@
  The loop order with the MACRO enforces the inner loop varies the fastest and the outer most
  loop varies the slowest.  Optiminal performance will be achieved by ensureing the loop indices
  align with the access pattern of the MATAR datatype.
- 
+
  1.  The syntax to use the FOR_ALL MACRO is as follows:
 
  // parallelization over a single loop
@@ -84,7 +84,7 @@
             j, 0, 100,
             local_answer,
            { loop contents is here }, answer);
- 
+
  REDUCE_SUM(i, 0, 100,
             j, 0, 100,
             k, 0, 100,
@@ -96,7 +96,7 @@
                 local_answer, {
      local_answer += arr(i) * arr(i);
  }, result, "FOR_REDUCE_SUM 1D");
- 
+
  // other reduces are: FOR_REDUCE_MAX and FOR_REDUCE_MIN
  **********************************************************************************************/
 
@@ -162,7 +162,7 @@
 #define \
     RUN_CLASS(...) \
     EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, _13, _12, _11, _10, _9, _8, _7, _6, _5, _4, _3, RUN_CLASS1_N, RUN_CLASS1)(__VA_ARGS__))
-              
+
 
 // the FOR_ALL loop
 #define \
@@ -851,7 +851,7 @@ Kokkos::parallel_for( \
                         Kokkos::TeamPolicy<>( (x1)-(x0), Kokkos::AUTO, 32 ), \
                         KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
                         { const int (i) = TEAM_ID + (x0); fcn} )
-    
+
 #define \
 FOR_SECOND(j, y0, y1, fcn) \
 Kokkos::parallel_for( \
@@ -882,7 +882,7 @@ Kokkos::parallel_for( \
                         Kokkos::TeamPolicy<>( (x1)-(x0)+1, Kokkos::AUTO, 32 ), \
                         KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) \
                         { const int (i) = TEAM_ID + (x0); fcn} )
-    
+
 #define \
 DO_SECOND(j, y0, y1, fcn) \
 Kokkos::parallel_for( \
@@ -912,6 +912,314 @@ Kokkos::parallel_reduce( \
     MATAR_KOKKOS_INIT \
     Kokkos::initialize(argc, argv);
 
+
+// ==========================================================================
+//   HOST-side parallel macros
+//
+//   Twins of the macros above that run in the HOST execution space
+//   (Kokkos::DefaultHostExecutionSpace) instead of the device space, so CPU
+//   work can proceed while device kernels are still in flight: device
+//   parallel_for is asynchronous, these block only the calling host thread.
+//
+//   Two deliberate differences from the device macros:
+//     1. The policy names the host execution space explicitly.
+//     2. The lambda captures by reference, so file streams, std:: containers
+//        and other non-device-copyable host objects can be used directly.
+//        This is safe because a host parallel_for completes before it
+//        returns. It also means no separate _CLASS variants are needed --
+//        [&] captures `this` on its own (aliases are provided for symmetry).
+//
+//   IMPORTANT: a host kernel may only touch host-accessible data (the
+//   *Host types, the .host() side of a Dual type, or plain std:: data).
+//   Reading a device array here compiles but aborts at run time with
+//   "attempt to access inaccessible memory space".
+// ==========================================================================
+
+#define MATAR_HOST_EXEC Kokkos::DefaultHostExecutionSpace
+
+
+// FOR_ALL_HOST
+#define \
+    FORHOST1D(i, x0, x1, fcn) \
+    Kokkos::parallel_for( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                          [&]( const int (i) ){fcn} )
+#define \
+    FORHOST1D_N(i, x0, x1, fcn, name) \
+    Kokkos::parallel_for( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                          [&]( const int (i) ){fcn} )
+#define \
+    FORHOST2D(i, x0, x1, j, y0, y1, fcn) \
+    Kokkos::parallel_for( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                          [&]( const int (i), const int (j) ){fcn} )
+#define \
+    FORHOST2D_N(i, x0, x1, j, y0, y1, fcn, name) \
+    Kokkos::parallel_for( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                          [&]( const int (i), const int (j) ){fcn} )
+#define \
+    FORHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
+    Kokkos::parallel_for( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                          [&]( const int (i), const int (j), const int (k) ){fcn} )
+#define \
+    FORHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, fcn, name) \
+    Kokkos::parallel_for( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                          [&]( const int (i), const int (j), const int (k) ){fcn} )
+#define \
+    FOR_ALL_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, _13, _12, FORHOST3D_N, FORHOST3D, _11, FORHOST2D_N, FORHOST2D, _10, FORHOST1D_N, FORHOST1D)(__VA_ARGS__))
+
+// DO_ALL_HOST
+#define \
+    DOHOST1D(i, x0, x1, fcn) \
+    Kokkos::parallel_for( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1)+1 ), \
+                          [&]( const int (i) ){fcn} )
+#define \
+    DOHOST1D_N(i, x0, x1, fcn, name) \
+    Kokkos::parallel_for( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1)+1 ), \
+                          [&]( const int (i) ){fcn} )
+#define \
+    DOHOST2D(i, x0, x1, j, y0, y1, fcn) \
+    Kokkos::parallel_for( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0)}, {(x1)+1, (y1)+1} ), \
+                          [&]( const int (i), const int (j) ){fcn} )
+#define \
+    DOHOST2D_N(i, x0, x1, j, y0, y1, fcn, name) \
+    Kokkos::parallel_for( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0)}, {(x1)+1, (y1)+1} ), \
+                          [&]( const int (i), const int (j) ){fcn} )
+#define \
+    DOHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, fcn) \
+    Kokkos::parallel_for( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1)+1, (y1)+1, (z1)+1} ), \
+                          [&]( const int (i), const int (j), const int (k) ){fcn} )
+#define \
+    DOHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, fcn, name) \
+    Kokkos::parallel_for( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1)+1, (y1)+1, (z1)+1} ), \
+                          [&]( const int (i), const int (j), const int (k) ){fcn} )
+#define \
+    DO_ALL_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, _13, _12, DOHOST3D_N, DOHOST3D, _11, DOHOST2D_N, DOHOST2D, _10, DOHOST1D_N, DOHOST1D)(__VA_ARGS__))
+
+// RUN_HOST
+#define \
+    RUNHOST1(fcn) \
+    Kokkos::parallel_for( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( 0, 1 ), \
+                          [&](const int ijkabc){fcn} )
+#define \
+    RUNHOST1_N(fcn, name) \
+    Kokkos::parallel_for( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( 0, 1 ), \
+                          [&](const int ijkabc){fcn} )
+#define \
+    RUN_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, _13, _12, _11, _10, _9, _8, _7, _6, _5, _4, _3, RUNHOST1_N, RUNHOST1)(__VA_ARGS__))
+
+// FOR_REDUCE_SUM_HOST
+#define \
+    RSUMHOST1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    RSUMHOST1D_N(i, x0, x1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    RSUMHOST2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    RSUMHOST2D_N(i, x0, x1, j, y0, y1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    RSUMHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    RSUMHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    FOR_REDUCE_SUM_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, RSUMHOST3D_N, RSUMHOST3D, _13, RSUMHOST2D_N, RSUMHOST2D, _12, RSUMHOST1D_N, RSUMHOST1D, _11, _10)(__VA_ARGS__))
+
+// FOR_REDUCE_MAX_HOST
+#define \
+    RMAXHOST1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    RMAXHOST1D_N(i, x0, x1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    RMAXHOST2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    RMAXHOST2D_N(i, x0, x1, j, y0, y1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    RMAXHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    RMAXHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    FOR_REDUCE_MAX_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, RMAXHOST3D_N, RMAXHOST3D, _13, RMAXHOST2D_N, RMAXHOST2D, _12, RMAXHOST1D_N, RMAXHOST1D, _11, _10)(__VA_ARGS__))
+
+// FOR_REDUCE_MIN_HOST
+#define \
+    RMINHOST1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    RMINHOST1D_N(i, x0, x1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    RMINHOST2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    RMINHOST2D_N(i, x0, x1, j, y0, y1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    RMINHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    RMINHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    FOR_REDUCE_MIN_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, RMINHOST3D_N, RMINHOST3D, _13, RMINHOST2D_N, RMINHOST2D, _12, RMINHOST1D_N, RMINHOST1D, _11, _10)(__VA_ARGS__))
+
+// FOR_REDUCE_PRODUCT_HOST
+#define \
+    RPRODHOST1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Prod< decltype(result) > ( (result) ) )
+#define \
+    RPRODHOST1D_N(i, x0, x1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1) ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Prod< decltype(result) > ( (result) ) )
+#define \
+    RPRODHOST2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Prod< decltype(result) > ( (result) ) )
+#define \
+    RPRODHOST2D_N(i, x0, x1, j, y0, y1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0)}, {(x1), (y1)} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Prod< decltype(result) > ( (result) ) )
+#define \
+    RPRODHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Prod< decltype(result) > ( (result) ) )
+#define \
+    RPRODHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,LOOP_ORDER,LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1), (y1), (z1)} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Prod< decltype(result) > ( (result) ) )
+#define \
+    FOR_REDUCE_PRODUCT_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, RPRODHOST3D_N, RPRODHOST3D, _13, RPRODHOST2D_N, RPRODHOST2D, _12, RPRODHOST1D_N, RPRODHOST1D, _11, _10)(__VA_ARGS__))
+
+// DO_REDUCE_SUM_HOST
+#define \
+    DO_RSUMHOST1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1)+1 ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    DO_RSUMHOST1D_N(i, x0, x1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1)+1 ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    DO_RSUMHOST2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0)}, {(x1)+1, (y1)+1} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    DO_RSUMHOST2D_N(i, x0, x1, j, y0, y1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0)}, {(x1)+1, (y1)+1} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    DO_RSUMHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1)+1, (y1)+1, (z1)+1} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    DO_RSUMHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1)+1, (y1)+1, (z1)+1} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, (result) )
+#define \
+    DO_REDUCE_SUM_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, DO_RSUMHOST3D_N, DO_RSUMHOST3D, _13, DO_RSUMHOST2D_N, DO_RSUMHOST2D, _12, DO_RSUMHOST1D_N, DO_RSUMHOST1D, _11, _10)(__VA_ARGS__))
+
+// DO_REDUCE_MAX_HOST
+#define \
+    DO_RMAXHOST1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1)+1 ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    DO_RMAXHOST1D_N(i, x0, x1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1)+1 ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    DO_RMAXHOST2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0)}, {(x1)+1, (y1)+1} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    DO_RMAXHOST2D_N(i, x0, x1, j, y0, y1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0)}, {(x1)+1, (y1)+1} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    DO_RMAXHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1)+1, (y1)+1, (z1)+1} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    DO_RMAXHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1)+1, (y1)+1, (z1)+1} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Max< decltype(result) > ( (result) ) )
+#define \
+    DO_REDUCE_MAX_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, DO_RMAXHOST3D_N, DO_RMAXHOST3D, _13, DO_RMAXHOST2D_N, DO_RMAXHOST2D, _12, DO_RMAXHOST1D_N, DO_RMAXHOST1D, _11, _10)(__VA_ARGS__))
+
+// DO_REDUCE_MIN_HOST
+#define \
+    DO_RMINHOST1D(i, x0, x1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1)+1 ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    DO_RMINHOST1D_N(i, x0, x1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::RangePolicy<MATAR_HOST_EXEC> ( (x0), (x1)+1 ), \
+                             [&]( const int (i), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    DO_RMINHOST2D(i, x0, x1, j, y0, y1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0)}, {(x1)+1, (y1)+1} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    DO_RMINHOST2D_N(i, x0, x1, j, y0, y1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<2,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0)}, {(x1)+1, (y1)+1} ), \
+                             [&]( const int (i), const int (j), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    DO_RMINHOST3D(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result) \
+    Kokkos::parallel_reduce( Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1)+1, (y1)+1, (z1)+1} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    DO_RMINHOST3D_N(i, x0, x1, j, y0, y1, k, z0, z1, var, fcn, result, name) \
+    Kokkos::parallel_reduce( name, Kokkos::MDRangePolicy<MATAR_HOST_EXEC, Kokkos::Rank<3,F_LOOP_ORDER,F_LOOP_ORDER> > ( {(x0), (y0), (z0)}, {(x1)+1, (y1)+1, (z1)+1} ), \
+                             [&]( const int (i), const int (j), const int (k), decltype(var) &(var) ){fcn}, Kokkos::Min< decltype(result) > ( (result) ) )
+#define \
+    DO_REDUCE_MIN_HOST(...) \
+    EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, DO_RMINHOST3D_N, DO_RMINHOST3D, _13, DO_RMINHOST2D_N, DO_RMINHOST2D, _12, DO_RMINHOST1D_N, DO_RMINHOST1D, _11, _10)(__VA_ARGS__))
+
+// _CLASS spellings: [&] captures `this` directly, so these are aliases
+#define FOR_ALL_HOST_CLASS FOR_ALL_HOST
+#define RUN_HOST_CLASS RUN_HOST
+#define FOR_REDUCE_SUM_HOST_CLASS FOR_REDUCE_SUM_HOST
+#define FOR_REDUCE_MAX_HOST_CLASS FOR_REDUCE_MAX_HOST
+#define FOR_REDUCE_MIN_HOST_CLASS FOR_REDUCE_MIN_HOST
+#define FOR_REDUCE_PRODUCT_HOST_CLASS FOR_REDUCE_PRODUCT_HOST
+
 //Kokkos Finalize
 #define \
     MATAR_KOKKOS_FINALIZE \
@@ -933,11 +1241,11 @@ Kokkos::parallel_reduce( \
 template <typename F>
 void for_all (int i_start, int i_end,
               const F &lambda_fcn){
-    
+
     for (int i=i_start; i<i_end; i++){
         lambda_fcn(i);
     }
-    
+
 }; // end for_all
 
 
@@ -945,13 +1253,13 @@ template <typename F>
 void for_all (int i_start, int i_end,
               int j_start, int j_end,
               const F &lambda_fcn){
-    
+
     for (int i=i_start; i<i_end; i++){
         for (int j=j_start; j<j_end; j++){
             lambda_fcn(i,j);
         }
     }
-    
+
 }; // end for_all
 
 
@@ -960,7 +1268,7 @@ void for_all (int i_start, int i_end,
               int j_start, int j_end,
               int k_start, int k_end,
               const F &lambda_fcn){
-    
+
     for (int i=i_start; i<i_end; i++){
         for (int j=j_start; j<j_end; j++){
             for (int k=k_start; k<k_end; k++){
@@ -968,31 +1276,31 @@ void for_all (int i_start, int i_end,
             }
         }
     }
-    
+
 }; // end for_all
 
 
 template <typename F>
 void for_all_delta (int i_start, int i_end, int i_delta,
                     const F &lambda_fcn){
-    
+
     for (int i=i_start; i<i_end; i+=i_delta){
         lambda_fcn(i);
     }
-    
+
 }; // end for_all
 
 template <typename F>
 void for_all_delta (int i_start, int i_end, int i_delta,
                     int j_start, int j_end, int j_delta,
                     const F &lambda_fcn){
-    
+
     for (int i=i_start; i<i_end; i+=i_delta){
         for (int j=j_start; j<j_end; j+=j_delta){
             lambda_fcn(i,j);
         }
     }
-    
+
 }; // end for_all
 
 
@@ -1001,7 +1309,7 @@ void for_all_delta (int i_start, int i_end, int i_delta,
                     int j_start, int j_end, int j_delta,
                     int k_start, int k_end, int k_delta,
                     const F &lambda_fcn){
-    
+
     for (int i=i_start; i<i_end; i+=i_delta){
         for (int j=j_start; j<j_end; j+=j_delta){
             for (int k=k_start; k<k_end; k+=k_delta){
@@ -1009,7 +1317,7 @@ void for_all_delta (int i_start, int i_end, int i_delta,
             }
         }
     }
-    
+
 }; // end for_all
 
 
@@ -1126,7 +1434,7 @@ void reduce_sum (int i_start, int i_end,
             lambda_fcn(i,j,var);
         }
     }
-    
+
     result = var;
 };  // end for_reduce
 
@@ -1145,7 +1453,7 @@ void reduce_sum (int i_start, int i_end,
             }
         }
     }
-    
+
     result = var;
 };  // end for_reduce
 
@@ -1174,7 +1482,7 @@ void reduce_min (int i_start, int i_end,
             lambda_fcn(i,j,var);
         }
     }
-    
+
     result = var;
 };  // end for_reduce
 
@@ -1193,7 +1501,7 @@ void reduce_min (int i_start, int i_end,
             }
         }
     }
-    
+
     result = var;
 };  // end for_reduce
 
@@ -1221,7 +1529,7 @@ void reduce_max (int i_start, int i_end,
             lambda_fcn(i,j,var);
         }
     }
-    
+
     result = var;
 };  // end for_reduce
 
@@ -1240,7 +1548,7 @@ void reduce_max (int i_start, int i_end,
             }
         }
     }
-    
+
     result = var;
 };  // end for_reduce
 
@@ -1548,6 +1856,30 @@ void reduce_prod (int i_start, int i_end,
     RUN(...) \
     EXPAND(GET_MACRO(__VA_ARGS__, _16, _15, _14, _13, _12, _11, _10, _9, _8, _7, _6, _5, _4, _3, RUN1_N, RUN1)(__VA_ARGS__))
 
+
+
+// ------------------------------------------------------------------
+// Host macros without Kokkos: everything already runs on the host, so
+// the _HOST family is the serial family. Code written with _HOST
+// macros therefore compiles in every MATAR configuration.
+// ------------------------------------------------------------------
+#define FOR_ALL_HOST            FOR_ALL
+#define DO_ALL_HOST             DO_ALL
+#define RUN_HOST                RUN
+#define FOR_REDUCE_SUM_HOST     FOR_REDUCE_SUM
+#define FOR_REDUCE_MAX_HOST     FOR_REDUCE_MAX
+#define FOR_REDUCE_MIN_HOST     FOR_REDUCE_MIN
+#define FOR_REDUCE_PRODUCT_HOST FOR_REDUCE_PRODUCT
+#define DO_REDUCE_SUM_HOST      DO_REDUCE_SUM
+#define DO_REDUCE_MAX_HOST      DO_REDUCE_MAX
+#define DO_REDUCE_MIN_HOST      DO_REDUCE_MIN
+
+#define FOR_ALL_HOST_CLASS            FOR_ALL_HOST
+#define RUN_HOST_CLASS                RUN_HOST
+#define FOR_REDUCE_SUM_HOST_CLASS     FOR_REDUCE_SUM_HOST
+#define FOR_REDUCE_MAX_HOST_CLASS     FOR_REDUCE_MAX_HOST
+#define FOR_REDUCE_MIN_HOST_CLASS     FOR_REDUCE_MIN_HOST
+#define FOR_REDUCE_PRODUCT_HOST_CLASS FOR_REDUCE_PRODUCT_HOST
 
 #endif  // if not kokkos
 
