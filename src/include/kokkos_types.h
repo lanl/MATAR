@@ -60,8 +60,8 @@ using DefaultMemSpace  = Kokkos::HostSpace;
 using DefaultExecSpace = Kokkos::Threads;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #elif HAVE_HIP
-using DefaultMemSpace  = Kokkos::Experimental::HIPSpace;
-using DefaultExecSpace = Kokkos::Experimental::HIP;
+using DefaultMemSpace  = Kokkos::HIPSpace;
+using DefaultExecSpace = Kokkos::HIP;
 using DefaultLayout    = Kokkos::LayoutLeft;
 #else
 using DefaultExecSpace = Kokkos::DefaultExecutionSpace;
@@ -4488,7 +4488,7 @@ private:
     TArray1D this_array_;
     TArray1DHost this_array_host_;
     T* temp_inp_array_;
-    // typename Kokkos::View<T*, Layout, ExecSpace>::HostMirror  h_this_array_;
+    // typename Kokkos::View<T*, Layout, ExecSpace>::host_mirror_type  h_this_array_;
 
 public:
     DViewCArrayKokkos();
@@ -5869,10 +5869,14 @@ DRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::DRaggedRig
 
     block_length_ = 1;
 
-    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
+    // The host view must be a mirror of the device view, not an independent
+    // allocation: when the device space is host accessible the two are the same
+    // allocation, and Kokkos rejects a DualView whose halves do not alias.
+    auto strides_dev = strides_array.get_kokkos_view();
+    mystrides_host_  = Kokkos::create_mirror_view(strides_dev);
     // requires host synchronization before building dual view wrapper
-    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
-    mystrides_     = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
+    Kokkos::deep_copy(mystrides_host_, strides_dev);
+    mystrides_     = Strides1D(strides_dev, mystrides_host_);
     mystrides_dev_ = mystrides_.view_device();
     data_setup(tag_string);
 }  // End constructor
@@ -5888,10 +5892,14 @@ DRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::DRaggedRig
 
     block_length_ = dim2;
 
-    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
+    // The host view must be a mirror of the device view, not an independent
+    // allocation: when the device space is host accessible the two are the same
+    // allocation, and Kokkos rejects a DualView whose halves do not alias.
+    auto strides_dev = strides_array.get_kokkos_view();
+    mystrides_host_  = Kokkos::create_mirror_view(strides_dev);
     // requires host synchronization before building dual view wrapper
-    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
-    mystrides_     = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
+    Kokkos::deep_copy(mystrides_host_, strides_dev);
+    mystrides_     = Strides1D(strides_dev, mystrides_host_);
     mystrides_dev_ = mystrides_.view_device();
     data_setup(tag_string);
 }  // End constructor
@@ -5907,10 +5915,14 @@ DRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::DRaggedRig
 
     block_length_ = dim2 * dim3;
 
-    mystrides_host_ = typename Strides1D::t_host("host_strides", dims_[0]);
+    // The host view must be a mirror of the device view, not an independent
+    // allocation: when the device space is host accessible the two are the same
+    // allocation, and Kokkos rejects a DualView whose halves do not alias.
+    auto strides_dev = strides_array.get_kokkos_view();
+    mystrides_host_  = Kokkos::create_mirror_view(strides_dev);
     // requires host synchronization before building dual view wrapper
-    Kokkos::deep_copy(mystrides_host_, strides_array.get_kokkos_view());
-    mystrides_     = Strides1D(strides_array.get_kokkos_view(), mystrides_host_);
+    Kokkos::deep_copy(mystrides_host_, strides_dev);
+    mystrides_     = Strides1D(strides_dev, mystrides_host_);
     mystrides_dev_ = mystrides_.view_device();
     data_setup(tag_string);
 }  // End constructor
@@ -9909,7 +9921,7 @@ private:
 
 public:
     TArray1D this_array_;
-    typename Kokkos::View<T*, Layout, ExecSpace>::HostMirror  h_this_array_;
+    typename Kokkos::View<T*, Layout, ExecSpace>::host_mirror_type  h_this_array_;
 
     InheritedArray2L();
 
