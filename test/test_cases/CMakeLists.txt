@@ -14,7 +14,8 @@ if(MATAR_ENABLE_KOKKOS)
 else()
     # Without Kokkos, only the host-type tests apply (the other test
     # sources, including test_macros.cpp, use Kokkos types/APIs directly).
-    add_executable(matar_tests test_nonkokkos_types.cpp)
+    # test_precision.cpp guards its Kokkos-only parts with HAVE_KOKKOS.
+    add_executable(matar_tests test_nonkokkos_types.cpp test_precision.cpp)
     target_link_libraries(matar_tests matar::matar gtest_main)
     gtest_discover_tests(matar_tests DISCOVERY_MODE PRE_TEST)
 endif()
