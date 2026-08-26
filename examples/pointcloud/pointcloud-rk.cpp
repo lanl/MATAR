@@ -984,7 +984,7 @@ int main(int argc, char* argv[]) {
                                           (k >= neighbor_kmin && k <= neighbor_kmax);
 
                             if (!inside) {
-                                Kokkos::atomic_increment(&points_num_neighbors(neighbor_point_gid));
+                                Kokkos::atomic_inc(&points_num_neighbors(neighbor_point_gid));
                                 // the other stencil didn't see my point because it was smaller, now it does see it
                             }
 

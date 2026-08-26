@@ -137,7 +137,7 @@ void track_progress(int iteration, view_type temperature) {
     int i;
 
     // make a deep copy of temperature from device to host
-    view_type::HostMirror host_temperature = Kokkos::create_mirror_view(temperature);
+    view_type::host_mirror_type host_temperature = Kokkos::create_mirror_view(temperature);
     Kokkos::deep_copy(host_temperature, temperature);
 
     printf("---------- Iteration number: %d ----------\n", iteration);

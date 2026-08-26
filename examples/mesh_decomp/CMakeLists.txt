@@ -15,6 +15,13 @@ if (MATAR_ENABLE_KOKKOS AND MATAR_ENABLE_MPI)
       -DMPI_C_COMPILER=mpicc
       -DMPI_Fortran_COMPILER=mpifort
       -DENABLE_TESTS=OFF
+      # Scotch enables compressed-graph I/O for whatever it finds at configure
+      # time, which drags zlib/bzip2/lzma into the link of every consumer. This
+      # example builds its mesh in code and never reads a compressed graph, so
+      # turn them off rather than carry the dependencies.
+      -DUSE_ZLIB=OFF
+      -DUSE_BZ2=OFF
+      -DUSE_LZMA=OFF
     INSTALL_COMMAND ""
     BUILD_BYPRODUCTS
       ${SCOTCH_BUILD_DIR}/lib/libscotch.a
@@ -39,8 +46,5 @@ if (MATAR_ENABLE_KOKKOS AND MATAR_ENABLE_MPI)
     ${SCOTCH_BUILD_DIR}/lib/libptscotcherr.a
     ${SCOTCH_BUILD_DIR}/lib/libptscotch.a
     -Wl,--no-whole-archive
-    -lz     # zlib for gzip compression
-    -lbz2   # bzip2 library
-    -llzma  # xz compression library
   )
 endif()
