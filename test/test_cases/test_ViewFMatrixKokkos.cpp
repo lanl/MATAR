@@ -87,8 +87,10 @@ TEST(Test_ViewFMatrixKokkos, set_values) {
     Kokkos::View<double*> dev_data("dev_data", size * size);
     ViewFMatrixKokkos<double> A(dev_data.data(), size, size);
 
-    A.set_values(42.0);
-    Kokkos::fence();
+    RUN({
+        A.set_values(42.0);
+    });
+    MATAR_FENCE();
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     for (int i = 0; i < size * size; i++) {
         EXPECT_EQ(42.0, h(i));
@@ -146,8 +148,10 @@ TEST(Test_ViewFMatrixKokkos, different_types) {
     {
         Kokkos::View<int*> dev_data("int_data", size * size);
         ViewFMatrixKokkos<int> A(dev_data.data(), size, size);
-        A.set_values(42);
-        Kokkos::fence();
+        RUN({
+            A.set_values(42);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(42, h(0));
     }
@@ -156,8 +160,10 @@ TEST(Test_ViewFMatrixKokkos, different_types) {
     {
         Kokkos::View<float*> dev_data("float_data", size * size);
         ViewFMatrixKokkos<float> B(dev_data.data(), size, size);
-        B.set_values(42.0f);
-        Kokkos::fence();
+        RUN({
+            B.set_values(42.0f);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(42.0f, h(0));
     }
@@ -166,8 +172,10 @@ TEST(Test_ViewFMatrixKokkos, different_types) {
     {
         Kokkos::View<bool*> dev_data("bool_data", size * size);
         ViewFMatrixKokkos<bool> C(dev_data.data(), size, size);
-        C.set_values(true);
-        Kokkos::fence();
+        RUN({
+            C.set_values(true);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(true, h(0));
     }
@@ -178,13 +186,19 @@ TEST(Test_ViewFMatrixKokkos, raii) {
     Kokkos::View<double*> dev_data("dev_data", 100 * 100);
     {
         ViewFMatrixKokkos<double> A(dev_data.data(), 100, 100);
-        A.set_values(42.0);
+        RUN({
+            A.set_values(42.0);
+        });
+        MATAR_FENCE();
         EXPECT_EQ(A.size(), 10000);
         // A should be destroyed at end of scope
     }
 
     // Create new matrix using same backing memory
     ViewFMatrixKokkos<double> B(dev_data.data(), 100, 100);
-    B.set_values(0.0);
+    RUN({
+        B.set_values(0.0);
+    });
+    MATAR_FENCE();
     EXPECT_EQ(B.size(), 10000);
 }

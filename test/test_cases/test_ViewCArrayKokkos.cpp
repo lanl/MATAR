@@ -87,8 +87,10 @@ TEST(Test_ViewCArrayKokkos, set_values) {
     const int size = 10;
     Kokkos::View<double*> dev_data("dev_data", size * size);
     ViewCArrayKokkos<double> A(dev_data.data(), size, size);
-    A.set_values(42.0);
-    Kokkos::fence();
+    RUN({
+        A.set_values(42.0);
+    });
+    MATAR_FENCE();
     auto host_data = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     for (int i = 0; i < size * size; i++) {
         EXPECT_EQ(host_data(i), 42.0);
@@ -141,8 +143,10 @@ TEST(Test_ViewCArrayKokkos, different_types) {
     {
         Kokkos::View<int*> dev_data("int_data", size * size);
         ViewCArrayKokkos<int> A(dev_data.data(), size, size);
-        A.set_values(42);
-        Kokkos::fence();
+        RUN({
+            A.set_values(42);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(h(0), 42);
     }
@@ -151,8 +155,11 @@ TEST(Test_ViewCArrayKokkos, different_types) {
     {
         Kokkos::View<float*> dev_data("float_data", size * size);
         ViewCArrayKokkos<float> B(dev_data.data(), size, size);
-        B.set_values(42.0f);
-        Kokkos::fence();
+        RUN({
+            B.set_values(42.0f);
+        });
+        MATAR_FENCE();
+
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_FLOAT_EQ(h(0), 42.0f);
     }
@@ -161,8 +168,10 @@ TEST(Test_ViewCArrayKokkos, different_types) {
     {
         Kokkos::View<bool*> dev_data("bool_data", size * size);
         ViewCArrayKokkos<bool> C(dev_data.data(), size, size);
-        C.set_values(true);
-        Kokkos::fence();
+        RUN({
+            C.set_values(true);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(h(0), true);
     }
@@ -174,10 +183,12 @@ TEST(Test_ViewCArrayKokkos, raii) {
     Kokkos::View<double*> dev_data("dev_data", size * size);
     {
         ViewCArrayKokkos<double> A(dev_data.data(), size, size);
-        A.set_values(42.0);
+        RUN({
+            A.set_values(42.0);
+        });
+        MATAR_FENCE();
     }  // A goes out of scope here
     // Data should still be accessible via mirror after A is destroyed
-    Kokkos::fence();
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     EXPECT_EQ(h(0), 42.0);
 }

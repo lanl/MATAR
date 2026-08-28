@@ -87,8 +87,10 @@ TEST(Test_ViewCMatrixKokkos, set_values) {
     const int size = 10;
     Kokkos::View<double*> dev_data("dev_data", size * size);
     ViewCMatrixKokkos<double> A(dev_data.data(), size, size);
-    A.set_values(42.0);
-    Kokkos::fence();
+    RUN({
+        A.set_values(42.0);
+    });
+    MATAR_FENCE();
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     for (int i = 0; i < size * size; i++) {
         EXPECT_EQ(h(i), 42.0);
@@ -143,8 +145,10 @@ TEST(Test_ViewCMatrixKokkos, different_types) {
     {
         Kokkos::View<int*> dev_data("int_data", size * size);
         ViewCMatrixKokkos<int> A(dev_data.data(), size, size);
-        A.set_values(42);
-        Kokkos::fence();
+        RUN({
+            A.set_values(42);
+        });
+        MATAR_FENCE();  
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(h(0), 42);
     }
@@ -153,8 +157,10 @@ TEST(Test_ViewCMatrixKokkos, different_types) {
     {
         Kokkos::View<float*> dev_data("float_data", size * size);
         ViewCMatrixKokkos<float> B(dev_data.data(), size, size);
-        B.set_values(42.0f);
-        Kokkos::fence();
+        RUN({
+            B.set_values(42.0f);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_FLOAT_EQ(h(0), 42.0f);
     }
@@ -163,8 +169,10 @@ TEST(Test_ViewCMatrixKokkos, different_types) {
     {
         Kokkos::View<bool*> dev_data("bool_data", size * size);
         ViewCMatrixKokkos<bool> C(dev_data.data(), size, size);
-        C.set_values(true);
-        Kokkos::fence();
+        RUN({
+            C.set_values(true);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(h(0), true);
     }
@@ -176,10 +184,12 @@ TEST(Test_ViewCMatrixKokkos, raii) {
     Kokkos::View<double*> dev_data("dev_data", size * size);
     {
         ViewCMatrixKokkos<double> A(dev_data.data(), size, size);
-        A.set_values(42.0);
+        RUN({
+            A.set_values(42.0);
+        });
+        MATAR_FENCE();
     }  // A goes out of scope here
     // Data should still be accessible after A is destroyed
-    Kokkos::fence();
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     EXPECT_EQ(h(0), 42.0);
 }
@@ -189,14 +199,16 @@ TEST(Test_ViewCMatrixKokkos, copy_constructor) {
     const int size = 10;
     Kokkos::View<double*> dev_data("dev_data", size * size);
     ViewCMatrixKokkos<double> A(dev_data.data(), size, size);
-    A.set_values(42.0);
+    RUN({
+        A.set_values(42.0);
+    });
+    MATAR_FENCE();
 
     ViewCMatrixKokkos<double> B(A);
     EXPECT_EQ(B.size(), A.size());
     EXPECT_EQ(B.extent(), A.extent());
     EXPECT_EQ(B.order(), A.order());
     // Both A and B wrap the same pointer; verify values via mirror
-    Kokkos::fence();
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     EXPECT_EQ(h(0), 42.0);
 }
@@ -206,7 +218,10 @@ TEST(Test_ViewCMatrixKokkos, assignment_operator) {
     const int size = 10;
     Kokkos::View<double*> dev_data("dev_data", size * size);
     ViewCMatrixKokkos<double> A(dev_data.data(), size, size);
-    A.set_values(42.0);
+    RUN({
+        A.set_values(42.0);
+    });
+    MATAR_FENCE();
 
     ViewCMatrixKokkos<double> B;
     B = A;

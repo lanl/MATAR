@@ -117,8 +117,10 @@ TEST(Test_ViewFArrayKokkos, set_values) {
     Kokkos::View<double*> dev_data("dev_data", size);
     ViewFArrayKokkos<double> A(dev_data.data(), size);
 
-    A.set_values(42.0);
-    Kokkos::fence();
+    RUN({
+        A.set_values(42.0);
+    });
+    MATAR_FENCE();
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     for (int i = 0; i < size; i++) {
         EXPECT_EQ(42.0, h(i));
@@ -176,8 +178,10 @@ TEST(Test_ViewFArrayKokkos, different_types) {
     {
         Kokkos::View<int*> dev_data("int_data", size);
         ViewFArrayKokkos<int> A(dev_data.data(), size);
-        A.set_values(42);
-        Kokkos::fence();
+        RUN({
+            A.set_values(42);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(42, h(5));
     }
@@ -186,8 +190,10 @@ TEST(Test_ViewFArrayKokkos, different_types) {
     {
         Kokkos::View<float*> dev_data("float_data", size);
         ViewFArrayKokkos<float> B(dev_data.data(), size);
-        B.set_values(42.0f);
-        Kokkos::fence();
+        RUN({
+            B.set_values(42.0f);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(42.0f, h(5));
     }
@@ -196,8 +202,10 @@ TEST(Test_ViewFArrayKokkos, different_types) {
     {
         Kokkos::View<bool*> dev_data("bool_data", size);
         ViewFArrayKokkos<bool> C(dev_data.data(), size);
-        C.set_values(true);
-        Kokkos::fence();
+        RUN({
+            C.set_values(true);
+        });
+        MATAR_FENCE();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(true, h(5));
     }
