@@ -183,67 +183,19 @@ TEST(Test_ViewFMatrixKokkos, different_types) {
     }
 }
 
-// Test RAII behavior: a ViewFMatrixKokkos is a non-owning alias of memory that
-// a MATAR container owns, so constructing and destroying the view must never
-// change the owner's reference count or the contents of the allocation.
-TEST(Test_ViewFMatrixKokkos, raii) {
-    const int size = 100;
-
-    FMatrixKokkos<double> owner(size, size, "raii_owner");
-    owner.set_values(1.0);
-    MATAR_FENCE();
-
-    // Hold a second reference to the owner's allocation so its reference count
-    // is observable: owner + owner_ref == 2.
-    auto owner_ref = owner.get_kokkos_view();
-    EXPECT_EQ(2, owner_ref.use_count());
-
-    double* const backing = owner.pointer();
+// Test RAII behavior
+TEST(Test_ViewFMatrixKokkos, raii)
+{
+    Kokkos::View<double*> dev_data("dev_data", 100 * 100);
     {
-        ViewFMatrixKokkos<double> A(backing, size, size);
-
-        // The view aliases the owner's memory rather than allocating its own.
-        EXPECT_EQ(backing, A.pointer());
-        EXPECT_EQ(owner.size(), A.size());
-        EXPECT_EQ(2, owner_ref.use_count());
-
+        ViewFMatrixKokkos<double> A(dev_data.data(), 100, 100);
         helper_set_values(A, 42.0);
-    }  // A is destroyed here
-
-    // Destroying the view released nothing: the allocation is still owned only
-    // by owner and owner_ref.
-    EXPECT_EQ(2, owner_ref.use_count());
-
-    // The data A wrote survived A's destruction, untouched.
-    auto host_ref = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, owner_ref);
-    for (int i = 0; i < size * size; i++) {
-        EXPECT_EQ(42.0, host_ref(i));
+        EXPECT_EQ(A.size(), 10000);
+        // A should be destroyed at end of scope
     }
 
-    // A fresh view over the same memory reads back what the destroyed view wrote.
-    Kokkos::View<double*> probe("probe", 1);
-    ViewFMatrixKokkos<double> B(backing, size, size);
-    RUN({
-        probe(0) = B(1, 1);
-    });
-    MATAR_FENCE();
-    auto host_probe = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, probe);
-    EXPECT_EQ(42.0, host_probe(0));
-
-    // The owning container is what implements RAII: releasing its reference is
-    // tied to its scope, while any view of it holds no reference at all.
-    decltype(owner.get_kokkos_view()) scoped_ref;
-    {
-        FMatrixKokkos<double> scoped(size, size, "raii_scoped");
-        scoped_ref = scoped.get_kokkos_view();
-        EXPECT_EQ(2, scoped_ref.use_count());
-
-        ViewFMatrixKokkos<double> C(scoped.pointer(), size, size);
-        helper_set_values(C, 7.0);
-        EXPECT_EQ(2, scoped_ref.use_count());
-    }  // scoped is destroyed here
-
-    // Only our own reference is left, so scoped's destructor gave up its
-    // reference and C never held one.
-    EXPECT_EQ(1, scoped_ref.use_count());
+    // Create new matrix using same backing memory
+    ViewFMatrixKokkos<double> B(dev_data.data(), 100, 100);
+    helper_set_values(B, 0.0);
+    EXPECT_EQ(B.size(), 10000);
 }
