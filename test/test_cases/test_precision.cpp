@@ -111,33 +111,39 @@ TEST(Precision, HostTypesAtTier) {
 }
 
 #ifdef HAVE_KOKKOS
-TEST(Precision, TierReductionSum) {
-    // 100 * 0.5 = 50: every partial sum is a multiple of 0.5 <= 50, exact
-    // even at bfloat16
-    const int n = 100;
-    CArrayDevice<real_t> a(n, "precision_sum");
-    a.set_values(real_t(0.5));
-    MATAR_FENCE();
+namespace {
 
+// KOKKOS_LAMBDA (used by the device macros) must not appear inside a TEST()'s
+// TestBody: nvcc rejects an extended __host__ __device__ lambda whose enclosing
+// function has private or protected class access. Wrap each device kernel in a
+// namespace-scope function. The _HOST macros capture by reference and are not
+// subject to this, so they may stay inline in a test body.
+
+inline void fill_index(CArrayDevice<real_t>& a, int n) {
+    FOR_ALL(i, 0, n, {
+        a(i) = real_t(i);
+    });
+    MATAR_FENCE();
+}
+
+inline void fill_two_every_seventh(CArrayDevice<real_t>& a, int n) {
+    FOR_ALL(i, 0, n, {
+        a(i) = (i % 7 == 0) ? real_t(2) : real_t(1);
+    });
+    MATAR_FENCE();
+}
+
+inline real_t reduce_sum(CArrayDevice<real_t>& a, int n) {
     real_t result  = real_t(0);
     real_t loc_sum = real_t(0);
     FOR_REDUCE_SUM(i, 0, n,
                    loc_sum, {
         loc_sum += a(i);
     }, result);
-
-    EXPECT_NEAR(static_cast<double>(result), 50.0, 0.5);
+    return result;
 }
 
-TEST(Precision, TierReductionMaxMin) {
-    // integers 0..99: exact at every tier
-    const int n = 100;
-    CArrayDevice<real_t> a(n, "precision_maxmin");
-    FOR_ALL(i, 0, n, {
-        a(i) = real_t(i);
-    });
-    MATAR_FENCE();
-
+inline real_t reduce_max(CArrayDevice<real_t>& a, int n) {
     real_t max_val = real_t(0);
     real_t max_lcl = real_t(0);
     FOR_REDUCE_MAX(i, 0, n,
@@ -146,8 +152,10 @@ TEST(Precision, TierReductionMaxMin) {
             max_lcl = a(i);
         }
     }, max_val);
-    EXPECT_DOUBLE_EQ(static_cast<double>(max_val), 99.0);
+    return max_val;
+}
 
+inline real_t reduce_min(CArrayDevice<real_t>& a, int n) {
     real_t min_val = real_t(n);
     real_t min_lcl = real_t(n);
     FOR_REDUCE_MIN(i, 0, n,
@@ -156,25 +164,93 @@ TEST(Precision, TierReductionMaxMin) {
             min_lcl = a(i);
         }
     }, min_val);
-    EXPECT_DOUBLE_EQ(static_cast<double>(min_val), 0.0);
+    return min_val;
 }
 
-TEST(Precision, TierReductionProduct) {
-    // three 2s among 1s: product = 8, exact everywhere
-    const int n = 20;
-    CArrayDevice<real_t> a(n, "precision_prod");
-    FOR_ALL(i, 0, n, {
-        a(i) = (i % 7 == 0) ? real_t(2) : real_t(1);
-    });
-    MATAR_FENCE();
-
+inline real_t reduce_product(CArrayDevice<real_t>& a, int n) {
     real_t prod     = real_t(1);
     real_t prod_lcl = real_t(1);
     FOR_REDUCE_PRODUCT(i, 0, n,
                        prod_lcl, {
         prod_lcl *= a(i);
     }, prod);
-    EXPECT_DOUBLE_EQ(static_cast<double>(prod), 8.0);
+    return prod;
+}
+
+inline void dual_double_in_place(CArrayDual<real_t>& field, int n) {
+    FOR_ALL(i, 0, n, {
+        field(i) = real_t(2) * field(i);
+    });
+    MATAR_FENCE();
+}
+
+inline real_t dual_reduce_sum(CArrayDual<real_t>& field, int n) {
+    real_t sum     = real_t(0);
+    real_t sum_lcl = real_t(0);
+    FOR_REDUCE_SUM(i, 0, n,
+                   sum_lcl, {
+        sum_lcl += field(i);
+    }, sum);
+    return sum;
+}
+
+inline void dual_low_add_one(CArrayDual<low_real_t>& field, int n) {
+    FOR_ALL(i, 0, n, {
+        field(i) = field(i) + low_real_t(1);
+    });
+    MATAR_FENCE();
+}
+
+inline void fill_mixed_tiers(CArrayDevice<high_real_t>& coords, CArrayDevice<real_t>& state, int n) {
+    FOR_ALL(i, 0, n, {
+        coords(i) = high_real_t(i) / high_real_t(4);  // multiples of 0.25: exact
+        state(i)  = real_t(coords(i));
+    });
+    MATAR_FENCE();
+}
+
+inline real_t reduce_sum_state(CArrayDevice<real_t>& state, int n) {
+    real_t result = real_t(0);
+    real_t loc    = real_t(0);
+    FOR_REDUCE_SUM(i, 0, n,
+                   loc, {
+        loc += state(i);
+    }, result);
+    return result;
+}
+
+}  // namespace
+
+TEST(Precision, TierReductionSum) {
+    // 100 * 0.5 = 50: every partial sum is a multiple of 0.5 <= 50, exact
+    // even at bfloat16
+    const int n = 100;
+    CArrayDevice<real_t> a(n, "precision_sum");
+    a.set_values(real_t(0.5));
+    MATAR_FENCE();
+
+    const real_t result = reduce_sum(a, n);
+
+    EXPECT_NEAR(static_cast<double>(result), 50.0, 0.5);
+}
+
+TEST(Precision, TierReductionMaxMin) {
+    // integers 0..99: exact at every tier
+    const int n = 100;
+    CArrayDevice<real_t> a(n, "precision_maxmin");
+    fill_index(a, n);
+
+    EXPECT_DOUBLE_EQ(static_cast<double>(reduce_max(a, n)), 99.0);
+    EXPECT_DOUBLE_EQ(static_cast<double>(reduce_min(a, n)), 0.0);
+}
+
+TEST(Precision, TierReductionProduct) {
+    // three 2s among 1s: product = 8, exact everywhere
+    const int n = 20;
+    CArrayDevice<real_t> a(n, "precision_prod");
+    fill_two_every_seventh(a, n);
+
+    EXPECT_DOUBLE_EQ(static_cast<double>(reduce_product(a, n)), 8.0);
 }
 
 TEST(Precision, DualTypeRoundTrip) {
@@ -183,10 +259,7 @@ TEST(Precision, DualTypeRoundTrip) {
     CArrayDual<real_t> field(n, "precision_dual");
     field.set_values(real_t(1.5));
 
-    FOR_ALL(i, 0, n, {
-        field(i) = real_t(2) * field(i);
-    });
-    MATAR_FENCE();
+    dual_double_in_place(field, n);
     field.update_host();
 
     EXPECT_DOUBLE_EQ(static_cast<double>(field.host(3)), 3.0);
@@ -194,12 +267,7 @@ TEST(Precision, DualTypeRoundTrip) {
     field.host(3) = real_t(7);
     field.update_device();
 
-    real_t sum     = real_t(0);
-    real_t sum_lcl = real_t(0);
-    FOR_REDUCE_SUM(i, 0, n,
-                   sum_lcl, {
-        sum_lcl += field(i);
-    }, sum);
+    const real_t sum = dual_reduce_sum(field, n);
     // 9 * 3.0 + 7.0 = 34
     EXPECT_NEAR(static_cast<double>(sum), 34.0, 0.5);
 }
@@ -208,10 +276,7 @@ TEST(Precision, DualTypeLowTier) {
     const int n = 8;
     CArrayDual<low_real_t> field(n, "precision_dual_low");
     field.set_values(low_real_t(0.25));
-    FOR_ALL(i, 0, n, {
-        field(i) = field(i) + low_real_t(1);
-    });
-    MATAR_FENCE();
+    dual_low_add_one(field, n);
     field.update_host();
     EXPECT_DOUBLE_EQ(static_cast<double>(field.host(5)), 1.25);
 }
@@ -222,18 +287,9 @@ TEST(Precision, MixedTierFields) {
     CArrayDevice<high_real_t> coords(n, "precision_coords");
     CArrayDevice<real_t> state(n, "precision_state");
 
-    FOR_ALL(i, 0, n, {
-        coords(i) = high_real_t(i) / high_real_t(4);  // multiples of 0.25: exact
-        state(i)  = real_t(coords(i));
-    });
-    MATAR_FENCE();
+    fill_mixed_tiers(coords, state, n);
 
-    real_t result = real_t(0);
-    real_t loc    = real_t(0);
-    FOR_REDUCE_SUM(i, 0, n,
-                   loc, {
-        loc += state(i);
-    }, result);
+    const real_t result = reduce_sum_state(state, n);
 
     // sum of i/4 for i=0..9 = 11.25
     EXPECT_NEAR(static_cast<double>(result), 11.25, 0.1);

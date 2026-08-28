@@ -192,6 +192,67 @@ TEST(TestMacrosHost, CapturesHostOnlyObjects) {
 }
 
 #ifdef HAVE_KOKKOS
+namespace {
+
+// Device macros expand to KOKKOS_LAMBDA, and nvcc rejects an extended
+// __host__ __device__ lambda whose enclosing function has private or protected
+// class access -- which gtest's TestBody() does. Wrap the device kernels in
+// namespace-scope functions. The _HOST macros capture by reference and are not
+// subject to this restriction, so they stay inline in the test bodies.
+
+inline double dual_reduce_sum(CArrayDual<double>& field, int n) {
+    double sum     = 0.0;
+    double loc_sum = 0.0;
+    FOR_REDUCE_SUM(i, 0, n,
+                   loc_sum, {
+        loc_sum += field(i);
+    }, sum);
+    MATAR_FENCE();
+    return sum;
+}
+
+inline void device_fill_double(CArrayDevice<int>& a, int n) {
+    FOR_ALL(i, 0, n, {
+        a(i) = i * 2;
+    });
+    // deliberately no fence: the caller overlaps host work with this kernel
+}
+
+inline int device_reduce_sum(CArrayDevice<int>& a, int n) {
+    int sum     = 0;
+    int loc_sum = 0;
+    FOR_REDUCE_SUM(i, 0, n,
+                   loc_sum, {
+        loc_sum += a(i);
+    }, sum);
+    MATAR_FENCE();
+    return sum;
+}
+
+// slice each element's 3x3 block inside the kernel and fill it there
+inline void view_fill_slices(CArrayDevice<double>& A, int n_elem) {
+    FOR_ALL(e, 0, n_elem, {
+        ViewCArrayKokkos<double> slice(&A(e, 0, 0), 3, 3);
+        slice.set_values(static_cast<double>(e));
+    });
+    MATAR_FENCE();
+}
+
+inline double reduce_sum_3d(CArrayDevice<double>& A, int n_elem) {
+    double sum     = 0.0;
+    double loc_sum = 0.0;
+    FOR_REDUCE_SUM(e, 0, n_elem,
+                   i, 0, 3,
+                   j, 0, 3,
+                   loc_sum, {
+        loc_sum += A(e, i, j);
+    }, sum);
+    MATAR_FENCE();
+    return sum;
+}
+
+}  // namespace
+
 // Documented interop path: host macros operate on the .host() side of a dual
 // type, then the result is pushed to the device.
 TEST(TestMacrosHost, DualTypeHostSide) {
@@ -203,13 +264,7 @@ TEST(TestMacrosHost, DualTypeHostSide) {
     });
     field.update_device();
 
-    double sum     = 0.0;
-    double loc_sum = 0.0;
-    FOR_REDUCE_SUM(i, 0, n,
-                   loc_sum, {
-        loc_sum += field(i);
-    }, sum);
-    MATAR_FENCE();
+    const double sum = dual_reduce_sum(field, n);
 
     // sum of 0.5*i for i=0..15
     EXPECT_DOUBLE_EQ(sum, 0.5 * (n - 1) * n / 2.0);
@@ -224,10 +279,8 @@ TEST(TestMacrosHost, ConcurrentHostAndDeviceWork) {
     CArrayDevice<int> device_side(n, "concurrent_device");
     CArrayHost<int> host_side(n);
 
-    FOR_ALL(i, 0, n, {
-        device_side(i) = i * 2;
-    });
-    // no fence here on purpose: host work proceeds while the device runs
+    device_fill_double(device_side, n);
+    // no fence above on purpose: host work proceeds while the device runs
     FOR_ALL_HOST(i, 0, n, {
         host_side(i) = i * 3;
     });
@@ -235,15 +288,7 @@ TEST(TestMacrosHost, ConcurrentHostAndDeviceWork) {
 
     EXPECT_EQ(host_side(n - 1), (n - 1) * 3);
 
-    int sum     = 0;
-    int loc_sum = 0;
-    FOR_REDUCE_SUM(i, 0, n,
-                   loc_sum, {
-        loc_sum += device_side(i);
-    }, sum);
-    MATAR_FENCE();
-
-    EXPECT_EQ(sum, (n - 1) * n);
+    EXPECT_EQ(device_reduce_sum(device_side, n), (n - 1) * n);
 }
 
 // ---------------------------------------------------------------------------
@@ -258,22 +303,9 @@ TEST(TestMacrosHost, ViewSetValuesInsideKernel) {
     A.set_values(-1.0);
     MATAR_FENCE();
 
-    // slice each element's 3x3 block inside the kernel and fill it there
-    FOR_ALL(e, 0, n_elem, {
-        ViewCArrayKokkos<double> slice(&A(e, 0, 0), 3, 3);
-        slice.set_values(static_cast<double>(e));
-    });
-    MATAR_FENCE();
+    view_fill_slices(A, n_elem);
 
-    double sum     = 0.0;
-    double loc_sum = 0.0;
-    FOR_REDUCE_SUM(e, 0, n_elem,
-                   i, 0, 3,
-                   j, 0, 3,
-                   loc_sum, {
-        loc_sum += A(e, i, j);
-    }, sum);
-    MATAR_FENCE();
+    const double sum = reduce_sum_3d(A, n_elem);
 
     // each 3x3 block holds its element index: 9 * (0+1+2+3)
     EXPECT_DOUBLE_EQ(sum, 9.0 * (0 + 1 + 2 + 3));
