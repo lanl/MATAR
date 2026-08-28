@@ -5,6 +5,20 @@
 
 using namespace mtr;  // matar namespace
 
+namespace {
+// A KOKKOS_LAMBDA cannot appear inside TEST()'s private TestBody() -- nvcc
+// rejects extended __device__ lambdas in a function with private class access
+// -- so the RUN block that fills a view lives in this free function instead.
+// The view is captured by value into the kernel, so set_values must be const.
+template <typename ViewType, typename T>
+inline void helper_set_values(const ViewType& view, T val) {
+    RUN({
+        view.set_values(val);
+    });
+    MATAR_FENCE();
+}
+}  // namespace
+
 // Helper function to create and return a ViewCMatrixKokkos object
 ViewCMatrixKokkos<double> return_ViewCMatrixKokkos(int dims, std::vector<int> sizes, double* data) {
     switch (dims) {
@@ -87,10 +101,7 @@ TEST(Test_ViewCMatrixKokkos, set_values) {
     const int size = 10;
     Kokkos::View<double*> dev_data("dev_data", size * size);
     ViewCMatrixKokkos<double> A(dev_data.data(), size, size);
-    RUN({
-        A.set_values(42.0);
-    });
-    MATAR_FENCE();
+    helper_set_values(A, 42.0);
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     for (int i = 0; i < size * size; i++) {
         EXPECT_EQ(h(i), 42.0);
@@ -145,10 +156,7 @@ TEST(Test_ViewCMatrixKokkos, different_types) {
     {
         Kokkos::View<int*> dev_data("int_data", size * size);
         ViewCMatrixKokkos<int> A(dev_data.data(), size, size);
-        RUN({
-            A.set_values(42);
-        });
-        MATAR_FENCE();  
+        helper_set_values(A, 42);
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(h(0), 42);
     }
@@ -157,10 +165,7 @@ TEST(Test_ViewCMatrixKokkos, different_types) {
     {
         Kokkos::View<float*> dev_data("float_data", size * size);
         ViewCMatrixKokkos<float> B(dev_data.data(), size, size);
-        RUN({
-            B.set_values(42.0f);
-        });
-        MATAR_FENCE();
+        helper_set_values(B, 42.0f);
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_FLOAT_EQ(h(0), 42.0f);
     }
@@ -169,10 +174,7 @@ TEST(Test_ViewCMatrixKokkos, different_types) {
     {
         Kokkos::View<bool*> dev_data("bool_data", size * size);
         ViewCMatrixKokkos<bool> C(dev_data.data(), size, size);
-        RUN({
-            C.set_values(true);
-        });
-        MATAR_FENCE();
+        helper_set_values(C, true);
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(h(0), true);
     }
@@ -184,10 +186,7 @@ TEST(Test_ViewCMatrixKokkos, raii) {
     Kokkos::View<double*> dev_data("dev_data", size * size);
     {
         ViewCMatrixKokkos<double> A(dev_data.data(), size, size);
-        RUN({
-            A.set_values(42.0);
-        });
-        MATAR_FENCE();
+        helper_set_values(A, 42.0);
     }  // A goes out of scope here
     // Data should still be accessible after A is destroyed
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
@@ -199,10 +198,7 @@ TEST(Test_ViewCMatrixKokkos, copy_constructor) {
     const int size = 10;
     Kokkos::View<double*> dev_data("dev_data", size * size);
     ViewCMatrixKokkos<double> A(dev_data.data(), size, size);
-    RUN({
-        A.set_values(42.0);
-    });
-    MATAR_FENCE();
+    helper_set_values(A, 42.0);
 
     ViewCMatrixKokkos<double> B(A);
     EXPECT_EQ(B.size(), A.size());
@@ -218,10 +214,7 @@ TEST(Test_ViewCMatrixKokkos, assignment_operator) {
     const int size = 10;
     Kokkos::View<double*> dev_data("dev_data", size * size);
     ViewCMatrixKokkos<double> A(dev_data.data(), size, size);
-    RUN({
-        A.set_values(42.0);
-    });
-    MATAR_FENCE();
+    helper_set_values(A, 42.0);
 
     ViewCMatrixKokkos<double> B;
     B = A;
