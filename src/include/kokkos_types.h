@@ -242,7 +242,7 @@ FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::FArrayKokkos(size_t dim0, cons
     dims_[0]       = dim0;
     order_         = 1;
     length_        = dim0;
-    array_    = TArray1D(tag_string, length_);
+    array_         = TArray1D(tag_string, length_);
 }
 
 // Overloaded 2D constructor
@@ -250,11 +250,11 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::FArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    order_      = 2;
-    length_     = (dim0 * dim1);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_   = 2;
+    length_  = (dim0 * dim1);
+    array_   = TArray1D(tag_string, length_);
 }
 
 // Overloaded 3D constructor
@@ -262,12 +262,12 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::FArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    order_      = 3;
-    length_     = (dim0 * dim1 * dim2);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_   = 3;
+    length_  = (dim0 * dim1 * dim2);
+    array_   = TArray1D(tag_string, length_);
 }
 
 // Overloaded 4D constructor
@@ -275,13 +275,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::FArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    order_      = 4;
-    length_     = (dim0 * dim1 * dim2 * dim3);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_   = 4;
+    length_  = (dim0 * dim1 * dim2 * dim3);
+    array_   = TArray1D(tag_string, length_);
 }
 
 // Overloaded 5D constructor
@@ -290,14 +290,14 @@ FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::FArrayKokkos(size_t dim0, size
                                                                const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    order_      = 5;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_   = 5;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4);
+    array_   = TArray1D(tag_string, length_);
 }
 
 // Overloaded 6D constructor
@@ -306,15 +306,15 @@ FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::FArrayKokkos(size_t dim0, size
                                                                const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    order_      = 6;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_   = 6;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    array_   = TArray1D(tag_string, length_);
 }
 
 // Overloaded 7D constructor
@@ -323,16 +323,16 @@ FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::FArrayKokkos(size_t dim0, size
                                                                size_t dim6, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    dims_[6]    = dim6;
-    order_      = 7;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_   = 7;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    array_   = TArray1D(tag_string, length_);
 }
 
 // Definitions of overload operator()
@@ -387,7 +387,7 @@ KOKKOS_INLINE_FUNCTION T& FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::oper
     assert(l < dims_[3] && "l is out of bounds in FArrayKokkos 5D!");
     assert(m < dims_[4] && "m is out of bounds in FArrayKokkos 5D!");
     return array_(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
 }
 
 // 6D
@@ -402,7 +402,7 @@ KOKKOS_INLINE_FUNCTION T& FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::oper
     assert(m < dims_[4] && "m is out of bounds in FArrayKokkos 6D!");
     assert(n < dims_[5] && "n is out of bounds in FArrayKokkos 6D!");
     return array_(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
 }
 
 // 7D
@@ -418,8 +418,8 @@ KOKKOS_INLINE_FUNCTION T& FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::oper
     assert(n < dims_[5] && "n is out of bounds in FArrayKokkos 7D!");
     assert(o < dims_[6] && "o is out of bounds in FArrayKokkos 7D!");
     return array_(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]) +
-                       (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]) +
+                  (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
 }
 
 // Overload = operator
@@ -434,9 +434,9 @@ KOKKOS_INLINE_FUNCTION FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>& FArrayK
             dims_[iter] = temp.dims_[iter];
         }  // end for
 
-        order_      = temp.order_;
-        length_     = temp.length_;
-        array_ = temp.array_;
+        order_  = temp.order_;
+        length_ = temp.length_;
+        array_  = temp.array_;
     }
     return *this;
 }
@@ -483,7 +483,7 @@ const std::string FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_name() c
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void FArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_FArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 // Destructor
@@ -557,7 +557,7 @@ public:
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos() {
     length_ = order_ = 0;
-    array_      = nullptr;
+    array_           = nullptr;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
     }
@@ -566,87 +566,87 @@ KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos() {
 // Overloaded 1D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos(T* some_array, size_t dim0) {
-    dims_[0]    = dim0;
-    order_      = 1;
-    length_     = dim0;
-    array_ = some_array;
+    dims_[0] = dim0;
+    order_   = 1;
+    length_  = dim0;
+    array_   = some_array;
 }
 
 // Overloaded 2D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    order_      = 2;
-    length_     = (dim0 * dim1);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_   = 2;
+    length_  = (dim0 * dim1);
+    array_   = some_array;
 }
 
 // Overloaded 3D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    order_      = 3;
-    length_     = (dim0 * dim1 * dim2);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_   = 3;
+    length_  = (dim0 * dim1 * dim2);
+    array_   = some_array;
 }
 
 // Overloaded 4D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    order_      = 4;
-    length_     = (dim0 * dim1 * dim2 * dim3);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_   = 4;
+    length_  = (dim0 * dim1 * dim2 * dim3);
+    array_   = some_array;
 }
 
 // Overloaded 5D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    order_      = 5;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_   = 5;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4);
+    array_   = some_array;
 }
 
 // Overloaded 6D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
                                                              size_t dim5) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    order_      = 6;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_   = 6;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    array_   = some_array;
 }
 
 // Overloaded 7D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewFArrayKokkos<T>::ViewFArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
                                                              size_t dim5, size_t dim6) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    dims_[6]    = dim6;
-    order_      = 7;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_   = 7;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    array_   = some_array;
 }
 
 // Overloaded operator() for 1D array access
@@ -697,7 +697,7 @@ KOKKOS_INLINE_FUNCTION T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, si
     assert(l < dims_[3] && "l is out of bounds in ViewFArrayKokkos 5D!");
     assert(m < dims_[4] && "m is out of bounds in ViewFArrayKokkos 5D!");
     return array_[i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3])];
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3])];
 }
 
 // 6D
@@ -711,7 +711,7 @@ KOKKOS_INLINE_FUNCTION T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, si
     assert(m < dims_[4] && "m is out of bounds in ViewFArrayKokkos 6D!");
     assert(n < dims_[5] && "n is out of bounds in ViewFArrayKokkos 6D!");
     return array_[i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4])];
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4])];
 }
 
 // 7D
@@ -726,8 +726,8 @@ KOKKOS_INLINE_FUNCTION T& ViewFArrayKokkos<T>::operator()(size_t i, size_t j, si
     assert(n < dims_[5] && "n is out of bounds in ViewFArrayKokkos 7D!");
     assert(o < dims_[6] && "o is out of bounds in ViewFArrayKokkos 7D!");
     return array_[i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]) +
-                       (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5])];
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]) +
+                  (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5])];
 }
 
 template <typename T>
@@ -1090,7 +1090,7 @@ const std::string FMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::get_name() 
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void FMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_FMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { this_matrix_(i) = val; });
+    Kokkos::deep_copy(this_matrix_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -1482,10 +1482,10 @@ DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos() {
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    order_      = 1;
-    length_     = dim0;
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    order_   = 1;
+    length_  = dim0;
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewFArray
     host = ViewFArray<T>(array_.view_host().data(), dim0);
 }
@@ -1493,36 +1493,36 @@ DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, co
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    order_      = 2;
-    length_     = (dim0 * dim1);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_   = 2;
+    length_  = (dim0 * dim1);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewFArray
     host = ViewFArray<T>(array_.view_host().data(), dim0, dim1);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    order_      = 3;
-    length_     = (dim0 * dim1 * dim2);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_   = 3;
+    length_  = (dim0 * dim1 * dim2);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewFArray
     host = ViewFArray<T>(array_.view_host().data(), dim0, dim1, dim2);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    order_      = 4;
-    length_     = (dim0 * dim1 * dim2 * dim3);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_   = 4;
+    length_  = (dim0 * dim1 * dim2 * dim3);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewFArray
     host = ViewFArray<T>(array_.view_host().data(), dim0, dim1, dim2, dim3);
 }
@@ -1530,14 +1530,14 @@ DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, si
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
                                                                  const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    order_      = 5;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_   = 5;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewFArray
     host = ViewFArray<T>(array_.view_host().data(), dim0, dim1, dim2, dim3, dim4);
 }
@@ -1545,15 +1545,15 @@ DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, si
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5,
                                                                  const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    order_      = 6;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_   = 6;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewFArray
     host = ViewFArray<T>(array_.view_host().data(), dim0, dim1, dim2, dim3, dim4, dim5);
 }
@@ -1561,16 +1561,16 @@ DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, si
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DFArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5,
                                                                  size_t dim6, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    dims_[6]    = dim6;
-    order_      = 7;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_   = 7;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewFArray
     host = ViewFArray<T>(array_.view_host().data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
 }
@@ -1618,7 +1618,7 @@ KOKKOS_INLINE_FUNCTION T& DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::ope
     assert(l < dims_[3] && "l is out of bounds in DFArrayKokkos 5D!");
     assert(m < dims_[4] && "m is out of bounds in DFArrayKokkos 5D!");
     return array_.view_device()(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                                     (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
+                                (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -1632,7 +1632,7 @@ KOKKOS_INLINE_FUNCTION T& DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::ope
     assert(m < dims_[4] && "m is out of bounds in DFArrayKokkos 6D!");
     assert(n < dims_[5] && "n is out of bounds in DFArrayKokkos 6D!");
     return array_.view_device()(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                                     (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+                                (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -1647,8 +1647,8 @@ KOKKOS_INLINE_FUNCTION T& DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::ope
     assert(n < dims_[5] && "n is out of bounds in DFArrayKokkos 7D!");
     assert(o < dims_[6] && "o is out of bounds in DFArrayKokkos 7D!");
     return array_.view_device()(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                                     (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]) +
-                                     (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+                                (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]) +
+                                (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -1660,11 +1660,11 @@ KOKKOS_INLINE_FUNCTION DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>& DFArra
             dims_[iter] = temp.dims_[iter];
         }  // end for
 
-        order_      = temp.order_;
-        length_     = temp.length_;
-        array_ = temp.array_;
-        host        = temp.host;
-        lock_       = temp.lock_;
+        order_  = temp.order_;
+        length_ = temp.length_;
+        array_  = temp.array_;
+        host    = temp.host;
+        lock_   = temp.lock_;
     }
 
     return *this;
@@ -1727,7 +1727,15 @@ const std::string DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_name() 
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { array_.view_device()(i) = val; });
+    // Fill BOTH sides so the container holds val everywhere. Kokkos has no
+    // deep_copy(DualView, scalar) overload, and marking both sides modified
+    // would trip DualView's concurrent-modification abort, so fill each view
+    // and then clear the sync state: both sides valid, nothing pending.
+    Kokkos::deep_copy(array_.view_device(), val);
+    if constexpr (!TArray1D::impl_dualview_is_single_device) {
+        Kokkos::deep_copy(array_.view_host(), val);
+    }
+    array_.clear_sync_state();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2045,7 +2053,7 @@ KOKKOS_INLINE_FUNCTION T& DViewFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>:
     assert(l < dims_[3] && "l is out of bounds in DViewFArrayKokkos 5D!");
     assert(m < dims_[4] && "m is out of bounds in DViewFArrayKokkos 5D!");
     return array_(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2059,7 +2067,7 @@ KOKKOS_INLINE_FUNCTION T& DViewFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>:
     assert(m < dims_[4] && "m is out of bounds in DViewFArrayKokkos 6D!");
     assert(n < dims_[5] && "n is out of bounds in DViewFArrayKokkos 6D!");
     return array_(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2074,8 +2082,8 @@ KOKKOS_INLINE_FUNCTION T& DViewFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>:
     assert(n < dims_[5] && "n is out of bounds in DViewFArrayKokkos 7D!");
     assert(o < dims_[6] && "o is out of bounds in DViewFArrayKokkos 7D!");
     return array_(i + (j * dims_[0]) + (k * dims_[0] * dims_[1]) + (l * dims_[0] * dims_[1] * dims_[2]) +
-                       (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]) +
-                       (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
+                  (m * dims_[0] * dims_[1] * dims_[2] * dims_[3]) + (n * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4]) +
+                  (o * dims_[0] * dims_[1] * dims_[2] * dims_[3] * dims_[4] * dims_[5]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2087,12 +2095,12 @@ KOKKOS_INLINE_FUNCTION DViewFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>& DV
             dims_[iter] = temp.dims_[iter];
         }  // end for
 
-        order_           = temp.order_;
-        length_          = temp.length_;
-        temp_inp_array_  = temp.temp_inp_array_;
-        array_host_ = temp.array_host_;
-        array_      = temp.array_;
-        host             = temp.host;
+        order_          = temp.order_;
+        length_         = temp.length_;
+        temp_inp_array_ = temp.temp_inp_array_;
+        array_host_     = temp.array_host_;
+        array_          = temp.array_;
+        host            = temp.host;
     }
 
     return *this;
@@ -2151,7 +2159,10 @@ const std::string DViewFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_nam
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewFArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    // Fill the device view and the host view (which wraps the caller's
+    // buffer) so both sides hold val. These types have no DualView flags.
+    Kokkos::deep_copy(array_, val);
+    Kokkos::deep_copy(array_host_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2511,7 +2522,15 @@ const std::string DFMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::get_name()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DFMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { this_matrix_.view_device()(i) = val; });
+    // Fill BOTH sides so the container holds val everywhere. Kokkos has no
+    // deep_copy(DualView, scalar) overload, and marking both sides modified
+    // would trip DualView's concurrent-modification abort, so fill each view
+    // and then clear the sync state: both sides valid, nothing pending.
+    Kokkos::deep_copy(this_matrix_.view_device(), val);
+    if constexpr (!TArray1D::impl_dualview_is_single_device) {
+        Kokkos::deep_copy(this_matrix_.view_host(), val);
+    }
+    this_matrix_.clear_sync_state();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -2913,7 +2932,10 @@ const std::string DViewFMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::get_na
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewFMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { this_matrix_(i) = val; });
+    // Fill the device view and the host view (which wraps the caller's
+    // buffer) so both sides hold val. These types have no DualView flags.
+    Kokkos::deep_copy(this_matrix_, val);
+    Kokkos::deep_copy(this_matrix_host_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3009,10 +3031,10 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CArrayKokkos(size_t dim0, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    order_      = 1;
-    length_     = dim0;
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    order_   = 1;
+    length_  = dim0;
+    array_   = TArray1D(tag_string, length_);
 }
 
 // Overloaded 2D constructor
@@ -3020,36 +3042,36 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    order_      = 2;
-    length_     = (dim0 * dim1);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_   = 2;
+    length_  = (dim0 * dim1);
+    array_   = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    order_      = 3;
-    length_     = (dim0 * dim1 * dim2);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_   = 3;
+    length_  = (dim0 * dim1 * dim2);
+    array_   = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    order_      = 4;
-    length_     = (dim0 * dim1 * dim2 * dim3);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_   = 4;
+    length_  = (dim0 * dim1 * dim2 * dim3);
+    array_   = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3057,14 +3079,14 @@ CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CArrayKokkos(size_t dim0, size
                                                                const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    order_      = 5;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_   = 5;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4);
+    array_   = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3072,15 +3094,15 @@ CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CArrayKokkos(size_t dim0, size
                                                                const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    order_      = 6;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_   = 6;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    array_   = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3088,16 +3110,16 @@ CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::CArrayKokkos(size_t dim0, size
                                                                size_t dim6, const std::string& tag_string) {
     using TArray1D = Kokkos::View<T*, Layout, ExecSpace>;
 
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    dims_[6]    = dim6;
-    order_      = 7;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_   = 7;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    array_   = TArray1D(tag_string, length_);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3143,7 +3165,7 @@ KOKKOS_INLINE_FUNCTION T& CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::oper
     assert(l < dims_[3] && "l is out of bounds in CArrayKokkos 5D!");
     assert(m < dims_[4] && "m is out of bounds in CArrayKokkos 5D!");
     return array_(m + (l * dims_[4]) + (k * dims_[4] * dims_[3]) + (j * dims_[4] * dims_[3] * dims_[2]) +
-                       (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                  (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3157,7 +3179,7 @@ KOKKOS_INLINE_FUNCTION T& CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::oper
     assert(m < dims_[4] && "m is out of bounds in CArrayKokkos 6D!");
     assert(n < dims_[5] && "n is out of bounds in CArrayKokkos 6D!");
     return array_(n + (m * dims_[5]) + (l * dims_[5] * dims_[4]) + (k * dims_[5] * dims_[4] * dims_[3]) +
-                       (j * dims_[5] * dims_[4] * dims_[3] * dims_[2]) + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                  (j * dims_[5] * dims_[4] * dims_[3] * dims_[2]) + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3172,8 +3194,8 @@ KOKKOS_INLINE_FUNCTION T& CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::oper
     assert(n < dims_[5] && "n is out of bounds in CArrayKokkos 7D!");
     assert(o < dims_[6] && "o is out of bounds in CArrayKokkos 7D!");
     return array_(o + (n * dims_[6]) + (m * dims_[6] * dims_[5]) + (l * dims_[6] * dims_[5] * dims_[4]) +
-                       (k * dims_[6] * dims_[5] * dims_[4] * dims_[3]) + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2]) +
-                       (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                  (k * dims_[6] * dims_[5] * dims_[4] * dims_[3]) + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2]) +
+                  (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3187,9 +3209,9 @@ KOKKOS_INLINE_FUNCTION CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>& CArrayK
             dims_[iter] = temp.dims_[iter];
         }  // end for
 
-        order_      = temp.order_;
-        length_     = temp.length_;
-        array_ = temp.array_;
+        order_  = temp.order_;
+        length_ = temp.length_;
+        array_  = temp.array_;
     }
 
     return *this;
@@ -3238,7 +3260,7 @@ const std::string CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_name() c
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_CArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -3312,7 +3334,7 @@ public:
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos() {
     length_ = order_ = 0;
-    array_      = NULL;
+    array_           = NULL;
     for (int i = 0; i < 7; i++) {
         dims_[i] = 0;
     }
@@ -3321,87 +3343,87 @@ KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos() {
 // Overloaded 1D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0) {
-    dims_[0]    = dim0;
-    order_      = 1;
-    length_     = dim0;
-    array_ = some_array;
+    dims_[0] = dim0;
+    order_   = 1;
+    length_  = dim0;
+    array_   = some_array;
 }
 
 // Overloaded 2D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    order_      = 2;
-    length_     = (dim0 * dim1);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_   = 2;
+    length_  = (dim0 * dim1);
+    array_   = some_array;
 }
 
 // Overloaded 3D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    order_      = 3;
-    length_     = (dim0 * dim1 * dim2);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_   = 3;
+    length_  = (dim0 * dim1 * dim2);
+    array_   = some_array;
 }
 
 // Overloaded 4D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    order_      = 4;
-    length_     = (dim0 * dim1 * dim2 * dim3);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_   = 4;
+    length_  = (dim0 * dim1 * dim2 * dim3);
+    array_   = some_array;
 }
 
 // Overloaded 5D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    order_      = 5;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_   = 5;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4);
+    array_   = some_array;
 }
 
 // Overloaded 6D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
                                                              size_t dim5) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    order_      = 6;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_   = 6;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    array_   = some_array;
 }
 
 // Overloaded 7D constructor
 template <typename T>
 KOKKOS_INLINE_FUNCTION ViewCArrayKokkos<T>::ViewCArrayKokkos(T* some_array, size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
                                                              size_t dim5, size_t dim6) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    dims_[6]    = dim6;
-    order_      = 7;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    array_ = some_array;
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_   = 7;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    array_   = some_array;
 }
 
 template <typename T>
@@ -3447,7 +3469,7 @@ KOKKOS_INLINE_FUNCTION T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, si
     assert(l < dims_[3] && "l is out of bounds in ViewCArrayKokkos 5D!");
     assert(m < dims_[4] && "m is out of bounds in ViewCArrayKokkos 5D!");
     return array_[m + (l * dims_[4]) + (k * dims_[4] * dims_[3]) + (j * dims_[4] * dims_[3] * dims_[2]) +
-                       (i * dims_[4] * dims_[3] * dims_[2] * dims_[1])];
+                  (i * dims_[4] * dims_[3] * dims_[2] * dims_[1])];
 }
 
 template <typename T>
@@ -3460,7 +3482,7 @@ KOKKOS_INLINE_FUNCTION T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, si
     assert(m < dims_[4] && "m is out of bounds in ViewCArrayKokkos 6D!");
     assert(n < dims_[5] && "n is out of bounds in ViewCArrayKokkos 6D!");
     return array_[n + (m * dims_[5]) + (l * dims_[5] * dims_[4]) + (k * dims_[5] * dims_[4] * dims_[3]) +
-                       (j * dims_[5] * dims_[4] * dims_[3] * dims_[2]) + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1])];
+                  (j * dims_[5] * dims_[4] * dims_[3] * dims_[2]) + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1])];
 }
 
 template <typename T>
@@ -3474,8 +3496,8 @@ KOKKOS_INLINE_FUNCTION T& ViewCArrayKokkos<T>::operator()(size_t i, size_t j, si
     assert(n < dims_[5] && "n is out of bounds in ViewCArrayKokkos 7D!");
     assert(o < dims_[6] && "o is out of bounds in ViewCArrayKokkos 7D!");
     return array_[o + (n * dims_[6]) + (m * dims_[6] * dims_[5]) + (l * dims_[6] * dims_[5] * dims_[4]) +
-                       (k * dims_[6] * dims_[5] * dims_[4] * dims_[3]) + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2]) +
-                       (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1])];
+                  (k * dims_[6] * dims_[5] * dims_[4] * dims_[3]) + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2]) +
+                  (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1])];
 }
 
 template <typename T>
@@ -3842,7 +3864,7 @@ const std::string CMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::get_name() 
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_CMatrixKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { this_matrix_(i) = val; });
+    Kokkos::deep_copy(this_matrix_, val);
 }
 
 // Deconstructor
@@ -4236,10 +4258,10 @@ DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos() {
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    order_      = 1;
-    length_     = dim0;
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    order_   = 1;
+    length_  = dim0;
+    array_   = TArray1D(tag_string, length_);
 
     // Create host ViewCArray
     host = ViewCArray<T>(array_.view_host().data(), dim0);
@@ -4248,36 +4270,36 @@ DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, co
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    order_      = 2;
-    length_     = (dim0 * dim1);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    order_   = 2;
+    length_  = (dim0 * dim1);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray<T>(array_.view_host().data(), dim0, dim1);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    order_      = 3;
-    length_     = (dim0 * dim1 * dim2);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    order_   = 3;
+    length_  = (dim0 * dim1 * dim2);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray<T>(array_.view_host().data(), dim0, dim1, dim2);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    order_      = 4;
-    length_     = (dim0 * dim1 * dim2 * dim3);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    order_   = 4;
+    length_  = (dim0 * dim1 * dim2 * dim3);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray<T>(array_.view_host().data(), dim0, dim1, dim2, dim3);
 }
@@ -4285,14 +4307,14 @@ DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, si
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
                                                                  const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    order_      = 5;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    order_   = 5;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray<T>(array_.view_host().data(), dim0, dim1, dim2, dim3, dim4);
 }
@@ -4300,15 +4322,15 @@ DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, si
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5,
                                                                  const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    order_      = 6;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    order_   = 6;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray<T>(array_.view_host().data(), dim0, dim1, dim2, dim3, dim4, dim5);
 }
@@ -4316,16 +4338,16 @@ DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, si
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DCArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5,
                                                                  size_t dim6, const std::string& tag_string) {
-    dims_[0]    = dim0;
-    dims_[1]    = dim1;
-    dims_[2]    = dim2;
-    dims_[3]    = dim3;
-    dims_[4]    = dim4;
-    dims_[5]    = dim5;
-    dims_[6]    = dim6;
-    order_      = 7;
-    length_     = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
-    array_ = TArray1D(tag_string, length_);
+    dims_[0] = dim0;
+    dims_[1] = dim1;
+    dims_[2] = dim2;
+    dims_[3] = dim3;
+    dims_[4] = dim4;
+    dims_[5] = dim5;
+    dims_[6] = dim6;
+    order_   = 7;
+    length_  = (dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6);
+    array_   = TArray1D(tag_string, length_);
     // Create host ViewCArray
     host = ViewCArray<T>(array_.view_host().data(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
 }
@@ -4373,7 +4395,7 @@ KOKKOS_INLINE_FUNCTION T& DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::ope
     assert(l < dims_[3] && "l is out of bounds in DCArrayKokkos 5D!");
     assert(m < dims_[4] && "m is out of bounds in DCArrayKokkos 5D!");
     return array_.view_device()(m + (l * dims_[4]) + (k * dims_[4] * dims_[3]) + (j * dims_[4] * dims_[3] * dims_[2]) +
-                                     (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                                (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4387,7 +4409,7 @@ KOKKOS_INLINE_FUNCTION T& DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::ope
     assert(m < dims_[4] && "m is out of bounds in DCArrayKokkos 6D!");
     assert(n < dims_[5] && "n is out of bounds in DCArrayKokkos 6D!");
     return array_.view_device()(n + (m * dims_[5]) + (l * dims_[5] * dims_[4]) + (k * dims_[5] * dims_[4] * dims_[3]) +
-                                     (j * dims_[5] * dims_[4] * dims_[3] * dims_[2]) + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                                (j * dims_[5] * dims_[4] * dims_[3] * dims_[2]) + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4402,8 +4424,8 @@ KOKKOS_INLINE_FUNCTION T& DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::ope
     assert(n < dims_[5] && "n is out of bounds in DCArrayKokkos 7D!");
     assert(o < dims_[6] && "o is out of bounds in DCArrayKokkos 7D!");
     return array_.view_device()(o + (n * dims_[6]) + (m * dims_[6] * dims_[5]) + (l * dims_[6] * dims_[5] * dims_[4]) +
-                                     (k * dims_[6] * dims_[5] * dims_[4] * dims_[3]) + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2]) +
-                                     (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                                (k * dims_[6] * dims_[5] * dims_[4] * dims_[3]) + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2]) +
+                                (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4415,11 +4437,11 @@ KOKKOS_INLINE_FUNCTION DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>& DCArra
             dims_[iter] = temp.dims_[iter];
         }  // end for
 
-        order_      = temp.order_;
-        length_     = temp.length_;
-        array_ = temp.array_;
-        host        = temp.host;
-        lock_       = temp.lock_;
+        order_  = temp.order_;
+        length_ = temp.length_;
+        array_  = temp.array_;
+        host    = temp.host;
+        lock_   = temp.lock_;
     }
 
     return *this;
@@ -4488,7 +4510,15 @@ void DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { array_.view_device()(i) = val; });
+    // Fill BOTH sides so the container holds val everywhere. Kokkos has no
+    // deep_copy(DualView, scalar) overload, and marking both sides modified
+    // would trip DualView's concurrent-modification abort, so fill each view
+    // and then clear the sync state: both sides valid, nothing pending.
+    Kokkos::deep_copy(array_.view_device(), val);
+    if constexpr (!TArray1D::impl_dualview_is_single_device) {
+        Kokkos::deep_copy(array_.view_host(), val);
+    }
+    array_.clear_sync_state();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4807,7 +4837,7 @@ KOKKOS_INLINE_FUNCTION T& DViewCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>:
     assert(l < dims_[3] && "l is out of bounds in DViewCArrayKokkos 5D!");
     assert(m < dims_[4] && "m is out of bounds in DViewCArrayKokkos 5D!");
     return array_(m + (l * dims_[4]) + (k * dims_[4] * dims_[3]) + (j * dims_[4] * dims_[3] * dims_[2]) +
-                       (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                  (i * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4821,7 +4851,7 @@ KOKKOS_INLINE_FUNCTION T& DViewCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>:
     assert(m < dims_[4] && "m is out of bounds in DViewCArrayKokkos 6D!");
     assert(n < dims_[5] && "n is out of bounds in DViewCArrayKokkos 6D!");
     return array_(n + (m * dims_[5]) + (l * dims_[5] * dims_[4]) + (k * dims_[5] * dims_[4] * dims_[3]) +
-                       (j * dims_[5] * dims_[4] * dims_[3] * dims_[2]) + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                  (j * dims_[5] * dims_[4] * dims_[3] * dims_[2]) + (i * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4836,8 +4866,8 @@ KOKKOS_INLINE_FUNCTION T& DViewCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>:
     assert(n < dims_[5] && "n is out of bounds in DViewCArrayKokkos 7D!");
     assert(o < dims_[6] && "o is out of bounds in DViewCArrayKokkos 7D!");
     return array_(o + (n * dims_[6]) + (m * dims_[6] * dims_[5]) + (l * dims_[6] * dims_[5] * dims_[4]) +
-                       (k * dims_[6] * dims_[5] * dims_[4] * dims_[3]) + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2]) +
-                       (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
+                  (k * dims_[6] * dims_[5] * dims_[4] * dims_[3]) + (j * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2]) +
+                  (i * dims_[6] * dims_[5] * dims_[4] * dims_[3] * dims_[2] * dims_[1]));
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -4851,12 +4881,12 @@ KOKKOS_INLINE_FUNCTION DViewCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>& DV
             dims_[iter] = temp.dims_[iter];
         }  // end for
 
-        order_           = temp.order_;
-        length_          = temp.length_;
-        temp_inp_array_  = temp.temp_inp_array_;
-        array_host_ = temp.array_host_;
-        array_      = temp.array_;
-        host             = temp.host;
+        order_          = temp.order_;
+        length_         = temp.length_;
+        temp_inp_array_ = temp.temp_inp_array_;
+        array_host_     = temp.array_host_;
+        array_          = temp.array_;
+        host            = temp.host;
     }
 
     return *this;
@@ -4909,7 +4939,10 @@ void DViewCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::update_device() {
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    // Fill the device view and the host view (which wraps the caller's
+    // buffer) so both sides hold val. These types have no DualView flags.
+    Kokkos::deep_copy(array_, val);
+    Kokkos::deep_copy(array_host_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -5275,7 +5308,15 @@ const std::string DCMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::get_name()
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DCMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { this_matrix_.view_device()(i) = val; });
+    // Fill BOTH sides so the container holds val everywhere. Kokkos has no
+    // deep_copy(DualView, scalar) overload, and marking both sides modified
+    // would trip DualView's concurrent-modification abort, so fill each view
+    // and then clear the sync state: both sides valid, nothing pending.
+    Kokkos::deep_copy(this_matrix_.view_device(), val);
+    if constexpr (!TArray1D::impl_dualview_is_single_device) {
+        Kokkos::deep_copy(this_matrix_.view_host(), val);
+    }
+    this_matrix_.clear_sync_state();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -5677,7 +5718,10 @@ const std::string DViewCMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::get_na
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DViewCMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { this_matrix_(i) = val; });
+    // Fill the device view and the host view (which wraps the caller's
+    // buffer) so both sides hold val. These types have no DualView flags.
+    Kokkos::deep_copy(this_matrix_, val);
+    Kokkos::deep_copy(this_matrix_host_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -6419,12 +6463,12 @@ DRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::operator=(
         //     });
         // Kokkos::fence();
 
-        array_      = temp.array_;
-        array_dev_  = temp.array_dev_;
-        array_host_ = temp.array_host_;
-        mystrides_       = temp.mystrides_;
-        mystrides_dev_   = temp.mystrides_dev_;
-        mystrides_host_  = temp.mystrides_host_;
+        array_          = temp.array_;
+        array_dev_      = temp.array_dev_;
+        array_host_     = temp.array_host_;
+        mystrides_      = temp.mystrides_;
+        mystrides_dev_  = temp.mystrides_dev_;
+        mystrides_host_ = temp.mystrides_host_;
 
         /*
             dim1_ = temp.dim1_;
@@ -6453,7 +6497,15 @@ DRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::get_kokkos
 // set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void DRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_dev_(i) = val; });
+    // Fill BOTH sides so the container holds val everywhere. Kokkos has no
+    // deep_copy(DualView, scalar) overload, and marking both sides modified
+    // would trip DualView's concurrent-modification abort, so fill each view
+    // and then clear the sync state: both sides valid, nothing pending.
+    Kokkos::deep_copy(array_dev_, val);
+    if constexpr (!TArray1D::impl_dualview_is_single_device) {
+        Kokkos::deep_copy(array_host_, val);
+    }
+    array_.clear_sync_state();
 }
 
 // Get the name of the view
@@ -6588,9 +6640,9 @@ DynamicArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::DynamicArrayKokkos(size_
     for (int i = 0; i < 1; i++) {
         dims_actual_size_[i] = 0;
     }
-    order_      = 1;
-    length_     = dim0;
-    array_ = TArray1D(tag_string, length_);
+    order_  = 1;
+    length_ = dim0;
+    array_  = TArray1D(tag_string, length_);
 }
 
 /*
@@ -6809,9 +6861,9 @@ KOKKOS_INLINE_FUNCTION DynamicArrayKokkos<T, Layout, ExecSpace, MemoryTraits>& D
             dims_actual_size_[iter] = temp.dims_actual_size_[iter];
         }  // end for
 
-        order_      = temp.order_;
-        length_     = temp.length_;
-        array_ = temp.array_;
+        order_  = temp.order_;
+        length_ = temp.length_;
+        array_  = temp.array_;
     }
 
     return *this;
@@ -6882,12 +6934,13 @@ template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits
 void DynamicArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val, int count) {
     assert(count <= dims_[0] && "count is out of bounds in DynamicArrayKokkos set_values!");
 
-    if (count == -1) {  // Only set values for the actual size of the array
-        Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
-    } else {                           // Set values for a specific number of elements
+    if (count != -1) {
         dims_actual_size_[0] = count;  // Update the actual size of the array
-        Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
     }
+
+    // Fill the whole allocation, not just the live range: no partially
+    // initialized tail is left behind.
+    Kokkos::deep_copy(array_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -7015,9 +7068,9 @@ DynamicMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::DynamicMatrixKokkos(siz
     for (int i = 0; i < 1; i++) {
         dims_actual_size_[i] = 0;
     }
-    order_      = 1;
-    length_     = dim0;
-    array_ = TArray1D(tag_string, length_);
+    order_  = 1;
+    length_ = dim0;
+    array_  = TArray1D(tag_string, length_);
 }
 
 /*
@@ -7237,9 +7290,9 @@ KOKKOS_INLINE_FUNCTION DynamicMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>& 
             dims_actual_size_[iter] = temp.dims_actual_size_[iter];
         }  // end for
 
-        order_      = temp.order_;
-        length_     = temp.length_;
-        array_ = temp.array_;
+        order_  = temp.order_;
+        length_ = temp.length_;
+        array_  = temp.array_;
     }
 
     return *this;
@@ -7310,15 +7363,15 @@ const std::string DynamicMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::get_n
 // set values of array
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicMatrixKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val, int count) {
-    assert(count <= dims_[0] && "count is out of bounds in DynamicArrayKokkos set_values!");
+    assert(count <= dims_[0] && "count is out of bounds in DynamicMatrixKokkos set_values!");
 
-    if (count == -1) {  // Only set values for the actual size of the array
-        Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
-    } else {  // Set values for a specific number of elements
-
-        dims_actual_size_[0] = count;
-        Kokkos::parallel_for("SetValues_DynamicArrayKokkos", dims_actual_size_[0], KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    if (count != -1) {
+        dims_actual_size_[0] = count;  // Update the actual size of the array
     }
+
+    // Fill the whole allocation, not just the live range: no partially
+    // initialized tail is left behind.
+    Kokkos::deep_copy(array_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -7725,7 +7778,7 @@ RaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::get_kokkos_
 // set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_RaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 // Get the name of the view
@@ -8068,7 +8121,7 @@ RaggedRightArrayofVectorsKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::ge
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedRightArrayofVectorsKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, length_), KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 // Get the name of the view
@@ -8441,7 +8494,7 @@ RaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::get_kokkos_v
 // set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 void RaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_RaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 // Get the name of the view
@@ -8627,20 +8680,21 @@ DynamicRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_kokkos_vi
 // set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values_sparse(T val) {
-    // Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim1_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA (
-    // const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-    //     const int i_i = teamMember.league_rank();
-    //     Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(i_i) ), [&] ( const
-    //     int (j_j) ) {
-    //         array_(dim2_*i_i+j_j) = val;
-    //     });
-    // });
-    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    // Fill only the live (strided) entries of each row/column. This region is
+    // ragged and therefore not contiguous, so deep_copy cannot express it.
+    Kokkos::parallel_for(
+        "SetValuesSparse_DynamicRaggedRightArrayKokkos",
+        dim1_,
+        KOKKOS_CLASS_LAMBDA(const int i) {
+            for (size_t j = 0; j < stride_(i); j++) {
+                array_(j + i * dim2_) = val;
+            }
+        });
 }
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -8826,20 +8880,21 @@ DynamicRaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_kokkos_vie
 // set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicRaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicRaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DynamicRaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values_sparse(T val) {
-    // Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim2_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA (
-    // const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-    //     const int j_j = teamMember.league_rank();
-    //     Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(j_j) ), [&] ( const
-    //     int (i_i) ) {
-    //         array_(dim1_*j_j+i_i) = val;
-    //     });
-    // });
-    Kokkos::parallel_for("SetValues_DynamicRaggedDownArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    // Fill only the live (strided) entries of each row/column. This region is
+    // ragged and therefore not contiguous, so deep_copy cannot express it.
+    Kokkos::parallel_for(
+        "SetValuesSparse_DynamicRaggedDownArrayKokkos",
+        dim2_,
+        KOKKOS_CLASS_LAMBDA(const int j) {
+            for (size_t i = 0; i < stride_(j); i++) {
+                array_(i + j * dim1_) = val;
+            }
+        });
 }
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9295,7 +9350,7 @@ return 0;
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CSRArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, nnz_), KOKKOS_CLASS_LAMBDA(const int i) { array_[i] = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9621,7 +9676,7 @@ KOKKOS_INLINE_FUNCTION int CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::f
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void CSCArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for(Kokkos::RangePolicy<>(0, nnz_), KOKKOS_CLASS_LAMBDA(const int i) { array_(i) = val; });
+    Kokkos::deep_copy(array_, val);
 }
 
 // Assumes that data, col_ptrs, and row_ptrs
@@ -9891,7 +9946,15 @@ DDynamicRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_kokkos_d
 // set values to input
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DDynamicRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values(T val) {
-    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_dev_(i) = val; });
+    // Fill BOTH sides so the container holds val everywhere. Kokkos has no
+    // deep_copy(DualView, scalar) overload, and marking both sides modified
+    // would trip DualView's concurrent-modification abort, so fill each view
+    // and then clear the sync state: both sides valid, nothing pending.
+    Kokkos::deep_copy(array_dev_, val);
+    if constexpr (!TArray1D::impl_dualview_is_single_device) {
+        Kokkos::deep_copy(array_host_, val);
+    }
+    array_.clear_sync_state();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
@@ -9920,15 +9983,18 @@ void DDynamicRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::update_
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 void DDynamicRaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::set_values_sparse(T val) {
-    // Kokkos::parallel_for( Kokkos::TeamPolicy<>( dim1_, Kokkos::AUTO, 32 ), KOKKOS_CLASS_LAMBDA (
-    // const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-    //     const int i_i = teamMember.league_rank();
-    //     Kokkos::parallel_for( Kokkos::TeamThreadRange( teamMember, 0, stride_(i_i) ), [&] ( const
-    //     int (j_j) ) {
-    //         array_(dim2_*i_i+j_j) = val;
-    //     });
-    // });
-    Kokkos::parallel_for("SetValues_DynamicRaggedRightArrayKokkos", length_, KOKKOS_CLASS_LAMBDA(const int i) { array_dev_(i) = val; });
+    // Fill only the live (strided) entries of each row/column. This region is
+    // ragged and therefore not contiguous, so deep_copy cannot express it.
+    Kokkos::parallel_for(
+        "SetValuesSparse_DDynamicRaggedRightArrayKokkos",
+        dim1_,
+        KOKKOS_CLASS_LAMBDA(const int i) {
+            for (size_t j = 0; j < mystrides_dev_(i); j++) {
+                array_dev_(j + i * dim2_) = val;
+            }
+        });
+    // device-only write: mark it so a later update_host() propagates
+    array_.modify_device();
 }
 // Get the name of the view
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>

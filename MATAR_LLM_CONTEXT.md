@@ -1643,6 +1643,10 @@ Use these constraints as hard rules when generating MATAR code:
    device kernels. Two hard rules:
    - They capture **by reference**, so `std::` containers/streams are allowed
      inside them (that is their purpose: file I/O and CPU-faster algorithms).
+   - MATAR is **device-centric**: `*Device` types always live on the device
+     and their execution space is never overridden. For host-parallel work
+     over device-resident data, declare the field as a **Dual** type and use
+     the `.host()` accessor inside the host macro, then `update_device()`.
    - They may **only** touch host-accessible data — `*Host` types, the
      `.host()` side of a Dual type, or plain `std::` data. Never a device
      array: that compiles but aborts at run time.

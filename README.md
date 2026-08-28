@@ -151,7 +151,17 @@ MATAR_FENCE_DEVICE();                                   // wait for the GPU work
 
 The `_HOST` macros differ from their device counterparts in two ways: the loop body captures **by reference**, so `std::` containers, file streams, and other non-device-copyable objects can be used directly; and no `_CLASS` variants are needed (`_CLASS` spellings exist as aliases).
 
-**A host kernel may only touch host-accessible data** — the `*Host` types, the `.host()` side of a Dual type, or plain `std::` data. Passing a device array compiles but aborts at run time with `attempt to access inaccessible memory space`.
+**MATAR is device-centric: the `*Device` types always live on the device.** To run host-parallel work over data that also lives on the device, declare it as a **Dual** type and go through the `.host()` accessor inside the host macro:
+
+```c++
+CArrayDual<real_t> field(n, "field");
+FOR_ALL_HOST(i, 0, n, {                 // CPU-side pass over the host mirror
+    field.host(i) = read_from_file(i);
+});
+field.update_device();                  // publish to the device
+```
+
+A host kernel may otherwise only touch host-accessible data — the `*Host` types or plain `std::` data. Passing a `*Device` array to a host macro compiles but aborts at run time with `attempt to access inaccessible memory space`.
 
 Select the two backends independently:
 
