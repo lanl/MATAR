@@ -261,21 +261,7 @@ if(MATAR_ENABLE_KOKKOS)
     # DefaultExecSpace from this chain.
     if(Kokkos_ENABLE_CUDA)
         target_compile_definitions(matar INTERFACE HAVE_CUDA=1)
-        # nvcc's EDG frontend fires 177-D ("declared but never referenced") and
-        # 550-D ("set but never used") heavily across MATAR and its consumers.
-        # INTERFACE so every target linking matar gets it, not just our own.
-        #
-        # -Xcudafe rather than the newer -diag-suppress: nvcc_wrapper (which
-        # Kokkos substitutes in as CXX for CUDA builds) has no case for
-        # -diag-suppress, so its catch-all would forward it to the HOST compiler,
-        # where gcc misparses it as `-d iag-suppress` and suppresses nothing.
-        # -Xcudafe is explicitly routed to nvcc, so this works both through
-        # nvcc_wrapper and with nvcc as CXX directly.
-        #
-        # The CXX guard keeps it off C sources in mixed-language consumer targets.
-        # SHELL: is required -- without it CMake deduplicates the repeated
-        # -Xcudafe token and emits `-Xcudafe --diag_suppress=177 --diag_suppress=550`,
-        # leaving 550 as a bare nvcc arg that suppresses nothing.
+        # Silence CUDA compiler warnings
         target_compile_options(matar INTERFACE
             "$<$<COMPILE_LANGUAGE:CXX>:SHELL:-Xcudafe --diag_suppress=177>"
             "$<$<COMPILE_LANGUAGE:CXX>:SHELL:-Xcudafe --diag_suppress=550>")
