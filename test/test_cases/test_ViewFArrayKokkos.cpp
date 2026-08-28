@@ -4,6 +4,27 @@
 
 using namespace mtr;  // matar namespace
 
+namespace {
+
+// View* types wrap a raw T* that carries no memory-space tag, so set_values is a
+// KOKKOS_INLINE_FUNCTION serial loop (issue #146) that executes wherever it is
+// called. The views below wrap Kokkos::View device memory, so the fill must run
+// on the device: calling it from the host dereferences a device pointer, which
+// segfaults on CUDA. It only appeared to work on serial/OpenMP builds, where the
+// device memory space aliases HostSpace.
+//
+// At namespace scope because nvcc rejects extended __host__ __device__ lambdas
+// inside gtest's private TestBody.
+template <typename ViewT, typename T>
+void device_set_values(ViewT A, T val) {
+    RUN({
+        device_set_values(A, val);
+    });
+    MATAR_FENCE();
+}
+
+}  // namespace
+
 // Helper function to create arrays of different dimensions
 ViewFArrayKokkos<double> return_ViewFArrayKokkos(int dims, std::vector<int> sizes, double* data) {
     switch (dims) {
@@ -117,7 +138,7 @@ TEST(Test_ViewFArrayKokkos, set_values) {
     Kokkos::View<double*> dev_data("dev_data", size);
     ViewFArrayKokkos<double> A(dev_data.data(), size);
 
-    A.set_values(42.0);
+    device_set_values(A, 42.0);
     Kokkos::fence();
     auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
     for (int i = 0; i < size; i++) {
@@ -176,7 +197,7 @@ TEST(Test_ViewFArrayKokkos, different_types) {
     {
         Kokkos::View<int*> dev_data("int_data", size);
         ViewFArrayKokkos<int> A(dev_data.data(), size);
-        A.set_values(42);
+        device_set_values(A, 42);
         Kokkos::fence();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(42, h(5));
@@ -186,7 +207,7 @@ TEST(Test_ViewFArrayKokkos, different_types) {
     {
         Kokkos::View<float*> dev_data("float_data", size);
         ViewFArrayKokkos<float> B(dev_data.data(), size);
-        B.set_values(42.0f);
+        device_set_values(B, 42.0f);
         Kokkos::fence();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(42.0f, h(5));
@@ -196,7 +217,7 @@ TEST(Test_ViewFArrayKokkos, different_types) {
     {
         Kokkos::View<bool*> dev_data("bool_data", size);
         ViewFArrayKokkos<bool> C(dev_data.data(), size);
-        C.set_values(true);
+        device_set_values(C, true);
         Kokkos::fence();
         auto h = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dev_data);
         EXPECT_EQ(true, h(5));
