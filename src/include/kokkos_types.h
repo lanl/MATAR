@@ -88,6 +88,33 @@ using DefaultHostMemSpace  = Kokkos::HostSpace;
 #define DEFAULTSTRINGARRAY "array_"
 #define DEFAULTSTRINGMATRIX "matrix_"
 
+using policy1D = Kokkos::RangePolicy<DefaultExecSpace>;
+using policy2D = Kokkos::MDRangePolicy< Kokkos::Rank<2> >;
+using policy3D = Kokkos::MDRangePolicy< Kokkos::Rank<3> >;
+using policy4D = Kokkos::MDRangePolicy< Kokkos::Rank<4> >;
+
+using TeamPolicy = Kokkos::TeamPolicy<DefaultExecSpace>;
+//using mdrange_policy2 = Kokkos::MDRangePolicy<Kokkos::Rank<2>>;
+//using mdrange_policy3 = Kokkos::MDRangePolicy<Kokkos::Rank<3>>;
+
+using RMatrix1D    = Kokkos::View<double *,DefaultLayout,DefaultExecSpace>;
+using RMatrix2D    = Kokkos::View<double **,DefaultLayout,DefaultExecSpace>;
+using RMatrix3D    = Kokkos::View<double ***,DefaultLayout,DefaultExecSpace>;
+using RMatrix4D    = Kokkos::View<double ****,DefaultLayout,DefaultExecSpace>;
+using RMatrix5D    = Kokkos::View<double *****,DefaultLayout,DefaultExecSpace>;
+using IMatrix1D    = Kokkos::View<int *,DefaultLayout,DefaultExecSpace>;
+using IMatrix2D    = Kokkos::View<int **,DefaultLayout,DefaultExecSpace>;
+using IMatrix3D    = Kokkos::View<int ***,DefaultLayout,DefaultExecSpace>;
+using IMatrix4D    = Kokkos::View<int ****,DefaultLayout,DefaultExecSpace>;
+using IMatrix5D    = Kokkos::View<int *****,DefaultLayout,DefaultExecSpace>;
+using SVar         = Kokkos::View<size_t,DefaultLayout,DefaultExecSpace>;
+using SArray2D     = Kokkos::View<size_t **,DefaultLayout,DefaultExecSpace>;
+using SArray3D     = Kokkos::View<size_t ***,DefaultLayout,DefaultExecSpace>;
+using SArray4D     = Kokkos::View<size_t ****,DefaultLayout,DefaultExecSpace>;
+using SArray5D     = Kokkos::View<size_t *****,DefaultLayout,DefaultExecSpace>;
+
+using SHArray1D     = Kokkos::View<size_t *,DefaultLayout,Kokkos::HostSpace>;
+
 
 #endif
 
