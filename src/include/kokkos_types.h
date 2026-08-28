@@ -547,7 +547,7 @@ public:
     KOKKOS_INLINE_FUNCTION T* pointer() const;
 
     // set values to input (callable from host or inside a kernel)
-    KOKKOS_INLINE_FUNCTION void set_values(T val);
+    KOKKOS_INLINE_FUNCTION void set_values(T val) const;
 
     KOKKOS_INLINE_FUNCTION ~ViewFArrayKokkos();
 
@@ -762,7 +762,7 @@ KOKKOS_INLINE_FUNCTION T* ViewFArrayKokkos<T>::pointer() const {
 // launch into the default (device) space. Being KOKKOS_INLINE_FUNCTION
 // also lets a View built inside a kernel fill itself there.
 template <typename T>
-KOKKOS_INLINE_FUNCTION void ViewFArrayKokkos<T>::set_values(T val) {
+KOKKOS_INLINE_FUNCTION void ViewFArrayKokkos<T>::set_values(T val) const {
     for (size_t i = 0; i < length_; i++) {
         array_[i] = val;
     }
@@ -1154,7 +1154,7 @@ public:
     KOKKOS_INLINE_FUNCTION T* pointer() const;
 
     // set values to input (callable from host or inside a kernel)
-    KOKKOS_INLINE_FUNCTION void set_values(T val);
+    KOKKOS_INLINE_FUNCTION void set_values(T val) const;
 
     KOKKOS_INLINE_FUNCTION ~ViewFMatrixKokkos();
 
@@ -1364,7 +1364,7 @@ KOKKOS_INLINE_FUNCTION T* ViewFMatrixKokkos<T>::pointer() const {
 // launch into the default (device) space. Being KOKKOS_INLINE_FUNCTION
 // also lets a View built inside a kernel fill itself there.
 template <typename T>
-KOKKOS_INLINE_FUNCTION void ViewFMatrixKokkos<T>::set_values(T val) {
+KOKKOS_INLINE_FUNCTION void ViewFMatrixKokkos<T>::set_values(T val) const {
     for (size_t i = 0; i < length_; i++) {
         this_matrix_[i] = val;
     }
@@ -3324,7 +3324,7 @@ public:
     KOKKOS_INLINE_FUNCTION T* pointer() const;
 
     // set values to input (callable from host or inside a kernel)
-    KOKKOS_INLINE_FUNCTION void set_values(T val);
+    KOKKOS_INLINE_FUNCTION void set_values(T val) const;
 
     KOKKOS_INLINE_FUNCTION ~ViewCArrayKokkos();
 
@@ -3532,7 +3532,7 @@ KOKKOS_INLINE_FUNCTION T* ViewCArrayKokkos<T>::pointer() const {
 // launch into the default (device) space. Being KOKKOS_INLINE_FUNCTION
 // also lets a View built inside a kernel fill itself there.
 template <typename T>
-KOKKOS_INLINE_FUNCTION void ViewCArrayKokkos<T>::set_values(T val) {
+KOKKOS_INLINE_FUNCTION void ViewCArrayKokkos<T>::set_values(T val) const {
     for (size_t i = 0; i < length_; i++) {
         array_[i] = val;
     }
@@ -3929,7 +3929,7 @@ public:
     KOKKOS_INLINE_FUNCTION T* pointer() const;
 
     // set values to input (callable from host or inside a kernel)
-    KOKKOS_INLINE_FUNCTION void set_values(T val);
+    KOKKOS_INLINE_FUNCTION void set_values(T val) const;
 
     KOKKOS_INLINE_FUNCTION ~ViewCMatrixKokkos();
 
@@ -4138,7 +4138,7 @@ KOKKOS_INLINE_FUNCTION T* ViewCMatrixKokkos<T>::pointer() const {
 // launch into the default (device) space. Being KOKKOS_INLINE_FUNCTION
 // also lets a View built inside a kernel fill itself there.
 template <typename T>
-KOKKOS_INLINE_FUNCTION void ViewCMatrixKokkos<T>::set_values(T val) {
+KOKKOS_INLINE_FUNCTION void ViewCMatrixKokkos<T>::set_values(T val) const {
     for (size_t i = 0; i < length_; i++) {
         this_matrix_[i] = val;
     }
