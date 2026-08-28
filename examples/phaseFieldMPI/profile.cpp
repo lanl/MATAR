@@ -37,64 +37,42 @@
 //
 // Declaration of Event class
 //
-Event::Event(const std::string& name)
-{
+Event::Event(const std::string& name) {
     name_  = name;
     count_ = 0;
     // total_time_ = duration_t::duration::zero();
     clock_t::time_point t1 = clock_t::now();
-    total_time_ = t1 - t1;
+    total_time_            = t1 - t1;
 }
 
-void Event::start()
-{
-    start_time_ = clock_t::now();
-}
+void Event::start() { start_time_ = clock_t::now(); }
 
-void Event::stop()
-{
+void Event::stop() {
     count_ += 1;
     total_time_ += (clock_t::now() - start_time_);
 }
 
-double Event::get_time_in_seconds()
-{
-    return std::chrono::duration_cast
-           <std::chrono::nanoseconds>
-           (total_time_).count() * 1.0e-9;
-}
+double Event::get_time_in_seconds() { return std::chrono::duration_cast<std::chrono::nanoseconds>(total_time_).count() * 1.0e-9; }
 
-int Event::get_count()
-{
-    return count_;
-}
+int Event::get_count() { return count_; }
 
-std::string& Event::get_name()
-{
-    return name_;
-}
+std::string& Event::get_name() { return name_; }
 
 //
 // Declaration of Profile class
 //
-Event Profile::total = Event("total");
+Event Profile::total        = Event("total");
 Event Profile::fft_forward  = Event("fft_forward");
 Event Profile::fft_backward = Event("fft_backward");
 
 //
 std::vector<Event*> Profile::events_;
 
-Profile::Profile()
-{
-}
+Profile::Profile() {}
 
-void Profile::start(Event& event)
-{
-    event.start();
-}
+void Profile::start(Event& event) { event.start(); }
 
-void Profile::stop(Event& event)
-{
+void Profile::stop(Event& event) {
     if (event.get_count() == 0) {
         events_.push_back(&event);
     }
@@ -102,19 +80,17 @@ void Profile::stop(Event& event)
     event.stop();
 }
 
-void Profile::start_barrier(Event& event)
-{
+void Profile::start_barrier(Event& event) {
     Kokkos::fence();
 #ifdef HAVE_CUDA
     cudaDeviceSynchronize();
 #elif HAVE_OPENMP
-  #pragma omp barrier
+#pragma omp barrier
 #endif
     event.start();
 }
 
-void Profile::stop_barrier(Event& event)
-{
+void Profile::stop_barrier(Event& event) {
     if (event.get_count() == 0) {
         events_.push_back(&event);
     }
@@ -123,13 +99,12 @@ void Profile::stop_barrier(Event& event)
 #ifdef HAVE_CUDA
     cudaDeviceSynchronize();
 #elif HAVE_OPENMP
-  #pragma omp barrier
+#pragma omp barrier
 #endif
     event.stop();
 }
 
-void Profile::print_one(Event& event)
-{
+void Profile::print_one(Event& event) {
     // printf("%s : %12.4E seconds\n", event.get_name().c_str(), event.get_time_in_seconds());
     printf("\n");
     printf("%s:\n", event.get_name().c_str());
@@ -139,8 +114,7 @@ void Profile::print_one(Event& event)
     printf("\n");
 }
 
-void Profile::print()
-{
+void Profile::print() {
     for (Event* event : events_) {
         print_one(*event);
     }

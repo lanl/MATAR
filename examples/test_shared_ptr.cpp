@@ -35,13 +35,12 @@
 
 #include "matar.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-int N = 2;
+int N           = 2;
 using ArrayType = CArray<int>;
 
-ArrayType func()
-{
+ArrayType func() {
     ArrayType A(N);
 
     for (int i = 0; i < N; i++) {
@@ -55,8 +54,7 @@ ArrayType func()
     return A;
 }
 
-int main()
-{
+int main() {
     auto B = func();
 
     printf("\n");

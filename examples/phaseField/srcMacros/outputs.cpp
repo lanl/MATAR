@@ -36,8 +36,7 @@
 #include "outputs.h"
 #include "local_free_energy.h"
 
-void track_progress(int iter, int* nn, DCArrayKokkos<double>& comp)
-{
+void track_progress(int iter, int* nn, DCArrayKokkos<double>& comp) {
     // unpack simimulation parameters needed
     // for calculations in this function
     int nx = nn[0];
@@ -52,7 +51,7 @@ void track_progress(int iter, int* nn, DCArrayKokkos<double>& comp)
                    k, 0, nz,
                    loc_sum, {
         loc_sum += comp(i, j, k);
-               }, sum_comp);
+    }, sum_comp);
 
     // max of comp field
     double max_comp;
@@ -64,8 +63,7 @@ void track_progress(int iter, int* nn, DCArrayKokkos<double>& comp)
         if (loc_max < comp(i, j, k)) {
             loc_max = comp(i, j, k);
         }
-               },
-               max_comp);
+    }, max_comp);
 
     // min of comp field
     double min_comp;
@@ -77,8 +75,7 @@ void track_progress(int iter, int* nn, DCArrayKokkos<double>& comp)
         if (loc_min > comp(i, j, k)) {
             loc_min = comp(i, j, k);
         }
-               },
-               min_comp);
+    }, min_comp);
 
     printf("\n----------------------------------------------------\n");
     printf("Iteration : %d\n", iter);
@@ -87,13 +84,12 @@ void track_progress(int iter, int* nn, DCArrayKokkos<double>& comp)
     printf("Min comp : %f\n", min_comp);
 }
 
-void write_vtk(int iter, int* nn, double* delta, DCArrayKokkos<double>& comp)
-{
+void write_vtk(int iter, int* nn, double* delta, DCArrayKokkos<double>& comp) {
     // unpack simimulation parameters needed
     // for calculations in this function
-    int    nx = nn[0];
-    int    ny = nn[1];
-    int    nz = nn[2];
+    int nx    = nn[0];
+    int ny    = nn[1];
+    int nz    = nn[2];
     double dx = delta[0];
     double dy = delta[1];
     double dz = delta[2];
@@ -103,7 +99,7 @@ void write_vtk(int iter, int* nn, double* delta, DCArrayKokkos<double>& comp)
 
     // output file management
     FILE* output_file;
-    char  filename[50];
+    char filename[50];
 
     // create name of output vtk file
     sprintf(filename, "outputComp_%d.vtk", iter);
@@ -150,15 +146,13 @@ void write_vtk(int iter, int* nn, double* delta, DCArrayKokkos<double>& comp)
     fclose(output_file);
 }
 
-void output_total_free_energy(int iter, int print_rate, int num_steps, int* nn,
-    double* delta, double kappa, DCArrayKokkos<double>& comp)
-{
+void output_total_free_energy(int iter, int print_rate, int num_steps, int* nn, double* delta, double kappa, DCArrayKokkos<double>& comp) {
     // get total_free_energy
     double total_free_energy = calculate_total_free_energy(nn, delta, kappa, comp);
 
     // output file management
     static FILE* output_file;
-    static char  filename[50];
+    static char filename[50];
 
     // open output vtk file
     if (iter == print_rate) {

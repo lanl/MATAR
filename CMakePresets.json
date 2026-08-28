@@ -1,0 +1,199 @@
+{
+    "version": 3,
+    "cmakeMinimumRequired": { "major": 3, "minor": 22, "patch": 0 },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "MATAR_BUILD_TESTS": "ON",
+                "MATAR_BUILD_EXAMPLES": "ON"
+            }
+        },
+        {
+            "name": "kokkos",
+            "hidden": true,
+            "inherits": "base",
+            "cacheVariables": {
+                "MATAR_ENABLE_KOKKOS": "ON",
+                "Kokkos_ENABLE_SERIAL": "ON",
+                "Kokkos_ARCH_NATIVE": "ON"
+            }
+        },
+        {
+            "name": "mpi",
+            "hidden": true,
+            "cacheVariables": { "MATAR_ENABLE_MPI": "ON" }
+        },
+        {
+            "name": "debug",
+            "hidden": true,
+            "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+        },
+
+        { "name": "serial",   "displayName": "Kokkos serial backend",  "inherits": "kokkos" },
+        {
+            "name": "openmp",
+            "displayName": "Kokkos OpenMP backend",
+            "inherits": "kokkos",
+            "cacheVariables": { "Kokkos_ENABLE_OPENMP": "ON" }
+        },
+        {
+            "name": "pthreads",
+            "displayName": "Kokkos std::threads backend",
+            "inherits": "kokkos",
+            "cacheVariables": { "Kokkos_ENABLE_THREADS": "ON" }
+        },
+        {
+            "name": "cuda",
+            "displayName": "Kokkos CUDA backend",
+            "inherits": "kokkos",
+            "cacheVariables": {
+                "Kokkos_ENABLE_CUDA": "ON",
+                "Kokkos_ENABLE_CUDA_CONSTEXPR": "ON",
+                "Kokkos_ENABLE_CUDA_RELOCATABLE_DEVICE_CODE": "ON"
+            }
+        },
+        {
+            "name": "hip",
+            "displayName": "Kokkos HIP backend",
+            "inherits": "kokkos",
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "hipcc",
+                "Kokkos_ENABLE_HIP": "ON",
+                "Kokkos_ENABLE_HIP_RELOCATABLE_DEVICE_CODE": "ON"
+            }
+        },
+
+        { "name": "serial-mpi", "displayName": "Kokkos serial backend + MPI", "inherits": ["serial", "mpi"] },
+        { "name": "openmp-mpi", "displayName": "Kokkos OpenMP backend + MPI", "inherits": ["openmp", "mpi"] },
+        { "name": "cuda-mpi",   "displayName": "Kokkos CUDA backend + MPI",   "inherits": ["cuda", "mpi"] },
+        { "name": "hip-mpi",    "displayName": "Kokkos HIP backend + MPI",    "inherits": ["hip", "mpi"] },
+
+        { "name": "serial-debug",     "inherits": ["debug", "serial"] },
+        { "name": "openmp-debug",     "inherits": ["debug", "openmp"] },
+        { "name": "cuda-debug",       "inherits": ["debug", "cuda"] },
+        { "name": "hip-debug",        "inherits": ["debug", "hip"] },
+        { "name": "serial-mpi-debug", "inherits": ["debug", "serial-mpi"] },
+
+        {
+            "name": "serial-fp32",
+            "displayName": "Kokkos serial backend, real_t = float",
+            "inherits": "serial",
+            "cacheVariables": { "MATAR_REAL": "float" }
+        },
+        {
+            "name": "serial-fp16",
+            "displayName": "Kokkos serial backend, real_t = half (float-emulated on CPU)",
+            "inherits": "serial",
+            "cacheVariables": { "MATAR_REAL": "half" }
+        },
+        {
+            "name": "serial-bf16",
+            "displayName": "Kokkos serial backend, real_t = bfloat16 (float-emulated on CPU)",
+            "inherits": "serial",
+            "cacheVariables": { "MATAR_REAL": "bfloat16" }
+        },
+        {
+            "name": "serial-quad",
+            "displayName": "Kokkos serial backend, real_t = quad (__float128)",
+            "inherits": "serial",
+            "cacheVariables": { "MATAR_REAL": "quad" }
+        },
+        {
+            "name": "serial-mixed",
+            "displayName": "Kokkos serial backend, mixed tiers (float/double/half)",
+            "inherits": "serial",
+            "cacheVariables": {
+                "MATAR_REAL": "float",
+                "MATAR_HIGH_REAL": "double",
+                "MATAR_LOW_REAL": "half"
+            }
+        },
+        {
+            "name": "serial-mpi-fp16",
+            "displayName": "Kokkos serial backend + MPI, real_t = half (float-emulated on CPU)",
+            "inherits": "serial-mpi",
+            "cacheVariables": { "MATAR_REAL": "half" }
+        },
+        {
+            "name": "serial-mpi-quad",
+            "displayName": "Kokkos serial backend + MPI, real_t = quad (custom MPI datatype/op)",
+            "inherits": "serial-mpi",
+            "cacheVariables": { "MATAR_REAL": "quad" }
+        },
+        {
+            "name": "hostomp",
+            "displayName": "OpenMP host + device backends via the MATAR_*_BACKEND front door",
+            "inherits": "base",
+            "cacheVariables": {
+                "MATAR_ENABLE_KOKKOS": "ON",
+                "Kokkos_ARCH_NATIVE": "ON",
+                "MATAR_HOST_BACKEND": "openmp",
+                "MATAR_DEVICE_BACKEND": "openmp"
+            }
+        },
+        {
+            "name": "cuda-hostomp",
+            "displayName": "CUDA device + OpenMP host: concurrent host/device execution",
+            "inherits": "base",
+            "cacheVariables": {
+                "MATAR_ENABLE_KOKKOS": "ON",
+                "Kokkos_ARCH_NATIVE": "ON",
+                "MATAR_HOST_BACKEND": "openmp",
+                "MATAR_DEVICE_BACKEND": "cuda",
+                "Kokkos_ENABLE_CUDA_CONSTEXPR": "ON",
+                "Kokkos_ENABLE_CUDA_RELOCATABLE_DEVICE_CODE": "ON"
+            }
+        }
+    ],
+    "buildPresets": [
+        { "name": "serial",           "configurePreset": "serial" },
+        { "name": "openmp",           "configurePreset": "openmp" },
+        { "name": "pthreads",         "configurePreset": "pthreads" },
+        { "name": "cuda",             "configurePreset": "cuda" },
+        { "name": "hip",              "configurePreset": "hip" },
+        { "name": "serial-mpi",       "configurePreset": "serial-mpi" },
+        { "name": "openmp-mpi",       "configurePreset": "openmp-mpi" },
+        { "name": "cuda-mpi",         "configurePreset": "cuda-mpi" },
+        { "name": "hip-mpi",          "configurePreset": "hip-mpi" },
+        { "name": "serial-debug",     "configurePreset": "serial-debug" },
+        { "name": "openmp-debug",     "configurePreset": "openmp-debug" },
+        { "name": "cuda-debug",       "configurePreset": "cuda-debug" },
+        { "name": "hip-debug",        "configurePreset": "hip-debug" },
+        { "name": "serial-mpi-debug", "configurePreset": "serial-mpi-debug" },
+        { "name": "serial-fp32",      "configurePreset": "serial-fp32" },
+        { "name": "serial-fp16",      "configurePreset": "serial-fp16" },
+        { "name": "serial-bf16",      "configurePreset": "serial-bf16" },
+        { "name": "serial-quad",      "configurePreset": "serial-quad" },
+        { "name": "serial-mixed",     "configurePreset": "serial-mixed" },
+        { "name": "serial-mpi-fp16",  "configurePreset": "serial-mpi-fp16" },
+        { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad" },
+        { "name": "hostomp",          "configurePreset": "hostomp" },
+        { "name": "cuda-hostomp",     "configurePreset": "cuda-hostomp" }
+    ],
+    "testPresets": [
+        { "name": "serial",           "configurePreset": "serial",           "output": { "outputOnFailure": true } },
+        { "name": "openmp",           "configurePreset": "openmp",           "output": { "outputOnFailure": true } },
+        { "name": "pthreads",         "configurePreset": "pthreads",         "output": { "outputOnFailure": true } },
+        { "name": "cuda",             "configurePreset": "cuda",             "output": { "outputOnFailure": true } },
+        { "name": "hip",              "configurePreset": "hip",              "output": { "outputOnFailure": true } },
+        { "name": "serial-mpi",       "configurePreset": "serial-mpi",       "output": { "outputOnFailure": true } },
+        { "name": "openmp-mpi",       "configurePreset": "openmp-mpi",       "output": { "outputOnFailure": true } },
+        { "name": "cuda-mpi",         "configurePreset": "cuda-mpi",         "output": { "outputOnFailure": true } },
+        { "name": "hip-mpi",          "configurePreset": "hip-mpi",          "output": { "outputOnFailure": true } },
+        { "name": "serial-debug",     "configurePreset": "serial-debug",     "output": { "outputOnFailure": true } },
+        { "name": "openmp-debug",     "configurePreset": "openmp-debug",     "output": { "outputOnFailure": true } },
+        { "name": "serial-mpi-debug", "configurePreset": "serial-mpi-debug", "output": { "outputOnFailure": true } },
+        { "name": "serial-fp32",      "configurePreset": "serial-fp32",      "output": { "outputOnFailure": true } },
+        { "name": "serial-fp16",      "configurePreset": "serial-fp16",      "output": { "outputOnFailure": true } },
+        { "name": "serial-bf16",      "configurePreset": "serial-bf16",      "output": { "outputOnFailure": true } },
+        { "name": "serial-quad",      "configurePreset": "serial-quad",      "output": { "outputOnFailure": true } },
+        { "name": "serial-mixed",     "configurePreset": "serial-mixed",     "output": { "outputOnFailure": true } },
+        { "name": "serial-mpi-fp16",  "configurePreset": "serial-mpi-fp16",  "output": { "outputOnFailure": true } },
+        { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad",  "output": { "outputOnFailure": true } },
+        { "name": "hostomp",          "configurePreset": "hostomp",          "output": { "outputOnFailure": true } }
+    ]
+}

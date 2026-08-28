@@ -2,18 +2,21 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 namespace {
 // Helper: set two individual elements on device (KOKKOS_LAMBDA must not be in TEST body on NVCC)
 inline void set_elements_0_4(DynamicArrayKokkos<double>& array, double v0, double v4) {
-    Kokkos::parallel_for("set_elems", 1, KOKKOS_LAMBDA(int) {
-        array(0) = v0;
-        array(4) = v4;
-    });
+    Kokkos::parallel_for(
+        "set_elems",
+        1,
+        KOKKOS_LAMBDA(int) {
+            array(0) = v0;
+            array(4) = v4;
+        });
     Kokkos::fence();
 }
-} // namespace
+}  // namespace
 
 // Test default constructor
 TEST(DynamicArrayKokkosTest, DefaultConstructor) {

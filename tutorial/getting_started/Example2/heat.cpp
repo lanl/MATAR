@@ -5,21 +5,21 @@
 #include "matar.h"
 
 // Required for MATAR data structures
-using namespace mtr; 
+using namespace mtr;
 
-const int    width  = 300; // width of the grid not including boundaries
-const int    height = 300; // height of the grid not including boundaries
-const int    domain_width = width + 2; // width of the grid including boundaries
-const int    domain_height = height + 2; // height of the grid including boundaries
+const int width             = 300;         // width of the grid not including boundaries
+const int height            = 300;         // height of the grid not including boundaries
+const int domain_width      = width + 2;   // width of the grid including boundaries
+const int domain_height     = height + 2;  // height of the grid including boundaries
 const double temp_tolerance = 0.0005;
-const int    max_iterations = 100000;
+const int max_iterations    = 100000;
 
 const double max_temp = 1000;
 
 // Parameters for visualization
-const int    vis_width = 60;    // Width of visualization grid
-const int    vis_height = 20;   // Height of visualization grid
-const bool   use_colors = true; // Set to false if terminal doesn't support colors
+const int vis_width   = 60;    // Width of visualization grid
+const int vis_height  = 20;    // Height of visualization grid
+const bool use_colors = true;  // Set to false if terminal doesn't support colors
 
 void initialize(double (&temperature_previous)[height + 2][width + 2]);
 void print_heatmap(double (&temperature)[height + 2][width + 2]);
@@ -27,11 +27,10 @@ const char* temp_to_color(double temp, double max_temp);
 char temp_to_char(double temp, double max_temp);
 
 // main
-int main()
-{
-    int    i, j;
-    int    iteration = 1;
-    double worst_dt  = 100;
+int main() {
+    int i, j;
+    int iteration   = 1;
+    double worst_dt = 100;
 
     // Start measuring time
     auto begin = std::chrono::high_resolution_clock::now();
@@ -47,10 +46,8 @@ int main()
         // finite difference
         for (i = 1; i < height + 1; i++) {
             for (j = 1; j < width + 1; j++) {
-                temperature[i][j] = 0.25 * (temperature_previous[i + 1][j]
-                                            + temperature_previous[i - 1][j]
-                                            + temperature_previous[i][j + 1]
-                                            + temperature_previous[i][j - 1]);
+                temperature[i][j] = 0.25 * (temperature_previous[i + 1][j] + temperature_previous[i - 1][j] + temperature_previous[i][j + 1] +
+                                            temperature_previous[i][j - 1]);
             }
         }
 
@@ -58,9 +55,7 @@ int main()
         worst_dt = 0.0;
         for (i = 1; i < height + 1; i++) {
             for (j = 1; j < width + 1; j++) {
-                worst_dt = fmax(fabs(temperature[i][j] -
-                                temperature_previous[i][j]),
-                                worst_dt);
+                worst_dt = fmax(fabs(temperature[i][j] - temperature_previous[i][j]), worst_dt);
             }
         }
 
@@ -93,8 +88,7 @@ int main()
     return 0;
 }
 
-void initialize(double (&temperature_previous)[height + 2][width + 2])
-{
+void initialize(double (&temperature_previous)[height + 2][width + 2]) {
     int i, j;
 
     // initialize temperature_previous to 0.0
@@ -106,28 +100,26 @@ void initialize(double (&temperature_previous)[height + 2][width + 2])
 
     // setting the left and right boundary conditions
     for (i = 0; i <= height + 1; i++) {
-        temperature_previous[i][0] = 0.0;
+        temperature_previous[i][0]         = 0.0;
         temperature_previous[i][width + 1] = (1000.0 / height) * i;
     }
 
     // setting the top and bottom boundary condition
     for (j = 0; j <= width + 1; j++) {
-        temperature_previous[0][j] = 0.0;
+        temperature_previous[0][j]          = 0.0;
         temperature_previous[height + 1][j] = (1000.0 / width) * j;
     }
 }
 
-
-void print_heatmap(double (&temperature)[height + 2][width + 2])
-{
+void print_heatmap(double (&temperature)[height + 2][width + 2]) {
     // Find the maximum temperature for scaling
     double max_temp = 1000;
-    
+
     printf("\nTemperature Distribution (max = %.2f):\n", max_temp);
     printf("┌");
     for (int j = 0; j < vis_width; j++) printf("─");
     printf("┐\n");
-    
+
     // Sample the grid to fit the visualization size
     for (int i = 0; i < vis_height; i++) {
         printf("│");
@@ -135,9 +127,9 @@ void print_heatmap(double (&temperature)[height + 2][width + 2])
             // Map visualization coordinates to actual grid coordinates
             int grid_i = 1 + (i * height / vis_height);
             int grid_j = 1 + (j * width / vis_width);
-            
+
             double temp = temperature[grid_i][grid_j];
-            
+
             if (use_colors) {
                 printf("%s%c\033[0m", temp_to_color(temp, max_temp), temp_to_char(temp, max_temp));
             } else {
@@ -146,35 +138,35 @@ void print_heatmap(double (&temperature)[height + 2][width + 2])
         }
         printf("│\n");
     }
-    
+
     printf("└");
     for (int j = 0; j < vis_width; j++) printf("─");
     printf("┘\n");
-    
+
     printf("Legend: . (cold) → * → o → O → # (hot)\n\n");
 }
 
 // ANSI color codes for terminal output
 const char* temp_to_color(double temp, double max_temp) {
     double normalized = temp / max_temp;
-    
+
     // Create a more gradual blue-to-red transition
-    if (normalized < 0.1) return "\033[38;5;21m";  // Deep Blue
-    if (normalized < 0.2) return "\033[38;5;27m";  // Medium Blue
-    if (normalized < 0.3) return "\033[38;5;39m";  // Light Blue
-    if (normalized < 0.4) return "\033[38;5;45m";  // Cyan-Blue
-    if (normalized < 0.5) return "\033[38;5;51m";  // Cyan
-    if (normalized < 0.6) return "\033[38;5;50m";  // Cyan-Green
-    if (normalized < 0.7) return "\033[38;5;226m"; // Yellow
-    if (normalized < 0.8) return "\033[38;5;214m"; // Orange
-    if (normalized < 0.9) return "\033[38;5;208m"; // Dark Orange
-    return "\033[38;5;196m";                       // Bright Red
+    if (normalized < 0.1) return "\033[38;5;21m";   // Deep Blue
+    if (normalized < 0.2) return "\033[38;5;27m";   // Medium Blue
+    if (normalized < 0.3) return "\033[38;5;39m";   // Light Blue
+    if (normalized < 0.4) return "\033[38;5;45m";   // Cyan-Blue
+    if (normalized < 0.5) return "\033[38;5;51m";   // Cyan
+    if (normalized < 0.6) return "\033[38;5;50m";   // Cyan-Green
+    if (normalized < 0.7) return "\033[38;5;226m";  // Yellow
+    if (normalized < 0.8) return "\033[38;5;214m";  // Orange
+    if (normalized < 0.9) return "\033[38;5;208m";  // Dark Orange
+    return "\033[38;5;196m";                        // Bright Red
 }
 
 // ASCII character for temperature intensity
 char temp_to_char(double temp, double max_temp) {
     double normalized = temp / max_temp;
-    
+
     // Match character intensity to the color gradient
     if (normalized < 0.1) return '*';
     if (normalized < 0.3) return '*';

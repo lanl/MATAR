@@ -2,13 +2,13 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 namespace {
 // RUN kernels cannot live inside TEST() — nvcc rejects KOKKOS_LAMBDA in the
 // private TestBody().  Each free function here wraps one RUN block so the
 // lambda is at namespace scope.
-template<typename T>
+template <typename T>
 inline void drd_init_strides(DynamicRaggedDownArrayKokkos<T>& array) {
     RUN({
         array.stride(0) = 1;
@@ -16,7 +16,7 @@ inline void drd_init_strides(DynamicRaggedDownArrayKokkos<T>& array) {
         array.stride(2) = 2;
     });
 }
-} // namespace
+}  // namespace
 
 // Test default constructor and basic initialization
 TEST(DynamicRaggedDownArrayKokkosTest, DefaultConstructor) {

@@ -3,11 +3,11 @@
 
 #ifdef HAVE_MPI
 #include <mpi.h>
-#include "matar.h"
-#include "communication_plan.h"
 
-namespace mtr
-{
+#include "communication_plan.h"
+#include "matar.h"
+
+namespace mtr {
 
 // Type trait to map C++ types to MPI_Datatype
 template <typename T>
@@ -69,30 +69,217 @@ struct mpi_type_map<bool> {
     static MPI_Datatype value() { return MPI_C_BOOL; }
 };
 
+// ---------------------------------------------------------------------------
+// Precision-tier support (internal — users only ever write MPICArrayKokkos
+// with a tier name such as real_t).
+//
+// Types with no predefined MPI datatype (native 16-bit half/bfloat16 on GPU
+// backends, __float128 on host) get a lazily created contiguous byte
+// datatype: for pure data movement (communicate()'s MPI_Neighbor_alltoallv)
+// bytes are bytes, so this is sufficient. The datatype is created on first
+// use — necessarily after MPI_Init, same precondition as the call sites —
+// and lives until MPI_Finalize (one committed type per process, by design).
+//
+// On CPU backends the 16-bit types are float aliases and resolve through
+// mpi_type_map<float>; these specializations compile away.
+// ---------------------------------------------------------------------------
+namespace impl {
+template <typename U>
+inline MPI_Datatype byte_datatype() {
+    static MPI_Datatype t = [] {
+        MPI_Datatype d;
+        MPI_Type_contiguous(sizeof(U), MPI_BYTE, &d);
+        MPI_Type_commit(&d);
+        return d;
+    }();
+    return t;
+}
+}  // namespace impl
+
+#if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED
+template <>
+struct mpi_type_map<Kokkos::Experimental::half_t> {
+    static MPI_Datatype value() { return impl::byte_datatype<Kokkos::Experimental::half_t>(); }
+};
+#endif
+
+#if MATAR_HAS_BF16 && !MATAR_BF16_IS_EMULATED
+template <>
+struct mpi_type_map<Kokkos::Experimental::bhalf_t> {
+    static MPI_Datatype value() { return impl::byte_datatype<Kokkos::Experimental::bhalf_t>(); }
+};
+#endif
+
+#if MATAR_HAS_FP128
+template <>
+struct mpi_type_map<__float128> {
+    static MPI_Datatype value() { return impl::byte_datatype<__float128>(); }
+};
+#endif
+
+namespace impl {
+
+// The types the MPI standard provides datatypes AND built-in reduction ops
+// for; anything else needs special handling in mpi_allreduce_scalar below.
+template <typename U>
+struct has_builtin_mpi_type : std::false_type {};
+template <>
+struct has_builtin_mpi_type<int> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<long> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<long long> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<unsigned int> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<unsigned long> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<float> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<double> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<char> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<unsigned char> : std::true_type {};
+template <>
+struct has_builtin_mpi_type<bool> : std::true_type {};
+
+#if MATAR_HAS_FP128
+// __float128 reductions need a custom MPI_Op (built-in ops reject derived
+// datatypes, and no wider standard type exists to promote through). quad is
+// host-only per precision.h and all MATAR MPI buffers are host-resident, so
+// a host-side op function is always safe.
+inline void quad_op_sum(void* in, void* inout, int* len, MPI_Datatype*) {
+    auto* a = static_cast<__float128*>(in);
+    auto* b = static_cast<__float128*>(inout);
+    for (int i = 0; i < *len; i++) {
+        b[i] += a[i];
+    }
+}
+inline void quad_op_prod(void* in, void* inout, int* len, MPI_Datatype*) {
+    auto* a = static_cast<__float128*>(in);
+    auto* b = static_cast<__float128*>(inout);
+    for (int i = 0; i < *len; i++) {
+        b[i] *= a[i];
+    }
+}
+inline void quad_op_max(void* in, void* inout, int* len, MPI_Datatype*) {
+    auto* a = static_cast<__float128*>(in);
+    auto* b = static_cast<__float128*>(inout);
+    for (int i = 0; i < *len; i++) {
+        b[i] = (a[i] > b[i]) ? a[i] : b[i];
+    }
+}
+inline void quad_op_min(void* in, void* inout, int* len, MPI_Datatype*) {
+    auto* a = static_cast<__float128*>(in);
+    auto* b = static_cast<__float128*>(inout);
+    for (int i = 0; i < *len; i++) {
+        b[i] = (a[i] < b[i]) ? a[i] : b[i];
+    }
+}
+
+inline MPI_Op quad_mpi_op(operation op) {
+    static MPI_Op op_sum = [] {
+        MPI_Op o;
+        MPI_Op_create(quad_op_sum, 1, &o);
+        return o;
+    }();
+    static MPI_Op op_prod = [] {
+        MPI_Op o;
+        MPI_Op_create(quad_op_prod, 1, &o);
+        return o;
+    }();
+    static MPI_Op op_max = [] {
+        MPI_Op o;
+        MPI_Op_create(quad_op_max, 1, &o);
+        return o;
+    }();
+    static MPI_Op op_min = [] {
+        MPI_Op o;
+        MPI_Op_create(quad_op_min, 1, &o);
+        return o;
+    }();
+    switch (op) {
+        case operation::sum:
+            return op_sum;
+        case operation::product:
+            return op_prod;
+        case operation::max:
+            return op_max;
+        case operation::min:
+            return op_min;
+        default:
+            return op_sum;
+    }
+}
+#endif  // MATAR_HAS_FP128
+
+// Scalar allreduce at any precision tier:
+//   builtin types        -> MPI_Allreduce with the predefined datatype/op
+//   native half/bfloat16 -> promote to double on the wire (exact: every
+//                           16-bit value is representable in double; one
+//                           rounding on return, better than chained 16-bit
+//                           rounding per rank)
+//   __float128           -> custom MPI_Op over the 16-byte datatype
+template <typename U>
+inline U mpi_allreduce_scalar(U local, operation op, MPI_Comm comm) {
+    if constexpr (has_builtin_mpi_type<U>::value) {
+        U global;
+        MPI_Allreduce(&local, &global, 1, mpi_type_map<U>::value(), mpi_op_for(op), comm);
+        return global;
+    }
+#if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED
+    else if constexpr (std::is_same_v<U, Kokkos::Experimental::half_t>) {
+        double l = static_cast<double>(local);
+        double g;
+        MPI_Allreduce(&l, &g, 1, MPI_DOUBLE, mpi_op_for(op), comm);
+        return static_cast<U>(g);
+    }
+#endif
+#if MATAR_HAS_BF16 && !MATAR_BF16_IS_EMULATED
+    else if constexpr (std::is_same_v<U, Kokkos::Experimental::bhalf_t>) {
+        double l = static_cast<double>(local);
+        double g;
+        MPI_Allreduce(&l, &g, 1, MPI_DOUBLE, mpi_op_for(op), comm);
+        return static_cast<U>(g);
+    }
+#endif
+#if MATAR_HAS_FP128
+    else if constexpr (std::is_same_v<U, __float128>) {
+        __float128 global;
+        MPI_Allreduce(&local, &global, 1, mpi_type_map<__float128>::value(), quad_mpi_op(op), comm);
+        return global;
+    }
+#endif
+    else {
+        static_assert(has_builtin_mpi_type<U>::value, "Unsupported type for MPI reduction");
+        return local;
+    }
+}
+
+}  // namespace impl
 
 template <typename T>
 struct MPICArrayCommBuffers {
-
     DCArrayKokkos<T> send_buffer_;
     DCArrayKokkos<T> recv_buffer_;
-    
-    DCArrayKokkos<int> send_counts_; // [size: num_send_ranks] Number of items to send to each rank
-    DCArrayKokkos<int> recv_counts_; // [size: num_recv_ranks] Number of items to receive from each rank
-    DCArrayKokkos<int> send_displs_; // [size: num_send_ranks] Starting index of items to send to each rank
-    DCArrayKokkos<int> recv_displs_; // [size: num_recv_ranks] Starting index of items to receive from each rank
 
-    DRaggedRightArrayKokkos<int> send_indices_; // [size: num_send_ranks, num_items_to_send_by_rank] Indices of items to send to each rank
-    DRaggedRightArrayKokkos<int> recv_indices_; // [size: num_recv_ranks, num_items_to_recv_by_rank] Indices of items to receive from each rank
+    DCArrayKokkos<int> send_counts_;  // [size: num_send_ranks] Number of items to send to each rank
+    DCArrayKokkos<int> recv_counts_;  // [size: num_recv_ranks] Number of items to receive from each rank
+    DCArrayKokkos<int> send_displs_;  // [size: num_send_ranks] Starting index of items to send to each rank
+    DCArrayKokkos<int> recv_displs_;  // [size: num_recv_ranks] Starting index of items to receive from each rank
+
+    DRaggedRightArrayKokkos<int> send_indices_;  // [size: num_send_ranks, num_items_to_send_by_rank] Indices of items to
+                                                 // send to each rank
+    DRaggedRightArrayKokkos<int> recv_indices_;  // [size: num_recv_ranks, num_items_to_recv_by_rank] Indices of items to
+                                                 // receive from each rank
 };
-
-
 
 /////////////////////////
 // MPICArrayKokkos:  Type for managing distributed data on both CPU and GPU.
 /////////////////////////
 template <typename T, typename Layout = DefaultLayout, typename ExecSpace = DefaultExecSpace, typename MemoryTraits = void>
 class MPICArrayKokkos {
-
     // Dual view for managing data on both CPU and GPU
     DCArrayKokkos<T> this_array_;
 
@@ -107,24 +294,22 @@ class MPICArrayKokkos {
 
     // DCArrayKokkos<T> send_buffer_;
     // DCArrayKokkos<T> recv_buffer_;
-    
-protected:
-    size_t dims_[7] = {0,0,0,0,0,0,0};
-    size_t length_ = 0;
-    size_t order_ = 0;  // tensor order (rank)
-    size_t stride_ = 1; // [size: num_dims] Number of contiguous values per first index element
 
-    size_t num_owned_ = 0;            // Number of owned items (nodes/elements); optional override
-    size_t num_ghost_ = 0;            // Number of ghost items (nodes/elements); informational when user-set
+protected:
+    size_t dims_[7] = {0, 0, 0, 0, 0, 0, 0};
+    size_t length_  = 0;
+    size_t order_   = 0;  // tensor order (rank)
+    size_t stride_  = 1;  // [size: num_dims] Number of contiguous values per first index element
+
+    size_t num_owned_ = 0;  // Number of owned items (nodes/elements); optional override
+    size_t num_ghost_ = 0;  // Number of ghost items (nodes/elements); informational when user-set
 
 public:
-
     // --- Ghost Communication Support ---
-    CommunicationPlan* comm_plan_ = NULL;      // Pointer to shared communication plan
+    CommunicationPlan* comm_plan_ = NULL;  // Pointer to shared communication plan
 
     // Data member to access host view (initialized as pointer to this_array_.host_pointer())
-    ViewCArray <T> host;
-
+    ViewCArray<T> host;
 
     // Note, consider this for sending blocks without dealing with stride_
     // MPI_Datatype vector_type;
@@ -132,64 +317,49 @@ public:
     // MPI_Type_commit(&vector_type);
 
     MPICArrayKokkos();
-    
+
     MPICArrayKokkos(size_t dim0, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     MPICArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
     MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2,
-                 size_t dim3, size_t dim4, size_t dim5,
-                 size_t dim6, const std::string& tag_string = DEFAULTSTRINGARRAY);
-    
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i) const;
+    MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6,
+                    const std::string& tag_string = DEFAULTSTRINGARRAY);
 
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j) const;
+    KOKKOS_INLINE_FUNCTION T& operator()(size_t i) const;
 
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k) const;
+    KOKKOS_INLINE_FUNCTION T& operator()(size_t i, size_t j) const;
 
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l) const;
+    KOKKOS_INLINE_FUNCTION T& operator()(size_t i, size_t j, size_t k) const;
 
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
+    KOKKOS_INLINE_FUNCTION T& operator()(size_t i, size_t j, size_t k, size_t l) const;
 
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
-                  size_t n) const;
+    KOKKOS_INLINE_FUNCTION T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const;
 
-    KOKKOS_INLINE_FUNCTION
-    T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
-                  size_t n, size_t o) const;
-    
-    KOKKOS_INLINE_FUNCTION
-    MPICArrayKokkos& operator=(const MPICArrayKokkos& temp);
+    KOKKOS_INLINE_FUNCTION T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const;
 
+    KOKKOS_INLINE_FUNCTION T& operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const;
+
+    KOKKOS_INLINE_FUNCTION MPICArrayKokkos& operator=(const MPICArrayKokkos& temp);
 
     // Method to set comm plan for halo communication
-    void initialize_comm_plan(CommunicationPlan& comm_plan){
+    void initialize_comm_plan(CommunicationPlan& comm_plan) {
         comm_plan_ = &comm_plan;
 
-        if(comm_plan_->comm_type == communication_plan_type::no_communication){
+        if (comm_plan_->comm_type == communication_plan_type::no_communication) {
             return;
         }
-        
+
         size_t send_size = comm_plan_->total_send_count * stride_;
         size_t recv_size = comm_plan_->total_recv_count * stride_;
-        
+
         if (send_size > 0) {
             mpi_buffers_.send_buffer_ = DCArrayKokkos<T>(send_size, "send_buffer");
         }
@@ -200,20 +370,20 @@ public:
         if (comm_plan_->num_send_ranks > 0) {
             mpi_buffers_.send_counts_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_counts");
             mpi_buffers_.send_displs_ = DCArrayKokkos<int>(comm_plan_->num_send_ranks, "send_displs");
-            
-            for(int i = 0; i < comm_plan_->num_send_ranks; i++){
+
+            for (int i = 0; i < comm_plan_->num_send_ranks; i++) {
                 mpi_buffers_.send_counts_.host(i) = comm_plan_->send_counts_.host(i) * stride_;
                 mpi_buffers_.send_displs_.host(i) = comm_plan_->send_displs_.host(i) * stride_;
             }
             mpi_buffers_.send_counts_.update_device();
             mpi_buffers_.send_displs_.update_device();
         }
-        
+
         if (comm_plan_->num_recv_ranks > 0) {
             mpi_buffers_.recv_counts_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_counts");
             mpi_buffers_.recv_displs_ = DCArrayKokkos<int>(comm_plan_->num_recv_ranks, "recv_displs");
-            
-            for(int i = 0; i < comm_plan_->num_recv_ranks; i++){
+
+            for (int i = 0; i < comm_plan_->num_recv_ranks; i++) {
                 mpi_buffers_.recv_counts_.host(i) = comm_plan_->recv_counts_.host(i) * stride_;
                 mpi_buffers_.recv_displs_.host(i) = comm_plan_->recv_displs_.host(i) * stride_;
             }
@@ -222,34 +392,26 @@ public:
         }
     };
 
-
     // GPU Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
-    size_t size() const;
+    KOKKOS_INLINE_FUNCTION size_t size() const;
 
     // Host Method
     // Method that returns size
-    KOKKOS_INLINE_FUNCTION
-    size_t extent() const;
+    KOKKOS_INLINE_FUNCTION size_t extent() const;
 
-    KOKKOS_INLINE_FUNCTION
-    size_t dims(size_t i) const;
+    KOKKOS_INLINE_FUNCTION size_t dims(size_t i) const;
 
-    KOKKOS_INLINE_FUNCTION
-    size_t order() const;
- 
+    KOKKOS_INLINE_FUNCTION size_t order() const;
+
     // Method returns the raw device pointer of the Kokkos DualView
-    KOKKOS_INLINE_FUNCTION
-    T* device_pointer() const;
+    KOKKOS_INLINE_FUNCTION T* device_pointer() const;
 
     // Method returns the raw host pointer of the Kokkos DualView
-    KOKKOS_INLINE_FUNCTION
-    T* host_pointer() const;
+    KOKKOS_INLINE_FUNCTION T* host_pointer() const;
 
     // Method returns kokkos dual view
-    KOKKOS_INLINE_FUNCTION
-    Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits> get_kokkos_dual_view() const;
+    KOKKOS_INLINE_FUNCTION Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits> get_kokkos_dual_view() const;
 
     // Method that update host view
     void update_host();
@@ -259,19 +421,18 @@ public:
 
     // Method that builds the send buffer, note, this has to be ordered
     // Such that all the boundary elements going to a given rank are contiguous in the send buffer.
-    void fill_send_buffer(){
-
+    void fill_send_buffer() {
         // Copy this_array_ to the host
         this_array_.update_host();
         MATAR_FENCE();
 
         size_t send_idx = 0;
-        for(int i = 0; i < comm_plan_->num_send_ranks; i++){
-            for(int j = 0; j < comm_plan_->send_counts_.host(i); j++){
-                size_t src_idx = comm_plan_->send_indices_.host(i, j); // index of the element to send
-                
+        for (int i = 0; i < comm_plan_->num_send_ranks; i++) {
+            for (int j = 0; j < comm_plan_->send_counts_.host(i); j++) {
+                size_t src_idx = comm_plan_->send_indices_.host(i, j);  // index of the element to send
+
                 // Copy all values associated with this element (handles multi-dimensional arrays)
-                for(size_t k = 0; k < stride_; k++){
+                for (size_t k = 0; k < stride_; k++) {
                     mpi_buffers_.send_buffer_.host(send_idx + k) = this_array_.host_pointer()[src_idx * stride_ + k];
                 }
                 send_idx += stride_;
@@ -280,37 +441,37 @@ public:
     };
 
     // Method that copies the recv buffer into the this_array
-    void copy_recv_buffer(){
-
+    void copy_recv_buffer() {
         size_t recv_idx = 0;
-        for(int i = 0; i < comm_plan_->num_recv_ranks; i++){
-            for(int j = 0; j < comm_plan_->recv_counts_.host(i); j++){
+        for (int i = 0; i < comm_plan_->num_recv_ranks; i++) {
+            for (int j = 0; j < comm_plan_->recv_counts_.host(i); j++) {
                 size_t dest_idx = comm_plan_->recv_indices_.host(i, j);
-                
+
                 // Copy all values associated with this element (handles multi-dimensional arrays)
-                for(size_t k = 0; k < stride_; k++){
+                for (size_t k = 0; k < stride_; k++) {
                     this_array_.host_pointer()[dest_idx * stride_ + k] = mpi_buffers_.recv_buffer_.host(recv_idx + k);
                 }
-                
+
                 recv_idx += stride_;
             }
         }
     };
 
-
     // Note: This "may" be needed, im not sure.  Currently, it works....
-    // Use nullptr for empty arrays to avoid accessing element 0 of 0-sized array (undefined behavior)
-    // T* send_buf_ptr = (send_buffer_.size() > 0) ? &send_buffer_.host(0) : nullptr;
-    // T* recv_buf_ptr = (recv_buffer_.size() > 0) ? &recv_buffer_.host(0) : nullptr;
-    // int* send_cnt_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_counts_.host(0) : nullptr;
-    // int* send_dsp_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_displs_.host(0) : nullptr;
-    // int* recv_cnt_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_counts_.host(0) : nullptr;
-    // int* recv_dsp_ptr = (comm_plan_->num_recv_ranks > 0) ? &comm_plan_->recv_displs_.host(0) : nullptr;
+    // Use nullptr for empty arrays to avoid accessing element 0 of 0-sized array (undefined
+    // behavior) T* send_buf_ptr = (send_buffer_.size() > 0) ? &send_buffer_.host(0) : nullptr; T*
+    // recv_buf_ptr = (recv_buffer_.size() > 0) ? &recv_buffer_.host(0) : nullptr; int* send_cnt_ptr
+    // = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_counts_.host(0) : nullptr; int*
+    // send_dsp_ptr = (comm_plan_->num_send_ranks > 0) ? &comm_plan_->send_displs_.host(0) :
+    // nullptr; int* recv_cnt_ptr = (comm_plan_->num_recv_ranks > 0) ?
+    // &comm_plan_->recv_counts_.host(0) : nullptr; int* recv_dsp_ptr = (comm_plan_->num_recv_ranks
+    // > 0) ? &comm_plan_->recv_displs_.host(0) : nullptr;
 
     // Method that communicates the data between the ranks
-    // NOTE: This is a blocking communication operation, 
-    // if you want to use non-blocking communication, you can use the following: MPI_Ineighbor_alltoallv
-    
+    // NOTE: This is a blocking communication operation,
+    // if you want to use non-blocking communication, you can use the following:
+    // MPI_Ineighbor_alltoallv
+
     // TODO: Consider replacing this with persistent communicator:
     // MPI_Request req;
 
@@ -327,7 +488,7 @@ public:
     // // modify sendbuf in-place as needed
     // MPI_Wait(&req);
 
-    void communicate(){
+    void communicate() {
         if (!comm_plan_) {
             return;
         }
@@ -351,17 +512,16 @@ public:
 
         fill_send_buffer();
 
-        MPI_Neighbor_alltoallv(
-            mpi_buffers_.send_buffer_.host_pointer(),
-            mpi_buffers_.send_counts_.host_pointer(),
-            mpi_buffers_.send_displs_.host_pointer(),
-            mpi_type_map<T>::value(),  
-            mpi_buffers_.recv_buffer_.host_pointer(),
-            mpi_buffers_.recv_counts_.host_pointer(),
-            mpi_buffers_.recv_displs_.host_pointer(), 
-            mpi_type_map<T>::value(),  
-            comm_plan_->mpi_comm_graph);
-        
+        MPI_Neighbor_alltoallv(mpi_buffers_.send_buffer_.host_pointer(),
+                               mpi_buffers_.send_counts_.host_pointer(),
+                               mpi_buffers_.send_displs_.host_pointer(),
+                               mpi_type_map<T>::value(),
+                               mpi_buffers_.recv_buffer_.host_pointer(),
+                               mpi_buffers_.recv_counts_.host_pointer(),
+                               mpi_buffers_.recv_displs_.host_pointer(),
+                               mpi_type_map<T>::value(),
+                               comm_plan_->mpi_comm_graph);
+
         copy_recv_buffer();
         this_array_.update_device();
         MATAR_FENCE();
@@ -381,121 +541,118 @@ public:
     /// stress(elem, gauss, i, j) → all_reduce(op, g, i, j) over owned elem.
     T all_reduce(operation op, size_t g, size_t ti, size_t tj);
 
-    void set_values(const T& value){
-        this_array_.set_values(value);
-    };
+    void set_values(const T& value) { this_array_.set_values(value); };
 
     // Deconstructor
-    KOKKOS_INLINE_FUNCTION
-    ~MPICArrayKokkos ();
-}; // End of MPIDArrayKokkos
+    KOKKOS_INLINE_FUNCTION ~MPICArrayKokkos();
+};  // End of MPIDArrayKokkos
 
 // Default constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos()
-    : this_array_(), stride_(1), length_(0), order_(0) {
-        for (int i = 0; i < 7; i++) {
-            dims_[i] = 0;
-        }
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPICArrayKokkos() : this_array_(), stride_(1), length_(0), order_(0) {
+    for (int i = 0; i < 7; i++) {
+        dims_[i] = 0;
+    }
 }
 
 // Overloaded 1D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, const std::string& tag_string) 
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPICArrayKokkos(size_t dim0, const std::string& tag_string)
     : stride_(1), length_(dim0), order_(1) {
-    dims_[0] = dim0;
+    dims_[0]    = dim0;
     this_array_ = DCArrayKokkos<T>(dim0, tag_string);
-    host = ViewCArray <T> (this_array_.host_pointer(), dim0);
+    host        = ViewCArray<T>(this_array_.host_pointer(), dim0);
 }
 
 // Overloaded 2D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string) 
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, const std::string& tag_string)
     : stride_(dim1), length_(dim0 * dim1), order_(2) {
     dims_[0] = dim0;
     dims_[1] = dim1;
 
     this_array_ = DCArrayKokkos<T>(dim0, dim1, tag_string);
-    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1);
+    host        = ViewCArray<T>(this_array_.host_pointer(), dim0, dim1);
 }
 
 // Overloaded 3D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string) 
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, const std::string& tag_string)
     : stride_(dim1 * dim2), length_(dim0 * dim1 * dim2), order_(3) {
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
+    dims_[0]    = dim0;
+    dims_[1]    = dim1;
+    dims_[2]    = dim2;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, tag_string);
-    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2);
+    host        = ViewCArray<T>(this_array_.host_pointer(), dim0, dim1, dim2);
 }
 
 // Overloaded 4D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, const std::string& tag_string) 
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3,
+                                                                     const std::string& tag_string)
     : stride_(dim1 * dim2 * dim3), length_(dim0 * dim1 * dim2 * dim3), order_(4) {
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
+    dims_[0]    = dim0;
+    dims_[1]    = dim1;
+    dims_[2]    = dim2;
+    dims_[3]    = dim3;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, tag_string);
-    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3);
+    host        = ViewCArray<T>(this_array_.host_pointer(), dim0, dim1, dim2, dim3);
 }
 
 // Overloaded 5D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, const std::string& tag_string) 
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4,
+                                                                     const std::string& tag_string)
     : stride_(dim1 * dim2 * dim3 * dim4), length_(dim0 * dim1 * dim2 * dim3 * dim4), order_(5) {
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
+    dims_[0]    = dim0;
+    dims_[1]    = dim1;
+    dims_[2]    = dim2;
+    dims_[3]    = dim3;
+    dims_[4]    = dim4;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, tag_string);
-    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4);
+    host        = ViewCArray<T>(this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4);
 }
 
 // Overloaded 6D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, const std::string& tag_string) 
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5,
+                                                                     const std::string& tag_string)
     : stride_(dim1 * dim2 * dim3 * dim4 * dim5), length_(dim0 * dim1 * dim2 * dim3 * dim4 * dim5), order_(6) {
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
+    dims_[0]    = dim0;
+    dims_[1]    = dim1;
+    dims_[2]    = dim2;
+    dims_[3]    = dim3;
+    dims_[4]    = dim4;
+    dims_[5]    = dim5;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, tag_string);
-    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5);
+    host        = ViewCArray<T>(this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5);
 }
 
 // Overloaded 7D constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5, size_t dim6, const std::string& tag_string) 
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::MPICArrayKokkos(size_t dim0, size_t dim1, size_t dim2, size_t dim3, size_t dim4, size_t dim5,
+                                                                     size_t dim6, const std::string& tag_string)
     : stride_(dim1 * dim2 * dim3 * dim4 * dim5 * dim6), length_(dim0 * dim1 * dim2 * dim3 * dim4 * dim5 * dim6), order_(7) {
-    dims_[0] = dim0;
-    dims_[1] = dim1;
-    dims_[2] = dim2;
-    dims_[3] = dim3;
-    dims_[4] = dim4;
-    dims_[5] = dim5;
-    dims_[6] = dim6;
+    dims_[0]    = dim0;
+    dims_[1]    = dim1;
+    dims_[2]    = dim2;
+    dims_[3]    = dim3;
+    dims_[4]    = dim4;
+    dims_[5]    = dim5;
+    dims_[6]    = dim6;
     this_array_ = DCArrayKokkos<T>(dim0, dim1, dim2, dim3, dim4, dim5, dim6, tag_string);
-    host = ViewCArray <T> (this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
+    host        = ViewCArray<T>(this_array_.host_pointer(), dim0, dim1, dim2, dim3, dim4, dim5, dim6);
 }
 
-
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i) const {
+KOKKOS_INLINE_FUNCTION T& MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i) const {
     assert(order_ == 1 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 1D!");
     assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 1D!");
     return this_array_(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j) const {
+KOKKOS_INLINE_FUNCTION T& MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j) const {
     assert(order_ == 2 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 2D!");
     assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 2D!");
     assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 2D!");
@@ -503,8 +660,7 @@ T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
+KOKKOS_INLINE_FUNCTION T& MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j, size_t k) const {
     assert(order_ == 3 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 3D!");
     assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 3D!");
     assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 3D!");
@@ -513,8 +669,7 @@ T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
+KOKKOS_INLINE_FUNCTION T& MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l) const {
     assert(order_ == 4 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 4D!");
     assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 4D!");
     assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 4D!");
@@ -524,8 +679,7 @@ T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const {
+KOKKOS_INLINE_FUNCTION T& MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m) const {
     assert(order_ == 5 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 5D!");
     assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 5D!");
     assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 5D!");
@@ -536,8 +690,8 @@ T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n) const {
+KOKKOS_INLINE_FUNCTION T& MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m,
+                                                                                          size_t n) const {
     assert(order_ == 6 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 6D!");
     assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 6D!");
     assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 6D!");
@@ -549,8 +703,8 @@ T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n, size_t o) const {
+KOKKOS_INLINE_FUNCTION T& MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator()(size_t i, size_t j, size_t k, size_t l, size_t m, size_t n,
+                                                                                          size_t o) const {
     assert(order_ == 7 && "Tensor order (rank) does not match constructor in MPICArrayKokkos 7D!");
     assert(i < dims_[0] && "i is out of bounds in MPICArrayKokkos 7D!");
     assert(j < dims_[1] && "j is out of bounds in MPICArrayKokkos 7D!");
@@ -563,25 +717,23 @@ T& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator()(size_t i, size_t
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::operator=(const MPICArrayKokkos& temp) {
-    
+KOKKOS_INLINE_FUNCTION MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>& MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::operator=(
+    const MPICArrayKokkos& temp) {
     // Do nothing if the assignment is of the form x = x
     if (this != &temp) {
-
-        this_array_ = temp.this_array_;
+        this_array_  = temp.this_array_;
         mpi_buffers_ = temp.mpi_buffers_;
 
         length_ = temp.length_;
 
-        for (int iter = 0; iter < temp.order_; iter++){
+        for (int iter = 0; iter < temp.order_; iter++) {
             dims_[iter] = temp.dims_[iter];
-        } // end for
+        }  // end for
 
-        order_ = temp.order_;
+        order_     = temp.order_;
         comm_plan_ = temp.comm_plan_;
         comm_plan_ = temp.comm_plan_;
-        stride_ = temp.stride_;
+        stride_    = temp.stride_;
         num_owned_ = temp.num_owned_;
         num_ghost_ = temp.num_ghost_;
 
@@ -592,68 +744,58 @@ MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>& MPICArrayKokkos<T,Layout,ExecS
 
 // Return size
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::size() const {
+KOKKOS_INLINE_FUNCTION size_t MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::size() const {
     return this_array_.size();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::extent() const {
+KOKKOS_INLINE_FUNCTION size_t MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::extent() const {
     return this_array_.extent();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::dims(size_t i) const {
+KOKKOS_INLINE_FUNCTION size_t MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::dims(size_t i) const {
     assert(i < order_ && "MPICArrayKokkos order (rank) does not match constructor, dim[i] does not exist!");
     assert(dims_[i] > 0 && "Access to MPICArrayKokkos dims is out of bounds!");
     return this_array_.dims(i);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-size_t MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::order() const {
+KOKKOS_INLINE_FUNCTION size_t MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::order() const {
     return this_array_.order();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T* MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::device_pointer() const {
+KOKKOS_INLINE_FUNCTION T* MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::device_pointer() const {
     return this_array_.device_pointer();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-T* MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::host_pointer() const {
+KOKKOS_INLINE_FUNCTION T* MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::host_pointer() const {
     return this_array_.host_pointer();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-Kokkos::DualView <T*, Layout, ExecSpace, MemoryTraits> MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::get_kokkos_dual_view() const {
+KOKKOS_INLINE_FUNCTION Kokkos::DualView<T*, Layout, ExecSpace, MemoryTraits>
+MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::get_kokkos_dual_view() const {
     return this_array_.get_kokkos_dual_view();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_host() {
+void MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::update_host() {
     this_array_.update_host();
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-void MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::update_device() {
+void MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::update_device() {
     this_array_.update_device();
 }
 
-
-
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) {
-   
-    // assert(order_ == 1 && stride_ == 1 && "MPICArrayKokkos::all_reduce requires a 1D array (stride 1).");
-    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) &&
-           "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
-
+    // assert(order_ == 1 && stride_ == 1 && "MPICArrayKokkos::all_reduce requires a 1D array
+    // (stride 1).");
+    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) && "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
 
     assert(num_owned_ <= dims_[0] && "MPICArrayKokkos::all_reduce: num_owned exceeds dim0.");
     const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
@@ -663,67 +805,63 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
     T local;
 
     if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
-
         switch (op) {
-        case operation::sum: {
-            local = 0;
-            T loc_sum = 0;
-            FOR_REDUCE_SUM_CLASS(i, 0, owned_len,
-                        loc_sum, {
-                loc_sum += this_array_(i);
-            }, local);
-            break;
-        }
-        case operation::product: {
-            local = T(1);
-            T loc_prod = 1;
-            FOR_REDUCE_PRODUCT_CLASS(i, 0, owned_len,
-                        loc_prod, {
-                loc_prod *= this_array_(i);
-            }, local);
-            break;
-        }
-        case operation::max: {
-            T loc_max;
-            FOR_REDUCE_MAX_CLASS(i, 0, owned_len,
-                        loc_max, {
-                loc_max = (this_array_(i) > loc_max) ? this_array_(i) : loc_max;
-            }, local);
-            break;
-        }
-        case operation::min: {
-            T loc_min;
-            FOR_REDUCE_MIN_CLASS(i, 0, owned_len,
-                        loc_min, {
-                loc_min = (this_array_(i) < loc_min) ? this_array_(i) : loc_min;
-            }, local);
-            break;
-        }
-        default:
-            printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
-            printf("Supported operations are: sum, product, max, min\n");
-            Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
-            break;
+            case operation::sum: {
+                local     = 0;
+                T loc_sum = 0;
+                FOR_REDUCE_SUM_CLASS(i, 0, owned_len,
+                                     loc_sum, {
+                    loc_sum += this_array_(i);
+                }, local);
+                break;
+            }
+            case operation::product: {
+                local      = T(1);
+                T loc_prod = 1;
+                FOR_REDUCE_PRODUCT_CLASS(i, 0, owned_len,
+                                         loc_prod, {
+                    loc_prod *= this_array_(i);
+                }, local);
+                break;
+            }
+            case operation::max: {
+                T loc_max;
+                FOR_REDUCE_MAX_CLASS(i, 0, owned_len,
+                                     loc_max, {
+                    loc_max = (this_array_(i) > loc_max) ? this_array_(i) : loc_max;
+                }, local);
+                break;
+            }
+            case operation::min: {
+                T loc_min;
+                FOR_REDUCE_MIN_CLASS(i, 0, owned_len,
+                                     loc_min, {
+                    loc_min = (this_array_(i) < loc_min) ? this_array_(i) : loc_min;
+                }, local);
+                break;
+            }
+            default:
+                printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+                printf("Supported operations are: sum, product, max, min\n");
+                Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+                break;
         }
     } else {
         printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
-    T global = local;
     MPI_Comm comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), comm);
-    return global;
+    return impl::mpi_allreduce_scalar(local, op, comm);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, size_t j) {
     assert(order_ == 2 && "MPICArrayKokkos::all_reduce(op,j) requires a rank-2 array.");
     assert(j < dims_[1] && "Fixed index j is out of bounds.");
-    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) &&
-           "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
+    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) && "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
     assert(num_owned_ <= dims_[0] && "MPICArrayKokkos::all_reduce: num_owned exceeds dim0.");
     const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
     assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
@@ -731,63 +869,64 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     T local;
     if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
         switch (op) {
-        case operation::sum: {
-            local = 0;
-            T loc_sum = 0;
-            FOR_REDUCE_SUM_CLASS(e, 0, owned_len, loc_sum, {
-                loc_sum += this_array_(e, j);
-            }, local);
-            break;
-        }
-        case operation::product: {
-            local = T(1);
-            T loc_prod = 1;
-            FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len, loc_prod, {
-                loc_prod *= this_array_(e, j);
-            }, local);
-            break;
-        }
-        case operation::max: {
-            T loc_max;
-            FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
-                const T v = this_array_(e, j);
-                loc_max = (v > loc_max) ? v : loc_max;
-            }, local);
-            break;
-        }
-        case operation::min: {
-            T loc_min;
-            FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
-                const T v = this_array_(e, j);
-                loc_min = (v < loc_min) ? v : loc_min;
-            }, local);
-            break;
-        }
-        default:
-            printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
-            printf("Supported operations are: sum, product, max, min\n");
-            Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
-            break;
+            case operation::sum: {
+                local     = 0;
+                T loc_sum = 0;
+                FOR_REDUCE_SUM_CLASS(e, 0, owned_len,
+                                     loc_sum, {
+                    loc_sum += this_array_(e, j);
+                }, local);
+                break;
+            }
+            case operation::product: {
+                local      = T(1);
+                T loc_prod = 1;
+                FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len,
+                                         loc_prod, {
+                    loc_prod *= this_array_(e, j);
+                }, local);
+                break;
+            }
+            case operation::max: {
+                T loc_max;
+                FOR_REDUCE_MAX_CLASS(e, 0, owned_len,
+                                     loc_max, {
+                    const T v = this_array_(e, j);
+                    loc_max   = (v > loc_max) ? v : loc_max;
+                }, local);
+                break;
+            }
+            case operation::min: {
+                T loc_min;
+                FOR_REDUCE_MIN_CLASS(e, 0, owned_len,
+                                     loc_min, {
+                    const T v = this_array_(e, j);
+                    loc_min   = (v < loc_min) ? v : loc_min;
+                }, local);
+                break;
+            }
+            default:
+                printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+                printf("Supported operations are: sum, product, max, min\n");
+                Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+                break;
         }
     } else {
         printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
-    T global = local;
     MPI_Comm mpi_comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
-    return global;
+    return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
 T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, size_t j, size_t k) {
     assert(order_ == 3 && "MPICArrayKokkos::all_reduce(op,j,k) requires a rank-3 array.");
     assert(j < dims_[1] && k < dims_[2] && "Fixed tensor indices (j,k) are out of bounds.");
-    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) &&
-           "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
+    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) && "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
     assert(num_owned_ <= dims_[0] && "MPICArrayKokkos::all_reduce: num_owned exceeds dim0.");
     const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
     assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
@@ -795,65 +934,64 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     T local;
     if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
         switch (op) {
-        case operation::sum: {
-            local = 0;
-            T loc_sum = 0;
-            FOR_REDUCE_SUM_CLASS(e, 0, owned_len, loc_sum, {
-                loc_sum += this_array_(e, j, k);
-            }, local);
-            break;
-        }
-        case operation::product: {
-            local = T(1);
-            T loc_prod = 1;
-            FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len, loc_prod, {
-                loc_prod *= this_array_(e, j, k);
-            }, local);
-            break;
-        }
-        case operation::max: {
-            T loc_max;
-            FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
-                const T v = this_array_(e, j, k);
-                loc_max = (v > loc_max) ? v : loc_max;
-            }, local);
-            break;
-        }
-        case operation::min: {
-            T loc_min;
-            FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
-                const T v = this_array_(e, j, k);
-                loc_min = (v < loc_min) ? v : loc_min;
-            }, local);
-            break;
-        }
-        default:
-            printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
-            printf("Supported operations are: sum, product, max, min\n");
-            Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
-            break;
+            case operation::sum: {
+                local     = 0;
+                T loc_sum = 0;
+                FOR_REDUCE_SUM_CLASS(e, 0, owned_len,
+                                     loc_sum, {
+                    loc_sum += this_array_(e, j, k);
+                }, local);
+                break;
+            }
+            case operation::product: {
+                local      = T(1);
+                T loc_prod = 1;
+                FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len,
+                                         loc_prod, {
+                    loc_prod *= this_array_(e, j, k);
+                }, local);
+                break;
+            }
+            case operation::max: {
+                T loc_max;
+                FOR_REDUCE_MAX_CLASS(e, 0, owned_len,
+                                     loc_max, {
+                    const T v = this_array_(e, j, k);
+                    loc_max   = (v > loc_max) ? v : loc_max;
+                }, local);
+                break;
+            }
+            case operation::min: {
+                T loc_min;
+                FOR_REDUCE_MIN_CLASS(e, 0, owned_len,
+                                     loc_min, {
+                    const T v = this_array_(e, j, k);
+                    loc_min   = (v < loc_min) ? v : loc_min;
+                }, local);
+                break;
+            }
+            default:
+                printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+                printf("Supported operations are: sum, product, max, min\n");
+                Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+                break;
         }
     } else {
         printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
-    T global = local;
     MPI_Comm mpi_comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
-    return global;
+    return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }
 
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, size_t g, size_t ti,
-                                                                  size_t tj) {
+T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, size_t g, size_t ti, size_t tj) {
     assert(order_ == 4 && "MPICArrayKokkos::all_reduce(op,g,ti,tj) requires a rank-4 array.");
-    assert(g < dims_[1] && ti < dims_[2] && tj < dims_[3] &&
-           "Fixed indices (Gauss, tensor i, j) are out of bounds.");
-    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) &&
-           "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
+    assert(g < dims_[1] && ti < dims_[2] && tj < dims_[3] && "Fixed indices (Gauss, tensor i, j) are out of bounds.");
+    assert(!(op == operation::product && sizeof(T) == sizeof(bool)) && "MPICArrayKokkos::all_reduce: product reduction is not supported for bool.");
     assert(num_owned_ <= dims_[0] && "MPICArrayKokkos::all_reduce: num_owned exceeds dim0.");
     const size_t owned_len = (num_owned_ > 0) ? num_owned_ : dims_[0];
     assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
@@ -861,64 +999,63 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     T local;
     if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
         switch (op) {
-        case operation::sum: {
-            local = 0;
-            T loc_sum = 0;
-            FOR_REDUCE_SUM_CLASS(e, 0, owned_len, loc_sum, {
-                loc_sum += this_array_(e, g, ti, tj);
-            }, local);
-            break;
-        }
-        case operation::product: {
-            local = T(1);
-            T loc_prod = 1;
-            FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len, loc_prod, {
-                loc_prod *= this_array_(e, g, ti, tj);
-            }, local);
-            break;
-        }
-        case operation::max: {
-            T loc_max;
-            FOR_REDUCE_MAX_CLASS(e, 0, owned_len, loc_max, {
-                const T v = this_array_(e, g, ti, tj);
-                loc_max = (v > loc_max) ? v : loc_max;
-            }, local);
-            break;
-        }
-        case operation::min: {
-            T loc_min;
-            FOR_REDUCE_MIN_CLASS(e, 0, owned_len, loc_min, {
-                const T v = this_array_(e, g, ti, tj);
-                loc_min = (v < loc_min) ? v : loc_min;
-            }, local);
-            break;
-        }
-        default:
-            printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
-            printf("Supported operations are: sum, product, max, min\n");
-            Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
-            break;
+            case operation::sum: {
+                local     = 0;
+                T loc_sum = 0;
+                FOR_REDUCE_SUM_CLASS(e, 0, owned_len,
+                                     loc_sum, {
+                    loc_sum += this_array_(e, g, ti, tj);
+                }, local);
+                break;
+            }
+            case operation::product: {
+                local      = T(1);
+                T loc_prod = 1;
+                FOR_REDUCE_PRODUCT_CLASS(e, 0, owned_len,
+                                         loc_prod, {
+                    loc_prod *= this_array_(e, g, ti, tj);
+                }, local);
+                break;
+            }
+            case operation::max: {
+                T loc_max;
+                FOR_REDUCE_MAX_CLASS(e, 0, owned_len,
+                                     loc_max, {
+                    const T v = this_array_(e, g, ti, tj);
+                    loc_max   = (v > loc_max) ? v : loc_max;
+                }, local);
+                break;
+            }
+            case operation::min: {
+                T loc_min;
+                FOR_REDUCE_MIN_CLASS(e, 0, owned_len,
+                                     loc_min, {
+                    const T v = this_array_(e, g, ti, tj);
+                    loc_min   = (v < loc_min) ? v : loc_min;
+                }, local);
+                break;
+            }
+            default:
+                printf("MPICArrayKokkos::all_reduce: unsupported operation %d\n", op);
+                printf("Supported operations are: sum, product, max, min\n");
+                Kokkos::abort("MPICArrayKokkos::all_reduce: unsupported operation");
+                break;
         }
     } else {
         printf("MPICArrayKokkos::all_reduce: communication plan requires info on ghost vs owned\n");
     }
 
-    T global = local;
     MPI_Comm mpi_comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
     }
-    MPI_Allreduce(&local, &global, 1, mpi_type_map<T>::value(), mpi_op_for(op), mpi_comm);
-    return global;
+    return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }
 
-
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits>
-KOKKOS_INLINE_FUNCTION
-MPICArrayKokkos<T,Layout,ExecSpace,MemoryTraits>::~MPICArrayKokkos() {}
+KOKKOS_INLINE_FUNCTION MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::~MPICArrayKokkos() {}
 
-} // end namespace mtr
+}  // end namespace mtr
 
-
-#endif // end if have MPI
-#endif // end if MPICARRAYKOKKOS_H
+#endif  // end if have MPI
+#endif  // end if MPICARRAYKOKKOS_H

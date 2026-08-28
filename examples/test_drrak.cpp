@@ -38,20 +38,15 @@
 
 #include "matar.h"
 
-using namespace mtr; // matar namespace
-
-
-
+using namespace mtr;  // matar namespace
 
 // =============================================================
 //
 // Main function
 //
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     Kokkos::initialize(argc, argv);
     {
-       
         // -----------------------
         // DRaggedRightArray Scalar with CArrayKokkos
         // -----------------------
@@ -64,7 +59,7 @@ int main(int argc, char* argv[])
         CArrayKokkos<size_t> some_strides(num_strides, "test_1D_strides");
 
         FOR_ALL(i, 0, num_strides, {
-            some_strides(i) = i+1;
+            some_strides(i) = i + 1;
         });
 
         Kokkos::fence();
@@ -73,24 +68,23 @@ int main(int argc, char* argv[])
         drrak1D.update_host();
 
         std::cout << "Array length: " << drrak1D.size() << std::endl;
-        FOR_ALL(i, 0, num_strides,{
-            for(int j = 0; j < drrak1D.stride(i); j++) {
+        FOR_ALL(i, 0, num_strides, {
+            for (int j = 0; j < drrak1D.stride(i); j++) {
                 drrak1D(i, j) = j;
             }
         });
 
         drrak1D.update_host();
 
-        for(int i = 0; i < num_strides; i++) {
-            for(int j = 0; j < drrak1D.stride_host(i); j++) {
-                if(drrak1D.host(i, j) != j) {
+        for (int i = 0; i < num_strides; i++) {
+            for (int j = 0; j < drrak1D.stride_host(i); j++) {
+                if (drrak1D.host(i, j) != j) {
                     printf("Error: drrak1D(i, j) = %d, expected %d\n", drrak1D.host(i, j), j);
                 }
             }
         }
         std::cout << "test_1D passed" << std::endl;
         Kokkos::fence();
-
 
         // -----------------------
         // DRaggedRightArray Scalar with DCArrayKokkos
@@ -103,8 +97,8 @@ int main(int argc, char* argv[])
         num_strides = 3;
         DCArrayKokkos<size_t> some_strides_d(num_strides, "test_1D_strides_d");
 
-        for(int i = 0; i < num_strides; i++){
-            some_strides_d.host(i) = i+1;
+        for (int i = 0; i < num_strides; i++) {
+            some_strides_d.host(i) = i + 1;
         }
 
         some_strides_d.update_device();
@@ -116,31 +110,29 @@ int main(int argc, char* argv[])
 
         std::cout << "Array length: " << drrak1D_d.size() << std::endl;
 
-        for(int i = 0; i < num_strides; i++){
-            if(drrak1D_d.stride_host(i) != i+1){
-                printf("Error: drrak1D_d.stride_host(i) = %zu, expected %d\n", drrak1D_d.stride_host(i), i+1);
+        for (int i = 0; i < num_strides; i++) {
+            if (drrak1D_d.stride_host(i) != i + 1) {
+                printf("Error: drrak1D_d.stride_host(i) = %zu, expected %d\n", drrak1D_d.stride_host(i), i + 1);
             }
         }
 
-
-        FOR_ALL(i, 0, num_strides,{
-            for(int j = 0; j < drrak1D_d.stride(i); j++) {
+        FOR_ALL(i, 0, num_strides, {
+            for (int j = 0; j < drrak1D_d.stride(i); j++) {
                 drrak1D_d(i, j) = j;
             }
         });
 
         drrak1D_d.update_host();
 
-        for(int i = 0; i < num_strides; i++) {
-            for(int j = 0; j < drrak1D_d.stride_host(i); j++) {
-                if(drrak1D_d.host(i, j) != j) {
+        for (int i = 0; i < num_strides; i++) {
+            for (int j = 0; j < drrak1D_d.stride_host(i); j++) {
+                if (drrak1D_d.host(i, j) != j) {
                     printf("Error: drrak1D_d(i, j) = %d, expected %d\n", drrak1D_d.host(i, j), j);
                 }
             }
         }
         std::cout << "test_1D dual input passed" << std::endl;
         Kokkos::fence();
-
 
         // -----------------------
         // DRaggedRightArray Vector
@@ -152,11 +144,10 @@ int main(int argc, char* argv[])
 
         drrak2D = DRaggedRightArrayKokkos<int>(some_strides, dim2D, "test_2D");
 
-        FOR_ALL(i, 0, num_strides,{
-            for(int j = 0; j < drrak2D.stride(i); j++) {
-                for(int k = 0; k < dim2D; k++) {
-
-                    drrak2D(i, j, k) = j+k;
+        FOR_ALL(i, 0, num_strides, {
+            for (int j = 0; j < drrak2D.stride(i); j++) {
+                for (int k = 0; k < dim2D; k++) {
+                    drrak2D(i, j, k) = j + k;
                 }
             }
         });
@@ -164,18 +155,17 @@ int main(int argc, char* argv[])
         drrak2D.update_host();
         Kokkos::fence();
 
-        for(int i = 0; i < num_strides; i++) {
-            for(int j = 0; j < drrak2D.stride_host(i); j++) {
-                for(int k = 0; k < dim2D; k++) {
-                    if(drrak2D.host(i, j, k) != j+k) {
-                        printf("Error: drrak2D(i, j, k) = %d, expected %d\n", drrak2D.host(i, j, k), j+k);
+        for (int i = 0; i < num_strides; i++) {
+            for (int j = 0; j < drrak2D.stride_host(i); j++) {
+                for (int k = 0; k < dim2D; k++) {
+                    if (drrak2D.host(i, j, k) != j + k) {
+                        printf("Error: drrak2D(i, j, k) = %d, expected %d\n", drrak2D.host(i, j, k), j + k);
                     }
                 }
             }
         }
         std::cout << "test_2D passed" << std::endl;
         Kokkos::fence();
-
 
         // -----------------------
         // DRaggedRightArray Tensor
@@ -184,15 +174,13 @@ int main(int argc, char* argv[])
         printf("\nDRaggedRightArray test 3D \n");
         DRaggedRightArrayKokkos<int> drrak3D;
 
-
         drrak3D = DRaggedRightArrayKokkos<int>(some_strides, dim2D, dim2D, "test_3D");
 
-
-        FOR_ALL(i, 0, num_strides,{
-            for(int j = 0; j < drrak3D.stride(i); j++) {
-                for(int k = 0; k < dim2D; k++) {
-                    for(int l = 0; l < dim2D; l++) {
-                        drrak3D(i, j, k, l) = j+k+l;
+        FOR_ALL(i, 0, num_strides, {
+            for (int j = 0; j < drrak3D.stride(i); j++) {
+                for (int k = 0; k < dim2D; k++) {
+                    for (int l = 0; l < dim2D; l++) {
+                        drrak3D(i, j, k, l) = j + k + l;
                     }
                 }
             }
@@ -200,12 +188,12 @@ int main(int argc, char* argv[])
 
         drrak3D.update_host();
 
-        for(int i = 0; i < num_strides; i++) {
-            for(int j = 0; j < drrak3D.stride_host(i); j++) {
-                for(int k = 0; k < dim2D; k++) {
-                    for(int l = 0; l < dim2D; l++) {
-                        if(drrak3D.host(i, j, k, l) != j+k+l) {
-                            printf("Error: drrak3D(i, j, k, l) = %d, expected %d\n", drrak3D.host(i, j, k, l), j+k+l);
+        for (int i = 0; i < num_strides; i++) {
+            for (int j = 0; j < drrak3D.stride_host(i); j++) {
+                for (int k = 0; k < dim2D; k++) {
+                    for (int l = 0; l < dim2D; l++) {
+                        if (drrak3D.host(i, j, k, l) != j + k + l) {
+                            printf("Error: drrak3D(i, j, k, l) = %d, expected %d\n", drrak3D.host(i, j, k, l), j + k + l);
                         }
                     }
                 }
@@ -214,7 +202,7 @@ int main(int argc, char* argv[])
         std::cout << "test_3D passed" << std::endl;
         Kokkos::fence();
 
-    } // end of kokkos scope
+    }  // end of kokkos scope
 
     Kokkos::finalize();
 
@@ -222,4 +210,3 @@ int main(int argc, char* argv[])
 
     return 0;
 }
-

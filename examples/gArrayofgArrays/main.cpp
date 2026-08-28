@@ -37,18 +37,16 @@
 
 using namespace mtr;
 
-struct thing
-{
+struct thing {
     int a;
-    DCArrayKokkos <int> inner;
+    DCArrayKokkos<int> inner;
 };
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     Kokkos::initialize(argc, argv);
-    { // kokkos scope
+    {  // kokkos scope
         const size_t num_things = 4;
-        auto array_of_things = DCArrayKokkos <thing> (num_things);
+        auto array_of_things    = DCArrayKokkos<thing>(num_things);
 
         for (size_t i = 0; i < num_things; i++) {
             array_of_things.host(i).inner = (DCArrayKokkos<int>*)Kokkos::kokkos_malloc(sizeof(DCArrayKokkos<int>));
@@ -56,54 +54,54 @@ int main(int argc, char* argv[])
         // Update device side of array of memory location on GPU
         array_of_things.update_device();
 
-/*
-        // Create shapes using `placement new`. Even=Circle, Odd=Square. Radius=i, Length=i.
-        FOR_ALL(i, 0, num_things, {
-            new ((DCArrayKokkos*)array_of_things(i).inner) DCArrayKokkos<int>(8);
-        });
-        Kokkos::fence();
-        // Calculate Area
-        DCArrayKokkos<double> area_array(num_shapes);
-        FOR_ALL(i, 0, num_shapes, {
-            area_array(i) = shape_array(i).shape->area();
-        });
-        Kokkos::fence();
-        area_array.update_host();
+        /*
+                // Create shapes using `placement new`. Even=Circle, Odd=Square. Radius=i, Length=i.
+                FOR_ALL(i, 0, num_things, {
+                    new ((DCArrayKokkos*)array_of_things(i).inner) DCArrayKokkos<int>(8);
+                });
+                Kokkos::fence();
+                // Calculate Area
+                DCArrayKokkos<double> area_array(num_shapes);
+                FOR_ALL(i, 0, num_shapes, {
+                    area_array(i) = shape_array(i).shape->area();
+                });
+                Kokkos::fence();
+                area_array.update_host();
 
-        // Check result
-        for (size_t i = 0; i < num_shapes; i++) {
-            double area;
-            if (i % 2 == 0) {
-                area = atan(1) * 4 * i * i;
-                if (area != area_array.host(i)) {
-                    printf("Circle radius=%.3f, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
+                // Check result
+                for (size_t i = 0; i < num_shapes; i++) {
+                    double area;
+                    if (i % 2 == 0) {
+                        area = atan(1) * 4 * i * i;
+                        if (area != area_array.host(i)) {
+                            printf("Circle radius=%.3f, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
+                        }
+                    }
+                    else {
+                        area = i * i;
+                        if (area != area_array.host(i)) {
+                            printf("Square length=%.3f, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
+                        }
+                    }
+
+                    if (area != area_array.host(i)) {
+                        throw std::runtime_error("calculated area NOT EQUAL actual area");
+                    }
                 }
-            }
-            else {
-                area = i * i;
-                if (area != area_array.host(i)) {
-                    printf("Square length=%.3f, calc_area=%.3f, actual_area=%.3f\n", i, area_array.host(i), area);
+                // Destroy shapes
+                FOR_ALL(i, 0, num_things, {
+                    array_of_things(i).inner->~DCArrayKokkos();
+                });
+                Kokkos::fence();
+
+                // Free GPU memory
+                for (size_t i = 0; i < num_shapes; i++) {
+                    Kokkos::kokkos_free(array_of_things.host(i).inner);
                 }
-            }
-
-            if (area != area_array.host(i)) {
-                throw std::runtime_error("calculated area NOT EQUAL actual area");
-            }
-        }
-        // Destroy shapes
-        FOR_ALL(i, 0, num_things, {
-            array_of_things(i).inner->~DCArrayKokkos();
-        });
-        Kokkos::fence();
-
-        // Free GPU memory
-        for (size_t i = 0; i < num_shapes; i++) {
-            Kokkos::kokkos_free(array_of_things.host(i).inner);
-        }
-*/
+        */
 
         printf("COMPLETED SUCCESSFULLY!!!\n");
-    } // end kokkos scope
+    }  // end kokkos scope
     Kokkos::finalize();
 
     return 0;

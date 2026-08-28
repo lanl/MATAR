@@ -2,13 +2,13 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 namespace {
 // RUN kernels cannot live inside TEST() — nvcc rejects KOKKOS_LAMBDA in the
 // private TestBody().  Each free function here wraps one RUN block so the
 // lambda is at namespace scope.
-template<typename T>
+template <typename T>
 inline void drr_init_strides(DynamicRaggedRightArrayKokkos<T>& array) {
     RUN({
         array.stride(0) = 1;
@@ -17,20 +17,18 @@ inline void drr_init_strides(DynamicRaggedRightArrayKokkos<T>& array) {
     });
 }
 
-template<typename T>
+template <typename T>
 inline void drr_set_element_0_0(DynamicRaggedRightArrayKokkos<T>& array, T val) {
-    Kokkos::parallel_for("set_elem", 1, KOKKOS_LAMBDA(int) {
-        array(0, 0) = val;
-    });
+    Kokkos::parallel_for("set_elem", 1, KOKKOS_LAMBDA(int) { array(0, 0) = val; });
     Kokkos::fence();
 }
-} // namespace
+}  // namespace
 
-//TO DO: Add following capability
-// Test default constructor and basic initialization
-// TEST(DynamicRaggedRightArrayKokkosTest, DefaultConstructor) { ... }
-// TEST(DynamicRaggedRightArrayKokkosTest, PushBack) { ... }
-// TEST(DynamicRaggedRightArrayKokkosTest, PopBack) { ... }
+// TO DO: Add following capability
+//  Test default constructor and basic initialization
+//  TEST(DynamicRaggedRightArrayKokkosTest, DefaultConstructor) { ... }
+//  TEST(DynamicRaggedRightArrayKokkosTest, PushBack) { ... }
+//  TEST(DynamicRaggedRightArrayKokkosTest, PopBack) { ... }
 
 // Test set_values functionality
 TEST(DynamicRaggedRightArrayKokkosTest, SetValues) {
