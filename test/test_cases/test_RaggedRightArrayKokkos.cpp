@@ -60,6 +60,39 @@ TEST(RaggedRightArrayKokkosTest, ConstructorWithRawStrides) {
     EXPECT_EQ(array.stride_host(2), 1);
 }
 
+// Test constructor with ViewCArray strides
+TEST(RaggedRightArrayKokkosTest, ConstructorWithViewCArray) {
+    size_t strides_raw[3] = {2, 3, 1};
+    ViewCArray<size_t> strides(strides_raw, 3);
+
+    RaggedRightArrayKokkos<double> array(strides, "test_array");
+
+    EXPECT_EQ(array.dims(0), 3);
+    EXPECT_EQ(array.stride_host(0), 2);
+    EXPECT_EQ(array.stride_host(1), 3);
+    EXPECT_EQ(array.stride_host(2), 1);
+    EXPECT_EQ(array.size(), 6);
+}
+
+// Test RaggedRightArrayofVectorsKokkos constructor with raw strides array
+TEST(RaggedRightArrayofVectorsKokkosTest, ConstructorWithRawStrides) {
+    size_t strides[3] = {2, 3, 1};
+
+    RaggedRightArrayofVectorsKokkos<double> array(strides, 3, 4, "test_array");
+
+    EXPECT_EQ(array.size(), 6 * 4);
+}
+
+// Test RaggedRightArrayofVectorsKokkos constructor with ViewCArray strides
+TEST(RaggedRightArrayofVectorsKokkosTest, ConstructorWithViewCArray) {
+    size_t strides_raw[3] = {2, 3, 1};
+    ViewCArray<size_t> strides(strides_raw, 3);
+
+    RaggedRightArrayofVectorsKokkos<double> array(strides, 4, "test_array");
+
+    EXPECT_EQ(array.size(), 6 * 4);
+}
+
 // Test array access and modification
 TEST(RaggedRightArrayKokkosTest, ArrayAccess) {
     CArrayKokkos<size_t> strides(3, "strides");

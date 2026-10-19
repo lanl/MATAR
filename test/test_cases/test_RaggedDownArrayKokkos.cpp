@@ -53,6 +53,24 @@ TEST(RaggedDownArrayKokkosTest, ConstructorWithRawStrides) {
     RaggedDownArrayKokkos<double> array(strides, 3, "test_array");
 
     EXPECT_EQ(array.dims(0), 3);
+    EXPECT_EQ(array.stride_host(0), 2);
+    EXPECT_EQ(array.stride_host(1), 3);
+    EXPECT_EQ(array.stride_host(2), 1);
+    EXPECT_EQ(array.size(), 6);
+}
+
+// Test constructor with ViewCArray strides
+TEST(RaggedDownArrayKokkosTest, ConstructorWithViewCArray) {
+    size_t strides_raw[3] = {2, 3, 1};
+    ViewCArray<size_t> strides(strides_raw, 3);
+
+    RaggedDownArrayKokkos<double> array(strides, "test_array");
+
+    EXPECT_EQ(array.dims(0), 3);
+    EXPECT_EQ(array.stride_host(0), 2);
+    EXPECT_EQ(array.stride_host(1), 3);
+    EXPECT_EQ(array.stride_host(2), 1);
+    EXPECT_EQ(array.size(), 6);
 }
 
 // Test array access and modification

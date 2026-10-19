@@ -272,11 +272,16 @@ using high_real_t = mtr::high_real_t;
 using low_real_t  = mtr::low_real_t;
 
 // ---------------------------------------------------------------------------
-// Kokkos < 5.2 does not ship reduction_identity for the native half types
-// (5.2+ provides them in Kokkos_Half_ReductionIdentity.hpp, guarded the same
-// way), so FOR_REDUCE_* over a half tier would not compile there.
+// Host-only (Serial/OpenMP/Threads) Kokkos builds before 5.0.0 do not ship
+// reduction_identity for the native half types, so FOR_REDUCE_* over a half
+// tier would not compile there; 5.0.0+ provides them for every backend via
+// the unified Kokkos_Half_ReductionIdentity.hpp. GPU backends (CUDA/HIP/
+// SYCL) are excluded here because they have always defined these themselves,
+// directly in their backend-specific conversion headers (e.g.
+// Kokkos_Cuda_Half_Conversion.hpp), long before 5.0.0 — defining them again
+// here for those backends redefines what Kokkos already provides.
 // ---------------------------------------------------------------------------
-#if defined(HAVE_KOKKOS) && (KOKKOS_VERSION < 50200)
+#if defined(HAVE_KOKKOS) && (KOKKOS_VERSION < 50200) && !defined(HAVE_CUDA) && !defined(HAVE_HIP) && !defined(HAVE_SYCL)
 #if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED
 template <>
 struct Kokkos::reduction_identity<Kokkos::Experimental::half_t> {
@@ -299,7 +304,7 @@ struct Kokkos::reduction_identity<Kokkos::Experimental::bhalf_t> {
     }
 };
 #endif
-#endif  // HAVE_KOKKOS && KOKKOS_VERSION < 50200
+#endif  // HAVE_KOKKOS && KOKKOS_VERSION < 50200 && host-only backend
 
 // Kokkos provides no reduction_identity for __float128 at all, so quad-tier
 // FOR_REDUCE_* would not compile without this.

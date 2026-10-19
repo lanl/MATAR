@@ -7552,7 +7552,8 @@ RaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::RaggedRight
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 RaggedRightArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::RaggedRightArrayKokkos(ViewCArray<size_t>& strides_array,
-                                                                                            const std::string& tag_string) {}  // End constructor
+                                                                                            const std::string& tag_string)
+    : RaggedRightArrayKokkos(strides_array.pointer(), strides_array.size(), tag_string) {}  // End constructor
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -7970,8 +7971,8 @@ size_t vector_dim) {
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 RaggedRightArrayofVectorsKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::RaggedRightArrayofVectorsKokkos(ViewCArray<size_t>& strides_array,
                                                                                                               size_t vector_dim,
-                                                                                                              const std::string& tag_string) {
-}  // End constructor
+                                                                                                              const std::string& tag_string)
+    : RaggedRightArrayofVectorsKokkos(strides_array.pointer(), strides_array.size(), vector_dim, tag_string) {}  // End constructor
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
@@ -7979,8 +7980,10 @@ RaggedRightArrayofVectorsKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::Ra
                                                                                                               size_t vector_dim,
                                                                                                               const std::string& tag_string) {
     vector_dim_ = vector_dim;
-    mystrides_.assign_data(strides_array);
-    dim1_ = some_dim1;
+    dim1_       = some_dim1;
+    mystrides_  = Strides1D("mystrides_", dim1_);
+    Kokkos::View<size_t*, Kokkos::HostSpace> host_strides(strides_array, dim1_);
+    Kokkos::deep_copy(mystrides_, host_strides);
     data_setup(tag_string);
 }  // End constructor
 
@@ -8271,14 +8274,17 @@ RaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::RaggedDownAr
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 RaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::RaggedDownArrayKokkos(ViewCArray<size_t>& strides_array,
-                                                                                          const std::string& tag_string) {}  // End constructor
+                                                                                          const std::string& tag_string)
+    : RaggedDownArrayKokkos(strides_array.pointer(), strides_array.size(), tag_string) {}  // End constructor
 
 // Overloaded constructor
 template <typename T, typename Layout, typename ExecSpace, typename MemoryTraits, typename ILayout>
 RaggedDownArrayKokkos<T, Layout, ExecSpace, MemoryTraits, ILayout>::RaggedDownArrayKokkos(size_t* strides_array, size_t some_dim2,
                                                                                           const std::string& tag_string) {
-    mystrides_.assign_data(strides_array);
-    dim2_ = some_dim2;
+    dim2_      = some_dim2;
+    mystrides_ = Strides1D("mystrides_", dim2_);
+    Kokkos::View<size_t*, Kokkos::HostSpace> host_strides(strides_array, dim2_);
+    Kokkos::deep_copy(mystrides_, host_strides);
     data_setup(tag_string);
 }  // End constructor
 
