@@ -35,6 +35,9 @@ if (MATAR_ENABLE_KOKKOS)
   add_executable(kokkos_csc CSCKokkos.cpp)
   target_link_libraries(kokkos_csc ${LINKING_LIBRARIES})
 
+  add_executable(ragged_right_array_of_vectors_kokkos ragged_right_array_of_vectors_kokkos.cpp)
+  target_link_libraries(ragged_right_array_of_vectors_kokkos ${LINKING_LIBRARIES})
+
   add_executable(mtr_kokkos-simple mtr-kokkos-simple.cpp)
   target_link_libraries(mtr_kokkos-simple ${LINKING_LIBRARIES})
 

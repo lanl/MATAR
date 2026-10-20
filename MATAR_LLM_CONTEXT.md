@@ -346,6 +346,30 @@ for (int i = 0; i < 5; i++) {
 ragged_dual.update_device();  // sync to device
 ```
 
+### Ragged Arrays of Vectors
+
+`RaggedRightArrayofVectorsKokkos<T>` (device; host counterpart `RaggedRightArrayofVectors<T>`, no alias)
+stores `stride(i)` fixed-length vectors per row, accessed as `array(i, j, k)` with
+`k = [0, vector_dim)`. `size()` is the sum of strides times `vector_dim`.
+
+```cpp
+CArrayDevice<size_t> strides(num_rows, "strides");
+FOR_ALL(i, 0, num_rows, { strides(i) = i + 1; });
+
+RaggedRightArrayofVectorsKokkos<double> rrav(strides, vector_dim, "rrav");
+
+FOR_ALL(i, 0, num_rows, {
+    for (size_t j = 0; j < rrav.stride(i); j++) {
+        for (size_t k = 0; k < vector_dim; k++) {
+            rrav(i, j, k) = some_value;
+        }
+    }
+});
+```
+
+It has no `stride_host()`: `stride(i)` reads device memory, so call it only inside device loops.
+See `examples/ragged_right_array_of_vectors_kokkos.cpp`.
+
 ### Dynamic Ragged Arrays
 
 Row lengths can be updated dynamically during computation. Useful when the structure is not known a priori.
