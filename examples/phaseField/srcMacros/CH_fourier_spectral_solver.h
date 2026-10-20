@@ -36,28 +36,27 @@
 #include "sim_parameters.h"
 #include "matar.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-class CHFourierSpectralSolver
-{
+class CHFourierSpectralSolver {
 private:
     // simulation parameters
     int* nn_;
-    int  nn_img_[3];
-    int  nx_;
-    int  ny_;
-    int  nz_;
+    int nn_img_[3];
+    int nx_;
+    int ny_;
+    int nz_;
 #ifdef OUT_OF_PLACE_FFT
     int nz21_;
 #endif
-    int     ndim_;
+    int ndim_;
     double* delta_;
-    double  dx_;
-    double  dy_;
-    double  dz_;
-    double  dt_;
-    double  M_;
-    double  kappa_;
+    double dx_;
+    double dy_;
+    double dz_;
+    double dt_;
+    double M_;
+    double kappa_;
 
     // arrays needed by solver
     CArrayKokkos<double> comp_img_;

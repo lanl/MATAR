@@ -36,12 +36,11 @@
 
 void parse_command_line(int argc, char* argv[], SimParameters& sp);
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     MPI_Init(&argc, &argv);
 
     Kokkos::initialize(argc, argv);
-    { // kokkos scope
+    {  // kokkos scope
         // simulation parameters
         SimParameters sp;
 
@@ -50,7 +49,7 @@ int main(int argc, char* argv[])
         // Simulation system
         System sys(MPI_COMM_WORLD, sp);
         sys.solve();
-    } // kokkos end scope
+    }  // kokkos end scope
     Kokkos::finalize();
 
     MPI_Finalize();
@@ -58,12 +57,10 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-void parse_command_line(int argc, char* argv[], SimParameters& sp)
-{
+void parse_command_line(int argc, char* argv[], SimParameters& sp) {
     std::string opt;
     int i = 1;
-    while (i < argc && argv[i][0] == '-')
-    {
+    while (i < argc && argv[i][0] == '-') {
         opt = std::string(argv[i]);
 
         if (opt == "-nx") {
