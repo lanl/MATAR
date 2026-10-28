@@ -37,18 +37,17 @@
 
 #include "matar.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-class FFTManagerOutOfPlace
-{
+class FFTManagerOutOfPlace {
 private:
     int* nn_;
-    int  nx_;
-    int  ny_;
-    int  nz_;
-    int  nz21_;
-    int  ndim_;
-    int  isign_;
+    int nx_;
+    int ny_;
+    int nz_;
+    int nz21_;
+    int ndim_;
+    int isign_;
 
 public:
     FFTManagerOutOfPlace(int* nn);

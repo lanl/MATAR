@@ -35,8 +35,7 @@
 
 #include "fourier_space.h"
 
-FourierSpace::FourierSpace(int* nn, double* delta)
-{
+FourierSpace::FourierSpace(int* nn, double* delta) {
     // initialize class data
     nn_    = nn;
     nx_    = nn[0];
@@ -61,8 +60,7 @@ FourierSpace::FourierSpace(int* nn, double* delta)
     set_kx_ky_kz_();
 }
 
-void FourierSpace::set_kx_ky_kz_()
-{
+void FourierSpace::set_kx_ky_kz_() {
     // calculate kx_
     Kokkos::parallel_for(
         Kokkos::RangePolicy<>(0, nx_),
@@ -73,7 +71,7 @@ void FourierSpace::set_kx_ky_kz_()
                 ti = ti - nx_;
             }
             kx_(i) = (float(ti) * twopi_) / (nx_ * dx_);
-    });
+        });
 
     // calculate ky_
     Kokkos::parallel_for(
@@ -85,7 +83,7 @@ void FourierSpace::set_kx_ky_kz_()
                 tj = tj - ny_;
             }
             ky_(j) = (float(tj) * twopi_) / (ny_ * dy_);
-    });
+        });
 
     // calculate kz_ for in-place-fft
 #ifdef IN_PLACE_FFT
@@ -98,7 +96,7 @@ void FourierSpace::set_kx_ky_kz_()
                 tk = tk - nz_;
             }
             kz_(k) = (float(tk) * twopi_) / (nz_ * dz_);
-    });
+        });
 #elif OUT_OF_PLACE_FFT
     Kokkos::parallel_for(
         Kokkos::RangePolicy<>(0, nz21_),
@@ -106,21 +104,12 @@ void FourierSpace::set_kx_ky_kz_()
             int tk;
             tk     = k;
             kz_(k) = (float(tk) * twopi_) / (nz_ * dz_);
-    });
+        });
 #endif
 }
 
-CArrayKokkos<double>& FourierSpace::get_kx()
-{
-    return kx_;
-}
+CArrayKokkos<double>& FourierSpace::get_kx() { return kx_; }
 
-CArrayKokkos<double>& FourierSpace::get_ky()
-{
-    return ky_;
-}
+CArrayKokkos<double>& FourierSpace::get_ky() { return ky_; }
 
-CArrayKokkos<double>& FourierSpace::get_kz()
-{
-    return kz_;
-}
+CArrayKokkos<double>& FourierSpace::get_kz() { return kz_; }

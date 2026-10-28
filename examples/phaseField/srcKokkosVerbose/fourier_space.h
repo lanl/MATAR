@@ -35,22 +35,21 @@
 
 #include "matar.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-class FourierSpace
-{
+class FourierSpace {
 private:
     int* nn_;
-    int  nx_;
-    int  ny_;
-    int  nz_;
+    int nx_;
+    int ny_;
+    int nz_;
 #ifdef OUT_OF_PLACE_FFT
     int nz21_;
 #endif
-    double*      delta_;
-    double       dx_;
-    double       dy_;
-    double       dz_;
+    double* delta_;
+    double dx_;
+    double dy_;
+    double dz_;
     const double pi_    = 3.141592653589793238463;
     const double twopi_ = 2.0 * pi_;
     CArrayKokkos<double> kx_;

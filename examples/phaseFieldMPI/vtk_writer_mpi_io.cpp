@@ -34,17 +34,14 @@
 #include <vtk_writer_mpi_io.h>
 
 VTK_Writer_MPI_IO::VTK_Writer_MPI_IO(MPI_Comm mpi_io_comm, const std::array<int, 3>& dimensions_full_array,
-                                     const std::array<int, 3>& dimensions_subarray,
-                                     const std::array<int, 3>& start_coordinates,
-                                     const char* format) :
-    mpi_io_comm_(mpi_io_comm),
-    dimensions_full_array_(dimensions_full_array),
-    dimensions_subarray_(dimensions_subarray),
-    start_coordinates_(start_coordinates),
-    format_(format),
-    chars_per_num_type_(MPI_DATATYPE_NULL),
-    file_space_type_(MPI_DATATYPE_NULL)
-{
+                                     const std::array<int, 3>& dimensions_subarray, const std::array<int, 3>& start_coordinates, const char* format)
+    : mpi_io_comm_(mpi_io_comm),
+      dimensions_full_array_(dimensions_full_array),
+      dimensions_subarray_(dimensions_subarray),
+      start_coordinates_(start_coordinates),
+      format_(format),
+      chars_per_num_type_(MPI_DATATYPE_NULL),
+      file_space_type_(MPI_DATATYPE_NULL) {
     // calculating chars_per_num based on format specified
     char s[100];
     sprintf(s, format_.c_str(), double(0));
@@ -55,23 +52,25 @@ VTK_Writer_MPI_IO::VTK_Writer_MPI_IO(MPI_Comm mpi_io_comm, const std::array<int,
     MPI_Type_commit(&chars_per_num_type_);
 
     // create file_space_type_
-    int dimensions_full_array_reordered[3] = { dimensions_full_array_[2], dimensions_full_array_[1], dimensions_full_array_[0] };
-    int dimensions_subarray_reordered[3]   = { dimensions_subarray_[2], dimensions_subarray_[1], dimensions_subarray_[0] };
-    int start_coordinates_reordered[3]     = { start_coordinates_[2], start_coordinates_[1], start_coordinates_[0] };
-    MPI_Type_create_subarray(3, dimensions_full_array_reordered, dimensions_subarray_reordered,
-                             start_coordinates_reordered, MPI_ORDER_C, chars_per_num_type_,
+    int dimensions_full_array_reordered[3] = {dimensions_full_array_[2], dimensions_full_array_[1], dimensions_full_array_[0]};
+    int dimensions_subarray_reordered[3]   = {dimensions_subarray_[2], dimensions_subarray_[1], dimensions_subarray_[0]};
+    int start_coordinates_reordered[3]     = {start_coordinates_[2], start_coordinates_[1], start_coordinates_[0]};
+    MPI_Type_create_subarray(3,
+                             dimensions_full_array_reordered,
+                             dimensions_subarray_reordered,
+                             start_coordinates_reordered,
+                             MPI_ORDER_C,
+                             chars_per_num_type_,
                              &file_space_type_);
     MPI_Type_commit(&file_space_type_);
 }
 
-VTK_Writer_MPI_IO::~VTK_Writer_MPI_IO()
-{
+VTK_Writer_MPI_IO::~VTK_Writer_MPI_IO() {
     MPI_Type_free(&chars_per_num_type_);
     MPI_Type_free(&file_space_type_);
 }
 
-void VTK_Writer_MPI_IO::write(int iter, const double* data)
-{
+void VTK_Writer_MPI_IO::write(int iter, const double* data) {
     // global array dimensions
     int nx = dimensions_full_array_[0];
     int ny = dimensions_full_array_[1];
@@ -109,7 +108,7 @@ void VTK_Writer_MPI_IO::write(int iter, const double* data)
 
     // for holding data converted to chars
     const int subarray_size = dimensions_subarray_[0] * dimensions_subarray_[1] * dimensions_subarray_[2];
-    char*     data_as_chars = new char[subarray_size * chars_per_num_];
+    char* data_as_chars     = new char[subarray_size * chars_per_num_];
 
     // write data into data_as_chars
     for (int i = 0; i < subarray_size; i++) {
@@ -121,11 +120,10 @@ void VTK_Writer_MPI_IO::write(int iter, const double* data)
     delete[] data_as_chars;
 }
 
-MPI_File VTK_Writer_MPI_IO::create_mpi_io_file(const char* filename)
-{
+MPI_File VTK_Writer_MPI_IO::create_mpi_io_file(const char* filename) {
     int file_mode = MPI_MODE_UNIQUE_OPEN | MPI_MODE_WRONLY | MPI_MODE_CREATE;
 
-    MPI_Info mpi_info = MPI_INFO_NULL; // For MPI IO hints
+    MPI_Info mpi_info = MPI_INFO_NULL;  // For MPI IO hints
 #if 0
     MPI_Info_create(&mpi_info);
     MPI_Info_set(mpi_info, "collective_buffering", "true");
@@ -139,8 +137,7 @@ MPI_File VTK_Writer_MPI_IO::create_mpi_io_file(const char* filename)
     return file_handle;
 }
 
-void VTK_Writer_MPI_IO::write_mpi_io_file(const char* filename, const char* header_text, const char* data_as_chars)
-{
+void VTK_Writer_MPI_IO::write_mpi_io_file(const char* filename, const char* header_text, const char* data_as_chars) {
     int my_rank;
     MPI_Comm_rank(mpi_io_comm_, &my_rank);
 

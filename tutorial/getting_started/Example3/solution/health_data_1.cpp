@@ -6,11 +6,10 @@
 #include "matar.h"
 
 // Required for MATAR data structures
-using namespace mtr; 
-
+using namespace mtr;
 
 constexpr int NumPatients = 100000000;  // Number of patients
-constexpr int NumFeatures = 10;       // Number of health features
+constexpr int NumFeatures = 10;         // Number of health features
 
 // Simple timer class for measuring execution time
 class Timer {
@@ -36,11 +35,11 @@ public:
 // Function to generate synthetic health data
 void generate_data(CArrayDual<double>& data) {
     Kokkos::Random_XorShift64_Pool<> random_pool(/*seed=*/12345);
-    
+
     FOR_ALL(i, 0, NumFeatures,
             j, 0, NumPatients, {
         auto generator = random_pool.get_state();
-        data(i,j) = generator.drand(50.0, 150.0);
+        data(i, j)     = generator.drand(50.0, 150.0);
         random_pool.free_state(generator);
     });
     data.update_host();
@@ -48,10 +47,8 @@ void generate_data(CArrayDual<double>& data) {
 
 // Compute mean of each feature
 void compute_mean(const CArrayDual<double>& data, CArrayDual<double>& mean) {
-    
     for (int i = 0; i < NumFeatures; i++) {
-        
-        double local_sum = 0.0;
+        double local_sum  = 0.0;
         double global_sum = 0.0;
 
         FOR_REDUCE_SUM(j, 0, NumPatients,
@@ -66,7 +63,6 @@ void compute_mean(const CArrayDual<double>& data, CArrayDual<double>& mean) {
 
 // Compute variance of each feature
 void compute_variance(const CArrayDual<double>& data, const CArrayDual<double>& mean, CArrayDual<double>& variance) {
-
     for (int i = 0; i < NumFeatures; i++) {
         double sum_sq = 0.0;
 
@@ -81,16 +77,15 @@ void compute_variance(const CArrayDual<double>& data, const CArrayDual<double>& 
 }
 
 // Compute correlation matrix
-void compute_correlation(const CArrayDual<double>& data, const CArrayDual<double>& mean, const CArrayDual<double>& variance, CArrayDual<double>& correlation) {
-
+void compute_correlation(const CArrayDual<double>& data, const CArrayDual<double>& mean, const CArrayDual<double>& variance,
+                         CArrayDual<double>& correlation) {
     for (int j1 = 0; j1 < NumFeatures; j1++) {
         for (int j2 = 0; j2 < NumFeatures; j2++) {
-            
             if (j1 == j2) {
                 correlation.host(j1, j2) = 1.0;  // Correlation with itself is always 1
                 continue;
             }
-            double local_sum = 0.0;
+            double local_sum  = 0.0;
             double global_sum = 0.0;
             FOR_REDUCE_SUM(i, 0, NumPatients,
                            local_sum, {
@@ -125,21 +120,21 @@ int main(int argc, char* argv[]) {
         mean.set_values(0.0);
         variance.set_values(0.0);
         correlation.set_values(0.0);
-        
+
         {
             Timer timer("Generate Data");
             generate_data(data);
         }
         data.update_host();
         MATAR_FENCE();
-        
+
         {
             Timer timer("Compute Mean");
             compute_mean(data, mean);
         }
         mean.update_host();
         MATAR_FENCE();
-        
+
         {
             Timer timer("Compute Variance");
             compute_variance(data, mean, variance);
@@ -152,7 +147,7 @@ int main(int argc, char* argv[]) {
             compute_correlation(data, mean, variance, correlation);
         }
         correlation.update_host();
-        MATAR_FENCE();  
+        MATAR_FENCE();
 
         std::cout << "\nHealth Feature Summary:\n";
         for (int j = 0; j < NumFeatures; j++) {

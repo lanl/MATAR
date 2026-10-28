@@ -57,7 +57,7 @@ static void BM_CArrayDevice_vec_vec_dot(benchmark::State& state)
 
         double loc_sum = 0;
         double C  = 0;
-        REDUCE_SUM(i, 0, size,
+        FOR_REDUCE_SUM(i, 0, size,
             loc_sum, {
             loc_sum += A(i)*B(i);
         }, C);

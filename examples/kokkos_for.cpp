@@ -35,478 +35,438 @@
 #include <iostream>
 #include <matar.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 // main
-int main(int argc, char* argv[])
-{
-    MATAR_KOKKOS_INIT
-    { // kokkos scope
-    printf("starting test of loop macros \n");
+int main(int argc, char* argv[]) {
+    MATAR_KOKKOS_INIT {  // kokkos scope
+        printf("starting test of loop macros \n");
 
-    // Kokkos::View<int *> arr("ARR", 10);
-    CArrayKokkos<int> arr(10);
-    FOR_ALL(i, 0, 10, {
-        arr(i) = i;
-    });
+        // Kokkos::View<int *> arr("ARR", 10);
+        CArrayKokkos<int> arr(10);
+        FOR_ALL(i, 0, 10, {
+            arr(i) = i;
+        });
 
-    // Kokkos::View<int **> arr_2D("ARR_2D", 10,10);
-    CArrayKokkos<int> arr_2D(10, 10);
-    FOR_ALL(i, 0, 10,
-         j, 0, 10, {
-        arr_2D(i, j) = j * 10 + i;
-    });
+        // Kokkos::View<int **> arr_2D("ARR_2D", 10,10);
+        CArrayKokkos<int> arr_2D(10, 10);
+        FOR_ALL(i, 0, 10,
+                j, 0, 10, {
+            arr_2D(i, j) = j * 10 + i;
+        });
 
-    // Kokkos::View<int ***> arr_3D("ARR_3D", 10,10,10);
-    CArrayKokkos<int> arr_3D(10, 10, 10);
-    FOR_ALL(i, 0, 10,
-            j, 0, 10,
-            k, 0, 10, {
-        arr_3D(i, j, k) = k * 10 * 10 + j * 10 + i;
-    });
+        // Kokkos::View<int ***> arr_3D("ARR_3D", 10,10,10);
+        CArrayKokkos<int> arr_3D(10, 10, 10);
+        FOR_ALL(i, 0, 10,
+                j, 0, 10,
+                k, 0, 10, {
+            arr_3D(i, j, k) = k * 10 * 10 + j * 10 + i;
+        });
 
-    int loc_sum = 0;
-    int result  = 0;
-    FOR_REDUCE_SUM(i, 0, 10,
-                   loc_sum, {
-        loc_sum += arr(i) * arr(i);
-    }, result);
-    printf("1D reduce sum: %i vs. 985960\n", result);
+        int loc_sum = 0;
+        int result  = 0;
+        FOR_REDUCE_SUM(i, 0, 10,
+                       loc_sum, {
+            loc_sum += arr(i) * arr(i);
+        }, result);
+        printf("1D reduce sum: %i vs. 985960\n", result);
 
-    loc_sum = 0;
-    result  = 0;
-    FOR_REDUCE_SUM(i, 0, 10,
-                   j, 0, 10,
-                   loc_sum, {
+        loc_sum = 0;
+        result  = 0;
+        FOR_REDUCE_SUM(i, 0, 10,
+                       j, 0, 10,
+                       loc_sum, {
             loc_sum += arr_2D(i, j) * arr_2D(i, j);
-    }, result);
+        }, result);
 
-    printf("2D reduce sum: %i vs. 9859600\n", result);
+        printf("2D reduce sum: %i vs. 9859600\n", result);
 
-    loc_sum = 0;
-    result  = 0;
-    FOR_REDUCE_SUM(i, 0, 10,
-                   j, 0, 10,
-                   k, 0, 10,
-                   loc_sum, {
-                loc_sum += arr_3D(i, j, k) * arr_3D(i, j, k);
-    }, result);
+        loc_sum = 0;
+        result  = 0;
+        FOR_REDUCE_SUM(i, 0, 10,
+                       j, 0, 10,
+                       k, 0, 10,
+                       loc_sum, {
+            loc_sum += arr_3D(i, j, k) * arr_3D(i, j, k);
+        }, result);
 
-    printf("3D reduce: %i vs. 98596000\n", result);
+        printf("3D reduce: %i vs. 98596000\n", result);
 
-    result = 0;
-    int loc_max = 2000;
-    FOR_REDUCE_MAX(i, 0, 10,
-                   j, 0, 10,
-                   k, 0, 10,
-                   loc_max, {
-        if (loc_max < arr_3D(i, j, k)) {
-            loc_max = arr_3D(i, j, k);
-        }
-    },result);
+        result      = 0;
+        int loc_max = 2000;
+        FOR_REDUCE_MAX(i, 0, 10,
+                       j, 0, 10,
+                       k, 0, 10,
+                       loc_max, {
+            if (loc_max < arr_3D(i, j, k)) {
+                loc_max = arr_3D(i, j, k);
+            }
+        }, result);
 
-    printf("3D reduce MAX %i\n", result);
+        printf("3D reduce MAX %i\n", result);
 
-    // verbose version
-    int loc_max_value = 20000;
-    int max_value     = 20000;
-    Kokkos::parallel_reduce(
-        Kokkos::MDRangePolicy<Kokkos::Rank<2>>({ 0, 0 }, { 10, 10 }),
-                KOKKOS_LAMBDA(const int i, const int j, int& loc_max_value)
-                {
+        // verbose version
+        int loc_max_value = 20000;
+        int max_value     = 20000;
+        Kokkos::parallel_reduce(
+            Kokkos::MDRangePolicy<Kokkos::Rank<2>>({0, 0}, {10, 10}),
+            KOKKOS_LAMBDA(const int i, const int j, int& loc_max_value) {
                 if (arr_2D(i, j) > loc_max_value) {
                     loc_max_value = arr_2D(i, j);
                 }
-    },Kokkos::Max<int>(max_value));
-    printf("2D reduce MAX kokkos verbose : %i\n", max_value);
+            },
+            Kokkos::Max<int>(max_value));
+        printf("2D reduce MAX kokkos verbose : %i\n", max_value);
 
-    result = 0;
-    int loc_min = 2000;
-    FOR_REDUCE_MIN(i, 0, 10,
-                   j, 0, 10,
-                   k, 0, 10,
-                   loc_min, {
-        if (loc_min > arr_3D(i, j, k)) {
-            loc_min = arr_3D(i, j, k);
-        }
-    },result);
+        result      = 0;
+        int loc_min = 2000;
+        FOR_REDUCE_MIN(i, 0, 10,
+                       j, 0, 10,
+                       k, 0, 10,
+                       loc_min, {
+            if (loc_min > arr_3D(i, j, k)) {
+                loc_min = arr_3D(i, j, k);
+            }
+        }, result);
 
-    printf("3D reduce MIN %i\n", result);
+        printf("3D reduce MIN %i\n", result);
 
-    // DO ALL
+        // DO ALL
 
-    FMatrixKokkos<int> matrix1D(10);
+        FMatrixKokkos<int> matrix1D(10);
 
-    // Initialize matrix2D
-    DO_ALL(i, 1, 10, {
-        matrix1D(i) = 1;
-    }); // end parallel do
+        // Initialize matrix2D
+        DO_ALL(i, 1, 10, {
+            matrix1D(i) = 1;
+        });  // end parallel do
 
-    FMatrixKokkos<int> matrix2D(10, 10);
+        FMatrixKokkos<int> matrix2D(10, 10);
 
-    // Initialize matrix2D
-    DO_ALL(j, 1, 10,
-        i, 1, 10, {
-        matrix2D(i, j) = 1;
-    }); // end parallel do
+        // Initialize matrix2D
+        DO_ALL(j, 1, 10,
+               i, 1, 10, {
+            matrix2D(i, j) = 1;
+        });  // end parallel do
 
-    FMatrixKokkos<int> matrix3D(10, 10, 10);
+        FMatrixKokkos<int> matrix3D(10, 10, 10);
 
-    // Initialize matrix3D
-    DO_ALL(k, 1, 10,
-        j, 1, 10,
-        i, 1, 10, {
-        matrix3D(i, j, k) = 1;
-    }); // end parallel do
+        // Initialize matrix3D
+        DO_ALL(k, 1, 10,
+               j, 1, 10,
+               i, 1, 10, {
+            matrix3D(i, j, k) = 1;
+        });  // end parallel do
 
-    // Initialize matrix2D
-    DO_ALL(i, 1, 1, {
-        matrix1D(1)       = 10;
-        matrix2D(1, 1)    = 20;
-        matrix3D(1, 1, 1) = 30;
+        // Initialize matrix2D
+        DO_ALL(i, 1, 1, {
+            matrix1D(1)       = 10;
+            matrix2D(1, 1)    = 20;
+            matrix3D(1, 1, 1) = 30;
 
-        matrix1D(10)         = -10;
-        matrix2D(10, 10)     = -20;
-        matrix3D(10, 10, 10) = -30;
-    }); // end parallel do
+            matrix1D(10)         = -10;
+            matrix2D(10, 10)     = -20;
+            matrix3D(10, 10, 10) = -30;
+        });  // end parallel do
 
-    DO_REDUCE_MAX(i, 1, 10,
-                  loc_max, {
-        if (loc_max < matrix1D(i)) {
-            loc_max = matrix1D(i);
-        }
-    }, result);
+        DO_REDUCE_MAX(i, 1, 10,
+                      loc_max, {
+            if (loc_max < matrix1D(i)) {
+                loc_max = matrix1D(i);
+            }
+        }, result);
 
-    printf("result max 1D matrix = %i\n", result);
+        printf("result max 1D matrix = %i\n", result);
 
-    DO_REDUCE_MAX(j, 1, 10,
-                  i, 1, 10,
-                  loc_max, {
-        if (loc_max < matrix2D(i, j)) {
-            loc_max = matrix2D(i, j);
-        }
-    }, result);
-    printf("result max 2D matrix = %i\n", result);
+        DO_REDUCE_MAX(j, 1, 10,
+                      i, 1, 10,
+                      loc_max, {
+            if (loc_max < matrix2D(i, j)) {
+                loc_max = matrix2D(i, j);
+            }
+        }, result);
+        printf("result max 2D matrix = %i\n", result);
 
-    DO_REDUCE_MAX(k, 1, 10,
-                  j, 1, 10,
-                  i, 1, 10,
-                  loc_max, {
-        if (loc_max < matrix3D(i, j, k)) {
-            loc_max = matrix3D(i, j, k);
-        }
-    }, result);
-    printf("result max 3D matrix = %i\n", result);
+        DO_REDUCE_MAX(k, 1, 10,
+                      j, 1, 10,
+                      i, 1, 10,
+                      loc_max, {
+            if (loc_max < matrix3D(i, j, k)) {
+                loc_max = matrix3D(i, j, k);
+            }
+        }, result);
+        printf("result max 3D matrix = %i\n", result);
 
-    DO_REDUCE_MIN(i, 1, 10,
-                  loc_min, {
-        if (loc_min > matrix1D(i)) {
-            loc_min = matrix1D(i);
-        }
-    }, result);
-    printf("result min 1D matrix = %i\n", result);
+        DO_REDUCE_MIN(i, 1, 10,
+                      loc_min, {
+            if (loc_min > matrix1D(i)) {
+                loc_min = matrix1D(i);
+            }
+        }, result);
+        printf("result min 1D matrix = %i\n", result);
 
-    DO_REDUCE_MIN(j, 1, 10,
-                  i, 1, 10,
-                  loc_min, {
-        if (loc_min > matrix2D(i, j)) {
-            loc_min = matrix2D(i, j);
-        }
-    }, result);
-    printf("result min 2D matrix = %i\n", result);
+        DO_REDUCE_MIN(j, 1, 10,
+                      i, 1, 10,
+                      loc_min, {
+            if (loc_min > matrix2D(i, j)) {
+                loc_min = matrix2D(i, j);
+            }
+        }, result);
+        printf("result min 2D matrix = %i\n", result);
 
-    DO_REDUCE_MIN(k, 1, 10,
-                  j, 1, 10,
-                  i, 1, 10,
-                  loc_min, {
-        if (loc_min > matrix3D(i, j, k)) {
-            loc_min = matrix3D(i, j, k);
-        }
-    }, result);
+        DO_REDUCE_MIN(k, 1, 10,
+                      j, 1, 10,
+                      i, 1, 10,
+                      loc_min, {
+            if (loc_min > matrix3D(i, j, k)) {
+                loc_min = matrix3D(i, j, k);
+            }
+        }, result);
 
-    printf("result min 3D matrix = %i\n", result);
+        printf("result min 3D matrix = %i\n", result);
 
-    // testing serial FOR and DO loop macros.  These
-    // serial loops work on the host or the device.
-    // the serial FOR and DO macros are intended to
-    // give the user a simple syntax to replace
-    // the for(...){} syntax
+        // testing serial FOR and DO loop macros.  These
+        // serial loops work on the host or the device.
+        // the serial FOR and DO macros are intended to
+        // give the user a simple syntax to replace
+        // the for(...){} syntax
 
-    CArray<int> host_array1D(5);
-    CArray<int> host_array2D(5, 5);
-    CArray<int> host_array3D(2, 2, 2);
+        CArray<int> host_array1D(5);
+        CArray<int> host_array2D(5, 5);
+        CArray<int> host_array3D(2, 2, 2);
 
-    FMatrix<int> host_matrix1D(3);
-    FMatrix<int> host_matrix2D(3, 3);
-    FMatrix<int> host_matrix3D(3, 3, 3);
+        FMatrix<int> host_matrix1D(3);
+        FMatrix<int> host_matrix2D(3, 3);
+        FMatrix<int> host_matrix3D(3, 3, 3);
 
-    FOR_LOOP(i, 0, 5, {
-        host_array1D(i) = i;
-    });
-    printf("value in host array1D = \n");
-    FOR_LOOP(i, 0, 5, {
-        printf(" %d \n", host_array1D(i));
-    });
+        FOR_LOOP(i, 0, 5, { host_array1D(i) = i; });
+        printf("value in host array1D = \n");
+        FOR_LOOP(i, 0, 5, { printf(" %d \n", host_array1D(i)); });
 
-    FOR_LOOP(i, 0, 5,
-         j, 0, 5, {
-        host_array2D(i, j) = i * j;
-    });
-    printf("value in host array2D = \n");
-    FOR_LOOP(i, 0, 5,
-         j, 0, 5, {
-        printf(" %d ", host_array2D(i, j));
-        if (j == 4) {
-            printf("\n");
-        }
-    });
+        FOR_LOOP(i, 0, 5, j, 0, 5, { host_array2D(i, j) = i * j; });
+        printf("value in host array2D = \n");
+        FOR_LOOP(i, 0, 5, j, 0, 5, {
+            printf(" %d ", host_array2D(i, j));
+            if (j == 4) {
+                printf("\n");
+            }
+        });
 
-    FOR_LOOP(i, 0, 2,
-         j, 0, 2,
-         k, 0, 2, {
-        host_array3D(i, j, k) = i * j * k;
-    });
-    printf("value in host array3D = \n");
-    FOR_LOOP(i, 0, 2,
-         j, 0, 2,
-         k, 0, 2, {
-        printf(" %d ", host_array3D(i, j, k));
-        if (k == 1) {
-            printf("\n");
-        }
-    });
+        FOR_LOOP(i, 0, 2, j, 0, 2, k, 0, 2, { host_array3D(i, j, k) = i * j * k; });
+        printf("value in host array3D = \n");
+        FOR_LOOP(i, 0, 2, j, 0, 2, k, 0, 2, {
+            printf(" %d ", host_array3D(i, j, k));
+            if (k == 1) {
+                printf("\n");
+            }
+        });
 
-    DO_LOOP(i, 1, 3, {
-        host_matrix1D(i) = i;
-    });
-    printf("value in host matrix1D = \n");
-    DO_LOOP(i, 1, 3, {
-        printf(" %d \n", host_matrix1D(i));
-    });
+        DO_LOOP(i, 1, 3, { host_matrix1D(i) = i; });
+        printf("value in host matrix1D = \n");
+        DO_LOOP(i, 1, 3, { printf(" %d \n", host_matrix1D(i)); });
 
-    DO_LOOP(j, 1, 3,
-        i, 1, 3, {
-        host_matrix2D(i, j) = i * j;
-    });
-    printf("value in host matrix2D = \n");
-    DO_LOOP(j, 1, 3,
-        i, 1, 3, {
-        printf(" %d ", host_matrix2D(i, j));
-        if (i == 3) {
-            printf("\n");
-        }
-    });
+        DO_LOOP(j, 1, 3, i, 1, 3, { host_matrix2D(i, j) = i * j; });
+        printf("value in host matrix2D = \n");
+        DO_LOOP(j, 1, 3, i, 1, 3, {
+            printf(" %d ", host_matrix2D(i, j));
+            if (i == 3) {
+                printf("\n");
+            }
+        });
 
-    DO_LOOP(k, 1, 3,
-        j, 1, 3,
-        i, 1, 3, {
-        host_matrix3D(i, j, k) = i * j * k;
-    });
+        DO_LOOP(k, 1, 3, j, 1, 3, i, 1, 3, { host_matrix3D(i, j, k) = i * j * k; });
 
-    printf("value in host matrix3D = \n");
-    DO_LOOP(k, 1, 3,
-        j, 1, 3,
-        i, 1, 3, {
-        printf(" %d ", host_matrix3D(i, j, k));
-        if (i == 3) {
-            printf("\n");
-        }
-        if (j == 3 && i == 3) {
-            printf("--\n");
-        }
-    });
+        printf("value in host matrix3D = \n");
+        DO_LOOP(k, 1, 3, j, 1, 3, i, 1, 3, {
+            printf(" %d ", host_matrix3D(i, j, k));
+            if (i == 3) {
+                printf("\n");
+            }
+            if (j == 3 && i == 3) {
+                printf("--\n");
+            }
+        });
 
-    printf("testing for loop increments of 2 = \n");
-    FOR_LOOP(i, 0, 6, 2, {
-        printf(" %d \n", i);
-    });
-    printf("-- \n");
-    FOR_LOOP(i, 0, 6, 2,
-         j, 0, 6, 2, {
-        printf(" %d %d \n", i, j);
-    });
-    printf("-- \n");
-    FOR_LOOP(i, 0, 6, 2,
-         j, 0, 6, 2,
-         k, 0, 6, 2, {
-        printf(" %d %d %d \n", i, j, k);
-    });
+        printf("testing for loop increments of 2 = \n");
+        FOR_LOOP(i, 0, 6, 2, { printf(" %d \n", i); });
+        printf("-- \n");
+        FOR_LOOP(i, 0, 6, 2, j, 0, 6, 2, { printf(" %d %d \n", i, j); });
+        printf("-- \n");
+        FOR_LOOP(i, 0, 6, 2, j, 0, 6, 2, k, 0, 6, 2, { printf(" %d %d %d \n", i, j, k); });
 
-    printf("testing do loop increments of 2 = \n");
-    DO_LOOP(i, 1, 6, 2, {
-        printf(" %d \n", i);
-    });
-    printf("-- \n");
-    DO_LOOP(i, 1, 6, 2,
-        j, 1, 6, 2, {
-        printf(" %d %d \n", i, j);
-    });
-    printf("-- \n");
-    DO_LOOP(i, 1, 6, 2,
-        j, 1, 6, 2,
-        k, 1, 6, 2, {
-        printf(" %d %d %d \n", i, j, k);
-    });
+        printf("testing do loop increments of 2 = \n");
+        DO_LOOP(i, 1, 6, 2, { printf(" %d \n", i); });
+        printf("-- \n");
+        DO_LOOP(i, 1, 6, 2, j, 1, 6, 2, { printf(" %d %d \n", i, j); });
+        printf("-- \n");
+        DO_LOOP(i, 1, 6, 2, j, 1, 6, 2, k, 1, 6, 2, { printf(" %d %d %d \n", i, j, k); });
 
-    // Hierarchical
-        
-    printf("\n\n\nHierarchical\n");
-    size_t hiersize   = 4;
-    auto   hierTest1D = CArrayKokkos<double>(hiersize);
-    auto   hierTest2D = CArrayKokkos<double>(hiersize, hiersize);
-    auto   hierTest3D = CArrayKokkos<double>(hiersize, hiersize, hiersize);
-    FOR_ALL(i_i, 0, hiersize, j_j, 0, hiersize, k_k, 0, hiersize, {
-        hierTest3D(i_i, j_j, k_k) = 0.0;
-    });
-    FOR_FIRST(i_i, 0, hiersize, {
-        // Kokkos::parallel_for( \
-        //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
-        //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-        //const int i_i = TEAM_ID;
-        FOR_SECOND(j_j, i_i, hiersize, {
+        // Hierarchical
+
+        printf("\n\n\nHierarchical\n");
+        size_t hiersize = 4;
+        auto hierTest1D = CArrayKokkos<double>(hiersize);
+        auto hierTest2D = CArrayKokkos<double>(hiersize, hiersize);
+        auto hierTest3D = CArrayKokkos<double>(hiersize, hiersize, hiersize);
+        FOR_ALL(i_i, 0, hiersize,
+                j_j, 0, hiersize,
+                k_k, 0, hiersize, {
+            hierTest3D(i_i, j_j, k_k) = 0.0;
+        });
+        FOR_FIRST(i_i, 0, hiersize, {
             // Kokkos::parallel_for( \
-            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
-            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
-            //    int jstart = j_j*32;
-            //    int jend = (j_j+1)*32;
-            FOR_THIRD(k_k, i_i, j_j, {
-                printf("%d,%d,%d\n", i_i, j_j, k_k);
-                // hierTest3D(i_i,j_j,k_k) = i_i*j_j*k_k;
+            // Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
+            // KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+            //  const int i_i = TEAM_ID;
+            FOR_SECOND(j_j, i_i, hiersize, {
+                // Kokkos::parallel_for( \
+                // Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+                //  hierTest2D(i_i,j_j) = i_i * (j_j+1);
+                //     int jstart = j_j*32;
+                //     int jend = (j_j+1)*32;
+                FOR_THIRD(k_k, i_i, j_j, {
+                    printf("%d,%d,%d\n", i_i, j_j, k_k);
+                    // hierTest3D(i_i,j_j,k_k) = i_i*j_j*k_k;
+                });
             });
         });
-    });
-    Kokkos::fence();
-    for (int ppp = 0; ppp < hiersize; ppp++) {
-        // printf("%f\n", hierTest3D(0,0,ppp));
-        // printf("%f\n", hierTest2D(3,ppp));
-        // printf("%f\n", hierTest3D(3,3,ppp));
-    }
-    //printf("\n\n");
+        Kokkos::fence();
+        for (int ppp = 0; ppp < hiersize; ppp++) {
+            // printf("%f\n", hierTest3D(0,0,ppp));
+            // printf("%f\n", hierTest2D(3,ppp));
+            // printf("%f\n", hierTest3D(3,3,ppp));
+        }
+        // printf("\n\n");
 
-    // Hierarchical reductions
+        // Hierarchical reductions
 
-    FOR_ALL(i_i, 0, hiersize, j_j, 0, hiersize, k_k, 0, hiersize, {
-        hierTest3D(i_i, j_j, k_k) = i_i*hiersize*hiersize+j_j*hiersize+k_k;
-    });
-    
-    printf("\n\n\nHierarchical Reduce\n");
-    //2D nesting
-    FOR_FIRST(i_i,0,hiersize, {
-        // Kokkos::parallel_for( \
-        //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
-        //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-        //const int i_i = TEAM_ID;
-        double result = 0;
-        double lsum;
-        FOR_REDUCE_SUM_SECOND(j_j, i_i, hiersize, lsum, {
-            lsum += hierTest3D(i_i,j_j,0);
-            // Kokkos::parallel_for( \
-            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
-            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
-            //    int jstart = j_j*32;
-            //    int jend = (j_j+1)*32;
-        }, result);
-        hierTest1D(i_i)= result;
-        //printf("value at %d is %f\n", i_i, hierTest1D(i_i));
-    });
-    Kokkos::fence();
-    for (int ppp = 0; ppp < hiersize; ppp++) {
-        //printf("%f\n", hierTest1D(ppp));
-        // printf("%f\n", hierTest2D(3,ppp));
-        // printf("%f\n", hierTest3D(3,3,ppp));
-    }
-    printf("\n\n");
-    
-    printf("\n\n\nHierarchical Vectorized Reduce\n");
-    //3D vector nesting
-    FOR_FIRST(i_i,0,hiersize, {
-        // Kokkos::parallel_for( \
-        //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
-        //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-        //const int i_i = TEAM_ID;
-        double result = 0;
-        double lsum;
-        FOR_SECOND(j_j, i_i, hiersize, {
-            // Kokkos::parallel_for( \
-            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
-            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
-            //    int jstart = j_j*32;
-            //    int jend = (j_j+1)*32;
-            FOR_REDUCE_SUM_THIRD(k_k, i_i, j_j, lsum, {
-            lsum += hierTest3D(i_i,j_j,k_k);
-            // Kokkos::parallel_for( \
-            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
-            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
-            //    int jstart = j_j*32;
-            //    int jend = (j_j+1)*32;
-            }, result);
-            hierTest2D(i_i,j_j)= result;
-            printf("value at %d , %d is %f\n", i_i, j_j, hierTest2D(i_i,j_j));
+        FOR_ALL(i_i, 0, hiersize,
+                j_j, 0, hiersize,
+                k_k, 0, hiersize, {
+            hierTest3D(i_i, j_j, k_k) = i_i * hiersize * hiersize + j_j * hiersize + k_k;
         });
-    });
-    Kokkos::fence();
 
-    printf("\n\n\nHierarchical DO Reduce\n");
-    //2D nesting
-    DO_FIRST(i_i,1,hiersize-1, {
-        // Kokkos::parallel_for( \
-        //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
-        //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-        //const int i_i = TEAM_ID;
-        double result = 0;
-        double lsum;
-        DO_REDUCE_SUM_SECOND(j_j, i_i, hiersize-1, lsum, {
-            lsum += hierTest3D(i_i,j_j,0);
+        printf("\n\n\nHierarchical Reduce\n");
+        // 2D nesting
+        FOR_FIRST(i_i, 0, hiersize, {
             // Kokkos::parallel_for( \
-            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
-            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
-            //    int jstart = j_j*32;
-            //    int jend = (j_j+1)*32;
-        }, result);
-        hierTest1D(i_i)= result;
-        //printf("value at %d is %f\n", i_i, hierTest1D(i_i));
-    });
-    Kokkos::fence();
-    
-    printf("\n\n\nHierarchical Vectorized DO Reduce\n");
-    //3D vector nesting
-    DO_FIRST(i_i,0,hiersize-1, {
-        // Kokkos::parallel_for( \
-        //Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
-        //KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
-        //const int i_i = TEAM_ID;
-        double result = 0;
-        double lsum;
-        DO_SECOND(j_j, i_i, hiersize-1, {
-            // Kokkos::parallel_for( \
-            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
-            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
-            //    int jstart = j_j*32;
-            //    int jend = (j_j+1)*32;
-            DO_REDUCE_SUM_THIRD(k_k, i_i, j_j-1, lsum, {
-            lsum += hierTest3D(i_i,j_j,k_k);
-            // Kokkos::parallel_for( \
-            //Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
-            // hierTest2D(i_i,j_j) = i_i * (j_j+1);
-            //    int jstart = j_j*32;
-            //    int jend = (j_j+1)*32;
+            // Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
+            // KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+            //  const int i_i = TEAM_ID;
+            double result = 0;
+            double lsum;
+            FOR_REDUCE_SUM_SECOND(j_j, i_i, hiersize,
+                                  lsum, {
+                lsum += hierTest3D(i_i, j_j, 0);
+                // Kokkos::parallel_for( \
+                // Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+                //  hierTest2D(i_i,j_j) = i_i * (j_j+1);
+                //     int jstart = j_j*32;
+                //     int jend = (j_j+1)*32;
             }, result);
-            hierTest2D(i_i,j_j)= result;
-            printf("value at %d , %d is %f\n", i_i, j_j, hierTest2D(i_i,j_j));
+            hierTest1D(i_i) = result;
+            // printf("value at %d is %f\n", i_i, hierTest1D(i_i));
         });
-    });
-    Kokkos::fence();
+        Kokkos::fence();
+        for (int ppp = 0; ppp < hiersize; ppp++) {
+            // printf("%f\n", hierTest1D(ppp));
+            //  printf("%f\n", hierTest2D(3,ppp));
+            //  printf("%f\n", hierTest3D(3,3,ppp));
+        }
+        printf("\n\n");
 
-    for (int ppp = 0; ppp < hiersize; ppp++) {
-        //printf("%f\n", hierTest1D(ppp));
-        // printf("%f\n", hierTest2D(3,ppp));
-        // printf("%f\n", hierTest3D(3,3,ppp));
-    }
-    printf("\n\n");
+        printf("\n\n\nHierarchical Vectorized Reduce\n");
+        // 3D vector nesting
+        FOR_FIRST(i_i, 0, hiersize, {
+            // Kokkos::parallel_for( \
+            // Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
+            // KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+            //  const int i_i = TEAM_ID;
+            double result = 0;
+            double lsum;
+            FOR_SECOND(j_j, i_i, hiersize, {
+                // Kokkos::parallel_for( \
+                // Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+                //  hierTest2D(i_i,j_j) = i_i * (j_j+1);
+                //     int jstart = j_j*32;
+                //     int jend = (j_j+1)*32;
+                FOR_REDUCE_SUM_THIRD(k_k, i_i, j_j,
+                                     lsum, {
+                    lsum += hierTest3D(i_i, j_j, k_k);
+                    // Kokkos::parallel_for( \
+                    // Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+                    //  hierTest2D(i_i,j_j) = i_i * (j_j+1);
+                    //     int jstart = j_j*32;
+                    //     int jend = (j_j+1)*32;
+                }, result);
+                hierTest2D(i_i, j_j) = result;
+                printf("value at %d , %d is %f\n", i_i, j_j, hierTest2D(i_i, j_j));
+            });
+        });
+        Kokkos::fence();
 
-    printf("done\n");
+        printf("\n\n\nHierarchical DO Reduce\n");
+        // 2D nesting
+        DO_FIRST(i_i, 1, hiersize - 1, {
+            // Kokkos::parallel_for( \
+            // Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
+            // KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+            //  const int i_i = TEAM_ID;
+            double result = 0;
+            double lsum;
+            DO_REDUCE_SUM_SECOND(j_j, i_i, hiersize - 1,
+                                 lsum, {
+                lsum += hierTest3D(i_i, j_j, 0);
+                // Kokkos::parallel_for( \
+                // Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+                //  hierTest2D(i_i,j_j) = i_i * (j_j+1);
+                //     int jstart = j_j*32;
+                //     int jend = (j_j+1)*32;
+            }, result);
+            hierTest1D(i_i) = result;
+            // printf("value at %d is %f\n", i_i, hierTest1D(i_i));
+        });
+        Kokkos::fence();
 
-    } // end kokkos scope
+        printf("\n\n\nHierarchical Vectorized DO Reduce\n");
+        // 3D vector nesting
+        DO_FIRST(i_i, 0, hiersize - 1, {
+            // Kokkos::parallel_for( \
+            // Kokkos::TeamPolicy<>( 32, Kokkos::AUTO, 32 ), \
+            // KOKKOS_LAMBDA ( const Kokkos::TeamPolicy<>::member_type &teamMember ) {
+            //  const int i_i = TEAM_ID;
+            double result = 0;
+            double lsum;
+            DO_SECOND(j_j, i_i, hiersize - 1, {
+                // Kokkos::parallel_for( \
+                // Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+                //  hierTest2D(i_i,j_j) = i_i * (j_j+1);
+                //     int jstart = j_j*32;
+                //     int jend = (j_j+1)*32;
+                DO_REDUCE_SUM_THIRD(k_k, i_i, j_j - 1,
+                                    lsum, {
+                    lsum += hierTest3D(i_i, j_j, k_k);
+                    // Kokkos::parallel_for( \
+                    // Kokkos::TeamThreadRange( teamMember, istart, iend ), [&] ( const int (j_j) ) {
+                    //  hierTest2D(i_i,j_j) = i_i * (j_j+1);
+                    //     int jstart = j_j*32;
+                    //     int jend = (j_j+1)*32;
+                }, result);
+                hierTest2D(i_i, j_j) = result;
+                printf("value at %d , %d is %f\n", i_i, j_j, hierTest2D(i_i, j_j));
+            });
+        });
+        Kokkos::fence();
+
+        for (int ppp = 0; ppp < hiersize; ppp++) {
+            // printf("%f\n", hierTest1D(ppp));
+            //  printf("%f\n", hierTest2D(3,ppp));
+            //  printf("%f\n", hierTest3D(3,3,ppp));
+        }
+        printf("\n\n");
+
+        printf("done\n");
+
+    }  // end kokkos scope
     MATAR_KOKKOS_FINALIZE
 
     return 0;

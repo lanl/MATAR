@@ -1,51 +1,23 @@
-cmake_minimum_required(VERSION 3.5)
+include(FetchContent)
 
-project (matartest)
+FetchContent_Declare(
+    googletest
+    GIT_REPOSITORY https://github.com/google/googletest.git
+    GIT_TAG        v1.14.0
+)
+set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+# On Windows: keep gtest from overriding the parent project's runtime settings.
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 
-# Required at top level so CMake generates ${CMAKE_BINARY_DIR}/CTestTestfile.cmake.
-# Without this, ctest from the build root finds no tests (enable_testing in a subdirectory is not enough).
-enable_testing()
+add_subdirectory(test_cases)
 
-# MATAR built with MPI lists MPI::MPI_CXX on imported target `matar`; MatarConfig loads targets during
-# find_package(Matar). Only pre-find MPI for those test builds (see cmake_build_test.sh).
-option(MATAR_TEST_USE_MPI "Configure tests against MPI-enabled MATAR (requires MPI before find_package)" OFF)
-if(MATAR_TEST_USE_MPI)
-    find_package(MPI REQUIRED COMPONENTS CXX)
-endif()
-find_package(Matar REQUIRED)
+add_executable(test_csr CSRArray.cpp)
+target_link_libraries(test_csr matar::matar gtest_main)
 
-#-------------------------------------------
-# Testing stuff
-#-------------------------------------------
-if (NOT KOKKOS)
-  add_subdirectory(googletest)
-  add_subdirectory(test_cases)
-  add_executable(test_csr CSRArray.cpp)
-  target_link_libraries(test_csr matar gtest_main)
-  add_executable(test_csc CSCArray.cpp)
-  target_link_libraries(test_csc matar gtest_main)
-endif()
+add_executable(test_csc CSCArray.cpp)
+target_link_libraries(test_csc matar::matar gtest_main)
 
-if (KOKKOS)
-  find_package(Kokkos REQUIRED) #new
-  add_definitions(-DHAVE_KOKKOS=1)
-
-  if (CUDA)
-    add_definitions(-DHAVE_CUDA=1)
-  elseif (HIP)
-    add_definitions(-DHAVE_HIP=1)
-  elseif (OPENMP)
-    add_definitions(-DHAVE_OPENMP=1)
-  elseif (THREADS)
-    add_definitions(-DHAVE_THREADS=1)
-  endif()
-
-  add_subdirectory(googletest)
-  add_subdirectory(test_cases)
-  add_executable(test_csr CSRArray.cpp)
-  target_link_libraries(test_csr matar gtest_main)
-  add_executable(test_csc CSCArray.cpp)
-  target_link_libraries(test_csc matar gtest_main)
-
-
-endif()
+include(GoogleTest)
+gtest_discover_tests(test_csr DISCOVERY_MODE PRE_TEST)
+gtest_discover_tests(test_csc DISCOVERY_MODE PRE_TEST)

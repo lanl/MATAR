@@ -102,89 +102,181 @@ The code can also be cloned using
 git clone --recursive https://github.com/lanl/MATAR.git
 ```
 
-## Basic build
-The basic build is for users only interested in the serial CPU only MATAR data types.  For this build, we recommend making a folder perhaps called build then go into the build folder and type
-```
-cmake ..
-make
-```
-The compiled code will be in the build folder.
+## Building MATAR
+MATAR is built entirely with CMake. Kokkos is bundled as a git submodule (`src/Kokkos/kokkos`), pinned to the Kokkos **5.2.1** release, and is built automatically with the backend you select, so no separate Kokkos install is needed. Kokkos 5 requires **C++20** and CMake >= 3.22 (CUDA builds additionally need CMake >= 3.25.2 for C++20 in the CUDA language), so `matar::matar` requests `cxx_std_20`.
 
-## Debug basic build 
+The provided CMake presets configure, build, and test MATAR with a given Kokkos backend:
+```
+cmake --preset serial          # also: openmp, pthreads, cuda, hip,
+cmake --build --preset serial  #       serial-mpi, openmp-mpi, cuda-mpi, hip-mpi,
+ctest --preset serial          #       plus -debug variants (e.g. serial-debug)
+```
+The unit tests are built with the presets but only execute when `ctest` is invoked.
+Each preset builds into `build/<preset-name>`, with example executables in `build/<preset-name>/bin`. Debug presets include checks on array and matrix dimensions and index bounds. On HPC machines, load your compiler/MPI/CUDA modules first, then run the preset; site-specific toolchains can be layered with a `CMakeUserPresets.json`.
 
-To build serial CPU only MATAR data types in the debug mode, please use
+Configuring manually instead of with presets works the same way:
 ```
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-make
-```
-The debug flag includes checks on array and matrix dimensions and index bounds.
-
-
-## Building MATAR with Kokkos
-A building script is provided to build the MATAR examples and tests, with or without Kokkos. The simplest build with all defaults can be run with
-```
-source {path-to-repo}/scripts/build-matar.sh
-```
-Running with the argument ```--help``` will give a full list of all possible arguments.
-If an argument is not changed, it will be set to the default action, which can all be found from the help command
-If the scripts fail to build, then carefully review the modules used and the computer architecture settings.
-
-## Building MATAR with Anaconda
-The recommended way to build **MATAR** is inside an Anaconda environment. As a starting place, follow the steps for your platform to install [anaconda](https://docs.anaconda.com/free/anaconda/install/index.html)/[miniconda](https://docs.conda.io/en/latest/miniconda.html)/[mamba](https://mamba.readthedocs.io/en/latest/installation.html). 
-
-Open a terminal on your machine and go to a folder where you want to run the **MATAR** code. Activate a bash terminal by typing:
-```
-bash
-```
-Then create and activate an Anaconda environment by typing:  
-```
-conda create -n MATAR
-conda activate MATAR  
-```
-In this example, the enviroment is called MATAR, but any name can be used.  In some cases, the text to activate an enviroment is `source activate MATAR`.  Likewise, if an enviroment already exists, then just activate the desired environment. 
-
-Now install a compiler and cmake, which are needed to build the MATAR library.
-```
-conda install -c conda-forge "cxx-compiler=1.5.2"     
-conda install -c conda-forge "fortran-compiler=1.5.2"
-conda install cmake
-```
-By using cxx-compiler=1.5.2., it install gcc 11.  Omit the version number and gcc 12 will be installed (at this time).  If building for a GPU, it is recommended to use an older gcc version. For example, we have success using gcc 11 with CUDA 12.
-
-If running on an Nvidia GPU, install cudatoolkit by typing:
-```
-conda install -c conda-forge cudatoolkit    
-conda install -c conda-forge cudatoolkit-dev
-```
-This installs CUDA 12 (at this time).  
-
-The build script is located at
-```
-source {path-to-repo}/scripts/build-matar.sh
+cmake -B build -DMATAR_BUILD_EXAMPLES=ON -DKokkos_ENABLE_OPENMP=ON
+cmake --build build -j
 ```
 
-To build the MATAR library and examples with CUDA, type:
-```
-source build-matar.sh --kokkos_build_type=cuda --build_cores=16
-```
-The executables for the examples that run in parallel Nvidia GPUs using CUDA are located in:
-```
-MATAR/build-matar-cuda/bin
+The CMake options are:
+
+| Option | Default | Description |
+|---|---|---|
+| `MATAR_ENABLE_KOKKOS` | ON | Build the Kokkos-backed device/dual types (builds the bundled Kokkos submodule) |
+| `MATAR_ENABLE_MPI` | OFF | Enable the MPI-aware types (`MPICArrayKokkos`, `CommunicationPlan`) |
+| `MATAR_ENABLE_GPU_AWARE_MPI` | OFF | Assume the MPI implementation is GPU-aware |
+| `MATAR_USE_EXTERNAL_KOKKOS` | OFF | Use an installed Kokkos (`-DKokkos_ROOT=<prefix>`) instead of the submodule |
+| `MATAR_BUILD_EXAMPLES` | OFF | Build the example programs |
+| `MATAR_BUILD_TESTS` | OFF | Build the unit tests (`ctest` to run) |
+| `MATAR_BUILD_BENCHMARKS` | OFF | Build the benchmarks |
+| `MATAR_REAL` | double | Precision of the `real_t` tier: `double`, `float`, `half`, `bfloat16`, `quad` |
+| `MATAR_HIGH_REAL` | double | Precision of the `high_real_t` tier: `double`, `float`, `quad` |
+| `MATAR_LOW_REAL` | double | Precision of the `low_real_t` tier: `double`, `float`, `half`, `bfloat16` |
+
+## Host-side parallelism
+
+Every MATAR macro (`FOR_ALL`, `DO_ALL`, `FOR_REDUCE_*`, ...) has a `_HOST` twin that runs in the **host** execution space instead of the device space. Because device kernels are asynchronous and host kernels only block the calling thread, CPU work can proceed while the GPU is still busy — useful for file I/O and for algorithms that are simply faster on a CPU:
+
+```c++
+FOR_ALL(i, 0, n, { device_field(i) = compute(i); });   // GPU, returns immediately
+
+FOR_ALL_HOST(i, 0, n, {                                 // CPU, runs concurrently
+    out_lines[i] = format_record(host_field(i));
+});
+MATAR_FENCE_HOST();                                     // wait for the host work
+MATAR_FENCE_DEVICE();                                   // wait for the GPU work
 ```
 
-To build the MATAR library and examples with OpenMP, type:
-```
-source build-matar.sh --kokkos_build_type=openmp --build_cores=16
+The `_HOST` macros differ from their device counterparts in two ways: the loop body captures **by reference**, so `std::` containers, file streams, and other non-device-copyable objects can be used directly; and no `_CLASS` variants are needed (`_CLASS` spellings exist as aliases).
+
+**MATAR is device-centric: the `*Device` types always live on the device.** To run host-parallel work over data that also lives on the device, declare it as a **Dual** type and go through the `.host()` accessor inside the host macro:
+
+```c++
+CArrayDual<real_t> field(n, "field");
+FOR_ALL_HOST(i, 0, n, {                 // CPU-side pass over the host mirror
+    field.host(i) = read_from_file(i);
+});
+field.update_device();                  // publish to the device
 ```
 
-The executables for the examples that run in parallel on multi-core CPUs using OpenMP are located in:
+A host kernel may otherwise only touch host-accessible data — the `*Host` types or plain `std::` data. Passing a `*Device` array to a host macro compiles but aborts at run time with `attempt to access inaccessible memory space`.
+
+Select the two backends independently:
+
+| Option | Values | Description |
+|---|---|---|
+| `MATAR_DEVICE_BACKEND` | `serial`, `openmp`, `pthreads`, `cuda`, `hip`, `sycl` | Backend for `FOR_ALL` and friends |
+| `MATAR_HOST_BACKEND` | `serial`, `openmp`, `pthreads` | Backend for the `_HOST` macros |
+
 ```
-MATAR/build-matar-openmp/bin
+cmake --preset cuda-hostomp     # CUDA device + OpenMP host: genuinely concurrent
+cmake -B build -DMATAR_DEVICE_BACKEND=cuda -DMATAR_HOST_BACKEND=openmp
 ```
-Using the main_kokkos.cpp executable as an example, it can be run by typing:
+
+Both options are optional; leaving them unset keeps the historical behavior of setting `Kokkos_ENABLE_*` directly. Note that Kokkos permits only one host-parallel backend per build, so `openmp` and `pthreads` cannot be paired with each other, and selecting the same backend on both sides is valid but gives no concurrency (the two macro families then share one execution space — MATAR warns at configure time).
+
+## Precision tiers
+
+MATAR provides three floating-point type names whose meaning is fixed at configure time — code just uses the names, and the CMake flags decide what they are per build/architecture:
+
+* `real_t` — the default working precision for field data
+* `high_real_t` — fields that must stay accurate (coordinates, conserved-quantity sums)
+* `low_real_t` — tolerant or bulk-storage fields (history buffers, gradients, output)
+
 ```
-./mtestkokkos
+cmake --preset serial-fp32                 # real_t = float
+cmake -B build -DMATAR_REAL=half           # real_t = Kokkos half_t (native on GPU backends)
+cmake -B build -DMATAR_REAL=float -DMATAR_HIGH_REAL=double   # mixed
 ```
+
+Notes:
+* `half`/`bfloat16` map to the native 16-bit types on CUDA/HIP/SYCL and are transparently float-backed on CPU backends (the macros `MATAR_FP16_IS_EMULATED`/`MATAR_BF16_IS_EMULATED` report which at compile time). `quad` is `__float128`, host backends only. Non-Kokkos builds support only `double` and `float`; anything else fails at configure.
+* User code only ever writes the three tier names — declare fields as `CArrayDevice<real_t>` (or `high_real_t`/`low_real_t`) and write constants as `real_t(0.5)`; the build flags decide what those names mean. The solvers in `solvers/` compute in `real_t`, so they run at whatever working precision the build selects.
+* The MPI-aware types work at every tier: `MPICArrayKokkos<real_t>` halo exchange and `all_reduce` need nothing extra from the user. Internally, native 16-bit types travel as bytes and reduce by promoting to double on the wire (exact), and quad uses a custom MPI datatype and reduction op.
+
+The Kokkos backend is selected with the standard Kokkos CMake variables (`Kokkos_ENABLE_OPENMP`, `Kokkos_ENABLE_CUDA`, `Kokkos_ENABLE_HIP`, `Kokkos_ARCH_*`, ...), which are passed through to the bundled Kokkos build. With `MATAR_ENABLE_KOKKOS=OFF`, MATAR is a dependency-free serial header-only library.
+
+## Using MATAR as a third-party library
+MATAR is header-only and exports a single CMake target, **`matar::matar`**. Linking it propagates everything a consumer needs: the include paths, the C++20 requirement, the `HAVE_KOKKOS`/`HAVE_CUDA`/`HAVE_HIP`/`HAVE_OPENMP`/`HAVE_THREADS`/`HAVE_MPI` compile definitions, and the Kokkos/MPI link dependencies. There is nothing to link manually and no MATAR library to build.
+
+Consumers need **CMake >= 3.22** and a **C++20** compiler; both come from Kokkos 5. Whichever method you choose, set the Kokkos backend variables *before* MATAR is added, because the bundled Kokkos is configured as part of that step.
+
+### Option 1: FetchContent
+CMake downloads MATAR at configure time. Nothing needs to be vendored into your repository.
+
+```cmake
+cmake_minimum_required(VERSION 3.22)
+project(myapp LANGUAGES CXX)
+
+# Pick the Kokkos backend BEFORE MATAR is made available.
+set(Kokkos_ENABLE_OPENMP ON CACHE BOOL "" FORCE)
+
+include(FetchContent)
+FetchContent_Declare(
+    matar
+    GIT_REPOSITORY https://github.com/lanl/MATAR.git
+    GIT_TAG        <tag-or-commit>   # pin a release; avoid tracking a branch
+)
+FetchContent_MakeAvailable(matar)    # also configures the bundled Kokkos
+
+add_executable(myapp main.cpp)
+target_link_libraries(myapp PRIVATE matar::matar)
+```
+
+MATAR carries Kokkos as its own submodule, and FetchContent updates submodules recursively by default, so the bundled Kokkos is fetched and built automatically. No extra steps are needed.
+
+### Option 2: git submodule
+Vendors MATAR into your repository, which pins the exact commit and allows offline builds.
+
+```bash
+git submodule add https://github.com/lanl/MATAR.git external/MATAR
+git submodule update --init --recursive
+```
+
+`--recursive` is required: MATAR contains Kokkos as a nested submodule, and without it `external/MATAR/src/Kokkos/kokkos` is left empty and the MATAR build stops with an error telling you to re-run the command. Anyone cloning your project afterwards needs `git clone --recursive`, or the same `git submodule update --init --recursive` after cloning.
+
+```cmake
+cmake_minimum_required(VERSION 3.22)
+project(myapp LANGUAGES CXX)
+
+set(Kokkos_ENABLE_OPENMP ON CACHE BOOL "" FORCE)
+add_subdirectory(external/MATAR)
+
+add_executable(myapp main.cpp)
+target_link_libraries(myapp PRIVATE matar::matar)
+```
+
+### Option 3: an installed MATAR
+Against a MATAR installed with `cmake --install build/<preset> --prefix <prefix>`:
+
+```cmake
+find_package(Matar REQUIRED)         # configure with -DCMAKE_PREFIX_PATH=<prefix>
+target_link_libraries(myapp PRIVATE matar::matar)
+```
+
+When the bundled Kokkos was used, it is installed into the same prefix and `MatarConfig.cmake` resolves it through `find_dependency(Kokkos)`.
+
+### Selecting a backend, and reusing your own Kokkos
+The backend is chosen with the standard Kokkos cache variables (`Kokkos_ENABLE_SERIAL`, `Kokkos_ENABLE_OPENMP`, `Kokkos_ENABLE_CUDA`, `Kokkos_ENABLE_HIP`, `Kokkos_ARCH_*`, ...), which are passed straight through to the bundled Kokkos build. Set them from your own `CMakeLists.txt` as shown above, or on the command line with `-DKokkos_ENABLE_CUDA=ON`.
+
+If your project already provides Kokkos — through `find_package(Kokkos)` or an `add_subdirectory` of its own Kokkos copy — do that **before** adding MATAR. MATAR detects the existing `Kokkos::kokkos` target and links against it instead of building its bundled submodule, so only one Kokkos ends up in the build:
+
+```cmake
+find_package(Kokkos REQUIRED)        # your Kokkos wins
+FetchContent_MakeAvailable(matar)    # MATAR reuses it
+```
+
+Other options worth knowing when embedding MATAR:
+
+| Option | Effect |
+|---|---|
+| `MATAR_ENABLE_KOKKOS=OFF` | Host-only types; MATAR becomes a dependency-free header library and the parallel macros compile to plain serial loops |
+| `MATAR_ENABLE_MPI=ON` | Adds `MPICArrayKokkos` and `CommunicationPlan` (requires MPI) |
+| `MATAR_INSTALL` | Defaults to off when MATAR is embedded in another project, so it contributes no install rules to your package |
+
+Note that while an embedded MATAR installs nothing, the *bundled Kokkos* still adds its own install rules, so `cmake --install` on your project will also deposit the Kokkos headers and CMake package files into your prefix. Use an external or parent-provided Kokkos if you need to keep it out of your install tree.
 
 ## Running codes in parallel
 The openMP and pthread Kokkos backends require the user to specify the number of threads used to run the code in parallel. 
@@ -196,15 +288,15 @@ in otherwords,
 ```
 ./mycode --kokkos-threads=4
 ```
-The above command runs the code with fine grained parallelism using 4 threads.  In your code, ensure you pass the command line argument variables to Kokkos::initialize function as shown below here.
+The above command runs the code with fine grained parallelism using 4 threads.  In your code, ensure you pass the command line argument variables to the MATAR_INITIALIZE macro (which wraps Kokkos::initialize) as shown below here.
 ```
 int main(int argc, char* argv[])
 {
-    Kokkos::initialize(argc, argv);
+    MATAR_INITIALIZE(argc, argv);
 
     // coding goes here
 
-    Kokkos::finalize();
+    MATAR_FINALIZE();
 
     return 0;
 }
