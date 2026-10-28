@@ -917,7 +917,7 @@ Kokkos::parallel_reduce( \
 //   HOST-side parallel macros
 //
 //   Twins of the macros above that run in the HOST execution space
-//   (Kokkos::DefaultHostExecutionSpace) instead of the device space, so CPU
+//   (DefaultHostExecSpace, set by MATAR_HOST_BACKEND) instead of the device space, so CPU
 //   work can proceed while device kernels are still in flight: device
 //   parallel_for is asynchronous, these block only the calling host thread.
 //
@@ -935,7 +935,7 @@ Kokkos::parallel_reduce( \
 //   "attempt to access inaccessible memory space".
 // ==========================================================================
 
-#define MATAR_HOST_EXEC Kokkos::DefaultHostExecutionSpace
+#define MATAR_HOST_EXEC ::DefaultHostExecSpace
 
 
 // FOR_ALL_HOST

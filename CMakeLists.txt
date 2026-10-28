@@ -258,13 +258,14 @@ if(MATAR_ENABLE_KOKKOS)
     target_compile_definitions(matar INTERFACE HAVE_KOKKOS=1)
 
     # Device space: exactly one HAVE_* here, since kokkos_types.h selects
-    # DefaultExecSpace from this chain.
-    if(Kokkos_ENABLE_CUDA)
+    # DefaultExecSpace from it. An explicit MATAR_DEVICE_BACKEND wins;
+    # otherwise the most capable enabled backend is used.
+    string(TOUPPER "${MATAR_DEVICE_BACKEND}" _matar_dev_def)
+    string(REPLACE "PTHREADS" "THREADS" _matar_dev_def "${_matar_dev_def}")
+    if(_matar_dev_def)
+        target_compile_definitions(matar INTERFACE HAVE_${_matar_dev_def}=1)
+    elseif(Kokkos_ENABLE_CUDA)
         target_compile_definitions(matar INTERFACE HAVE_CUDA=1)
-        # Silence CUDA compiler warnings
-        target_compile_options(matar INTERFACE
-            "$<$<COMPILE_LANGUAGE:CXX>:SHELL:-Xcudafe --diag_suppress=177>"
-            "$<$<COMPILE_LANGUAGE:CXX>:SHELL:-Xcudafe --diag_suppress=550>")
     elseif(Kokkos_ENABLE_HIP)
         target_compile_definitions(matar INTERFACE HAVE_HIP=1)
     elseif(Kokkos_ENABLE_SYCL)
@@ -275,11 +276,22 @@ if(MATAR_ENABLE_KOKKOS)
         target_compile_definitions(matar INTERFACE HAVE_THREADS=1)
     endif()
 
-    # Host space, independent of the device chain above: on a GPU build this
-    # is what the _HOST macros run in. The macros themselves resolve
-    # Kokkos::DefaultHostExecutionSpace; these defines are for introspection
-    # and tests.
-    if(Kokkos_ENABLE_OPENMP)
+    if(Kokkos_ENABLE_CUDA)
+        # Silence CUDA compiler warnings
+        target_compile_options(matar INTERFACE
+            "$<$<COMPILE_LANGUAGE:CXX>:SHELL:-Xcudafe --diag_suppress=177>"
+            "$<$<COMPILE_LANGUAGE:CXX>:SHELL:-Xcudafe --diag_suppress=550>")
+    endif()
+
+    # Host space, independent of the device chain above: this is what the
+    # _HOST macros run in (kokkos_types.h maps HAVE_HOST_* to
+    # DefaultHostExecSpace). An explicit MATAR_HOST_BACKEND wins; otherwise
+    # Kokkos's own default host space is used.
+    string(TOUPPER "${MATAR_HOST_BACKEND}" _matar_host_def)
+    string(REPLACE "PTHREADS" "THREADS" _matar_host_def "${_matar_host_def}")
+    if(_matar_host_def)
+        target_compile_definitions(matar INTERFACE HAVE_HOST_${_matar_host_def}=1)
+    elseif(Kokkos_ENABLE_OPENMP)
         target_compile_definitions(matar INTERFACE HAVE_HOST_OPENMP=1)
     elseif(Kokkos_ENABLE_THREADS)
         target_compile_definitions(matar INTERFACE HAVE_HOST_THREADS=1)

@@ -169,8 +169,8 @@ using ViewFMatrixDual = DViewFMatrixKokkos<T>;
 #define MATAR_FENCE() Kokkos::fence()
 // Per-space fences: wait on one side without stalling the other, so host
 // work (FOR_ALL_HOST and friends) can overlap in-flight device kernels.
-#define MATAR_FENCE_HOST() Kokkos::DefaultHostExecutionSpace().fence()
-#define MATAR_FENCE_DEVICE() Kokkos::DefaultExecutionSpace().fence()
+#define MATAR_FENCE_HOST() ::DefaultHostExecSpace().fence()
+#define MATAR_FENCE_DEVICE() ::DefaultExecSpace().fence()
 #define MATAR_INITIALIZE(...) Kokkos::initialize(__VA_ARGS__)
 #define MATAR_FINALIZE() Kokkos::finalize();
 #else
