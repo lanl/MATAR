@@ -67,10 +67,6 @@ using DefaultLayout    = Kokkos::LayoutLeft;
 using DefaultMemSpace  = Kokkos::SYCLDeviceUSMSpace;
 using DefaultExecSpace = Kokkos::SYCL;
 using DefaultLayout    = Kokkos::LayoutLeft;
-#elif HAVE_SERIAL
-using DefaultMemSpace  = Kokkos::HostSpace;
-using DefaultExecSpace = Kokkos::Serial;
-using DefaultLayout    = Kokkos::LayoutLeft;
 #else
 using DefaultExecSpace = Kokkos::DefaultExecutionSpace;
 using DefaultMemSpace  = Kokkos::DefaultExecutionSpace::memory_space;
@@ -81,12 +77,13 @@ using DefaultLayout    = Kokkos::LayoutLeft;
 // build). This is what the _HOST parallel macros run in; it is distinct from
 // DefaultExecSpace above whenever a GPU backend is selected, which is what
 // makes concurrent host+device work possible. HAVE_HOST_* comes from
-// MATAR_HOST_BACKEND; without it Kokkos's default host space is used.
-#if HAVE_HOST_SERIAL
+// MATAR_HOST_BACKEND; without it, or if the Kokkos in use lacks that backend
+// (e.g. an external install), Kokkos's default host space is used.
+#if HAVE_HOST_SERIAL && defined(KOKKOS_ENABLE_SERIAL)
 using DefaultHostExecSpace = Kokkos::Serial;
-#elif HAVE_HOST_THREADS
+#elif HAVE_HOST_THREADS && defined(KOKKOS_ENABLE_THREADS)
 using DefaultHostExecSpace = Kokkos::Threads;
-#elif HAVE_HOST_OPENMP
+#elif HAVE_HOST_OPENMP && defined(KOKKOS_ENABLE_OPENMP)
 using DefaultHostExecSpace = Kokkos::OpenMP;
 #else
 using DefaultHostExecSpace = Kokkos::DefaultHostExecutionSpace;

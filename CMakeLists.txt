@@ -258,22 +258,41 @@ if(MATAR_ENABLE_KOKKOS)
     target_compile_definitions(matar INTERFACE HAVE_KOKKOS=1)
 
     # Device space: exactly one HAVE_* here, since kokkos_types.h selects
-    # DefaultExecSpace from it. An explicit MATAR_DEVICE_BACKEND wins;
-    # otherwise the most capable enabled backend is used.
-    string(TOUPPER "${MATAR_DEVICE_BACKEND}" _matar_dev_def)
-    string(REPLACE "PTHREADS" "THREADS" _matar_dev_def "${_matar_dev_def}")
-    if(_matar_dev_def)
-        target_compile_definitions(matar INTERFACE HAVE_${_matar_dev_def}=1)
-    elseif(Kokkos_ENABLE_CUDA)
+    # DefaultExecSpace from it. The chain follows Kokkos's own default-space
+    # priority, so DefaultExecSpace always matches Kokkos::DefaultExecutionSpace
+    # (which the device macros and internal kernels launch into). A serial-only
+    # build defines none and falls through to Kokkos's default.
+    set(_matar_dev_chosen serial)
+    if(Kokkos_ENABLE_CUDA)
         target_compile_definitions(matar INTERFACE HAVE_CUDA=1)
+        set(_matar_dev_chosen cuda)
     elseif(Kokkos_ENABLE_HIP)
         target_compile_definitions(matar INTERFACE HAVE_HIP=1)
+        set(_matar_dev_chosen hip)
     elseif(Kokkos_ENABLE_SYCL)
         target_compile_definitions(matar INTERFACE HAVE_SYCL=1)
+        set(_matar_dev_chosen sycl)
     elseif(Kokkos_ENABLE_OPENMP)
         target_compile_definitions(matar INTERFACE HAVE_OPENMP=1)
+        set(_matar_dev_chosen openmp)
     elseif(Kokkos_ENABLE_THREADS)
         target_compile_definitions(matar INTERFACE HAVE_THREADS=1)
+        set(_matar_dev_chosen pthreads)
+    endif()
+
+    # MATAR_DEVICE_BACKEND only enables a Kokkos backend; if a higher-priority
+    # one is also enabled (e.g. a reused CUDA build dir, or device=serial with
+    # host=openmp), Kokkos would run the device macros there instead.
+    string(TOLOWER "${MATAR_DEVICE_BACKEND}" _matar_dev_req)
+    if(_matar_dev_req AND NOT _matar_dev_req STREQUAL _matar_dev_chosen)
+        matar_backend_kokkos_var(DEVICE "${_matar_dev_chosen}" _matar_dev_chosen_var)
+        message(FATAL_ERROR
+            "MATAR_DEVICE_BACKEND=${_matar_dev_req}, but Kokkos's default execution space "
+            "will be '${_matar_dev_chosen}' because that higher-priority backend is also "
+            "enabled (by MATAR_HOST_BACKEND, a preset, or a reused cache). Disable it "
+            "(-D${_matar_dev_chosen_var}=OFF, or use a fresh build directory), or pick a "
+            "device/host pair where the device backend outranks the host one (e.g. a GPU "
+            "device with an openmp/pthreads host).")
     endif()
 
     if(Kokkos_ENABLE_CUDA)
