@@ -7532,6 +7532,171 @@ DRaggedRightArrayKokkos<T,Layout,ExecSpace,MemoryTraits,ILayout>::~DRaggedRightA
 // End of DRaggedRightArrayKokkos
 ////////////////////////////////////////////////////////////////////////////////
 
+
+
+/*! \brief dual ragged right of ragged right data
+ *
+ */
+template <typename T>
+class DRaggedRight2ArrayKokkos {
+    
+private:
+    DCArrayKokkos <size_t> start_index_;
+    DCArrayKokkos <size_t> strides_j_;
+    DCArrayKokkos <size_t> strides_k_;
+    DCArrayKokkos <size_t> this_array_;
+
+    size_t length_;  // the lenght of the 1D array holding all the values
+    size_t dims_[1]; // only rows can be saved as other dims vary in size
+public:
+
+    DRaggedRight2ArrayKokkos();
+    
+    template <typename T2>
+    DRaggedRight2ArrayKokkos(T2 strides_right, T2 strides_upp, const std::string& tag_string = DEFAULTSTRINGARRAY);
+
+    KOKKOS_INLINE_FUNCTION
+    T& operator()(size_t i, size_t j, size_t k) const;
+
+
+    KOKKOS_INLINE_FUNCTION
+    DRaggedRight2ArrayKokkos& operator=(const DRaggedRight2ArrayKokkos& temp);
+
+    // GPU Method
+    // Method that returns size
+    KOKKOS_INLINE_FUNCTION
+    size_t size() const;
+
+    // Method to return the dimensions of the array
+    KOKKOS_INLINE_FUNCTION
+    size_t dims(size_t i) const;
+
+
+    // Methods returns the raw pointer (most likely GPU) of the Kokkos View
+    KOKKOS_INLINE_FUNCTION
+    T* pointer() const;
+
+    // set values
+    void set_values(T val, int count = -1);
+
+
+    // Get the name of the view
+    const std::string get_name() const;
+
+    // Deconstructor
+    KOKKOS_INLINE_FUNCTION
+    ~DRaggedRight2ArrayKokkos ();
+}; // End of DRaggedRight2ArrayKokkos
+
+
+// constructor
+template <typename T2>
+DRaggedRight2ArrayKokkos(T2 strides_j_inp, T2 strides_k_inp, const std::string& tag_string = DEFAULTSTRINGARRAY) const{
+    
+    // --------------------------------------------
+    // step 1: allocate stride arrays
+    //
+    const size_t num_rows = strides_j_inp.dims[0];
+
+    dims_[0] = num_rows;  // note: dims_[2] and greater are not fixed and thus are not stored in this array
+
+    start_index_ = DCArrayKokkos <size_t>(num_rows+1) // the start index in the 1D array storage for row i
+    strides_j_   = DCArrayKokkos <size_t>(num_rows);  // for each row i, gives the num j-dir values
+    strides_k_   = DCArrayKokkos <size_t>(num_rows);  // for each row i, give the num k-dir values
+
+    strides_j_ = strides_j_inp;
+    strides_k_ = strides_k_inp;
+
+    // remember: each memory block = strides_right(i)*strides_upp(i)
+    size_t sum_lcl = 0;
+    FOR_REDUCE_SUM(i, 0, num_rows, sum_lcl {
+         sum_lcl += strides_j_(i)*strides_k_(i);
+    }, length_);
+    // the required memory for values is size length_
+    this_array_ = DCArrayKokkos<T>(length_);
+
+
+    // --------------------------------------------
+    // step 2: set the start indices to a block
+    //
+    RUN({
+        start_index_(0) = 0;
+    });
+
+    Kokkos::parallel_scan("start_index_scan",
+    Kokkos::RangePolicy<>(0, num_rows),
+    KOKKOS_LAMBDA(const size_t i, size_t& num_values, const bool final) {
+        // Add this element's contribution (makes `num_values` an inclusive sum)
+        num_values += strides_j_(i)*strides_k_(i);
+
+        // Only write results during the final pass
+        if (final) {
+            start_index_(i + 1) = start_index_(0) + num_values;
+        }
+    });
+    Kokkos::fence();
+    start_index_.update_host();
+
+    // for a row, the local index of the block is = k + j*strides_k_(i)
+    // block(j,k) = k + j*strides_k_(i)
+
+} // end constructor
+
+
+// A method to return the size of the first dimension
+template <typename T>
+size_t DRaggedRight2ArrayKokkos<T>::dims(size_t i) const {
+    // Ensure that i is within bounds
+    assert(i >= 1 && "i is greater than or equal to 1 in the DRaggedRight2ArrayKokkos class");
+    return dims_[i]; // only i=0 is valid!!!
+}
+
+
+// A method to return the number of columns in the block size, the j-dimension
+template <typename T>
+size_t DRaggedRight2ArrayKokkos<T>::stride_j(size_t i) const {
+    // Ensure that i is within bounds
+    assert(i >= dims_[0] && "i is greater than num rows in the DRaggedRight2ArrayKokkos class");
+    return strides_j_(i);
+}
+
+
+// A method to return the number of columns in the block size, the k-dimension
+template <typename T>
+size_t DRaggedRight2ArrayKokkos<T>::stride_k(size_t i) const {
+    // Ensure that i is within bounds
+    assert(i >= dims_[0] && "i is greater than num rows in the DRaggedRight2ArrayKokkos class");
+    return strides_k_(i);
+}
+
+
+// Overload operator() to access data as array(i,j,k)
+// where i=[0:N-1], j=[0:stride_j(i)], k=[0:stride_k(i)] are contiguous in memory 
+// accessed via pointer arithmetic from j's location
+template <typename T>
+KOKKOS_INLINE_FUNCTION
+T& DRaggedRight2ArrayKokkos<T>::operator()(size_t i, size_t j, size_t k) const {
+    // Get the 1D array index start
+    const size_t start = start_index_(i);
+    
+    // asserts
+    assert(i < dims_[0] && "i is out of dims_[0] bounds in DRaggedRightArrayKokkos");  // die if >= dim0
+    assert(j < stride_j(i) && "j is out of stride_j bounds in DRaggedRightArrayKokkos");  // die if >= dim1
+    assert(k < stride_k(i) && "k is out of stride_k bounds in DRaggedRightArrayKokkos");  // die if >= dim2
+    
+    const size_t index_1D = start + k + stride_k(i)*j;
+
+    return this_array_(index_1D);
+} // End operator()
+
+
+////////////////////////////////////////////////////////////////////////////////
+// End of DRaggedRight2ArrayKokkos
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 /*! \brief Dynamic version of the CArrayKokkos type.
  *
  */
