@@ -155,12 +155,16 @@ TEST(Test_DFArrayKokkos, bounds_checking) {
     const int size = 10;
     DFArrayKokkos<double> A(size, size);
 
+    // operator() on a dual type is the DEVICE view, which host code cannot
+    // touch at all on a GPU build (the abort is "inaccessible memory space",
+    // not a bounds failure). Bounds checking is a host-side concern, so assert
+    // it through the host accessor, as Test_DCArrayKokkos.bounds_checking does.
     // Test valid access
-    A(5, 5) = 42.0;
-    EXPECT_EQ(42.0, A(5, 5));
+    A.host(5, 5) = 42.0;
+    EXPECT_EQ(42.0, A.host(5, 5));
 
     // Test invalid access - should throw
-    EXPECT_DEATH(A(size, size), ".*");
+    EXPECT_DEATH(A.host(size, size), ".*");
 }
 #endif
 

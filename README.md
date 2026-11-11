@@ -175,6 +175,8 @@ cmake --preset cuda-hostomp     # CUDA device + OpenMP host: genuinely concurren
 cmake -B build -DMATAR_DEVICE_BACKEND=cuda -DMATAR_HOST_BACKEND=openmp
 ```
 
+`examples/host_device_overlap.cpp` is a runnable walk-through of all of this: the `_HOST` argument forms, the host-only objects a host kernel may capture, a device `FOR_ALL` overlapped with a host `FOR_ALL_HOST` (with the timings printed), and the Dual-type handoff in both directions.
+
 Both options are optional; leaving them unset keeps the historical behavior of setting `Kokkos_ENABLE_*` directly. Note that Kokkos permits only one host-parallel backend per build, so `openmp` and `pthreads` cannot be paired with each other, and selecting the same backend on both sides is valid but gives no concurrency (the two macro families then share one execution space — MATAR warns at configure time).
 
 ## Precision tiers

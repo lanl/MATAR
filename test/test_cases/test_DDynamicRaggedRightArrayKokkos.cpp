@@ -12,6 +12,14 @@ inline void set_all_strides(DDynamicRaggedRightArrayKokkos<double>& array, size_
     FOR_ALL(i, 0, n_rows, {
         array.stride(i) = n_cols;
     });
+    // The strides were written through the DEVICE accessor, so the host mirror
+    // is still whatever data_setup() left there (zero). Every host-side use of
+    // the array -- including the j < stride(i) assert inside host(i, j) --
+    // reads that mirror, so it has to be pushed across before the host touches
+    // the array. Without this, a GPU debug build aborts on the first
+    // array.host(i, j); on a CPU build the two mirrors alias and it is hidden.
+    MATAR_FENCE();
+    array.update_strides_host();
 }
 }  // namespace
 

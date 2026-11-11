@@ -186,6 +186,8 @@
         { "name": "hip-mpi",          "configurePreset": "hip-mpi",          "output": { "outputOnFailure": true } },
         { "name": "serial-debug",     "configurePreset": "serial-debug",     "output": { "outputOnFailure": true } },
         { "name": "openmp-debug",     "configurePreset": "openmp-debug",     "output": { "outputOnFailure": true } },
+        { "name": "cuda-debug",       "configurePreset": "cuda-debug",       "output": { "outputOnFailure": true } },
+        { "name": "hip-debug",        "configurePreset": "hip-debug",        "output": { "outputOnFailure": true } },
         { "name": "serial-mpi-debug", "configurePreset": "serial-mpi-debug", "output": { "outputOnFailure": true } },
         { "name": "serial-fp32",      "configurePreset": "serial-fp32",      "output": { "outputOnFailure": true } },
         { "name": "serial-fp16",      "configurePreset": "serial-fp16",      "output": { "outputOnFailure": true } },
@@ -194,6 +196,7 @@
         { "name": "serial-mixed",     "configurePreset": "serial-mixed",     "output": { "outputOnFailure": true } },
         { "name": "serial-mpi-fp16",  "configurePreset": "serial-mpi-fp16",  "output": { "outputOnFailure": true } },
         { "name": "serial-mpi-quad",  "configurePreset": "serial-mpi-quad",  "output": { "outputOnFailure": true } },
-        { "name": "hostomp",          "configurePreset": "hostomp",          "output": { "outputOnFailure": true } }
+        { "name": "hostomp",          "configurePreset": "hostomp",          "output": { "outputOnFailure": true } },
+        { "name": "cuda-hostomp",     "configurePreset": "cuda-hostomp",     "output": { "outputOnFailure": true } }
     ]
 }
