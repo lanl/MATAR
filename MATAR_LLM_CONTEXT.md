@@ -1205,8 +1205,9 @@ FOR_ALL(i, 0, num_nodes, {
 using real_t      = mtr::real_t;       // default working tier   (MATAR_REAL,      default double)
 using high_real_t = mtr::high_real_t;  // must-stay-accurate tier (MATAR_HIGH_REAL, default double)
 using low_real_t  = mtr::low_real_t;   // tolerant/bulk tier      (MATAR_LOW_REAL,  default double)
-using u_int       = unsigned int;
 ```
+
+(`u_int` was removed from `aliases.h`; use `size_t` or `unsigned int` directly.)
 
 ### Precision System (precision.h)
 
@@ -1221,11 +1222,57 @@ code only ever writes the tier names.
 
 Rules (hard rules for generated code):
 
-- **User-facing code uses ONLY the three tier names** `real_t` /
-  `high_real_t` / `low_real_t` — no other precision types, traits, or helper
-  functions exist in the public API. Declare fields with a tier
+- **Declare storage and write constants with the three tier names** `real_t` /
+  `high_real_t` / `low_real_t`. Declare fields with a tier
   (`CArrayDevice<real_t>`), write constants by constructing the tier type
   (`real_t(0.5)`, `real_t(0)`), and let the CMake flags fix the meaning.
+- **For numeric traits and math on a tier value, use `mtr::prec`** — the only
+  other public precision surface. `std::numeric_limits` is NOT specialized for
+  `half_t`/`bhalf_t`/`__float128`, and the bare C math functions have no half
+  overloads and silently promote to double, so neither is usable against a
+  tier type:
+
+  ```cpp
+  mtr::prec::epsilon<real_t>()      // 1+eps != 1 at this tier
+  mtr::prec::numeric_min<real_t>()  // smallest positive normal (std::...::min())
+  mtr::prec::numeric_max<real_t>()  // largest finite          (std::...::max())
+  mtr::prec::fabs / sqrt / fmax / fmin
+  mtr::prec::accum_t<T>             // widened accumulator type for long sums
+  ```
+
+  Always qualify these. They deliberately live in `mtr::prec`, not `mtr`,
+  because application code commonly writes `using namespace mtr;` and then
+  calls `fabs`/`sqrt`/`fmax`/`fmin` unqualified expecting the C library —
+  injecting those names into `mtr` would silently change overload resolution
+  at every such call site.
+- **Scale tolerances to the tier, never to a literal.** A fixed `1e-16` guard
+  is meaningless below double (float eps is ~1.2e-7), so `x / (den + 1e-16)`
+  stops protecting anything and `if (x > 1e-16)` degenerates to `if (x > 0)`.
+  Write `mtr::prec::epsilon<real_t>() * real_t(10)` instead. Watch magnitudes
+  too: half's max is 65504, so a `1e300` sentinel becomes `inf` and a `1e-60`
+  floor becomes `0`.
+- **Sum into `mtr::prec::accum_t<T>`, not `T`.** The reduce macros take the
+  accumulator type from the variable you declare (`macros.h` deduces it with
+  `decltype(var)`), so a wide accumulator over narrow storage is free and
+  needs no cast on the array:
+
+  ```cpp
+  using Acc = mtr::prec::accum_t<real_t>;
+  Acc total = Acc(0), loc = Acc(0);
+  FOR_REDUCE_SUM(i, 0, n, loc, { loc += Acc(field(i)); }, total);
+  ```
+
+  Accumulating at the storage tier stagnates once the running total outgrows
+  the increments — a few million terms in float, a few hundred in bfloat16.
+  `accum_t` is the identity for double and wider and for every integer type.
+  `MPICArrayKokkos::all_reduce(operation::sum)` already does this internally
+  on both the on-node and cross-rank stages.
+- **Never pass a tier value through varargs.** `printf`/`fprintf` of a native
+  `half_t`/`bhalf_t` is unsafe (they are class types, not floating types) and
+  `__float128` needs `quadmath_snprintf`. Widen explicitly at the call:
+  `printf("%e", static_cast<double>(x))`. `float` happens to survive via
+  default argument promotion, but write the cast anyway so the code is correct
+  at every tier.
 - `half`/`bfloat16` are native 16-bit on CUDA/HIP/SYCL and float-backed on
   CPU backends (`MATAR_FP16_IS_EMULATED`/`MATAR_BF16_IS_EMULATED` report
   which at compile time). `quad` = `__float128`, host-only. Non-Kokkos

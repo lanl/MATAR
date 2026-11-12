@@ -803,16 +803,22 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
 
     // Local varaible for on node reduction
     T local;
+    // Sums reduce into a wider accumulator (see mtr::prec::accum_t): adding
+    // millions of elements at a narrow storage precision stagnates once the
+    // running total outgrows the increments. A no-op when T is double or wider.
+    using Acc = prec::accum_t<T>;
+    Acc acc_local = Acc(0);
 
     if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
         switch (op) {
             case operation::sum: {
-                local     = 0;
-                T loc_sum = 0;
+                local       = 0;
+                Acc loc_sum = Acc(0);
                 FOR_REDUCE_SUM_CLASS(i, 0, owned_len,
                                      loc_sum, {
-                    loc_sum += this_array_(i);
-                }, local);
+                    loc_sum += Acc(this_array_(i));
+                }, acc_local);
+                local = T(acc_local);
                 break;
             }
             case operation::product: {
@@ -854,6 +860,11 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op) 
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         comm = comm_plan_->mpi_comm_world;
     }
+    // Keep the cross-rank stage at the accumulator precision too, narrowing
+    // once on return rather than before the reduction.
+    if (op == operation::sum) {
+        return T(impl::mpi_allreduce_scalar(acc_local, op, comm));
+    }
     return impl::mpi_allreduce_scalar(local, op, comm);
 }
 
@@ -867,15 +878,20 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
 
     T local;
+    // Sums reduce into a wider accumulator (see mtr::prec::accum_t); a no-op
+    // when T is double or wider.
+    using Acc = prec::accum_t<T>;
+    Acc acc_local = Acc(0);
     if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
         switch (op) {
             case operation::sum: {
-                local     = 0;
-                T loc_sum = 0;
+                local       = 0;
+                Acc loc_sum = Acc(0);
                 FOR_REDUCE_SUM_CLASS(e, 0, owned_len,
                                      loc_sum, {
-                    loc_sum += this_array_(e, j);
-                }, local);
+                    loc_sum += Acc(this_array_(e, j));
+                }, acc_local);
+                local = T(acc_local);
                 break;
             }
             case operation::product: {
@@ -919,6 +935,9 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
     }
+    if (op == operation::sum) {
+        return T(impl::mpi_allreduce_scalar(acc_local, op, mpi_comm));
+    }
     return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }
 
@@ -932,15 +951,20 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
 
     T local;
+    // Sums reduce into a wider accumulator (see mtr::prec::accum_t); a no-op
+    // when T is double or wider.
+    using Acc = prec::accum_t<T>;
+    Acc acc_local = Acc(0);
     if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
         switch (op) {
             case operation::sum: {
-                local     = 0;
-                T loc_sum = 0;
+                local       = 0;
+                Acc loc_sum = Acc(0);
                 FOR_REDUCE_SUM_CLASS(e, 0, owned_len,
                                      loc_sum, {
-                    loc_sum += this_array_(e, j, k);
-                }, local);
+                    loc_sum += Acc(this_array_(e, j, k));
+                }, acc_local);
+                local = T(acc_local);
                 break;
             }
             case operation::product: {
@@ -984,6 +1008,9 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
     }
+    if (op == operation::sum) {
+        return T(impl::mpi_allreduce_scalar(acc_local, op, mpi_comm));
+    }
     return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }
 
@@ -997,15 +1024,20 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     assert(owned_len > 0 && "MPICArrayKokkos::all_reduce: empty reduction range.");
 
     T local;
+    // Sums reduce into a wider accumulator (see mtr::prec::accum_t); a no-op
+    // when T is double or wider.
+    using Acc = prec::accum_t<T>;
+    Acc acc_local = Acc(0);
     if (comm_plan_ == nullptr || comm_plan_->comm_type == communication_plan_type::no_communication) {
         switch (op) {
             case operation::sum: {
-                local     = 0;
-                T loc_sum = 0;
+                local       = 0;
+                Acc loc_sum = Acc(0);
                 FOR_REDUCE_SUM_CLASS(e, 0, owned_len,
                                      loc_sum, {
-                    loc_sum += this_array_(e, g, ti, tj);
-                }, local);
+                    loc_sum += Acc(this_array_(e, g, ti, tj));
+                }, acc_local);
+                local = T(acc_local);
                 break;
             }
             case operation::product: {
@@ -1048,6 +1080,9 @@ T MPICArrayKokkos<T, Layout, ExecSpace, MemoryTraits>::all_reduce(operation op, 
     MPI_Comm mpi_comm = MPI_COMM_WORLD;
     if (comm_plan_ != nullptr && comm_plan_->has_comm_world) {
         mpi_comm = comm_plan_->mpi_comm_world;
+    }
+    if (op == operation::sum) {
+        return T(impl::mpi_allreduce_scalar(acc_local, op, mpi_comm));
     }
     return impl::mpi_allreduce_scalar(local, op, mpi_comm);
 }

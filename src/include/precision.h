@@ -262,6 +262,132 @@ MATAR_PRECISION_FUNC __float128 epsilon<__float128>() {
 #endif
 
 }  // namespace impl
+
+// ---------------------------------------------------------------------------
+// Public tier-aware numeric traits and math, for applications.
+//
+// An application cannot use std::numeric_limits or bare ::fabs against a tier
+// type: numeric_limits is not specialized for half_t/bhalf_t/__float128, and
+// the C math functions have no half overloads and silently promote to double.
+// These forward to the impl helpers above, which already handle every tier.
+//
+// They live in their own namespace rather than directly in mtr on purpose.
+// Application code commonly writes `using namespace mtr;` and then calls
+// fabs/sqrt/fmax/fmin unqualified, expecting the C library; injecting these
+// names into mtr would silently change overload resolution at every such call
+// site. Qualify them instead:
+//
+//     const real_t tol = mtr::prec::epsilon<real_t>() * real_t(10);
+//     const real_t r   = mtr::prec::sqrt(x);
+// ---------------------------------------------------------------------------
+namespace prec {
+
+// Smallest eps with 1 + eps != 1 at the given tier.
+template <typename T>
+MATAR_PRECISION_FUNC T epsilon() {
+    return impl::epsilon<T>();
+}
+
+template <typename T>
+MATAR_PRECISION_FUNC T fabs(T x) {
+    return impl::fabs(x);
+}
+template <typename T>
+MATAR_PRECISION_FUNC T sqrt(T x) {
+    return impl::sqrt(x);
+}
+template <typename T>
+MATAR_PRECISION_FUNC T fmax(T x, T y) {
+    return impl::fmax(x, y);
+}
+template <typename T>
+MATAR_PRECISION_FUNC T fmin(T x, T y) {
+    return impl::fmin(x, y);
+}
+
+// Accumulator type for a long summation chain.
+//
+// Summing N values at the storage precision stagnates once the running total
+// outgrows the increments: in float that happens after a few million terms, in
+// bfloat16 after a few hundred. Reduce into accum_t<T> instead and narrow once
+// at the end. double and wider, and every integer type, accumulate in
+// themselves, so this is a no-op for an all-double build.
+//
+//     using Acc = mtr::prec::accum_t<real_t>;
+//     Acc total = Acc(0), loc = Acc(0);
+//     FOR_REDUCE_SUM(i, 0, n, loc, { loc += Acc(field(i)); }, total);
+//
+// The reduce macros take the accumulator type from the variable you declare
+// (macros.h deduces it with decltype), so a wide accumulator over narrow
+// storage needs nothing else.
+template <typename T>
+struct accumulator {
+    using type = T;
+};
+template <>
+struct accumulator<float> {
+    using type = double;
+};
+#if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED
+template <>
+struct accumulator<Kokkos::Experimental::half_t> {
+    using type = double;
+};
+#endif
+#if MATAR_HAS_BF16 && !MATAR_BF16_IS_EMULATED
+template <>
+struct accumulator<Kokkos::Experimental::bhalf_t> {
+    using type = double;
+};
+#endif
+template <typename T>
+using accum_t = typename accumulator<T>::type;
+
+// Smallest positive normalized value, i.e. std::numeric_limits<T>::min().
+// Named numeric_min rather than min so that it cannot be confused with, or
+// made ambiguous against, the two-argument std::min.
+template <typename T>
+MATAR_PRECISION_FUNC T numeric_min() {
+    return std::numeric_limits<T>::min();
+}
+// Largest finite value, i.e. std::numeric_limits<T>::max().
+template <typename T>
+MATAR_PRECISION_FUNC T numeric_max() {
+    return std::numeric_limits<T>::max();
+}
+
+#if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED
+template <>
+MATAR_PRECISION_FUNC Kokkos::Experimental::half_t numeric_min<Kokkos::Experimental::half_t>() {
+    return Kokkos::Experimental::norm_min_v<Kokkos::Experimental::half_t>;
+}
+template <>
+MATAR_PRECISION_FUNC Kokkos::Experimental::half_t numeric_max<Kokkos::Experimental::half_t>() {
+    return Kokkos::Experimental::finite_max_v<Kokkos::Experimental::half_t>;
+}
+#endif
+#if MATAR_HAS_BF16 && !MATAR_BF16_IS_EMULATED
+template <>
+MATAR_PRECISION_FUNC Kokkos::Experimental::bhalf_t numeric_min<Kokkos::Experimental::bhalf_t>() {
+    return Kokkos::Experimental::norm_min_v<Kokkos::Experimental::bhalf_t>;
+}
+template <>
+MATAR_PRECISION_FUNC Kokkos::Experimental::bhalf_t numeric_max<Kokkos::Experimental::bhalf_t>() {
+    return Kokkos::Experimental::finite_max_v<Kokkos::Experimental::bhalf_t>;
+}
+#endif
+#if MATAR_HAS_FP128
+template <>
+MATAR_PRECISION_FUNC __float128 numeric_min<__float128>() {
+    return FLT128_MIN;
+}
+template <>
+MATAR_PRECISION_FUNC __float128 numeric_max<__float128>() {
+    return FLT128_MAX;
+}
+#endif
+
+}  // namespace prec
 }  // namespace mtr
 
 // ---------------------------------------------------------------------------

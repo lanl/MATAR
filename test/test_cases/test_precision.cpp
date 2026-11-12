@@ -1,5 +1,6 @@
 #include "matar.h"
 #include <gtest/gtest.h>
+#include <cmath>
 
 #include <type_traits>
 
@@ -219,6 +220,21 @@ inline real_t reduce_sum_state(CArrayDevice<real_t>& state, int n) {
     return result;
 }
 
+// Reduce a real_t field into the wider mtr::prec::accum_t accumulator. The
+// reduce macros take the accumulator type from the declared variable
+// (macros.h deduces it with decltype), so this is the supported way to sum
+// narrow storage without stagnating.
+inline mtr::prec::accum_t<real_t> reduce_sum_wide(CArrayDevice<real_t>& field, int n) {
+    using Acc = mtr::prec::accum_t<real_t>;
+    Acc result = Acc(0);
+    Acc loc    = Acc(0);
+    FOR_REDUCE_SUM(i, 0, n,
+                   loc, {
+        loc += Acc(field(i));
+    }, result);
+    return result;
+}
+
 }  // namespace
 
 TEST(Precision, TierReductionSum) {
@@ -293,5 +309,63 @@ TEST(Precision, MixedTierFields) {
 
     // sum of i/4 for i=0..9 = 11.25
     EXPECT_NEAR(static_cast<double>(result), 11.25, 0.1);
+}
+
+TEST(Precision, AccumulatorTierIsWideEnough) {
+    // accum_t never narrows, and widens anything below double so that a long
+    // summation chain does not stagnate.
+    static_assert(sizeof(mtr::prec::accum_t<real_t>) >= sizeof(real_t),
+                  "accum_t must never be narrower than the tier it accumulates");
+    static_assert(std::is_same_v<mtr::prec::accum_t<double>, double>,
+                  "accum_t<double> should stay double");
+    static_assert(std::is_same_v<mtr::prec::accum_t<float>, double>,
+                  "accum_t<float> should widen to double");
+    // Integer types accumulate in themselves.
+    static_assert(std::is_same_v<mtr::prec::accum_t<int>, int>,
+                  "accum_t<int> should stay int");
+    EXPECT_GE(sizeof(mtr::prec::accum_t<real_t>), sizeof(real_t));
+}
+
+TEST(Precision, WideAccumulatorBeatsNarrowOne) {
+    // 1 + n*eps summed at the storage tier: once the running total outgrows
+    // the increments, same-tier accumulation stagnates and the wide
+    // accumulator does not. At the double tier both are exact and agree.
+    const int n = 4096;
+    CArrayDevice<real_t> a(n, "precision_wide_accum");
+    a.set_values(real_t(1));
+    MATAR_FENCE();
+
+    const auto wide     = reduce_sum_wide(a, n);
+    const real_t narrow = reduce_sum(a, n);
+
+    // Exact at every tier down to bfloat16 for the wide accumulator: 4096 is
+    // a power of two and each term is 1.
+    EXPECT_NEAR(static_cast<double>(wide), 4096.0, 1.0e-9);
+    // The narrow result is whatever the tier can represent; assert only that
+    // the wide accumulator is never worse.
+    const double err_wide   = std::abs(static_cast<double>(wide) - 4096.0);
+    const double err_narrow = std::abs(static_cast<double>(narrow) - 4096.0);
+    EXPECT_LE(err_wide, err_narrow);
+}
+
+TEST(Precision, PublicNumericTraits) {
+    // The public trait surface an application needs; std::numeric_limits is
+    // not specialized for the half tiers, so these must come from mtr::prec.
+    const double eps = static_cast<double>(mtr::prec::epsilon<real_t>());
+    EXPECT_GT(eps, 0.0);
+    EXPECT_LT(eps, 1.0);
+    EXPECT_GT(static_cast<double>(mtr::prec::numeric_max<real_t>()), 1.0);
+    EXPECT_GT(static_cast<double>(mtr::prec::numeric_min<real_t>()), 0.0);
+
+    // 1 + eps must be distinguishable from 1 at the tier; eps/2 must not be.
+    const real_t one = real_t(1);
+    EXPECT_NE(static_cast<double>(real_t(one + mtr::prec::epsilon<real_t>())), 1.0);
+
+    // Tier-aware math agrees with the host library for exactly representable
+    // values at any tier.
+    EXPECT_NEAR(static_cast<double>(mtr::prec::sqrt(real_t(4))), 2.0, 1.0e-6);
+    EXPECT_NEAR(static_cast<double>(mtr::prec::fabs(real_t(-2.5))), 2.5, 1.0e-6);
+    EXPECT_NEAR(static_cast<double>(mtr::prec::fmax(real_t(1), real_t(2))), 2.0, 1.0e-6);
+    EXPECT_NEAR(static_cast<double>(mtr::prec::fmin(real_t(1), real_t(2))), 1.0, 1.0e-6);
 }
 #endif  // HAVE_KOKKOS
