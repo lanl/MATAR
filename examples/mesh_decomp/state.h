@@ -39,15 +39,8 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using namespace mtr;
 
-
 // Possible node states, used to initialize node_t
-enum class node_state
-{
-    coords,
-    scalar_field,
-    vector_field
-};
-
+enum class node_state { coords, scalar_field, vector_field };
 
 /////////////////////////////////////////////////////////////////////////////
 ///
@@ -56,31 +49,26 @@ enum class node_state
 /// \brief Stores state information associated with a node
 ///
 /////////////////////////////////////////////////////////////////////////////
-struct node_t
-{
-
+struct node_t {
     // Replace with MPIDCArrayKokkos
     MPICArrayKokkos<double> coords;     ///< Nodal coordinates
     MPICArrayKokkos<double> coords_n0;  ///< Nodal coordinates at tn=0 of time integration
-    
-    MPICArrayKokkos<double> scalar_field; ///< Scalar field on a node
-    MPICArrayKokkos<double> vector_field; ///< Vector field on a node
 
+    MPICArrayKokkos<double> scalar_field;  ///< Scalar field on a node
+    MPICArrayKokkos<double> vector_field;  ///< Vector field on a node
 
     // initialization method (num_nodes, num_dims, state to allocate)
-    void initialize(size_t num_nodes, size_t num_dims, std::vector<node_state> node_states)
-    {
-
+    void initialize(size_t num_nodes, size_t num_dims, std::vector<node_state> node_states) {
         CommunicationPlan comm_plan;
-        
-        for (auto field : node_states){
-            switch(field){
+
+        for (auto field : node_states) {
+            switch (field) {
                 case node_state::coords:
-                    if (coords.size() == 0){
+                    if (coords.size() == 0) {
                         this->coords = MPICArrayKokkos<double>(num_nodes, num_dims, "node_coordinates");
                         this->coords.initialize_comm_plan(comm_plan);
                     }
-                    if (coords_n0.size() == 0){
+                    if (coords_n0.size() == 0) {
                         this->coords_n0 = MPICArrayKokkos<double>(num_nodes, num_dims, "node_coordinates_n0");
                         this->coords_n0.initialize_comm_plan(comm_plan);
                     }
@@ -94,23 +82,22 @@ struct node_t
                     this->vector_field.initialize_comm_plan(comm_plan);
                     break;
                 default:
-                    std::cout<<"Desired node state not understood in node_t initialize"<<std::endl;
+                    std::cout << "Desired node state not understood in node_t initialize" << std::endl;
                     throw std::runtime_error("**** Error in State Field Name ****");
             }
         }
-    }; // end method
-    
+    };  // end method
+
     // initialization method (num_nodes, num_dims, state to allocate)
-    void initialize(size_t num_nodes, size_t num_dims, std::vector<node_state> node_states, CommunicationPlan& comm_plan)
-    {
-        for (auto field : node_states){
-            switch(field){
+    void initialize(size_t num_nodes, size_t num_dims, std::vector<node_state> node_states, CommunicationPlan& comm_plan) {
+        for (auto field : node_states) {
+            switch (field) {
                 case node_state::coords:
-                    if (coords.size() == 0){
+                    if (coords.size() == 0) {
                         this->coords = MPICArrayKokkos<double>(num_nodes, num_dims, "node_coordinates");
                         this->coords.initialize_comm_plan(comm_plan);
                     }
-                    if (coords_n0.size() == 0){
+                    if (coords_n0.size() == 0) {
                         this->coords_n0 = MPICArrayKokkos<double>(num_nodes, num_dims, "node_coordinates_n0");
                         this->coords_n0.initialize_comm_plan(comm_plan);
                     }
@@ -124,21 +111,16 @@ struct node_t
                     this->vector_field.initialize_comm_plan(comm_plan);
                     break;
                 default:
-                    std::cout<<"Desired node state not understood in node_t initialize"<<std::endl;
+                    std::cout << "Desired node state not understood in node_t initialize" << std::endl;
                     throw std::runtime_error("**** Error in State Field Name ****");
             }
         }
-    }; // end method
+    };  // end method
 
-}; // end node_t
-
+};  // end node_t
 
 // Possible gauss point states, used to initialize GaussPoint_t
-enum class gauss_pt_state
-{
-    fields,
-    fields_vec
-};
+enum class gauss_pt_state { fields, fields_vec };
 
 /////////////////////////////////////////////////////////////////////////////
 ///
@@ -147,40 +129,34 @@ enum class gauss_pt_state
 /// \brief Stores state information associated with the Gauss point
 ///
 /////////////////////////////////////////////////////////////////////////////
-struct GaussPoint_t
-{
-
+struct GaussPoint_t {
     MPICArrayKokkos<double> fields;
     MPICArrayKokkos<double> fields_vec;
 
     // initialization method (num_cells, num_dims)
-    void initialize(size_t num_gauss_pnts, size_t num_dims, std::vector<gauss_pt_state> gauss_pt_states, CommunicationPlan& comm_plan)
-    {
-
-        for (auto field : gauss_pt_states){
-            switch(field){
+    void initialize(size_t num_gauss_pnts, size_t num_dims, std::vector<gauss_pt_state> gauss_pt_states, CommunicationPlan& comm_plan) {
+        for (auto field : gauss_pt_states) {
+            switch (field) {
                 case gauss_pt_state::fields:
-                    //if (fields.size() == 0) this->fields = DCArrayKokkos<double>(num_gauss_pnts, "gauss_point_fields");
-                    if (fields.size() == 0){
+                    // if (fields.size() == 0) this->fields = DCArrayKokkos<double>(num_gauss_pnts, "gauss_point_fields");
+                    if (fields.size() == 0) {
                         this->fields = MPICArrayKokkos<double>(num_gauss_pnts, "gauss_point_fields");
                         this->fields.initialize_comm_plan(comm_plan);
-                    } 
+                    }
                     break;
                 case gauss_pt_state::fields_vec:
-                    if (fields_vec.size() == 0){
+                    if (fields_vec.size() == 0) {
                         this->fields_vec = MPICArrayKokkos<double>(num_gauss_pnts, num_dims, "gauss_point_fields_vec");
                         this->fields_vec.initialize_comm_plan(comm_plan);
-                    } 
+                    }
                     break;
                 default:
-                    std::cout<<"Desired gauss point state not understood in GaussPoint_t initialize"<<std::endl;
+                    std::cout << "Desired gauss point state not understood in GaussPoint_t initialize" << std::endl;
                     throw std::runtime_error("**** Error in State Field Name ****");
             }
         }
-    }; // end method
+    };  // end method
 };  // end GaussPoint_t
-
-
 
 /////////////////////////////////////////////////////////////////////////////
 ///
@@ -189,18 +165,13 @@ struct GaussPoint_t
 /// \brief Stores all state
 ///
 /////////////////////////////////////////////////////////////////////////////
-struct State_t
-{
+struct State_t {
     // ---------------------------------------------------------------------
     //    state data on mesh declarations
     // ---------------------------------------------------------------------
-    node_t node;              ///< access as node.coords(node_gid,dim)
-    GaussPoint_t GaussPoints; ///< access as GaussPoints.vol(gauss_pt_gid)
-    
-}; // end state_t
+    node_t node;               ///< access as node.coords(node_gid,dim)
+    GaussPoint_t GaussPoints;  ///< access as GaussPoints.vol(gauss_pt_gid)
 
-
-
-
+};  // end state_t
 
 #endif

@@ -3,12 +3,11 @@
 #include <stdio.h>
 #include <vector>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 // Helper function to create and return a DCMatrixKokkos object
-DCMatrixKokkos<double> return_DCMatrixKokkos(int dims, std::vector<int> sizes, const std::string& tag_string = "test_matrix")
-{
-    switch(dims) {
+DCMatrixKokkos<double> return_DCMatrixKokkos(int dims, std::vector<int> sizes, const std::string& tag_string = "test_matrix") {
+    switch (dims) {
         case 1:
             return DCMatrixKokkos<double>(sizes[0], tag_string);
         case 2:
@@ -29,8 +28,7 @@ DCMatrixKokkos<double> return_DCMatrixKokkos(int dims, std::vector<int> sizes, c
 }
 
 // Test default constructor
-TEST(Test_DCMatrixKokkos, default_constructor)
-{
+TEST(Test_DCMatrixKokkos, default_constructor) {
     DCMatrixKokkos<double> A;
     EXPECT_EQ(A.size(), 0);
     EXPECT_EQ(A.extent(), 0);
@@ -38,8 +36,7 @@ TEST(Test_DCMatrixKokkos, default_constructor)
 }
 
 // Test 1D constructor
-TEST(Test_DCMatrixKokkos, constructor_1d)
-{
+TEST(Test_DCMatrixKokkos, constructor_1d) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, "test_matrix");
     EXPECT_EQ(A.size(), size);
@@ -49,8 +46,7 @@ TEST(Test_DCMatrixKokkos, constructor_1d)
 }
 
 // Test 2D constructor
-TEST(Test_DCMatrixKokkos, constructor_2d)
-{
+TEST(Test_DCMatrixKokkos, constructor_2d) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     EXPECT_EQ(A.size(), size * size);
@@ -61,8 +57,7 @@ TEST(Test_DCMatrixKokkos, constructor_2d)
 }
 
 // Test 3D constructor
-TEST(Test_DCMatrixKokkos, constructor_3d)
-{
+TEST(Test_DCMatrixKokkos, constructor_3d) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, size, "test_matrix");
     EXPECT_EQ(A.size(), size * size * size);
@@ -74,24 +69,22 @@ TEST(Test_DCMatrixKokkos, constructor_3d)
 }
 
 // Test get_name method
-TEST(Test_DCMatrixKokkos, get_name)
-{
+TEST(Test_DCMatrixKokkos, get_name) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     EXPECT_EQ(A.get_name(), "test_matrix");
 }
 
 // Test set_values method
-TEST(Test_DCMatrixKokkos, set_values)
-{
+TEST(Test_DCMatrixKokkos, set_values) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
     A.update_host();
 
     // Check if all values are set correctly
-    for(int i = 1; i <= size; i++) {
-        for(int j = 1; j <= size; j++) {
+    for (int i = 1; i <= size; i++) {
+        for (int j = 1; j <= size; j++) {
             EXPECT_EQ(A.host(i, j), 42.0);
         }
     }
@@ -99,52 +92,49 @@ TEST(Test_DCMatrixKokkos, set_values)
 
 #ifndef NDEBUG
 // Test operator() access
-TEST(Test_DCMatrixKokkos, operator_access)
-{
+TEST(Test_DCMatrixKokkos, operator_access) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, size, "test_matrix");
-    
+
     // Test 1D access
     EXPECT_DEATH(A(1) = 1.0, "");
-    
+
     // Test 2D access
     EXPECT_DEATH(A(1, 1) = 2.0, "");
-    
+
     // Test 3D access
     A.host(1, 1, 1) = 3.0;
     EXPECT_EQ(A.host(1, 1, 1), 3.0);
-    
+
     // Test 5D access
     EXPECT_DEATH(A(1, 1, 1, 1, 1) = 4.0, "");
-    
+
     // Test 7D access
     EXPECT_DEATH(A(1, 1, 1, 1, 1, 1, 1) = 5.0, "");
 }
 
 // Test bounds checking
-TEST(Test_DCMatrixKokkos, bounds_checking)
-{
+TEST(Test_DCMatrixKokkos, bounds_checking) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
-    
+
     // Test out of bounds access
     EXPECT_DEATH(A(0, 0), "");
     EXPECT_DEATH(A(10000, 10000), "");
 }
 
 // Test lock_update and unlock_update methods
-TEST(Test_DCMatrixKokkos, lock_unlock_update)
-{
+TEST(Test_DCMatrixKokkos, lock_unlock_update) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
-    
+
     A.set_values(42.0);
 
     A.lock_update();
     // After locking, updates should be prevented
     EXPECT_DEATH(A.update_host(), "");
     EXPECT_DEATH(A.update_device(), "");
-    
+
     A.unlock_update();
     // After unlocking, updates should work again
     A.set_values(2.0);
@@ -152,12 +142,10 @@ TEST(Test_DCMatrixKokkos, lock_unlock_update)
     EXPECT_NO_FATAL_FAILURE(A.update_device());
 }
 
-
 #endif
 
 // Test different types
-TEST(Test_DCMatrixKokkos, different_types)
-{
+TEST(Test_DCMatrixKokkos, different_types) {
     const int size = 10;
 
     // Test with int
@@ -180,20 +168,18 @@ TEST(Test_DCMatrixKokkos, different_types)
 }
 
 // Test RAII behavior
-TEST(Test_DCMatrixKokkos, raii)
-{
+TEST(Test_DCMatrixKokkos, raii) {
     const int size = 10;
     {
         DCMatrixKokkos<double> A(size, size, "test_matrix");
         A.set_values(42.0);
         A.update_host();
         EXPECT_EQ(A.host(1, 1), 42.0);
-    } // A goes out of scope here
+    }  // A goes out of scope here
 }
 
 // Test copy constructor
-TEST(Test_DCMatrixKokkos, copy_constructor)
-{
+TEST(Test_DCMatrixKokkos, copy_constructor) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
@@ -207,8 +193,7 @@ TEST(Test_DCMatrixKokkos, copy_constructor)
 }
 
 // Test assignment operator
-TEST(Test_DCMatrixKokkos, assignment_operator)
-{
+TEST(Test_DCMatrixKokkos, assignment_operator) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
@@ -223,8 +208,7 @@ TEST(Test_DCMatrixKokkos, assignment_operator)
 }
 
 // Test update_host method
-TEST(Test_DCMatrixKokkos, update_host)
-{
+TEST(Test_DCMatrixKokkos, update_host) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
@@ -234,14 +218,12 @@ TEST(Test_DCMatrixKokkos, update_host)
 }
 
 // Test update_device method
-TEST(Test_DCMatrixKokkos, update_device)
-{
+TEST(Test_DCMatrixKokkos, update_device) {
     const int size = 10;
     DCMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
-    A.update_host();   // sync device→host first
-    A.update_device(); // push host→device
-    A.update_host();   // pull back to verify round-trip
+    A.update_host();    // sync device→host first
+    A.update_device();  // push host→device
+    A.update_host();    // pull back to verify round-trip
     EXPECT_EQ(A.host(1, 1), 42.0);
 }
-

@@ -33,19 +33,18 @@
  **********************************************************************************************/
 #include <stdio.h>
 #include "matar.h"
-#include <Kokkos_Random.hpp> // for Kokkos random number generator
+#include <Kokkos_Random.hpp>  // for Kokkos random number generator
 
-#define SEED  5374857
+#define SEED 5374857
 
 // Kokkos provides two random number generator pools one for 64bit states and one for 1024 bit states.
 // Choose one.
 // using gen_t = Kokkos::Random_XorShift64_Pool<DefaultExecSpace>;
 using gen_t = Kokkos::Random_XorShift1024_Pool<DefaultExecSpace>;
 
-int main()
-{
+int main() {
     Kokkos::initialize();
-    { // kokkos scope
+    {  // kokkos scope
         // Seed random number generator
         gen_t rand_pool(SEED);
 
@@ -71,7 +70,7 @@ int main()
 
             // Give the state back, which will allow another thread to acquire it
             rand_pool.free_state(rand_gen);
-        }); // end FOR_ALL
+        });  // end FOR_ALL
 
         // update host
         arr.update_host();
@@ -80,7 +79,7 @@ int main()
             printf(" %d", arr.host(i));
         }
         printf("\n");
-    } // end kokkos scope
+    }  // end kokkos scope
     Kokkos::finalize();
 
     return 0;

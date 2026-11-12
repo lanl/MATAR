@@ -2,18 +2,21 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 namespace {
 // Helper: set two elements on device (KOKKOS_LAMBDA must not be in TEST body on NVCC)
 inline void set_matrix_elements_1_4(DynamicMatrixKokkos<double>& matrix, double v1, double v4) {
-    Kokkos::parallel_for("set_matrix_elems", 1, KOKKOS_LAMBDA(int) {
-        matrix(1) = v1;
-        matrix(4) = v4;
-    });
+    Kokkos::parallel_for(
+        "set_matrix_elems",
+        1,
+        KOKKOS_LAMBDA(int) {
+            matrix(1) = v1;
+            matrix(4) = v4;
+        });
     Kokkos::fence();
 }
-} // namespace
+}  // namespace
 
 // Test default constructor
 TEST(DynamicMatrixKokkosTest, DefaultConstructor) {
@@ -82,7 +85,7 @@ TEST(DynamicMatrixKokkosTest, SetValues) {
 
     matrix.set_values(42.0, 10);
 #ifndef NDEBUG
-    EXPECT_DEATH(matrix.set_values(42.0, 11),"");
+    EXPECT_DEATH(matrix.set_values(42.0, 11), "");
 #endif
 
     auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, matrix.get_kokkos_view());

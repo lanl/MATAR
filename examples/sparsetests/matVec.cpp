@@ -40,15 +40,13 @@
 
 #define EXPORT true
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-void matVec(CArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<double>& b)
-{
+void matVec(CArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<double>& b) {
     size_t n = A.dims(0);
     size_t m = A.dims(1);
-    FOR_ALL(i, 0, n,
-    {
-        for (int j = 0; j < m ; j++) {
+    FOR_ALL(i, 0, n, {
+        for (int j = 0; j < m; j++) {
             b(i) += A(i, j) * v(j);
         }
     });
@@ -56,39 +54,37 @@ void matVec(CArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<doubl
     Kokkos::fence();
 }
 
-void matVecSparse(CSRArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<double>& b)
-{
+void matVecSparse(CSRArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<double>& b) {
     size_t m = A.dim2();
     size_t n = A.dim1();
     FOR_ALL(i, 0, n, {
         size_t col;
         for (auto j = A.begin_index(i); j < A.end_index(i); j++) {
-            col   = A.get_col_flat(j);
+            col = A.get_col_flat(j);
             b(i) += A(i, col) * v(col);
         }
     });
     Kokkos::fence();
 }
 
-int main(int argc, char** argv)
-{
-    Kokkos::initialize(); {
-        int    nrows = 55;
-        int    ncols = 55;
+int main(int argc, char** argv) {
+    Kokkos::initialize();
+    {
+        int nrows = 55;
+        int ncols = 55;
         size_t n;
         if (argc != 2) {
             printf("Usage is .powerTest <MatrixSize> using default of 5000\n");
             n = 5000;
-        }
-        else{
-            n = (size_t) atoi(argv[1]);
+        } else {
+            n = (size_t)atoi(argv[1]);
         }
         nrows = n;
         ncols = n;
         CArrayKokkos<double> A(nrows, ncols);
 
         FOR_ALL(i, 0, nrows,
-            j, 0, ncols, {
+                j, 0, ncols, {
             A(i, j) = 0.0;
         });
         CArrayKokkos<double> data(3 * nrows);
@@ -118,11 +114,10 @@ int main(int argc, char** argv)
                 cols(3 * i)     = i - 1;
                 cols(3 * i + 1) = i;
                 cols(3 * i + 2) = i + 1;
-                b1(i) = 0;
-                b2(i) = 0;
-                starts(i) = 3 * i;
-            }
-            else if (i == nrows - 1) {
+                b1(i)           = 0;
+                b2(i)           = 0;
+                starts(i)       = 3 * i;
+            } else if (i == nrows - 1) {
                 A(i, i - 2)     = i;
                 A(i, i - 1)     = i;
                 A(i, i)         = i;
@@ -132,11 +127,10 @@ int main(int argc, char** argv)
                 cols(3 * i)     = i - 2;
                 cols(3 * i + 1) = i - 1;
                 cols(3 * i + 2) = i;
-                b1(i) = 0;
-                b2(i) = 0;
-                starts(i) = 3 * i;
-            }
-            else {
+                b1(i)           = 0;
+                b2(i)           = 0;
+                starts(i)       = 3 * i;
+            } else {
                 A(i, i)         = i;
                 A(i, i + 1)     = i;
                 A(i, i + 2)     = i;
@@ -146,13 +140,13 @@ int main(int argc, char** argv)
                 cols(3 * i)     = i;
                 cols(3 * i + 1) = i + 1;
                 cols(3 * i + 2) = i + 2;
-                b1(i) = 0;
-                b2(i) = 0;
-                starts(i) = 3 * i;
+                b1(i)           = 0;
+                b2(i)           = 0;
+                starts(i)       = 3 * i;
             }
         });
         RUN({
-            starts(0) = 0;
+            starts(0)     = 0;
             starts(nrows) = 3 * nrows;
         });
         CSRArrayKokkos<double> B(data, starts, cols, nrows, ncols);
@@ -166,21 +160,27 @@ int main(int argc, char** argv)
         matVecSparse(B, v2, b2);
         Kokkos::fence();
         auto lap3  = std::chrono::high_resolution_clock::now();
-        auto time1 =  std::chrono::duration_cast<std::chrono::nanoseconds>(lap1 - start);
-        auto time2 =  std::chrono::duration_cast<std::chrono::nanoseconds>(lap3 - lap2);
+        auto time1 = std::chrono::duration_cast<std::chrono::nanoseconds>(lap1 - start);
+        auto time2 = std::chrono::duration_cast<std::chrono::nanoseconds>(lap3 - lap2);
 
         if (!EXPORT) {
-            RUN({ printf("Size: %ld, Dense: %.2e, Sparse: %.2e, %f, %f \n", n, time1.count() * 1e-9, time2.count() * 1e-9, b1(57980), b2(57980) ); });
-        }
-        else {
+            RUN({ printf("Size: %ld, Dense: %.2e, Sparse: %.2e, %f, %f \n", n, time1.count() * 1e-9, time2.count() * 1e-9, b1(57980), b2(57980)); });
+        } else {
             RUN({
                 for (int i = 0; i < n; i++) {
                     if (abs(b1(i) - b2(i)) > 1e-7) {
                         printf("b1(%d) - b2(%d) = %.2e\n", i, i, b1(i) - b2(i));
                     }
-                } 
-                printf("%ld, %.2e, %.2e, %f, %f, %f \n", n, time1.count() * 1e-9, time2.count() * 1e-9, (1e-9 * time1.count()) / (1e-9 * time2.count()), b1(25), b2(25) );
+                }
+                printf("%ld, %.2e, %.2e, %f, %f, %f \n",
+                       n,
+                       time1.count() * 1e-9,
+                       time2.count() * 1e-9,
+                       (1e-9 * time1.count()) / (1e-9 * time2.count()),
+                       b1(25),
+                       b2(25));
             });
         }
-    } Kokkos::finalize();
+    }
+    Kokkos::finalize();
 }

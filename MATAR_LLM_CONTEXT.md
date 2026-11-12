@@ -346,6 +346,30 @@ for (int i = 0; i < 5; i++) {
 ragged_dual.update_device();  // sync to device
 ```
 
+### Ragged Arrays of Vectors
+
+`RaggedRightArrayofVectorsKokkos<T>` (device; host counterpart `RaggedRightArrayofVectors<T>`, no alias)
+stores `stride(i)` fixed-length vectors per row, accessed as `array(i, j, k)` with
+`k = [0, vector_dim)`. `size()` is the sum of strides times `vector_dim`.
+
+```cpp
+CArrayDevice<size_t> strides(num_rows, "strides");
+FOR_ALL(i, 0, num_rows, { strides(i) = i + 1; });
+
+RaggedRightArrayofVectorsKokkos<double> rrav(strides, vector_dim, "rrav");
+
+FOR_ALL(i, 0, num_rows, {
+    for (size_t j = 0; j < rrav.stride(i); j++) {
+        for (size_t k = 0; k < vector_dim; k++) {
+            rrav(i, j, k) = some_value;
+        }
+    }
+});
+```
+
+It has no `stride_host()`: `stride(i)` reads device memory, so call it only inside device loops.
+See `examples/ragged_right_array_of_vectors_kokkos.cpp`.
+
 ### Dynamic Ragged Arrays
 
 Row lengths can be updated dynamically during computation. Useful when the structure is not known a priori.
@@ -1177,9 +1201,93 @@ FOR_ALL(i, 0, num_nodes, {
 ### Global Type Aliases
 
 ```cpp
-using real_t = double;
-using u_int  = unsigned int;
+// precision.h — meaning fixed at configure time by CMake flags (see below)
+using real_t      = mtr::real_t;       // default working tier   (MATAR_REAL,      default double)
+using high_real_t = mtr::high_real_t;  // must-stay-accurate tier (MATAR_HIGH_REAL, default double)
+using low_real_t  = mtr::low_real_t;   // tolerant/bulk tier      (MATAR_LOW_REAL,  default double)
 ```
+
+(`u_int` was removed from `aliases.h`; use `size_t` or `unsigned int` directly.)
+
+### Precision System (precision.h)
+
+Three compile-time-swappable tiers selected per build with CMake flags; user
+code only ever writes the tier names.
+
+| CMake flag | Values | Tier |
+|---|---|---|
+| `MATAR_REAL` | `double float half bfloat16 quad` | `real_t` |
+| `MATAR_HIGH_REAL` | `double float quad` | `high_real_t` |
+| `MATAR_LOW_REAL` | `double float half bfloat16` | `low_real_t` |
+
+Rules (hard rules for generated code):
+
+- **Declare storage and write constants with the three tier names** `real_t` /
+  `high_real_t` / `low_real_t`. Declare fields with a tier
+  (`CArrayDevice<real_t>`), write constants by constructing the tier type
+  (`real_t(0.5)`, `real_t(0)`), and let the CMake flags fix the meaning.
+- **For numeric traits and math on a tier value, use `mtr::prec`** — the only
+  other public precision surface. `std::numeric_limits` is NOT specialized for
+  `half_t`/`bhalf_t`/`__float128`, and the bare C math functions have no half
+  overloads and silently promote to double, so neither is usable against a
+  tier type:
+
+  ```cpp
+  mtr::prec::epsilon<real_t>()      // 1+eps != 1 at this tier
+  mtr::prec::numeric_min<real_t>()  // smallest positive normal (std::...::min())
+  mtr::prec::numeric_max<real_t>()  // largest finite          (std::...::max())
+  mtr::prec::fabs / sqrt / fmax / fmin
+  mtr::prec::accum_t<T>             // widened accumulator type for long sums
+  ```
+
+  Always qualify these. They deliberately live in `mtr::prec`, not `mtr`,
+  because application code commonly writes `using namespace mtr;` and then
+  calls `fabs`/`sqrt`/`fmax`/`fmin` unqualified expecting the C library —
+  injecting those names into `mtr` would silently change overload resolution
+  at every such call site.
+- **Scale tolerances to the tier, never to a literal.** A fixed `1e-16` guard
+  is meaningless below double (float eps is ~1.2e-7), so `x / (den + 1e-16)`
+  stops protecting anything and `if (x > 1e-16)` degenerates to `if (x > 0)`.
+  Write `mtr::prec::epsilon<real_t>() * real_t(10)` instead. Watch magnitudes
+  too: half's max is 65504, so a `1e300` sentinel becomes `inf` and a `1e-60`
+  floor becomes `0`.
+- **Sum into `mtr::prec::accum_t<T>`, not `T`.** The reduce macros take the
+  accumulator type from the variable you declare (`macros.h` deduces it with
+  `decltype(var)`), so a wide accumulator over narrow storage is free and
+  needs no cast on the array:
+
+  ```cpp
+  using Acc = mtr::prec::accum_t<real_t>;
+  Acc total = Acc(0), loc = Acc(0);
+  FOR_REDUCE_SUM(i, 0, n, loc, { loc += Acc(field(i)); }, total);
+  ```
+
+  Accumulating at the storage tier stagnates once the running total outgrows
+  the increments — a few million terms in float, a few hundred in bfloat16.
+  `accum_t` is the identity for double and wider and for every integer type.
+  `MPICArrayKokkos::all_reduce(operation::sum)` already does this internally
+  on both the on-node and cross-rank stages.
+- **Never pass a tier value through varargs.** `printf`/`fprintf` of a native
+  `half_t`/`bhalf_t` is unsafe (they are class types, not floating types) and
+  `__float128` needs `quadmath_snprintf`. Widen explicitly at the call:
+  `printf("%e", static_cast<double>(x))`. `float` happens to survive via
+  default argument promotion, but write the cast anyway so the code is correct
+  at every tier.
+- `half`/`bfloat16` are native 16-bit on CUDA/HIP/SYCL and float-backed on
+  CPU backends (`MATAR_FP16_IS_EMULATED`/`MATAR_BF16_IS_EMULATED` report
+  which at compile time). `quad` = `__float128`, host-only. Non-Kokkos
+  builds allow only `double`/`float` (configure error otherwise).
+- Solver internals (and any MATAR-internal math) compute in `real_t`;
+  storage arrays of other tiers convert implicitly on read/write.
+- Reductions (`FOR_REDUCE_*`) work at every tier: precision.h supplies the
+  `Kokkos::reduction_identity` specializations Kokkos lacks (half types on
+  Kokkos < 5.2, `__float128` everywhere).
+- MPI types work at every tier with no user-visible machinery:
+  `MPICArrayKokkos<real_t>` communicate()/all_reduce() just work. Internally
+  (mpi_types.h): native 16-bit types get a contiguous-byte MPI datatype and
+  reduce by promoting to double on the wire; `__float128` gets a 16-byte
+  datatype plus custom MPI_Ops. Native-16-bit MPI paths compile on GPU builds
+  but CI verifies them only in float-emulated form (no GPU runners).
 
 ### Choosing the Right Type
 
@@ -1599,6 +1707,23 @@ Use these constraints as hard rules when generating MATAR code:
   - **Class-member variants** (use `KOKKOS_CLASS_LAMBDA`): `FOR_ALL_CLASS`, `RUN_CLASS`, `FOR_REDUCE_SUM_CLASS`, `FOR_REDUCE_MAX_CLASS`, `FOR_REDUCE_MIN_CLASS`
   - **Hierarchical (team/thread/vector):** `FOR_FIRST`, `FOR_SECOND`, `FOR_THIRD`, `DO_FIRST`, `DO_SECOND`, `DO_THIRD`
   - **Hierarchical reductions:** `FOR_REDUCE_SUM_SECOND`, `FOR_REDUCE_SUM_THIRD`, `DO_REDUCE_SUM_SECOND`, `DO_REDUCE_SUM_THIRD`, `FOR_REDUCE_MAX_SECOND`, `DO_REDUCE_MAX_THIRD`, `FOR_REDUCE_MIN_SECOND`, `DO_REDUCE_MIN_THIRD`
+1b. **Host-side twins: `FOR_ALL_HOST`, `DO_ALL_HOST`, `RUN_HOST`,
+   `FOR_REDUCE_{SUM,MAX,MIN,PRODUCT}_HOST`, `DO_REDUCE_{SUM,MAX,MIN}_HOST`**
+   (same argument forms, including the optional trailing kernel-name string).
+   These run in the host execution space so CPU work overlaps in-flight
+   device kernels. Two hard rules:
+   - They capture **by reference**, so `std::` containers/streams are allowed
+     inside them (that is their purpose: file I/O and CPU-faster algorithms).
+   - MATAR is **device-centric**: `*Device` types always live on the device
+     and their execution space is never overridden. For host-parallel work
+     over device-resident data, declare the field as a **Dual** type and use
+     the `.host()` accessor inside the host macro, then `update_device()`.
+   - They may **only** touch host-accessible data — `*Host` types, the
+     `.host()` side of a Dual type, or plain `std::` data. Never a device
+     array: that compiles but aborts at run time.
+   Fence one side without stalling the other via `MATAR_FENCE_HOST()` /
+   `MATAR_FENCE_DEVICE()`. There are no hierarchical `_HOST` variants.
+
 2. `**FOR_ALL` and `DO_ALL` parallelize all listed dimensions.**
   - If a dimension must remain sequential, keep it as a plain inner `for` loop inside the macro body, or use hierarchical macros where appropriate.
 3. **Indexing is always `()` for MATAR arrays.**

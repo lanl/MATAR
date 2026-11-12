@@ -39,8 +39,7 @@
 #include <string>
 #include <iostream>
 
-class VTK_Writer_MPI_IO
-{
+class VTK_Writer_MPI_IO {
 private:
     MPI_Comm mpi_io_comm_;
     const std::array<int, 3> dimensions_full_array_;
@@ -52,14 +51,11 @@ private:
     MPI_Datatype file_space_type_;
 
     MPI_File create_mpi_io_file(const char* filename);
-    void write_mpi_io_file(const char* filename, const char* header_text,
-                           const char* data_as_chars);
+    void write_mpi_io_file(const char* filename, const char* header_text, const char* data_as_chars);
 
 public:
-    VTK_Writer_MPI_IO(MPI_Comm mpi_io_comm, const std::array<int, 3>& dimensions_full_array,
-                      const std::array<int, 3>& dimensions_subarray,
-                      const std::array<int, 3>& start_coordinates,
-                      const char* format);
+    VTK_Writer_MPI_IO(MPI_Comm mpi_io_comm, const std::array<int, 3>& dimensions_full_array, const std::array<int, 3>& dimensions_subarray,
+                      const std::array<int, 3>& start_coordinates, const char* format);
     ~VTK_Writer_MPI_IO();
 
     void write(int iter, const double* data);

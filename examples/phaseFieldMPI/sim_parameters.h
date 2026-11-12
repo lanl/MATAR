@@ -34,8 +34,7 @@
 #pragma once
 #include <array>
 
-struct SimParameters
-{
+struct SimParameters {
     std::array<int, 3> nn;
     int ndim;
     int num_steps;
@@ -52,6 +51,6 @@ struct SimParameters
     SimParameters();
     void print() const;
 
-    private:
-        void set_ndim();
+private:
+    void set_ndim();
 };

@@ -37,17 +37,16 @@
 
 #include "matar.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-class FFTManagerInPlace
-{
+class FFTManagerInPlace {
 private:
     int* nn_;
-    int  nx_;
-    int  ny_;
-    int  nz_;
-    int  ndim_;
-    int  isign_;
+    int nx_;
+    int ny_;
+    int nz_;
+    int ndim_;
+    int isign_;
     CArrayKokkos<double> data_;
 
 public:

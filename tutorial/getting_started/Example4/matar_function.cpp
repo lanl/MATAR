@@ -35,7 +35,7 @@
 #include <stdio.h>
 #include <math.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 /*
   Functions or subroutines that will be called from fortran should include "_" at the end of name.
@@ -50,18 +50,11 @@ extern "C" void matar_finalize_();
 extern "C" void square_array_elements_(double* array, int* nx, int* ny);
 extern "C" void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_elements);
 
-void matar_initialize_()
-{
-    MATAR_INITIALIZE();
-}
+void matar_initialize_() { MATAR_INITIALIZE(); }
 
-void matar_finalize_()
-{
-    MATAR_FINALIZE();
-}
+void matar_finalize_() { MATAR_FINALIZE(); }
 
-void square_array_elements_(double* array, int* nx, int* ny)
-{
+void square_array_elements_(double* array, int* nx, int* ny) {
     // define private copys of nx and ny
     // this enables kokkos to copy stack variables
     // if used in kokkos kernal
@@ -70,13 +63,11 @@ void square_array_elements_(double* array, int* nx, int* ny)
 
     // create ViewFMatrixDual since array is fortran allocated
 
-    // Note: FOR_ALL/DO_ALL is a macro that expands to a loop over the elements of the array following the 
+    // Note: FOR_ALL/DO_ALL is a macro that expands to a loop over the elements of the array following the
     // optimal layout for column major order which is the default for fortran arrays
-
 }
 
-void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_elements)
-{
+void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_elements) {
     // define private copys of nx and ny
     int nx_ = *nx;
     int ny_ = *ny;
@@ -84,8 +75,7 @@ void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_element
     // create ViewFMatrixDual since array is fortran allocated
 
     double global_sum = 0.0;
-    double local_sum = 0.0;
-
+    double local_sum  = 0.0;
 
     // update sum_of_elements memory location
     *sum_of_elements = global_sum;

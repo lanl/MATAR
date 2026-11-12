@@ -37,13 +37,12 @@
 #include "matar.h"
 #include "Kokkos_DualView.hpp"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 void DViewCArrayKokkosTwoDimensionExample();
 void DCArrayKokkosTwoDimensionExample();
 
-int main()
-{
+int main() {
     Kokkos::initialize();
     {
         // Run DViewCArrayKokkos 2D example
@@ -51,12 +50,11 @@ int main()
 
         // Run DCArrayKokkos 2D example
         DCArrayKokkosTwoDimensionExample();
-    } // end of kokkos scope
+    }  // end of kokkos scope
     Kokkos::finalize();
 }
 
-void DViewCArrayKokkosTwoDimensionExample()
-{
+void DViewCArrayKokkosTwoDimensionExample() {
     printf("\n====================Running 2D DViewCArrayKokkos example====================\n");
 
     int nx = 2;
@@ -121,8 +119,7 @@ void DViewCArrayKokkosTwoDimensionExample()
     printf("Device data pointer: %p\n", A_2D.device_pointer());
 }
 
-void DCArrayKokkosTwoDimensionExample()
-{
+void DCArrayKokkosTwoDimensionExample() {
     printf("\n====================Running 2D DCArrayKokkos example====================\n");
 
     int nx = 2;
