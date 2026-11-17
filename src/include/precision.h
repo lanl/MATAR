@@ -238,9 +238,22 @@ MATAR_PRECISION_FUNC __float128 fmax(__float128 x, __float128 y) { return fmaxq(
 MATAR_PRECISION_FUNC __float128 fmin(__float128 x, __float128 y) { return fminq(x, y); }
 #endif
 
+// With Kokkos, the generic traits come from Kokkos's numeric traits rather
+// than std::numeric_limits: those are constexpr values, usable in device code
+// without nvcc's --expt-relaxed-constexpr (Kokkos_ENABLE_CUDA_CONSTEXPR, which
+// defaults OFF for nvcc), whereas numeric_limits members are host functions.
 template <typename T>
 MATAR_PRECISION_FUNC T epsilon() {
+#ifdef HAVE_KOKKOS
+    // epsilon_v is floating-point only; numeric_limits gives 0 for integers.
+    if constexpr (std::is_integral_v<T>) {
+        return T(0);
+    } else {
+        return Kokkos::Experimental::epsilon_v<T>;
+    }
+#else
     return std::numeric_limits<T>::epsilon();
+#endif
 }
 #if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED
 template <>
@@ -345,15 +358,30 @@ using accum_t = typename accumulator<T>::type;
 
 // Smallest positive normalized value, i.e. std::numeric_limits<T>::min().
 // Named numeric_min rather than min so that it cannot be confused with, or
-// made ambiguous against, the two-argument std::min.
+// made ambiguous against, the two-argument std::min. Device-safe via the
+// Kokkos traits, as for impl::epsilon above.
 template <typename T>
 MATAR_PRECISION_FUNC T numeric_min() {
+#ifdef HAVE_KOKKOS
+    // norm_min_v is floating-point only; for integers numeric_limits::min()
+    // is the lowest value, which is finite_min_v.
+    if constexpr (std::is_integral_v<T>) {
+        return Kokkos::Experimental::finite_min_v<T>;
+    } else {
+        return Kokkos::Experimental::norm_min_v<T>;
+    }
+#else
     return std::numeric_limits<T>::min();
+#endif
 }
 // Largest finite value, i.e. std::numeric_limits<T>::max().
 template <typename T>
 MATAR_PRECISION_FUNC T numeric_max() {
+#ifdef HAVE_KOKKOS
+    return Kokkos::Experimental::finite_max_v<T>;
+#else
     return std::numeric_limits<T>::max();
+#endif
 }
 
 #if MATAR_HAS_FP16 && !MATAR_FP16_IS_EMULATED

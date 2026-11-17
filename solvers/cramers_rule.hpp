@@ -82,8 +82,9 @@ KOKKOS_INLINE_FUNCTION double det_2x2(const double a00, const double a01, const 
 /////////////////////////////////////////////////////////////////////////////
 template <typename T>
 KOKKOS_INLINE_FUNCTION real_t det_3x3(const T& A) {
-    const real_t det = A(0, 0) * (A(1, 1) * A(2, 2) - A(2, 1) * A(1, 2)) - A(0, 1) * (A(1, 0) * A(2, 2) - A(2, 0) * A(1, 2)) +
-                       A(0, 2) * (A(1, 0) * A(2, 1) - A(2, 0) * A(1, 1));
+    const real_t det = A(0, 0) * (A(1, 1) * A(2, 2) - A(2, 1) * A(1, 2)) 
+                     - A(0, 1) * (A(1, 0) * A(2, 2) - A(2, 0) * A(1, 2)) 
+                     + A(0, 2) * (A(1, 0) * A(2, 1) - A(2, 0) * A(1, 1));
 
     return det;
 }  // end of det_3d function
