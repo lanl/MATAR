@@ -351,15 +351,20 @@ TEST(Precision, WideAccumulatorBeatsNarrowOne) {
 TEST(Precision, PublicNumericTraits) {
     // The public trait surface an application needs; std::numeric_limits is
     // not specialized for the half tiers, so these must come from mtr::prec.
-    const double eps = static_cast<double>(mtr::prec::epsilon<real_t>());
-    EXPECT_GT(eps, 0.0);
-    EXPECT_LT(eps, 1.0);
-    EXPECT_GT(static_cast<double>(mtr::prec::numeric_max<real_t>()), 1.0);
-    EXPECT_GT(static_cast<double>(mtr::prec::numeric_min<real_t>()), 0.0);
+    // Compare in real_t, not double: at the quad tier numeric_min underflows
+    // to 0 and 1 + eps rounds to 1 when narrowed to double. EXPECT_TRUE rather
+    // than EXPECT_GT/NE because gtest cannot print a __float128 operand.
+    const real_t one  = real_t(1);
+    const real_t zero = real_t(0);
+    const real_t eps  = mtr::prec::epsilon<real_t>();
+    EXPECT_TRUE(eps > zero);
+    EXPECT_TRUE(eps < one);
+    EXPECT_TRUE(mtr::prec::numeric_max<real_t>() > one);
+    EXPECT_TRUE(mtr::prec::numeric_min<real_t>() > zero);
 
     // 1 + eps must be distinguishable from 1 at the tier; eps/2 must not be.
-    const real_t one = real_t(1);
-    EXPECT_NE(static_cast<double>(real_t(one + mtr::prec::epsilon<real_t>())), 1.0);
+    EXPECT_TRUE(real_t(one + eps) != one);
+    EXPECT_TRUE(real_t(one + real_t(eps / real_t(2))) == one);
 
     // Tier-aware math agrees with the host library for exactly representable
     // values at any tier.
