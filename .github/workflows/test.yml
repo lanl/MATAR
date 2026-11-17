@@ -41,8 +41,10 @@ jobs:
         # NOTE: CI has no GPU, so this verifies host-macro correctness and the
         # option plumbing, not actual host/device overlap.
         - {name: "TEST_UBUNTU_HOST_OPENMP",      os: ubuntu-latest, preset: "hostomp"}
-        - {name: "TEST_MAC_SERIAL_DEBUG",        os: macos-14,      preset: "serial-debug"}
-        - {name: "TEST_MAC_SERIAL_RELEASE",      os: macos-14,      preset: "serial"}
+        # macos-latest rather than a pinned image: GitHub retires old macOS
+        # images (macos-14 was dropped), which silently stops these jobs.
+        - {name: "TEST_MAC_SERIAL_DEBUG",        os: macos-latest,  preset: "serial-debug"}
+        - {name: "TEST_MAC_SERIAL_RELEASE",      os: macos-latest,  preset: "serial"}
 
     steps:
     - name: Checkout repository
