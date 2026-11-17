@@ -22,7 +22,7 @@ jobs:
       matrix:
         real: [double, float]
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v5
 
     - name: Configure
       run: |
@@ -45,7 +45,7 @@ jobs:
     name: Ubuntu_GCC_BUNDLED_KOKKOS
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v5
 
     - name: Checkout submodules
       run: git submodule update --init --recursive
@@ -101,7 +101,7 @@ jobs:
     name: Ubuntu_GCC_EXTERNAL_KOKKOS
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v5
 
     - name: Checkout submodules
       run: git submodule update --init --recursive
