@@ -219,14 +219,6 @@ cmake --build --preset hip -j
 
 For CUDA and HIP, if no GPU is visible while configuring (for example on a login node), you also need to name the GPU architecture. See [GPU architecture](#gpu-architecture).
 
-**SYCL** (Intel GPU). There is no preset and SYCL is not tested in CI, so configure by hand with the oneAPI compiler:
-```bash
-source /opt/intel/oneapi/setvars.sh                # or: module load oneapi
-cmake -S . -B build/sycl -DCMAKE_CXX_COMPILER=icpx -DKokkos_ENABLE_SYCL=ON \
-      -DMATAR_BUILD_EXAMPLES=ON -DMATAR_BUILD_TESTS=ON
-cmake --build build/sycl -j
-```
-
 **CUDA device + OpenMP host** (GPU kernels overlapping CPU work through the `_HOST` macros):
 ```bash
 cmake --preset cuda-hostomp
