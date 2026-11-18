@@ -58,6 +58,9 @@ if (MATAR_ENABLE_KOKKOS)
 
   add_subdirectory(pointcloud)
 
+  add_executable(host_device_overlap host_device_overlap.cpp)
+  target_link_libraries(host_device_overlap ${LINKING_LIBRARIES})
+
   if (Kokkos_ENABLE_OPENMP)
     add_executable(parallel_hello_world parallel_hello_world.cpp)
     target_link_libraries(parallel_hello_world ${LINKING_LIBRARIES})

@@ -9,7 +9,7 @@ MATAR (LANL open-source code number C23032) is a C++ library that addresses the 
 
 * [Fierro](https://github.com/lanl/Fierro): The MATAR library underpins the Fierro code that is designed to simulate quasi-static solid mechanics problems and material dynamics problems.  
     
-* Simple examples are in the /example folder
+* Simple examples are in the [`examples/`](examples) folder, and step-by-step tutorials are in [`tutorial/getting_started/`](tutorial/getting_started)
 
 ## Descriptions
 
@@ -92,35 +92,353 @@ for (int i=0; i<4; i++){
 ```
 More information about the capabilities and usage of MATAR can be found in this presentation [here](https://www.researchgate.net/publication/360744549_General_purpose_GPU_programming_made_easy).
     
-## Cloning the code
-If your SSH keys are set in github, then from the terminal type:
-```
-git clone --recursive ssh://git@github.com/lanl/MATAR.git    
-```
-The code can also be cloned using
-```
-git clone --recursive https://github.com/lanl/MATAR.git
-```
-
 ## Building MATAR
-MATAR is built entirely with CMake. Kokkos is bundled as a git submodule (`src/Kokkos/kokkos`), pinned to the Kokkos **5.2.1** release, and is built automatically with the backend you select, so no separate Kokkos install is needed. Kokkos 5 requires **C++20** and CMake >= 3.22 (CUDA builds additionally need CMake >= 3.25.2 for C++20 in the CUDA language), so `matar::matar` requests `cxx_std_20`.
 
-The provided CMake presets configure, build, and test MATAR with a given Kokkos backend:
-```
-cmake --preset serial          # also: openmp, pthreads, cuda, hip,
-cmake --build --preset serial  #       serial-mpi, openmp-mpi, cuda-mpi, hip-mpi,
-ctest --preset serial          #       plus -debug variants (e.g. serial-debug)
-```
-The unit tests are built with the presets but only execute when `ctest` is invoked.
-Each preset builds into `build/<preset-name>`, with example executables in `build/<preset-name>/bin`. Debug presets include checks on array and matrix dimensions and index bounds. On HPC machines, load your compiler/MPI/CUDA modules first, then run the preset; site-specific toolchains can be layered with a `CMakeUserPresets.json`.
+MATAR is a header-only library, so "building MATAR" means two things: configuring the bundled Kokkos for the backend you want (serial, OpenMP, CUDA, ...), and compiling the examples, unit tests, and benchmarks in this repository. If you only want to *use* MATAR in your own code, skip to [Using MATAR as a third-party library](#using-matar-as-a-third-party-library); your project's CMake build will pull MATAR in.
 
-Configuring manually instead of with presets works the same way:
-```
-cmake -B build -DMATAR_BUILD_EXAMPLES=ON -DKokkos_ENABLE_OPENMP=ON
-cmake --build build -j
+The whole build is CMake. Kokkos is bundled as a git submodule (`src/Kokkos/kokkos`, pinned to Kokkos **5.2.1**) and is compiled automatically with the backend you choose, so you do not need to install Kokkos separately.
+
+### Prerequisites
+
+| Requirement | Version / notes |
+|---|---|
+| CMake | **3.22 or newer**, or **3.25.2 or newer** for CUDA builds (needed for C++20 in the CUDA language). Check with `cmake --version`. |
+| C++ compiler | Must support **C++20**, because Kokkos 5 requires it (recent GCC, Clang, or a vendor compiler). |
+| git | Used to clone the repository and its Kokkos submodule. |
+| Internet access at configure time | Needed only when tests or benchmarks are enabled, since CMake downloads GoogleTest / Google Benchmark with FetchContent. All presets enable tests. |
+| MPI (optional) | Needed for the `*-mpi` presets, for example OpenMPI or MPICH. `mpicxx`/`mpirun` must be on your `PATH`. |
+| CUDA toolkit / ROCm (optional) | Needed for the `cuda*` and `hip*` presets. `nvcc` (CUDA) or `hipcc` (HIP) must be on your `PATH`. |
+
+On HPC systems, load your modules **before** configuring, for example `module load cmake gcc cuda openmpi`. CMake records the compilers it finds on the first configure, so loading a module afterwards has no effect until you reconfigure from scratch (see [Rebuilding and starting over](#rebuilding-and-starting-over)).
+
+### Step 1: Get the source
+
+Run this from whichever directory you want the `MATAR/` folder created in:
+
+```bash
+git clone --recursive https://github.com/lanl/MATAR.git    # or: ssh://git@github.com/lanl/MATAR.git
+cd MATAR
 ```
 
-The CMake options are:
+`--recursive` is required because it also downloads the Kokkos submodule. If you already cloned without it, or `src/Kokkos/kokkos` is empty, run this from inside `MATAR/`:
+
+```bash
+git submodule update --init --recursive
+```
+
+Without the submodule, configuring stops with an error that tells you to run that command.
+
+### Step 2: Configure, build, and test (quick start)
+
+**Run every command below from the MATAR repository root**, the directory that contains `CMakePresets.json`. `cmake --preset`, `cmake --build --preset`, and `ctest --preset` look for `CMakePresets.json` in the current directory and fail with `No such preset` anywhere else.
+
+```bash
+cd MATAR                          # the repository root
+
+cmake --preset serial             # 1. configure  -> creates build/serial/
+cmake --build --preset serial -j  # 2. compile Kokkos, examples, and tests
+ctest --preset serial             # 3. run the unit tests
+```
+
+After this:
+
+* All build output is under `build/serial/`. Nothing is written into the source tree.
+* Every executable (examples and test binaries) is in **`build/serial/bin/`**. Run them from the repository root by path:
+  ```bash
+  ./build/serial/bin/mtestkokkos
+  ./build/serial/bin/matar_tests      # the GoogleTest unit-test binary, run directly
+  ```
+* The first build compiles all of Kokkos, so it takes a few minutes. Later builds only recompile what changed.
+
+Replace `serial` with any preset name from the table below. Every preset uses its own `build/<preset-name>/` directory, so several backends can be built side by side.
+
+> **Not at the repository root?** Presets need the root, but the non-preset forms work from anywhere if you give the build directory explicitly:
+> ```bash
+> cmake --build /path/to/MATAR/build/serial -j
+> ctest --test-dir /path/to/MATAR/build/serial --output-on-failure
+> ```
+
+### Choosing a preset
+
+Run `cmake --list-presets` from the repository root to print every preset. All presets build the examples and unit tests, use `CMAKE_BUILD_TYPE=Release` unless the name ends in `-debug`, and set `Kokkos_ARCH_NATIVE=ON` to optimize for the CPU you are compiling on.
+
+| Preset | Backend(s) | Use it for |
+|---|---|---|
+| `serial` | Kokkos Serial | First build, debugging, machines with no GPU |
+| `openmp` | Kokkos OpenMP | Multi-core CPU parallelism |
+| `pthreads` | Kokkos `std::thread` | Multi-core CPU parallelism without OpenMP |
+| `cuda` | Kokkos CUDA | NVIDIA GPUs (needs `nvcc`) |
+| `hip` | Kokkos HIP | AMD GPUs (needs `hipcc`, which the preset sets as the C++ compiler) |
+| `serial-mpi`, `openmp-mpi`, `cuda-mpi`, `hip-mpi` | Same as above, plus MPI | Distributed-memory runs (`MPICArrayKokkos`, `CommunicationPlan`) |
+| `serial-debug`, `openmp-debug`, `cuda-debug`, `hip-debug`, `serial-mpi-debug` | Debug builds | Array dimension and index-bounds checks, debug symbols |
+| `serial-fp32`, `serial-fp16`, `serial-bf16`, `serial-quad`, `serial-mixed` | Serial with a different `real_t` | Testing reduced or extended precision (see [Precision tiers](#precision-tiers)) |
+| `serial-mpi-fp16`, `serial-mpi-quad` | Serial + MPI with a different `real_t` | Testing MPI at reduced or extended precision |
+| `hostomp` | OpenMP for both host and device macros | CPU-only use of the host/device backend options |
+| `cuda-hostomp` | CUDA device + OpenMP host | Overlapping CPU work with GPU kernels (see [Host-side parallelism](#host-side-parallelism)) |
+
+The configure, build, and test presets share names, so the same word goes after `cmake --preset`, `cmake --build --preset`, and `ctest --preset`.
+
+### Build commands for every backend
+
+Each block below is the complete sequence for one backend: configure, build, test, and run an example. **Run every block from the repository root.** Each backend builds into its own `build/<preset>/` directory, so you can build any combination of them side by side. `-j` builds in parallel on all cores. Each line is chained with `&&`, so the sequence stops at the first failure.
+
+**Serial** (no parallelism; runs anywhere):
+```bash
+cmake --preset serial && cmake --build --preset serial -j && ctest --preset serial
+./build/serial/bin/mtestkokkos
+```
+
+**OpenMP** (multi-core CPU):
+```bash
+cmake --preset openmp && cmake --build --preset openmp -j && ctest --preset openmp
+OMP_NUM_THREADS=8 ./build/openmp/bin/mtestkokkos
+```
+
+**pthreads** (multi-core CPU through `std::thread`):
+```bash
+cmake --preset pthreads && cmake --build --preset pthreads -j && ctest --preset pthreads
+./build/pthreads/bin/mtestkokkos --kokkos-num-threads=8
+```
+
+**CUDA** (NVIDIA GPU; `nvcc` on `PATH`, CMake >= 3.25.2):
+```bash
+module load cuda                                   # if your system uses modules
+cmake --preset cuda && cmake --build --preset cuda -j && ctest --preset cuda
+./build/cuda/bin/mtestkokkos
+```
+If no GPU is visible while configuring (for example on a login node), name the architecture: `cmake --preset cuda -DKokkos_ARCH_AMPERE80=ON`. See [GPU builds](#gpu-builds-cuda-and-hip).
+
+**HIP** (AMD GPU; `hipcc` on `PATH`):
+```bash
+module load rocm                                   # if your system uses modules
+cmake --preset hip && cmake --build --preset hip -j && ctest --preset hip
+./build/hip/bin/mtestkokkos
+```
+If no GPU is visible while configuring, name the architecture: `cmake --preset hip -DKokkos_ARCH_AMD_GFX90A=ON`.
+
+**SYCL** (Intel GPU). There is no preset and SYCL is not tested in CI, so configure by hand with the oneAPI compiler:
+```bash
+source /opt/intel/oneapi/setvars.sh                # or: module load oneapi
+cmake -S . -B build/sycl -DCMAKE_CXX_COMPILER=icpx -DKokkos_ENABLE_SYCL=ON \
+      -DMATAR_BUILD_EXAMPLES=ON -DMATAR_BUILD_TESTS=ON
+cmake --build build/sycl -j && ctest --test-dir build/sycl --output-on-failure
+```
+
+**CUDA device + OpenMP host** (GPU kernels overlapping CPU work through the `_HOST` macros):
+```bash
+cmake --preset cuda-hostomp && cmake --build --preset cuda-hostomp -j && ctest --preset cuda-hostomp
+./build/cuda-hostomp/bin/host_device_overlap
+```
+
+**OpenMP for both host and device macros** (CPU only):
+```bash
+cmake --preset hostomp && cmake --build --preset hostomp -j && ctest --preset hostomp
+```
+
+**With MPI.** Any of the serial, OpenMP, CUDA, or HIP backends gets MPI by adding `-mpi` to the preset name. `mpicxx`/`mpirun` must be on `PATH`:
+```bash
+module load mpi/openmpi-x86_64                     # module name varies by system
+cmake --preset serial-mpi && cmake --build --preset serial-mpi -j && ctest --preset serial-mpi
+cmake --preset openmp-mpi && cmake --build --preset openmp-mpi -j && ctest --preset openmp-mpi
+cmake --preset cuda-mpi   && cmake --build --preset cuda-mpi   -j && ctest --preset cuda-mpi
+cmake --preset hip-mpi    && cmake --build --preset hip-mpi    -j && ctest --preset hip-mpi
+mpirun -n 4 ./build/serial-mpi/bin/matar_mpi
+```
+
+**Debug builds** (bounds and dimension checks). Add `-debug` to the name: `serial-debug`, `openmp-debug`, `cuda-debug`, `hip-debug`, `serial-mpi-debug`:
+```bash
+cmake --preset serial-debug && cmake --build --preset serial-debug -j && ctest --preset serial-debug
+```
+
+**No Kokkos** (dependency-free serial header library):
+```bash
+cmake -S . -B build/nokokkos -DMATAR_ENABLE_KOKKOS=OFF -DMATAR_BUILD_TESTS=ON -DMATAR_BUILD_EXAMPLES=ON
+cmake --build build/nokokkos -j && ctest --test-dir build/nokokkos --output-on-failure
+```
+
+**Several backends in one go.** Loop over the presets you want; every one works the same way. For example, to build and test all the CPU backends:
+```bash
+for p in serial openmp pthreads; do
+    cmake --preset $p && cmake --build --preset $p -j && ctest --preset $p || break
+done
+```
+Add `cuda`, `hip`, or any `*-mpi` preset to the list on machines that have those toolchains. The precision presets (`serial-fp32`, `serial-fp16`, `serial-bf16`, `serial-quad`, `serial-mixed`, `serial-mpi-fp16`, `serial-mpi-quad`) follow the same three-command pattern.
+
+### Common tasks
+
+All commands are run from the repository root.
+
+**Add or override an option on top of a preset.** Put `-D` flags after the preset name when you configure:
+
+```bash
+cmake --preset openmp -DMATAR_BUILD_BENCHMARKS=ON
+cmake --preset serial -DCMAKE_CXX_COMPILER=clang++
+```
+
+These values are saved in `build/<preset>/CMakeCache.txt` and kept on later configures. The full option list is in [CMake options reference](#cmake-options-reference).
+
+**Build a single target instead of everything:**
+
+```bash
+cmake --build --preset serial --target matar_tests -j
+cmake --build --preset serial --target mtestkokkos -j
+```
+
+**Run only some of the tests, or see their output:**
+
+```bash
+ctest --preset serial -R CArrayKokkos            # only tests whose name matches the regex
+ctest --preset serial -N                         # list the tests without running them
+ctest --preset serial -j 8                       # run tests in parallel
+./build/serial/bin/matar_tests --gtest_filter='*CArray*'   # run the GoogleTest binary directly
+```
+
+Tests are discovered when `ctest` runs, not during the build, so building never runs the test binaries.
+
+**Set the thread count for OpenMP or pthreads builds** before running a program (see [Running codes in parallel](#running-codes-in-parallel)):
+
+```bash
+OMP_NUM_THREADS=8 ./build/openmp/bin/mtestkokkos
+./build/pthreads/bin/mtestkokkos --kokkos-num-threads=8
+```
+
+### Rebuilding and starting over
+
+* **After editing source files:** rerun only `cmake --build --preset <name> -j`. CMake reconfigures itself if a `CMakeLists.txt` changed. The one exception: if a `CMakeLists.txt` adds a new target and you build it by name with `--target`, run `cmake --preset <name>` first. Otherwise the build tool reports `No rule to make target`.
+* **After changing compilers, loading different modules, or switching backends in an existing build directory:** start from a clean configuration. CMake caches compiler paths and Kokkos backend settings, and a stale cache can cause confusing errors, including MATAR's `Kokkos's default execution space will be ...` check.
+  ```bash
+  cmake --fresh --preset serial      # CMake >= 3.24: discard the cache and reconfigure
+  # or, with any CMake version:
+  rm -rf build/serial && cmake --preset serial
+  ```
+* **Remove every build:** `rm -rf build/`
+
+### GPU builds (CUDA and HIP)
+
+```bash
+module load cuda                  # or however your system provides nvcc
+cmake --preset cuda
+cmake --build --preset cuda -j
+ctest --preset cuda
+```
+
+```bash
+module load rocm                  # hipcc must be on PATH; the hip preset uses it as the C++ compiler
+cmake --preset hip
+cmake --build --preset hip -j
+ctest --preset hip
+```
+
+**GPU architecture.** Kokkos tries to detect the GPU on the machine you configure on. If you build on a login node with no GPU, or for a different GPU than the one installed, give the architecture explicitly:
+
+```bash
+cmake --preset cuda -DKokkos_ARCH_AMPERE80=ON     # A100.  Others: VOLTA70, HOPPER90, ADA89, ...
+cmake --preset hip  -DKokkos_ARCH_AMD_GFX90A=ON   # MI250X. Others: AMD_GFX942 (MI300), ...
+```
+
+Likewise, the presets turn on `Kokkos_ARCH_NATIVE`, which optimizes for the **CPU you compile on**. If your compute nodes have a different CPU than the login node, turn it off and name the target CPU instead, for example `-DKokkos_ARCH_NATIVE=OFF -DKokkos_ARCH_ZEN3=ON`. The [Kokkos CMake keywords documentation](https://kokkos.org/kokkos-core-wiki/get-started/configuration-guide.html) lists every `Kokkos_ARCH_*` value.
+
+### MPI builds
+
+```bash
+module load mpi/openmpi-x86_64    # module name varies by system
+cmake --preset serial-mpi
+cmake --build --preset serial-mpi -j
+ctest --preset serial-mpi
+```
+
+CMake finds MPI with `find_package(MPI)`, so `mpicxx` must be on your `PATH` (or set `-DMPI_HOME=<prefix>`). The MPI test suite (`MPICArrayKokkos_mpi_suite`) is launched by `ctest` as `mpirun --oversubscribe -n 4`, so it runs on a 1-core laptop as well. To run MPI programs yourself:
+
+```bash
+mpirun -n 4 ./build/serial-mpi/bin/matar_mpi
+```
+
+If your MPI can send and receive GPU buffers directly (CUDA-aware or ROCm-aware MPI), add `-DMATAR_ENABLE_GPU_AWARE_MPI=ON` when configuring a `cuda-mpi` or `hip-mpi` build.
+
+### Site-specific presets (`CMakeUserPresets.json`)
+
+To reuse your own settings (a particular compiler, GPU architecture, and so on), create `CMakeUserPresets.json` in the repository root next to `CMakePresets.json`. It is meant to stay local and should not be committed. It can inherit from any preset in `CMakePresets.json`:
+
+```json
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "my-cuda",
+            "inherits": "cuda",
+            "cacheVariables": {
+                "Kokkos_ARCH_HOPPER90": "ON",
+                "CMAKE_CXX_COMPILER": "g++-13"
+            }
+        }
+    ],
+    "buildPresets": [ { "name": "my-cuda", "configurePreset": "my-cuda" } ],
+    "testPresets":  [ { "name": "my-cuda", "configurePreset": "my-cuda", "output": { "outputOnFailure": true } } ]
+}
+```
+
+Then use `cmake --preset my-cuda`, `cmake --build --preset my-cuda -j`, and `ctest --preset my-cuda`. The output goes to `build/my-cuda/`.
+
+### Configuring without presets
+
+Presets are a shortcut for ordinary `-D` flags, so you can call CMake directly. `-S` is the source directory (the repository root), and `-B` is the build directory, which CMake creates if needed:
+
+```bash
+# from the repository root
+cmake -S . -B build/my-openmp \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DMATAR_BUILD_EXAMPLES=ON \
+      -DMATAR_BUILD_TESTS=ON \
+      -DKokkos_ENABLE_OPENMP=ON
+cmake --build build/my-openmp -j
+ctest --test-dir build/my-openmp --output-on-failure
+```
+
+Because `-S` and `-B` are explicit, these commands also work from any other directory if you replace `.` and `build/my-openmp` with full paths. Without presets, the examples and tests are **off by default**, so turn them on as shown above.
+
+Select the Kokkos backend with the standard Kokkos variables: `Kokkos_ENABLE_SERIAL`, `Kokkos_ENABLE_OPENMP`, `Kokkos_ENABLE_THREADS`, `Kokkos_ENABLE_CUDA`, `Kokkos_ENABLE_HIP`, `Kokkos_ENABLE_SYCL`, and `Kokkos_ARCH_*`. They are passed straight through to the bundled Kokkos. You can also use `MATAR_DEVICE_BACKEND`/`MATAR_HOST_BACKEND` (see [Host-side parallelism](#host-side-parallelism)).
+
+### Building without Kokkos
+
+With `MATAR_ENABLE_KOKKOS=OFF`, MATAR is a dependency-free serial header library: only the host types are available, and the parallel macros become plain loops. No preset covers this, so configure by hand:
+
+```bash
+cmake -S . -B build/nokokkos -DMATAR_ENABLE_KOKKOS=OFF -DMATAR_BUILD_TESTS=ON -DMATAR_BUILD_EXAMPLES=ON
+cmake --build build/nokokkos -j
+ctest --test-dir build/nokokkos --output-on-failure
+```
+
+### Using an already-installed Kokkos
+
+By default, MATAR always builds its bundled Kokkos, so the backend stays under MATAR's control. To use a Kokkos you installed yourself instead, opt in explicitly:
+
+```bash
+cmake --preset serial -DMATAR_USE_EXTERNAL_KOKKOS=ON -DKokkos_ROOT=/path/to/kokkos/install
+```
+
+In this case the backend comes from how that Kokkos was built, and `Kokkos_ENABLE_*` flags passed to MATAR have no effect.
+
+### Installing MATAR
+
+Installing copies the MATAR headers and CMake package files (and, with the bundled Kokkos, Kokkos itself) into a prefix, so other projects can use `find_package(Matar)`. Run this from the repository root after building:
+
+```bash
+cmake --install build/serial --prefix $HOME/opt/matar-serial
+```
+
+Then build your own project with `-DCMAKE_PREFIX_PATH=$HOME/opt/matar-serial`. An installed MATAR is tied to the Kokkos backend it was configured with, so install one prefix per backend.
+
+### Building the getting-started tutorials
+
+Each `tutorial/getting_started/Example*/` directory is a standalone CMake project that pulls MATAR in from the repository with `add_subdirectory`. Build them from **inside the example's directory** with its `build.sh` script:
+
+```bash
+cd tutorial/getting_started/Example0
+./build.sh -t serial        # or openmp, pthreads, cuda, hip, all;  -d = debug build
+./build_serial/MATAR_data   # executables land in build_<backend>/ inside the example directory
+```
+
+### CMake options reference
 
 | Option | Default | Description |
 |---|---|---|
@@ -128,12 +446,33 @@ The CMake options are:
 | `MATAR_ENABLE_MPI` | OFF | Enable the MPI-aware types (`MPICArrayKokkos`, `CommunicationPlan`) |
 | `MATAR_ENABLE_GPU_AWARE_MPI` | OFF | Assume the MPI implementation is GPU-aware |
 | `MATAR_USE_EXTERNAL_KOKKOS` | OFF | Use an installed Kokkos (`-DKokkos_ROOT=<prefix>`) instead of the submodule |
-| `MATAR_BUILD_EXAMPLES` | OFF | Build the example programs |
-| `MATAR_BUILD_TESTS` | OFF | Build the unit tests (`ctest` to run) |
-| `MATAR_BUILD_BENCHMARKS` | OFF | Build the benchmarks |
+| `MATAR_BUILD_EXAMPLES` | OFF (ON in presets) | Build the example programs |
+| `MATAR_BUILD_TESTS` | OFF (ON in presets) | Build the unit tests (`ctest` to run) |
+| `MATAR_BUILD_BENCHMARKS` | OFF | Build the Google Benchmark benchmarks in `benchmark/` |
+| `MATAR_INSTALL` | ON at top level | Generate install rules; off when MATAR is embedded in another project |
+| `MATAR_DEVICE_BACKEND` | unset | `serial`, `openmp`, `pthreads`, `cuda`, `hip`, `sycl`; backend for `FOR_ALL` and friends |
+| `MATAR_HOST_BACKEND` | unset | `serial`, `openmp`, `pthreads`; backend for the `_HOST` macros |
 | `MATAR_REAL` | double | Precision of the `real_t` tier: `double`, `float`, `half`, `bfloat16`, `quad` |
 | `MATAR_HIGH_REAL` | double | Precision of the `high_real_t` tier: `double`, `float`, `quad` |
 | `MATAR_LOW_REAL` | double | Precision of the `low_real_t` tier: `double`, `float`, `half`, `bfloat16` |
+| `CMAKE_BUILD_TYPE` | Release | `Debug` turns on bounds and dimension checks |
+| `CMAKE_VECTOR_NOVEC` | OFF | Use the same compiler flags but with auto-vectorization disabled (for comparisons) |
+| `CMAKE_VECTOR_VERBOSE` | OFF | Print the compiler's vectorization reports |
+
+Plus every standard Kokkos option (`Kokkos_ENABLE_*`, `Kokkos_ARCH_*`), which is forwarded to the bundled Kokkos.
+
+### Troubleshooting
+
+| Symptom | Fix |
+|---|---|
+| `Could not read presets from ...: File not found: .../CMakePresets.json` | You are not in the repository root. `cd` to the directory containing `CMakePresets.json`, or use the `-S`/`-B` and `--test-dir` forms. |
+| `The bundled Kokkos submodule is missing` | Run `git submodule update --init --recursive` from the repository root. |
+| `CMake 3.xx or higher is required` | Your CMake is too old. Install a newer one (for example `pip install cmake`) or `module load cmake`. |
+| Configure fails while downloading `googletest` / `benchmark` | The machine has no internet access. Configure with `-DMATAR_BUILD_TESTS=OFF` (and leave benchmarks off), or point FetchContent at a local copy with `-DFETCHCONTENT_SOURCE_DIR_GOOGLETEST=<path>`. |
+| Wrong compiler or backend after loading modules | The old configuration is still cached. Run `cmake --fresh --preset <name>` or delete `build/<name>/`. |
+| `MATAR_DEVICE_BACKEND=..., but Kokkos's default execution space will be ...` | A higher-priority backend is still enabled from an earlier configure. Use a fresh build directory. |
+| CUDA: `CMAKE_CUDA_STANDARD 20` / C++20 errors | CUDA builds need CMake 3.25.2 or newer and a CUDA toolkit with C++20 support. |
+| Runtime: `attempt to access inaccessible memory space` | A `*Device` array was used inside a `_HOST` macro or on the host. See [Host-side parallelism](#host-side-parallelism). |
 
 ## Host-side parallelism
 
@@ -281,16 +620,15 @@ Other options worth knowing when embedding MATAR:
 Note that while an embedded MATAR installs nothing, the *bundled Kokkos* still adds its own install rules, so `cmake --install` on your project will also deposit the Kokkos headers and CMake package files into your prefix. Use an external or parent-provided Kokkos if you need to keep it out of your install tree.
 
 ## Running codes in parallel
-The openMP and pthread Kokkos backends require the user to specify the number of threads used to run the code in parallel. 
-To specify the number of threads with the Kokkos pthread backend, add the following command line argument when executing the code,
+The OpenMP and pthreads backends run on as many threads as you give them. Set the count either with an environment variable or with a Kokkos command-line flag:
 ```
---kokkos-threads=4
+export OMP_NUM_THREADS=4                 # OpenMP backend
+./mycode                                 
+
+./mycode --kokkos-num-threads=4          # any host backend (OpenMP or pthreads)
+KOKKOS_NUM_THREADS=4 ./mycode            # same, as an environment variable
 ```
-in otherwords,
-```
-./mycode --kokkos-threads=4
-```
-The above command runs the code with fine grained parallelism using 4 threads.  In your code, ensure you pass the command line argument variables to the MATAR_INITIALIZE macro (which wraps Kokkos::initialize) as shown below here.
+(Kokkos 5 removed the old `--kokkos-threads` spelling; use `--kokkos-num-threads`.) The Kokkos flags only reach Kokkos if you pass the command-line arguments to `MATAR_INITIALIZE`, which wraps `Kokkos::initialize`:
 ```
 int main(int argc, char* argv[])
 {
@@ -303,13 +641,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 ```
-The above coding will still work if no command line arguments are given; that is key because the other kokkos backends do not need command line arguments.
-
-For the openMP backend, set the number of threads as an environement variable; this is done by typing the following command in the terminal,
-```
-export OMP_NUM_THREADS=4
-```
-The CUDA and HIP backends do not need the number of threads specified.
+This still works when no arguments are given, so the same `main` works for every backend. The CUDA and HIP backends do not need a thread count.
 
 
 ## Contributing
