@@ -38,16 +38,15 @@
 #include "fourier_space.h"
 #include "heffte_fft.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-class ComplexArrays
-{
+class ComplexArrays {
 public:
-// arrays needed by solver
+    // arrays needed by solver
     DCArrayKokkos<double> comp_img;
     DCArrayKokkos<double> dfdc_img;
     DCArrayKokkos<double> kpow2;
-    CArrayKokkos<double>  denominator;
+    CArrayKokkos<double> denominator;
     FourierSpace fs;
 
     ComplexArrays(const SimParameters& sp, const std::array<int, 3>& nn_img, const std::array<int, 3>& start_index);

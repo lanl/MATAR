@@ -35,7 +35,7 @@
 #include <stdio.h>
 #include <math.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 /*
   Functions or subroutines that will be called from fortran should include "_" at the end of name.
@@ -50,18 +50,11 @@ extern "C" void kokkos_finalize_();
 extern "C" void square_array_elements_(double* array, int* nx, int* ny);
 extern "C" void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_elements);
 
-void kokkos_initialize_()
-{
-    Kokkos::initialize();
-}
+void kokkos_initialize_() { Kokkos::initialize(); }
 
-void kokkos_finalize_()
-{
-    Kokkos::finalize();
-}
+void kokkos_finalize_() { Kokkos::finalize(); }
 
-void square_array_elements_(double* array, int* nx, int* ny)
-{
+void square_array_elements_(double* array, int* nx, int* ny) {
     // define private copys of nx and ny
     // this enables kokkos to copy stack variables
     // if used in kokkos kernal
@@ -79,8 +72,7 @@ void square_array_elements_(double* array, int* nx, int* ny)
     array_2D_dual_view.update_host();
 }
 
-void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_elements)
-{
+void sum_array_elements_(double* array, int* nx, int* ny, double* sum_of_elements) {
     // define private copys of nx and ny
     int nx_ = *nx;
     int ny_ = *ny;

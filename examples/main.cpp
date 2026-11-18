@@ -35,10 +35,9 @@
 
 #include "matar.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-int main()
-{
+int main() {
     printf("Hello World\n");
 
     auto test = CArray<int>(5, 5);

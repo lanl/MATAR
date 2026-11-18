@@ -34,10 +34,9 @@
 #include <stdio.h>
 #include "matar.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-int main()
-{
+int main() {
     // DENSE
     int dim0 = 2;
     int dim1 = 3;
@@ -45,185 +44,173 @@ int main()
 
     printf("HOST TYPES");
 
-    FArray <double> testing (dim0,dim1,dim2);
-    ViewFArray <double> testing2 (&testing(0,0,0),3,2);
+    FArray<double> testing(dim0, dim1, dim2);
+    ViewFArray<double> testing2(&testing(0, 0, 0), 3, 2);
     testing.set_values(1.3);
     testing2.set_values(2.6);
     printf("ViewFArray set_values 2.6 writing over FArray set_values 1.3.\n");
     for (int i = 0; i < dim2; i++) {
         for (int j = 0; j < dim1; j++) {
             for (int k = 0; k < dim0; k++) {
-                printf("%.1f  ", testing(k,j,i));
+                printf("%.1f  ", testing(k, j, i));
             }
-        }
-    } 
-    printf("\n");
-    for (int i = 0; i < dim2; i++) {
-        for (int j = 0; j < dim1; j++) {
-            printf("%.1f  ", testing2(j,i));
         }
     }
     printf("\n");
-    CArray <double> testing3 (dim0,dim1,dim2);
-    ViewCArray <double> testing4 (&testing3(0,0,0),3,2);
+    for (int i = 0; i < dim2; i++) {
+        for (int j = 0; j < dim1; j++) {
+            printf("%.1f  ", testing2(j, i));
+        }
+    }
+    printf("\n");
+    CArray<double> testing3(dim0, dim1, dim2);
+    ViewCArray<double> testing4(&testing3(0, 0, 0), 3, 2);
     testing3.set_values(1.3);
     testing4.set_values(2.6);
     printf("ViewCArray set_values 2.6 writing over CArray set_values 1.3.\n");
     for (int i = 0; i < dim0; i++) {
         for (int j = 0; j < dim1; j++) {
             for (int k = 0; k < dim2; k++) {
-                printf("%.1f  ", testing3(i,j,k));
+                printf("%.1f  ", testing3(i, j, k));
             }
         }
-    } 
+    }
     printf("\n");
     for (int i = 0; i < dim1; i++) {
         for (int j = 0; j < dim2; j++) {
-            printf("%.1f  ", testing4(i,j));
+            printf("%.1f  ", testing4(i, j));
         }
     }
     printf("\n");
-    CMatrix <double> testing5 (dim0,dim1,dim2);
-    ViewCMatrix <double> testing6 (&testing5(1,1,1),3,2);
+    CMatrix<double> testing5(dim0, dim1, dim2);
+    ViewCMatrix<double> testing6(&testing5(1, 1, 1), 3, 2);
     testing5.set_values(1.3);
     testing6.set_values(2.6);
     printf("ViewCMatrix set_values 2.6 writing over CMatrix set_values 1.3.\n");
-    for (int i = 1; i < dim0+1; i++) {
-        for (int j = 1; j < dim1+1; j++) {
-            for (int k = 1; k < dim2+1; k++) {
-                printf("%.1f  ", testing5(i,j,k));
+    for (int i = 1; i < dim0 + 1; i++) {
+        for (int j = 1; j < dim1 + 1; j++) {
+            for (int k = 1; k < dim2 + 1; k++) {
+                printf("%.1f  ", testing5(i, j, k));
             }
-        }
-    } 
-    printf("\n");
-    for (int i = 1; i < dim1+1; i++) {
-        for (int j = 1; j < dim2+1; j++) {
-            printf("%.1f  ", testing6(i,j));
         }
     }
     printf("\n");
-    FMatrix <double> testing7 (dim0,dim1,dim2);
-    ViewFMatrix <double> testing8 (&testing7(1,1,1),3,2);
+    for (int i = 1; i < dim1 + 1; i++) {
+        for (int j = 1; j < dim2 + 1; j++) {
+            printf("%.1f  ", testing6(i, j));
+        }
+    }
+    printf("\n");
+    FMatrix<double> testing7(dim0, dim1, dim2);
+    ViewFMatrix<double> testing8(&testing7(1, 1, 1), 3, 2);
     testing7.set_values(1.3);
     testing8.set_values(2.6);
     printf("ViewFMatrix set_values 2.6 writing over FMatrix set_values 1.3.\n");
-    for (int i = 1; i < dim2+1; i++) {
-        for (int j = 1; j < dim1+1; j++) {
-            for (int k = 1; k < dim0+1; k++) {
-                printf("%.1f  ", testing7(k,j,i));
+    for (int i = 1; i < dim2 + 1; i++) {
+        for (int j = 1; j < dim1 + 1; j++) {
+            for (int k = 1; k < dim0 + 1; k++) {
+                printf("%.1f  ", testing7(k, j, i));
             }
         }
-    } 
+    }
     printf("\n");
-    for (int i = 1; i < dim2+1; i++) {
-        for (int j = 1; j < dim1+1; j++) {
-            printf("%.1f  ", testing8(j,i));
+    for (int i = 1; i < dim2 + 1; i++) {
+        for (int j = 1; j < dim1 + 1; j++) {
+            printf("%.1f  ", testing8(j, i));
         }
     }
     printf("\n");
 
     // RAGGEDS
-    CArray <size_t> stridesright (3);
+    CArray<size_t> stridesright(3);
     stridesright(0) = 2;
     stridesright(1) = 3;
     stridesright(2) = 2;
-    RaggedRightArray <double> righttest (stridesright);
+    RaggedRightArray<double> righttest(stridesright);
     righttest.set_values(1.35);
     printf("RaggedRightArray set to values of 1.35\n");
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < stridesright(i); j++) {
-            printf("%.2f  ", righttest(i,j));
+            printf("%.2f  ", righttest(i, j));
         }
     }
     printf("\n");
-    CArray <size_t> stridesdown (4);
+    CArray<size_t> stridesdown(4);
     stridesdown(0) = 2;
     stridesdown(1) = 3;
     stridesdown(2) = 2;
     stridesdown(3) = 1;
-    RaggedDownArray <double> downtest (stridesdown);
+    RaggedDownArray<double> downtest(stridesdown);
     downtest.set_values(2.55);
     printf("RaggedDownArray set to values of 2.55\n");
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < stridesdown(i); j++) {
-            printf("%.2f  ", downtest(j,i));
+            printf("%.2f  ", downtest(j, i));
         }
     }
     printf("\n");
-    DynamicRaggedRightArray <double> dynright (3,4);
+    DynamicRaggedRightArray<double> dynright(3, 4);
     dynright.stride(0) = 1;
     dynright.stride(1) = 3;
     dynright.stride(2) = 2;
     dynright.set_values(2.14);
     dynright.set_values_sparse(1.35);
-    printf("The values within the populated strides of the DynamicRaggedRight are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
-            printf("%.2f  ", dynright(i,j));
-        }
-        printf("\n");
-    }
-    DynamicRaggedDownArray <double> dyndown (3,4);
+    // The data outside the populated strides is not printed: dynright(i, j) asserts
+    // j < stride(i), so reading the rest of the allocation is out of bounds.
+    printf("The values within the populated strides of the DynamicRaggedRight are set to 1.35.\n");
+    DynamicRaggedDownArray<double> dyndown(3, 4);
     dyndown.stride(0) = 1;
     dyndown.stride(1) = 3;
     dyndown.stride(2) = 2;
     dyndown.stride(3) = 1;
     dyndown.set_values(2.14);
     dyndown.set_values_sparse(1.35);
-    printf("The values within the populated strides of the DynamicRaggedDown are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
-            printf("%.2f  ", dyndown(i,j));
-        }
-        printf("\n");
-    } 
+    // As above, dyndown(i, j) asserts i < stride(j), so the rest of the allocation
+    // cannot be read back and is not printed.
+    printf("The values within the populated strides of the DynamicRaggedDown are set to 1.35.\n");
     printf("Ragged Right Array of Vectors, CSCArray, and CSRArray are not currently tested in this file as of 8/6/24.\n");
-
 
     printf("DUAL TYPES");
     Kokkos::initialize();
     {
-        DFArrayKokkos <double> DFAtest (2, 3, 4);
+        DFArrayKokkos<double> DFAtest(2, 3, 4);
         DFAtest.set_values(1.25);
         printf("DViewFArrayKokkos set_values 2.34 writing over DFArrayKokkos set_values 1.25.\n");
         FOR_ALL(i, 0, 4,
                 j, 0, 3,
                 k, 0, 2, {
-                printf("%.2f ", DFAtest(k,j,i));
+            printf("%.2f ", DFAtest(k, j, i));
         });
         printf("\n");
-        DFMatrixKokkos <double> DFMtest (2, 3, 4);
+        DFMatrixKokkos<double> DFMtest(2, 3, 4);
         DFMtest.set_values(1.33);
         printf("DViewFMatrixKokkos set_values 3.24 writing over DFMatrixKokkos set_values 1.33.\n");
         FOR_ALL(i, 1, 5,
                 j, 1, 4,
                 k, 1, 3, {
-                printf("%.2f ", DFMtest(k,j,i));
+            printf("%.2f ", DFMtest(k, j, i));
         });
         printf("\n");
-        DCArrayKokkos <double> DCAtest (2, 3, 4);
+        DCArrayKokkos<double> DCAtest(2, 3, 4);
         DCAtest.set_values(1.53);
         printf("DViewCArrayKokkos set_values 2.33 writing over DCArrayKokkos set_values 1.53.\n");
         FOR_ALL(i, 0, 4,
                 j, 0, 3,
                 k, 0, 2, {
-                printf("%.2f ", DCAtest(k,j,i));
+            printf("%.2f ", DCAtest(k, j, i));
         });
         printf("\n");
-        DCMatrixKokkos <double> DCMtest (2, 3, 4);
+        DCMatrixKokkos<double> DCMtest(2, 3, 4);
         DCMtest.set_values(1.77);
         printf("DViewCMatrixKokkos set_values 2.17 writing over DCMatrixKokkos set_values 1.77.\n");
         FOR_ALL(i, 1, 5,
                 j, 1, 4,
                 k, 1, 3, {
-                printf("%.2f ", DCMtest(k,j,i));
+            printf("%.2f ", DCMtest(k, j, i));
         });
         printf("\n");
 
-        DynamicRaggedRightArrayKokkos <double> dynrightK (3,4);
-        //dynrightK.stride(0) = 1;
-        //dynrightK.stride(1) = 3;
-        //dynrightK.stride(2) = 2;
+        DynamicRaggedRightArrayKokkos<double> dynrightK(3, 4);
         RUN({
             dynrightK.stride(0) = 1;
             dynrightK.stride(1) = 3;
@@ -231,20 +218,14 @@ int main()
         });
         dynrightK.set_values(2.14);
         dynrightK.set_values_sparse(1.35);
-        printf("The values within the populated strides of the DynamicRaggedRight are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
+        printf("The values within the populated strides of the DynamicRaggedRight are set to 1.35.\n");
         FOR_FIRST(i, 0, 3, {
             FOR_SECOND(j, 0, dynrightK.stride(i), {
-                //printf("%.2f  ", dynrightK(i,j));
+                // printf("%.2f  ", dynrightK(i,j));
             });
         });
         printf("\n");
-        //for (int i = 0; i < 3; i++) {
-        //    for (int j = 0; j < 4; j++) {
-                //printf("%.2f  ", dynrightK(i,j));
-        //    }
-            //printf("\n");
-        //}
-        DynamicRaggedDownArrayKokkos <double> dyndownK (3,4);
+        DynamicRaggedDownArrayKokkos<double> dyndownK(3, 4);
         RUN({
             dyndownK.stride(0) = 1;
             dyndownK.stride(1) = 3;
@@ -253,17 +234,13 @@ int main()
         });
         dyndownK.set_values(2.14);
         dyndownK.set_values_sparse(1.35);
-        printf("The values within the populated strides of the DynamicRaggedDown are set to 1.35 and the data in the rest of the array is set to 2.14.\n");
+        printf("The values within the populated strides of the DynamicRaggedDown are set to 1.35.\n");
         FOR_FIRST(i, 0, 4, {
             FOR_SECOND(j, 0, dyndownK.stride(i), {
-                //printf("%.2f  ", dyndownK(i,j));
+                // printf("%.2f  ", dyndownK(i,j));
             });
         });
         printf("\n");
-        //for (int i = 0; i < 4; i++) {
-        //    for (int j = 0; j < 3; j++) {
-        //    }
-        //} 
     }
-    Kokkos::finalize();    
+    Kokkos::finalize();
 }

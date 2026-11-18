@@ -2,23 +2,25 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 namespace {
 // Initialize CArrayKokkos strides on device from captured values
 inline void init_strides_2_3_1(CArrayKokkos<size_t>& strides) {
-    Kokkos::parallel_for("init_strides", 1, KOKKOS_LAMBDA(int) {
-        strides(0) = 2;
-        strides(1) = 3;
-        strides(2) = 1;
-    });
+    Kokkos::parallel_for(
+        "init_strides",
+        1,
+        KOKKOS_LAMBDA(int) {
+            strides(0) = 2;
+            strides(1) = 3;
+            strides(2) = 1;
+        });
     Kokkos::fence();
 }
 
 // Set values on device via RUN kernel
-inline void dragged_set_values(DRaggedRightArrayKokkos<double>& array,
-                                int i0, int i1, double v00, double v01,
-                                double v10, double v11, double v12, double v20) {
+inline void dragged_set_values(DRaggedRightArrayKokkos<double>& array, int i0, int i1, double v00, double v01, double v10, double v11, double v12,
+                               double v20) {
     RUN({
         array(i0, 0) = v00;
         array(i0, 1) = v01;
@@ -53,7 +55,7 @@ inline void dragged_set_tensor_values(DRaggedRightArrayKokkos<double>& array) {
         array(0, 0, 1, 1) = 4.0;
     });
 }
-} // namespace
+}  // namespace
 
 // Test default constructor
 TEST(DRaggedRightArrayKokkosTest, DefaultConstructor) {

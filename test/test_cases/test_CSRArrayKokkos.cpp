@@ -2,15 +2,12 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 namespace {
 // FOR_ALL kernels cannot live inside TEST() — nvcc rejects KOKKOS_LAMBDA in
 // the private TestBody(). All tests share the same CSR initialization pattern.
-inline void init_csr_data(CArrayKokkos<double>& data,
-                          CArrayKokkos<size_t>& row,
-                          CArrayKokkos<size_t>& column,
-                          size_t nnz, size_t dim1) {
+inline void init_csr_data(CArrayKokkos<double>& data, CArrayKokkos<size_t>& row, CArrayKokkos<size_t>& column, size_t nnz, size_t dim1) {
     FOR_ALL(i, 0, nnz, {
         data(i)   = (double)i + 1.5;
         column(i) = i % 3;
@@ -23,9 +20,7 @@ inline void init_csr_data(CArrayKokkos<double>& data,
 // Capture csr(i,j) on device and return via host mirror
 inline double csr_get(CSRArrayKokkos<double>& csr, size_t i, size_t j) {
     CArrayKokkos<double> result(1, "csr_get_result");
-    Kokkos::parallel_for("csr_get", 1, KOKKOS_LAMBDA(int) {
-        result(0) = csr(i, j);
-    });
+    Kokkos::parallel_for("csr_get", 1, KOKKOS_LAMBDA(int) { result(0) = csr(i, j); });
     Kokkos::fence();
     auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, result.get_kokkos_view());
     return m(0);
@@ -33,9 +28,7 @@ inline double csr_get(CSRArrayKokkos<double>& csr, size_t i, size_t j) {
 
 inline size_t csr_begin_index(CSRArrayKokkos<double>& csr, size_t i) {
     CArrayKokkos<size_t> result(1, "csr_bi");
-    Kokkos::parallel_for("csr_bi_k", 1, KOKKOS_LAMBDA(int) {
-        result(0) = csr.begin_index(i);
-    });
+    Kokkos::parallel_for("csr_bi_k", 1, KOKKOS_LAMBDA(int) { result(0) = csr.begin_index(i); });
     Kokkos::fence();
     auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, result.get_kokkos_view());
     return m(0);
@@ -43,9 +36,7 @@ inline size_t csr_begin_index(CSRArrayKokkos<double>& csr, size_t i) {
 
 inline size_t csr_end_index(CSRArrayKokkos<double>& csr, size_t i) {
     CArrayKokkos<size_t> result(1, "csr_ei");
-    Kokkos::parallel_for("csr_ei_k", 1, KOKKOS_LAMBDA(int) {
-        result(0) = csr.end_index(i);
-    });
+    Kokkos::parallel_for("csr_ei_k", 1, KOKKOS_LAMBDA(int) { result(0) = csr.end_index(i); });
     Kokkos::fence();
     auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, result.get_kokkos_view());
     return m(0);
@@ -53,33 +44,33 @@ inline size_t csr_end_index(CSRArrayKokkos<double>& csr, size_t i) {
 
 inline size_t csr_nnz_row(CSRArrayKokkos<double>& csr, size_t i) {
     CArrayKokkos<size_t> result(1, "csr_nnz_row");
-    Kokkos::parallel_for("csr_nnz_row_k", 1, KOKKOS_LAMBDA(int) {
-        result(0) = csr.nnz(i);
-    });
+    Kokkos::parallel_for("csr_nnz_row_k", 1, KOKKOS_LAMBDA(int) { result(0) = csr.nnz(i); });
     Kokkos::fence();
     auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, result.get_kokkos_view());
     return m(0);
 }
 
 // to_dense via kernel (CSRArrayKokkos::to_dense() uses host loop with device operator — broken on CUDA)
-inline void csr_to_dense_kernel(CSRArrayKokkos<double>& csr, CArrayKokkos<double>& dense,
-                                 size_t dim1, size_t dim2) {
-    Kokkos::parallel_for("csr_to_dense", dim1, KOKKOS_LAMBDA(size_t i) {
-        for (size_t j = 0; j < dim2; j++) {
-            dense(i * dim2 + j) = csr(i, j);
-        }
-    });
+inline void csr_to_dense_kernel(CSRArrayKokkos<double>& csr, CArrayKokkos<double>& dense, size_t dim1, size_t dim2) {
+    Kokkos::parallel_for(
+        "csr_to_dense",
+        dim1,
+        KOKKOS_LAMBDA(size_t i) {
+            for (size_t j = 0; j < dim2; j++) {
+                dense(i * dim2 + j) = csr(i, j);
+            }
+        });
     Kokkos::fence();
 }
-} // namespace
+}  // namespace
 
 // Test constructor and basic initialization
 TEST(CSRArrayKokkosTest, Constructor) {
     size_t nnz = 6, dim1 = 3, dim2 = 3;
 
-    CArrayKokkos<double>  data(nnz);
-    CArrayKokkos<size_t>  row(dim1 + 1);
-    CArrayKokkos<size_t>  column(nnz);
+    CArrayKokkos<double> data(nnz);
+    CArrayKokkos<size_t> row(dim1 + 1);
+    CArrayKokkos<size_t> column(nnz);
 
     init_csr_data(data, row, column, nnz, dim1);
 
@@ -96,9 +87,9 @@ TEST(CSRArrayKokkosTest, Constructor) {
 TEST(CSRArrayKokkosTest, ValueAccess) {
     size_t nnz = 6, dim1 = 3, dim2 = 3;
 
-    CArrayKokkos<double>  data(nnz);
-    CArrayKokkos<size_t>  row(dim1 + 1);
-    CArrayKokkos<size_t>  column(nnz);
+    CArrayKokkos<double> data(nnz);
+    CArrayKokkos<size_t> row(dim1 + 1);
+    CArrayKokkos<size_t> column(nnz);
 
     init_csr_data(data, row, column, nnz, dim1);
 
@@ -121,9 +112,9 @@ TEST(CSRArrayKokkosTest, ValueAccess) {
 TEST(CSRArrayKokkosTest, IteratorFunctions) {
     size_t nnz = 6, dim1 = 3, dim2 = 3;
 
-    CArrayKokkos<double>  data(nnz);
-    CArrayKokkos<size_t>  row(dim1 + 1);
-    CArrayKokkos<size_t>  column(nnz);
+    CArrayKokkos<double> data(nnz);
+    CArrayKokkos<size_t> row(dim1 + 1);
+    CArrayKokkos<size_t> column(nnz);
 
     init_csr_data(data, row, column, nnz, dim1);
 
@@ -131,9 +122,9 @@ TEST(CSRArrayKokkosTest, IteratorFunctions) {
 
     // begin_index/end_index read device views — capture via kernels
     EXPECT_EQ(csr_begin_index(csr, 0), static_cast<size_t>(0));
-    EXPECT_EQ(csr_end_index(csr, 0),   static_cast<size_t>(2));
+    EXPECT_EQ(csr_end_index(csr, 0), static_cast<size_t>(2));
     EXPECT_EQ(csr_begin_index(csr, 1), static_cast<size_t>(2));
-    EXPECT_EQ(csr_end_index(csr, 1),   static_cast<size_t>(4));
+    EXPECT_EQ(csr_end_index(csr, 1), static_cast<size_t>(4));
 
     EXPECT_EQ(csr_nnz_row(csr, 0), static_cast<size_t>(2));
     EXPECT_EQ(csr_nnz_row(csr, 1), static_cast<size_t>(2));
@@ -145,9 +136,9 @@ TEST(CSRArrayKokkosTest, IteratorFunctions) {
 TEST(CSRArrayKokkosTest, FlatAccess) {
     size_t nnz = 6, dim1 = 3, dim2 = 3;
 
-    CArrayKokkos<double>  data(nnz);
-    CArrayKokkos<size_t>  row(dim1 + 1);
-    CArrayKokkos<size_t>  column(nnz);
+    CArrayKokkos<double> data(nnz);
+    CArrayKokkos<size_t> row(dim1 + 1);
+    CArrayKokkos<size_t> column(nnz);
 
     init_csr_data(data, row, column, nnz, dim1);
 
@@ -177,9 +168,9 @@ TEST(CSRArrayKokkosTest, FlatAccess) {
 TEST(CSRArrayKokkosTest, ToDense) {
     size_t nnz = 6, dim1 = 3, dim2 = 3;
 
-    CArrayKokkos<double>  data(nnz);
-    CArrayKokkos<size_t>  row(dim1 + 1);
-    CArrayKokkos<size_t>  column(nnz);
+    CArrayKokkos<double> data(nnz);
+    CArrayKokkos<size_t> row(dim1 + 1);
+    CArrayKokkos<size_t> column(nnz);
 
     init_csr_data(data, row, column, nnz, dim1);
 
@@ -190,24 +181,24 @@ TEST(CSRArrayKokkosTest, ToDense) {
     csr_to_dense_kernel(csr, dense, dim1, dim2);
 
     auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, dense.get_kokkos_view());
-    EXPECT_DOUBLE_EQ(m(0*3+0), 1.5);   // row 0, col 0
-    EXPECT_DOUBLE_EQ(m(0*3+1), 2.5);   // row 0, col 1
-    EXPECT_DOUBLE_EQ(m(0*3+2), 0.0);   // row 0, col 2 (structural zero)
-    EXPECT_DOUBLE_EQ(m(1*3+0), 4.5);   // row 1, col 0
-    EXPECT_DOUBLE_EQ(m(1*3+1), 0.0);   // row 1, col 1 (structural zero)
-    EXPECT_DOUBLE_EQ(m(1*3+2), 3.5);   // row 1, col 2
-    EXPECT_DOUBLE_EQ(m(2*3+0), 0.0);   // row 2, col 0 (structural zero)
-    EXPECT_DOUBLE_EQ(m(2*3+1), 5.5);   // row 2, col 1
-    EXPECT_DOUBLE_EQ(m(2*3+2), 6.5);   // row 2, col 2
+    EXPECT_DOUBLE_EQ(m(0 * 3 + 0), 1.5);  // row 0, col 0
+    EXPECT_DOUBLE_EQ(m(0 * 3 + 1), 2.5);  // row 0, col 1
+    EXPECT_DOUBLE_EQ(m(0 * 3 + 2), 0.0);  // row 0, col 2 (structural zero)
+    EXPECT_DOUBLE_EQ(m(1 * 3 + 0), 4.5);  // row 1, col 0
+    EXPECT_DOUBLE_EQ(m(1 * 3 + 1), 0.0);  // row 1, col 1 (structural zero)
+    EXPECT_DOUBLE_EQ(m(1 * 3 + 2), 3.5);  // row 1, col 2
+    EXPECT_DOUBLE_EQ(m(2 * 3 + 0), 0.0);  // row 2, col 0 (structural zero)
+    EXPECT_DOUBLE_EQ(m(2 * 3 + 1), 5.5);  // row 2, col 1
+    EXPECT_DOUBLE_EQ(m(2 * 3 + 2), 6.5);  // row 2, col 2
 }
 
 // Test set_values functionality — set_values uses a kernel, verify via mirror of the shared data view
 TEST(CSRArrayKokkosTest, SetValues) {
     size_t nnz = 6, dim1 = 3, dim2 = 3;
 
-    CArrayKokkos<double>  data(nnz);
-    CArrayKokkos<size_t>  row(dim1 + 1);
-    CArrayKokkos<size_t>  column(nnz);
+    CArrayKokkos<double> data(nnz);
+    CArrayKokkos<size_t> row(dim1 + 1);
+    CArrayKokkos<size_t> column(nnz);
 
     init_csr_data(data, row, column, nnz, dim1);
 

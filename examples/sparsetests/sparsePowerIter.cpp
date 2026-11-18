@@ -40,77 +40,70 @@
 
 #define EXPORT true
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-void matVecSp(CSRArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<double>& b)
-{
+void matVecSp(CSRArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<double>& b) {
     size_t m = A.dim2();
     size_t n = A.dim1();
     FOR_ALL(i, 0, n, {
         size_t col;
         for (auto j = A.begin_index(i); j < A.end_index(i); j++) {
-            col   = A.get_col_flat(j);
+            col = A.get_col_flat(j);
             b(i) += A(i, col) * v(col);
         }
     });
 }
 
-void renormSp(CArrayKokkos<double>& b)
-{
+void renormSp(CArrayKokkos<double>& b) {
     double total     = 0;
     double loc_total = 0;
-    int    n = b.dims(0);
-    int    i = 0;
+    int n            = b.dims(0);
+    int i            = 0;
     FOR_REDUCE_SUM(i, 0, n,
-                loc_total, { loc_total += b(i) * b(i); }
-        , total);
+                   loc_total, {
+        loc_total += b(i) * b(i);
+    }, total);
     total = 1 / sqrt(total);
-    FOR_ALL(i, 0, n,
-    { 
-        b(i) *= total; 
+    FOR_ALL(i, 0, n, {
+        b(i) *= total;
     });
     // printf("Norm is %f\n", total);
 }
 
-void copySp(CArrayKokkos<double>& a, CArrayKokkos<double>& b)
-{
+void copySp(CArrayKokkos<double>& a, CArrayKokkos<double>& b) {
     int n = b.dims(0);
-    FOR_ALL(i, 0, n,
-    { 
+    FOR_ALL(i, 0, n, {
         b(i) = a(i);
         a(i) = 0;
     });
 }
 
-double innerProdSp(CArrayKokkos<double>& a, CArrayKokkos<double>& b)
-{
+double innerProdSp(CArrayKokkos<double>& a, CArrayKokkos<double>& b) {
     double total     = 0;
     double loc_total = 0;
-    int    n = b.dims(0);
+    int n            = b.dims(0);
     FOR_REDUCE_SUM(i, 0, n,
-        loc_total, { 
-            loc_total += a(i) * b(i); 
-        }, total);
+                   loc_total, {
+        loc_total += a(i) * b(i);
+    }, total);
     return total;
 }
 
-double l1ChangeSp(CArrayKokkos<double>& a, CArrayKokkos<double>& b)
-{
+double l1ChangeSp(CArrayKokkos<double>& a, CArrayKokkos<double>& b) {
     double total     = 0;
     double loc_total = 0;
-    int    n = b.dims(0);
+    int n            = b.dims(0);
     FOR_REDUCE_SUM(i, 0, n,
-        loc_total, { 
-            loc_total += abs(a(i) - b(i)); 
-        }, total);
+                   loc_total, {
+        loc_total += abs(a(i) - b(i));
+    }, total);
     return total;
 }
 
-double powerIterSp(CSRArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<double>& b, double tol, int max_iter, int& did_converge)
-{
+double powerIterSp(CSRArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKokkos<double>& b, double tol, int max_iter, int& did_converge) {
     double last_totl = 4 * tol;
     double my_tol    = 2 * tol;
-    int    my_iter   = 0;
+    int my_iter      = 0;
 
     while (my_iter < max_iter && my_tol > tol) {
         matVecSp(A, v, b);
@@ -127,23 +120,21 @@ double powerIterSp(CSRArrayKokkos<double>& A, CArrayKokkos<double>& v, CArrayKok
     }
     if (my_iter >= max_iter && my_tol > tol) {
         did_converge = 0;
-    }
-    else{
+    } else {
         did_converge = 1;
     }
     return innerProdSp(v, b);
 }
 
-int main(int argc, char** argv)
-{
-    Kokkos::initialize(); {
+int main(int argc, char** argv) {
+    Kokkos::initialize();
+    {
         size_t n;
         if (argc != 2) {
             printf("Usage is .powerTest <MatrixSize> using default of 5000\n");
             n = 5000;
-        }
-        else{
-            n = (size_t) atoi(argv[1]);
+        } else {
+            n = (size_t)atoi(argv[1]);
         }
         CArrayKokkos<double> v(n);
         CArrayKokkos<double> b1(n);
@@ -155,21 +146,18 @@ int main(int argc, char** argv)
         double eig1   = 0;
         double eig2   = 0;
         double my_tol = n * (1e-09);
-        int    t1     = 1;
-        int    t2     = 1;
-        FOR_ALL(i, 0, n,
-        {
+        int t1        = 1;
+        int t2        = 1;
+        FOR_ALL(i, 0, n, {
             v(i)  = 1;
             v1(i) = 1;
             b1(i) = 0;
             b2(i) = 0;
             if (i == 1) {
                 starts(i) = 2;
-            }
-            else if (i == 0) {
+            } else if (i == 0) {
                 starts(i) = 0;
-            }
-            else{
+            } else {
                 starts(i) = 2 + 3 * (i - 1);
             }
         });
@@ -180,8 +168,7 @@ int main(int argc, char** argv)
                 if (i == 0) {
                     data(i + j) = i + 2 * j;
                     cols(i + j) = j;
-                }
-                else {
+                } else {
                     data(3 * (i - 1) + 3 + j - i) = i + 2 * j;
                     cols(3 * (i - 1) + 3 + j - i) = j;
                 }
@@ -189,15 +176,15 @@ int main(int argc, char** argv)
         });
         CSRArrayKokkos<double> Asp(data, starts, cols, n, n);
         auto start = std::chrono::high_resolution_clock::now();
-        eig2 = powerIterSp(Asp, v1, b2, my_tol, 10000000, t2);
-        auto lap = std::chrono::high_resolution_clock::now();
+        eig2       = powerIterSp(Asp, v1, b2, my_tol, 10000000, t2);
+        auto lap   = std::chrono::high_resolution_clock::now();
         if (!EXPORT) {
             printf("Max eig is %f %f\n", eig1, eig2);
             printf("Sparse took %.2e\n", std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start).count() * 1e-9);
-        }
-        else {
+        } else {
             printf("%ld, %.2e, %d, %f\n", n, std::chrono::duration_cast<std::chrono::nanoseconds>(lap - start).count() * 1e-9, t2, eig2);
         }
-    } Kokkos::finalize();
+    }
+    Kokkos::finalize();
     return 0;
 }

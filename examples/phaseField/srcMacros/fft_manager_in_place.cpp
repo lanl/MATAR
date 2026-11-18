@@ -33,10 +33,9 @@
  **********************************************************************************************/
 #ifdef IN_PLACE_FFT
 
-# include "fft_manager_in_place.h"
+#include "fft_manager_in_place.h"
 
-FFTManagerInPlace::FFTManagerInPlace(int* nn)
-{
+FFTManagerInPlace::FFTManagerInPlace(int* nn) {
     nn_   = nn;
     nx_   = nn_[0];
     ny_   = nn_[1];
@@ -51,16 +50,15 @@ FFTManagerInPlace::FFTManagerInPlace(int* nn)
         }
     }
 
-    // initialize fft
-    #ifdef HAVE_CUDA
+// initialize fft
+#ifdef HAVE_CUDA
     fftc_cufft_init_in_place_();
-    #else
+#else
     fftc_fftw_init_in_place_();
-    #endif
+#endif
 }
 
-void FFTManagerInPlace::prep_for_forward_fft_(double* input)
-{
+void FFTManagerInPlace::prep_for_forward_fft_(double* input) {
     // this function writes the data in "input" array to "data_" array
     // in order to ready "data_" for in-place forward fft.
 
@@ -76,8 +74,7 @@ void FFTManagerInPlace::prep_for_forward_fft_(double* input)
     });
 }
 
-void FFTManagerInPlace::get_forward_fft_result_(double* output)
-{
+void FFTManagerInPlace::get_forward_fft_result_(double* output) {
     // this function writes the result of in-place forward fft
     // in "data_" array into "output" array.
 
@@ -93,8 +90,7 @@ void FFTManagerInPlace::get_forward_fft_result_(double* output)
     });
 }
 
-void FFTManagerInPlace::prep_for_backward_fft_(double* input)
-{
+void FFTManagerInPlace::prep_for_backward_fft_(double* input) {
     // this function writes the data in "input" array to "data_" array
     // in order to ready "data_" for in-place backward fft.
 
@@ -110,8 +106,7 @@ void FFTManagerInPlace::prep_for_backward_fft_(double* input)
     });
 }
 
-void FFTManagerInPlace::get_backward_fft_result_(double* output)
-{
+void FFTManagerInPlace::get_backward_fft_result_(double* output) {
     // this function writes the result of in-place backward fft
     // in "data_" array into "output" array.
 
@@ -126,8 +121,7 @@ void FFTManagerInPlace::get_backward_fft_result_(double* output)
     });
 }
 
-void FFTManagerInPlace::perform_forward_fft(double* input, double* output)
-{
+void FFTManagerInPlace::perform_forward_fft(double* input, double* output) {
     // this function performs forward fft on "input" array and
     // writes the result to "output" array.
     // it calls the appropriate function to perform the forward in-place fft
@@ -138,18 +132,17 @@ void FFTManagerInPlace::perform_forward_fft(double* input, double* output)
 
     // perform foward fft
     isign_ = -1;
-    #ifdef HAVE_CUDA
+#ifdef HAVE_CUDA
     fftc_cufft_in_place_(data_.pointer(), nn_, &ndim_, &isign_);
-    #else
+#else
     fftc_fftw_in_place_(data_.pointer(), nn_, &ndim_, &isign_);
-    #endif
+#endif
 
     // get result after performing foward fft
     get_forward_fft_result_(output);
 }
 
-void FFTManagerInPlace::perform_backward_fft(double* input, double* output)
-{
+void FFTManagerInPlace::perform_backward_fft(double* input, double* output) {
     // this function performs backward fft on "input" array and
     // writes the result to "output" array.
     // it calls the appropriate function to perform the backward in-place fft
@@ -160,11 +153,11 @@ void FFTManagerInPlace::perform_backward_fft(double* input, double* output)
 
     // perform backward fft
     isign_ = 1;
-    #ifdef HAVE_CUDA
+#ifdef HAVE_CUDA
     fftc_cufft_in_place_(data_.pointer(), nn_, &ndim_, &isign_);
-    #else
+#else
     fftc_fftw_in_place_(data_.pointer(), nn_, &ndim_, &isign_);
-    #endif
+#endif
 
     // get result after performing backward fft
     get_backward_fft_result_(output);

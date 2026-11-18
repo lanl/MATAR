@@ -42,8 +42,7 @@
 #include "local_free_energy.h"
 #include "outputs.h"
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     Kokkos::initialize(argc, argv);
     {
         // simulation parameters
@@ -76,9 +75,7 @@ int main(int argc, char* argv[])
 
                 write_vtk(iter, sp.nn, sp.delta, ga.comp);
 
-                output_total_free_energy(iter, sp.print_rate, sp.num_steps,
-                                     sp.nn, sp.delta, sp.kappa,
-                                     ga.comp);
+                output_total_free_energy(iter, sp.print_rate, sp.num_steps, sp.nn, sp.delta, sp.kappa, ga.comp);
             }
         }
 

@@ -36,17 +36,17 @@
 #include <matar.h>
 #include <limits.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-int main(int argc, char* argv[])
-{
-    Kokkos::initialize(); {
+int main(int argc, char* argv[]) {
+    Kokkos::initialize();
+    {
         size_t nnz  = 6;
         size_t dim1 = 3;
         size_t dim2 = 10;
         CArrayKokkos<size_t> starts(dim2 + 1);
         CArrayKokkos<size_t> rows(nnz);
-        CArrayKokkos<int>    array(nnz + 1);
+        CArrayKokkos<int> array(nnz + 1);
         RUN({
             starts(1) = 1;
             starts(2) = 2;
@@ -86,37 +86,34 @@ int main(int argc, char* argv[])
         auto A       = pre_A;
         int* values  = A.pointer();
         auto a_start = A.get_starts();
-        int  total   = 0;
+        int total    = 0;
 
-        RUN({
-            printf("This matix is %ld x %ld \n", A.dim1(), A.dim2());
-        });
+        RUN({ printf("This matix is %ld x %ld \n", A.dim1(), A.dim2()); });
 
-        RUN({
-            printf("nnz : %ld \n", A.nnz());
-        });
+        RUN({ printf("nnz : %ld \n", A.nnz()); });
 
         int loc_total = 0;
-        loc_total += 0; // Get rid of warning
+        loc_total += 0;  // Get rid of warning
         FOR_REDUCE_SUM(i, 0, nnz,
                        loc_total, {
-                loc_total += values[i];
+            loc_total += values[i];
         }, total);
         printf("Sum of nnz from pointer method %d\n", total);
         total = 0;
         FOR_REDUCE_SUM(i, 0, nnz,
                        loc_total, {
-                loc_total += a_start[i];
+            loc_total += a_start[i];
         }, total);
         printf("Sum of start indices form .get_starts() %d\n", total);
         total = 0;
 
         FOR_REDUCE_SUM(i, 0, dim1,
                        j, 0, dim2 - 1,
-            loc_total, {
-                loc_total += A(i, j);
+                       loc_total, {
+            loc_total += A(i, j);
         }, total);
         printf("Sum of nnz in array notation %d\n", total);
-    } Kokkos::finalize();
+    }
+    Kokkos::finalize();
     return 0;
 }

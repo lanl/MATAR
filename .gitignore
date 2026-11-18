@@ -1,3 +1,5 @@
+build/
+CMakeUserPresets.json
 install-*
 benchmark/benchmark*
 build-matar-*
@@ -5,6 +7,7 @@ install/*
 heffte/
 docs_doxygen/
 docs_sphinx/
-tutorial/getting_started/Example0/build_*
-tutorial/getting_started/Example0/install*
+tutorial/getting_started/Example*/build_*
+tutorial/getting_started/Example*/install*
 examples/mesh_decomp/lib/*
+test/googletest/

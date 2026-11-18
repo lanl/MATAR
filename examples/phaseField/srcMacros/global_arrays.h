@@ -34,10 +34,9 @@
 #pragma once
 #include "matar.h"
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-struct GlobalArrays
-{
+struct GlobalArrays {
     DCArrayKokkos<double> comp;
     CArrayKokkos<double> dfdc;
 

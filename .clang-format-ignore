@@ -1,0 +1,5 @@
+# Files clang-format must not touch (gitignore-style globs, clang-format >= 18)
+
+# Heavy preprocessor code: #define continuations and variadic macro dispatch
+# tables that clang-format mangles badly. Format by hand.
+src/include/macros.h

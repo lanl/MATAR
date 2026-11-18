@@ -35,10 +35,10 @@
 #include <math.h>
 #include <chrono>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
-const int    width  = 1000;
-const int    height = 1000;
+const int width             = 1000;
+const int height            = 1000;
 const double temp_tolerance = 0.01;
 
 double temperature[height + 2][width + 2];
@@ -47,11 +47,10 @@ double temperature_previous[height + 2][width + 2];
 void initialize();
 void track_progress(int iter);
 
-int main()
-{
-    int    i, j;
-    int    iteration = 1;
-    double worst_dt  = 100;
+int main() {
+    int i, j;
+    int iteration   = 1;
+    double worst_dt = 100;
 
     // Start measuring time
     auto begin = std::chrono::high_resolution_clock::now();
@@ -63,10 +62,8 @@ int main()
         // finite difference
         for (i = 1; i <= height; i++) {
             for (j = 1; j <= width; j++) {
-                temperature[i][j] = 0.25 * (temperature_previous[i + 1][j]
-                                            + temperature_previous[i - 1][j]
-                                            + temperature_previous[i][j + 1]
-                                            + temperature_previous[i][j - 1]);
+                temperature[i][j] = 0.25 * (temperature_previous[i + 1][j] + temperature_previous[i - 1][j] + temperature_previous[i][j + 1] +
+                                            temperature_previous[i][j - 1]);
             }
         }
 
@@ -74,9 +71,7 @@ int main()
         worst_dt = 0.0;
         for (i = 1; i <= height; i++) {
             for (j = 1; j <= width; j++) {
-                worst_dt = fmax(fabs(temperature[i][j] -
-                                temperature_previous[i][j]),
-                                worst_dt);
+                worst_dt = fmax(fabs(temperature[i][j] - temperature_previous[i][j]), worst_dt);
             }
         }
 
@@ -105,8 +100,7 @@ int main()
     return 0;
 }
 
-void initialize()
-{
+void initialize() {
     int i, j;
 
     // initialize temperature_previous to 0.0
@@ -118,19 +112,18 @@ void initialize()
 
     // setting the left and right boundary conditions
     for (i = 0; i <= height + 1; i++) {
-        temperature_previous[i][0] = 0.0;
+        temperature_previous[i][0]         = 0.0;
         temperature_previous[i][width + 1] = (100.0 / height) * i;
     }
 
     // setting the top and bottom boundary condition
     for (j = 0; j <= width + 1; j++) {
-        temperature_previous[0][j] = 0.0;
+        temperature_previous[0][j]          = 0.0;
         temperature_previous[height + 1][j] = (100.0 / width) * j;
     }
 }
 
-void track_progress(int iter)
-{
+void track_progress(int iter) {
     int i;
 
     printf("---------- Iteration number: %d ----------\n", iter);

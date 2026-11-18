@@ -33,8 +33,7 @@
  **********************************************************************************************/
 #pragma once
 
-struct SimParameters
-{
+struct SimParameters {
     int nn[3];
     int ndim;
     int num_steps;

@@ -2,12 +2,11 @@
 #include "gtest/gtest.h"
 #include <stdio.h>
 
-using namespace mtr; // matar namespace
+using namespace mtr;  // matar namespace
 
 // Helper function to create and return a CMatrixKokkos object
-CMatrixKokkos<double> return_CMatrixKokkos(int dims, std::vector<int> sizes, const std::string& tag_string = "test_matrix")
-{
-    switch(dims) {
+CMatrixKokkos<double> return_CMatrixKokkos(int dims, std::vector<int> sizes, const std::string& tag_string = "test_matrix") {
+    switch (dims) {
         case 1:
             return CMatrixKokkos<double>(sizes[0], tag_string);
         case 2:
@@ -28,8 +27,7 @@ CMatrixKokkos<double> return_CMatrixKokkos(int dims, std::vector<int> sizes, con
 }
 
 // Test default constructor
-TEST(Test_CMatrixKokkos, default_constructor)
-{
+TEST(Test_CMatrixKokkos, default_constructor) {
     CMatrixKokkos<double> A;
     EXPECT_EQ(A.size(), 0);
     EXPECT_EQ(A.extent(), 0);
@@ -37,19 +35,17 @@ TEST(Test_CMatrixKokkos, default_constructor)
 }
 
 // Test 1D constructor
-TEST(Test_CMatrixKokkos, constructor_1d)
-{
+TEST(Test_CMatrixKokkos, constructor_1d) {
     const int size = 10;
     CMatrixKokkos<double> A(size, "test_matrix");
     EXPECT_EQ(A.size(), size);
     EXPECT_EQ(A.extent(), size);
     EXPECT_EQ(A.order(), 1);
-    EXPECT_EQ(A.dims(1), size); // Note: Dims on matrix types are 1-indexed
+    EXPECT_EQ(A.dims(1), size);  // Note: Dims on matrix types are 1-indexed
 }
 
 // Test 2D constructor
-TEST(Test_CMatrixKokkos, constructor_2d)
-{
+TEST(Test_CMatrixKokkos, constructor_2d) {
     const int size1 = 10;
     const int size2 = 20;
     CMatrixKokkos<double> A(size1, size2, "test_matrix");
@@ -61,8 +57,7 @@ TEST(Test_CMatrixKokkos, constructor_2d)
 }
 
 // Test 3D constructor
-TEST(Test_CMatrixKokkos, constructor_3d)
-{
+TEST(Test_CMatrixKokkos, constructor_3d) {
     const int size1 = 10;
     const int size2 = 20;
     const int size3 = 30;
@@ -76,93 +71,98 @@ TEST(Test_CMatrixKokkos, constructor_3d)
 }
 
 // Test get_name method
-TEST(Test_CMatrixKokkos, get_name)
-{
+TEST(Test_CMatrixKokkos, get_name) {
     const int size = 10;
     CMatrixKokkos<double> A(size, "test_matrix");
     EXPECT_EQ(A.get_name(), "test_matrix");
 }
 
 // Test set_values method
-TEST(Test_CMatrixKokkos, set_values)
-{
+TEST(Test_CMatrixKokkos, set_values) {
     const int size = 10;
     CMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
     MATAR_FENCE();
     // Check values via host mirror (get_kokkos_view returns a flat 1D view)
     auto mirror = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view());
-    for(int i = 0; i < size * size; i++) {
+    for (int i = 0; i < size * size; i++) {
         EXPECT_EQ(mirror(i), 42.0);
     }
 }
 
 #ifndef NDEBUG
 // Test operator() access
-TEST(Test_CMatrixKokkos, operator_access)
-{
+TEST(Test_CMatrixKokkos, operator_access) {
     const int size = 10;
     CMatrixKokkos<double> A(size, size, size, "test_matrix");
     MATAR_FENCE();
-    
+
     // Test 1D access
     EXPECT_DEATH(A(1) = 1.0, ".*");
-    
+
     // Test 2D access
     EXPECT_DEATH(A(1, 1) = 2.0, ".*");
-    
+
     // Test 3D access via kernel + mirror
     A.set_values(3.0);
     MATAR_FENCE();
-    { auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view()); EXPECT_EQ(m(0), 3.0); }
-    
+    {
+        auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view());
+        EXPECT_EQ(m(0), 3.0);
+    }
+
     // Test 5D access
     EXPECT_DEATH(A(1, 1, 1, 1, 1) = 4.0, ".*");
-    
+
     // Test 7D access
     EXPECT_DEATH(A(1, 1, 1, 1, 1, 1, 1) = 5.0, ".*");
 }
 
-
 // Test bounds checking
-TEST(Test_CMatrixKokkos, bounds_checking)
-{
+TEST(Test_CMatrixKokkos, bounds_checking) {
     const int size = 10;
     CMatrixKokkos<double> A(size, size, "test_matrix");
-    
+
     // Test out of bounds access
-    EXPECT_DEATH(A(size+1, size+1), ".*");
+    EXPECT_DEATH(A(size + 1, size + 1), ".*");
     EXPECT_DEATH(A(10000, 10000), ".*");
 }
 #endif
 
 // Test different types
-TEST(Test_CMatrixKokkos, different_types)
-{
+TEST(Test_CMatrixKokkos, different_types) {
     const int size = 10;
 
     // Test with int
     CMatrixKokkos<int> A(size, size, "test_matrix_int");
     A.set_values(42);
     MATAR_FENCE();
-    { auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view()); EXPECT_EQ(m(0), 42); }
+    {
+        auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view());
+        EXPECT_EQ(m(0), 42);
+    }
 
     // Test with float
     CMatrixKokkos<float> B(size, size, "test_matrix_float");
     B.set_values(42.0f);
     MATAR_FENCE();
-    { auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, B.get_kokkos_view()); EXPECT_FLOAT_EQ(m(0), 42.0f); }
+    {
+        auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, B.get_kokkos_view());
+        EXPECT_FLOAT_EQ(m(0), 42.0f);
+    }
 
     // Test with bool
     CMatrixKokkos<bool> C(size, size, "test_matrix_bool");
     C.set_values(true);
     MATAR_FENCE();
-    { auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, C.get_kokkos_view()); EXPECT_EQ(m(0), true); }
+    {
+        auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, C.get_kokkos_view());
+        EXPECT_EQ(m(0), true);
+    }
 }
 
 // Test RAII behavior
-TEST(Test_CMatrixKokkos, raii)
-{
+TEST(Test_CMatrixKokkos, raii) {
     const int size = 10;
     {
         CMatrixKokkos<double> A(size, size, "test_matrix");
@@ -170,12 +170,11 @@ TEST(Test_CMatrixKokkos, raii)
         MATAR_FENCE();
         auto m = Kokkos::create_mirror_view_and_copy(Kokkos::HostSpace{}, A.get_kokkos_view());
         EXPECT_EQ(m(0), 42.0);
-    } // A goes out of scope here
+    }  // A goes out of scope here
 }
 
 // Test copy constructor
-TEST(Test_CMatrixKokkos, copy_constructor)
-{
+TEST(Test_CMatrixKokkos, copy_constructor) {
     const int size = 10;
     CMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
@@ -191,8 +190,7 @@ TEST(Test_CMatrixKokkos, copy_constructor)
 }
 
 // Test assignment operator
-TEST(Test_CMatrixKokkos, assignment_operator)
-{
+TEST(Test_CMatrixKokkos, assignment_operator) {
     const int size = 10;
     CMatrixKokkos<double> A(size, size, "test_matrix");
     A.set_values(42.0);
